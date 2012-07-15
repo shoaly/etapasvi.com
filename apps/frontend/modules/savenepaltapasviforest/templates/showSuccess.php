@@ -54,7 +54,7 @@ $uri = 'http://' . sfConfig::get('app_save_jungle_domain_name') . '/' . $user_cu
 
 <li><img src="http://<?php echo $app_domain_name; ?>/i/jquery/wow_slider/images/9.jpg" alt="" title="<?php echo __('If the whole area were given The Dharmic Forest status, this would allow it become a safe sanctuary for numerous beautiful birds, animals and plants and help in their conservation.') ?>" id="wows1_9"/></li>
 
-<li><img src="http://<?php echo $app_domain_name; ?>/i/jquery/wow_slider/images/10.jpg" alt="" title="<?php echo __('Destiny of the living creatures and plants is in your hands.') ?>" id="wows1_10"/></li>
+<li><img src="http://<?php echo $app_domain_name; ?>/i/jquery/wow_slider/images/10.jpg" alt="" title="<?php echo __('The destiny of the living creatures and plants is in your hands.') ?>" id="wows1_10"/></li>
 
 <li><img src="http://<?php echo $app_domain_name; ?>/i/jquery/wow_slider/images/12.jpg" alt="" title="<?php echo __('Now it\'s your turn...') ?>" id="wows1_11"/></li>
 
