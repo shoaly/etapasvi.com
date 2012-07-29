@@ -6,7 +6,7 @@
     <description><?php echo __('Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.') ?></description>        
     <language><?php echo $language ?></language>
     <lastBuildDate><?php echo $last_build_date ?></lastBuildDate>
-    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://www.etapasvi.com/<?php echo $language ?>/news/rss" />
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="<?php echo url_for('news_rss'); ?>" />
     <?php if (!empty($items)): ?>
     <?php foreach($items as $item): ?>
 <?php if (!empty($item['title'])): ?>
