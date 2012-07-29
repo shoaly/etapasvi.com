@@ -20,7 +20,9 @@ class UserPeer extends BaseUserPeer
 		              // категория Disqus
 		              'comments_category_id' => 668704,
 		              // язык интерфейса FeedBurner
-		              'feedburner_loc' 		 => 'en_US'
+		              'feedburner_loc' 		 => 'en_US',
+		              'twitter' 		 	 => 'etapasvi',
+		              'fb_group' 		 	 => ''
 		),            
 		'ru' => array('name'    			 => 'Русский',
 		              'iso'     			 => 'ru',		              
@@ -42,7 +44,8 @@ class UserPeer extends BaseUserPeer
 		              'iso'     			 => 'pl',
 		              //'mail_id' 			 => '99862a8230',
 		              'comments_category_id' => 686580,
-		              'feedburner_loc' 		 => ''
+		              'feedburner_loc' 		 => '',
+		              'fb_group' 		 	 => 'etapasvi.pol'
 		),
 		'fr' => array('name'    			 => 'Français',
 		              'iso'     			 => 'fr',
@@ -933,6 +936,42 @@ class UserPeer extends BaseUserPeer
 			return '';
 		}
 	    return self::$all_cultures[$culture]['en'] .' [' . $culture . '] &nbsp;&nbsp;-&nbsp;&nbsp; ' . self::$all_cultures[$culture]['name'];
+	}
+	
+	/**
+	 * Get the name of FB-group for the culture
+	 *
+	 * @param unknown_type $culture
+	 * @return unknown
+	 */
+	public static function getCultureFbGroup( $culture = '' )
+	{
+		if (!$culture) {
+			$culture = sfContext::getInstance()->getUser()->getCulture();
+		}
+		$fb_group = self::$cultures[ $culture ][ 'fb_group' ];
+		if (!$fb_group) {
+			$fb_group = 'etapasvi.' . str_replace('-', '.', self::$cultures[ $culture ][ 'iso' ]);
+		}
+		return $fb_group;
+	}	
+	
+	/**
+	 * Get the name of Twitter for the culture
+	 *
+	 * @param unknown_type $culture
+	 * @return unknown
+	 */
+	public static function getCultureTwitter( $culture = '' )
+	{
+		if (!$culture) {
+			$culture = sfContext::getInstance()->getUser()->getCulture();
+		}
+		$twitter = self::$cultures[ $culture ][ 'twitter' ];
+		if (!$twitter) {
+			$twitter = 'etapasvi_' . str_replace('-', '_', self::$cultures[ $culture ][ 'iso' ]);
+		}
+		return $twitter;
 	}
 	
 	/**
