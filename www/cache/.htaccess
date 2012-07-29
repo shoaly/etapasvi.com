@@ -13,6 +13,10 @@
   ExpiresActive  On
   ExpiresDefault  "access plus 1 hour"
 # для news/rss
+  <FilesMatch "rss">
+    Header set Content-Type "text/xml; charset=UTF-8"
+  </FilesMatch>
+
   AddDefaultCharset UTF-8
 
 #</IfModule>
