@@ -204,7 +204,7 @@ class Photo extends BasePhoto
 	  $file = $this->getImg();
 
 	  if ($path && $file) {	    	    
-	    return sfConfig::get('sf_upload_dir') . "/" . PhotoPeer::FULL_DIR . "/" . $path . "/" . $file;
+	    return sfConfig::get('sf_upload_dir') . "/photo/" . $path . "/" . $file;
 	  } else {
 	    return '';	
 	  }
@@ -218,7 +218,7 @@ class Photo extends BasePhoto
 	  $file = $this->getImg();
 
 	  if ($path && $file) {	    	    
-	    return sfConfig::get('sf_upload_dir') . "/" . PhotoPeer::PREVIEW_DIR . "/" . $path . "/" . $file;
+	    return sfConfig::get('sf_upload_dir') . "/photo/" . $path . "/" . $file;
 	  } else {
 	    return '';	
 	  }
@@ -232,7 +232,7 @@ class Photo extends BasePhoto
 	  $file = $this->getImg();
 
 	  if ($path && $file) {	    	    
-	    return sfConfig::get('sf_upload_dir') . "/" . PhotoPeer::THUMB_DIR . "/" . $path . "/" . $file;
+	    return sfConfig::get('sf_upload_dir') . "/photo/" . $path . "/" . $file;
 	  } else {
 	    return '';	
 	  }

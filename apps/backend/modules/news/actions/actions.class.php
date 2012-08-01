@@ -1054,4 +1054,76 @@ if (isset($news['title_i18n_en']))
       }
   }  
   
+ /**
+   * Temporatry function
+   *
+   * @param unknown_type $request
+   */
+  public function executePhotosymlinks($request)
+  {
+  	$c = new Criteria();
+  	//$c->setLimit(10);
+  	$list = PhotoPeer::doSelect($c);
+  	
+  	$result = array(
+  		'photo_count' 		  => 0,
+  		'full_count'     	  => 0,
+  		'preview_count'       => 0,
+  		'thumb_count'         => 0,
+  		'full_symlink'     	  => 0,
+  		'preview_symlink'     => 0,
+  		'thumb_symlink'       => 0,
+  	);
+  	
+  	$result['photo_count'] = count($list);
+  	
+  	foreach ($list as $item) {  		  	
+  	  $file_name = $item->getImg();
+  		
+  	  if (!$file_name) {
+  	    continue;
+  	  }
+  		
+  	  $full_path 	   = $item->getFullPath();
+  	  $full_path_local = $item->getFullLocal();
+  	  
+  	  if ( $full_path && file_exists($full_path_local) ) {
+  	  	$result['full_count']++;
+  	  	
+  	  	$symlink_result = symlink('../'.$full_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$file_name);  	  	
+  	  	if ($symlink_result) {
+  	  		$result['full_symlink']++;
+  	  	}
+  	  }
+  	  
+  	  $preview_path 	  = $item->getPreviewPath();
+  	  $preview_path_local = $item->getPreviewLocal();
+  	  
+  	  if ( $preview_path && file_exists($preview_path_local) ) {
+  	  	$result['preview_count']++;
+  	  	
+  	  	$symlink_result = symlink('../'.$preview_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$file_name);  	  	
+  	  	if ($symlink_result) {
+  	  		$result['preview_symlink']++;
+  	  	}
+  	  }
+  	  
+  	  $thumb_path 	  = $item->getThumbPath();
+  	  $thumb_path_local = $item->getThumbLocal();
+  	  
+  	  if ( $thumb_path && file_exists($thumb_path_local) ) {
+  	  	$result['thumb_count']++;
+  	  	
+  	  	$symlink_result = symlink('../'.$thumb_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$file_name);  	  	
+  	  	if ($symlink_result) {
+  	  		$result['thumb_symlink']++;
+  	  	}
+  	  }
+  	}
+  	echo "<pre>";
+  	print_r( $result );
+  	exit();
+
+  }
+  
 }
