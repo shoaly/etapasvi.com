@@ -20,3 +20,7 @@
   AddDefaultCharset UTF-8
 
 #</IfModule>
+
+  <FilesMatch ".*viewi\.html$">
+    AddHandler server-parsed .html
+  </FilesMatch>

@@ -7,6 +7,6 @@
     });
 </script>
 <div class="box photofull">
-<div class="center_text prev_next" style="width:100%;height:300px"></div>
+<div class="center_text prev_next" style="width:100%;"><img src='/uploads/photo/preview/<!--#if expr="$REQUEST_URI = /^\/[^\/]+\/photo\/([0-9]+).*/" --><!--#set var="PHOTO_ID" value="$1" --><!--#endif --><!--#echo var="PHOTO_ID" -->.jpg' /></div>
 </div>
 </div>

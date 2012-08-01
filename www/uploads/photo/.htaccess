@@ -1,6 +1,7 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  RewriteCond %{REQUEST_URI} !^/uploads/photo/preview/.*
 #  RewriteCond %{REQUEST_FILENAME} !-f 
 #  RewriteRule ^(.*)$ http://lh3.googleusercontent.com/$1 [QSA,L]  
 #  RewriteRule ^(.*)$ http://lh3.ggpht.com/_h_ndBu6jdk8/$1 [QSA,L]  
