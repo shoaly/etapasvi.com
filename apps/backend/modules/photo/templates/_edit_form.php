@@ -73,6 +73,8 @@
         <option value="top-left">top-left</option>
         <option value="top-right">top-right</option>
     </select>
+    
+    <input type="checkbox" value="1" id="photo_resize_preview" name="photo[resize_preview]" checked="checked"> resize preview 
     </div>
 <?php else: ?>
 <a href="<?php echo html_entity_decode($url_to_login_page)?>" target="_blank">Authorize in Picasa</a>

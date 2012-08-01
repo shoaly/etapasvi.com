@@ -289,8 +289,10 @@ class sfSuperCache
   	  $photoalbum = $item->getPhotoalbum();
 
   	  // очищается фотоальбом
-      $photoalbum_url = $photoalbum->getUrl();
-      $urls_for_clearing[] = $photoalbum_url;
+  	  if ($photoalbum) {
+      	$photoalbum_url = $photoalbum->getUrl();
+      	$urls_for_clearing[] = $photoalbum_url;
+  	  }
       
       // photoalbum content with photos
       $urls_for_clearing[] = str_replace('/album/', '/albumcontent/', $photoalbum_url);

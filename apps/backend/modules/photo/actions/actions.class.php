@@ -1,9 +1,10 @@
 <?php
 //phpinfo();
 //exit();
+/*
 ini_set( 'error_reporting', 'E_ALL' );
 ini_set( 'display_errors', 'on' );
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
 
 
 ini_set('max_execution_time', '3600');
@@ -369,16 +370,26 @@ class photoActions extends autophotoActions
         $img->saveAs( $tmp_thumb );           
         
         // preview
-        $img = new sfImage( $tmp_full );        
-        if ( $img->getWidth() > PhotoPeer::IMG_PREVIEW_WIDTH || $img->getHeight() > PhotoPeer::IMG_PREVIEW_HEIGHT ) {
-        	$img->thumbnail(PhotoPeer::IMG_PREVIEW_WIDTH, PhotoPeer::IMG_PREVIEW_HEIGHT, 'scale');  
-        }                
-        // водяной знак
-        if (isset($photo['watermark'])) {
-	      $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), $watermark_position);
+        copy($tmp_full, $tmp_preview);
+        
+        if (isset($photo['resize_preview']) || isset($photo['watermark']) || $original_ext != $ext) {
+        	
+        	$img = new sfImage( $tmp_preview );
+        	
+        	if (isset($photo['resize_preview'])) {
+		        if ( $img->getWidth() > PhotoPeer::IMG_PREVIEW_WIDTH || $img->getHeight() > PhotoPeer::IMG_PREVIEW_HEIGHT ) {
+		        	$img->thumbnail(PhotoPeer::IMG_PREVIEW_WIDTH, PhotoPeer::IMG_PREVIEW_HEIGHT, 'scale');  
+		        }
+        	}
+	        
+	        // водяной знак
+	        if (isset($photo['watermark'])) {
+		      $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), $watermark_position);
+	        }
+	        
+	        $img->setQuality( PhotoPeer::PREVIEW_QUALITY );        
+	        $img->save();
         }
-        $img->setQuality( PhotoPeer::PREVIEW_QUALITY );        
-        $img->saveAs( $tmp_preview );         
         
         // full        
 		$img = new sfImage( $tmp_full );	
