@@ -339,17 +339,21 @@ class photoActions extends autophotoActions
       	$fileName = $this->photo->getId();
       }
       
-      $ext = $this->getRequest()->getFileExtension('photo[img]');
+      // Original file extension
+      $original_ext = $this->getRequest()->getFileExtension('photo[img]');
+      // Images are always converted to JPG
+      $ext = '.jpg';
+      $mime_type = 'image/jpeg';
       
-      $tmp_full    = sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$fileName.$ext;      
-      $tmp_preview = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$fileName.$ext;
-      $tmp_thumb   = sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$fileName.$ext;
+      $tmp_full    = sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/tmp/".$fileName.$ext;      
+      $tmp_preview = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/tmp/".$fileName.$ext;
+      $tmp_thumb   = sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/tmp/".$fileName.$ext;
      
       $this->getRequest()->moveFile('photo[img]', $tmp_full);
       $this->photo->setImg($fileName.$ext);
       
       // сохраняем исходное изображение (без каптчи)
-      PhotoPeer::moveFile($tmp_full, sfConfig::get('sf_upload_dir')."/".PhotoPeer::ORIGINAL_DIR."/".$fileName.$ext);
+      PhotoPeer::moveFile($tmp_full, sfConfig::get('sf_upload_dir')."/".PhotoPeer::ORIGINAL_DIR."/".$fileName.$original_ext);
       
       if ($photo['watermark_position']) {
 		$watermark_position = $photo['watermark_position'];
@@ -395,11 +399,13 @@ class photoActions extends autophotoActions
 		{		
 		  $title = $fileName . ($photo['title_i18n_en'] !='' ? ' - ' . $photo['title_i18n_en'] : '');
 		  $title .= ' (' . UserPeer::DOMAIN_NAME_MAIN . ')';
+
 		  // full
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
 		  	PhotoPeer::FULL_DIR, 
 		  	$tmp_full,
-		  	$img->getMIMEType(),
+		  	$mime_type,
+//		  	$img->getMIMEType(),
 		  	$fileName.$ext,
 		  	$title
 		  );
@@ -413,12 +419,16 @@ class photoActions extends autophotoActions
 		    $tmp_full, 
 		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );
+  	      // creating symlink
+  	      $link = sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$fileName.$ext;
+  	      unlink($link);
+  	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
 		  
 		  // preview
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
 		  	PhotoPeer::PREVIEW_DIR, 
 		  	$tmp_preview,
-		  	$img->getMIMEType(),
+		  	$mime_type,
 		  	$fileName.$ext,
 		  	$title
 		  );
@@ -432,12 +442,16 @@ class photoActions extends autophotoActions
 		    $tmp_preview, 
 		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );
+  	      // creating symlink
+  	      $link = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$fileName.$ext;
+  	      unlink($link);  	      
+  	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
 		  
 		  // thumb
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
 		  	PhotoPeer::THUMB_DIR,
 		  	$tmp_thumb,
-		  	$img->getMIMEType(),
+		  	$mime_type,
 		  	$fileName.$ext,
 		  	$title
 		  );
@@ -450,8 +464,13 @@ class photoActions extends autophotoActions
 		  // перемещение файла в локальную директорию, аналогичнцю удалённой
 		  PhotoPeer::moveFile( 
 		    $tmp_thumb, 
-		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
+		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext		    
   	      );
+  	      // creating symlink
+  	      $link = sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$fileName.$ext;
+  	      unlink($link);  	  	      
+  	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
+  	      
 		} catch( Exception $e ) {
 		  echo $e->getMessage();
 		  exit();

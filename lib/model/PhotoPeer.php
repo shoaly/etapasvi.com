@@ -20,7 +20,7 @@ class PhotoPeer extends BasePhotoPeer
   
   // директории на сервере
   // и одновременно названия альбомов в удалённом хранилище
-  const FULL_DIR 			    = 'photo';
+  const FULL_DIR 			    = 'photo/full';
   const PREVIEW_DIR 			= 'photo/preview';
   const THUMB_DIR 			    = 'photo/thumb';
   

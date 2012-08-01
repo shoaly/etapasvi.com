@@ -93,7 +93,7 @@ generator:
         img:
           name: Image
           type: admin_input_file_tag
-          upload_dir: photo
+          upload_dir: photo/full/tmp
           params: 
             include_link: photo
             include_remove: true           
