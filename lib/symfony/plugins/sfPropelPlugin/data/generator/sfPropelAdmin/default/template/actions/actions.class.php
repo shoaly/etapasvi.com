@@ -260,6 +260,19 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
   {
     $<?php echo $this->getSingularName() ?> = $this->getRequestParameter('<?php echo $this->getSingularName() ?>');
 
+    // Empty string to null
+    //
+    // backend saves empty strings as ''    
+    // some fields in DB has DEFAULT NULL
+    // so their value changes from NULL to ''
+    // it is impossible to set DEFAULT '' for all types of fields:
+    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
+    foreach ($<?php echo $this->getSingularName() ?> as $i => $value) {
+    	if ($value === '') {
+    		$<?php echo $this->getSingularName() ?>[ $i ] = null;
+    	}
+    }
+    
 <?php foreach ($this->getColumnCategories('edit.display') as $category): ?>
 <?php foreach ($this->getColumns('edit.display', $category) as $name => $column): $type = $column->getType(); ?>
 <?php $name = $column->getName() ?>

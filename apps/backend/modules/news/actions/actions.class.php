@@ -13,7 +13,20 @@ class newsActions extends autonewsActions
 
   protected function updateNewsFromRequest()
   {
-    $news = $this->getRequestParameter('news');
+    $news = $this->getRequestParameter('news');    
+
+    // Empty string to null
+    //
+    // backend saves empty strings as ''    
+    // some fields in DB has DEFAULT NULL
+    // so their value changes from NULL to ''
+    // it is impossible to set DEFAULT '' for all types of fields:
+    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
+    foreach ($news as $i => $value) {
+    	if ($value === '') {
+    		$news[ $i ] = null;
+    	}
+    }
 
     $this->news->setShow(isset($news['show']) ? $news['show'] : 0);
     if (isset($news['order']))

@@ -30,19 +30,20 @@ propel:
     
   news:
     id:               ~
-    date:             { type: date }
+    date:             { type: date, defaultValue: '' }
     updated_at:       ~
     show:             { type: boolean, defaultValue: true }
-    order:            { type: integer, required: true }
-    img:              { type: varchar(255) }
-    full_path:        { type: varchar(255) }
-    thumb_path:       { type: varchar(255) }
+    order:            { type: integer, required: true, defaultValue: '' }
+    img:              { type: varchar(255), defaultValue: '' }
+    full_path:        { type: varchar(255), defaultValue: '' }
+    thumb_path:       { type: varchar(255), defaultValue: '' }
 #    is_teaching:      { type: boolean, default: 0 }
-    original:         { type: longvarchar, required: true }
+    original:         { type: longvarchar, required: true, defaultValue: '' }
     type:             { type: integer, required: true, foreignTable: newstypes, foreignReference: id, index: true, default: 1 }
     _indexes:
       index_order:    [order]
       updated_at:     [updated_at]
+      date:           [date]
 
   news_i18n:
     updated_at_extra:       ~ 
@@ -53,7 +54,7 @@ propel:
     translated_by:    { type: varchar(255) }
     link:             { type: varchar(255) }
     extradate:        { type: varchar(255) }
-    doc:              { type: varchar(255) }
+    doc:              { type: varchar(255), defaultValue: '' }
     _indexes:
       updated_at_extra:     [updated_at_extra]
     
