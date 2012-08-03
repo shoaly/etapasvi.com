@@ -314,7 +314,9 @@ LIMIT 0, 50
 	    // для RSS 
 	    if ($rss) {
 	    	// ограничиваем по дате
-	    	$criteria_sql .= " and updated_at >= '" . date("Y-m-d H:i:s", strtotime(NewsPeer::RSS_PERIOD)) . "' ";
+	    	$min_date = date("Y-m-d H:i:s", strtotime(NewsPeer::RSS_PERIOD));
+	    	$criteria_sql .= " and (updated_at >= '" . $min_date . "' 
+	    					  or {$table_name}_i18n.updated_at_extra >= '" . $min_date . "') ";
 	    	// выбираются только элементы с заголовками
 	    	$criteria_sql .= " and {$table_name}_i18n.title != '' ";
 	    }
