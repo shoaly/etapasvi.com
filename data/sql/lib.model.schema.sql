@@ -99,8 +99,10 @@ CREATE TABLE `news`
 	`type` INTEGER default 1 NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `news_I_1`(`type`),
-	KEY `index_order`(`order`),
 	KEY `updated_at`(`updated_at`),
+	KEY `date`(`date`),
+	KEY `show`(`show`),
+	KEY `order`(`order`),
 	CONSTRAINT `news_FK_1`
 		FOREIGN KEY (`type`)
 		REFERENCES `newstypes` (`id`)
@@ -127,7 +129,9 @@ CREATE TABLE `news_i18n`
 	`id` INTEGER  NOT NULL,
 	`culture` VARCHAR(7)  NOT NULL,
 	PRIMARY KEY (`id`,`culture`),
+	KEY `culture`(`culture`),
 	KEY `updated_at_extra`(`updated_at_extra`),
+	KEY `body`(`body`),
 	CONSTRAINT `news_i18n_FK_1`
 		FOREIGN KEY (`id`)
 		REFERENCES `news` (`id`)
@@ -187,7 +191,13 @@ CREATE TABLE `photo`
 	`height` INTEGER,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `photoalbum_order` (`photoalbum_id`, `order`),
+	KEY `photoalbum_id`(`photoalbum_id`),
 	KEY `updated_at`(`updated_at`),
+	KEY `show`(`show`),
+	KEY `img`(`img`),
+	KEY `full_path`(`full_path`),
+	KEY `preview_path`(`preview_path`),
+	KEY `thumb_path`(`thumb_path`),
 	CONSTRAINT `photo_FK_1`
 		FOREIGN KEY (`photoalbum_id`)
 		REFERENCES `photoalbum` (`id`)
@@ -229,7 +239,9 @@ CREATE TABLE `photoalbum`
 	`created_at` DATETIME,
 	`show` TINYINT default 1,
 	`order` INTEGER  NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `show`(`show`),
+	KEY `order`(`order`)
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
@@ -270,7 +282,10 @@ CREATE TABLE `video`
 	`link` VARCHAR(255),
 	`all_cultures` TINYINT default 0,
 	PRIMARY KEY (`id`),
-	KEY `updated_at`(`updated_at`)
+	KEY `updated_at`(`updated_at`),
+	KEY `show`(`show`),
+	KEY `order`(`order`),
+	KEY `all_cultures`(`all_cultures`)
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
@@ -292,6 +307,7 @@ CREATE TABLE `video_i18n`
 	`culture` VARCHAR(7)  NOT NULL,
 	PRIMARY KEY (`id`,`culture`),
 	KEY `updated_at_extra`(`updated_at_extra`),
+	KEY `code`(`code`),
 	CONSTRAINT `video_i18n_FK_1`
 		FOREIGN KEY (`id`)
 		REFERENCES `video` (`id`)
@@ -350,7 +366,10 @@ CREATE TABLE `audio`
 	`order` INTEGER  NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `audio_I_1`(`order`),
-	KEY `updated_at`(`updated_at`)
+	KEY `updated_at`(`updated_at`),
+	KEY `show`(`show`),
+	KEY `file`(`file`),
+	KEY `remote`(`remote`)
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

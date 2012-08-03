@@ -30,20 +30,21 @@ propel:
     
   news:
     id:               ~
-    date:             { type: date, defaultValue: '' }
+    date:             { type: date }
     updated_at:       ~
     show:             { type: boolean, defaultValue: true }
-    order:            { type: integer, required: true, defaultValue: '' }
-    img:              { type: varchar(255), defaultValue: '' }
-    full_path:        { type: varchar(255), defaultValue: '' }
-    thumb_path:       { type: varchar(255), defaultValue: '' }
+    order:            { type: integer, required: true }
+    img:              { type: varchar(255) }
+    full_path:        { type: varchar(255) }
+    thumb_path:       { type: varchar(255) }
 #    is_teaching:      { type: boolean, default: 0 }
-    original:         { type: longvarchar, required: true, defaultValue: '' }
+    original:         { type: longvarchar, required: true }
     type:             { type: integer, required: true, foreignTable: newstypes, foreignReference: id, index: true, default: 1 }
     _indexes:
-      index_order:    [order]
       updated_at:     [updated_at]
       date:           [date]
+      show:           [show]
+      order:          [order] 
 
   news_i18n:
     updated_at_extra:       ~ 
@@ -56,7 +57,9 @@ propel:
     extradate:        { type: varchar(255) }
     doc:              { type: varchar(255), defaultValue: '' }
     _indexes:
+      culture:              [culture]
       updated_at_extra:     [updated_at_extra]
+      body:                 [body]
     
   newstypes:
     id:               ~
@@ -82,7 +85,13 @@ propel:
     width:            { type: integer }
     height:           { type: integer }
     _indexes:
+      photoalbum_id:  [photoalbum_id]
       updated_at:     [updated_at]
+      show:           [show]
+      img:            [img]
+      full_path:      [full_path]
+      preview_path:   [preview_path]
+      thumb_path:     [thumb_path]
     _uniques:
       photoalbum_order:     [photoalbum_id, order]
 
@@ -99,6 +108,9 @@ propel:
     created_at:       ~
     show:             { type: boolean, defaultValue: true }
     order:            { type: integer, required: true }
+    _indexes:
+      show:      [show]
+      order:     [order]
 
   photoalbum_i18n:
     title:            { type: longvarchar }
@@ -114,7 +126,10 @@ propel:
     link:             { type: varchar(255) }
     all_cultures:     { type: boolean, default: 0 }
     _indexes:
-      updated_at:     [updated_at]
+      updated_at:    [updated_at]
+      show:          [show]
+      order:         [order]
+      all_cultures:  [all_cultures]
 
   video_i18n:
     updated_at_extra: ~
@@ -125,6 +140,7 @@ propel:
     author:           { type: varchar(255) }
     _indexes:
       updated_at_extra:     [updated_at_extra]
+      code:                 [code]
 
   quote:
     id:               ~
@@ -144,6 +160,9 @@ propel:
     order:            { type: integer, required: true, index: true }
     _indexes:
       updated_at:     [updated_at]
+      show:           [show]
+      file:           [file]
+      remote:         [remote]
     
   audio_i18n:
     updated_at_extra: ~
