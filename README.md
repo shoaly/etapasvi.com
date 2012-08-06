@@ -66,7 +66,7 @@ Misc
 
 Database archive: [http://www.etapasvi.com/uploads/misc/db.tar.gz.gpg][1] (shared just for backup purposes)
 
-Way Back Machine: [http://wayback.archive.org/web/20091215000000*/http://www.etapasvi.com/en/][1]
+Way Back Machine: [http://wayback.archive.org/web/20091215000000*/http://www.etapasvi.com/en/][3]
 
 [1]: http://www.etapasvi.com/uploads/misc/db.tar.gz.gpg
 [2]: http://github.com/github/markup/issues
