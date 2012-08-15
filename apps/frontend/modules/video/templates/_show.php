@@ -35,7 +35,7 @@
 		<?php if (empty($short)): ?>
 			<div class="video_info">
 				<p class="date right_text p1_no_both">
-                    <span class="left"><?php echo __('Click "CC" in the player to show captions') ?></span>
+                    <?php /*<span class="left"><?php echo __('Click "CC" in the player to show captions') ?></span>*/ ?>
 					<strong><?php echo format_date( $video->getCreatedAt(), 'd MMMM yyyy' ); ?></strong>
 				</p>
 				<?php 
