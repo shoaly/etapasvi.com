@@ -13,7 +13,15 @@
 <link rel="shortcut icon" type="image/x-icon" href="http://<?php echo $app_domain_name; ?>/favicon.ico" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> 
 <script type="text/javascript" src="<?php echo url_for('@js'); ?>"></script> 
-<link rel="stylesheet" type="text/css" media="screen" href="http://<?php echo $app_domain_name; ?>/css/css.css" /> 
+<link rel="stylesheet" type="text/css" media="screen" href="http://<?php echo $app_domain_name; ?>/css/css.css" />
+<script type="text/javascript">
+var _gaq = window._gaq || [];
+window.onerror = function(msg, url, line) {
+    var preventErrorAlert = true;
+    _gaq.push(['_trackEvent', 'JS Error', msg, navigator.userAgent + ' -> ' + url + " : " + line]);
+    return preventErrorAlert;
+};
+</script>
 </head>
 <?php $body_id = get_slot('body_id'); ?>
 <body id="<?php echo $body_id; ?>" class="<?php if (UserPeer::isCultureHieroglyphic()):?>hieroglyphic<?php endif ?> <?php include_slot('body_class') ?><?php if (UserPeer::isCultureLargeText()):?> large_text<?php endif ?><?php if (UserPeer::isCultureDirectionRtl()):?> direction_rtl<?php endif ?>">
@@ -220,7 +228,11 @@ _gaq.push(
  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
  ga.setAttribute('async', 'true');
  document.documentElement.firstChild.appendChild(ga);
-})();</script>
+})();
+jQuery.error = function (message) {
+    _gaq.push(['_trackEvent', 'jQuery Error', message, navigator.userAgent]);
+}
+</script>
 <?php /*<img style="width:0px;height:0px" src="http://www.maploco.com/vm24/s/3901457.png" />*/ ?>
 </body>
 </html>
