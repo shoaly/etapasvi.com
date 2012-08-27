@@ -65,38 +65,7 @@ class photoActions extends autophotoActions
       {
         unlink($thumb_local);
       }   
-    }
-
-    
-    /*if (isset($photo['created_at']))
-    {
-      if ($photo['created_at'])
-      {
-        try
-        {
-          $dateFormat = new sfDateFormat($this->getUser()->getCulture());
-          if (!is_array($photo['created_at']))
-          {
-            $value = $dateFormat->format($photo['created_at'], 'I', $dateFormat->getInputPattern('g'));
-          }
-          else
-          {
-            $value_array = $photo['created_at'];
-            $value = $value_array['year'].'-'.$value_array['month'].'-'.$value_array['day'].(isset($value_array['hour']) ? ' '.$value_array['hour'].':'.$value_array['minute'].(isset($value_array['second']) ? ':'.$value_array['second'] : '') : '');
-          }
-          $this->photo->setCreatedAt($value);
-        }
-        catch (sfException $e)
-        {
-          // not a date
-        }
-      }
-      else
-      {
-        $this->photo->setCreatedAt(null);
-      }
-    }*/
-    $this->photo->setCreatedAt(null);
+    }   
     
     if (isset($photo['link']))
     {
@@ -323,6 +292,37 @@ class photoActions extends autophotoActions
     	echo $e->getMessage();
     	exit();
     }    
+    
+    // created_at must be assigned after saving a photo
+    if (isset($photo['created_at']))
+    {
+      if ($photo['created_at'])
+      {
+        try
+        {
+          $dateFormat = new sfDateFormat($this->getUser()->getCulture());
+          if (!is_array($photo['created_at']))
+          {
+            $value = $dateFormat->format($photo['created_at'], 'I', $dateFormat->getInputPattern('g'));
+          }
+          else
+          {
+            $value_array = $photo['created_at'];
+            $value = $value_array['year'].'-'.$value_array['month'].'-'.$value_array['day'].(isset($value_array['hour']) ? ' '.$value_array['hour'].':'.$value_array['minute'].(isset($value_array['second']) ? ':'.$value_array['second'] : '') : '');
+          }
+          $this->photo->setCreatedAt($value);
+        }
+        catch (sfException $e)
+        {
+          // not a date
+        }
+      }
+      else
+      {
+        $this->photo->setCreatedAt(null);
+      }
+    }
+  	$this->photo->save();
     
 	if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('photo[img]'))
     {
