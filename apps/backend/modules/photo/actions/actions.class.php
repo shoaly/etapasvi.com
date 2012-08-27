@@ -68,7 +68,7 @@ class photoActions extends autophotoActions
     }
 
     
-    if (isset($photo['created_at']))
+    /*if (isset($photo['created_at']))
     {
       if ($photo['created_at'])
       {
@@ -95,7 +95,9 @@ class photoActions extends autophotoActions
       {
         $this->photo->setCreatedAt(null);
       }
-    }
+    }*/
+    $this->photo->setCreatedAt(null);
+    
     if (isset($photo['link']))
     {
       $this->photo->setLink($photo['link']);
