@@ -33,6 +33,12 @@
 abstract class BaseObject {
 
 	/**
+	 * attribute to determine if updated_at field of the object should be changed
+	 * @var        boolean
+	 */
+	private $_change_updated_at = true;
+	
+	/**
 	 * attribute to determine if this object has previously been saved.
 	 * @var        boolean
 	 */
@@ -88,6 +94,26 @@ abstract class BaseObject {
 		return array_unique($this->modifiedColumns);
 	}
 
+	/**
+	 * Setter for the changeUpdatedAt attribute.
+	 *
+	 * @param      boolean $b the state of the object.
+	 */
+	public function setChangeUpdatedAt($b)
+	{
+		$this->_change_updated_at = (boolean) $b;
+	}
+	
+	/**
+	 * Getter for the changeUpdatedAt attribute.
+	 *
+	 * @param      boolean $b the state of the object.
+	 */
+	public function getChangeUpdatedAt($b)
+	{
+		return $this->_change_updated_at;
+	}
+	
 	/**
 	 * Returns whether the object has ever been saved.  This will
 	 * be false, if the object was retrieved from storage or was created

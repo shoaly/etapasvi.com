@@ -13,7 +13,7 @@ class newsActions extends autonewsActions
 
   protected function updateNewsFromRequest()
   {
-    $news = $this->getRequestParameter('news');    
+    $news = $this->getRequestParameter('news');        
 
     // Empty string to null
     //
@@ -27,7 +27,14 @@ class newsActions extends autonewsActions
     		$news[ $i ] = null;
     	}
     }
-
+    
+    // set change_updated_at
+    $this->news->setChangeUpdatedAt($news['change_updated_at']);
+    $news_i18ns = $this->news->getNewsI18ns();
+    foreach ($news_i18ns as $news_i18n) {
+    	$news_i18n->setChangeUpdatedAt($news['change_updated_at']);
+    }
+    
     $this->news->setShow(isset($news['show']) ? $news['show'] : 0);
     if (isset($news['order']))
     {
@@ -210,11 +217,12 @@ class newsActions extends autonewsActions
     {
       $this->news->setType($news['type'] ? $news['type'] : null);
     }
-    if (isset($news['original']))
-    {
-      $this->news->setOriginal($news['original']);
-    }    
-if (isset($news['title_i18n_en']))
+    // otherwise id does not save original after clearing it in backend
+    //if (isset($news['original']))
+    //{
+    $this->news->setOriginal($news['original']);
+    //}    
+	if (isset($news['title_i18n_en']))
     {
       $this->news->setTitleI18nEn($news['title_i18n_en']);
     }

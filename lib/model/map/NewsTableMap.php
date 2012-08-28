@@ -40,14 +40,14 @@ class NewsTableMap extends TableMap {
 		$this->setUseIdGenerator(true);
 		// columns
 		$this->addPrimaryKey('ID', 'Id', 'INTEGER', true, null, null);
-		$this->addColumn('DATE', 'Date', 'DATE', false, null, '');
+		$this->addColumn('DATE', 'Date', 'DATE', false, null, null);
 		$this->addColumn('UPDATED_AT', 'UpdatedAt', 'TIMESTAMP', false, null, null);
 		$this->addColumn('SHOW', 'Show', 'BOOLEAN', false, null, true);
-		$this->addColumn('ORDER', 'Order', 'INTEGER', true, null, 0);
-		$this->addColumn('IMG', 'Img', 'VARCHAR', false, 255, '');
-		$this->addColumn('FULL_PATH', 'FullPath', 'VARCHAR', false, 255, '');
-		$this->addColumn('THUMB_PATH', 'ThumbPath', 'VARCHAR', false, 255, '');
-		$this->addColumn('ORIGINAL', 'Original', 'LONGVARCHAR', true, null, '');
+		$this->addColumn('ORDER', 'Order', 'INTEGER', true, null, null);
+		$this->addColumn('IMG', 'Img', 'VARCHAR', false, 255, null);
+		$this->addColumn('FULL_PATH', 'FullPath', 'VARCHAR', false, 255, null);
+		$this->addColumn('THUMB_PATH', 'ThumbPath', 'VARCHAR', false, 255, null);
+		$this->addColumn('ORIGINAL', 'Original', 'LONGVARCHAR', true, null, null);
 		$this->addForeignKey('TYPE', 'Type', 'INTEGER', 'newstypes', 'ID', true, null, 1);
 		// validators
 	} // initialize()

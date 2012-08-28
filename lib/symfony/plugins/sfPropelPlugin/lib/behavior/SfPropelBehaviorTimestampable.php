@@ -57,7 +57,7 @@ EOF;
     if ( ($column = $this->getParameter('update_column')) || ($column = $this->getParameter('update_column_extra')))
     {   	
       return <<<EOF
-if (\$this->isModified() && !\$this->isColumnModified({$this->getTable()->getColumn($column)->getConstantName()}))
+if (\$this->isModified() && !\$this->isColumnModified({$this->getTable()->getColumn($column)->getConstantName()}) && \$this->getChangeUpdatedAt())
 {
   \$this->set{$this->getTable()->getColumn($column)->getPhpName()}(time());
 }

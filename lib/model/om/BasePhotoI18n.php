@@ -529,7 +529,7 @@ abstract class BasePhotoI18n extends BaseObject  implements Persistent {
 			}
 
 			// symfony_timestampable behavior
-			if ($this->isModified() && !$this->isColumnModified(PhotoI18nPeer::UPDATED_AT_EXTRA))
+			if ($this->isModified() && !$this->isColumnModified(PhotoI18nPeer::UPDATED_AT_EXTRA) && $this->getChangeUpdatedAt())
 			{
 			  $this->setUpdatedAtExtra(time());
 			}

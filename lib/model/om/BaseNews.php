@@ -29,7 +29,6 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 
 	/**
 	 * The value for the date field.
-	 * Note: this column has a database default value of: '2012-08-03'
 	 * @var        string
 	 */
 	protected $date;
@@ -49,35 +48,30 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 
 	/**
 	 * The value for the order field.
-	 * Note: this column has a database default value of: 0
 	 * @var        int
 	 */
 	protected $order;
 
 	/**
 	 * The value for the img field.
-	 * Note: this column has a database default value of: ''
 	 * @var        string
 	 */
 	protected $img;
 
 	/**
 	 * The value for the full_path field.
-	 * Note: this column has a database default value of: ''
 	 * @var        string
 	 */
 	protected $full_path;
 
 	/**
 	 * The value for the thumb_path field.
-	 * Note: this column has a database default value of: ''
 	 * @var        string
 	 */
 	protected $thumb_path;
 
 	/**
 	 * The value for the original field.
-	 * Note: this column has a database default value of: ''
 	 * @var        string
 	 */
 	protected $original;
@@ -142,13 +136,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function applyDefaultValues()
 	{
-		$this->date = '2012-08-03';
 		$this->show = true;
-		$this->order = 0;
-		$this->img = '';
-		$this->full_path = '';
-		$this->thumb_path = '';
-		$this->original = '';
 		$this->type = 1;
 	}
 
@@ -377,7 +365,6 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			$newNorm = ($dt !== null) ? $dt->format('Y-m-d') : null;
 
 			if ( ($currNorm !== $newNorm) // normalized values don't match 
-					|| ($dt->format('Y-m-d') === '2012-08-03') // or the entered value matches the default
 					)
 			{
 				$this->date = ($dt ? $dt->format('Y-m-d') : null);
@@ -469,7 +456,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			$v = (int) $v;
 		}
 
-		if ($this->order !== $v || $this->isNew()) {
+		if ($this->order !== $v) {
 			$this->order = $v;
 			$this->modifiedColumns[] = NewsPeer::ORDER;
 		}
@@ -489,7 +476,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			$v = (string) $v;
 		}
 
-		if ($this->img !== $v || $this->isNew()) {
+		if ($this->img !== $v) {
 			$this->img = $v;
 			$this->modifiedColumns[] = NewsPeer::IMG;
 		}
@@ -509,7 +496,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			$v = (string) $v;
 		}
 
-		if ($this->full_path !== $v || $this->isNew()) {
+		if ($this->full_path !== $v) {
 			$this->full_path = $v;
 			$this->modifiedColumns[] = NewsPeer::FULL_PATH;
 		}
@@ -529,7 +516,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			$v = (string) $v;
 		}
 
-		if ($this->thumb_path !== $v || $this->isNew()) {
+		if ($this->thumb_path !== $v) {
 			$this->thumb_path = $v;
 			$this->modifiedColumns[] = NewsPeer::THUMB_PATH;
 		}
@@ -549,7 +536,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			$v = (string) $v;
 		}
 
-		if ($this->original !== $v || $this->isNew()) {
+		if ($this->original !== $v) {
 			$this->original = $v;
 			$this->modifiedColumns[] = NewsPeer::ORIGINAL;
 		}
@@ -591,31 +578,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function hasOnlyDefaultValues()
 	{
-			if ($this->date !== '2012-08-03') {
-				return false;
-			}
-
 			if ($this->show !== true) {
-				return false;
-			}
-
-			if ($this->order !== 0) {
-				return false;
-			}
-
-			if ($this->img !== '') {
-				return false;
-			}
-
-			if ($this->full_path !== '') {
-				return false;
-			}
-
-			if ($this->thumb_path !== '') {
-				return false;
-			}
-
-			if ($this->original !== '') {
 				return false;
 			}
 
@@ -828,7 +791,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			}
 
 			// symfony_timestampable behavior
-			if ($this->isModified() && !$this->isColumnModified(NewsPeer::UPDATED_AT))
+			if ($this->isModified() && !$this->isColumnModified(NewsPeer::UPDATED_AT) && $this->getChangeUpdatedAt())
 			{
 			  $this->setUpdatedAt(time());
 			}

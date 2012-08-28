@@ -28,9 +28,29 @@ class photoActions extends autophotoActions
   {
     $photo = $this->getRequestParameter('photo');
     
+    // Empty string to null
+    //
+    // backend saves empty strings as ''    
+    // some fields in DB has DEFAULT NULL
+    // so their value changes from NULL to ''
+    // it is impossible to set DEFAULT '' for all types of fields:
+    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
+    foreach ($photo as $i => $value) {
+    	if ($value === '') {
+    		$photo[ $i ] = null;
+    	}
+    }
+    
+    // set change_updated_at
+    $this->photo->setChangeUpdatedAt($photo['change_updated_at']);
+    $photo_i18ns = $this->photo->getPhotoI18ns();
+    foreach ($photo_i18ns as $photo_i18n) {
+    	$photo_i18n->setChangeUpdatedAt($photo['change_updated_at']);
+    }
+    
     if (isset($photo['photoalbum_id']))
     {
-    $this->photo->setPhotoalbumId($photo['photoalbum_id'] ? $photo['photoalbum_id'] : null);
+      $this->photo->setPhotoalbumId($photo['photoalbum_id'] ? $photo['photoalbum_id'] : null);
     }
 
     $this->photo->setShow(isset($photo['show']) ? $photo['show'] : 0);

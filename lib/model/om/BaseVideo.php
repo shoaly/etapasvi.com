@@ -667,7 +667,7 @@ abstract class BaseVideo extends BaseObject  implements Persistent {
 			}
 
 			// symfony_timestampable behavior
-			if ($this->isModified() && !$this->isColumnModified(VideoPeer::UPDATED_AT))
+			if ($this->isModified() && !$this->isColumnModified(VideoPeer::UPDATED_AT) && $this->getChangeUpdatedAt())
 			{
 			  $this->setUpdatedAt(time());
 			}

@@ -162,6 +162,12 @@
     </div>
 </div>
 
+<div class="form-row">
+  <label for="news_change_updated_at">Change Updated At:</label>  <div class="content">
+  
+  <input type="checkbox" checked="checked" value="1" id="news_change_updated_at" name="news[change_updated_at]">    </div>
+</div>
+
 </fieldset>
 <fieldset id="sf_fieldset_en" class="">
 <h2><?php echo __('EN') ?></h2>

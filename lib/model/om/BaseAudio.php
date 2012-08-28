@@ -735,7 +735,7 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 			}
 
 			// symfony_timestampable behavior
-			if ($this->isModified() && !$this->isColumnModified(AudioPeer::UPDATED_AT))
+			if ($this->isModified() && !$this->isColumnModified(AudioPeer::UPDATED_AT) && $this->getChangeUpdatedAt())
 			{
 			  $this->setUpdatedAt(time());
 			}
