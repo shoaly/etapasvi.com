@@ -52,6 +52,7 @@
 {
   padding: 3px;
   color: #333;
+  cursor: pointer;
   background-color: #ccf;
   font-size: 11px;
 }
@@ -350,4 +351,16 @@
 {
   display: inline;
   float: none;
+}
+
+
+#sf_admin_content fieldset .form-row {
+  display: none;
+}
+#sf_admin_content fieldset#sf_fieldset_none .form-row {
+  display: block;
+}
+#sf_admin_content fieldset#sf_fieldset_none .form-row,
+#sf_admin_content fieldset#sf_fieldset_en .form-row {
+  display: block;
 }

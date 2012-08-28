@@ -7,6 +7,13 @@
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
   <body>
+    <script type="text/javascript">
+      $(document).ready(function(){      
+        $("#sf_admin_content fieldset h2").click(function(){
+          $(this).parent().children().filter("div.form-row").toggle(200);
+        });
+      });
+    </script>
 	<div id="container" style="margin:0 auto;padding:10px">
 	  <div id="navigation" style="display:inline;float:right">
         
