@@ -286,7 +286,7 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
 <?php if ($input_type == 'admin_input_file_tag'): ?>
 <?php $upload_dir = $this->replaceConstants($this->getParameterValue('edit.fields.'.$column->getName().'.upload_dir')) ?>
     $currentFile = sfConfig::get('sf_upload_dir')."/<?php echo $upload_dir ?>/".$this-><?php echo $this->getSingularName() ?>->get<?php echo $column->getPhpName() ?>();
-    if (!$this->getRequest()->hasErrors() && isset($<?php echo $this->getSingularName() ?>['<?php echo $name ?>_remove']))
+    if (!$this->getRequest()->hasErrors() && array_key_exists('<?php echo $name ?>_remove', $<?php echo $this->getSingularName() ?>))
     {
       $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>('');
       if (is_file($currentFile))
@@ -298,7 +298,7 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
     if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('<?php echo $this->getSingularName() ?>[<?php echo $name ?>]'))
     {
 <?php elseif ($type != PropelColumnTypes::BOOLEAN): ?>
-    if (isset($<?php echo $this->getSingularName() ?>['<?php echo $name ?>']))
+    if (array_key_exists('<?php echo $name ?>', $<?php echo $this->getSingularName() ?>))
     {
 <?php endif; ?>
 <?php if ($input_type == 'admin_input_file_tag'): ?>
@@ -343,7 +343,7 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
         $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>(null);
       }
 <?php elseif ($type == PropelColumnTypes::BOOLEAN): ?>
-    $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>(isset($<?php echo $this->getSingularName() ?>['<?php echo $name ?>']) ? $<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] : 0);
+    $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>(array_key_exists('<?php echo $name ?>', $<?php echo $this->getSingularName() ?>) ? $<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] : 0);
 <?php elseif ($column->isForeignKey()): ?>
     $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>($<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] ? $<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] : null);
 <?php else: ?>
