@@ -108,9 +108,13 @@ class Audio extends BaseAudio
 	 *
 	 * @return unknown
 	 */
-	public function getDirectUrl()
+	public function getDirectUrl($remote = true)
 	{      
-      return AudioPeer::REMOTE_URL . $this->getRemote();
+	  if ($remote) {
+        return AudioPeer::REMOTE_URL . $this->getRemote();
+	  } else {
+	  	return 'http://' . sfConfig::get('app_domain_name') . AudioPeer::AUDIO_DIR . $this->getFile();
+	  }
 	}
 	
     /**

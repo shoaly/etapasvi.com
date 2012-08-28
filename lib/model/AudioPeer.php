@@ -9,6 +9,7 @@ class AudioPeer extends BaseAudioPeer
   
   // ссылка на файл в удалённом хранилище
   const REMOTE_URL 		= 'http://k002.kiwi6.com/uploads/hotlink/';
+  const AUDIO_DIR 		= '/uploads/audio/';
   
   // ссылка на скачивание из удалённого хранилища
   const REMOTE_DOWNLOAD_URL		= 'http://k002.kiwi6.com/download/';
