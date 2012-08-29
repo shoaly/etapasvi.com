@@ -20,12 +20,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
     new easyXDM.Socket({
-        remote: "<?php echo UserPeer::BLESSING_URL ?>",
+        remote: "<?php echo UserPeer::BLESSING_URL . '?ln=' . UserPeer::getCultureBlessingLn() ?>",
         container: document.getElementById("blessing_iframe"),
         onMessage: function(message, origin){
             var h = parseInt(message);
             if (h > 60) {
-                $("#blessing_iframe iframe:first").height(h + 60);
+                if (!$.browser.webkit) {
+                    h += 60;
+                }
+                $("#blessing_iframe iframe:first").height(h);
             }
         }
     });

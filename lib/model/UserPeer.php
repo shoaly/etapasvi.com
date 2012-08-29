@@ -22,36 +22,42 @@ class UserPeer extends BaseUserPeer
 		              // язык интерфейса FeedBurner
 		              'feedburner_loc' 		 => 'en_US',
 		              'twitter' 		 	 => 'etapasvi',
-		              'fb_group' 		 	 => ''
+		              'fb_group' 		 	 => '',
+		              'blessing_ln' 		 => ''
 		),            
 		'ru' => array('name'    			 => 'Русский',
 		              'iso'     			 => 'ru',		              
 		              //'mail_id' 			 => '25b1a7f858',
 		              'comments_category_id' => 686465,
-		              'feedburner_loc' 		 => 'ru_RU'
+		              'feedburner_loc' 		 => 'ru_RU',
+		              'blessing_ln' 		 => 'ru-RU'
 		),
 		'cs' => array('name'    			 => 'Čeština',
 		              'iso'     			 => 'cz',
 		              'comments_category_id' => 686584,
-		              'feedburner_loc' 		 => ''
+		              'feedburner_loc' 		 => '',
+		              'blessing_ln' 		 => 'cs-CZ'
 		),
 		'hu' => array('name'    			 => 'Magyar',
 		              'iso'     			 => 'hu',
 		              'comments_category_id' => 686585,
-		              'feedburner_loc' 		 => ''
+		              'feedburner_loc' 		 => '',
+		              'blessing_ln' 		 => 'hu-HU'
 		),
 		'pl' => array('name'    			 => 'Polski',
 		              'iso'     			 => 'pl',
 		              //'mail_id' 			 => '99862a8230',
 		              'comments_category_id' => 686580,
 		              'feedburner_loc' 		 => '',
-		              'fb_group' 		 	 => 'etapasvi.pol'
+		              'fb_group' 		 	 => 'etapasvi.pol',
+		              'blessing_ln' 		 => 'pl-PL'
 		),
 		'fr' => array('name'    			 => 'Français',
 		              'iso'     			 => 'fr',
 		              //'mail_id' 			 => '430d7d6d8b',
 		              'comments_category_id' => 686581,
-		              'feedburner_loc' 		 => 'fr_FR'
+		              'feedburner_loc' 		 => 'fr_FR',
+		              'blessing_ln' 		 => 'fr-FR'
 		),
 		// Mandarin Chinese (Simplified script) - упрошённый китайский
 		'zh_CN'  => array(
@@ -60,13 +66,15 @@ class UserPeer extends BaseUserPeer
 		              'hieroglyphic'  		 => true,
 		              //'mail_id' 	  		 => '33bb475372',
 		              'comments_category_id' => 686582,
-		              'feedburner_loc' 		 => ''
+		              'feedburner_loc' 		 => '',
+		              'blessing_ln' 		 => 'zh-CN'
 		),
 		'vi' => array('name'    			 => 'Tiếng Việt',
 		              'iso'     			 => 'vn',
 		              //'mail_id' 			 => '68f2a2996d',
 		              'comments_category_id' => 686583,
-		              'feedburner_loc' 		 => ''
+		              'feedburner_loc' 		 => '',
+		              'blessing_ln' 		 => 'vi-VN'
 		),       
 		'ja' => array('name'    			 => '日本語',
 		              'iso'     			 => 'jp',
@@ -74,19 +82,22 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 			 => '77a5eb7cd2',
 		              'comments_category_id' => 686578,
 		              'feedburner_loc' 		 => 'ja_JP',
+		              'blessing_ln' 		 => 'ja-JP'
 		),
 		'es' => array('name'    			 => 'Español',
 		              'iso'     			 => 'es',
 		              //'mail_id' 			 => '6f9b50c196',
 		              'comments_category_id' => 686579,
 		              'feedburner_loc' 		 => 'es_ES',
-		              'disqus_culture' 		 => 'es_ES'
+		              'disqus_culture' 		 => 'es_ES',
+		              'blessing_ln' 		 => 'es-ES'
 		),
 		'it' => array('name'    			 => 'Italiano',
 		              'iso'     			 => 'it',
 		              //'mail_id' 			 => 'ddd87d0746',
 		              'comments_category_id' => 686577,
-		              'feedburner_loc' 		 => ''
+		              'feedburner_loc' 		 => '',
+		              'blessing_ln' 		 => 'it-IT'
 		),
 /*		              		              
 
@@ -98,14 +109,16 @@ class UserPeer extends BaseUserPeer
 		'et' => array('name'    			 => 'Eesti',
 		              'iso'     			 => 'ee',
 		              'comments_category_id' => 997486,
-		              'feedburner_loc' 		 => ''
+		              'feedburner_loc' 		 => '',
+		              'blessing_ln' 		 => 'et-EE'
 		),
 		'ne' => array('name'    			 => 'नेाी',
 		              'iso'     			 => 'ne',
 		              'hieroglyphic'  		 => true,
 		              'comments_category_id' => 1102690,
 		              //'feedburner_loc' 		 => 'ru_RU'
-		              'disqus_culture' 		 => 'en'
+		              'disqus_culture' 		 => 'en',
+		              'blessing_ln' 		 => 'ne-NP'
 		),
 		'bn' => array('name'    			 => 'বাংলা',
 		              'iso'     			 => 'bn',
@@ -113,7 +126,8 @@ class UserPeer extends BaseUserPeer
 		              'large_text'	 		 => true,
 		              'comments_category_id' => 1110606,
 		              //'feedburner_loc' 		 => 'ru_RU'
-					  'disqus_culture' 		 => 'en'
+					  'disqus_culture' 		 => 'en',
+					  'blessing_ln' 		 => 'bn-BD'
 		),			
 		'he' => array(
 					  'name'     			 => 'עברית',
@@ -122,7 +136,8 @@ class UserPeer extends BaseUserPeer
 		              'large_text'	 		 => true,
 		              'comments_category_id' => 1417916,
 		              'feedburner_loc' 		 => '',
-		              'direction_rtl' 		 => true
+		              'direction_rtl' 		 => true,
+		              'blessing_ln' 		 => 'he-IL'
          ),
          // Taiwan / Lee Ming / Traditional Chinese language
 		'zh_TW' => array(
@@ -131,13 +146,15 @@ class UserPeer extends BaseUserPeer
 		              'hieroglyphic'  		 => true,
 		              'comments_category_id' => 1417917,
 		              'feedburner_loc' 		 => '',
-		              'disqus_culture' 		 => 'zh_HANT'
+		              'disqus_culture' 		 => 'zh_HANT',
+		              'blessing_ln' 		 => 'zh-TW'
          ),
 		'de' => array('name'     			 => 'Deutsch',
                       'iso'      			 => 'de',						             
 		              'comments_category_id' => 1456893,
 		              'feedburner_loc' 		 => '',
-		              'disqus_culture' 		 => 'de_formal'
+		              'disqus_culture' 		 => 'de_formal',
+		              'blessing_ln' 		 => 'de-DE'
 		),
 	);
 	
@@ -863,6 +880,20 @@ class UserPeer extends BaseUserPeer
 			$loc = self::$cultures[ sfConfig::get('sf_default_culture') ][ 'feedburner_loc' ];
 		}
 		return $loc;
+	}
+	
+	/**
+	 * Полученеи кода языка в модуле blessing.etapasvi.com
+	 *
+	 * @param unknown_type $culture
+	 * @return unknown
+	 */
+    public static function getCultureBlessingLn( $culture = '' )
+	{
+		if (!$culture) {
+			$culture = sfContext::getInstance()->getUser()->getCulture();
+		}
+		return self::$cultures[ $culture ][ 'blessing_ln' ];
 	}
 	
 	/**

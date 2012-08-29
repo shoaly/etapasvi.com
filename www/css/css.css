@@ -2124,5 +2124,6 @@ Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
 
 #blessing_iframe iframe {
     overflow:hidden;
-    width: 100%;
+    width: 580px;
+    margin-left: -7px;
 }
