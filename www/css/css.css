@@ -2121,3 +2121,8 @@ Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
     top: 50%;
     width: 5px;
 }
+
+#blessing_iframe iframe {
+    overflow:hidden;
+    width: 100%;
+}

@@ -114,16 +114,7 @@ class UserPeer extends BaseUserPeer
 		              'comments_category_id' => 1110606,
 		              //'feedburner_loc' 		 => 'ru_RU'
 					  'disqus_culture' 		 => 'en'
-		),
-		// Mandarin Chinese (Simplified script) - упрошённый китайский
-		'zh_CN'  => array(
-					  'name'          		 => '简体中文',
-		              'iso'           		 => 'zh-cn',
-		              'hieroglyphic'  		 => true,
-		              //'mail_id' 	  		 => '33bb475372',
-		              'comments_category_id' => 686582,
-		              'feedburner_loc' 		 => ''
-		),				
+		),			
 		'he' => array(
 					  'name'     			 => 'עברית',
                       'iso'      			 => 'he',				
@@ -681,6 +672,10 @@ class UserPeer extends BaseUserPeer
 	const FORUM_URL   		 		 = 'http://forum.etapasvi.com';
 	// список доменных имён
 	public static $domain_name_list  = array('www.etapasvi.com', 'm.etapasvi.com');
+	
+	// Email for sending requests for blessing
+	const BLESSING_EMAIL 	   		 = 'etapasvi+blessing@gmail.com';
+	const BLESSING_URL  			 = 'http://blessing.etapasvi.com/Default.aspx';
 	
 	//const SITE_NAME       = 'eTapasvi';
 	//const SITE_PROTOCOL   = 'http';

@@ -2,18 +2,38 @@
 
 <h1><?php echo __('Blessing') ?></h1>
 
-<p class="center_text">
+<div class="box">
 <?/*<img src="/uploads/photo/preview/65652a2ac8a37a4a05d7606e50043f42.jpg" />*/?>
-<?php include_component('photo', 'preview', array('id'=>69)); ?>
-</p>
+<?php include_component('photo', 'preview', array('id'=>1607)); ?>
+</div>
 <?php /*
 <p>
 <?php echo __('Though Dharma Sangha is extremely busy with his meditation approaching its final phase, Dharma Sangha is truly happy to bless everyone and has requested that we group together as much as possible to receive blessings in the most efficient manner.') ?>
 </p>
 */ ?>
-<p>
-<?php echo __('You can send your photos, names and messages to') ?> <a href="mailto:<?php echo MailPeer::MAIL_ADDRESS ?>"><?php echo MailPeer::MAIL_ADDRESS ?></a> <?php echo __('with subject "For blessing", Dharma Sangha will see all received requests and bless them.') ?>
-</p>
-
 <br/>
+<?php echo __('You may send photos, names and messages all in one email to') ?> <a href="mailto:<?php echo UserPeer::BLESSING_EMAIL ?>"><?php echo UserPeer::BLESSING_EMAIL ?></a> <?php echo __('(add photos as attachments to the email, JPEG only, 1 MB maximum each photo) or use the form below.') ?>
+<br/><br/>
+<?php echo __('Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.') ?>
+<br/><br/>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    new easyXDM.Socket({
+        remote: "<?php echo UserPeer::BLESSING_URL ?>",
+        container: document.getElementById("blessing_iframe"),
+        onMessage: function(message, origin){
+            var h = parseInt(message);
+            if (h > 60) {
+                $("#blessing_iframe iframe:first").height(h + 60);
+            }
+        }
+    });
+});
+</script>
+<div id="blessing_iframe"></div>
+<?php /*
+<iframe src="<?php echo UserPeer::BLESSING_URL ?>" frameborder="no" width="100%" height="300" id="blessing_iframe" style="overflow:hidden;"></iframe>
+*/ ?>
+
 <?php include_component('comments', 'show'); ?>	

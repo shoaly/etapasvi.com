@@ -4,15 +4,24 @@
     <body>  
 
       <trans-unit id="1">
-        <source>You can send your photos, names and messages to</source>
+        <source>You may send photos, names and messages to</source>
         <target>Pueden enviar sus fotos, nombres y mensajes a</target>
       </trans-unit>
 
       <trans-unit id="1">
-        <source>with subject "For blessing", Dharma Sangha will see all received requests and bless them.</source>
-        <target>con asunto "Para Bendiciones" Dharma Sangha verá todas las solicitudes recibidas y las bendecirá.</target>
+        <source>(add photos as attachments to the email, JPEG only, 1 MB maximum each photo) or use the following</source>
+        <target></target>
+      </trans-unit>        
+      
+      <trans-unit id="1">
+        <source>form.</source>
+        <target></target>
+      </trans-unit>     
+      
+      <trans-unit id="1">
+        <source>Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests.) You will be informed by email when your submission will be blessed.</source>
+        <target></target>
       </trans-unit>
-
   
     </body>
   </file>
