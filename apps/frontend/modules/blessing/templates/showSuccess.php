@@ -12,7 +12,7 @@
 </p>
 */ ?>
 <br/>
-<?php echo __('You may send photos, names and messages all in one email to') ?> <a href="mailto:<?php echo UserPeer::BLESSING_EMAIL ?>"><?php echo UserPeer::BLESSING_EMAIL ?></a> <?php echo __('(add photos as attachments to the email, JPEG only, 1 MB maximum each photo) or use the form below.') ?>
+<?php echo __('You may send photos, names and messages all in one email to') ?> <a href="mailto:<?php echo UserPeer::BLESSING_EMAIL ?>"><?php echo UserPeer::BLESSING_EMAIL ?></a> <?php echo __('(add photos as .jpg attachments up to 1MB each) or use the form below.') ?>
 <br/><br/>
 <?php echo __('Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.') ?>
 <br/><br/>

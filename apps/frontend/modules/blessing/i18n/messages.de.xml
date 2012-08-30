@@ -9,7 +9,7 @@
       </trans-unit>
 
       <trans-unit id="1">
-        <source>(add photos as attachments to the email, JPEG only, 1 MB maximum each photo) or use the form below.</source>
+        <source>(add photos as .jpg attachments up to 1MB each) or use the form below.</source>
         <target></target>
       </trans-unit>              
       
