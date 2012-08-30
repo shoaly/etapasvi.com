@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <body>   
+
+      <trans-unit id="1">
+        <source>You may send photos, names and messages all in one email to</source>
+        <target>あなたの写真、名前、メッセージをすべて一つにして</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>(add photos as .jpg attachments up to 1MB each) or use the form below.</source>
+        <target>(それぞれ1MBまでjpgとして写真を加え）まで送るか、または下記の書式を使って送ってください。</target>
+      </trans-unit>              
+      
+      <trans-unit id="1">
+        <source>Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.</source>
+        <target>要望を集め定期的に印刷し、まとめて大三菩提ダルマ・サンガに届け祝福していただきます。（要望に含まれた質問の答えが得られるとは限りません。）あなたの従順さが祝福された場合、e-mailでお知らせします。</target>
+      </trans-unit>
+      
+<!-- Blessing module -->
+      
+      <trans-unit id="1">
+        <source>I want to add photos on the next step.</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Image Name</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Save</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Cancel</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Remove</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Select</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Send</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Next</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Send</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Collapse</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Expand</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>No child records to display.</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>No records to display.</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>First Page</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Last Page</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Next Pages</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Next Page</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Previous Pages</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Previous Page</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>First Page</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Last Page</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Next Pages</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Next Page</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Page size:</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Loading...</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Ready</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Blessing request</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Photo(s) upload</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Photo(s) cropping</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Email:</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Invalid Email!</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Email is required!</source>
+        <target></target>
+      </trans-unit>      
+
+      <trans-unit id="1">
+        <source>Message is required!</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Type your message here.</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Blessing request sent.</source>
+        <target></target>
+      </trans-unit>
+      
+
+<!-- утф -->
+    </body>
+  </file>
+</xliff>
