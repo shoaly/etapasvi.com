@@ -115,10 +115,10 @@ default:
 #  param: { module: livestream, action: show }
 #  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
-#chat:
-#  url:   /:sf_culture/chat
-#  param: { module: chat, action: show }
-#  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+chat:
+  url:   /:sf_culture/chat
+  param: { module: chat, action: show }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
 #loginorsignup:
 #  url:   /:sf_culture/user/loginorsignup
