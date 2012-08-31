@@ -104,8 +104,11 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = ItemtypesPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = ItemtypesPeer::ID;
 		}
 
 		return $this;
@@ -124,8 +127,11 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 		}
 
 		if ($this->name !== $v) {
+			if ($this->name === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = ItemtypesPeer::NAME;
+			}
 			$this->name = $v;
-			$this->modifiedColumns[] = ItemtypesPeer::NAME;
 		}
 
 		return $this;

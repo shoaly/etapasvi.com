@@ -319,8 +319,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = NewsPeer::ID;
 		}
 
 		return $this;
@@ -437,8 +440,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->show !== $v || $this->isNew()) {
+			if ($this->show === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::SHOW;
+			}
 			$this->show = $v;
-			$this->modifiedColumns[] = NewsPeer::SHOW;
 		}
 
 		return $this;
@@ -457,8 +463,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->order !== $v) {
+			if ($this->order === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::ORDER;
+			}
 			$this->order = $v;
-			$this->modifiedColumns[] = NewsPeer::ORDER;
 		}
 
 		return $this;
@@ -477,8 +486,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->img !== $v) {
+			if ($this->img === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::IMG;
+			}
 			$this->img = $v;
-			$this->modifiedColumns[] = NewsPeer::IMG;
 		}
 
 		return $this;
@@ -497,8 +509,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->full_path !== $v) {
+			if ($this->full_path === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::FULL_PATH;
+			}
 			$this->full_path = $v;
-			$this->modifiedColumns[] = NewsPeer::FULL_PATH;
 		}
 
 		return $this;
@@ -517,8 +532,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->thumb_path !== $v) {
+			if ($this->thumb_path === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::THUMB_PATH;
+			}
 			$this->thumb_path = $v;
-			$this->modifiedColumns[] = NewsPeer::THUMB_PATH;
 		}
 
 		return $this;
@@ -537,8 +555,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->original !== $v) {
+			if ($this->original === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::ORIGINAL;
+			}
 			$this->original = $v;
-			$this->modifiedColumns[] = NewsPeer::ORIGINAL;
 		}
 
 		return $this;
@@ -557,8 +578,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($this->type !== $v || $this->isNew()) {
+			if ($this->type === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsPeer::TYPE;
+			}
 			$this->type = $v;
-			$this->modifiedColumns[] = NewsPeer::TYPE;
 		}
 
 		if ($this->aNewstypes !== null && $this->aNewstypes->getId() !== $v) {

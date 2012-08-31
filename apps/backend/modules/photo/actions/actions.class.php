@@ -35,11 +35,11 @@ class photoActions extends autophotoActions
     // so their value changes from NULL to ''
     // it is impossible to set DEFAULT '' for all types of fields:
     //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
-    foreach ($photo as $i => $value) {
+    /*foreach ($photo as $i => $value) {
     	if ($value === '') {
     		$photo[ $i ] = null;
     	}
-    }
+    }*/
     
     // set change_updated_at
     $this->photo->setChangeUpdatedAt($photo['change_updated_at']);
@@ -48,13 +48,13 @@ class photoActions extends autophotoActions
     	$photo_i18n->setChangeUpdatedAt($photo['change_updated_at']);
     }
     
-    if (array_key_exists('photoalbum_id', $photo))
+    if (isset($photo['photoalbum_id']))
     {
       $this->photo->setPhotoalbumId($photo['photoalbum_id'] ? $photo['photoalbum_id'] : null);
     }
 
-    $this->photo->setShow(array_key_exists('show', $photo) ? $photo['show'] : 0);
-    if (array_key_exists('order', $photo))
+    $this->photo->setShow(isset($photo['show']) ? $photo['show'] : 0);
+    if (isset($photo['order']))
     {
       $this->photo->setOrder($photo['order']);
     }
@@ -64,7 +64,7 @@ class photoActions extends autophotoActions
     $thumb_local   = $this->photo->getThumbLocal();
     
     // удаляем файлы, если выбрали remove или загружают новые
-    if (!$this->getRequest()->hasErrors() && array_key_exists('img_remove', $photo))
+    if (!$this->getRequest()->hasErrors() && isset($photo['img_remove']))
     {
       $this->photo->setImg('');
       $this->photo->setFullPath('');
@@ -87,219 +87,219 @@ class photoActions extends autophotoActions
       }   
     }   
     
-    if (array_key_exists('link', $photo))
+    if (isset($photo['link']))
     {
       $this->photo->setLink($photo['link']);
     }
-    if (array_key_exists('width', $photo))
+    if (isset($photo['width']))
     {
       $this->photo->setWidth($photo['width']);
     }
-    if (array_key_exists('height', $photo))
+    if (isset($photo['height']))
     {
       $this->photo->setHeight($photo['height']);
     }    
-    if (array_key_exists('title_i18n_en', $photo))
+    if (isset($photo['title_i18n_en']))
     {
       $this->photo->setTitleI18nEn($photo['title_i18n_en']);
     }
-    if (array_key_exists('body_i18n_en', $photo))
+    if (isset($photo['body_i18n_en']))
     {
       $this->photo->setBodyI18nEn($photo['body_i18n_en']);
     }
-    if (array_key_exists('author_i18n_en', $photo))
+    if (isset($photo['author_i18n_en']))
     {
       $this->photo->setAuthorI18nEn($photo['author_i18n_en']);
     }
-    if (array_key_exists('title_i18n_ru', $photo))
+    if (isset($photo['title_i18n_ru']))
     {
       $this->photo->setTitleI18nRu($photo['title_i18n_ru']);
     }
-    if (array_key_exists('body_i18n_ru', $photo))
+    if (isset($photo['body_i18n_ru']))
     {
       $this->photo->setBodyI18nRu($photo['body_i18n_ru']);
     }
-    if (array_key_exists('author_i18n_ru', $photo))
+    if (isset($photo['author_i18n_ru']))
     {
       $this->photo->setAuthorI18nRu($photo['author_i18n_ru']);
     }
-    if (array_key_exists('title_i18n_cs', $photo))
+    if (isset($photo['title_i18n_cs']))
     {
       $this->photo->setTitleI18nCs($photo['title_i18n_cs']);
     }
-    if (array_key_exists('body_i18n_cs', $photo))
+    if (isset($photo['body_i18n_cs']))
     {
       $this->photo->setBodyI18nCs($photo['body_i18n_cs']);
     }
-    if (array_key_exists('author_i18n_cs', $photo))
+    if (isset($photo['author_i18n_cs']))
     {
       $this->photo->setAuthorI18nCs($photo['author_i18n_cs']);
     }
-    if (array_key_exists('title_i18n_hu', $photo))
+    if (isset($photo['title_i18n_hu']))
     {
       $this->photo->setTitleI18nHu($photo['title_i18n_hu']);
     }
-    if (array_key_exists('body_i18n_hu', $photo))
+    if (isset($photo['body_i18n_hu']))
     {
       $this->photo->setBodyI18nHu($photo['body_i18n_hu']);
     }
-    if (array_key_exists('author_i18n_hu', $photo))
+    if (isset($photo['author_i18n_hu']))
     {
       $this->photo->setAuthorI18nHu($photo['author_i18n_hu']);
     }
-    if (array_key_exists('title_i18n_pl', $photo))
+    if (isset($photo['title_i18n_pl']))
     {
       $this->photo->setTitleI18nPl($photo['title_i18n_pl']);
     }
-    if (array_key_exists('body_i18n_pl', $photo))
+    if (isset($photo['body_i18n_pl']))
     {
       $this->photo->setBodyI18nPl($photo['body_i18n_pl']);
     }
-    if (array_key_exists('author_i18n_pl', $photo))
+    if (isset($photo['author_i18n_pl']))
     {
       $this->photo->setAuthorI18nPl($photo['author_i18n_pl']);
     }
-    if (array_key_exists('title_i18n_fr', $photo))
+    if (isset($photo['title_i18n_fr']))
     {
       $this->photo->setTitleI18nFr($photo['title_i18n_fr']);
     }
-    if (array_key_exists('body_i18n_fr', $photo))
+    if (isset($photo['body_i18n_fr']))
     {
       $this->photo->setBodyI18nFr($photo['body_i18n_fr']);
     }
-    if (array_key_exists('author_i18n_fr', $photo))
+    if (isset($photo['author_i18n_fr']))
     {
       $this->photo->setAuthorI18nFr($photo['author_i18n_fr']);
     }
-    if (array_key_exists('title_i18n_zh_cn', $photo))
+    if (isset($photo['title_i18n_zh_cn']))
     {
       $this->photo->setTitleI18nZhCN($photo['title_i18n_zh_cn']);
     }
-    if (array_key_exists('body_i18n_zh_cn', $photo))
+    if (isset($photo['body_i18n_zh_cn']))
     {
       $this->photo->setBodyI18nZhCN($photo['body_i18n_zh_cn']);
     }
-    if (array_key_exists('author_i18n_zh_cn', $photo))
+    if (isset($photo['author_i18n_zh_cn']))
     {
       $this->photo->setAuthorI18nZhCN($photo['author_i18n_zh_cn']);
     }
-    if (array_key_exists('title_i18n_vi', $photo))
+    if (isset($photo['title_i18n_vi']))
     {
       $this->photo->setTitleI18nVi($photo['title_i18n_vi']);
     }
-    if (array_key_exists('body_i18n_vi', $photo))
+    if (isset($photo['body_i18n_vi']))
     {
       $this->photo->setBodyI18nVi($photo['body_i18n_vi']);
     }
-    if (array_key_exists('author_i18n_vi', $photo))
+    if (isset($photo['author_i18n_vi']))
     {
       $this->photo->setAuthorI18nVi($photo['author_i18n_vi']);
     }
-    if (array_key_exists('title_i18n_it', $photo))
+    if (isset($photo['title_i18n_it']))
     {
       $this->photo->setTitleI18nIt($photo['title_i18n_it']);
     }
-    if (array_key_exists('body_i18n_it', $photo))
+    if (isset($photo['body_i18n_it']))
     {
       $this->photo->setBodyI18nIt($photo['body_i18n_it']);
     }
-    if (array_key_exists('author_i18n_it', $photo))
+    if (isset($photo['author_i18n_it']))
     {
       $this->photo->setAuthorI18nIt($photo['author_i18n_it']);
     }
-    if (array_key_exists('title_i18n_ja', $photo))
+    if (isset($photo['title_i18n_ja']))
     {
       $this->photo->setTitleI18nJa($photo['title_i18n_ja']);
     }
-    if (array_key_exists('body_i18n_ja', $photo))
+    if (isset($photo['body_i18n_ja']))
     {
       $this->photo->setBodyI18nJa($photo['body_i18n_ja']);
     }
-    if (array_key_exists('author_i18n_ja', $photo))
+    if (isset($photo['author_i18n_ja']))
     {
       $this->photo->setAuthorI18nJa($photo['author_i18n_ja']);
     }
-    if (array_key_exists('title_i18n_es', $photo))
+    if (isset($photo['title_i18n_es']))
     {
       $this->photo->setTitleI18nEs($photo['title_i18n_es']);
     }
-    if (array_key_exists('body_i18n_es', $photo))
+    if (isset($photo['body_i18n_es']))
     {
       $this->photo->setBodyI18nEs($photo['body_i18n_es']);
     }
-    if (array_key_exists('author_i18n_es', $photo))
+    if (isset($photo['author_i18n_es']))
     {
       $this->photo->setAuthorI18nEs($photo['author_i18n_es']);
     }
-    if (array_key_exists('title_i18n_et', $photo))
+    if (isset($photo['title_i18n_et']))
     {
       $this->photo->setTitleI18nEt($photo['title_i18n_et']);
     }
-    if (array_key_exists('body_i18n_et', $photo))
+    if (isset($photo['body_i18n_et']))
     {
       $this->photo->setBodyI18nEt($photo['body_i18n_et']);
     }
-    if (array_key_exists('author_i18n_et', $photo))
+    if (isset($photo['author_i18n_et']))
     {
       $this->photo->setAuthorI18nEt($photo['author_i18n_et']);
     }
-    if (array_key_exists('title_i18n_ne', $photo))
+    if (isset($photo['title_i18n_ne']))
     {
       $this->photo->setTitleI18nNe($photo['title_i18n_ne']);
     }
-    if (array_key_exists('body_i18n_ne', $photo))
+    if (isset($photo['body_i18n_ne']))
     {
       $this->photo->setBodyI18nNe($photo['body_i18n_ne']);
     }
-    if (array_key_exists('author_i18n_ne', $photo))
+    if (isset($photo['author_i18n_ne']))
     {
       $this->photo->setAuthorI18nNe($photo['author_i18n_ne']);
     }
-    if (array_key_exists('title_i18n_bn', $photo))
+    if (isset($photo['title_i18n_bn']))
     {
       $this->photo->setTitleI18nBn($photo['title_i18n_bn']);
     }
-    if (array_key_exists('body_i18n_bn', $photo))
+    if (isset($photo['body_i18n_bn']))
     {
       $this->photo->setBodyI18nBn($photo['body_i18n_bn']);
     }
-    if (array_key_exists('author_i18n_bn', $photo))
+    if (isset($photo['author_i18n_bn']))
     {
       $this->photo->setAuthorI18nBn($photo['author_i18n_bn']);
     }
-    if (array_key_exists('title_i18n_he', $photo))
+    if (isset($photo['title_i18n_he']))
     {
       $this->photo->setTitleI18nHe($photo['title_i18n_he']);
     }
-    if (array_key_exists('body_i18n_he', $photo))
+    if (isset($photo['body_i18n_he']))
     {
       $this->photo->setBodyI18nHe($photo['body_i18n_he']);
     }
-    if (array_key_exists('author_i18n_he', $photo))
+    if (isset($photo['author_i18n_he']))
     {
       $this->photo->setAuthorI18nHe($photo['author_i18n_he']);
     }
-    if (array_key_exists('title_i18n_zh_tw', $photo))
+    if (isset($photo['title_i18n_zh_tw']))
     {
       $this->photo->setTitleI18nZhTw($photo['title_i18n_zh_tw']);
     }
-    if (array_key_exists('body_i18n_zh_tw', $photo))
+    if (isset($photo['body_i18n_zh_tw']))
     {
       $this->photo->setBodyI18nZhTw($photo['body_i18n_zh_tw']);
     }
-    if (array_key_exists('author_i18n_zh_tw', $photo))
+    if (isset($photo['author_i18n_zh_tw']))
     {
       $this->photo->setAuthorI18nZhTw($photo['author_i18n_zh_tw']);
     }
-    if (array_key_exists('title_i18n_de', $photo))
+    if (isset($photo['title_i18n_de']))
     {
       $this->photo->setTitleI18nDe($photo['title_i18n_de']);
     }
-    if (array_key_exists('body_i18n_de', $photo))
+    if (isset($photo['body_i18n_de']))
     {
       $this->photo->setBodyI18nDe($photo['body_i18n_de']);
     }
-    if (array_key_exists('author_i18n_de', $photo))
+    if (isset($photo['author_i18n_de']))
     {
       $this->photo->setAuthorI18nDe($photo['author_i18n_de']);
     }
@@ -314,7 +314,7 @@ class photoActions extends autophotoActions
     }    
     
     // created_at must be assigned after saving a photo
-    if (array_key_exists('created_at', $photo))
+    if (isset($photo['created_at']))
     {
       if ($photo['created_at'])
       {
@@ -394,18 +394,18 @@ class photoActions extends autophotoActions
         // preview
         copy($tmp_full, $tmp_preview);
         
-        if (array_key_exists('resize_preview', $photo) || array_key_exists('watermark', $photo) || $original_ext != $ext) {
+        if (isset($photo['resize_preview']) || isset($photo['watermark']) || $original_ext != $ext) {
         	
         	$img = new sfImage( $tmp_preview );
         	
-        	if (array_key_exists('resize_preview', $photo)) {
+        	if (isset($photo['resize_preview'])) {
 		        if ( $img->getWidth() > PhotoPeer::IMG_PREVIEW_WIDTH || $img->getHeight() > PhotoPeer::IMG_PREVIEW_HEIGHT ) {
 		        	$img->thumbnail(PhotoPeer::IMG_PREVIEW_WIDTH, PhotoPeer::IMG_PREVIEW_HEIGHT, 'scale');  
 		        }
         	}
 	        
 	        // водяной знак
-	        if (array_key_exists('watermark', $photo)) {
+	        if (isset($photo['watermark'])) {
 		      $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), $watermark_position);
 	        }
 	        
@@ -421,7 +421,7 @@ class photoActions extends autophotoActions
 		$this->photo->setHeight( $img->getHeight() );
 		
 		// водяной знак
-        if (array_key_exists('watermark', $photo)) {          
+        if (isset($photo['watermark'])) {          
 	      $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), $watermark_position);
           $img->setQuality( PhotoPeer::FULL_QUALITY );
 	      $img->save();
@@ -545,30 +545,30 @@ class photoActions extends autophotoActions
       	echo $e->getMessage();
       	exit();
       }    
-    } elseif (!array_key_exists('img_remove', $photo)) {
-	    if (array_key_exists('full_path', $photo))
+    } elseif (!isset($photo['img_remove'])) {
+	    if (isset($photo['full_path']))
 	    {
 	      $this->photo->setFullPath($photo['full_path']);
 	    }
-	    /*if (array_key_exists('full_link', $photo))
+	    /*if (isset($photo['full_link']))
 	    {
 	      $this->photo->setFullLink($photo['full_link']);
 	    }*/
-	    if (array_key_exists('preview_path', $photo))
+	    if (isset($photo['preview_path']))
 	    {
 	      $this->photo->setPreviewPath($photo['preview_path']);
 	    }
 	    /*
-	    if (array_key_exists('preview_link', $photo))
+	    if (isset($photo['preview_link']))
 	    {
 	      $this->photo->setPreviewLink($photo['preview_link']);
 	    }*/
-	    if (array_key_exists('thumb_path', $photo))
+	    if (isset($photo['thumb_path']))
 	    {
 	      $this->photo->setThumbPath($photo['thumb_path']);
 	    }
 	    /*
-	    if (array_key_exists('thumb_link', $photo))
+	    if (isset($photo['thumb_link']))
 	    {
 	      $this->photo->setThumbLink($photo['thumb_link']);
 	    }*/

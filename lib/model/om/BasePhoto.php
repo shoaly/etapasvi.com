@@ -365,8 +365,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = PhotoPeer::ID;
 		}
 
 		return $this;
@@ -385,8 +388,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->photoalbum_id !== $v) {
+			if ($this->photoalbum_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::PHOTOALBUM_ID;
+			}
 			$this->photoalbum_id = $v;
-			$this->modifiedColumns[] = PhotoPeer::PHOTOALBUM_ID;
 		}
 
 		if ($this->aPhotoalbum !== null && $this->aPhotoalbum->getId() !== $v) {
@@ -507,8 +513,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->show !== $v || $this->isNew()) {
+			if ($this->show === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::SHOW;
+			}
 			$this->show = $v;
-			$this->modifiedColumns[] = PhotoPeer::SHOW;
 		}
 
 		return $this;
@@ -527,8 +536,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->order !== $v) {
+			if ($this->order === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::ORDER;
+			}
 			$this->order = $v;
-			$this->modifiedColumns[] = PhotoPeer::ORDER;
 		}
 
 		return $this;
@@ -547,8 +559,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->img !== $v) {
+			if ($this->img === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::IMG;
+			}
 			$this->img = $v;
-			$this->modifiedColumns[] = PhotoPeer::IMG;
 		}
 
 		return $this;
@@ -567,8 +582,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->full_path !== $v) {
+			if ($this->full_path === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::FULL_PATH;
+			}
 			$this->full_path = $v;
-			$this->modifiedColumns[] = PhotoPeer::FULL_PATH;
 		}
 
 		return $this;
@@ -587,8 +605,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->preview_path !== $v) {
+			if ($this->preview_path === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::PREVIEW_PATH;
+			}
 			$this->preview_path = $v;
-			$this->modifiedColumns[] = PhotoPeer::PREVIEW_PATH;
 		}
 
 		return $this;
@@ -607,8 +628,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->thumb_path !== $v) {
+			if ($this->thumb_path === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::THUMB_PATH;
+			}
 			$this->thumb_path = $v;
-			$this->modifiedColumns[] = PhotoPeer::THUMB_PATH;
 		}
 
 		return $this;
@@ -627,8 +651,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->link !== $v) {
+			if ($this->link === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::LINK;
+			}
 			$this->link = $v;
-			$this->modifiedColumns[] = PhotoPeer::LINK;
 		}
 
 		return $this;
@@ -647,8 +674,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->width !== $v) {
+			if ($this->width === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::WIDTH;
+			}
 			$this->width = $v;
-			$this->modifiedColumns[] = PhotoPeer::WIDTH;
 		}
 
 		return $this;
@@ -667,8 +697,11 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		}
 
 		if ($this->height !== $v) {
+			if ($this->height === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::HEIGHT;
+			}
 			$this->height = $v;
-			$this->modifiedColumns[] = PhotoPeer::HEIGHT;
 		}
 
 		return $this;

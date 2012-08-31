@@ -94,8 +94,11 @@ abstract class BaseNewstypes extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewstypesPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = NewstypesPeer::ID;
 		}
 
 		return $this;
@@ -114,8 +117,11 @@ abstract class BaseNewstypes extends BaseObject  implements Persistent {
 		}
 
 		if ($this->name !== $v) {
+			if ($this->name === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewstypesPeer::NAME;
+			}
 			$this->name = $v;
-			$this->modifiedColumns[] = NewstypesPeer::NAME;
 		}
 
 		return $this;

@@ -182,8 +182,11 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = RevisionhistoryPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = RevisionhistoryPeer::ID;
 		}
 
 		return $this;
@@ -251,8 +254,11 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		}
 
 		if ($this->show !== $v || $this->isNew()) {
+			if ($this->show === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = RevisionhistoryPeer::SHOW;
+			}
 			$this->show = $v;
-			$this->modifiedColumns[] = RevisionhistoryPeer::SHOW;
 		}
 
 		return $this;
@@ -271,8 +277,11 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		}
 
 		if ($this->page_mnemonic !== $v) {
+			if ($this->page_mnemonic === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = RevisionhistoryPeer::PAGE_MNEMONIC;
+			}
 			$this->page_mnemonic = $v;
-			$this->modifiedColumns[] = RevisionhistoryPeer::PAGE_MNEMONIC;
 		}
 
 		return $this;
@@ -291,8 +300,11 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		}
 
 		if ($this->body !== $v) {
+			if ($this->body === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = RevisionhistoryPeer::BODY;
+			}
 			$this->body = $v;
-			$this->modifiedColumns[] = RevisionhistoryPeer::BODY;
 		}
 
 		return $this;

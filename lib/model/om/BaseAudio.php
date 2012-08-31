@@ -296,8 +296,11 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = AudioPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = AudioPeer::ID;
 		}
 
 		return $this;
@@ -414,8 +417,11 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 		}
 
 		if ($this->show !== $v || $this->isNew()) {
+			if ($this->show === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = AudioPeer::SHOW;
+			}
 			$this->show = $v;
-			$this->modifiedColumns[] = AudioPeer::SHOW;
 		}
 
 		return $this;
@@ -434,8 +440,11 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 		}
 
 		if ($this->file !== $v) {
+			if ($this->file === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = AudioPeer::FILE;
+			}
 			$this->file = $v;
-			$this->modifiedColumns[] = AudioPeer::FILE;
 		}
 
 		return $this;
@@ -454,8 +463,11 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 		}
 
 		if ($this->remote !== $v) {
+			if ($this->remote === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = AudioPeer::REMOTE;
+			}
 			$this->remote = $v;
-			$this->modifiedColumns[] = AudioPeer::REMOTE;
 		}
 
 		return $this;
@@ -474,8 +486,11 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 		}
 
 		if ($this->size !== $v) {
+			if ($this->size === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = AudioPeer::SIZE;
+			}
 			$this->size = $v;
-			$this->modifiedColumns[] = AudioPeer::SIZE;
 		}
 
 		return $this;
@@ -494,8 +509,11 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 		}
 
 		if ($this->duration !== $v) {
+			if ($this->duration === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = AudioPeer::DURATION;
+			}
 			$this->duration = $v;
-			$this->modifiedColumns[] = AudioPeer::DURATION;
 		}
 
 		return $this;
@@ -514,8 +532,11 @@ abstract class BaseAudio extends BaseObject  implements Persistent {
 		}
 
 		if ($this->order !== $v) {
+			if ($this->order === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = AudioPeer::ORDER;
+			}
 			$this->order = $v;
-			$this->modifiedColumns[] = AudioPeer::ORDER;
 		}
 
 		return $this;

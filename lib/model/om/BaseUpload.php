@@ -100,8 +100,11 @@ abstract class BaseUpload extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = UploadPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = UploadPeer::ID;
 		}
 
 		return $this;
@@ -120,8 +123,11 @@ abstract class BaseUpload extends BaseObject  implements Persistent {
 		}
 
 		if ($this->title !== $v) {
+			if ($this->title === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = UploadPeer::TITLE;
+			}
 			$this->title = $v;
-			$this->modifiedColumns[] = UploadPeer::TITLE;
 		}
 
 		return $this;
@@ -140,8 +146,11 @@ abstract class BaseUpload extends BaseObject  implements Persistent {
 		}
 
 		if ($this->url !== $v) {
+			if ($this->url === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = UploadPeer::URL;
+			}
 			$this->url = $v;
-			$this->modifiedColumns[] = UploadPeer::URL;
 		}
 
 		return $this;

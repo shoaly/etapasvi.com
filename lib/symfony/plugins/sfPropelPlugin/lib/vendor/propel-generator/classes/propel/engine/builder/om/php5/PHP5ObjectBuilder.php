@@ -1316,10 +1316,13 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 			$script .= " || \$this->isNew()";
 		}
 		$script .= ") {
+			if (\$this->$clo === null && \$v === '') {
+			} else {
+			  \$this->modifiedColumns[] = ".$this->getColumnConstant($col).";
+			}
 			\$this->$clo = \$v;
-			\$this->modifiedColumns[] = ".$this->getColumnConstant($col).";
 		}
-";
+";			
 		$this->addMutatorClose($script, $col);
 	}
 

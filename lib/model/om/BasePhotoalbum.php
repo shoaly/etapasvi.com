@@ -198,8 +198,11 @@ abstract class BasePhotoalbum extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoalbumPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = PhotoalbumPeer::ID;
 		}
 
 		return $this;
@@ -267,8 +270,11 @@ abstract class BasePhotoalbum extends BaseObject  implements Persistent {
 		}
 
 		if ($this->show !== $v || $this->isNew()) {
+			if ($this->show === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoalbumPeer::SHOW;
+			}
 			$this->show = $v;
-			$this->modifiedColumns[] = PhotoalbumPeer::SHOW;
 		}
 
 		return $this;
@@ -287,8 +293,11 @@ abstract class BasePhotoalbum extends BaseObject  implements Persistent {
 		}
 
 		if ($this->order !== $v) {
+			if ($this->order === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoalbumPeer::ORDER;
+			}
 			$this->order = $v;
-			$this->modifiedColumns[] = PhotoalbumPeer::ORDER;
 		}
 
 		return $this;

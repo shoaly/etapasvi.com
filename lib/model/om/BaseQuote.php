@@ -90,8 +90,11 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = QuotePeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = QuotePeer::ID;
 		}
 
 		return $this;

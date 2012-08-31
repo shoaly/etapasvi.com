@@ -105,8 +105,11 @@ abstract class BaseQuoteI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->title !== $v) {
+			if ($this->title === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = QuoteI18nPeer::TITLE;
+			}
 			$this->title = $v;
-			$this->modifiedColumns[] = QuoteI18nPeer::TITLE;
 		}
 
 		return $this;
@@ -125,8 +128,11 @@ abstract class BaseQuoteI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = QuoteI18nPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = QuoteI18nPeer::ID;
 		}
 
 		if ($this->aQuote !== null && $this->aQuote->getId() !== $v) {
@@ -149,8 +155,11 @@ abstract class BaseQuoteI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->culture !== $v) {
+			if ($this->culture === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = QuoteI18nPeer::CULTURE;
+			}
 			$this->culture = $v;
-			$this->modifiedColumns[] = QuoteI18nPeer::CULTURE;
 		}
 
 		return $this;

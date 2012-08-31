@@ -259,19 +259,6 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
   protected function update<?php echo $this->getClassName() ?>FromRequest()
   {
     $<?php echo $this->getSingularName() ?> = $this->getRequestParameter('<?php echo $this->getSingularName() ?>');
-
-    // Empty string to null
-    //
-    // backend saves empty strings as ''    
-    // some fields in DB has DEFAULT NULL
-    // so their value changes from NULL to ''
-    // it is impossible to set DEFAULT '' for all types of fields:
-    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
-    foreach ($<?php echo $this->getSingularName() ?> as $i => $value) {
-    	if ($value === '') {
-    		$<?php echo $this->getSingularName() ?>[ $i ] = null;
-    	}
-    }
     
 <?php foreach ($this->getColumnCategories('edit.display') as $category): ?>
 <?php foreach ($this->getColumns('edit.display', $category) as $name => $column): $type = $column->getType(); ?>
@@ -286,7 +273,7 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
 <?php if ($input_type == 'admin_input_file_tag'): ?>
 <?php $upload_dir = $this->replaceConstants($this->getParameterValue('edit.fields.'.$column->getName().'.upload_dir')) ?>
     $currentFile = sfConfig::get('sf_upload_dir')."/<?php echo $upload_dir ?>/".$this-><?php echo $this->getSingularName() ?>->get<?php echo $column->getPhpName() ?>();
-    if (!$this->getRequest()->hasErrors() && array_key_exists('<?php echo $name ?>_remove', $<?php echo $this->getSingularName() ?>))
+    if (!$this->getRequest()->hasErrors() && isset($<?php echo $this->getSingularName() ?>['<?php echo $name ?>_remove']))
     {
       $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>('');
       if (is_file($currentFile))
@@ -298,7 +285,7 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
     if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('<?php echo $this->getSingularName() ?>[<?php echo $name ?>]'))
     {
 <?php elseif ($type != PropelColumnTypes::BOOLEAN): ?>
-    if (array_key_exists('<?php echo $name ?>', $<?php echo $this->getSingularName() ?>))
+    if (isset($<?php echo $this->getSingularName() ?>['<?php echo $name ?>']))
     {
 <?php endif; ?>
 <?php if ($input_type == 'admin_input_file_tag'): ?>
@@ -343,7 +330,7 @@ $column = sfPropelManyToMany::getColumn($class, $through_class, $remote_column);
         $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>(null);
       }
 <?php elseif ($type == PropelColumnTypes::BOOLEAN): ?>
-    $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>(array_key_exists('<?php echo $name ?>', $<?php echo $this->getSingularName() ?>) ? $<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] : 0);
+    $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>(isset($<?php echo $this->getSingularName() ?>['<?php echo $name ?>']) ? $<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] : 0);
 <?php elseif ($column->isForeignKey()): ?>
     $this-><?php echo $this->getSingularName() ?>->set<?php echo $column->getPhpName() ?>($<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] ? $<?php echo $this->getSingularName() ?>['<?php echo $name ?>'] : null);
 <?php else: ?>

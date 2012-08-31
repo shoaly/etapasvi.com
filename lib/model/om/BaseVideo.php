@@ -266,8 +266,11 @@ abstract class BaseVideo extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = VideoPeer::ID;
 		}
 
 		return $this;
@@ -384,8 +387,11 @@ abstract class BaseVideo extends BaseObject  implements Persistent {
 		}
 
 		if ($this->show !== $v || $this->isNew()) {
+			if ($this->show === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoPeer::SHOW;
+			}
 			$this->show = $v;
-			$this->modifiedColumns[] = VideoPeer::SHOW;
 		}
 
 		return $this;
@@ -404,8 +410,11 @@ abstract class BaseVideo extends BaseObject  implements Persistent {
 		}
 
 		if ($this->order !== $v) {
+			if ($this->order === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoPeer::ORDER;
+			}
 			$this->order = $v;
-			$this->modifiedColumns[] = VideoPeer::ORDER;
 		}
 
 		return $this;
@@ -424,8 +433,11 @@ abstract class BaseVideo extends BaseObject  implements Persistent {
 		}
 
 		if ($this->link !== $v) {
+			if ($this->link === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoPeer::LINK;
+			}
 			$this->link = $v;
-			$this->modifiedColumns[] = VideoPeer::LINK;
 		}
 
 		return $this;
@@ -444,8 +456,11 @@ abstract class BaseVideo extends BaseObject  implements Persistent {
 		}
 
 		if ($this->all_cultures !== $v || $this->isNew()) {
+			if ($this->all_cultures === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoPeer::ALL_CULTURES;
+			}
 			$this->all_cultures = $v;
-			$this->modifiedColumns[] = VideoPeer::ALL_CULTURES;
 		}
 
 		return $this;

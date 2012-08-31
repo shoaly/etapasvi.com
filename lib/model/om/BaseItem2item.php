@@ -142,8 +142,11 @@ abstract class BaseItem2item extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = Item2itemPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = Item2itemPeer::ID;
 		}
 
 		return $this;
@@ -162,8 +165,11 @@ abstract class BaseItem2item extends BaseObject  implements Persistent {
 		}
 
 		if ($this->item1_id !== $v) {
+			if ($this->item1_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = Item2itemPeer::ITEM1_ID;
+			}
 			$this->item1_id = $v;
-			$this->modifiedColumns[] = Item2itemPeer::ITEM1_ID;
 		}
 
 		return $this;
@@ -182,8 +188,11 @@ abstract class BaseItem2item extends BaseObject  implements Persistent {
 		}
 
 		if ($this->item1_type !== $v) {
+			if ($this->item1_type === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = Item2itemPeer::ITEM1_TYPE;
+			}
 			$this->item1_type = $v;
-			$this->modifiedColumns[] = Item2itemPeer::ITEM1_TYPE;
 		}
 
 		if ($this->aItemtypesRelatedByItem1Type !== null && $this->aItemtypesRelatedByItem1Type->getId() !== $v) {
@@ -206,8 +215,11 @@ abstract class BaseItem2item extends BaseObject  implements Persistent {
 		}
 
 		if ($this->item2_id !== $v) {
+			if ($this->item2_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = Item2itemPeer::ITEM2_ID;
+			}
 			$this->item2_id = $v;
-			$this->modifiedColumns[] = Item2itemPeer::ITEM2_ID;
 		}
 
 		return $this;
@@ -226,8 +238,11 @@ abstract class BaseItem2item extends BaseObject  implements Persistent {
 		}
 
 		if ($this->item2_type !== $v) {
+			if ($this->item2_type === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = Item2itemPeer::ITEM2_TYPE;
+			}
 			$this->item2_type = $v;
-			$this->modifiedColumns[] = Item2itemPeer::ITEM2_TYPE;
 		}
 
 		if ($this->aItemtypesRelatedByItem2Type !== null && $this->aItemtypesRelatedByItem2Type->getId() !== $v) {

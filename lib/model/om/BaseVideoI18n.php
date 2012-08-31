@@ -262,8 +262,11 @@ abstract class BaseVideoI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->img !== $v) {
+			if ($this->img === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoI18nPeer::IMG;
+			}
 			$this->img = $v;
-			$this->modifiedColumns[] = VideoI18nPeer::IMG;
 		}
 
 		return $this;
@@ -282,8 +285,11 @@ abstract class BaseVideoI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->code !== $v) {
+			if ($this->code === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoI18nPeer::CODE;
+			}
 			$this->code = $v;
-			$this->modifiedColumns[] = VideoI18nPeer::CODE;
 		}
 
 		return $this;
@@ -302,8 +308,11 @@ abstract class BaseVideoI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->title !== $v) {
+			if ($this->title === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoI18nPeer::TITLE;
+			}
 			$this->title = $v;
-			$this->modifiedColumns[] = VideoI18nPeer::TITLE;
 		}
 
 		return $this;
@@ -322,8 +331,11 @@ abstract class BaseVideoI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->body !== $v) {
+			if ($this->body === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoI18nPeer::BODY;
+			}
 			$this->body = $v;
-			$this->modifiedColumns[] = VideoI18nPeer::BODY;
 		}
 
 		return $this;
@@ -342,8 +354,11 @@ abstract class BaseVideoI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->author !== $v) {
+			if ($this->author === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoI18nPeer::AUTHOR;
+			}
 			$this->author = $v;
-			$this->modifiedColumns[] = VideoI18nPeer::AUTHOR;
 		}
 
 		return $this;
@@ -362,8 +377,11 @@ abstract class BaseVideoI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoI18nPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = VideoI18nPeer::ID;
 		}
 
 		if ($this->aVideo !== null && $this->aVideo->getId() !== $v) {
@@ -386,8 +404,11 @@ abstract class BaseVideoI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->culture !== $v) {
+			if ($this->culture === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = VideoI18nPeer::CULTURE;
+			}
 			$this->culture = $v;
-			$this->modifiedColumns[] = VideoI18nPeer::CULTURE;
 		}
 
 		return $this;

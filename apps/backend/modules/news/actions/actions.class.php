@@ -22,11 +22,11 @@ class newsActions extends autonewsActions
     // so their value changes from NULL to ''
     // it is impossible to set DEFAULT '' for all types of fields:
     //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
-    foreach ($news as $i => $value) {
+    /*foreach ($news as $i => $value) {
     	if ($value === '') {
     		$news[ $i ] = null;
     	}
-    }
+    }*/
     
     // set change_updated_at
     $this->news->setChangeUpdatedAt($news['change_updated_at']);
@@ -35,12 +35,12 @@ class newsActions extends autonewsActions
     	$news_i18n->setChangeUpdatedAt($news['change_updated_at']);
     }
     
-    $this->news->setShow(array_key_exists('show', $news) ? $news['show'] : 0);
-    if (array_key_exists('order', $news))
+    $this->news->setShow(isset($news['show']) ? $news['show'] : 0);
+    if (isset($news['order']))
     {
       $this->news->setOrder($news['order']);
     }
-    if (array_key_exists('date', $news))
+    if (isset($news['date']))
     {
       if ($news['date'])
       {
@@ -74,7 +74,7 @@ class newsActions extends autonewsActions
     $thumb_local   = $this->news->getThumbLocal();
         
     // удаляем изображения
-    if (!$this->getRequest()->hasErrors() && array_key_exists('img_remove', $news))
+    if (!$this->getRequest()->hasErrors() && isset($news['img_remove']))
     {
       $this->news->setImg('');
       $this->news->setFullPath('');
@@ -123,7 +123,7 @@ class newsActions extends autonewsActions
 		    $img->thumbnail( NewsPeer::IMG_WIDTH, NewsPeer::IMG_HEIGHT, 'scale');  
 		}
 		// водяной знак   	  
-		if (array_key_exists('watermark', $news)) {	    
+		if (isset($news['watermark'])) {	    
 		    $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), 'bottom-right'); // or you can use coords array($x,$y)
 		}
         $img->setQuality(100);
@@ -203,566 +203,566 @@ class newsActions extends autonewsActions
       } catch (Exception $e) {
       	
       }         
-    } elseif (!array_key_exists('img_remove', $news)) {
-	  if (array_key_exists('full_path', $news))
+    } elseif (!isset($news['img_remove'])) {
+	  if (isset($news['full_path']))
 	  {
 	    $this->news->setFullPath($news['full_path']);
 	  }	    
-	  if (array_key_exists('thumb_path', $news))
+	  if (isset($news['thumb_path']))
 	  {
 	    $this->news->setThumbPath($news['thumb_path']);
 	  }
     }
-    if (array_key_exists('type', $news))
+    if (isset($news['type']))
     {
       $this->news->setType($news['type'] ? $news['type'] : null);
     }
     // otherwise id does not save original after clearing it in backend
-    if (array_key_exists('original', $news))
-    {
-      $this->news->setOriginal($news['original']);
-    }    
-	if (array_key_exists('title_i18n_en', $news))
+    //if (isset($news['original']))
+    //{
+    $this->news->setOriginal($news['original']);
+    //}    
+	if (isset($news['title_i18n_en']))
     {
       $this->news->setTitleI18nEn($news['title_i18n_en']);
     }
-    if (array_key_exists('extradate_i18n_en', $news))
+    if (isset($news['extradate_i18n_en']))
     {
       $this->news->setExtradateI18nEn($news['extradate_i18n_en']);
     }
-    if (array_key_exists('shortbody_i18n_en', $news))
+    if (isset($news['shortbody_i18n_en']))
     {
       $this->news->setShortbodyI18nEn($news['shortbody_i18n_en']);
     }
-    if (array_key_exists('body_i18n_en', $news))
+    if (isset($news['body_i18n_en']))
     {
       $this->news->setBodyI18nEn($news['body_i18n_en']);
     }
-    if (array_key_exists('author_i18n_en', $news))
+    if (isset($news['author_i18n_en']))
     {
       $this->news->setAuthorI18nEn($news['author_i18n_en']);
     }
-    if (array_key_exists('translated_by_i18n_en', $news))
+    if (isset($news['translated_by_i18n_en']))
     {
       $this->news->setTranslatedByI18nEn($news['translated_by_i18n_en']);
     }
-    if (array_key_exists('link_i18n_en', $news))
+    if (isset($news['link_i18n_en']))
     {
       $this->news->setLinkI18nEn($news['link_i18n_en']);
     }
-    if (array_key_exists('doc_i18n_en', $news))
+    if (isset($news['doc_i18n_en']))
     {
       $this->news->setDocI18nEn($news['doc_i18n_en']);
     }
-    if (array_key_exists('title_i18n_ru', $news))
+    if (isset($news['title_i18n_ru']))
     {
       $this->news->setTitleI18nRu($news['title_i18n_ru']);
     }
-    if (array_key_exists('extradate_i18n_ru', $news))
+    if (isset($news['extradate_i18n_ru']))
     {
       $this->news->setExtradateI18nRu($news['extradate_i18n_ru']);
     }
-    if (array_key_exists('shortbody_i18n_ru', $news))
+    if (isset($news['shortbody_i18n_ru']))
     {
       $this->news->setShortbodyI18nRu($news['shortbody_i18n_ru']);
     }
-    if (array_key_exists('body_i18n_ru', $news))
+    if (isset($news['body_i18n_ru']))
     {
       $this->news->setBodyI18nRu($news['body_i18n_ru']);
     }
-    if (array_key_exists('author_i18n_ru', $news))
+    if (isset($news['author_i18n_ru']))
     {
       $this->news->setAuthorI18nRu($news['author_i18n_ru']);
     }
-    if (array_key_exists('translated_by_i18n_ru', $news))
+    if (isset($news['translated_by_i18n_ru']))
     {
       $this->news->setTranslatedByI18nRu($news['translated_by_i18n_ru']);
     }
-    if (array_key_exists('link_i18n_ru', $news))
+    if (isset($news['link_i18n_ru']))
     {
       $this->news->setLinkI18nRu($news['link_i18n_ru']);
     }
-    if (array_key_exists('doc_i18n_ru', $news))
+    if (isset($news['doc_i18n_ru']))
     {
       $this->news->setDocI18nRu($news['doc_i18n_ru']);
     }
-    if (array_key_exists('title_i18n_cs', $news))
+    if (isset($news['title_i18n_cs']))
     {
       $this->news->setTitleI18nCs($news['title_i18n_cs']);
     }
-    if (array_key_exists('extradate_i18n_cs', $news))
+    if (isset($news['extradate_i18n_cs']))
     {
       $this->news->setExtradateI18nCs($news['extradate_i18n_cs']);
     }
-    if (array_key_exists('shortbody_i18n_cs', $news))
+    if (isset($news['shortbody_i18n_cs']))
     {
       $this->news->setShortbodyI18nCs($news['shortbody_i18n_cs']);
     }
-    if (array_key_exists('body_i18n_cs', $news))
+    if (isset($news['body_i18n_cs']))
     {
       $this->news->setBodyI18nCs($news['body_i18n_cs']);
     }
-    if (array_key_exists('author_i18n_cs', $news))
+    if (isset($news['author_i18n_cs']))
     {
       $this->news->setAuthorI18nCs($news['author_i18n_cs']);
     }
-    if (array_key_exists('translated_by_i18n_cs', $news))
+    if (isset($news['translated_by_i18n_cs']))
     {
       $this->news->setTranslatedByI18nCs($news['translated_by_i18n_cs']);
     }
-    if (array_key_exists('link_i18n_cs', $news))
+    if (isset($news['link_i18n_cs']))
     {
       $this->news->setLinkI18nCs($news['link_i18n_cs']);
     }
-    if (array_key_exists('doc_i18n_cs', $news))
+    if (isset($news['doc_i18n_cs']))
     {
       $this->news->setDocI18nCs($news['doc_i18n_cs']);
     }
-    if (array_key_exists('title_i18n_hu', $news))
+    if (isset($news['title_i18n_hu']))
     {
       $this->news->setTitleI18nHu($news['title_i18n_hu']);
     }
-    if (array_key_exists('extradate_i18n_hu', $news))
+    if (isset($news['extradate_i18n_hu']))
     {
       $this->news->setExtradateI18nHu($news['extradate_i18n_hu']);
     }
-    if (array_key_exists('shortbody_i18n_hu', $news))
+    if (isset($news['shortbody_i18n_hu']))
     {
       $this->news->setShortbodyI18nHu($news['shortbody_i18n_hu']);
     }
-    if (array_key_exists('body_i18n_hu', $news))
+    if (isset($news['body_i18n_hu']))
     {
       $this->news->setBodyI18nHu($news['body_i18n_hu']);
     }
-    if (array_key_exists('author_i18n_hu', $news))
+    if (isset($news['author_i18n_hu']))
     {
       $this->news->setAuthorI18nHu($news['author_i18n_hu']);
     }
-    if (array_key_exists('translated_by_i18n_hu', $news))
+    if (isset($news['translated_by_i18n_hu']))
     {
       $this->news->setTranslatedByI18nHu($news['translated_by_i18n_hu']);
     }
-    if (array_key_exists('link_i18n_hu', $news))
+    if (isset($news['link_i18n_hu']))
     {
       $this->news->setLinkI18nHu($news['link_i18n_hu']);
     }
-    if (array_key_exists('doc_i18n_hu', $news))
+    if (isset($news['doc_i18n_hu']))
     {
       $this->news->setDocI18nHu($news['doc_i18n_hu']);
     }
-    if (array_key_exists('title_i18n_pl', $news))
+    if (isset($news['title_i18n_pl']))
     {
       $this->news->setTitleI18nPl($news['title_i18n_pl']);
     }
-    if (array_key_exists('extradate_i18n_pl', $news))
+    if (isset($news['extradate_i18n_pl']))
     {
       $this->news->setExtradateI18nPl($news['extradate_i18n_pl']);
     }
-    if (array_key_exists('shortbody_i18n_pl', $news))
+    if (isset($news['shortbody_i18n_pl']))
     {
       $this->news->setShortbodyI18nPl($news['shortbody_i18n_pl']);
     }
-    if (array_key_exists('body_i18n_pl', $news))
+    if (isset($news['body_i18n_pl']))
     {
       $this->news->setBodyI18nPl($news['body_i18n_pl']);
     }
-    if (array_key_exists('author_i18n_pl', $news))
+    if (isset($news['author_i18n_pl']))
     {
       $this->news->setAuthorI18nPl($news['author_i18n_pl']);
     }
-    if (array_key_exists('translated_by_i18n_pl', $news))
+    if (isset($news['translated_by_i18n_pl']))
     {
       $this->news->setTranslatedByI18nPl($news['translated_by_i18n_pl']);
     }
-    if (array_key_exists('link_i18n_pl', $news))
+    if (isset($news['link_i18n_pl']))
     {
       $this->news->setLinkI18nPl($news['link_i18n_pl']);
     }
-    if (array_key_exists('doc_i18n_pl', $news))
+    if (isset($news['doc_i18n_pl']))
     {
       $this->news->setDocI18nPl($news['doc_i18n_pl']);
     }
-    if (array_key_exists('title_i18n_fr', $news))
+    if (isset($news['title_i18n_fr']))
     {
       $this->news->setTitleI18nFr($news['title_i18n_fr']);
     }
-    if (array_key_exists('extradate_i18n_fr', $news))
+    if (isset($news['extradate_i18n_fr']))
     {
       $this->news->setExtradateI18nFr($news['extradate_i18n_fr']);
     }
-    if (array_key_exists('shortbody_i18n_fr', $news))
+    if (isset($news['shortbody_i18n_fr']))
     {
       $this->news->setShortbodyI18nFr($news['shortbody_i18n_fr']);
     }
-    if (array_key_exists('body_i18n_fr', $news))
+    if (isset($news['body_i18n_fr']))
     {
       $this->news->setBodyI18nFr($news['body_i18n_fr']);
     }
-    if (array_key_exists('author_i18n_fr', $news))
+    if (isset($news['author_i18n_fr']))
     {
       $this->news->setAuthorI18nFr($news['author_i18n_fr']);
     }
-    if (array_key_exists('translated_by_i18n_fr', $news))
+    if (isset($news['translated_by_i18n_fr']))
     {
       $this->news->setTranslatedByI18nFr($news['translated_by_i18n_fr']);
     }
-    if (array_key_exists('link_i18n_fr', $news))
+    if (isset($news['link_i18n_fr']))
     {
       $this->news->setLinkI18nFr($news['link_i18n_fr']);
     }
-    if (array_key_exists('doc_i18n_fr', $news))
+    if (isset($news['doc_i18n_fr']))
     {
       $this->news->setDocI18nFr($news['doc_i18n_fr']);
     }
-    if (array_key_exists('title_i18n_zh_cn', $news))
+    if (isset($news['title_i18n_zh_cn']))
     {
       $this->news->setTitleI18nZhCN($news['title_i18n_zh_cn']);
     }
-    if (array_key_exists('extradate_i18n_zh_cn', $news))
+    if (isset($news['extradate_i18n_zh_cn']))
     {
       $this->news->setExtradateI18nZhCN($news['extradate_i18n_zh_cn']);
     }
-    if (array_key_exists('shortbody_i18n_zh_cn', $news))
+    if (isset($news['shortbody_i18n_zh_cn']))
     {
       $this->news->setShortbodyI18nZhCN($news['shortbody_i18n_zh_cn']);
     }
-    if (array_key_exists('body_i18n_zh_cn', $news))
+    if (isset($news['body_i18n_zh_cn']))
     {
       $this->news->setBodyI18nZhCN($news['body_i18n_zh_cn']);
     }
-    if (array_key_exists('author_i18n_zh_cn', $news))
+    if (isset($news['author_i18n_zh_cn']))
     {
       $this->news->setAuthorI18nZhCN($news['author_i18n_zh_cn']);
     }
-    if (array_key_exists('translated_by_i18n_zh_cn', $news))
+    if (isset($news['translated_by_i18n_zh_cn']))
     {
       $this->news->setTranslatedByI18nZhCN($news['translated_by_i18n_zh_cn']);
     }
-    if (array_key_exists('link_i18n_zh_cn', $news))
+    if (isset($news['link_i18n_zh_cn']))
     {
       $this->news->setLinkI18nZhCN($news['link_i18n_zh_cn']);
     }
-    if (array_key_exists('doc_i18n_zh_cn', $news))
+    if (isset($news['doc_i18n_zh_cn']))
     {
       $this->news->setDocI18nZhCN($news['doc_i18n_zh_cn']);
     }
-    if (array_key_exists('title_i18n_vi', $news))
+    if (isset($news['title_i18n_vi']))
     {
       $this->news->setTitleI18nVi($news['title_i18n_vi']);
     }
-    if (array_key_exists('extradate_i18n_vi', $news))
+    if (isset($news['extradate_i18n_vi']))
     {
       $this->news->setExtradateI18nVi($news['extradate_i18n_vi']);
     }
-    if (array_key_exists('shortbody_i18n_vi', $news))
+    if (isset($news['shortbody_i18n_vi']))
     {
       $this->news->setShortbodyI18nVi($news['shortbody_i18n_vi']);
     }
-    if (array_key_exists('body_i18n_vi', $news))
+    if (isset($news['body_i18n_vi']))
     {
       $this->news->setBodyI18nVi($news['body_i18n_vi']);
     }
-    if (array_key_exists('author_i18n_vi', $news))
+    if (isset($news['author_i18n_vi']))
     {
       $this->news->setAuthorI18nVi($news['author_i18n_vi']);
     }
-    if (array_key_exists('translated_by_i18n_vi', $news))
+    if (isset($news['translated_by_i18n_vi']))
     {
       $this->news->setTranslatedByI18nVi($news['translated_by_i18n_vi']);
     }
-    if (array_key_exists('link_i18n_vi', $news))
+    if (isset($news['link_i18n_vi']))
     {
       $this->news->setLinkI18nVi($news['link_i18n_vi']);
     }
-    if (array_key_exists('doc_i18n_vi', $news))
+    if (isset($news['doc_i18n_vi']))
     {
       $this->news->setDocI18nVi($news['doc_i18n_vi']);
     }
-    if (array_key_exists('title_i18n_it', $news))
+    if (isset($news['title_i18n_it']))
     {
       $this->news->setTitleI18nIt($news['title_i18n_it']);
     }
-    if (array_key_exists('extradate_i18n_it', $news))
+    if (isset($news['extradate_i18n_it']))
     {
       $this->news->setExtradateI18nIt($news['extradate_i18n_it']);
     }
-    if (array_key_exists('shortbody_i18n_it', $news))
+    if (isset($news['shortbody_i18n_it']))
     {
       $this->news->setShortbodyI18nIt($news['shortbody_i18n_it']);
     }
-    if (array_key_exists('body_i18n_it', $news))
+    if (isset($news['body_i18n_it']))
     {
       $this->news->setBodyI18nIt($news['body_i18n_it']);
     }
-    if (array_key_exists('author_i18n_it', $news))
+    if (isset($news['author_i18n_it']))
     {
       $this->news->setAuthorI18nIt($news['author_i18n_it']);
     }
-    if (array_key_exists('translated_by_i18n_it', $news))
+    if (isset($news['translated_by_i18n_it']))
     {
       $this->news->setTranslatedByI18nIt($news['translated_by_i18n_it']);
     }
-    if (array_key_exists('link_i18n_it', $news))
+    if (isset($news['link_i18n_it']))
     {
       $this->news->setLinkI18nIt($news['link_i18n_it']);
     }
-    if (array_key_exists('doc_i18n_it', $news))
+    if (isset($news['doc_i18n_it']))
     {
       $this->news->setDocI18nIt($news['doc_i18n_it']);
     }
-    if (array_key_exists('title_i18n_ja', $news))
+    if (isset($news['title_i18n_ja']))
     {
       $this->news->setTitleI18nJa($news['title_i18n_ja']);
     }
-    if (array_key_exists('extradate_i18n_ja', $news))
+    if (isset($news['extradate_i18n_ja']))
     {
       $this->news->setExtradateI18nJa($news['extradate_i18n_ja']);
     }
-    if (array_key_exists('shortbody_i18n_ja', $news))
+    if (isset($news['shortbody_i18n_ja']))
     {
       $this->news->setShortbodyI18nJa($news['shortbody_i18n_ja']);
     }
-    if (array_key_exists('body_i18n_ja', $news))
+    if (isset($news['body_i18n_ja']))
     {
       $this->news->setBodyI18nJa($news['body_i18n_ja']);
     }
-    if (array_key_exists('author_i18n_ja', $news))
+    if (isset($news['author_i18n_ja']))
     {
       $this->news->setAuthorI18nJa($news['author_i18n_ja']);
     }
-    if (array_key_exists('translated_by_i18n_ja', $news))
+    if (isset($news['translated_by_i18n_ja']))
     {
       $this->news->setTranslatedByI18nJa($news['translated_by_i18n_ja']);
     }
-    if (array_key_exists('link_i18n_ja', $news))
+    if (isset($news['link_i18n_ja']))
     {
       $this->news->setLinkI18nJa($news['link_i18n_ja']);
     }
-    if (array_key_exists('doc_i18n_ja', $news))
+    if (isset($news['doc_i18n_ja']))
     {
       $this->news->setDocI18nJa($news['doc_i18n_ja']);
     }
-    if (array_key_exists('title_i18n_es', $news))
+    if (isset($news['title_i18n_es']))
     {
       $this->news->setTitleI18nEs($news['title_i18n_es']);
     }
-    if (array_key_exists('extradate_i18n_es', $news))
+    if (isset($news['extradate_i18n_es']))
     {
       $this->news->setExtradateI18nEs($news['extradate_i18n_es']);
     }
-    if (array_key_exists('shortbody_i18n_es', $news))
+    if (isset($news['shortbody_i18n_es']))
     {
       $this->news->setShortbodyI18nEs($news['shortbody_i18n_es']);
     }
-    if (array_key_exists('body_i18n_es', $news))
+    if (isset($news['body_i18n_es']))
     {
       $this->news->setBodyI18nEs($news['body_i18n_es']);
     }
-    if (array_key_exists('author_i18n_es', $news))
+    if (isset($news['author_i18n_es']))
     {
       $this->news->setAuthorI18nEs($news['author_i18n_es']);
     }
-    if (array_key_exists('translated_by_i18n_es', $news))
+    if (isset($news['translated_by_i18n_es']))
     {
       $this->news->setTranslatedByI18nEs($news['translated_by_i18n_es']);
     }
-    if (array_key_exists('link_i18n_es', $news))
+    if (isset($news['link_i18n_es']))
     {
       $this->news->setLinkI18nEs($news['link_i18n_es']);
     }
-    if (array_key_exists('doc_i18n_es', $news))
+    if (isset($news['doc_i18n_es']))
     {
       $this->news->setDocI18nEs($news['doc_i18n_es']);
     }
-    if (array_key_exists('title_i18n_et', $news))
+    if (isset($news['title_i18n_et']))
     {
       $this->news->setTitleI18nEt($news['title_i18n_et']);
     }
-    if (array_key_exists('extradate_i18n_et', $news))
+    if (isset($news['extradate_i18n_et']))
     {
       $this->news->setExtradateI18nEt($news['extradate_i18n_et']);
     }
-    if (array_key_exists('shortbody_i18n_et', $news))
+    if (isset($news['shortbody_i18n_et']))
     {
       $this->news->setShortbodyI18nEt($news['shortbody_i18n_et']);
     }
-    if (array_key_exists('body_i18n_et', $news))
+    if (isset($news['body_i18n_et']))
     {
       $this->news->setBodyI18nEt($news['body_i18n_et']);
     }
-    if (array_key_exists('author_i18n_et', $news))
+    if (isset($news['author_i18n_et']))
     {
       $this->news->setAuthorI18nEt($news['author_i18n_et']);
     }
-    if (array_key_exists('translated_by_i18n_et', $news))
+    if (isset($news['translated_by_i18n_et']))
     {
       $this->news->setTranslatedByI18nEt($news['translated_by_i18n_et']);
     }
-    if (array_key_exists('link_i18n_et', $news))
+    if (isset($news['link_i18n_et']))
     {
       $this->news->setLinkI18nEt($news['link_i18n_et']);
     }
-    if (array_key_exists('doc_i18n_et', $news))
+    if (isset($news['doc_i18n_et']))
     {
       $this->news->setDocI18nEt($news['doc_i18n_et']);
     }
-    if (array_key_exists('title_i18n_ne', $news))
+    if (isset($news['title_i18n_ne']))
     {
       $this->news->setTitleI18nNe($news['title_i18n_ne']);
     }
-    if (array_key_exists('extradate_i18n_ne', $news))
+    if (isset($news['extradate_i18n_ne']))
     {
       $this->news->setExtradateI18nNe($news['extradate_i18n_ne']);
     }
-    if (array_key_exists('shortbody_i18n_ne', $news))
+    if (isset($news['shortbody_i18n_ne']))
     {
       $this->news->setShortbodyI18nNe($news['shortbody_i18n_ne']);
     }
-    if (array_key_exists('body_i18n_ne', $news))
+    if (isset($news['body_i18n_ne']))
     {
       $this->news->setBodyI18nNe($news['body_i18n_ne']);
     }
-    if (array_key_exists('author_i18n_ne', $news))
+    if (isset($news['author_i18n_ne']))
     {
       $this->news->setAuthorI18nNe($news['author_i18n_ne']);
     }
-    if (array_key_exists('translated_by_i18n_ne', $news))
+    if (isset($news['translated_by_i18n_ne']))
     {
       $this->news->setTranslatedByI18nNe($news['translated_by_i18n_ne']);
     }
-    if (array_key_exists('link_i18n_ne', $news))
+    if (isset($news['link_i18n_ne']))
     {
       $this->news->setLinkI18nNe($news['link_i18n_ne']);
     }
-    if (array_key_exists('doc_i18n_ne', $news))
+    if (isset($news['doc_i18n_ne']))
     {
       $this->news->setDocI18nNe($news['doc_i18n_ne']);
     }
-    if (array_key_exists('title_i18n_bn', $news))
+    if (isset($news['title_i18n_bn']))
     {
       $this->news->setTitleI18nBn($news['title_i18n_bn']);
     }
-    if (array_key_exists('extradate_i18n_bn', $news))
+    if (isset($news['extradate_i18n_bn']))
     {
       $this->news->setExtradateI18nBn($news['extradate_i18n_bn']);
     }
-    if (array_key_exists('shortbody_i18n_bn', $news))
+    if (isset($news['shortbody_i18n_bn']))
     {
       $this->news->setShortbodyI18nBn($news['shortbody_i18n_bn']);
     }
-    if (array_key_exists('body_i18n_bn', $news))
+    if (isset($news['body_i18n_bn']))
     {
       $this->news->setBodyI18nBn($news['body_i18n_bn']);
     }
-    if (array_key_exists('author_i18n_bn', $news))
+    if (isset($news['author_i18n_bn']))
     {
       $this->news->setAuthorI18nBn($news['author_i18n_bn']);
     }
-    if (array_key_exists('translated_by_i18n_bn', $news))
+    if (isset($news['translated_by_i18n_bn']))
     {
       $this->news->setTranslatedByI18nBn($news['translated_by_i18n_bn']);
     }
-    if (array_key_exists('link_i18n_bn', $news))
+    if (isset($news['link_i18n_bn']))
     {
       $this->news->setLinkI18nBn($news['link_i18n_bn']);
     }
-    if (array_key_exists('doc_i18n_bn', $news))
+    if (isset($news['doc_i18n_bn']))
     {
       $this->news->setDocI18nBn($news['doc_i18n_bn']);
     }
-    if (array_key_exists('title_i18n_he', $news))
+    if (isset($news['title_i18n_he']))
     {
       $this->news->setTitleI18nHe($news['title_i18n_he']);
     }
-    if (array_key_exists('extradate_i18n_he', $news))
+    if (isset($news['extradate_i18n_he']))
     {
       $this->news->setExtradateI18nHe($news['extradate_i18n_he']);
     }
-    if (array_key_exists('shortbody_i18n_he', $news))
+    if (isset($news['shortbody_i18n_he']))
     {
       $this->news->setShortbodyI18nHe($news['shortbody_i18n_he']);
     }
-    if (array_key_exists('body_i18n_he', $news))
+    if (isset($news['body_i18n_he']))
     {
       $this->news->setBodyI18nHe($news['body_i18n_he']);
     }
-    if (array_key_exists('author_i18n_he', $news))
+    if (isset($news['author_i18n_he']))
     {
       $this->news->setAuthorI18nHe($news['author_i18n_he']);
     }
-    if (array_key_exists('translated_by_i18n_he', $news))
+    if (isset($news['translated_by_i18n_he']))
     {
       $this->news->setTranslatedByI18nHe($news['translated_by_i18n_he']);
     }
-    if (array_key_exists('link_i18n_he', $news))
+    if (isset($news['link_i18n_he']))
     {
       $this->news->setLinkI18nHe($news['link_i18n_he']);
     }
-    if (array_key_exists('doc_i18n_he', $news))
+    if (isset($news['doc_i18n_he']))
     {
       $this->news->setDocI18nHe($news['doc_i18n_he']);
     }
-    if (array_key_exists('title_i18n_zh_tw', $news))
+    if (isset($news['title_i18n_zh_tw']))
     {
       $this->news->setTitleI18nZhTw($news['title_i18n_zh_tw']);
     }
-    if (array_key_exists('extradate_i18n_zh_tw', $news))
+    if (isset($news['extradate_i18n_zh_tw']))
     {
       $this->news->setExtradateI18nZhTw($news['extradate_i18n_zh_tw']);
     }
-    if (array_key_exists('shortbody_i18n_zh_tw', $news))
+    if (isset($news['shortbody_i18n_zh_tw']))
     {
       $this->news->setShortbodyI18nZhTw($news['shortbody_i18n_zh_tw']);
     }
-    if (array_key_exists('body_i18n_zh_tw', $news))
+    if (isset($news['body_i18n_zh_tw']))
     {
       $this->news->setBodyI18nZhTw($news['body_i18n_zh_tw']);
     }
-    if (array_key_exists('author_i18n_zh_tw', $news))
+    if (isset($news['author_i18n_zh_tw']))
     {
       $this->news->setAuthorI18nZhTw($news['author_i18n_zh_tw']);
     }
-    if (array_key_exists('translated_by_i18n_zh_tw', $news))
+    if (isset($news['translated_by_i18n_zh_tw']))
     {
       $this->news->setTranslatedByI18nZhTw($news['translated_by_i18n_zh_tw']);
     }
-    if (array_key_exists('link_i18n_zh_tw', $news))
+    if (isset($news['link_i18n_zh_tw']))
     {
       $this->news->setLinkI18nZhTw($news['link_i18n_zh_tw']);
     }
-    if (array_key_exists('doc_i18n_zh_tw', $news))
+    if (isset($news['doc_i18n_zh_tw']))
     {
       $this->news->setDocI18nZhTW($news['doc_i18n_zh_tw']);
     }
-    if (array_key_exists('title_i18n_de', $news))
+    if (isset($news['title_i18n_de']))
     {
       $this->news->setTitleI18nDe($news['title_i18n_de']);
     }
-    if (array_key_exists('extradate_i18n_de', $news))
+    if (isset($news['extradate_i18n_de']))
     {
       $this->news->setExtradateI18nDe($news['extradate_i18n_de']);
     }
-    if (array_key_exists('shortbody_i18n_de', $news))
+    if (isset($news['shortbody_i18n_de']))
     {
       $this->news->setShortbodyI18nDe($news['shortbody_i18n_de']);
     }
-    if (array_key_exists('body_i18n_de', $news))
+    if (isset($news['body_i18n_de']))
     {
       $this->news->setBodyI18nDe($news['body_i18n_de']);
     }
-    if (array_key_exists('author_i18n_de', $news))
+    if (isset($news['author_i18n_de']))
     {
       $this->news->setAuthorI18nDe($news['author_i18n_de']);
     }
-    if (array_key_exists('translated_by_i18n_de', $news))
+    if (isset($news['translated_by_i18n_de']))
     {
       $this->news->setTranslatedByI18nDe($news['translated_by_i18n_de']);
     }
-    if (array_key_exists('link_i18n_de', $news))
+    if (isset($news['link_i18n_de']))
     {
       $this->news->setLinkI18nDe($news['link_i18n_de']);
     }
-    if (array_key_exists('doc_i18n_de', $news))
+    if (isset($news['doc_i18n_de']))
     {
       $this->news->setDocI18nDe($news['doc_i18n_de']);
     }

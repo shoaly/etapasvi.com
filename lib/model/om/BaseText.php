@@ -134,8 +134,11 @@ abstract class BaseText extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = TextPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = TextPeer::ID;
 		}
 
 		return $this;

@@ -332,8 +332,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->title !== $v) {
+			if ($this->title === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::TITLE;
+			}
 			$this->title = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::TITLE;
 		}
 
 		return $this;
@@ -352,8 +355,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->shortbody !== $v) {
+			if ($this->shortbody === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::SHORTBODY;
+			}
 			$this->shortbody = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::SHORTBODY;
 		}
 
 		return $this;
@@ -372,8 +378,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->body !== $v) {
+			if ($this->body === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::BODY;
+			}
 			$this->body = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::BODY;
 		}
 
 		return $this;
@@ -392,8 +401,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->author !== $v) {
+			if ($this->author === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::AUTHOR;
+			}
 			$this->author = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::AUTHOR;
 		}
 
 		return $this;
@@ -412,8 +424,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->translated_by !== $v) {
+			if ($this->translated_by === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::TRANSLATED_BY;
+			}
 			$this->translated_by = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::TRANSLATED_BY;
 		}
 
 		return $this;
@@ -432,8 +447,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->link !== $v) {
+			if ($this->link === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::LINK;
+			}
 			$this->link = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::LINK;
 		}
 
 		return $this;
@@ -452,8 +470,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->extradate !== $v) {
+			if ($this->extradate === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::EXTRADATE;
+			}
 			$this->extradate = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::EXTRADATE;
 		}
 
 		return $this;
@@ -472,8 +493,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->doc !== $v || $this->isNew()) {
+			if ($this->doc === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::DOC;
+			}
 			$this->doc = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::DOC;
 		}
 
 		return $this;
@@ -492,8 +516,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::ID;
+			}
 			$this->id = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::ID;
 		}
 
 		if ($this->aNews !== null && $this->aNews->getId() !== $v) {
@@ -516,8 +543,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($this->culture !== $v) {
+			if ($this->culture === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = NewsI18nPeer::CULTURE;
+			}
 			$this->culture = $v;
-			$this->modifiedColumns[] = NewsI18nPeer::CULTURE;
 		}
 
 		return $this;
