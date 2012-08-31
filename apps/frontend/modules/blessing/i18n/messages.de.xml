@@ -5,17 +5,17 @@
 
       <trans-unit id="1">
         <source>You may send photos, names and messages all in one email to</source>
-        <target>Du kannst deine Photos, Namen und Nachrichten an</target>
+        <target>Du kannst Deine Photos, Namen und Nachrichten – alles in einer eMail – senden an</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>(add photos as .jpg attachments up to 1MB each) or use the form below.</source>
-        <target></target>
+        <target>(füge Photos als .jpg Anhang bei bis je zu 1MB) oder verwende das unten befindliche Formular.</target>
       </trans-unit>              
       
       <trans-unit id="1">
         <source>Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.</source>
-        <target></target>
+        <target>Die Anfragen werden gesammelt und in gewissen Zeitabständen ausgedruckt und Maha Sambodhi Dharma Sangha zur Segnung vorgelegt (bitte erwarte keine Antwort auf Fragen in deiner Nachricht). Du wirst per eMail informiert, wenn dein Schreiben gesegnet wurde.</target>
       </trans-unit>
       
 <!-- Blessing module -->
