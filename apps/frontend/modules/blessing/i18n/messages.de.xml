@@ -1,200 +1,198 @@
 <?xml version="1.0" ?>
 <xliff version="1.0">
   <file original="global" source-language="en" datatype="plaintext">
-    <body>   
+    <body>
 
       <trans-unit id="1">
         <source>You may send photos, names and messages all in one email to</source>
-        <target>Du kannst Deine Photos, Namen und Nachrichten – alles in einer eMail – senden an</target>
+        <target>Du kannst deine Photos, Namen und Nachrichten - alles in einer eMail - senden an</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>(add photos as .jpg attachments up to 1MB each) or use the form below.</source>
-        <target>(füge Photos als .jpg Anhang bei bis je zu 1MB) oder verwende das unten befindliche Formular.</target>
-      </trans-unit>              
-      
+        <target>(füge Photos als .jpg Anhang bis je zu 1 MB bei) oder verwende das unten befindliche Formular.</target>
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.</source>
-        <target>Die Anfragen werden gesammelt und in gewissen Zeitabständen ausgedruckt und Maha Sambodhi Dharma Sangha zur Segnung vorgelegt (bitte erwarte keine Antwort auf Fragen in deiner Nachricht). Du wirst per eMail informiert, wenn dein Schreiben gesegnet wurde.</target>
+        <target>Die Anfragen werden gesammelt und in regelmäßigen Zeitabständen ausgedruckt und Maha Sambodhi Dharma Sangha zur Segnung vorgelegt (bitte erwarte keine Antwort auf Fragen in deiner Nachricht). Du wirst per eMail informiert, wenn die Segnung erfolgte.</target>
       </trans-unit>
-      
-<!-- Blessing module -->
-      
+
       <trans-unit id="1">
         <source>I want to add photos on the next step.</source>
-        <target></target>
+        <target>Ich möchte Photos zur Segnung beifügen.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Image Name</source>
-        <target></target>
+        <target>Bildname</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Save</source>
-        <target></target>
+        <target>Sichern</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Cancel</source>
-        <target></target>
+        <target>Löschen</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Remove</source>
-        <target></target>
+        <target>Entfernen</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Select</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Send</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Next</source>
-        <target></target>
+        <target>Auswählen</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Send</source>
-        <target></target>
+        <target>Senden</target>
       </trans-unit>
-      
+
+      <trans-unit id="1">
+        <source>Next</source>
+        <target>Weiter</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Send</source>
+        <target>Senden</target>
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Collapse</source>
-        <target></target>
+        <target>Collapse</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Expand</source>
-        <target></target>
+        <target>Erweitern</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>No child records to display.</source>
-        <target></target>
+        <target>Keine Angaben zum Kind zeigen.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>No records to display.</source>
-        <target></target>
+        <target>Keine Angaben zeigen.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>First Page</source>
-        <target></target>
+        <target>Erste Seite</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Last Page</source>
-        <target></target>
+        <target>Letzte Seite</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Next Pages</source>
-        <target></target>
+        <target>Nächste Seiten</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Next Page</source>
-        <target></target>
+        <target>Nächste Seite</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Previous Pages</source>
-        <target></target>
+        <target>Vorhergehende Seiten</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Previous Page</source>
-        <target></target>
+        <target>Vorhergehende Seite</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>First Page</source>
-        <target></target>
+        <target>Erste Seite</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Last Page</source>
-        <target></target>
+        <target>Letzte Seite</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Next Pages</source>
-        <target></target>
+        <target>Nächste Seiten</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Next Page</source>
-        <target></target>
+        <target>Nächste Seite</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Page size:</source>
-        <target></target>
+        <target>Seitengröße</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Loading...</source>
-        <target></target>
+        <target>Wird geladen...</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Ready</source>
-        <target></target>
+        <target>Fertig</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Blessing request</source>
-        <target></target>
+        <target>Segnungsbitte</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Photo(s) upload</source>
-        <target></target>
+        <target>Photo(s) hochladen</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Photo(s) cropping</source>
-        <target></target>
+        <target>Photo(s) cropping</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Email:</source>
-        <target></target>
+        <target>eMail:</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Invalid Email!</source>
-        <target></target>
+        <target>Ungültige eMail!</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Email is required!</source>
-        <target></target>
-      </trans-unit>      
+        <target>eMail ist erforderlich!</target>
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Message is required!</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Type your message here.</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Blessing request sent.</source>
-        <target></target>
+        <target>Nachricht ist erforderlich!</target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>Type your message here.</source>
+        <target>Schreibe hier deine Nachricht.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Blessing request sent.</source>
+        <target>Segnungsbitte wurde gesendet.</target>
+      </trans-unit>
+      
 <!-- утф -->
     </body>
   </file>
