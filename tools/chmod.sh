@@ -8,7 +8,7 @@ PROJECT_DIR="${SCRIPT_DIR}/../"
 
 # на папки
 #chmod -R 775 ${PROJECT_DIR}
-find ${PROJECT_DIR} -type d -exec chmod 775 {} \;
+find ${PROJECT_DIR} -type d -exec chmod 755 {} \;
 
 # на файлы
 find ${PROJECT_DIR} -type f -exec chmod 644 {} \;
