@@ -79,6 +79,6 @@ EOF;
 	$master_params['db']     = $master_pass_port[1];
 	
 	// Run replication
-	replicateDb::run($master_params, self::$slaves_params, sfConfig::get('admin_email'), 'etapasvi: replicate_db');
+	replicateDb::run($master_params, self::$slaves_params, sfConfig::get('app_admin_email'), 'etapasvi: replicate_db');
   }
 }

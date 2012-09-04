@@ -6,7 +6,12 @@
  * 2011-10-25
  * @author saynt2day
  */
-class replicateDb {
+class replicateDb 
+{
+	// admin email
+	public static $email_to;
+	// notification email subject
+	public static $email_subject;
 	
 	/**
 	 * Параметры мастера:
@@ -39,7 +44,9 @@ class replicateDb {
 	 */
 	public static function run($master_params, $slaves_params, $email_to, $email_subject)
 	{
-	
+		self::$email_to = $email_to;
+		self::$email_subject = $email_subject;
+		
 		// хэндлы подключений к слейвам
 		$slaves_links = array();
 		
@@ -64,7 +71,7 @@ class replicateDb {
 		{
 			msg($msg);
 			if ($exit) {	
-				mail($email_to, $email_subject, ob_get_contents());
+				mail(replicateDb::$email_to, replicateDb::$email_subject, ob_get_contents());
 				ob_flush();
 				exit();
 			} else {
