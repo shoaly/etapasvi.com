@@ -11,8 +11,8 @@
 #/lib/model/map/*
 /lib/filter/base/*
 /lib/form/base/*
-/plugins/sfGuardPlugin/lib/model/map/*
-/plugins/sfGuardPlugin/lib/model/om/*
+#/plugins/sfGuardPlugin/lib/model/map/*
+#/plugins/sfGuardPlugin/lib/model/om/*
 /www/uploads/news/*
 /www/uploads/photo/*
 /www/uploads/translate/*
