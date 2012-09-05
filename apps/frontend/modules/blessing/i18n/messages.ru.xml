@@ -98,42 +98,12 @@
       <trans-unit id="1">
         <source>Next Pages</source>
         <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Next Page</source>
-        <target></target>
-      </trans-unit>
+      </trans-unit>     
 
       <trans-unit id="1">
         <source>Previous Pages</source>
         <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Previous Page</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>First Page</source>
-        <target></target>
-      </trans-unit>
-
-      <trans-unit id="1">
-        <source>Last Page</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Next Pages</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Next Page</source>
-        <target></target>
-      </trans-unit>
+      </trans-unit>      
       
       <trans-unit id="1">
         <source>Page size:</source>

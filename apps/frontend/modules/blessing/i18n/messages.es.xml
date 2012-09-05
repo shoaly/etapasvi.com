@@ -5,194 +5,164 @@
 
       <trans-unit id="1">
         <source>You may send photos, names and messages all in one email to</source>
-        <target>Pueden enviar sus fotos, nombres y mensajes a</target>
+        <target>Usted puede enviar  fotografias, nombres y mensajes en un correo electronico a</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>(add photos as .jpg attachments up to 1MB each) or use the form below.</source>
-        <target></target>
+        <target>(Agregue  fotografias como .jpg attachments   maximo 1MB cada uno)  usar el formulario debajo.</target>
       </trans-unit>              
       
       <trans-unit id="1">
         <source>Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.</source>
-        <target></target>
+        <target>Los pedidos son reunidos  y periodicamente imprimidos y entregados a Maha Sambodhi Dharma Sangha para ser bendecidos (no espere recibir las respuestas a sus preguntas en sus pedidos)  Se le informara por correo electronico cuando su peticion haya sido bendecida.</target>
       </trans-unit>
       
 <!-- Blessing module -->
       
       <trans-unit id="1">
         <source>I want to add photos on the next step.</source>
-        <target></target>
+        <target>Agregar las fotografias en el proximo paso.</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Image Name</source>
-        <target></target>
+        <target>El Nombre de la imagen</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Save</source>
-        <target></target>
+        <target>Guardar</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Cancel</source>
-        <target></target>
+        <target>Cancelar</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Remove</source>
-        <target></target>
+        <target>Remover</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Select</source>
-        <target></target>
+        <target>Seleccionar</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Send</source>
-        <target></target>
+        <target>Enviar</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Next</source>
-        <target></target>
+        <target>Siguiente</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Send</source>
-        <target></target>
+        <target>Enviar</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Collapse</source>
-        <target></target>
+        <target>Colapsar</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Expand</source>
-        <target></target>
+        <target>Expandir</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>No child records to display.</source>
-        <target></target>
+        <target>Ningun record de nino para desplegar.</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>No records to display.</source>
-        <target></target>
+        <target>Ningun archivo para desplegar.</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>First Page</source>
-        <target></target>
+        <target>Primera pagina</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Last Page</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Next Pages</source>
-        <target></target>
-      </trans-unit>
+        <target>Ultima pagina</target>
+      </trans-unit>      
       
       <trans-unit id="1">
         <source>Next Page</source>
-        <target></target>
+        <target>Siguiente pagina</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Previous Pages</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Previous Page</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>First Page</source>
-        <target></target>
-      </trans-unit>
-
-      <trans-unit id="1">
-        <source>Last Page</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Next Pages</source>
-        <target></target>
-      </trans-unit>
-      
-      <trans-unit id="1">
-        <source>Next Page</source>
-        <target></target>
-      </trans-unit>
+        <target>Anterior página</target>
+      </trans-unit>      
       
       <trans-unit id="1">
         <source>Page size:</source>
-        <target></target>
+        <target>Tamano de la pagina:</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Loading...</source>
-        <target></target>
+        <target>Cargando...</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Ready</source>
-        <target></target>
+        <target>Listo</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Blessing request</source>
-        <target></target>
+        <target>Peticion de bendicion</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Photo(s) upload</source>
-        <target></target>
+        <target>Cargar fotos</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Photo(s) cropping</source>
-        <target></target>
+        <target>Enviar fotos</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Email:</source>
-        <target></target>
+        <target>Correo electronico:</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Invalid Email!</source>
-        <target></target>
+        <target>¡El Correo electrónico no es válido!</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Email is required!</source>
-        <target></target>
+        <target>¡Se requiere correo electronico!</target>
       </trans-unit>      
 
       <trans-unit id="1">
         <source>Message is required!</source>
-        <target></target>
+        <target>¡ Se require mensaje!</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Type your message here.</source>
-        <target></target>
+        <target>Teclee su mensaje aquí.</target>
       </trans-unit>
       
       <trans-unit id="1">
         <source>Blessing request sent.</source>
-        <target></target>
+        <target>Petición de bendición enviada.</target>
       </trans-unit>
   
     </body>
