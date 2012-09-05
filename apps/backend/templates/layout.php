@@ -12,6 +12,10 @@
         $("#sf_admin_content fieldset h2").click(function(){
           $(this).parent().children().filter("div.form-row").toggle(200);
         });
+        // mark non-empty i18n items
+        $("#sf_admin_content fieldset :input[value!='']").each(function(){
+          var h2 = $(this).parents("fieldset:first").children("h2:first").css('background-color', 'lightgreen');          
+        });
       });
     </script>
 	<div id="container" style="margin:0 auto;padding:10px">
