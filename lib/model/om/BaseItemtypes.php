@@ -397,14 +397,45 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 			// If this object has been modified, then save it to the database.
 			if ($this->isModified()) {
 				if ($this->isNew()) {
-					$pk = ItemtypesPeer::doInsert($this, $con);
-					$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
+					// if i18n object is new and all fields are empty we do not save it into DB
+					$has_non_empty_fields = false;
+					$only_service_fields_modified = true;
+					$is_i18n = false;
+					foreach ($this->getModifiedColumns() as $modified_column) {
+						// news_i18n.UPDATED_AT_EXTRA -> UpdatedAtExtra
+						if (strstr($modified_column, 'i18n')) {
+							$is_i18n = true;
+						}
+						$modified_column_name = preg_replace("/^[^\.]+\./", '', $modified_column);
+						// we do not take into account changing of some of the fields
+						if (in_array($modified_column_name, array('ID', 'CULTURE', 'UPDATED_AT', 'UPDATED_AT_EXTRA'))) {
+							continue;
+						}
+						$only_service_fields_modified = false;
+						// news_i18n.UPDATED_AT_EXTRA -> news_i18n.UpdatedAtExtra							
+						$modified_column_name_parts = explode('_', $modified_column_name);
+						$modified_column_name = '';
+						foreach ($modified_column_name_parts as $part) {
+							$modified_column_name .= ucfirst(strtolower($part));
+						}
+
+						$value = $this->getByName($modified_column_name);						
+
+						if ($value) {
+							$has_non_empty_fields = true;
+							break;
+						}
+					}
+					if ($has_non_empty_fields || ($only_service_fields_modified && !$is_i18n)) {
+						$pk = ItemtypesPeer::doInsert($this, $con);
+						$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically
 										 // BasePeer::doInsert() can insert multiple rows).
 
-					$this->setId($pk);  //[IMV] update autoincrement primary key
+						$this->setId($pk);  //[IMV] update autoincrement primary key
 
-					$this->setNew(false);
+						$this->setNew(false);
+					}
 				} else {
 					$affectedRows += ItemtypesPeer::doUpdate($this, $con);
 				}
