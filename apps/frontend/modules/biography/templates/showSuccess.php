@@ -2,8 +2,10 @@
 
 <h1 id="up"><?php echo __('Biography') ?></h1>
 
+<?php /*
 <span class="alert"><?php echo __('This text will be improved and updated. Please, don\'t translate it into other languages.') ?></span>
 <br/><br/>
+*/ ?>
 
 <?php include_component('news', 'showText', array('id'=>59)); ?>
 <a href="http://himalaya.socanth.cam.ac.uk/collections/journals/nepaliaawaz/pdf/Nepali_Aawaz_01_09.pdf" class="files pdf" target="_blank">The story of Ram Bahadur Bomjom (Nepali Aawaz fortnightly)</a> [2.87 Mb]<br/><br/>
@@ -26,7 +28,7 @@
 
 <h2 id="family_and_childhood">1. <?php echo __('Family and Childhood') ?></h2>
 <?php include_component('photo', 'show', array('id'=>18)); ?>
-<?php echo __('Sambodhi Dharma Sangha (earlier Palden Dorje, born Ram Bahadur Bomjan) was born on April 10, 1990 between 2:25am and 4am (information on date and time is still controversial and will be checked and clarified) in Ratanpur village, Bara district, Nepal.') ?>
+<?php echo __('Maha Sambodhi Dharma Sangha (earlier Palden Dorje, born Ram Bahadur Bomjan) was born on April 10, 1990 between 2:25am and 4am (information on date and time is still controversial and will be checked and clarified) in Ratanpur village, Bara district, Nepal.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>17)); ?>
 <?php echo __('Ram’s parents are farmers. His mother, Maya Devi was married at 12.  She had 5 sons and 4 daughters.  Ram was her third son.  When she was in her pregnancy, she found she was unable to eat meat without becoming ill.  The son, whom she named Ram, would not eat meat.  He would leave the house for long intervals from an early age.') ?>
