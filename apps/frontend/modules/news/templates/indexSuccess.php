@@ -35,5 +35,5 @@ $news_list = $pager->getResults();
 
 <?php if ($type == NewstypesPeer::$type_names[NewstypesPeer::NEWS_TYPE_TEACHINGS]): ?>
 <br/>
-<a href="/uploads/all/dharma_sangha_dictionary.pdf" class="files pdf"><?php echo __("Dictionary") ?></a> (<?php echo __("by Andy Good/LTJ") ?>)
+<a href="https://docs.google.com/document/d/10igx0jLsoVeemdKxEasxJG5xbrqI2cfRWh3pJnn28iQ/edit"><?php echo __("Dictionary") ?></a> (<?php echo __("by Andy Good/LTJ") ?>)
 <?php endif ?>
