@@ -99,6 +99,16 @@
         <target>Полученные пожертвования</target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>Email at</source>
+        <target>Обращайтесь на</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>for instructions.</source>
+        <target>для получения инструкций</target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>

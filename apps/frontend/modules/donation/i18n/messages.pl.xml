@@ -99,6 +99,16 @@
         <target></target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>Email at</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>for instructions.</source>
+        <target></target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>

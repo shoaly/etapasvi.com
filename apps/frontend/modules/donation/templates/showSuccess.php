@@ -143,7 +143,7 @@ $(document).ready(function(){
 
 <h2 class="center"><?php echo __('Bank account') ?></h2>
 <p class="center_text">    
-    Email at <a href="mailto:info@etapasvi.com">info@etapasvi.com</a> for instructions.
+    <?php echo __('Email at') ?> <a href="mailto:info@etapasvi.com">info@etapasvi.com</a> <?php echo __('for instructions.') ?>
 </p>
 
 <h2 class="center"><?php echo __('Reports') ?></h2>
