@@ -27,7 +27,7 @@
     <?php elseif ($sf_user->getCulture() == 'ja'): ?>
         <a href="http://groups.google.com/group/dharmasangha-jp" target="_blank" title="<?php echo __('Google') ?>" class="social_google"><span><?php echo __('Google') ?></span></a>
     <?php elseif ($sf_user->getCulture() != 'ru'): ?>
-        <a href="http://groups.google.com/group/buddhaboy" target="_blank" title="<?php echo __('Google') ?>" class="social_google"><span><?php echo __('Google') ?></span></a>
+        <a href="https://groups.google.com/forum/?fromgroups=#!forum/maha-sambodhi-dharma-sangha-" target="_blank" title="<?php echo __('Google') ?>" class="social_google"><span><?php echo __('Google') ?></span></a>
     <? endif ?>
     <a href="http://whos.amung.us/stats/ppc9yoe3440f/" target="_blank" title="<?php echo __('Visitor Map') ?>" class="social_visitor_map"><span><?php echo __('Visitor Map') ?></span></a>    
     <a href="http://www.youtube.com/user/etapasvi" target="_blank" title="<?php echo __('YouTube') ?>" class="social_youtube"><span><?php echo __('YouTube') ?></span></a>
