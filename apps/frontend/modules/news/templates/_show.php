@@ -23,10 +23,10 @@
         <p>
             <br/><a href="javascript:showOriginal();"><?php echo __('Original text') ?></a> <span class="slide_arrow ">▼</span>
         </p>
-        <p id="elOriginal" class="hidden">
+        <div id="elOriginal" class="hidden">
             <br/>
             <?php echo html_entity_decode(/*str_ireplace( '&lt;br /&gt;', '</p><p class="p1">',*/ $newsitem->getOriginalPrepared() /*)*/ ); ?>
-        </p>		
+        </div>		
     <?php endif ?>
     
     <?php /*if ($newsitem->isTypeTeachings() && !UserPeer::isCultureHieroglyphic()): ?>
