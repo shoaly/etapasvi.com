@@ -10,12 +10,12 @@
 
       <trans-unit id="1">
         <source>(add photos as .jpg attachments up to 1MB each) or use the form below.</source>
-        <target></target>
+        <target>(le foto andranno allegate in formato .jpg e dovranno essere di 1MB max. ciascuna) oppure utilizzare il modulo in basso.</target>
       </trans-unit>              
       
       <trans-unit id="1">
         <source>Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.</source>
-        <target></target>
+        <target>Periodicamente le richieste verranno raccolte e stampate e poi consegnate tutte insieme a Maha Sambodhi Dharma Sangha che le benedira (non aspettarti di ricevere risposte alle domande rivolte nelle richieste). Una volta ricevuta la benedizione, riceverai una notifica via e-mail.</target>
       </trans-unit>
       
 <!-- Blessing module -->
