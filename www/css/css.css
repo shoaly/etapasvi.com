@@ -4,6 +4,7 @@
 }
 
 /* cultures */
+.hieroglyphic,
 .hieroglyphic #content *,
 .hieroglyphic *,
 .hieroglyphic #footer *,
@@ -1205,7 +1206,10 @@ img.newsitem_img {
     opacity:0.5;
     filter:alpha(opacity=50);
     }
-
+#content #elOriginal,
+#content #elOriginal * {
+    font-size:18px;
+    }
 /* photo */
 #photo_comments_code {
     display: none;

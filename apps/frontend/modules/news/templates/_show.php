@@ -23,7 +23,7 @@
         <p>
             <br/><a href="javascript:showOriginal();"><?php echo __('Original text') ?></a> <span class="slide_arrow ">▼</span>
         </p>
-        <div id="elOriginal" class="hidden">
+        <div id="elOriginal" class="hidden hieroglyphic">
             <br/>
             <?php echo html_entity_decode(/*str_ireplace( '&lt;br /&gt;', '</p><p class="p1">',*/ $newsitem->getOriginalPrepared() /*)*/ ); ?>
         </div>		
