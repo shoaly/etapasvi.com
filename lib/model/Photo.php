@@ -152,7 +152,10 @@ class Photo extends BasePhoto
 	    	    
 	    $picasa_dimention = '';
 	    $max_dimention = $this->getMaxDimention();
-	    if ($max_dimention && $max_dimention <= PhotoPeer::PICASA_MAX_DIMENTION) {
+	    if ($max_dimention > PhotoPeer::PICASA_MAX_DIMENTION) {
+	      $max_dimention = PhotoPeer::PICASA_MAX_DIMENTION;
+	    }
+	    if ($max_dimention) {
 	    	$picasa_dimention = '/s' . $max_dimention;
 	    }
 	    
