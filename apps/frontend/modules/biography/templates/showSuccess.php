@@ -67,7 +67,7 @@
 <?php include_component('photo', 'show', array('id'=>94)); ?>
 <?php echo __('It was the custom for the initiates to meditate for up to a month in a cave. Som Bahadur Lama was surprised at the ease with which Palden Dorje seemed to adapt to the situation requiring little sustenance. It was then that he realized that the boy had a natural talent for deep and prolonged meditation.') ?>
 <br/><br/>
-<?php echo __('After completing his Buddhist education for two years, all nine initiates went to Lumbini, the birthplace of Lord Buddha, for sightseeing. Palden Dorje seemed utterly taken by this place and it seemed to deepen his religious resolve. The other eight initiates returned but he refused to return. Instead, he went to Dehradun to further his religious education with the Gurus of Dehradun. Later he returned to Nepal to the beautiful lakeside city of Pokhara.') ?>
+<?php echo __('After completing his education for two years, all nine initiates went to Lumbini, the birthplace of Lord Buddha, for sightseeing. Palden Dorje seemed utterly taken by this place and it seemed to deepen his religious resolve. The other eight initiates returned but he refused to return. Instead, he went to Dehradun to further his religious education with the Gurus of Dehradun. Later he returned to Nepal to the beautiful lakeside city of Pokhara.') ?>
 <a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
 
 <h2 id="illness">3. <?php echo __('Palden Dorje\'s Illness') ?></h2>
@@ -132,8 +132,6 @@
 <?php include_component('photo', 'show', array('id'=>15)); ?>
 <br/><br/>
 <?php echo __('“Leave me in peace, and there will soon be peace in the country,” – Palden Dorje said. However crowds ever increased and people chanted and set up a market place, according to Radio HBC 94 FM who visited the site on December 10, 2005. The crowds were kept at a distance of about 50 meters. All witnesses claimed that Palden Dorje neither ate, drank or left to relieve himself.  He just sat and meditated under the pipal tree. Baffled onlookers were ever increasing.') ?>
-<br/><br/>
-<?php echo __('There were stories of miracles: a') ?> <a href="<?php echo url_for('video/show?id=43'); ?>"><?php echo __('girl') ?></a> <?php echo __('and a young man had gained the power of speech although they could not speak.') ?>
 
 <a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
 
@@ -151,7 +149,7 @@
 <?php echo __('On 25 December 2006, villagers in Bara district spotted Palden Dorje meditating. He was carrying a sword for protection in the jungle, reminding reporters that "Even Gautama Buddha had to protect himself," and claimed to have eaten nothing but herbs in the interim.') ?> 
 <?php /* include_component('photo', 'show', array('id'=>24)); */ ?>
 <br/><br/>
-<?php echo __('He reiterated his six year commitment to Buddhist devotion, and said he would allow people to come and observe him, as long as they remained at some distance and didn\'t bother him. When a reporter pointed out that pilgrims to his meditation site would be making donations in his name, he asked for the donations to not be abused or used for commercial purposes. A new wave of visitors came to see him and pray at his new meditation spot. On 8 March 2007 he left Bara district to again find a quieter place to meditate.') ?>
+<?php echo __('He reiterated his six year commitment, and said he would allow people to come and observe him, as long as they remained at some distance and didn\'t bother him. When a reporter pointed out that pilgrims to his meditation site would be making donations in his name, he asked for the donations to not be abused or used for commercial purposes. A new wave of visitors came to see him and pray at his new meditation spot. On 8 March 2007 he left Bara district to again find a quieter place to meditate.') ?>
 
 <a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
 

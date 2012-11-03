@@ -290,7 +290,6 @@ ol.in_text li {
 	}
 ol {
 	list-style-position:inside;
-	font-family: Verdana; 
 	}
 ol.padded {
 	list-style-position:outside;
