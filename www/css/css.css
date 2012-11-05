@@ -58,9 +58,9 @@
     }
 */
 
-#menu #mi_dharmic_forest a {
+/*#menu #mi_dharmic_forest a {
     color: #df3f3f;
-    }
+    }&/
 
 /* embedded */
 body.embedded .bread_crumbs,
@@ -443,6 +443,10 @@ p.p2{
 #menu ul a:hover { 
 	text-decoration: underline;
 	}
+#menu i {
+    color: lightgray;
+    font-style: normal;
+    }
 #requirements {
 	margin-left: 600px; 
 	position: absolute; 
