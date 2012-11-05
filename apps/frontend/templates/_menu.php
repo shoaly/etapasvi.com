@@ -6,8 +6,6 @@
 		<?php /*<li><a href="<?php echo url_for('@intro', true); ?>" title="<?php echo __('Buddha Boy Nepal') ?>" id="mi_intro"><?php echo __('Intro') ?></a></li> */ ?>
         <li id="mi_news"><a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('News') ?>"><?php echo __('News') ?></a></li>        
         <li id="mi_teachings"><i>»</i> <a href="<?php echo url_for('@teachings_index', true); ?>" title="<?php echo __('Teachings') ?>"><?php echo __('Teachings') ?></a></li>
-        <li id="mi_faq"><i>» »</i> <a href="<?php echo url_for('@faq', true); ?>" title="<?php echo __('FAQ') ?>"><?php echo __('FAQ') ?></a></li>
-        <li id="mi_encyclopedia"><i>» »</i> <a href="<?php echo url_for('@encyclopedia', true); ?>" title="<?php echo __('Encyclopedia') ?>"><?php echo __('Encyclopedia') ?></a></li>        
         <li id="mi_stories"><i>»</i> <a href="<?php echo url_for('@stories_index', true); ?>" title="<?php echo __('Stories') ?>"><?php echo __('Stories') ?></a></li>
         <li id="mi_books"><i>»</i> <a href="<?php echo url_for('@books_index', true); ?>" title="<?php echo __('Books') ?>"><?php echo __('Books') ?></a></li>
         <li id="mi_projects"><i>»</i> <a href="<?php echo url_for('@projects_index', true); ?>" title="<?php echo __('Projects') ?>"><?php echo __('Projects') ?></a></li>
@@ -19,6 +17,8 @@
         <li id="mi_feed"><a href="<?php echo url_for('@feed', true); ?>" title="<?php echo __('Feed') ?>"><?php echo __('Feed') ?></a></li>
         <li id="mi_bio"><a href="<?php echo url_for('@biography', true); ?>" title="<?php echo __('Dharma Sangha') ?> – <?php echo __('Biography') ?>"><?php echo __('Biography') ?></a></li>		
 		<li id="mi_blessing"><a href="<?php echo url_for('@blessing', true); ?>" title="<?php echo __('Blessing') ?>"><?php echo __('Blessing') ?></a></li>
+        <li id="mi_faq"><a href="<?php echo url_for('@faq', true); ?>" title="<?php echo __('FAQ') ?>"><?php echo __('FAQ') ?></a></li>
+        <li id="mi_encyclopedia"><a href="<?php echo url_for('@encyclopedia', true); ?>" title="<?php echo __('Encyclopedia') ?>"><?php echo __('Encyclopedia') ?></a></li>        
 <?php /*
 		<li id="mi_religious_forest"><a href="<?php echo url_for('@religious_forest', true); ?>" title="<?php echo __('Religious Forest') ?>"><?php echo __('Religious Forest') ?></a></li>
 */
