@@ -10,7 +10,7 @@
 .hieroglyphic #footer *,
 .hieroglyphic #footer  {
 	font-size:14px;
-    font-family: "宋体";
+    /*font-family: "宋体";*/
     line-height:21px;
 	}
 .large_text #content *,
