@@ -1,12 +1,18 @@
 <?php if ($newsitem && $newsitem->getBody() != ''): ?>
 
+    <?php if ($latest): ?>
+        <div class="t_latest"><?php echo $newsitem->getTitle(); ?></div>
+    <?php endif ?>
+
+    <?php if ($latest):?><div class="i_latest"><?php endif ?>
+
 	<?php $href = $newsitem->getUrl(); ?>    
     <h2 class="title">
-        <a href="<?php echo $href; ?>" title="<?php echo __('News') ?>">
+        <a href="<?php echo $href; ?>" title="<?php echo __('News') ?>" class="t_txt">
             <?php echo $newsitem->getTitle(); ?> <?php /*if ($newsitem->getIsTeaching()): ?>[<?php echo __('teaching') ?>]<?php endif */?>
         </a>
         <a class="small simple" href="<?php echo url_for('@' . $newsitem->getTypeName() . '_index'); ?>">[<?php echo __($newsitem->getTypeNameCapital()) ?>]</a>
-    </h2>
+    </h2>    
 
     <div class="date"> 
         <?php if ($newsitem->getExtradate()): ?><?php echo $newsitem->getExtradate(); ?> / <?php elseif ($newsitem->getDate()): ?><?php echo format_datetime( $newsitem->getDate(), 'd MMMM yyyy'); ?> / <?php endif ?>
@@ -36,4 +42,6 @@
             <a href="<?php echo $href; ?>#disqus_thread" data-disqus-identifier="<?php echo $newsitem->getCommentsIdentifier(); ?>">0<?php //echo $newsitem->getCommentsCount(); ?></a>
         </p>
     </div>	
+
+    <?php if ($latest):?></div><?php endif ?>
 <?php endif ?>

@@ -1,1 +1,1 @@
-<?php include_partial('news/list', array('news_list'=>$newslist)); ?>
+<?php include_partial('news/list', array('news_list'=>$newslist, 'latest'=>true)); ?>

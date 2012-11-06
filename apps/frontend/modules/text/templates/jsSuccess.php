@@ -1036,6 +1036,13 @@ function getUrlParameters()
     return vars;
 }
 
+//  show/hide latest news
+function toggleLatestNews(id)
+{
+    $("#content .news_list td:not([class~='minimized'])").addClass('minimized');
+    $("#content .news_list #lnews_"+id+'').removeClass('minimized');   
+}
+
 
 // replace all occurences of a string
 String.prototype.replaceAll = function(search, replace){

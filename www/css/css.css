@@ -823,6 +823,12 @@ input[type="radio"] {
 .input_button,
 #body_search input.gsc-search-button {	
     background: none repeat scroll 0 0 #dbdbdb;
+    background-image:-webkit-gradient(linear,0 0,0 100%,from(#FAFAFA),to(#DADADA));  
+    background-image: -moz-linear-gradient(center top , #FAFAFA, #DADADA);
+    background-image:-o-linear-gradient(top,#FAFAFA,#DADADA);
+    background-image:-ms-linear-gradient(top,#FAFAFA,#DADADA);
+    background-image:linear-gradient(top,#FAFAFA,#DADADA);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#DADADA');
     border: 1px outset #CCCCCC;
     cursor: pointer;
     padding: 1px 4px;
@@ -830,6 +836,7 @@ input[type="radio"] {
 .input_button:hover,
 #body_search input.gsc-search-button:hover {	
     background: none repeat scroll 0 0 #f0f0f0;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#f0f0f0');
     }
 /*
 .hieroglyphic .input_button {
@@ -1212,6 +1219,36 @@ img.newsitem_img {
 #content #elOriginal,
 #content #elOriginal * {
     font-size:18px;
+    }
+
+.news_list .t_latest {
+    display: none;
+    }
+.news_list .minimized .t_latest {
+    display: block;
+    }
+.news_list td.minimized {
+    padding: 0;
+    }
+.news_list .minimized .t_latest {
+    cursor: pointer;
+    background-color: #f7f7f7;    
+    background-image:-webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#f0f0f0));  
+    background-image: -moz-linear-gradient(center top , #ffffff, #f0f0f0);
+    background-image:-o-linear-gradient(top,#ffffff,#f0f0f0);
+    background-image:-ms-linear-gradient(top,#ffffff,#f0f0f0);
+    background-image:linear-gradient(top,#ffffff,#f0f0f0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f0f0');
+    padding: 4px 10px;
+    font-size: 12px;
+    color: gray;
+    }
+.news_list .minimized .t_latest:hover {
+    background: none repeat scroll 0 0 #f0f0f0;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#f0f0f0');
+    }
+.news_list .minimized .i_latest {
+    display: none;
     }
 /* photo */
 #photo_comments_code {
@@ -2069,7 +2106,12 @@ Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
     z-index: 100000;
 }
 .tipsy-inner {
-    background-color: #F2F2F2;
+    background-color: #F2F2F2;    
+    background-image:-webkit-gradient(linear,0 0,0 100%,from(#FFFFFF),to(#F2F2F2));  
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);
+    background-image:-o-linear-gradient(top,#FFFFFF,#F2F2F2);
+    background-image:-ms-linear-gradient(top,#FFFFFF,#F2F2F2);
+    background-image:linear-gradient(top,#FFFFFF,#F2F2F2);
     border: 1px solid darkgray;
     max-width: 200px;
     padding: 5px 8px 4px;
