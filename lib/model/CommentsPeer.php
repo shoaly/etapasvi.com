@@ -294,7 +294,7 @@ class CommentsPeer extends BaseCommentsPeer
 			    $action = 'show';
 			}
 
-			if (!$parameters['id']) {
+			if (empty($parameters['id'])) {
 		  		$parameters  = array('id' => $sf_context->getRequest()->getParameter('id'));
 			}
 		}

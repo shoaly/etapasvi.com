@@ -12,6 +12,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   const ITEM_TYPE_PHOTO 	 = 4;
   //const ITEM_TYPE_MAIL 	     = 5;
   const ITEM_TYPE_AUDIO	     = 5;
+  const ITEM_TYPE_DOCUMENTS	 = 6;
   
   // названия элементов
   const ITEM_TYPE_NAME_NEWS  	  = 'News';
@@ -19,6 +20,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   const ITEM_TYPE_NAME_VIDEO 	  = 'Video';
   const ITEM_TYPE_NAME_PHOTO 	  = 'Photo';
   const ITEM_TYPE_NAME_AUDIO 	  = 'Audio';
+  const ITEM_TYPE_NAME_DOCUMENTS  = 'Documents';
   
   // Названия элементов
   static $item_type_names 	    = array(
@@ -27,6 +29,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	self::ITEM_TYPE_VIDEO      => self::ITEM_TYPE_NAME_VIDEO,
   	self::ITEM_TYPE_PHOTO      => self::ITEM_TYPE_NAME_PHOTO,
   	self::ITEM_TYPE_AUDIO      => self::ITEM_TYPE_NAME_AUDIO,
+  	self::ITEM_TYPE_DOCUMENTS  => self::ITEM_TYPE_NAME_DOCUMENTS,
   );
   
   /**

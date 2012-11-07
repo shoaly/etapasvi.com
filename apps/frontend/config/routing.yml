@@ -296,6 +296,19 @@ audio_show:
   url:   /:sf_culture/audio/show
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
+documents_index:
+  url:   /:sf_culture/documents/index
+  param: { module: documents, action: index }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+documents:
+  url:   /:sf_culture/documents/index
+  param: { module: documents, action: index }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+
+audio_show:
+  url:   /:sf_culture/audio/show
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+  
 donation:
   url:   /:sf_culture/donation
   param: { module: donation, action: show }

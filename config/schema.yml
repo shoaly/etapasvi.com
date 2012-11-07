@@ -180,3 +180,26 @@ propel:
     body:             { type: longvarchar }
     _indexes:
       main:          [page_mnemonic, show]
+      
+  documents:
+    id:               ~
+    created_at:       ~
+    updated_at:       ~
+    news_id:          ~
+    show:             { type: boolean, defaultValue: true }
+    file:             { type: varchar(255), required: true }
+    size:             { type: float }
+    order:            { type: integer, required: true, index: true }
+    _indexes:
+      updated_at:     [updated_at]
+      show:           [show]
+    _uniques:
+      file:           [file]
+    
+  documents_i18n:
+    updated_at_extra: ~
+    title:            { type: longvarchar }
+# not used
+    body:             { type: longvarchar }
+    _indexes:
+      updated_at_extra:     [updated_at_extra]

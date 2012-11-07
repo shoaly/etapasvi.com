@@ -68,6 +68,7 @@
 	      <?php /*<li><?php echo link_to('Timezones', 'timezone/index') ?></li>	*/ ?>
 	      <li><?php echo link_to('Quote', 'quote/index') ?></li>	
 	      <li><?php echo link_to('Audio', 'audio/index') ?></li>
+	      <li><?php echo link_to('Documents', 'documents/index') ?></li>
 	      <?php /*<li><?php echo link_to('Mail', 'mail/index') ?></li>*/ ?>
 	      <li><?php echo link_to('Upload', 'upload/index') ?></li>	
 	       <?php /*<li><?php echo link_to('Subscribe', 'subscribe/index') ?></li>	*/ ?>

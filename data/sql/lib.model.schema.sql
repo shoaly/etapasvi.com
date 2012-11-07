@@ -413,5 +413,55 @@ CREATE TABLE `revisionhistory`
 	KEY `main`(`page_mnemonic`, `show`)
 )Type=MyISAM;
 
+#-----------------------------------------------------------------------------
+#-- documents
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `documents`;
+
+
+CREATE TABLE `documents`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	`news_id` INTEGER,
+	`show` TINYINT default 1,
+	`file` VARCHAR(255)  NOT NULL,
+	`size` FLOAT,
+	`order` INTEGER  NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `file` (`file`),
+	KEY `documents_I_1`(`order`),
+	KEY `updated_at`(`updated_at`),
+	KEY `show`(`show`),
+	INDEX `documents_FI_1` (`news_id`),
+	CONSTRAINT `documents_FK_1`
+		FOREIGN KEY (`news_id`)
+		REFERENCES `news` (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- documents_i18n
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `documents_i18n`;
+
+
+CREATE TABLE `documents_i18n`
+(
+	`updated_at_extra` DATETIME,
+	`title` TEXT,
+	`body` TEXT,
+	`id` INTEGER  NOT NULL,
+	`culture` VARCHAR(7)  NOT NULL,
+	PRIMARY KEY (`id`,`culture`),
+	KEY `updated_at_extra`(`updated_at_extra`),
+	CONSTRAINT `documents_i18n_FK_1`
+		FOREIGN KEY (`id`)
+		REFERENCES `documents` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

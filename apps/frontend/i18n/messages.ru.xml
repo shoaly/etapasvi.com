@@ -139,6 +139,10 @@
         <target>Аудио</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Documents</source>
+        <target>Документы</target>
+      </trans-unit>
+      <trans-unit id="1">
         <source>Dharmic Forest</source>
         <target>Лес Дхармы</target>
       </trans-unit>

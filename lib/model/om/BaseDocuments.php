@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base class that represents a row from the 'news' table.
+ * Base class that represents a row from the 'documents' table.
  *
  * 
  *
@@ -10,14 +10,14 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseNews extends BaseObject  implements Persistent {
+abstract class BaseDocuments extends BaseObject  implements Persistent {
 
 
 	/**
 	 * The Peer class.
 	 * Instance provides a convenient way of calling static methods on a class
 	 * that calling code may not be able to identify.
-	 * @var        NewsPeer
+	 * @var        DocumentsPeer
 	 */
 	protected static $peer;
 
@@ -28,16 +28,22 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	protected $id;
 
 	/**
-	 * The value for the date field.
+	 * The value for the created_at field.
 	 * @var        string
 	 */
-	protected $date;
+	protected $created_at;
 
 	/**
 	 * The value for the updated_at field.
 	 * @var        string
 	 */
 	protected $updated_at;
+
+	/**
+	 * The value for the news_id field.
+	 * @var        int
+	 */
+	protected $news_id;
 
 	/**
 	 * The value for the show field.
@@ -47,66 +53,37 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	protected $show;
 
 	/**
+	 * The value for the file field.
+	 * @var        string
+	 */
+	protected $file;
+
+	/**
+	 * The value for the size field.
+	 * @var        double
+	 */
+	protected $size;
+
+	/**
 	 * The value for the order field.
 	 * @var        int
 	 */
 	protected $order;
 
 	/**
-	 * The value for the img field.
-	 * @var        string
+	 * @var        News
 	 */
-	protected $img;
+	protected $aNews;
 
 	/**
-	 * The value for the full_path field.
-	 * @var        string
+	 * @var        array DocumentsI18n[] Collection to store aggregation of DocumentsI18n objects.
 	 */
-	protected $full_path;
+	protected $collDocumentsI18ns;
 
 	/**
-	 * The value for the thumb_path field.
-	 * @var        string
+	 * @var        Criteria The criteria used to select the current contents of collDocumentsI18ns.
 	 */
-	protected $thumb_path;
-
-	/**
-	 * The value for the original field.
-	 * @var        string
-	 */
-	protected $original;
-
-	/**
-	 * The value for the type field.
-	 * Note: this column has a database default value of: 1
-	 * @var        int
-	 */
-	protected $type;
-
-	/**
-	 * @var        Newstypes
-	 */
-	protected $aNewstypes;
-
-	/**
-	 * @var        array NewsI18n[] Collection to store aggregation of NewsI18n objects.
-	 */
-	protected $collNewsI18ns;
-
-	/**
-	 * @var        Criteria The criteria used to select the current contents of collNewsI18ns.
-	 */
-	private $lastNewsI18nCriteria = null;
-
-	/**
-	 * @var        array Documents[] Collection to store aggregation of Documents objects.
-	 */
-	protected $collDocumentss;
-
-	/**
-	 * @var        Criteria The criteria used to select the current contents of collDocumentss.
-	 */
-	private $lastDocumentsCriteria = null;
+	private $lastDocumentsI18nCriteria = null;
 
 	/**
 	 * Flag to prevent endless save loop, if this object is referenced
@@ -124,7 +101,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 
 	// symfony behavior
 	
-	const PEER = 'NewsPeer';
+	const PEER = 'DocumentsPeer';
 
 	// symfony_i18n behavior
 	
@@ -147,11 +124,10 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	public function applyDefaultValues()
 	{
 		$this->show = true;
-		$this->type = 1;
 	}
 
 	/**
-	 * Initializes internal state of BaseNews object.
+	 * Initializes internal state of BaseDocuments object.
 	 * @see        applyDefaults()
 	 */
 	public function __construct()
@@ -171,30 +147,30 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Get the [optionally formatted] temporal [date] column value.
+	 * Get the [optionally formatted] temporal [created_at] column value.
 	 * 
 	 *
 	 * @param      string $format The date/time format string (either date()-style or strftime()-style).
 	 *							If format is NULL, then the raw DateTime object will be returned.
-	 * @return     mixed Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00
+	 * @return     mixed Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
 	 * @throws     PropelException - if unable to parse/validate the date/time value.
 	 */
-	public function getDate($format = 'Y-m-d')
+	public function getCreatedAt($format = 'Y-m-d H:i:s')
 	{
-		if ($this->date === null) {
+		if ($this->created_at === null) {
 			return null;
 		}
 
 
-		if ($this->date === '0000-00-00') {
+		if ($this->created_at === '0000-00-00 00:00:00') {
 			// while technically this is not a default value of NULL,
 			// this seems to be closest in meaning.
 			return null;
 		} else {
 			try {
-				$dt = new DateTime($this->date);
+				$dt = new DateTime($this->created_at);
 			} catch (Exception $x) {
-				throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->date, true), $x);
+				throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->created_at, true), $x);
 			}
 		}
 
@@ -247,6 +223,16 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	}
 
 	/**
+	 * Get the [news_id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getNewsId()
+	{
+		return $this->news_id;
+	}
+
+	/**
 	 * Get the [show] column value.
 	 * 
 	 * @return     boolean
@@ -254,6 +240,26 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	public function getShow()
 	{
 		return $this->show;
+	}
+
+	/**
+	 * Get the [file] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getFile()
+	{
+		return $this->file;
+	}
+
+	/**
+	 * Get the [size] column value.
+	 * 
+	 * @return     double
+	 */
+	public function getSize()
+	{
+		return $this->size;
 	}
 
 	/**
@@ -267,60 +273,10 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Get the [img] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getImg()
-	{
-		return $this->img;
-	}
-
-	/**
-	 * Get the [full_path] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getFullPath()
-	{
-		return $this->full_path;
-	}
-
-	/**
-	 * Get the [thumb_path] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getThumbPath()
-	{
-		return $this->thumb_path;
-	}
-
-	/**
-	 * Get the [original] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getOriginal()
-	{
-		return $this->original;
-	}
-
-	/**
-	 * Get the [type] column value.
-	 * 
-	 * @return     int
-	 */
-	public function getType()
-	{
-		return $this->type;
-	}
-
-	/**
 	 * Set the value of [id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     News The current object (for fluent API support)
+	 * @return     Documents The current object (for fluent API support)
 	 */
 	public function setId($v)
 	{
@@ -331,7 +287,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		if ($this->id !== $v) {
 			if ($this->id === null && $v === '') {
 			} else {
-			  $this->modifiedColumns[] = NewsPeer::ID;
+			  $this->modifiedColumns[] = DocumentsPeer::ID;
 			}
 			$this->id = $v;
 		}
@@ -340,13 +296,13 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	} // setId()
 
 	/**
-	 * Sets the value of [date] column to a normalized version of the date/time value specified.
+	 * Sets the value of [created_at] column to a normalized version of the date/time value specified.
 	 * 
 	 * @param      mixed $v string, integer (timestamp), or DateTime value.  Empty string will
 	 *						be treated as NULL for temporal objects.
-	 * @return     News The current object (for fluent API support)
+	 * @return     Documents The current object (for fluent API support)
 	 */
-	public function setDate($v)
+	public function setCreatedAt($v)
 	{
 		// we treat '' as NULL for temporal objects because DateTime('') == DateTime('now')
 		// -- which is unexpected, to say the least.
@@ -371,29 +327,29 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			}
 		}
 
-		if ( $this->date !== null || $dt !== null ) {
+		if ( $this->created_at !== null || $dt !== null ) {
 			// (nested ifs are a little easier to read in this case)
 
-			$currNorm = ($this->date !== null && $tmpDt = new DateTime($this->date)) ? $tmpDt->format('Y-m-d') : null;
-			$newNorm = ($dt !== null) ? $dt->format('Y-m-d') : null;
+			$currNorm = ($this->created_at !== null && $tmpDt = new DateTime($this->created_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
+			$newNorm = ($dt !== null) ? $dt->format('Y-m-d H:i:s') : null;
 
 			if ( ($currNorm !== $newNorm) // normalized values don't match 
 					)
 			{
-				$this->date = ($dt ? $dt->format('Y-m-d') : null);
-				$this->modifiedColumns[] = NewsPeer::DATE;
+				$this->created_at = ($dt ? $dt->format('Y-m-d H:i:s') : null);
+				$this->modifiedColumns[] = DocumentsPeer::CREATED_AT;
 			}
 		} // if either are not null
 
 		return $this;
-	} // setDate()
+	} // setCreatedAt()
 
 	/**
 	 * Sets the value of [updated_at] column to a normalized version of the date/time value specified.
 	 * 
 	 * @param      mixed $v string, integer (timestamp), or DateTime value.  Empty string will
 	 *						be treated as NULL for temporal objects.
-	 * @return     News The current object (for fluent API support)
+	 * @return     Documents The current object (for fluent API support)
 	 */
 	public function setUpdatedAt($v)
 	{
@@ -430,7 +386,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 					)
 			{
 				$this->updated_at = ($dt ? $dt->format('Y-m-d H:i:s') : null);
-				$this->modifiedColumns[] = NewsPeer::UPDATED_AT;
+				$this->modifiedColumns[] = DocumentsPeer::UPDATED_AT;
 			}
 		} // if either are not null
 
@@ -438,10 +394,37 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	} // setUpdatedAt()
 
 	/**
+	 * Set the value of [news_id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Documents The current object (for fluent API support)
+	 */
+	public function setNewsId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->news_id !== $v) {
+			if ($this->news_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = DocumentsPeer::NEWS_ID;
+			}
+			$this->news_id = $v;
+		}
+
+		if ($this->aNews !== null && $this->aNews->getId() !== $v) {
+			$this->aNews = null;
+		}
+
+		return $this;
+	} // setNewsId()
+
+	/**
 	 * Set the value of [show] column.
 	 * 
 	 * @param      boolean $v new value
-	 * @return     News The current object (for fluent API support)
+	 * @return     Documents The current object (for fluent API support)
 	 */
 	public function setShow($v)
 	{
@@ -452,7 +435,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		if ($this->show !== $v || $this->isNew()) {
 			if ($this->show === null && $v === '') {
 			} else {
-			  $this->modifiedColumns[] = NewsPeer::SHOW;
+			  $this->modifiedColumns[] = DocumentsPeer::SHOW;
 			}
 			$this->show = $v;
 		}
@@ -461,10 +444,56 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	} // setShow()
 
 	/**
+	 * Set the value of [file] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Documents The current object (for fluent API support)
+	 */
+	public function setFile($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->file !== $v) {
+			if ($this->file === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = DocumentsPeer::FILE;
+			}
+			$this->file = $v;
+		}
+
+		return $this;
+	} // setFile()
+
+	/**
+	 * Set the value of [size] column.
+	 * 
+	 * @param      double $v new value
+	 * @return     Documents The current object (for fluent API support)
+	 */
+	public function setSize($v)
+	{
+		if ($v !== null) {
+			$v = (double) $v;
+		}
+
+		if ($this->size !== $v) {
+			if ($this->size === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = DocumentsPeer::SIZE;
+			}
+			$this->size = $v;
+		}
+
+		return $this;
+	} // setSize()
+
+	/**
 	 * Set the value of [order] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     News The current object (for fluent API support)
+	 * @return     Documents The current object (for fluent API support)
 	 */
 	public function setOrder($v)
 	{
@@ -475,132 +504,13 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		if ($this->order !== $v) {
 			if ($this->order === null && $v === '') {
 			} else {
-			  $this->modifiedColumns[] = NewsPeer::ORDER;
+			  $this->modifiedColumns[] = DocumentsPeer::ORDER;
 			}
 			$this->order = $v;
 		}
 
 		return $this;
 	} // setOrder()
-
-	/**
-	 * Set the value of [img] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     News The current object (for fluent API support)
-	 */
-	public function setImg($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->img !== $v) {
-			if ($this->img === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsPeer::IMG;
-			}
-			$this->img = $v;
-		}
-
-		return $this;
-	} // setImg()
-
-	/**
-	 * Set the value of [full_path] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     News The current object (for fluent API support)
-	 */
-	public function setFullPath($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->full_path !== $v) {
-			if ($this->full_path === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsPeer::FULL_PATH;
-			}
-			$this->full_path = $v;
-		}
-
-		return $this;
-	} // setFullPath()
-
-	/**
-	 * Set the value of [thumb_path] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     News The current object (for fluent API support)
-	 */
-	public function setThumbPath($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->thumb_path !== $v) {
-			if ($this->thumb_path === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsPeer::THUMB_PATH;
-			}
-			$this->thumb_path = $v;
-		}
-
-		return $this;
-	} // setThumbPath()
-
-	/**
-	 * Set the value of [original] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     News The current object (for fluent API support)
-	 */
-	public function setOriginal($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->original !== $v) {
-			if ($this->original === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsPeer::ORIGINAL;
-			}
-			$this->original = $v;
-		}
-
-		return $this;
-	} // setOriginal()
-
-	/**
-	 * Set the value of [type] column.
-	 * 
-	 * @param      int $v new value
-	 * @return     News The current object (for fluent API support)
-	 */
-	public function setType($v)
-	{
-		if ($v !== null) {
-			$v = (int) $v;
-		}
-
-		if ($this->type !== $v || $this->isNew()) {
-			if ($this->type === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsPeer::TYPE;
-			}
-			$this->type = $v;
-		}
-
-		if ($this->aNewstypes !== null && $this->aNewstypes->getId() !== $v) {
-			$this->aNewstypes = null;
-		}
-
-		return $this;
-	} // setType()
 
 	/**
 	 * Indicates whether the columns in this object are only set to default values.
@@ -613,10 +523,6 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	public function hasOnlyDefaultValues()
 	{
 			if ($this->show !== true) {
-				return false;
-			}
-
-			if ($this->type !== 1) {
 				return false;
 			}
 
@@ -643,15 +549,13 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		try {
 
 			$this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
-			$this->date = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
+			$this->created_at = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
 			$this->updated_at = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
-			$this->show = ($row[$startcol + 3] !== null) ? (boolean) $row[$startcol + 3] : null;
-			$this->order = ($row[$startcol + 4] !== null) ? (int) $row[$startcol + 4] : null;
-			$this->img = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
-			$this->full_path = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
-			$this->thumb_path = ($row[$startcol + 7] !== null) ? (string) $row[$startcol + 7] : null;
-			$this->original = ($row[$startcol + 8] !== null) ? (string) $row[$startcol + 8] : null;
-			$this->type = ($row[$startcol + 9] !== null) ? (int) $row[$startcol + 9] : null;
+			$this->news_id = ($row[$startcol + 3] !== null) ? (int) $row[$startcol + 3] : null;
+			$this->show = ($row[$startcol + 4] !== null) ? (boolean) $row[$startcol + 4] : null;
+			$this->file = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
+			$this->size = ($row[$startcol + 6] !== null) ? (double) $row[$startcol + 6] : null;
+			$this->order = ($row[$startcol + 7] !== null) ? (int) $row[$startcol + 7] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -661,10 +565,10 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 10; // 10 = NewsPeer::NUM_COLUMNS - NewsPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 8; // 8 = DocumentsPeer::NUM_COLUMNS - DocumentsPeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating News object", $e);
+			throw new PropelException("Error populating Documents object", $e);
 		}
 	}
 
@@ -684,8 +588,8 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	public function ensureConsistency()
 	{
 
-		if ($this->aNewstypes !== null && $this->type !== $this->aNewstypes->getId()) {
-			$this->aNewstypes = null;
+		if ($this->aNews !== null && $this->news_id !== $this->aNews->getId()) {
+			$this->aNews = null;
 		}
 	} // ensureConsistency
 
@@ -710,13 +614,13 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(NewsPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(DocumentsPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		// We don't need to alter the object instance pool; we're just modifying this instance
 		// already in the pool.
 
-		$stmt = NewsPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+		$stmt = DocumentsPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
 		$row = $stmt->fetch(PDO::FETCH_NUM);
 		$stmt->closeCursor();
 		if (!$row) {
@@ -726,12 +630,9 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 
 		if ($deep) {  // also de-associate any related objects?
 
-			$this->aNewstypes = null;
-			$this->collNewsI18ns = null;
-			$this->lastNewsI18nCriteria = null;
-
-			$this->collDocumentss = null;
-			$this->lastDocumentsCriteria = null;
+			$this->aNews = null;
+			$this->collDocumentsI18ns = null;
+			$this->lastDocumentsI18nCriteria = null;
 
 		} // if (deep)
 	}
@@ -752,14 +653,14 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(NewsPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(DocumentsPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
 			$ret = $this->preDelete($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseNews:delete:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseDocuments:delete:pre') as $callable)
 			{
 			  if (call_user_func($callable, $this, $con))
 			  {
@@ -770,10 +671,10 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			}
 
 			if ($ret) {
-				NewsPeer::doDelete($this, $con);
+				DocumentsPeer::doDelete($this, $con);
 				$this->postDelete($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseNews:delete:post') as $callable)
+				foreach (sfMixer::getCallables('BaseDocuments:delete:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con);
 				}
@@ -809,7 +710,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(NewsPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(DocumentsPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
@@ -817,7 +718,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		try {
 			$ret = $this->preSave($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseNews:save:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseDocuments:save:pre') as $callable)
 			{
 			  if (is_integer($affectedRows = call_user_func($callable, $this, $con)))
 			  {
@@ -828,14 +729,18 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			}
 
 			// symfony_timestampable behavior
-			if ($this->isModified() && !$this->isColumnModified(NewsPeer::UPDATED_AT) && $this->getChangeUpdatedAt())
+			if ($this->isModified() && !$this->isColumnModified(DocumentsPeer::UPDATED_AT) && $this->getChangeUpdatedAt())
 			{
 			  $this->setUpdatedAt(time());
 			}
 			if ($isInsert) {
 				$ret = $ret && $this->preInsert($con);
 				// symfony_timestampable behavior
-				
+				if (!$this->isColumnModified(DocumentsPeer::CREATED_AT))
+				{
+				  $this->setCreatedAt(time());
+				}
+
 			} else {
 				$ret = $ret && $this->preUpdate($con);
 			}
@@ -848,12 +753,12 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 				}
 				$this->postSave($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseNews:save:post') as $callable)
+				foreach (sfMixer::getCallables('BaseDocuments:save:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con, $affectedRows);
 				}
 
-				NewsPeer::addInstanceToPool($this);
+				DocumentsPeer::addInstanceToPool($this);
 			} else {
 				$affectedRows = 0;
 			}
@@ -887,15 +792,15 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			// method.  This object relates to these object(s) by a
 			// foreign key reference.
 
-			if ($this->aNewstypes !== null) {
-				if ($this->aNewstypes->isModified() || $this->aNewstypes->isNew()) {
-					$affectedRows += $this->aNewstypes->save($con);
+			if ($this->aNews !== null) {
+				if ($this->aNews->isModified() || $this->aNews->isNew()) {
+					$affectedRows += $this->aNews->save($con);
 				}
-				$this->setNewstypes($this->aNewstypes);
+				$this->setNews($this->aNews);
 			}
 
 			if ($this->isNew() ) {
-				$this->modifiedColumns[] = NewsPeer::ID;
+				$this->modifiedColumns[] = DocumentsPeer::ID;
 			}
 
 			// If this object has been modified, then save it to the database.
@@ -931,7 +836,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 						}
 					}
 					if ($has_non_empty_fields || ($only_service_fields_modified && !$is_i18n)) {
-						$pk = NewsPeer::doInsert($this, $con);
+						$pk = DocumentsPeer::doInsert($this, $con);
 						$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically
 										 // BasePeer::doInsert() can insert multiple rows).
@@ -941,22 +846,14 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 						$this->setNew(false);
 					}
 				} else {
-					$affectedRows += NewsPeer::doUpdate($this, $con);
+					$affectedRows += DocumentsPeer::doUpdate($this, $con);
 				}
 
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
 			}
 
-			if ($this->collNewsI18ns !== null) {
-				foreach ($this->collNewsI18ns as $referrerFK) {
-					if (!$referrerFK->isDeleted()) {
-						$affectedRows += $referrerFK->save($con);
-					}
-				}
-			}
-
-			if ($this->collDocumentss !== null) {
-				foreach ($this->collDocumentss as $referrerFK) {
+			if ($this->collDocumentsI18ns !== null) {
+				foreach ($this->collDocumentsI18ns as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -1034,28 +931,20 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			// method.  This object relates to these object(s) by a
 			// foreign key reference.
 
-			if ($this->aNewstypes !== null) {
-				if (!$this->aNewstypes->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aNewstypes->getValidationFailures());
+			if ($this->aNews !== null) {
+				if (!$this->aNews->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aNews->getValidationFailures());
 				}
 			}
 
 
-			if (($retval = NewsPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = DocumentsPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
 
-				if ($this->collNewsI18ns !== null) {
-					foreach ($this->collNewsI18ns as $referrerFK) {
-						if (!$referrerFK->validate($columns)) {
-							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
-						}
-					}
-				}
-
-				if ($this->collDocumentss !== null) {
-					foreach ($this->collDocumentss as $referrerFK) {
+				if ($this->collDocumentsI18ns !== null) {
+					foreach ($this->collDocumentsI18ns as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -1080,7 +969,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = NewsPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = DocumentsPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		$field = $this->getByPosition($pos);
 		return $field;
 	}
@@ -1099,31 +988,25 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 				return $this->getId();
 				break;
 			case 1:
-				return $this->getDate();
+				return $this->getCreatedAt();
 				break;
 			case 2:
 				return $this->getUpdatedAt();
 				break;
 			case 3:
-				return $this->getShow();
+				return $this->getNewsId();
 				break;
 			case 4:
-				return $this->getOrder();
+				return $this->getShow();
 				break;
 			case 5:
-				return $this->getImg();
+				return $this->getFile();
 				break;
 			case 6:
-				return $this->getFullPath();
+				return $this->getSize();
 				break;
 			case 7:
-				return $this->getThumbPath();
-				break;
-			case 8:
-				return $this->getOriginal();
-				break;
-			case 9:
-				return $this->getType();
+				return $this->getOrder();
 				break;
 			default:
 				return null;
@@ -1144,18 +1027,16 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
 	{
-		$keys = NewsPeer::getFieldNames($keyType);
+		$keys = DocumentsPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
-			$keys[1] => $this->getDate(),
+			$keys[1] => $this->getCreatedAt(),
 			$keys[2] => $this->getUpdatedAt(),
-			$keys[3] => $this->getShow(),
-			$keys[4] => $this->getOrder(),
-			$keys[5] => $this->getImg(),
-			$keys[6] => $this->getFullPath(),
-			$keys[7] => $this->getThumbPath(),
-			$keys[8] => $this->getOriginal(),
-			$keys[9] => $this->getType(),
+			$keys[3] => $this->getNewsId(),
+			$keys[4] => $this->getShow(),
+			$keys[5] => $this->getFile(),
+			$keys[6] => $this->getSize(),
+			$keys[7] => $this->getOrder(),
 		);
 		return $result;
 	}
@@ -1172,7 +1053,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = NewsPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = DocumentsPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -1191,31 +1072,25 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 				$this->setId($value);
 				break;
 			case 1:
-				$this->setDate($value);
+				$this->setCreatedAt($value);
 				break;
 			case 2:
 				$this->setUpdatedAt($value);
 				break;
 			case 3:
-				$this->setShow($value);
+				$this->setNewsId($value);
 				break;
 			case 4:
-				$this->setOrder($value);
+				$this->setShow($value);
 				break;
 			case 5:
-				$this->setImg($value);
+				$this->setFile($value);
 				break;
 			case 6:
-				$this->setFullPath($value);
+				$this->setSize($value);
 				break;
 			case 7:
-				$this->setThumbPath($value);
-				break;
-			case 8:
-				$this->setOriginal($value);
-				break;
-			case 9:
-				$this->setType($value);
+				$this->setOrder($value);
 				break;
 		} // switch()
 	}
@@ -1239,18 +1114,16 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = NewsPeer::getFieldNames($keyType);
+		$keys = DocumentsPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setDate($arr[$keys[1]]);
+		if (array_key_exists($keys[1], $arr)) $this->setCreatedAt($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setUpdatedAt($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setShow($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setOrder($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setImg($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setFullPath($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setThumbPath($arr[$keys[7]]);
-		if (array_key_exists($keys[8], $arr)) $this->setOriginal($arr[$keys[8]]);
-		if (array_key_exists($keys[9], $arr)) $this->setType($arr[$keys[9]]);
+		if (array_key_exists($keys[3], $arr)) $this->setNewsId($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setShow($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setFile($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setSize($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setOrder($arr[$keys[7]]);
 	}
 
 	/**
@@ -1260,18 +1133,16 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(NewsPeer::DATABASE_NAME);
+		$criteria = new Criteria(DocumentsPeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(NewsPeer::ID)) $criteria->add(NewsPeer::ID, $this->id);
-		if ($this->isColumnModified(NewsPeer::DATE)) $criteria->add(NewsPeer::DATE, $this->date);
-		if ($this->isColumnModified(NewsPeer::UPDATED_AT)) $criteria->add(NewsPeer::UPDATED_AT, $this->updated_at);
-		if ($this->isColumnModified(NewsPeer::SHOW)) $criteria->add(NewsPeer::SHOW, $this->show);
-		if ($this->isColumnModified(NewsPeer::ORDER)) $criteria->add(NewsPeer::ORDER, $this->order);
-		if ($this->isColumnModified(NewsPeer::IMG)) $criteria->add(NewsPeer::IMG, $this->img);
-		if ($this->isColumnModified(NewsPeer::FULL_PATH)) $criteria->add(NewsPeer::FULL_PATH, $this->full_path);
-		if ($this->isColumnModified(NewsPeer::THUMB_PATH)) $criteria->add(NewsPeer::THUMB_PATH, $this->thumb_path);
-		if ($this->isColumnModified(NewsPeer::ORIGINAL)) $criteria->add(NewsPeer::ORIGINAL, $this->original);
-		if ($this->isColumnModified(NewsPeer::TYPE)) $criteria->add(NewsPeer::TYPE, $this->type);
+		if ($this->isColumnModified(DocumentsPeer::ID)) $criteria->add(DocumentsPeer::ID, $this->id);
+		if ($this->isColumnModified(DocumentsPeer::CREATED_AT)) $criteria->add(DocumentsPeer::CREATED_AT, $this->created_at);
+		if ($this->isColumnModified(DocumentsPeer::UPDATED_AT)) $criteria->add(DocumentsPeer::UPDATED_AT, $this->updated_at);
+		if ($this->isColumnModified(DocumentsPeer::NEWS_ID)) $criteria->add(DocumentsPeer::NEWS_ID, $this->news_id);
+		if ($this->isColumnModified(DocumentsPeer::SHOW)) $criteria->add(DocumentsPeer::SHOW, $this->show);
+		if ($this->isColumnModified(DocumentsPeer::FILE)) $criteria->add(DocumentsPeer::FILE, $this->file);
+		if ($this->isColumnModified(DocumentsPeer::SIZE)) $criteria->add(DocumentsPeer::SIZE, $this->size);
+		if ($this->isColumnModified(DocumentsPeer::ORDER)) $criteria->add(DocumentsPeer::ORDER, $this->order);
 
 		return $criteria;
 	}
@@ -1286,9 +1157,9 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(NewsPeer::DATABASE_NAME);
+		$criteria = new Criteria(DocumentsPeer::DATABASE_NAME);
 
-		$criteria->add(NewsPeer::ID, $this->id);
+		$criteria->add(DocumentsPeer::ID, $this->id);
 
 		return $criteria;
 	}
@@ -1319,30 +1190,26 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 * If desired, this method can also make copies of all associated (fkey referrers)
 	 * objects.
 	 *
-	 * @param      object $copyObj An object of News (or compatible) type.
+	 * @param      object $copyObj An object of Documents (or compatible) type.
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
 	 * @throws     PropelException
 	 */
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setDate($this->date);
+		$copyObj->setCreatedAt($this->created_at);
 
 		$copyObj->setUpdatedAt($this->updated_at);
 
+		$copyObj->setNewsId($this->news_id);
+
 		$copyObj->setShow($this->show);
 
+		$copyObj->setFile($this->file);
+
+		$copyObj->setSize($this->size);
+
 		$copyObj->setOrder($this->order);
-
-		$copyObj->setImg($this->img);
-
-		$copyObj->setFullPath($this->full_path);
-
-		$copyObj->setThumbPath($this->thumb_path);
-
-		$copyObj->setOriginal($this->original);
-
-		$copyObj->setType($this->type);
 
 
 		if ($deepCopy) {
@@ -1350,15 +1217,9 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			// the getter/setter methods for fkey referrer objects.
 			$copyObj->setNew(false);
 
-			foreach ($this->getNewsI18ns() as $relObj) {
+			foreach ($this->getDocumentsI18ns() as $relObj) {
 				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
-					$copyObj->addNewsI18n($relObj->copy($deepCopy));
-				}
-			}
-
-			foreach ($this->getDocumentss() as $relObj) {
-				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
-					$copyObj->addDocuments($relObj->copy($deepCopy));
+					$copyObj->addDocumentsI18n($relObj->copy($deepCopy));
 				}
 			}
 
@@ -1380,7 +1241,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 * objects.
 	 *
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-	 * @return     News Clone of current object.
+	 * @return     Documents Clone of current object.
 	 * @throws     PropelException
 	 */
 	public function copy($deepCopy = false)
@@ -1399,37 +1260,37 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 * same instance for all member of this class. The method could therefore
 	 * be static, but this would prevent one from overriding the behavior.
 	 *
-	 * @return     NewsPeer
+	 * @return     DocumentsPeer
 	 */
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new NewsPeer();
+			self::$peer = new DocumentsPeer();
 		}
 		return self::$peer;
 	}
 
 	/**
-	 * Declares an association between this object and a Newstypes object.
+	 * Declares an association between this object and a News object.
 	 *
-	 * @param      Newstypes $v
-	 * @return     News The current object (for fluent API support)
+	 * @param      News $v
+	 * @return     Documents The current object (for fluent API support)
 	 * @throws     PropelException
 	 */
-	public function setNewstypes(Newstypes $v = null)
+	public function setNews(News $v = null)
 	{
 		if ($v === null) {
-			$this->setType(1);
+			$this->setNewsId(NULL);
 		} else {
-			$this->setType($v->getId());
+			$this->setNewsId($v->getId());
 		}
 
-		$this->aNewstypes = $v;
+		$this->aNews = $v;
 
 		// Add binding for other direction of this n:n relationship.
-		// If this object has already been added to the Newstypes object, it will not be re-added.
+		// If this object has already been added to the News object, it will not be re-added.
 		if ($v !== null) {
-			$v->addNews($this);
+			$v->addDocuments($this);
 		}
 
 		return $this;
@@ -1437,87 +1298,87 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 
 
 	/**
-	 * Get the associated Newstypes object
+	 * Get the associated News object
 	 *
 	 * @param      PropelPDO Optional Connection object.
-	 * @return     Newstypes The associated Newstypes object.
+	 * @return     News The associated News object.
 	 * @throws     PropelException
 	 */
-	public function getNewstypes(PropelPDO $con = null)
+	public function getNews(PropelPDO $con = null)
 	{
-		if ($this->aNewstypes === null && ($this->type !== null)) {
-			$this->aNewstypes = NewstypesPeer::retrieveByPk($this->type);
+		if ($this->aNews === null && ($this->news_id !== null)) {
+			$this->aNews = NewsPeer::retrieveByPk($this->news_id);
 			/* The following can be used additionally to
 			   guarantee the related object contains a reference
 			   to this object.  This level of coupling may, however, be
 			   undesirable since it could result in an only partially populated collection
 			   in the referenced object.
-			   $this->aNewstypes->addNewss($this);
+			   $this->aNews->addDocumentss($this);
 			 */
 		}
-		return $this->aNewstypes;
+		return $this->aNews;
 	}
 
 	/**
-	 * Clears out the collNewsI18ns collection (array).
+	 * Clears out the collDocumentsI18ns collection (array).
 	 *
 	 * This does not modify the database; however, it will remove any associated objects, causing
 	 * them to be refetched by subsequent calls to accessor method.
 	 *
 	 * @return     void
-	 * @see        addNewsI18ns()
+	 * @see        addDocumentsI18ns()
 	 */
-	public function clearNewsI18ns()
+	public function clearDocumentsI18ns()
 	{
-		$this->collNewsI18ns = null; // important to set this to NULL since that means it is uninitialized
+		$this->collDocumentsI18ns = null; // important to set this to NULL since that means it is uninitialized
 	}
 
 	/**
-	 * Initializes the collNewsI18ns collection (array).
+	 * Initializes the collDocumentsI18ns collection (array).
 	 *
-	 * By default this just sets the collNewsI18ns collection to an empty array (like clearcollNewsI18ns());
+	 * By default this just sets the collDocumentsI18ns collection to an empty array (like clearcollDocumentsI18ns());
 	 * however, you may wish to override this method in your stub class to provide setting appropriate
 	 * to your application -- for example, setting the initial array to the values stored in database.
 	 *
 	 * @return     void
 	 */
-	public function initNewsI18ns()
+	public function initDocumentsI18ns()
 	{
-		$this->collNewsI18ns = array();
+		$this->collDocumentsI18ns = array();
 	}
 
 	/**
-	 * Gets an array of NewsI18n objects which contain a foreign key that references this object.
+	 * Gets an array of DocumentsI18n objects which contain a foreign key that references this object.
 	 *
 	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
-	 * Otherwise if this News has previously been saved, it will retrieve
-	 * related NewsI18ns from storage. If this News is new, it will return
+	 * Otherwise if this Documents has previously been saved, it will retrieve
+	 * related DocumentsI18ns from storage. If this Documents is new, it will return
 	 * an empty collection or the current collection, the criteria is ignored on a new object.
 	 *
 	 * @param      PropelPDO $con
 	 * @param      Criteria $criteria
-	 * @return     array NewsI18n[]
+	 * @return     array DocumentsI18n[]
 	 * @throws     PropelException
 	 */
-	public function getNewsI18ns($criteria = null, PropelPDO $con = null)
+	public function getDocumentsI18ns($criteria = null, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(NewsPeer::DATABASE_NAME);
+			$criteria = new Criteria(DocumentsPeer::DATABASE_NAME);
 		}
 		elseif ($criteria instanceof Criteria)
 		{
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collNewsI18ns === null) {
+		if ($this->collDocumentsI18ns === null) {
 			if ($this->isNew()) {
-			   $this->collNewsI18ns = array();
+			   $this->collDocumentsI18ns = array();
 			} else {
 
-				$criteria->add(NewsI18nPeer::ID, $this->id);
+				$criteria->add(DocumentsI18nPeer::ID, $this->id);
 
-				NewsI18nPeer::addSelectColumns($criteria);
-				$this->collNewsI18ns = NewsI18nPeer::doSelect($criteria, $con);
+				DocumentsI18nPeer::addSelectColumns($criteria);
+				$this->collDocumentsI18ns = DocumentsI18nPeer::doSelect($criteria, $con);
 			}
 		} else {
 			// criteria has no effect for a new object
@@ -1527,31 +1388,31 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 				// one, just return the collection.
 
 
-				$criteria->add(NewsI18nPeer::ID, $this->id);
+				$criteria->add(DocumentsI18nPeer::ID, $this->id);
 
-				NewsI18nPeer::addSelectColumns($criteria);
-				if (!isset($this->lastNewsI18nCriteria) || !$this->lastNewsI18nCriteria->equals($criteria)) {
-					$this->collNewsI18ns = NewsI18nPeer::doSelect($criteria, $con);
+				DocumentsI18nPeer::addSelectColumns($criteria);
+				if (!isset($this->lastDocumentsI18nCriteria) || !$this->lastDocumentsI18nCriteria->equals($criteria)) {
+					$this->collDocumentsI18ns = DocumentsI18nPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastNewsI18nCriteria = $criteria;
-		return $this->collNewsI18ns;
+		$this->lastDocumentsI18nCriteria = $criteria;
+		return $this->collDocumentsI18ns;
 	}
 
 	/**
-	 * Returns the number of related NewsI18n objects.
+	 * Returns the number of related DocumentsI18n objects.
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct
 	 * @param      PropelPDO $con
-	 * @return     int Count of related NewsI18n objects.
+	 * @return     int Count of related DocumentsI18n objects.
 	 * @throws     PropelException
 	 */
-	public function countNewsI18ns(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	public function countDocumentsI18ns(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(NewsPeer::DATABASE_NAME);
+			$criteria = new Criteria(DocumentsPeer::DATABASE_NAME);
 		} else {
 			$criteria = clone $criteria;
 		}
@@ -1562,14 +1423,14 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 
 		$count = null;
 
-		if ($this->collNewsI18ns === null) {
+		if ($this->collDocumentsI18ns === null) {
 			if ($this->isNew()) {
 				$count = 0;
 			} else {
 
-				$criteria->add(NewsI18nPeer::ID, $this->id);
+				$criteria->add(DocumentsI18nPeer::ID, $this->id);
 
-				$count = NewsI18nPeer::doCount($criteria, false, $con);
+				$count = DocumentsI18nPeer::doCount($criteria, false, $con);
 			}
 		} else {
 			// criteria has no effect for a new object
@@ -1579,190 +1440,36 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 				// one, just return count of the collection.
 
 
-				$criteria->add(NewsI18nPeer::ID, $this->id);
+				$criteria->add(DocumentsI18nPeer::ID, $this->id);
 
-				if (!isset($this->lastNewsI18nCriteria) || !$this->lastNewsI18nCriteria->equals($criteria)) {
-					$count = NewsI18nPeer::doCount($criteria, false, $con);
+				if (!isset($this->lastDocumentsI18nCriteria) || !$this->lastDocumentsI18nCriteria->equals($criteria)) {
+					$count = DocumentsI18nPeer::doCount($criteria, false, $con);
 				} else {
-					$count = count($this->collNewsI18ns);
+					$count = count($this->collDocumentsI18ns);
 				}
 			} else {
-				$count = count($this->collNewsI18ns);
+				$count = count($this->collDocumentsI18ns);
 			}
 		}
 		return $count;
 	}
 
 	/**
-	 * Method called to associate a NewsI18n object to this object
-	 * through the NewsI18n foreign key attribute.
+	 * Method called to associate a DocumentsI18n object to this object
+	 * through the DocumentsI18n foreign key attribute.
 	 *
-	 * @param      NewsI18n $l NewsI18n
+	 * @param      DocumentsI18n $l DocumentsI18n
 	 * @return     void
 	 * @throws     PropelException
 	 */
-	public function addNewsI18n(NewsI18n $l)
+	public function addDocumentsI18n(DocumentsI18n $l)
 	{
-		if ($this->collNewsI18ns === null) {
-			$this->initNewsI18ns();
+		if ($this->collDocumentsI18ns === null) {
+			$this->initDocumentsI18ns();
 		}
-		if (!in_array($l, $this->collNewsI18ns, true)) { // only add it if the **same** object is not already associated
-			array_push($this->collNewsI18ns, $l);
-			$l->setNews($this);
-		}
-	}
-
-	/**
-	 * Clears out the collDocumentss collection (array).
-	 *
-	 * This does not modify the database; however, it will remove any associated objects, causing
-	 * them to be refetched by subsequent calls to accessor method.
-	 *
-	 * @return     void
-	 * @see        addDocumentss()
-	 */
-	public function clearDocumentss()
-	{
-		$this->collDocumentss = null; // important to set this to NULL since that means it is uninitialized
-	}
-
-	/**
-	 * Initializes the collDocumentss collection (array).
-	 *
-	 * By default this just sets the collDocumentss collection to an empty array (like clearcollDocumentss());
-	 * however, you may wish to override this method in your stub class to provide setting appropriate
-	 * to your application -- for example, setting the initial array to the values stored in database.
-	 *
-	 * @return     void
-	 */
-	public function initDocumentss()
-	{
-		$this->collDocumentss = array();
-	}
-
-	/**
-	 * Gets an array of Documents objects which contain a foreign key that references this object.
-	 *
-	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
-	 * Otherwise if this News has previously been saved, it will retrieve
-	 * related Documentss from storage. If this News is new, it will return
-	 * an empty collection or the current collection, the criteria is ignored on a new object.
-	 *
-	 * @param      PropelPDO $con
-	 * @param      Criteria $criteria
-	 * @return     array Documents[]
-	 * @throws     PropelException
-	 */
-	public function getDocumentss($criteria = null, PropelPDO $con = null)
-	{
-		if ($criteria === null) {
-			$criteria = new Criteria(NewsPeer::DATABASE_NAME);
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collDocumentss === null) {
-			if ($this->isNew()) {
-			   $this->collDocumentss = array();
-			} else {
-
-				$criteria->add(DocumentsPeer::NEWS_ID, $this->id);
-
-				DocumentsPeer::addSelectColumns($criteria);
-				$this->collDocumentss = DocumentsPeer::doSelect($criteria, $con);
-			}
-		} else {
-			// criteria has no effect for a new object
-			if (!$this->isNew()) {
-				// the following code is to determine if a new query is
-				// called for.  If the criteria is the same as the last
-				// one, just return the collection.
-
-
-				$criteria->add(DocumentsPeer::NEWS_ID, $this->id);
-
-				DocumentsPeer::addSelectColumns($criteria);
-				if (!isset($this->lastDocumentsCriteria) || !$this->lastDocumentsCriteria->equals($criteria)) {
-					$this->collDocumentss = DocumentsPeer::doSelect($criteria, $con);
-				}
-			}
-		}
-		$this->lastDocumentsCriteria = $criteria;
-		return $this->collDocumentss;
-	}
-
-	/**
-	 * Returns the number of related Documents objects.
-	 *
-	 * @param      Criteria $criteria
-	 * @param      boolean $distinct
-	 * @param      PropelPDO $con
-	 * @return     int Count of related Documents objects.
-	 * @throws     PropelException
-	 */
-	public function countDocumentss(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
-	{
-		if ($criteria === null) {
-			$criteria = new Criteria(NewsPeer::DATABASE_NAME);
-		} else {
-			$criteria = clone $criteria;
-		}
-
-		if ($distinct) {
-			$criteria->setDistinct();
-		}
-
-		$count = null;
-
-		if ($this->collDocumentss === null) {
-			if ($this->isNew()) {
-				$count = 0;
-			} else {
-
-				$criteria->add(DocumentsPeer::NEWS_ID, $this->id);
-
-				$count = DocumentsPeer::doCount($criteria, false, $con);
-			}
-		} else {
-			// criteria has no effect for a new object
-			if (!$this->isNew()) {
-				// the following code is to determine if a new query is
-				// called for.  If the criteria is the same as the last
-				// one, just return count of the collection.
-
-
-				$criteria->add(DocumentsPeer::NEWS_ID, $this->id);
-
-				if (!isset($this->lastDocumentsCriteria) || !$this->lastDocumentsCriteria->equals($criteria)) {
-					$count = DocumentsPeer::doCount($criteria, false, $con);
-				} else {
-					$count = count($this->collDocumentss);
-				}
-			} else {
-				$count = count($this->collDocumentss);
-			}
-		}
-		return $count;
-	}
-
-	/**
-	 * Method called to associate a Documents object to this object
-	 * through the Documents foreign key attribute.
-	 *
-	 * @param      Documents $l Documents
-	 * @return     void
-	 * @throws     PropelException
-	 */
-	public function addDocuments(Documents $l)
-	{
-		if ($this->collDocumentss === null) {
-			$this->initDocumentss();
-		}
-		if (!in_array($l, $this->collDocumentss, true)) { // only add it if the **same** object is not already associated
-			array_push($this->collDocumentss, $l);
-			$l->setNews($this);
+		if (!in_array($l, $this->collDocumentsI18ns, true)) { // only add it if the **same** object is not already associated
+			array_push($this->collDocumentsI18ns, $l);
+			$l->setDocuments($this);
 		}
 	}
 
@@ -1778,21 +1485,15 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	public function clearAllReferences($deep = false)
 	{
 		if ($deep) {
-			if ($this->collNewsI18ns) {
-				foreach ((array) $this->collNewsI18ns as $o) {
-					$o->clearAllReferences($deep);
-				}
-			}
-			if ($this->collDocumentss) {
-				foreach ((array) $this->collDocumentss as $o) {
+			if ($this->collDocumentsI18ns) {
+				foreach ((array) $this->collDocumentsI18ns as $o) {
 					$o->clearAllReferences($deep);
 				}
 			}
 		} // if ($deep)
 
-		$this->collNewsI18ns = null;
-		$this->collDocumentss = null;
-			$this->aNewstypes = null;
+		$this->collDocumentsI18ns = null;
+			$this->aNews = null;
 	}
 
 	// symfony_behaviors behavior
@@ -1802,9 +1503,9 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 */
 	public function __call($method, $arguments)
 	{
-	  if (!$callable = sfMixer::getCallable('BaseNews:'.$method))
+	  if (!$callable = sfMixer::getCallable('BaseDocuments:'.$method))
 	  {
-	    throw new sfException(sprintf('Call to undefined method BaseNews::%s', $method));
+	    throw new sfException(sprintf('Call to undefined method BaseDocuments::%s', $method));
 	  }
 	
 	  array_unshift($arguments, $this);
@@ -1829,7 +1530,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	 *
 	 * @param string  The culture to set
 	 *
-	 * @return News
+	 * @return Documents
 	 */
 	public function setCulture($culture)
 	{
@@ -1838,182 +1539,68 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	}
 	
 	/**
-	 * Returns the "updated_at_extra" value from the current {@link NewsI18n}.
+	 * Returns the "updated_at_extra" value from the current {@link DocumentsI18n}.
 	 */
 	public function getUpdatedAtExtra($culture = null)
 	{
-	  return $this->getCurrentNewsI18n($culture)->getUpdatedAtExtra();
+	  return $this->getCurrentDocumentsI18n($culture)->getUpdatedAtExtra();
 	}
 	
 	/**
-	 * Sets the "updated_at_extra" value of the current {@link NewsI18n}.
+	 * Sets the "updated_at_extra" value of the current {@link DocumentsI18n}.
 	 *
-	 * @return News
+	 * @return Documents
 	 */
 	public function setUpdatedAtExtra($value, $culture = null)
 	{
-	  $this->getCurrentNewsI18n($culture)->setUpdatedAtExtra($value);
+	  $this->getCurrentDocumentsI18n($culture)->setUpdatedAtExtra($value);
 	  return $this;
 	}
 	
 	/**
-	 * Returns the "title" value from the current {@link NewsI18n}.
+	 * Returns the "title" value from the current {@link DocumentsI18n}.
 	 */
 	public function getTitle($culture = null)
 	{
-	  return $this->getCurrentNewsI18n($culture)->getTitle();
+	  return $this->getCurrentDocumentsI18n($culture)->getTitle();
 	}
 	
 	/**
-	 * Sets the "title" value of the current {@link NewsI18n}.
+	 * Sets the "title" value of the current {@link DocumentsI18n}.
 	 *
-	 * @return News
+	 * @return Documents
 	 */
 	public function setTitle($value, $culture = null)
 	{
-	  $this->getCurrentNewsI18n($culture)->setTitle($value);
+	  $this->getCurrentDocumentsI18n($culture)->setTitle($value);
 	  return $this;
 	}
 	
 	/**
-	 * Returns the "shortbody" value from the current {@link NewsI18n}.
-	 */
-	public function getShortbody($culture = null)
-	{
-	  return $this->getCurrentNewsI18n($culture)->getShortbody();
-	}
-	
-	/**
-	 * Sets the "shortbody" value of the current {@link NewsI18n}.
-	 *
-	 * @return News
-	 */
-	public function setShortbody($value, $culture = null)
-	{
-	  $this->getCurrentNewsI18n($culture)->setShortbody($value);
-	  return $this;
-	}
-	
-	/**
-	 * Returns the "body" value from the current {@link NewsI18n}.
+	 * Returns the "body" value from the current {@link DocumentsI18n}.
 	 */
 	public function getBody($culture = null)
 	{
-	  return $this->getCurrentNewsI18n($culture)->getBody();
+	  return $this->getCurrentDocumentsI18n($culture)->getBody();
 	}
 	
 	/**
-	 * Sets the "body" value of the current {@link NewsI18n}.
+	 * Sets the "body" value of the current {@link DocumentsI18n}.
 	 *
-	 * @return News
+	 * @return Documents
 	 */
 	public function setBody($value, $culture = null)
 	{
-	  $this->getCurrentNewsI18n($culture)->setBody($value);
-	  return $this;
-	}
-	
-	/**
-	 * Returns the "author" value from the current {@link NewsI18n}.
-	 */
-	public function getAuthor($culture = null)
-	{
-	  return $this->getCurrentNewsI18n($culture)->getAuthor();
-	}
-	
-	/**
-	 * Sets the "author" value of the current {@link NewsI18n}.
-	 *
-	 * @return News
-	 */
-	public function setAuthor($value, $culture = null)
-	{
-	  $this->getCurrentNewsI18n($culture)->setAuthor($value);
-	  return $this;
-	}
-	
-	/**
-	 * Returns the "translated_by" value from the current {@link NewsI18n}.
-	 */
-	public function getTranslatedBy($culture = null)
-	{
-	  return $this->getCurrentNewsI18n($culture)->getTranslatedBy();
-	}
-	
-	/**
-	 * Sets the "translated_by" value of the current {@link NewsI18n}.
-	 *
-	 * @return News
-	 */
-	public function setTranslatedBy($value, $culture = null)
-	{
-	  $this->getCurrentNewsI18n($culture)->setTranslatedBy($value);
-	  return $this;
-	}
-	
-	/**
-	 * Returns the "link" value from the current {@link NewsI18n}.
-	 */
-	public function getLink($culture = null)
-	{
-	  return $this->getCurrentNewsI18n($culture)->getLink();
-	}
-	
-	/**
-	 * Sets the "link" value of the current {@link NewsI18n}.
-	 *
-	 * @return News
-	 */
-	public function setLink($value, $culture = null)
-	{
-	  $this->getCurrentNewsI18n($culture)->setLink($value);
-	  return $this;
-	}
-	
-	/**
-	 * Returns the "extradate" value from the current {@link NewsI18n}.
-	 */
-	public function getExtradate($culture = null)
-	{
-	  return $this->getCurrentNewsI18n($culture)->getExtradate();
-	}
-	
-	/**
-	 * Sets the "extradate" value of the current {@link NewsI18n}.
-	 *
-	 * @return News
-	 */
-	public function setExtradate($value, $culture = null)
-	{
-	  $this->getCurrentNewsI18n($culture)->setExtradate($value);
-	  return $this;
-	}
-	
-	/**
-	 * Returns the "doc" value from the current {@link NewsI18n}.
-	 */
-	public function getDoc($culture = null)
-	{
-	  return $this->getCurrentNewsI18n($culture)->getDoc();
-	}
-	
-	/**
-	 * Sets the "doc" value of the current {@link NewsI18n}.
-	 *
-	 * @return News
-	 */
-	public function setDoc($value, $culture = null)
-	{
-	  $this->getCurrentNewsI18n($culture)->setDoc($value);
+	  $this->getCurrentDocumentsI18n($culture)->setBody($value);
 	  return $this;
 	}
 	
 	/**
 	 * Returns the current translation.
 	 *
-	 * @return NewsI18n
+	 * @return DocumentsI18n
 	 */
-	public function getCurrentNewsI18n($culture = null)
+	public function getCurrentDocumentsI18n($culture = null)
 	{
 	  if (null === $culture)
 	  {
@@ -2022,14 +1609,14 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	
 	  if (!isset($this->current_i18n[$culture]))
 	  {
-	    $object = $this->isNew() ? null : NewsI18nPeer::retrieveByPK($this->getPrimaryKey(), $culture);
+	    $object = $this->isNew() ? null : DocumentsI18nPeer::retrieveByPK($this->getPrimaryKey(), $culture);
 	    if ($object)
 	    {
-	      $this->setNewsI18nForCulture($object, $culture);
+	      $this->setDocumentsI18nForCulture($object, $culture);
 	    }
 	    else
 	    {
-	      $this->setNewsI18nForCulture(new NewsI18n(), $culture);
+	      $this->setDocumentsI18nForCulture(new DocumentsI18n(), $culture);
 	      $this->current_i18n[$culture]->setCulture($culture);
 	    }
 	  }
@@ -2040,10 +1627,10 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	/**
 	 * Sets the translation object for a culture.
 	 */
-	public function setNewsI18nForCulture(NewsI18n $object, $culture)
+	public function setDocumentsI18nForCulture(DocumentsI18n $object, $culture)
 	{
 	  $this->current_i18n[$culture] = $object;
-	  $this->addNewsI18n($object);
+	  $this->addDocumentsI18n($object);
 	}
 
-} // BaseNews
+} // BaseDocuments
