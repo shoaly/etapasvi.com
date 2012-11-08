@@ -116,12 +116,12 @@ class Documents extends BaseDocuments {
 	 * @return unknown
 	 */
 	public function getSizePrepared($culture = null, $use_default_culture_if_empty = false) {
-		$size = $this->getSize($culture);
-		if ($size < 1) {
-			$size = number_format($size * 1024, 2) . ' KB';
-		} else {
-			$size = $size . ' MB';
-		}
+		$size = $this->getSize($culture) * 1024 * 1024;
+		
+		$FS = array("B","kB","MB","GB","TB","PB","EB","ZB","YB");
+		
+		$size = (float)number_format($size/pow(1024, $I=floor(log($size, 1024))), ($I >= 1) ? 2 : 0) . ' ' . $FS[$I];
+		
 		return $size;
 	}
 	

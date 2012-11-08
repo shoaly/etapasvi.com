@@ -31,7 +31,8 @@ class NewsPeer extends BaseNewsPeer
   	ItemtypesPeer::ITEM_TYPE_NAME_NEWS, 		
   	ItemtypesPeer::ITEM_TYPE_NAME_PHOTO, 	
   	ItemtypesPeer::ITEM_TYPE_NAME_VIDEO, 	
-  	ItemtypesPeer::ITEM_TYPE_NAME_AUDIO	
+  	ItemtypesPeer::ITEM_TYPE_NAME_AUDIO,
+  	ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS
   );
   
   const FEED_ITEMS_PER_PAGE = 50;

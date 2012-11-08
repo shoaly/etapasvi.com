@@ -8,7 +8,7 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 1000
       sort: [order, desc]
-      display: [id, show, order, =file, title, news_id, all_cultures]
+      display: [id, show, order, =file, title, news_id, all_cultures, created_at]
       filters: [show]
       object_actions:
         _edit:

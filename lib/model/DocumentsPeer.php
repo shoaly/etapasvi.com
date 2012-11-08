@@ -22,7 +22,7 @@ class DocumentsPeer extends BaseDocumentsPeer {
   // число элементов в блоке Последнее
   const LATEST_COUNT 			= 3;
   // количество элементов в списке
-  const ITEMS_PER_PAGE 			= 10;
+  const ITEMS_PER_PAGE 			= 30;
   
   // ссылка на файл в удалённом хранилище
   //const REMOTE_URL 		= 'http://k002.kiwi6.com/uploads/hotlink/';
@@ -40,12 +40,15 @@ class DocumentsPeer extends BaseDocumentsPeer {
   {  
     $c->add( DocumentsPeer::SHOW, 1 );    
     $c->add( DocumentsPeer::FILE, '', Criteria::NOT_EQUAL );
-    //$c->add( DocumentsI18nPeer::TITLE, '', Criteria::NOT_EQUAL );
     
-    $c_all_cultueres = $c->getNewCriterion(DocumentsI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
-    $c_all_cultueres->addOr( $c->getNewCriterion(DocumentsPeer::ALL_CULTURES, 1) );
+    $culture = sfContext::getInstance()->getUser()->getCulture();
+    
+    $c_extra = $c->getNewCriterion(DocumentsI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
+    $c_extra->addAnd( $c->getNewCriterion(DocumentsI18nPeer::CULTURE, $culture) );
+    
+    $c_extra->addOr( $c->getNewCriterion(DocumentsPeer::ALL_CULTURES, 1) );
 
-	$c->add($c_all_cultueres);
+	$c->add($c_extra);
   }
   
   /**

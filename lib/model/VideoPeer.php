@@ -40,9 +40,22 @@ class VideoPeer extends BaseVideoPeer
     $c->add( VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL );
     
     $c_all_cultueres = $c->getNewCriterion(VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL);
+    $c_all_cultueres->addOr($c->getNewCriterion(VideoI18nPeer::TITLE, '', Criteria::NOT_EQUAL));
     $c_all_cultueres->addOr( $c->getNewCriterion(VideoPeer::ALL_CULTURES, 1) );
+    
+    $culture = sfContext::getInstance()->getUser()->getCulture();
+    
+    $c_code = $c->getNewCriterion(VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL);
+    $c_code->addAnd( $c->getNewCriterion(VideoI18nPeer::CULTURE, $culture) );
+    
+    $c_title = $c->getNewCriterion(VideoI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
+    $c_title->addAnd( $c->getNewCriterion(VideoI18nPeer::CULTURE, $culture) );
+    
+    $c_extra = $c->getNewCriterion(VideoPeer::ALL_CULTURES, 1);
+    $c_extra->addOr( $c_code );
+    $c_extra->addOr( $c_title );
 
-	$c->add($c_all_cultueres);
+	$c->add($c_extra);
   }
   
   /**

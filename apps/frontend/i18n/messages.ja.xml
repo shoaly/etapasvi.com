@@ -344,6 +344,32 @@
         <target></target>
       </trans-unit>
 
+<!-- item2item -->
+      <trans-unit id="1">
+        <source>Associated News</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Photo</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Video</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Audio</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Documents</source>
+        <target></target>
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Translate</source>
         <target></target>

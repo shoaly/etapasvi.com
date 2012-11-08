@@ -847,7 +847,7 @@ abstract class BaseVideoPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -867,7 +867,12 @@ abstract class BaseVideoPeer {
 	  // http://bsds.etapasvi.com/issues/113 
 	  //$criteria->addJoin(VideoPeer::ID, VideoI18nPeer::ID, $join_behavior);
 	  //$criteria->add(VideoI18nPeer::CULTURE, $culture);
-	  $criteria->addJoin(array(VideoPeer::ID, VideoI18nPeer::CULTURE), array(VideoI18nPeer::ID, "'$culture'"), $join_behavior);
+	  
+	  if (!$no_join_culture) {
+	    $criteria->addJoin(array(VideoPeer::ID, VideoI18nPeer::CULTURE), array(VideoI18nPeer::ID, "'$culture'"), $join_behavior);
+	  } else {
+	    $criteria->addJoin(VideoPeer::ID, VideoI18nPeer::ID, $join_behavior);
+	  }  
 	
 	  foreach (sfMixer::getCallables('BaseVideo:doSelectJoin:doSelectJoin') as $sf_hook)
 	  {

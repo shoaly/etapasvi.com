@@ -5,7 +5,6 @@
 
 /* cultures */
 .hieroglyphic #content * {
-    font-family: "宋体";
 	font-size:1em;
     line-height:21px;
 	}
@@ -271,7 +270,7 @@ table {
     margin-top: 5px;
     }
 hr.audio_divider {
-    margin: 9px 0;
+    margin: 7px 0;
     }
 /* IE 7 */
 *:first-child+html hr.audio_divider {
@@ -767,3 +766,12 @@ img.newsitem_img {
 .direction_rtl .related div {
     float: right;
 	}
+
+/* documents */
+.doc_short {
+    border-top: 1px dashed #DDDDDD; 
+    padding: 8px 0;
+    }
+.doc_short.last {
+    border-bottom: 1px dashed #DDDDDD; 
+    }

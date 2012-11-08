@@ -1113,7 +1113,7 @@ abstract class BaseDocumentsPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -1133,7 +1133,12 @@ abstract class BaseDocumentsPeer {
 	  // http://bsds.etapasvi.com/issues/113 
 	  //$criteria->addJoin(DocumentsPeer::ID, DocumentsI18nPeer::ID, $join_behavior);
 	  //$criteria->add(DocumentsI18nPeer::CULTURE, $culture);
-	  $criteria->addJoin(array(DocumentsPeer::ID, DocumentsI18nPeer::CULTURE), array(DocumentsI18nPeer::ID, "'$culture'"), $join_behavior);
+	  
+	  if (!$no_join_culture) {
+	    $criteria->addJoin(array(DocumentsPeer::ID, DocumentsI18nPeer::CULTURE), array(DocumentsI18nPeer::ID, "'$culture'"), $join_behavior);
+	  } else {
+	    $criteria->addJoin(DocumentsPeer::ID, DocumentsI18nPeer::ID, $join_behavior);
+	  }  
 	
 	  foreach (sfMixer::getCallables('BaseDocuments:doSelectJoin:doSelectJoin') as $sf_hook)
 	  {

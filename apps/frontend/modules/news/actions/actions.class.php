@@ -311,7 +311,7 @@ LIMIT 0, 50
     					   
 	    //}
 	    
-	    // для RSS 
+	    // for RSS
 	    if ($rss) {
 	    	// ограничиваем по дате
 	    	$min_date = date("Y-m-d H:i:s", strtotime(NewsPeer::RSS_PERIOD));
@@ -319,6 +319,10 @@ LIMIT 0, 50
 	    					  or {$table_name}_i18n.updated_at_extra >= '" . $min_date . "') ";
 	    	// выбираются только элементы с заголовками
 	    	$criteria_sql .= " and {$table_name}_i18n.title != '' ";
+	    	// do not show Documents generated from News
+	    	if ($type == ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS) {
+	    		$criteria_sql .= " and ({$table_name}.news_id = '' or {$table_name}.news_id is NULL) ";	
+	    	}
 	    }
 		
 	    // получаем значения параметров

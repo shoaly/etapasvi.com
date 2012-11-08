@@ -10,7 +10,9 @@
  */
 class sfPropelPagerI18n extends sfPropelPager
 {
-
+  // add condition on culture field to JOIN to connect to I18n table using current culture
+  protected $joinCulture = true;
+  
   /**
     * Constructor.
     *
@@ -20,7 +22,7 @@ class sfPropelPagerI18n extends sfPropelPager
     * @param string $joinField default value 'ID'
     * @return sfPropelPagerI18n
     */
-  public function __construct($class, $maxPerPage = 10, $culture =  null, $joinField = 'ID')
+  public function __construct($class, $maxPerPage = 10, $culture =  null, $joinField = 'ID', $joinCulture = true)
   {
     if ($culture === null)
     {
@@ -29,6 +31,8 @@ class sfPropelPagerI18n extends sfPropelPager
 
     $this->joinField       = $joinField;
     $this->currentCulture  = $culture;
+    
+    $this->joinCulture = $joinCulture;
 
     parent::__construct($class, $maxPerPage);
 
@@ -41,7 +45,7 @@ class sfPropelPagerI18n extends sfPropelPager
    *
    * @param Criteria $c
    */
-  public function setCriteriaI18n($c, $without_culture = false)
+  public function setCriteriaI18n($c)
   {
     $this->criteria = $c;
 	// saynt2day
@@ -53,24 +57,19 @@ class sfPropelPagerI18n extends sfPropelPager
       constant($this->getClass() . 'I18nPeer::' . $this->joinField),
       Criteria::INNER_JOIN
     );*/   
-    
-    // if there is no ALL_CULTURES field in Criteria
-    if (!$without_culture) {
-	  $this->criteria->addJoin(
-	    constant($this->getClass() . 'Peer::' . $this->joinField),
-	    constant($this->getClass() . 'I18nPeer::' . $this->joinField)
-	  );
-	    
+        
+    // connect to I18n table using current culture
+	$this->criteria->addJoin(
+	  constant($this->getClass() . 'Peer::' . $this->joinField),
+	  constant($this->getClass() . 'I18nPeer::' . $this->joinField)
+	);
+	if ($this->joinCulture) {
 	  $this->criteria->add(constant($this->getClass() . 'I18nPeer::CULTURE'), $this->currentCulture);
 	    
 	  $c->add(constant($this->getClass() . 'I18nPeer::CULTURE'), $this->currentCulture);
 	  $this->criteria->add(constant($this->getClass() . 'I18nPeer::CULTURE'), $this->currentCulture);
-	    
-	  // current culture or withour corresponding record in I18n table
-	  //$c_all_cultures = $this->criteria->getNewCriterion(constant($this->getClass() . 'I18nPeer::CULTURE'), $this->currentCulture);
-	  //$c_all_cultures->addOr(  $c->getNewCriterion(constant($this->getClass() . 'I18nPeer::CULTURE'), $default_culture) );
-	  //$this->criteria->add($c_all_cultures);
-    } else {
+	} else {
+      // without connection to I18n table using current culture
       $this->criteria->addGroupByColumn(constant($this->getClass() . 'Peer::' . $this->joinField));
     }
   }
@@ -83,6 +82,8 @@ class sfPropelPagerI18n extends sfPropelPager
   {
     $c = $this->getCriteria();
 
-    return call_user_func(array($this->getClassPeer(), $this->getPeerMethod()), $c, $this->currentCulture);
+    return call_user_func(array($this->getClassPeer(), $this->getPeerMethod()), $c, $this->currentCulture, 
+                                null, Criteria::LEFT_JOIN, !$this->joinCulture);
   }
+ 
 }

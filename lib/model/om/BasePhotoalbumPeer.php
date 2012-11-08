@@ -835,7 +835,7 @@ abstract class BasePhotoalbumPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -855,7 +855,12 @@ abstract class BasePhotoalbumPeer {
 	  // http://bsds.etapasvi.com/issues/113 
 	  //$criteria->addJoin(PhotoalbumPeer::ID, PhotoalbumI18nPeer::ID, $join_behavior);
 	  //$criteria->add(PhotoalbumI18nPeer::CULTURE, $culture);
-	  $criteria->addJoin(array(PhotoalbumPeer::ID, PhotoalbumI18nPeer::CULTURE), array(PhotoalbumI18nPeer::ID, "'$culture'"), $join_behavior);
+	  
+	  if (!$no_join_culture) {
+	    $criteria->addJoin(array(PhotoalbumPeer::ID, PhotoalbumI18nPeer::CULTURE), array(PhotoalbumI18nPeer::ID, "'$culture'"), $join_behavior);
+	  } else {
+	    $criteria->addJoin(PhotoalbumPeer::ID, PhotoalbumI18nPeer::ID, $join_behavior);
+	  }  
 	
 	  foreach (sfMixer::getCallables('BasePhotoalbum:doSelectJoin:doSelectJoin') as $sf_hook)
 	  {

@@ -15,4 +15,5 @@
    <?php if (!$hide_wrapper): ?>
     </table>
     <?php endif ?>
+    <?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_DOCUMENTS, 'item_id'=>$documents->getId())) ?> 
 <?php endif ?>

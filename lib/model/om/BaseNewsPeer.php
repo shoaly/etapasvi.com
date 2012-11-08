@@ -1117,7 +1117,7 @@ abstract class BaseNewsPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -1137,7 +1137,12 @@ abstract class BaseNewsPeer {
 	  // http://bsds.etapasvi.com/issues/113 
 	  //$criteria->addJoin(NewsPeer::ID, NewsI18nPeer::ID, $join_behavior);
 	  //$criteria->add(NewsI18nPeer::CULTURE, $culture);
-	  $criteria->addJoin(array(NewsPeer::ID, NewsI18nPeer::CULTURE), array(NewsI18nPeer::ID, "'$culture'"), $join_behavior);
+	  
+	  if (!$no_join_culture) {
+	    $criteria->addJoin(array(NewsPeer::ID, NewsI18nPeer::CULTURE), array(NewsI18nPeer::ID, "'$culture'"), $join_behavior);
+	  } else {
+	    $criteria->addJoin(NewsPeer::ID, NewsI18nPeer::ID, $join_behavior);
+	  }  
 	
 	  foreach (sfMixer::getCallables('BaseNews:doSelectJoin:doSelectJoin') as $sf_hook)
 	  {

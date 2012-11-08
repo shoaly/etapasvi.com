@@ -855,7 +855,7 @@ abstract class BaseAudioPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -875,7 +875,12 @@ abstract class BaseAudioPeer {
 	  // http://bsds.etapasvi.com/issues/113 
 	  //$criteria->addJoin(AudioPeer::ID, AudioI18nPeer::ID, $join_behavior);
 	  //$criteria->add(AudioI18nPeer::CULTURE, $culture);
-	  $criteria->addJoin(array(AudioPeer::ID, AudioI18nPeer::CULTURE), array(AudioI18nPeer::ID, "'$culture'"), $join_behavior);
+	  
+	  if (!$no_join_culture) {
+	    $criteria->addJoin(array(AudioPeer::ID, AudioI18nPeer::CULTURE), array(AudioI18nPeer::ID, "'$culture'"), $join_behavior);
+	  } else {
+	    $criteria->addJoin(AudioPeer::ID, AudioI18nPeer::ID, $join_behavior);
+	  }  
 	
 	  foreach (sfMixer::getCallables('BaseAudio:doSelectJoin:doSelectJoin') as $sf_hook)
 	  {

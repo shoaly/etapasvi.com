@@ -48,12 +48,12 @@ class documentsActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {     
     $c = new Criteria();
-    $c->add( DocumentsPeer::SHOW, 1);
     $c->addDescendingOrderByColumn( DocumentsPeer::ORDER );
     DocumentsPeer::addVisibleCriteria($c);
         
-	$pager = new sfPropelPagerI18n('Documents', DocumentsPeer::ITEMS_PER_PAGE);
-    $pager->setCriteriaI18n($c, true);
+	$pager = new sfPropelPagerI18n('Documents', DocumentsPeer::ITEMS_PER_PAGE, null, 'ID', false);
+    $pager->setCriteriaI18n($c);
+    $pager->setPeerMethod('doSelectWithI18n');
     $pager->setPage($this->getRequestParameter('page', 1));
     $pager->init();
     $this->pager = $pager;

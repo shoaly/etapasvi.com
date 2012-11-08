@@ -255,7 +255,7 @@ static public function getI18nModel()
  *
  * @return array
  */
-static public function doSelectWithI18n(Criteria \$criteria, \$culture = null, \$con = null, \$join_behavior = Criteria::{$join}_JOIN)
+static public function doSelectWithI18n(Criteria \$criteria, \$culture = null, \$con = null, \$join_behavior = Criteria::{$join}_JOIN, \$no_join_culture = false)
 {
   \$criteria = clone \$criteria;
 
@@ -275,7 +275,12 @@ static public function doSelectWithI18n(Criteria \$criteria, \$culture = null, \
   // http://bsds.etapasvi.com/issues/113 
   //\$criteria->addJoin({$this->getLocalColumn()->getConstantName()}, {$this->getForeignColumn()->getConstantName()}, \$join_behavior);
   //\$criteria->add({$this->getCultureColumn($this->getI18nTable())->getConstantName()}, \$culture);
-  \$criteria->addJoin(array({$this->getLocalColumn()->getConstantName()}, {$this->getCultureColumn($this->getI18nTable())->getConstantName()}), array({$this->getForeignColumn()->getConstantName()}, "'\$culture'"), \$join_behavior);
+  
+  if (!\$no_join_culture) {
+    \$criteria->addJoin(array({$this->getLocalColumn()->getConstantName()}, {$this->getCultureColumn($this->getI18nTable())->getConstantName()}), array({$this->getForeignColumn()->getConstantName()}, "'\$culture'"), \$join_behavior);
+  } else {
+    \$criteria->addJoin({$this->getLocalColumn()->getConstantName()}, {$this->getForeignColumn()->getConstantName()}, \$join_behavior);
+  }  
 {$mixerHook}
   \$stmt = BasePeer::doSelect(\$criteria, \$con);
 	\$results = array();
