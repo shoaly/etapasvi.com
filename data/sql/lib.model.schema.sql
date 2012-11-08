@@ -430,11 +430,13 @@ CREATE TABLE `documents`
 	`file` VARCHAR(255)  NOT NULL,
 	`size` FLOAT,
 	`order` INTEGER  NOT NULL,
+	`all_cultures` TINYINT default 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `file` (`file`),
 	KEY `documents_I_1`(`order`),
 	KEY `updated_at`(`updated_at`),
 	KEY `show`(`show`),
+	KEY `all_cultures`(`all_cultures`),
 	INDEX `documents_FI_1` (`news_id`),
 	CONSTRAINT `documents_FK_1`
 		FOREIGN KEY (`news_id`)

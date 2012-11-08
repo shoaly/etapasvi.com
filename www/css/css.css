@@ -229,20 +229,92 @@ a.external {
 a.no_decor {
 	text-decoration: none;
 	}
-a.files {
-    background:url("/i/interface_sprite.jpg") no-repeat scroll -689px -292px transparent;
+/* http://code.google.com/p/jquery-filetype/ */
+.files {
+    background:url("/i/sprite-file-icons.png") no-repeat scroll 0 0 transparent;
     height: 21px;
     width: 24px;
-    padding:4px 0 4px 29px;
+    padding: 0 0 4px 19px;
+    }
+.hieroglyphic .files {
+    padding: 0 0 0 19px;
+    }
+.pdf, 
+.PDF {
+    background-position: 0 -21px;
+    }
+.png, 
+.PNG,
+.jpg,
+.JPG,
+.png,
+.PNG,
+.bmp,
+.BMP {
+    background-position: 0 -84px;
+    }
+.doc, 
+.DOC {
+    background-position: 0 -105px;
+    }
+.xls, 
+.XLS {
+    background-position: 0 -126px;
+    }
+.ppt, 
+.PPT {
+    background-position: 0 -147px;
+    }
+.docx, 
+.DOCX {
+    background-position: 0 -168px;
+    }
+.xlsx, 
+.XLSX {
+    background-position: 0 -189px;
+    }
+.txt, 
+.TXT {
+    background-position: 0 -210px;
+    }
+.pptx, 
+.PPTX {
+    background-position: 0 -231px;
+    }
+.pptx, 
+.PPTX {
+    background-position: 0 -231px;
+    }
+
+/*
+.zip span.file-icon,
+.rar span.file-icon,
+.gzip span.file-icon,
+.arj span.file-icon{
+	background-position: 0 -253px;
 }
-a.pdf, 
-a.PDF {
-    background-position: -689px -259px;
-    }
-a.doc, 
-a.DOC {
-    background-position: -689px -228px;
-    }
+.wav span.file-icon,
+.mp3 span.file-icon,
+.aif span.file-icon,
+.aiff span.file-icon,
+.m4a span.file-icon,
+.ogg span.file-icon,
+.wma span.file-icon {
+	background-position: 0 -273px;
+}
+.psd span.file-icon,
+.ai span.file-icon,
+.swf span.file-icon,
+.fla span.file-icon,
+.css span.file-icon,
+.js span.file-icon {
+	background-position: 0 0px;
+}
+.avi span.file-icon,
+.mov span.file-icon,
+.wmv span.file-icon {
+	background-position: 0 -294px;
+}*/
 
 ul {
 	list-style-position:outside;
@@ -1294,7 +1366,7 @@ img.newsitem_img {
     vertical-align: middle;
     }
 .embed_photo {
-    color: #888888;
+    color: #7C7C7C;
     max-width: 150px;
     padding: 8px 10px;
     text-align: center;
@@ -1653,7 +1725,50 @@ label.error {
     clear: both;
     }
 
-    
+/* documents */
+table.documents_tbl {
+    width: 100%
+    }
+.documents_tbl td { 
+    border: 1px solid #DDDDDD;
+    border-top: none;
+    padding: 5px 4px;
+    text-align: left;
+    white-space: nowrap;
+    }
+.documents_tbl .middle td { 
+    border-bottom: 1px dashed #DDDDDD;
+    }
+/*.documents_tbl.full td {
+    border-bottom: none;
+    }*/
+.documents_tbl th {
+    border: 1px solid #DDDDDD;
+    color: gray;
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: center;
+    }
+.documents_tbl th div {
+    cursor: default;
+    padding: 4px;
+    background-color: #f7f7f7;    
+    background-image:-webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#f0f0f0));  
+    background-image: -moz-linear-gradient(center top , #ffffff, #f0f0f0);
+    background-image:-o-linear-gradient(top,#ffffff,#f0f0f0);
+    background-image:-ms-linear-gradient(top,#ffffff,#f0f0f0);
+    background-image:linear-gradient(top,#ffffff,#f0f0f0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f0f0');
+    }
+.documents_tbl .main_col {
+    font-weight: bold;
+    white-space: normal;
+    width: 100%;
+    }
+.documents_tbl .main_col  a {
+    font-weight: normal;
+    }
+
 /*	Пиктограммы государственных флагов в спрайте */
 /*	@author Артём Поликарпов, artpolikarpov.ru (artpolikarpov@gmail.com) */
 /*  @author Никита Иванов (исходные пиктограммы флагов), nickivanov.ru (nickivanov@nickivanov.ru) */

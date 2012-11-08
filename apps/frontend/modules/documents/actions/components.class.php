@@ -9,7 +9,7 @@ class documentsComponents extends sfComponents
   public function executeLatest()
   {
   	$c = new Criteria();
-    $c->add( DocumentsPeer::SHOW, 1);
+    DocumentsPeer::addVisibleCriteria($c);    
     $c->addDescendingOrderByColumn( DocumentsPeer::ORDER );    
     $c->setLimit(DocumentsPeer::LATEST_COUNT);
     

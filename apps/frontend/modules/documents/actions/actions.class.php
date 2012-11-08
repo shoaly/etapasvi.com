@@ -20,7 +20,7 @@ class documentsActions extends sfActions
   	
   	$culture     = sfContext::getInstance()->getUser()->getCulture();
   	
-  	if (!$this->documents || !$this->documents->getShow()) {
+  	if (!$this->documents || !$this->documents->getShow() || !$this->documents->getTitle($culture, $this->documents->getAllCultures())) {
   		throw new sfError404Exception();
   	}
   	

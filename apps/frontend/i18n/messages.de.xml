@@ -328,6 +328,22 @@
         <target></target>
       </trans-unit>
 
+<!-- documents -->
+      <trans-unit id="1">
+        <source>Title</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Type</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Uploaded on</source>
+        <target></target>
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Translate</source>
         <target>Übersetze</target>

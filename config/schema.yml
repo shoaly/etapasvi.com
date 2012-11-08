@@ -190,9 +190,11 @@ propel:
     file:             { type: varchar(255), required: true }
     size:             { type: float }
     order:            { type: integer, required: true, index: true }
+    all_cultures:     { type: boolean, default: 0 }
     _indexes:
       updated_at:     [updated_at]
       show:           [show]
+      all_cultures:   [all_cultures]
     _uniques:
       file:           [file]
     

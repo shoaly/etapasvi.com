@@ -20,13 +20,13 @@ require 'lib/model/om/BaseDocumentsPeer.php';
 class DocumentsPeer extends BaseDocumentsPeer {
 
   // число элементов в блоке Последнее
-  const LATEST_COUNT 			= 1;
+  const LATEST_COUNT 			= 3;
   // количество элементов в списке
   const ITEMS_PER_PAGE 			= 10;
   
   // ссылка на файл в удалённом хранилище
   //const REMOTE_URL 		= 'http://k002.kiwi6.com/uploads/hotlink/';
-  const DOCUMENTS_DIR 		= '/uploads/audio/';
+  const DOCUMENTS_DIR 		= '/uploads/documents/';
   
   // ссылка на скачивание из удалённого хранилища
   //const REMOTE_DOWNLOAD_URL		= 'http://k002.kiwi6.com/download/';
@@ -38,8 +38,14 @@ class DocumentsPeer extends BaseDocumentsPeer {
    */
   public static function addVisibleCriteria($c)
   {  
-    $c->add( AudioPeer::SHOW, 1 );
-    $c->add( AudioPeer::FILE, '', Criteria::NOT_EQUAL );
+    $c->add( DocumentsPeer::SHOW, 1 );    
+    $c->add( DocumentsPeer::FILE, '', Criteria::NOT_EQUAL );
+    //$c->add( DocumentsI18nPeer::TITLE, '', Criteria::NOT_EQUAL );
+    
+    $c_all_cultueres = $c->getNewCriterion(DocumentsI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
+    $c_all_cultueres->addOr( $c->getNewCriterion(DocumentsPeer::ALL_CULTURES, 1) );
+
+	$c->add($c_all_cultueres);
   }
   
   /**

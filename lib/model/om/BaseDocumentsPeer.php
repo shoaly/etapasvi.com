@@ -28,7 +28,7 @@ abstract class BaseDocumentsPeer {
 	const TM_CLASS = 'DocumentsTableMap';
 	
 	/** The total number of columns. */
-	const NUM_COLUMNS = 8;
+	const NUM_COLUMNS = 9;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -57,6 +57,9 @@ abstract class BaseDocumentsPeer {
 	/** the column name for the ORDER field */
 	const ORDER = 'documents.ORDER';
 
+	/** the column name for the ALL_CULTURES field */
+	const ALL_CULTURES = 'documents.ALL_CULTURES';
+
 	/**
 	 * An identiy map to hold any loaded instances of Documents objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
@@ -80,11 +83,11 @@ abstract class BaseDocumentsPeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'UpdatedAt', 'NewsId', 'Show', 'File', 'Size', 'Order', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'updatedAt', 'newsId', 'show', 'file', 'size', 'order', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::UPDATED_AT, self::NEWS_ID, self::SHOW, self::FILE, self::SIZE, self::ORDER, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'updated_at', 'news_id', 'show', 'file', 'size', 'order', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'UpdatedAt', 'NewsId', 'Show', 'File', 'Size', 'Order', 'AllCultures', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'updatedAt', 'newsId', 'show', 'file', 'size', 'order', 'allCultures', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::UPDATED_AT, self::NEWS_ID, self::SHOW, self::FILE, self::SIZE, self::ORDER, self::ALL_CULTURES, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'updated_at', 'news_id', 'show', 'file', 'size', 'order', 'all_cultures', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	/**
@@ -94,11 +97,11 @@ abstract class BaseDocumentsPeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'UpdatedAt' => 2, 'NewsId' => 3, 'Show' => 4, 'File' => 5, 'Size' => 6, 'Order' => 7, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'updatedAt' => 2, 'newsId' => 3, 'show' => 4, 'file' => 5, 'size' => 6, 'order' => 7, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::UPDATED_AT => 2, self::NEWS_ID => 3, self::SHOW => 4, self::FILE => 5, self::SIZE => 6, self::ORDER => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'updated_at' => 2, 'news_id' => 3, 'show' => 4, 'file' => 5, 'size' => 6, 'order' => 7, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'UpdatedAt' => 2, 'NewsId' => 3, 'Show' => 4, 'File' => 5, 'Size' => 6, 'Order' => 7, 'AllCultures' => 8, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'updatedAt' => 2, 'newsId' => 3, 'show' => 4, 'file' => 5, 'size' => 6, 'order' => 7, 'allCultures' => 8, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::UPDATED_AT => 2, self::NEWS_ID => 3, self::SHOW => 4, self::FILE => 5, self::SIZE => 6, self::ORDER => 7, self::ALL_CULTURES => 8, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'updated_at' => 2, 'news_id' => 3, 'show' => 4, 'file' => 5, 'size' => 6, 'order' => 7, 'all_cultures' => 8, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	/**
@@ -176,6 +179,7 @@ abstract class BaseDocumentsPeer {
 		$criteria->addSelectColumn(DocumentsPeer::FILE);
 		$criteria->addSelectColumn(DocumentsPeer::SIZE);
 		$criteria->addSelectColumn(DocumentsPeer::ORDER);
+		$criteria->addSelectColumn(DocumentsPeer::ALL_CULTURES);
 	}
 
 	/**
@@ -1063,7 +1067,7 @@ abstract class BaseDocumentsPeer {
 	 */
 	static public function getUniqueColumnNames()
 	{
-	  return array();
+	  return array(array('file'));
 	}
 
 	// symfony_behaviors behavior

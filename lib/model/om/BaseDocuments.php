@@ -71,6 +71,13 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 	protected $order;
 
 	/**
+	 * The value for the all_cultures field.
+	 * Note: this column has a database default value of: false
+	 * @var        boolean
+	 */
+	protected $all_cultures;
+
+	/**
 	 * @var        News
 	 */
 	protected $aNews;
@@ -124,6 +131,7 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 	public function applyDefaultValues()
 	{
 		$this->show = true;
+		$this->all_cultures = false;
 	}
 
 	/**
@@ -270,6 +278,16 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 	public function getOrder()
 	{
 		return $this->order;
+	}
+
+	/**
+	 * Get the [all_cultures] column value.
+	 * 
+	 * @return     boolean
+	 */
+	public function getAllCultures()
+	{
+		return $this->all_cultures;
 	}
 
 	/**
@@ -513,6 +531,29 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 	} // setOrder()
 
 	/**
+	 * Set the value of [all_cultures] column.
+	 * 
+	 * @param      boolean $v new value
+	 * @return     Documents The current object (for fluent API support)
+	 */
+	public function setAllCultures($v)
+	{
+		if ($v !== null) {
+			$v = (boolean) $v;
+		}
+
+		if ($this->all_cultures !== $v || $this->isNew()) {
+			if ($this->all_cultures === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = DocumentsPeer::ALL_CULTURES;
+			}
+			$this->all_cultures = $v;
+		}
+
+		return $this;
+	} // setAllCultures()
+
+	/**
 	 * Indicates whether the columns in this object are only set to default values.
 	 *
 	 * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -523,6 +564,10 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 	public function hasOnlyDefaultValues()
 	{
 			if ($this->show !== true) {
+				return false;
+			}
+
+			if ($this->all_cultures !== false) {
 				return false;
 			}
 
@@ -556,6 +601,7 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 			$this->file = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
 			$this->size = ($row[$startcol + 6] !== null) ? (double) $row[$startcol + 6] : null;
 			$this->order = ($row[$startcol + 7] !== null) ? (int) $row[$startcol + 7] : null;
+			$this->all_cultures = ($row[$startcol + 8] !== null) ? (boolean) $row[$startcol + 8] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -565,7 +611,7 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 8; // 8 = DocumentsPeer::NUM_COLUMNS - DocumentsPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 9; // 9 = DocumentsPeer::NUM_COLUMNS - DocumentsPeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Documents object", $e);
@@ -1008,6 +1054,9 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 			case 7:
 				return $this->getOrder();
 				break;
+			case 8:
+				return $this->getAllCultures();
+				break;
 			default:
 				return null;
 				break;
@@ -1037,6 +1086,7 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 			$keys[5] => $this->getFile(),
 			$keys[6] => $this->getSize(),
 			$keys[7] => $this->getOrder(),
+			$keys[8] => $this->getAllCultures(),
 		);
 		return $result;
 	}
@@ -1092,6 +1142,9 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 			case 7:
 				$this->setOrder($value);
 				break;
+			case 8:
+				$this->setAllCultures($value);
+				break;
 		} // switch()
 	}
 
@@ -1124,6 +1177,7 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[5], $arr)) $this->setFile($arr[$keys[5]]);
 		if (array_key_exists($keys[6], $arr)) $this->setSize($arr[$keys[6]]);
 		if (array_key_exists($keys[7], $arr)) $this->setOrder($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setAllCultures($arr[$keys[8]]);
 	}
 
 	/**
@@ -1143,6 +1197,7 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(DocumentsPeer::FILE)) $criteria->add(DocumentsPeer::FILE, $this->file);
 		if ($this->isColumnModified(DocumentsPeer::SIZE)) $criteria->add(DocumentsPeer::SIZE, $this->size);
 		if ($this->isColumnModified(DocumentsPeer::ORDER)) $criteria->add(DocumentsPeer::ORDER, $this->order);
+		if ($this->isColumnModified(DocumentsPeer::ALL_CULTURES)) $criteria->add(DocumentsPeer::ALL_CULTURES, $this->all_cultures);
 
 		return $criteria;
 	}
@@ -1210,6 +1265,8 @@ abstract class BaseDocuments extends BaseObject  implements Persistent {
 		$copyObj->setSize($this->size);
 
 		$copyObj->setOrder($this->order);
+
+		$copyObj->setAllCultures($this->all_cultures);
 
 
 		if ($deepCopy) {

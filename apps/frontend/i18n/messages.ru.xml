@@ -274,6 +274,48 @@
         <target>Нажмите "СС" в плеере, чтобы включить субтитры</target>
       </trans-unit>
 
+<!-- documents -->
+      <trans-unit id="1">
+        <source>Title</source>
+        <target>Название</target>
+      </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Type</source>
+        <target>Тип</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Uploaded on</source>
+        <target>Загружено</target>
+      </trans-unit>
+
+<!-- item2item -->
+      <trans-unit id="1">
+        <source>Associated News</source>
+        <target>Связанные Новости</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Photo</source>
+        <target>Связанные Фото</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Video</source>
+        <target>Связанные Видео</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Audio</source>
+        <target>Связанные Аудио</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Documents</source>
+        <target>Связанные Документы</target>
+      </trans-unit>
+
 <!--  offer translation -->
       <trans-unit id="1">
         <source>Translate</source>

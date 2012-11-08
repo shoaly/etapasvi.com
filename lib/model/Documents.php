@@ -63,6 +63,10 @@ class Documents extends BaseDocuments {
 	  return call_user_func_array(array($this, $method), $arguments);
 	}
 	
+	public function __toString() {
+		return $this->getTitle();
+	}    
+	
 	/**
 	 * Расширенный метод для получения заголовка.
 	 * Если $use_default_culture_if_empty, то возвращается значение на языке по умолчанию.
@@ -102,6 +106,39 @@ class Documents extends BaseDocuments {
 	 */
 	public function getBodyPrepared($culture = null, $use_default_culture_if_empty = false) {
 		return TextPeer::prepareText( $this->getBody($culture, $use_default_culture_if_empty), 1 );
+	}
+	
+	/**
+	 * Get formatted size
+	 *
+	 * @param unknown_type $culture
+	 * @param unknown_type $use_default_culture_if_empty
+	 * @return unknown
+	 */
+	public function getSizePrepared($culture = null, $use_default_culture_if_empty = false) {
+		$size = $this->getSize($culture);
+		if ($size < 1) {
+			$size = number_format($size * 1024, 2) . ' KB';
+		} else {
+			$size = $size . ' MB';
+		}
+		return $size;
+	}
+	
+	/**
+	 * Get type
+	 *
+	 * @param unknown_type $culture
+	 * @param unknown_type $use_default_culture_if_empty
+	 * @return unknown
+	 */
+	public function getType() {
+		$file = $this->getFile();
+		$file_info = pathinfo($file);
+		
+		$type = strtoupper( $file_info['extension'] );
+		
+		return $type;
 	}
 	
 	/**

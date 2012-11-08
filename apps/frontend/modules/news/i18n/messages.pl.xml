@@ -22,6 +22,10 @@
         <source>Latest Audio</source>
         <target>Ostatnie Audio</target>
       </trans-unit>
+      <trans-unit id="14">
+        <source>Latest Documents</source>
+        <target></target>
+      </trans-unit>
       <trans-unit id="1">
         <source>view all</source>
         <target>pokaż wszystkie</target>

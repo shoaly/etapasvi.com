@@ -47,6 +47,7 @@ class DocumentsTableMap extends TableMap {
 		$this->addColumn('FILE', 'File', 'VARCHAR', true, 255, null);
 		$this->addColumn('SIZE', 'Size', 'FLOAT', false, null, null);
 		$this->addColumn('ORDER', 'Order', 'INTEGER', true, null, null);
+		$this->addColumn('ALL_CULTURES', 'AllCultures', 'BOOLEAN', false, null, false);
 		// validators
 	} // initialize()
 

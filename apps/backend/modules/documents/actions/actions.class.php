@@ -90,6 +90,7 @@ class documentsActions extends autodocumentsActions
     {
       $this->documents->setOrder($documents['order']);
     }
+    $this->documents->setAllCultures(isset($documents['all_cultures']) ? $documents['all_cultures'] : 0);
     if (isset($documents['title_i18n_en']))
     {
       $this->documents->setTitleI18nEn($documents['title_i18n_en']);

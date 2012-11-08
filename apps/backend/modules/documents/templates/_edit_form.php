@@ -101,6 +101,19 @@
 </div>
 
 <div class="form-row">
+  <?php echo label_for('documents[all_cultures]', __($labels['documents{all_cultures}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('documents{all_cultures}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('documents{all_cultures}')): ?>
+    <?php echo form_error('documents{all_cultures}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_checkbox_tag($documents, 'getAllCultures', array (
+  'control_name' => 'documents[all_cultures]',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+<div class="form-row">
   <label for="documents_change_updated_at">Change Updated At:</label>  <div class="content">
   
   <input type="checkbox" checked="checked" value="1" id="documents_change_updated_at" name="documents[change_updated_at]">    </div>

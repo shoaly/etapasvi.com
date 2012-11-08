@@ -22,6 +22,10 @@
         <source>Latest Audio</source>
         <target>Najnovšie Audio</target>
       </trans-unit>
+      <trans-unit id="14">
+        <source>Latest Documents</source>
+        <target></target>
+      </trans-unit>
       <trans-unit id="1">
         <source>view all</source>
         <target>zobraziť všetky</target>

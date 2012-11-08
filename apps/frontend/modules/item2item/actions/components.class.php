@@ -21,6 +21,7 @@ class item2itemComponents extends sfComponents
   	$this->photoalbum_list = Item2itemPeer::getRelatedObjects($this->item_type, $this->item_id, ItemtypesPeer::ITEM_TYPE_PHOTOALBUM );
   	$this->video_list 	   = Item2itemPeer::getRelatedObjects($this->item_type, $this->item_id, ItemtypesPeer::ITEM_TYPE_VIDEO );
   	$this->audio_list 	   = Item2itemPeer::getRelatedObjects($this->item_type, $this->item_id, ItemtypesPeer::ITEM_TYPE_AUDIO );
+  	$this->documents_list = Item2itemPeer::getRelatedObjects($this->item_type, $this->item_id, ItemtypesPeer::ITEM_TYPE_DOCUMENTS );
   	
   	/*
   	// получаем привязанные Фотоальбомы

@@ -1,13 +1,20 @@
-<?php if (!empty($audio)): ?>
-<?php 
-// если Заголовок или Автор не указан на текущем языке берём из языка по умолчанию
-$title  = $audio->getTitle($sf_user->getCulture(), true);
-?>
-<div id="audio_<?php echo $audio->getId(); ?>" class="audio_item">
-<a href="<?php echo $audio->getUrl(); ?>"><?php echo $title; ?></a>
-<br />
-<object type="application/x-shockwave-flash" data="http://kiwi6.com/swf/player.swf" class="audioplayer" height="22" width="290" allowscriptaccess="always">
-<param name="movie" value="http://kiwi6.com/swf/player.swf" /><param name="FlashVars" value="playerID=audioplayer&amp;soundFile=<?php echo $audio->getDirectUrl(); ?>" />
-<param name="quality" value="high" /><param name="menu" value="false" /><param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /></object>
-</div>
+<?php if (!empty($documents)): ?>
+    <?php 
+    // если Заголовок или Автор не указан на текущем языке берём из языка по умолчанию
+    $title  = $documents->getTitle($sf_user->getCulture(), true);
+    ?>
+    <?php if (!$hide_wrapper): ?>
+        <?php include_partial('documents/listHeader'); ?>	
+    <?php endif ?>
+    <tr <?php if (!$last): ?>class="middle"<?php endif ?>>
+        <td class="main_col"><a href="<?php echo $documents->getUrl(); ?>"><?php echo $title; ?></a></td>
+        <td><span class="files <?php echo $documents->getType(); ?>"><?php echo $documents->getType(); ?></span></td>
+        <td><?php echo $documents->getSizePrepared(); ?></td>
+        <?php /*<td><?php echo format_datetime( $documents->getCreatedAt(), 'd MMMM yyyy'); ?></td>
+        <td><?php echo format_datetime( $documents->getUpdatedAt(), 'd MMMM yyyy'); ?></td>
+        <td><a href="<?php echo $documents->getDirectUrl(); ?>" target="_blank" class="file" title="<?php echo __('Download'); ?>"><?php echo __('Download'); ?></a></td> */ ?>
+    </tr>
+   <?php if (!$hide_wrapper): ?>
+    </table>
+    <?php endif ?>
 <?php endif ?>

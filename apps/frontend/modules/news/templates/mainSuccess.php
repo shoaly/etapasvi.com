@@ -30,6 +30,12 @@
 	<a href="<?php echo url_for('audio_index'); ?>" class="no_decor"><?php echo __('Audio') ?> »</a>
 </p>
 
+<h2><?php echo __('Latest Documents') ?></h2>
+<?php include_component('documents', 'latest'); ?>
+<p class="goto_section">
+	<a href="<?php echo url_for('documents_index'); ?>" class="no_decor"><?php echo __('Documents') ?> »</a>
+</p>
+
 <h2><?php echo __('Subscribe to News') ?></h2>
 <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $sf_user->getCulture(); ?>/etapasvi', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
 <a href="http://feeds.feedburner.com/<?php echo $sf_user->getCulture(); ?>/etapasvi" class="right"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" class="rss_img"/><img src="http://feeds.feedburner.com/~fc/<?php echo $sf_user->getCulture(); ?>/etapasvi?bg=d4d0c8&amp;fg=444444&amp;anim=0" height="26" width="88" alt="RSS" /></a>
