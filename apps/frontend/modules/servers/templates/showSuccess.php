@@ -44,8 +44,8 @@
 <br/>
 <h2><?php echo __('Website diagram') ?></h2>
 <br/>
-<a href="/uploads/all/etapasvi_com_diagram.jpg" target="_blank" title="<?php echo __('Website diagram') ?>">
-    <img src="/uploads/all/etapasvi_com_diagram.jpg" width="100%" alt="<?php echo __('Website diagram') ?>" title="<?php echo __('Website diagram') ?>" />
+<a href="/uploads/documents/etapasvi_com_diagram.jpg" target="_blank" title="<?php echo __('Website diagram') ?>">
+    <img src="/uploads/documents/etapasvi_com_diagram.jpg" width="100%" alt="<?php echo __('Website diagram') ?>" title="<?php echo __('Website diagram') ?>" />
 </a>
 
 <br /><br />

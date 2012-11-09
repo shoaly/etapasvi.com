@@ -16,6 +16,6 @@ $news_list = $pager->getResults();
 <?php echo $navigation; ?>
 
 <br/>
-<a href="/uploads/all/dharma_sangha_dictionary.pdf" class="files pdf"><?php echo __("Dictionary") ?></a> (<?php echo __("by Andy Good/LTJ") ?>)
+<a href="/uploads/documents/dharma_sangha_dictionary.pdf" class="files pdf"><?php echo __("Dictionary") ?></a> (<?php echo __("by Andy Good/LTJ") ?>)
 
 <?php include_partial('comments/count'); ?>

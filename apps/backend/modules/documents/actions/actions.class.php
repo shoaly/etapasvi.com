@@ -80,6 +80,11 @@ class documentsActions extends autodocumentsActions
 	  if (isset($documents['file']))
 	  {
 	    $this->documents->setFile($documents['file']);
+
+	    // check if file exists
+	    if (!file_exists(sfConfig::get('sf_upload_dir')."/documents/".$documents['file'])) {
+	      $this->getUser()->setFlash('warning', 'Warning: File ' . $documents['file'] . ' not found.');
+	    }
 	  }
     }
     if (isset($documents['size']))

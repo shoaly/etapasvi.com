@@ -103,7 +103,7 @@
 	<code>41001634550791</code>
 <?php /
 	<br/><br/>
-	<a href="http://<?php echo $_SERVER['SERVER_NAME'] . "/uploads/all/dharma_hall_account_statement.xls"; ?>" class="external" target="_blank"><?php echo __('Donations Received') ?></a>
+	<a href="http://<?php echo $_SERVER['SERVER_NAME'] . "/uploads/documents/dharma_hall_account_statement.xls"; ?>" class="external" target="_blank"><?php echo __('Donations Received') ?></a>
 	</center>
 /?>
 */?>

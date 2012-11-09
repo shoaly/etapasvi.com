@@ -95,7 +95,7 @@
 <h3 id="get_to_halkhoriya"><?php echo ++$counter; ?>. <?php echo __('How can I get to Halkhoriya Jungle?') ?></h3>
 <ul>
     <li><?php echo __('Make sure that Dharma Sangha will accept visitors on the day you are going to the jungle by checking updates on website and forum') ?> <a href="http://forum.etapasvi.com">http://forum.etapasvi.com</a>. <?php echo __('Keep in mind that it is not allowed to stay in Halkhoriya overnight and it is not advised to walk in jungle after 5pm, because wild animals are very active in the evening. So you should plan to reach in the jungle early in the morning and leave before 5 pm.') ?></li>
-    <li><?php echo __('Come to Kathmandu (if you are not coming from India, or Bhutan, or China.)') ?> <a href="/uploads/all/tribhuvan_to_familyhomestays.jpg" target="_blank">JPEG</a>, <a href="/uploads/all/tribhuvan_to_familyhomestays.pdf" target="_blank">PDF</a>.</li> 
+    <li><?php echo __('Come to Kathmandu (if you are not coming from India, or Bhutan, or China.)') ?> <a href="/uploads/documents/tribhuvan_to_familyhomestays.jpg" target="_blank">JPEG</a></li> 
     <?php /*<li><?php echo __('Make arrangements with Committee (contact details will be available later).') ?></li>*/ ?>
     <li><?php echo __('From Kathmandu you can take a jeep "Tata Sumo" (name of popular jeep in the area) in Bolkhu place. The journey by the jeep is a 4-hour drive from Kathmandu to Simara. The other alternative is travelling by bus up to Simara which is 10-11 hour drive at night.') ?></li>
     <li><?php echo __('From Simara you should get to Pilua Junction or Pasaha Bridge (Pilua village bus stop). You can take the 20 minute bus ride or take a "Tata Sumo"  (contact Lama Hotel, owned by Krishna meme, pronounced meh-meh meaning “respected grandfather”, though one need not be as old as a grandfather to earn this title).') ?></li>
@@ -110,7 +110,7 @@
 <br/>
 <h3 id="ratanpur_and_terthup"><?php echo ++$counter; ?>. <?php echo __('How to reach Ratanpur and Terthup?') ?></h3>
 <p class="center_text">
-<a href="/uploads/all/how_to_reach_ratanpur_and_therthup.jpg" target="_blank" title="<?php echo __('Download') ?>"><img src="/uploads/all/how_to_reach_ratanpur_and_therthup.jpg" alt="<?php echo __('How to reach Ratanpuri and Terthup?') ?>" width="565"/></a><br/><a href="/uploads/all/how_to_reach_ratanpur_and_therthup.jpg" target="_blank" title="<?php echo __('Enlarge') ?>"><?php echo __('Enlarge') ?></a>
+<a href="/uploads/documents/how_to_reach_ratanpur_and_therthup.jpg" target="_blank" title="<?php echo __('Download') ?>"><img src="/uploads/documents/how_to_reach_ratanpur_and_therthup.jpg" alt="<?php echo __('How to reach Ratanpuri and Terthup?') ?>" width="565"/></a><br/><a href="/uploads/documents/how_to_reach_ratanpur_and_therthup.jpg" target="_blank" title="<?php echo __('Enlarge') ?>"><?php echo __('Enlarge') ?></a>
 </p>
 <p class="center_text">
 <iframe width="100%" height="385" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?t=h&amp;hl=ru&amp;ie=UTF8&amp;ll=27.244634,85.12987&amp;spn=0.005332,0.006813&amp;z=17&amp;output=embed"></iframe><br /><a href="http://maps.google.com/maps?t=h&amp;hl=ru&amp;ie=UTF8&amp;ll=27.244634,85.12987&amp;spn=0.005332,0.006813&amp;z=17&amp;source=embed" ><?php echo __('Terthup Dharma Hall') ?></a>
