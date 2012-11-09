@@ -2,7 +2,7 @@
 
 // main
 var ap_stopAll = function(){};
-var audioplayer  = false;
+//var audioplayer  = false;
 // здесь запоминаетс€ форма ѕредложить перевод, чтобы после подгрузки фото, еЄ восстанавливать
 var page_toolbar_clone  = '';
 // позици€ в окне перед активацией одной из кнопок панели инструментов
@@ -108,7 +108,7 @@ $(document).ready(function() {
     }
     
     // random audio   
-    if (audio_list) {
+    /*if (audio_list) {
         var audio_index = Math.floor(Math.random( ) * (audio_list.length));
         if (audio_list[ audio_index ]) {
             $("#mp3").attr("title", audio_title_list[ audio_index ] );
@@ -122,7 +122,7 @@ $(document).ready(function() {
 		//filepath: "http://www.etapasvi.com/uploads/audio/",
 		filepath: "http://k002.kiwi6.com/uploads/hotlink/",
         width: 24
-	});
+	});*/
 
 	// select language
 	//$("span.lang_selector").colorbox({inline:true, fixed:true, href:"#lang_box", opacity:"0.5", transition:"none", close:"X"});
@@ -227,7 +227,7 @@ function showOriginal()
 }
 
 // текст аудиозаписи
-function showAudioBody(id) 
+/*function showAudioBody(id) 
 {    
     var element_id = "#elAudioBody" + id;
 
@@ -236,7 +236,7 @@ function showAudioBody(id)
 	} else {
 		$(element_id).slideUp("slow");
 	}
-}
+}*/
 
 //  модификаци€ ссылок дл€ подгрузки содержимого
 function preparePhotoContent()
