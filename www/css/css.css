@@ -187,7 +187,9 @@ h4 {
 acronym {
 	border-bottom:1px dotted #555753;
 	} 
-
+strong {
+    color: #2C2C2C;
+    }
 .low_h {
 	margin-top: 0;
 	}
@@ -285,36 +287,54 @@ a.no_decor {
 .PPTX {
     background-position: 0 -231px;
     }
-
-/*
-.zip span.file-icon,
-.rar span.file-icon,
-.gzip span.file-icon,
-.arj span.file-icon{
-	background-position: 0 -253px;
-}
-.wav span.file-icon,
-.mp3 span.file-icon,
-.aif span.file-icon,
-.aiff span.file-icon,
-.m4a span.file-icon,
-.ogg span.file-icon,
-.wma span.file-icon {
-	background-position: 0 -273px;
-}
-.psd span.file-icon,
-.ai span.file-icon,
-.swf span.file-icon,
-.fla span.file-icon,
-.css span.file-icon,
-.js span.file-icon {
-	background-position: 0 0px;
-}
-.avi span.file-icon,
-.mov span.file-icon,
-.wmv span.file-icon {
-	background-position: 0 -294px;
-}*/
+.zip, 
+.rar,
+.gzip,
+.arj,
+.ZIP, 
+.RAR,
+.GZIP,
+.ARJ {
+    background-position: 0 -253px;
+    }
+.wav, 
+.mp3, 
+.aif, 
+.aiff, 
+.m4a, 
+.ogg, 
+.wma, 
+.WAV, 
+.MP3, 
+.AIF, 
+.AIFF, 
+.M4A, 
+.OGG, 
+.WMA {
+    background-position: 0 -273px;
+    }
+.psd, 
+.ai, 
+.swf, 
+.fla, 
+.css, 
+.js, 
+.PSD, 
+.AI, 
+.SWF, 
+.FLA, 
+.CSS, 
+.JS {
+    background-position: 0 0px;
+    }
+.avi, 
+.mov, 
+.wmv, 
+.AVI, 
+.MOV, 
+.WMV {
+    background-position: 0 -294px;
+    }
 
 ul {
 	list-style-position:outside;
