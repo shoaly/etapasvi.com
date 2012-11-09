@@ -8,6 +8,7 @@ foreach($quote_list as $i=>$quote):
 endforeach
 ?>
 );
+<?php /*
 var audio_list = new Array(
 <?php 
 foreach($audio_list as $i=>$audio): 
@@ -28,4 +29,5 @@ foreach($audio_list as $i=>$audio):
 endforeach 
 ?>
 );
+*/ ?>
 var footer_text = "<?php echo str_replace('"', '\"', str_replace("\n", "", get_partial('global/footer_text'))); ?>";

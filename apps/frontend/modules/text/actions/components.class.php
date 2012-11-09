@@ -19,11 +19,12 @@ class textComponents extends sfComponents
   	$this->quote_list = QuotePeer::doSelectWithI18n($c);
   	
     // получаем список Аудио
+    /*
     $c = new Criteria();
     $c->add(AudioI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
     $c->add(AudioPeer::REMOTE, '', Criteria::NOT_EQUAL);
     $c->add(AudioPeer::SHOW, 1);
-  	$this->audio_list = AudioPeer::doSelectWithI18n($c);
+  	$this->audio_list = AudioPeer::doSelectWithI18n($c);*/
   }
   
   /**

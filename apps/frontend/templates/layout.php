@@ -176,7 +176,7 @@ window.onerror = function(msg, url, line) {
     <?php 
         //$audio = get_component( 'audio', 'random' );
     ?>
-	<div id="mp3" title="<?php /*echo $audio;*/ ?>" class="audio_item"><span><?php /*echo $audio;*/ ?>&nbsp;</span></div>
+	<?php /*<div id="mp3" title="" class="audio_item"><span>&nbsp;</span></div>*/ ?>
 <?php /*endif */?>
 </div>
 
