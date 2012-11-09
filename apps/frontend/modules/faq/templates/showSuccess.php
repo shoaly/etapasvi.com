@@ -5,24 +5,27 @@
 <h1 id="up"><?php echo __('FAQ') ?></h1>
 
 <ol class="in_text">
-	<li><a href="#where_is_he"><?php echo __('Where is Dharma Sangha now?') ?></a></li>
+<?php /*	<li><a href="#where_is_he"><?php echo __('Where is Dharma Sangha now?') ?></a></li> */ ?>
 <?php /*	<li><a href="#is_he_eating"><?php echo __('Is Dharma Sangha still not eating anything or just eating herbs from the jungle?') ?></a></li> */ ?>
-	<li><a href="#why_is_he_meditating"><?php echo __('Why is he meditating? What does he want to achieve?') ?></a></li>
+<?php /*	<li><a href="#why_is_he_meditating"><?php echo __('Why is he meditating? What does he want to achieve?') ?></a></li> */ ?>
 	<li><a href="#is_he_enlightened"><?php echo __('Is Dharma Sangha already enlightened?') ?></a></li>
-	<li><a href="#buddha"><?php echo __('Has he already become a Buddha?') ?></a></li>
+<?php /*	<li><a href="#buddha"><?php echo __('Has he already become a Buddha?') ?></a></li> */ ?>
 	<li><a href="#teaching"><?php echo __('Is his teaching based on Buddhism or any other religions like Hinduism?') ?></a></li>
 <?php /*	<li><a href="#bodhi_shravan_dharma_sangha"><?php echo __('What does "Bodhi Shravan Dharma Sangha" mean?') ?></a></li> 
 	<li><a href="#blessing"><?php echo __('How can I receive blessing from Dharma Sangha?') ?></a></li> */ ?>
-	<li><a href="#gifts"><?php echo __('I am going to Halkhoriya Jungle. What should I take with me? I also would like to bring some gifts, what is the best choice?') ?></a></li>
+<?php /*	<li><a href="#gifts"><?php echo __('I am going to Halkhoriya Jungle. What should I take with me? I also would like to bring some gifts, what is the best choice?') ?></a></li>
 	<li><a href="#get_to_halkhoriya"><?php echo __('How can I get to Halkhoriya Jungle?') ?></a></li> 
 	<li><a href="#ratanpur_and_terthup"><?php echo __('How to reach Ratanpur and Terthup?') ?></a></li>
+*/ ?>
 	<li><a href="#maitreya"><?php echo __('What does Jyampa, Ginphen, Maitri, Maitreya and Metta mean?') ?></a></li>
 </ol>
 <br/>
-<h3 id="where_is_he"><?php echo ++$counter; ?>. <?php echo __('Where is Dharma Sangha now?') ?></h3>
+<?php /*<h3 id="where_is_he"><?php echo ++$counter; ?>. <?php echo __('Where is Dharma Sangha now?') ?></h3>
 <p>
 <?php echo __('He is meditating in Halkhoriya Jungle, Bara District in Nepal.') ?>
 </p>
+*/ ?>
+
 <?php /*
 <center>
 <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?source=s_q&amp;f=q&amp;hl=ru&amp;geocode=&amp;q=Dharma+Sangha+Meditation+Site&amp;sll=37.0625,-95.677068&amp;sspn=52.152749,79.013672&amp;ie=UTF8&amp;hnear=&amp;radius=15000&amp;t=h&amp;cid=11992413955635615183&amp;oi=map_misc&amp;hq=Dharma+Sangha+Meditation+Sitel&amp;ll=27.202436,85.089074&amp;spn=0.001341,0.002411&amp;iwloc=A&amp;output=embed"></iframe>
@@ -34,10 +37,12 @@
 <?php echo __('He is not eating anything.') ?>
 </p>
 */ ?>
+<?php /*
 <h3 id="why_is_he_meditating"><?php echo ++$counter; ?>. <?php echo __('Why is he meditating? What does he want to achieve?') ?></h3>
 <p>
 <?php echo __('Dharma Sangha wants to liberate the whole world by spreading Dharma and insight he’ve gained through his meditation.') ?>
 </p>
+*/ ?>
 
 
 <h3 id="is_he_enlightened"><?php echo ++$counter; ?>. <?php echo __('Is Dharma Sangha already enlightened?') ?></h3>
@@ -45,10 +50,12 @@
 <?php echo __('Yes, he is already enlightened. The first stages of enlightenment occurred in his room at home.') ?>
 </p>
 
+<?php /*
 <h3 id="buddha"><?php echo ++$counter; ?>. <?php echo __('Has he already become a Buddha?') ?></h3>
 <p>
 <?php echo __('Dharma Sangha can’t tell it now. Time will reveal.') ?>
 </p>
+*/ ?>
 
 <h3 id="teaching"><?php echo ++$counter; ?>. <?php echo __('Is his teaching based on Buddhism or any other religions like Hinduism?') ?></h3>
 <p>
@@ -74,6 +81,7 @@
 </p>
 */ ?>
 
+<?php /*
 <h3 id="gifts"><?php echo ++$counter; ?>. <?php echo __('I am going to Halkhoriya Jungle. What should I take with me? I also would like to bring some gifts, what is the best choice?') ?></h3>
 <p>
 <?php echo __('Impractical gifts are not really good to bring (pictures, vases, etc). Below is a list of small practical things, which are needed regularly in the jungle:') ?>
@@ -96,7 +104,7 @@
 <ul>
     <li><?php echo __('Make sure that Dharma Sangha will accept visitors on the day you are going to the jungle by checking updates on website and forum') ?> <a href="http://forum.etapasvi.com">http://forum.etapasvi.com</a>. <?php echo __('Keep in mind that it is not allowed to stay in Halkhoriya overnight and it is not advised to walk in jungle after 5pm, because wild animals are very active in the evening. So you should plan to reach in the jungle early in the morning and leave before 5 pm.') ?></li>
     <li><?php echo __('Come to Kathmandu (if you are not coming from India, or Bhutan, or China.)') ?> <a href="/uploads/documents/tribhuvan_to_familyhomestays.jpg" target="_blank">JPEG</a></li> 
-    <?php /*<li><?php echo __('Make arrangements with Committee (contact details will be available later).') ?></li>*/ ?>
+    <?php /*<li><?php echo __('Make arrangements with Committee (contact details will be available later).') ?></li>* ?>
     <li><?php echo __('From Kathmandu you can take a jeep "Tata Sumo" (name of popular jeep in the area) in Bolkhu place. The journey by the jeep is a 4-hour drive from Kathmandu to Simara. The other alternative is travelling by bus up to Simara which is 10-11 hour drive at night.') ?></li>
     <li><?php echo __('From Simara you should get to Pilua Junction or Pasaha Bridge (Pilua village bus stop). You can take the 20 minute bus ride or take a "Tata Sumo"  (contact Lama Hotel, owned by Krishna meme, pronounced meh-meh meaning “respected grandfather”, though one need not be as old as a grandfather to earn this title).') ?></li>
     <li><?php echo __('From Pasaha Bridge to Halkhoriya Jungle (about 6-7 km) you can take a tractor which belongs to Committee. The road is a dry river bed and it is rough and bumpy ride.') ?></li>
@@ -105,7 +113,7 @@
 <p>
 <?php echo __('The most convenience place for foreigner is to land in Kathmandu. From Kathmandu it is about 6 hours drive to Parsa Bridge if you can take a bus or a private vehicle. From Parsa Bridge to Halkhoriya Jungle (about 6-7 km) you can take a tractor, which belongs to Bodhi Shrawan Dharma Sangha, or a 4-wheel vehicle to reach there. The road is a dry river bed and it is rough and bumpy ride.') ?>
 </p>
-*/
+*
 ?>
 <br/>
 <h3 id="ratanpur_and_terthup"><?php echo ++$counter; ?>. <?php echo __('How to reach Ratanpur and Terthup?') ?></h3>
