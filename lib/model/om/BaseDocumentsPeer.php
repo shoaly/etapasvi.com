@@ -1113,7 +1113,7 @@ abstract class BaseDocumentsPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $special_join = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -1134,10 +1134,18 @@ abstract class BaseDocumentsPeer {
 	  //$criteria->addJoin(DocumentsPeer::ID, DocumentsI18nPeer::ID, $join_behavior);
 	  //$criteria->add(DocumentsI18nPeer::CULTURE, $culture);
 	  
-	  if (!$no_join_culture) {
-	    $criteria->addJoin(array(DocumentsPeer::ID, DocumentsI18nPeer::CULTURE), array(DocumentsI18nPeer::ID, "'$culture'"), $join_behavior);
+	  if ($special_join) {
+	    //$criteria->addJoin(DocumentsPeer::ID, DocumentsI18nPeer::ID, $join_behavior);
+	    $default_culture = sfConfig::get('sf_default_culture');
+	    $criteria->addJoin(
+	      array(DocumentsPeer::ID, "(".DocumentsI18nPeer::CULTURE),
+	      array(DocumentsI18nPeer::ID, "'{$culture}' OR 
+					(".DocumentsI18nPeer::CULTURE." = '{$default_culture}' AND NOT EXISTS(SELECT ".DocumentsI18nPeer::ID." FROM ".DocumentsI18nPeer::TABLE_NAME." 
+					WHERE ".DocumentsI18nPeer::ID." = ".DocumentsPeer::ID." AND ".DocumentsI18nPeer::CULTURE." = '{$culture}')))"), 
+	      $join_behavior
+	    );
 	  } else {
-	    $criteria->addJoin(DocumentsPeer::ID, DocumentsI18nPeer::ID, $join_behavior);
+	    $criteria->addJoin(array(DocumentsPeer::ID, DocumentsI18nPeer::CULTURE), array(DocumentsI18nPeer::ID, "'$culture'"), $join_behavior);
 	  }  
 	
 	  foreach (sfMixer::getCallables('BaseDocuments:doSelectJoin:doSelectJoin') as $sf_hook)

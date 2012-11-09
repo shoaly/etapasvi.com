@@ -1129,7 +1129,7 @@ abstract class BasePhotoPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $special_join = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -1150,10 +1150,18 @@ abstract class BasePhotoPeer {
 	  //$criteria->addJoin(PhotoPeer::ID, PhotoI18nPeer::ID, $join_behavior);
 	  //$criteria->add(PhotoI18nPeer::CULTURE, $culture);
 	  
-	  if (!$no_join_culture) {
-	    $criteria->addJoin(array(PhotoPeer::ID, PhotoI18nPeer::CULTURE), array(PhotoI18nPeer::ID, "'$culture'"), $join_behavior);
+	  if ($special_join) {
+	    //$criteria->addJoin(PhotoPeer::ID, PhotoI18nPeer::ID, $join_behavior);
+	    $default_culture = sfConfig::get('sf_default_culture');
+	    $criteria->addJoin(
+	      array(PhotoPeer::ID, "(".PhotoI18nPeer::CULTURE),
+	      array(PhotoI18nPeer::ID, "'{$culture}' OR 
+					(".PhotoI18nPeer::CULTURE." = '{$default_culture}' AND NOT EXISTS(SELECT ".PhotoI18nPeer::ID." FROM ".PhotoI18nPeer::TABLE_NAME." 
+					WHERE ".PhotoI18nPeer::ID." = ".PhotoPeer::ID." AND ".PhotoI18nPeer::CULTURE." = '{$culture}')))"), 
+	      $join_behavior
+	    );
 	  } else {
-	    $criteria->addJoin(PhotoPeer::ID, PhotoI18nPeer::ID, $join_behavior);
+	    $criteria->addJoin(array(PhotoPeer::ID, PhotoI18nPeer::CULTURE), array(PhotoI18nPeer::ID, "'$culture'"), $join_behavior);
 	  }  
 	
 	  foreach (sfMixer::getCallables('BasePhoto:doSelectJoin:doSelectJoin') as $sf_hook)

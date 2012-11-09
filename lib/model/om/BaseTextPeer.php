@@ -827,7 +827,7 @@ abstract class BaseTextPeer {
 	 *
 	 * @return array
 	 */
-	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $no_join_culture = false)
+	static public function doSelectWithI18n(Criteria $criteria, $culture = null, $con = null, $join_behavior = Criteria::LEFT_JOIN, $special_join = false)
 	{
 	  $criteria = clone $criteria;
 	
@@ -848,10 +848,18 @@ abstract class BaseTextPeer {
 	  //$criteria->addJoin(TextPeer::ID, TextI18nPeer::ID, $join_behavior);
 	  //$criteria->add(TextI18nPeer::CULTURE, $culture);
 	  
-	  if (!$no_join_culture) {
-	    $criteria->addJoin(array(TextPeer::ID, TextI18nPeer::CULTURE), array(TextI18nPeer::ID, "'$culture'"), $join_behavior);
+	  if ($special_join) {
+	    //$criteria->addJoin(TextPeer::ID, TextI18nPeer::ID, $join_behavior);
+	    $default_culture = sfConfig::get('sf_default_culture');
+	    $criteria->addJoin(
+	      array(TextPeer::ID, "(".TextI18nPeer::CULTURE),
+	      array(TextI18nPeer::ID, "'{$culture}' OR 
+					(".TextI18nPeer::CULTURE." = '{$default_culture}' AND NOT EXISTS(SELECT ".TextI18nPeer::ID." FROM ".TextI18nPeer::TABLE_NAME." 
+					WHERE ".TextI18nPeer::ID." = ".TextPeer::ID." AND ".TextI18nPeer::CULTURE." = '{$culture}')))"), 
+	      $join_behavior
+	    );
 	  } else {
-	    $criteria->addJoin(TextPeer::ID, TextI18nPeer::ID, $join_behavior);
+	    $criteria->addJoin(array(TextPeer::ID, TextI18nPeer::CULTURE), array(TextI18nPeer::ID, "'$culture'"), $join_behavior);
 	  }  
 	
 	  foreach (sfMixer::getCallables('BaseText:doSelectJoin:doSelectJoin') as $sf_hook)

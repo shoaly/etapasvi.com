@@ -37,7 +37,6 @@ class VideoPeer extends BaseVideoPeer
   public static function addVisibleCriteria($c)
   {  
     $c->add( VideoPeer::SHOW, 1 );
-    $c->add( VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL );
     
     $c_all_cultueres = $c->getNewCriterion(VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL);
     $c_all_cultueres->addOr($c->getNewCriterion(VideoI18nPeer::TITLE, '', Criteria::NOT_EQUAL));
