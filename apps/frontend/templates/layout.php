@@ -81,8 +81,8 @@ window.onerror = function(msg, url, line) {
         <?php $mobile_url = UserPeer::switchUrlMobile(sfContext::getInstance()->getRequest()->getUri());?>                
         <?php $mobile_url = preg_replace("/\?.*/", '', $mobile_url) ;?>                
         <div id="m_link">
-            <br/>
-            <a href="<?php echo $mobile_url; ?>" title="<?php echo __('Mobile') ?>"><img src="http://qrcode.kaywa.com/img.php?s=3&amp;d=<?php echo urlencode($mobile_url); ?>" alt="<?php echo __('Mobile') ?>"/></a>
+            <?php /*<br/>
+            <a href="<?php echo $mobile_url; ?>" title="<?php echo __('Mobile') ?>"><img src="http://qrcode.kaywa.com/img.php?s=3&amp;d=<?php echo urlencode($mobile_url); ?>" alt="<?php echo __('Mobile') ?>"/></a>*/ ?>
             <br/><!--UDLS--><a href="<?php echo $mobile_url; ?>" title="<?php echo __('Mobile') ?>"><?php echo __('Mobile') ?></a><!--UDLE-->
         </div>
 	</div>
