@@ -307,6 +307,11 @@
         <source>Duration</source>
         <target></target>
       </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Lyrics</source>
+        <target></target>
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Mobile</source>

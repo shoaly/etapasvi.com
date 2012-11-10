@@ -208,13 +208,15 @@ strong {
 }
 
 a:link, 
-a:active { 
+a:active ,
+a strong { 
 	color: #00a3a3;
 	}
 a:visited { 
 	color: #00a3a3;
 	}
-a:hover { 
+a:hover,
+a:hover strong { 
 	/*font-weight: bold; */
 	color: #867D4A;
 	/*color: #9685BA;*/

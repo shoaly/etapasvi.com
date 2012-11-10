@@ -250,6 +250,11 @@
         <target></target>
       </trans-unit>
       
+      <trans-unit id="1">
+        <source>Lyrics</source>
+        <target></target>
+      </trans-unit>
+      
 <!-- mobile -->
       <trans-unit id="1">
         <source>Mobile</source>

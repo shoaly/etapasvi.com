@@ -227,16 +227,16 @@ function showOriginal()
 }
 
 // текст аудиозаписи
-/*function showAudioBody(id) 
+function showAudioBody(id) 
 {    
     var element_id = "#elAudioBody" + id;
 
 	if ( $(element_id).is(":hidden") ) {
-		$(element_id).slideDown("slow");
+		$(element_id).slideDown("fast");
 	} else {
-		$(element_id).slideUp("slow");
+		$(element_id).slideUp("fast");
 	}
-}*/
+}
 
 //  модификация ссылок для подгрузки содержимого
 function preparePhotoContent()

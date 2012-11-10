@@ -5,7 +5,6 @@
 	<a href="<?php echo url_for('@main'); ?>"><?php echo __('Home') ?></a> » <a href="<?php echo url_for('@audio_index'); ?>"><?php echo __('Audio') ?></a>
 </p>
 <div class="box">
-<br/>
 <?php include_component('audio', 'show', array('id'=>$id, 'title'=>$title, 'audio'=>$audio)); ?>
 <br/>
 </div>

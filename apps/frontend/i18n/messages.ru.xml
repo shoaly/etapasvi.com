@@ -254,6 +254,11 @@
         <target>Время</target>
       </trans-unit>
       
+      <trans-unit id="1">
+        <source>Lyrics</source>
+        <target>Текст</target>
+      </trans-unit>
+      
 <!-- mobile -->
       <trans-unit id="1">
         <source>Mobile</source>
