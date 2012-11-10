@@ -22,7 +22,7 @@ class UserPeer extends BaseUserPeer
 		              // язык интерфейса FeedBurner
 		              'feedburner_loc' 		 => 'en_US',
 		              'twitter' 		 	 => 'etapasvi',
-		              'fb_group' 		 	 => '',
+		              'fb_group' 		 	 => 'etapasvi.en',
 		              'blessing_ln' 		 => ''
 		),            
 		'ru' => array('name'    			 => 'Русский',
@@ -30,18 +30,21 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 			 => '25b1a7f858',
 		              'comments_category_id' => 686465,
 		              'feedburner_loc' 		 => 'ru_RU',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-ru-%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/367816743307548',
 		              'blessing_ln' 		 => 'ru-RU'
 		),
 		'cs' => array('name'    			 => 'Čeština',
 		              'iso'     			 => 'cz',
 		              'comments_category_id' => 686584,
 		              'feedburner_loc' 		 => '',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-cz-%C4%8Ce%C5%A1tina/217592821707394',
 		              'blessing_ln' 		 => 'cs-CZ'
 		),
 		'hu' => array('name'    			 => 'Magyar',
 		              'iso'     			 => 'hu',
 		              'comments_category_id' => 686585,
 		              'feedburner_loc' 		 => '',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-hu-Magyar/422601807795163',
 		              'blessing_ln' 		 => 'hu-HU'
 		),
 		'pl' => array('name'    			 => 'Polski',
@@ -49,7 +52,7 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 			 => '99862a8230',
 		              'comments_category_id' => 686580,
 		              'feedburner_loc' 		 => '',
-		              'fb_group' 		 	 => 'etapasvi.pol',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-pl-Polski/509286569090423',
 		              'blessing_ln' 		 => 'pl-PL'
 		),
 		'fr' => array('name'    			 => 'Français',
@@ -57,6 +60,7 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 			 => '430d7d6d8b',
 		              'comments_category_id' => 686581,
 		              'feedburner_loc' 		 => 'fr_FR',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-fr-Français/417833841617774',
 		              'blessing_ln' 		 => 'fr-FR'
 		),
 		// Mandarin Chinese (Simplified script) - упрошённый китайский
@@ -67,6 +71,7 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 	  		 => '33bb475372',
 		              'comments_category_id' => 686582,
 		              'feedburner_loc' 		 => '',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-zh-cn-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87/300889923359900',
 		              'blessing_ln' 		 => 'zh-CN'
 		),
 		'vi' => array('name'    			 => 'Tiếng Việt',
@@ -74,6 +79,7 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 			 => '68f2a2996d',
 		              'comments_category_id' => 686583,
 		              'feedburner_loc' 		 => '',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-vn-Ti%E1%BA%BFng-Vi%E1%BB%87t/365871553502958',
 		              'blessing_ln' 		 => 'vi-VN'
 		),       
 		'ja' => array('name'    			 => '日本語',
@@ -82,6 +88,7 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 			 => '77a5eb7cd2',
 		              'comments_category_id' => 686578,
 		              'feedburner_loc' 		 => 'ja_JP',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-jp-日本語/216899785109288',
 		              'blessing_ln' 		 => 'ja-JP'
 		),
 		'es' => array('name'    			 => 'Español',
@@ -90,6 +97,7 @@ class UserPeer extends BaseUserPeer
 		              'comments_category_id' => 686579,
 		              'feedburner_loc' 		 => 'es_ES',
 		              'disqus_culture' 		 => 'es_ES',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-es-Espa%C3%B1ol/162128630600687',
 		              'blessing_ln' 		 => 'es-ES'
 		),
 		'it' => array('name'    			 => 'Italiano',
@@ -97,6 +105,7 @@ class UserPeer extends BaseUserPeer
 		              //'mail_id' 			 => 'ddd87d0746',
 		              'comments_category_id' => 686577,
 		              'feedburner_loc' 		 => '',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-it-Italiano/482400528458711',
 		              'blessing_ln' 		 => 'it-IT'
 		),
 /*		              		              
@@ -110,6 +119,7 @@ class UserPeer extends BaseUserPeer
 		              'iso'     			 => 'ee',
 		              'comments_category_id' => 997486,
 		              'feedburner_loc' 		 => '',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-ee-Eesti/262816543841522',
 		              'blessing_ln' 		 => 'et-EE'
 		),
 		'ne' => array('name'    			 => 'नेाी',
@@ -118,6 +128,7 @@ class UserPeer extends BaseUserPeer
 		              'comments_category_id' => 1102690,
 		              //'feedburner_loc' 		 => 'ru_RU'
 		              'disqus_culture' 		 => 'en',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-ne-%E0%A4%A8%E0%A5%87%E0%A4%BE%E0%A5%80/427189564014033',
 		              'blessing_ln' 		 => 'ne-NP'
 		),
 		'bn' => array('name'    			 => 'বাংলা',
@@ -127,6 +138,7 @@ class UserPeer extends BaseUserPeer
 		              'comments_category_id' => 1110606,
 		              //'feedburner_loc' 		 => 'ru_RU'
 					  'disqus_culture' 		 => 'en',
+					  'fb_group' 		 	 => 'pages/eTapasvicom-bn-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE/434001003314417',
 					  'blessing_ln' 		 => 'bn-BD'
 		),			
 		'he' => array(
@@ -137,6 +149,7 @@ class UserPeer extends BaseUserPeer
 		              'comments_category_id' => 1417916,
 		              'feedburner_loc' 		 => '',
 		              'direction_rtl' 		 => true,
+		              'fb_group' 		 	 => 'pages/eTapasvicom-he-%D7%A2%D7%91%D7%A8%D7%99%D7%AA/389776024435475',
 		              'blessing_ln' 		 => 'he-IL'
          ),
          // Taiwan / Lee Ming / Traditional Chinese language
@@ -147,6 +160,7 @@ class UserPeer extends BaseUserPeer
 		              'comments_category_id' => 1417917,
 		              'feedburner_loc' 		 => '',
 		              'disqus_culture' 		 => 'zh_HANT',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-zh-tw-%E5%82%B3%E7%B5%B1%E6%BC%A2%E5%AD%97/124329524389601',
 		              'blessing_ln' 		 => 'zh-TW'
          ),
 		'de' => array('name'     			 => 'Deutsch',
@@ -154,6 +168,7 @@ class UserPeer extends BaseUserPeer
 		              'comments_category_id' => 1456893,
 		              'feedburner_loc' 		 => '',
 		              'disqus_culture' 		 => 'de_formal',
+		              'fb_group' 		 	 => 'pages/eTapasvicom-de-Deutsch/245816235544764',
 		              'blessing_ln' 		 => 'de-DE'
 		),
 	);
