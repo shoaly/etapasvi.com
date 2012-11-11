@@ -44,15 +44,19 @@ class VideoPeer extends BaseVideoPeer
     
     $culture = sfContext::getInstance()->getUser()->getCulture();
     
+    $c_extra = $c->getNewCriterion(VideoPeer::ALL_CULTURES, 1);
+    
     $c_code = $c->getNewCriterion(VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL);
     $c_code->addAnd( $c->getNewCriterion(VideoI18nPeer::CULTURE, $culture) );
-    
-    $c_title = $c->getNewCriterion(VideoI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
-    $c_title->addAnd( $c->getNewCriterion(VideoI18nPeer::CULTURE, $culture) );
-    
-    $c_extra = $c->getNewCriterion(VideoPeer::ALL_CULTURES, 1);
     $c_extra->addOr( $c_code );
-    $c_extra->addOr( $c_title );
+    
+    // in default culture (en) title must be always set
+    if ($culture != sfConfig::get('sf_default_culture')) {
+      $c_title = $c->getNewCriterion(VideoI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
+      $c_title->addAnd( $c->getNewCriterion(VideoI18nPeer::CULTURE, $culture) );
+      
+      $c_extra->addOr( $c_title );
+    }
 
 	$c->add($c_extra);
   }
