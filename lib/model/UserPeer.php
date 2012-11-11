@@ -9,6 +9,8 @@ class UserPeer extends BaseUserPeer
 {
 	const SERVERS_FRONTENDS = 'frontends';
 	const SERVERS_BACKENDS  = 'backends';
+	
+	const ALL_CULTURES  = 'all';
 
 	// языки
 	static protected $cultures = array(

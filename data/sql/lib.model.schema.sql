@@ -125,7 +125,7 @@ CREATE TABLE `news_i18n`
 	`translated_by` VARCHAR(255),
 	`link` VARCHAR(255),
 	`extradate` VARCHAR(255),
-	`doc` VARCHAR(255) default '',
+	`doc` VARCHAR(255),
 	`id` INTEGER  NOT NULL,
 	`culture` VARCHAR(7)  NOT NULL,
 	PRIMARY KEY (`id`,`culture`),
@@ -463,6 +463,36 @@ CREATE TABLE `documents_i18n`
 		FOREIGN KEY (`id`)
 		REFERENCES `documents` (`id`)
 		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- clearcache
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `clearcache`;
+
+
+CREATE TABLE `clearcache`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`created_at` DATETIME,
+	`sf_guard_user_id` INTEGER  NOT NULL,
+	`item_id` INTEGER  NOT NULL,
+	`itemtypes_id` INTEGER,
+	`item_culture` VARCHAR(7)  NOT NULL,
+	`cleared` TINYINT default 0,
+	PRIMARY KEY (`id`),
+	KEY `sf_guard_user_id`(`sf_guard_user_id`),
+	KEY `item_id`(`item_id`),
+	KEY `itemtypes_id`(`itemtypes_id`),
+	KEY `item_culture`(`item_culture`),
+	KEY `cleared`(`cleared`),
+	CONSTRAINT `clearcache_FK_1`
+		FOREIGN KEY (`sf_guard_user_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	CONSTRAINT `clearcache_FK_2`
+		FOREIGN KEY (`itemtypes_id`)
+		REFERENCES `itemtypes` (`id`)
 )Type=MyISAM;
 
 # This restores the fkey checks, after having unset them earlier

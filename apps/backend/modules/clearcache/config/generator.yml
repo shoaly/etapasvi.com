@@ -1,0 +1,19 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      Clearcache
+    theme:            default
+
+    list:
+      peer_method: doSelect
+      max_per_page: 100
+      sort: [created_at, desc]
+      display: [id, created_at, sf_guard_user, item_id, itemtypes, item_culture, cleared]
+      filters: [sf_guard_user_id, item_id, itemtypes_id, item_culture, cleared]
+      object_actions:
+        _edit:
+        _delete:
+        
+    edit:
+      display:
+        "NONE": [created_at, sf_guard_user_id, item_id, itemtypes_id, item_culture, cleared]

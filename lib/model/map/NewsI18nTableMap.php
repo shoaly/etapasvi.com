@@ -47,7 +47,7 @@ class NewsI18nTableMap extends TableMap {
 		$this->addColumn('TRANSLATED_BY', 'TranslatedBy', 'VARCHAR', false, 255, null);
 		$this->addColumn('LINK', 'Link', 'VARCHAR', false, 255, null);
 		$this->addColumn('EXTRADATE', 'Extradate', 'VARCHAR', false, 255, null);
-		$this->addColumn('DOC', 'Doc', 'VARCHAR', false, 255, '');
+		$this->addColumn('DOC', 'Doc', 'VARCHAR', false, 255, null);
 		$this->addForeignPrimaryKey('ID', 'Id', 'INTEGER' , 'news', 'ID', true, null, null);
 		$this->addPrimaryKey('CULTURE', 'Culture', 'VARCHAR', true, 7, null);
 		// validators

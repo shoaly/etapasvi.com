@@ -98,7 +98,7 @@ class sfRequestRoute extends sfRoute
    *
    * @return string The generated URL
    */
-  public function generate($params, $context = array(), $absolute = false)
+  public function generate($params, $context = array(), $absolute = false, $culture = '')
   {
     unset($params['sf_method']);
 

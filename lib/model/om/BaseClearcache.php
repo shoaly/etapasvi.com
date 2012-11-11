@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base class that represents a row from the 'news_i18n' table.
+ * Base class that represents a row from the 'clearcache' table.
  *
  * 
  *
@@ -10,70 +10,16 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseNewsI18n extends BaseObject  implements Persistent {
+abstract class BaseClearcache extends BaseObject  implements Persistent {
 
 
 	/**
 	 * The Peer class.
 	 * Instance provides a convenient way of calling static methods on a class
 	 * that calling code may not be able to identify.
-	 * @var        NewsI18nPeer
+	 * @var        ClearcachePeer
 	 */
 	protected static $peer;
-
-	/**
-	 * The value for the updated_at_extra field.
-	 * @var        string
-	 */
-	protected $updated_at_extra;
-
-	/**
-	 * The value for the title field.
-	 * @var        string
-	 */
-	protected $title;
-
-	/**
-	 * The value for the shortbody field.
-	 * @var        string
-	 */
-	protected $shortbody;
-
-	/**
-	 * The value for the body field.
-	 * @var        string
-	 */
-	protected $body;
-
-	/**
-	 * The value for the author field.
-	 * @var        string
-	 */
-	protected $author;
-
-	/**
-	 * The value for the translated_by field.
-	 * @var        string
-	 */
-	protected $translated_by;
-
-	/**
-	 * The value for the link field.
-	 * @var        string
-	 */
-	protected $link;
-
-	/**
-	 * The value for the extradate field.
-	 * @var        string
-	 */
-	protected $extradate;
-
-	/**
-	 * The value for the doc field.
-	 * @var        string
-	 */
-	protected $doc;
 
 	/**
 	 * The value for the id field.
@@ -82,15 +28,51 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	protected $id;
 
 	/**
-	 * The value for the culture field.
+	 * The value for the created_at field.
 	 * @var        string
 	 */
-	protected $culture;
+	protected $created_at;
 
 	/**
-	 * @var        News
+	 * The value for the sf_guard_user_id field.
+	 * @var        int
 	 */
-	protected $aNews;
+	protected $sf_guard_user_id;
+
+	/**
+	 * The value for the item_id field.
+	 * @var        int
+	 */
+	protected $item_id;
+
+	/**
+	 * The value for the itemtypes_id field.
+	 * @var        int
+	 */
+	protected $itemtypes_id;
+
+	/**
+	 * The value for the item_culture field.
+	 * @var        string
+	 */
+	protected $item_culture;
+
+	/**
+	 * The value for the cleared field.
+	 * Note: this column has a database default value of: false
+	 * @var        boolean
+	 */
+	protected $cleared;
+
+	/**
+	 * @var        sfGuardUser
+	 */
+	protected $asfGuardUser;
+
+	/**
+	 * @var        Itemtypes
+	 */
+	protected $aItemtypes;
 
 	/**
 	 * Flag to prevent endless save loop, if this object is referenced
@@ -108,10 +90,41 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 
 	// symfony behavior
 	
-	const PEER = 'NewsI18nPeer';
+	const PEER = 'ClearcachePeer';
 
 	/**
-	 * Get the [optionally formatted] temporal [updated_at_extra] column value.
+	 * Applies default values to this object.
+	 * This method should be called from the object's constructor (or
+	 * equivalent initialization method).
+	 * @see        __construct()
+	 */
+	public function applyDefaultValues()
+	{
+		$this->cleared = false;
+	}
+
+	/**
+	 * Initializes internal state of BaseClearcache object.
+	 * @see        applyDefaults()
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->applyDefaultValues();
+	}
+
+	/**
+	 * Get the [id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	/**
+	 * Get the [optionally formatted] temporal [created_at] column value.
 	 * 
 	 *
 	 * @param      string $format The date/time format string (either date()-style or strftime()-style).
@@ -119,22 +132,22 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 * @return     mixed Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
 	 * @throws     PropelException - if unable to parse/validate the date/time value.
 	 */
-	public function getUpdatedAtExtra($format = 'Y-m-d H:i:s')
+	public function getCreatedAt($format = 'Y-m-d H:i:s')
 	{
-		if ($this->updated_at_extra === null) {
+		if ($this->created_at === null) {
 			return null;
 		}
 
 
-		if ($this->updated_at_extra === '0000-00-00 00:00:00') {
+		if ($this->created_at === '0000-00-00 00:00:00') {
 			// while technically this is not a default value of NULL,
 			// this seems to be closest in meaning.
 			return null;
 		} else {
 			try {
-				$dt = new DateTime($this->updated_at_extra);
+				$dt = new DateTime($this->created_at);
 			} catch (Exception $x) {
-				throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->updated_at_extra, true), $x);
+				throw new PropelException("Internally stored date/time/timestamp value could not be converted to DateTime: " . var_export($this->created_at, true), $x);
 			}
 		}
 
@@ -149,113 +162,86 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Get the [title] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getTitle()
-	{
-		return $this->title;
-	}
-
-	/**
-	 * Get the [shortbody] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getShortbody()
-	{
-		return $this->shortbody;
-	}
-
-	/**
-	 * Get the [body] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getBody()
-	{
-		return $this->body;
-	}
-
-	/**
-	 * Get the [author] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getAuthor()
-	{
-		return $this->author;
-	}
-
-	/**
-	 * Get the [translated_by] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getTranslatedBy()
-	{
-		return $this->translated_by;
-	}
-
-	/**
-	 * Get the [link] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getLink()
-	{
-		return $this->link;
-	}
-
-	/**
-	 * Get the [extradate] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getExtradate()
-	{
-		return $this->extradate;
-	}
-
-	/**
-	 * Get the [doc] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getDoc()
-	{
-		return $this->doc;
-	}
-
-	/**
-	 * Get the [id] column value.
+	 * Get the [sf_guard_user_id] column value.
 	 * 
 	 * @return     int
 	 */
-	public function getId()
+	public function getSfGuardUserId()
 	{
-		return $this->id;
+		return $this->sf_guard_user_id;
 	}
 
 	/**
-	 * Get the [culture] column value.
+	 * Get the [item_id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getItemId()
+	{
+		return $this->item_id;
+	}
+
+	/**
+	 * Get the [itemtypes_id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getItemtypesId()
+	{
+		return $this->itemtypes_id;
+	}
+
+	/**
+	 * Get the [item_culture] column value.
 	 * 
 	 * @return     string
 	 */
-	public function getCulture()
+	public function getItemCulture()
 	{
-		return $this->culture;
+		return $this->item_culture;
 	}
 
 	/**
-	 * Sets the value of [updated_at_extra] column to a normalized version of the date/time value specified.
+	 * Get the [cleared] column value.
+	 * 
+	 * @return     boolean
+	 */
+	public function getCleared()
+	{
+		return $this->cleared;
+	}
+
+	/**
+	 * Set the value of [id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Clearcache The current object (for fluent API support)
+	 */
+	public function setId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->id !== $v) {
+			if ($this->id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = ClearcachePeer::ID;
+			}
+			$this->id = $v;
+		}
+
+		return $this;
+	} // setId()
+
+	/**
+	 * Sets the value of [created_at] column to a normalized version of the date/time value specified.
 	 * 
 	 * @param      mixed $v string, integer (timestamp), or DateTime value.  Empty string will
 	 *						be treated as NULL for temporal objects.
-	 * @return     NewsI18n The current object (for fluent API support)
+	 * @return     Clearcache The current object (for fluent API support)
 	 */
-	public function setUpdatedAtExtra($v)
+	public function setCreatedAt($v)
 	{
 		// we treat '' as NULL for temporal objects because DateTime('') == DateTime('now')
 		// -- which is unexpected, to say the least.
@@ -280,256 +266,145 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 			}
 		}
 
-		if ( $this->updated_at_extra !== null || $dt !== null ) {
+		if ( $this->created_at !== null || $dt !== null ) {
 			// (nested ifs are a little easier to read in this case)
 
-			$currNorm = ($this->updated_at_extra !== null && $tmpDt = new DateTime($this->updated_at_extra)) ? $tmpDt->format('Y-m-d H:i:s') : null;
+			$currNorm = ($this->created_at !== null && $tmpDt = new DateTime($this->created_at)) ? $tmpDt->format('Y-m-d H:i:s') : null;
 			$newNorm = ($dt !== null) ? $dt->format('Y-m-d H:i:s') : null;
 
 			if ( ($currNorm !== $newNorm) // normalized values don't match 
 					)
 			{
-				$this->updated_at_extra = ($dt ? $dt->format('Y-m-d H:i:s') : null);
-				$this->modifiedColumns[] = NewsI18nPeer::UPDATED_AT_EXTRA;
+				$this->created_at = ($dt ? $dt->format('Y-m-d H:i:s') : null);
+				$this->modifiedColumns[] = ClearcachePeer::CREATED_AT;
 			}
 		} // if either are not null
 
 		return $this;
-	} // setUpdatedAtExtra()
+	} // setCreatedAt()
 
 	/**
-	 * Set the value of [title] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setTitle($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->title !== $v) {
-			if ($this->title === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::TITLE;
-			}
-			$this->title = $v;
-		}
-
-		return $this;
-	} // setTitle()
-
-	/**
-	 * Set the value of [shortbody] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setShortbody($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->shortbody !== $v) {
-			if ($this->shortbody === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::SHORTBODY;
-			}
-			$this->shortbody = $v;
-		}
-
-		return $this;
-	} // setShortbody()
-
-	/**
-	 * Set the value of [body] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setBody($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->body !== $v) {
-			if ($this->body === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::BODY;
-			}
-			$this->body = $v;
-		}
-
-		return $this;
-	} // setBody()
-
-	/**
-	 * Set the value of [author] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setAuthor($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->author !== $v) {
-			if ($this->author === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::AUTHOR;
-			}
-			$this->author = $v;
-		}
-
-		return $this;
-	} // setAuthor()
-
-	/**
-	 * Set the value of [translated_by] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setTranslatedBy($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->translated_by !== $v) {
-			if ($this->translated_by === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::TRANSLATED_BY;
-			}
-			$this->translated_by = $v;
-		}
-
-		return $this;
-	} // setTranslatedBy()
-
-	/**
-	 * Set the value of [link] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setLink($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->link !== $v) {
-			if ($this->link === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::LINK;
-			}
-			$this->link = $v;
-		}
-
-		return $this;
-	} // setLink()
-
-	/**
-	 * Set the value of [extradate] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setExtradate($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->extradate !== $v) {
-			if ($this->extradate === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::EXTRADATE;
-			}
-			$this->extradate = $v;
-		}
-
-		return $this;
-	} // setExtradate()
-
-	/**
-	 * Set the value of [doc] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
-	 */
-	public function setDoc($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->doc !== $v) {
-			if ($this->doc === null && $v === '') {
-			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::DOC;
-			}
-			$this->doc = $v;
-		}
-
-		return $this;
-	} // setDoc()
-
-	/**
-	 * Set the value of [id] column.
+	 * Set the value of [sf_guard_user_id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
+	 * @return     Clearcache The current object (for fluent API support)
 	 */
-	public function setId($v)
+	public function setSfGuardUserId($v)
 	{
 		if ($v !== null) {
 			$v = (int) $v;
 		}
 
-		if ($this->id !== $v) {
-			if ($this->id === null && $v === '') {
+		if ($this->sf_guard_user_id !== $v) {
+			if ($this->sf_guard_user_id === null && $v === '') {
 			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::ID;
+			  $this->modifiedColumns[] = ClearcachePeer::SF_GUARD_USER_ID;
 			}
-			$this->id = $v;
+			$this->sf_guard_user_id = $v;
 		}
 
-		if ($this->aNews !== null && $this->aNews->getId() !== $v) {
-			$this->aNews = null;
+		if ($this->asfGuardUser !== null && $this->asfGuardUser->getId() !== $v) {
+			$this->asfGuardUser = null;
 		}
 
 		return $this;
-	} // setId()
+	} // setSfGuardUserId()
 
 	/**
-	 * Set the value of [culture] column.
+	 * Set the value of [item_id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Clearcache The current object (for fluent API support)
+	 */
+	public function setItemId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->item_id !== $v) {
+			if ($this->item_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = ClearcachePeer::ITEM_ID;
+			}
+			$this->item_id = $v;
+		}
+
+		return $this;
+	} // setItemId()
+
+	/**
+	 * Set the value of [itemtypes_id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Clearcache The current object (for fluent API support)
+	 */
+	public function setItemtypesId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->itemtypes_id !== $v) {
+			if ($this->itemtypes_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = ClearcachePeer::ITEMTYPES_ID;
+			}
+			$this->itemtypes_id = $v;
+		}
+
+		if ($this->aItemtypes !== null && $this->aItemtypes->getId() !== $v) {
+			$this->aItemtypes = null;
+		}
+
+		return $this;
+	} // setItemtypesId()
+
+	/**
+	 * Set the value of [item_culture] column.
 	 * 
 	 * @param      string $v new value
-	 * @return     NewsI18n The current object (for fluent API support)
+	 * @return     Clearcache The current object (for fluent API support)
 	 */
-	public function setCulture($v)
+	public function setItemCulture($v)
 	{
 		if ($v !== null) {
 			$v = (string) $v;
 		}
 
-		if ($this->culture !== $v) {
-			if ($this->culture === null && $v === '') {
+		if ($this->item_culture !== $v) {
+			if ($this->item_culture === null && $v === '') {
 			} else {
-			  $this->modifiedColumns[] = NewsI18nPeer::CULTURE;
+			  $this->modifiedColumns[] = ClearcachePeer::ITEM_CULTURE;
 			}
-			$this->culture = $v;
+			$this->item_culture = $v;
 		}
 
 		return $this;
-	} // setCulture()
+	} // setItemCulture()
+
+	/**
+	 * Set the value of [cleared] column.
+	 * 
+	 * @param      boolean $v new value
+	 * @return     Clearcache The current object (for fluent API support)
+	 */
+	public function setCleared($v)
+	{
+		if ($v !== null) {
+			$v = (boolean) $v;
+		}
+
+		if ($this->cleared !== $v || $this->isNew()) {
+			if ($this->cleared === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = ClearcachePeer::CLEARED;
+			}
+			$this->cleared = $v;
+		}
+
+		return $this;
+	} // setCleared()
 
 	/**
 	 * Indicates whether the columns in this object are only set to default values.
@@ -541,6 +416,10 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function hasOnlyDefaultValues()
 	{
+			if ($this->cleared !== false) {
+				return false;
+			}
+
 		// otherwise, everything was equal, so return TRUE
 		return true;
 	} // hasOnlyDefaultValues()
@@ -563,17 +442,13 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	{
 		try {
 
-			$this->updated_at_extra = ($row[$startcol + 0] !== null) ? (string) $row[$startcol + 0] : null;
-			$this->title = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
-			$this->shortbody = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
-			$this->body = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-			$this->author = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
-			$this->translated_by = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
-			$this->link = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
-			$this->extradate = ($row[$startcol + 7] !== null) ? (string) $row[$startcol + 7] : null;
-			$this->doc = ($row[$startcol + 8] !== null) ? (string) $row[$startcol + 8] : null;
-			$this->id = ($row[$startcol + 9] !== null) ? (int) $row[$startcol + 9] : null;
-			$this->culture = ($row[$startcol + 10] !== null) ? (string) $row[$startcol + 10] : null;
+			$this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
+			$this->created_at = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
+			$this->sf_guard_user_id = ($row[$startcol + 2] !== null) ? (int) $row[$startcol + 2] : null;
+			$this->item_id = ($row[$startcol + 3] !== null) ? (int) $row[$startcol + 3] : null;
+			$this->itemtypes_id = ($row[$startcol + 4] !== null) ? (int) $row[$startcol + 4] : null;
+			$this->item_culture = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
+			$this->cleared = ($row[$startcol + 6] !== null) ? (boolean) $row[$startcol + 6] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -583,10 +458,10 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 11; // 11 = NewsI18nPeer::NUM_COLUMNS - NewsI18nPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 7; // 7 = ClearcachePeer::NUM_COLUMNS - ClearcachePeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating NewsI18n object", $e);
+			throw new PropelException("Error populating Clearcache object", $e);
 		}
 	}
 
@@ -606,8 +481,11 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	public function ensureConsistency()
 	{
 
-		if ($this->aNews !== null && $this->id !== $this->aNews->getId()) {
-			$this->aNews = null;
+		if ($this->asfGuardUser !== null && $this->sf_guard_user_id !== $this->asfGuardUser->getId()) {
+			$this->asfGuardUser = null;
+		}
+		if ($this->aItemtypes !== null && $this->itemtypes_id !== $this->aItemtypes->getId()) {
+			$this->aItemtypes = null;
 		}
 	} // ensureConsistency
 
@@ -632,13 +510,13 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(NewsI18nPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(ClearcachePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		// We don't need to alter the object instance pool; we're just modifying this instance
 		// already in the pool.
 
-		$stmt = NewsI18nPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+		$stmt = ClearcachePeer::doSelectStmt($this->buildPkeyCriteria(), $con);
 		$row = $stmt->fetch(PDO::FETCH_NUM);
 		$stmt->closeCursor();
 		if (!$row) {
@@ -648,7 +526,8 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 
 		if ($deep) {  // also de-associate any related objects?
 
-			$this->aNews = null;
+			$this->asfGuardUser = null;
+			$this->aItemtypes = null;
 		} // if (deep)
 	}
 
@@ -668,14 +547,14 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(NewsI18nPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(ClearcachePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
 			$ret = $this->preDelete($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseNewsI18n:delete:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseClearcache:delete:pre') as $callable)
 			{
 			  if (call_user_func($callable, $this, $con))
 			  {
@@ -686,10 +565,10 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 			}
 
 			if ($ret) {
-				NewsI18nPeer::doDelete($this, $con);
+				ClearcachePeer::doDelete($this, $con);
 				$this->postDelete($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseNewsI18n:delete:post') as $callable)
+				foreach (sfMixer::getCallables('BaseClearcache:delete:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con);
 				}
@@ -725,7 +604,7 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(NewsI18nPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(ClearcachePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
@@ -733,7 +612,7 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		try {
 			$ret = $this->preSave($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseNewsI18n:save:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseClearcache:save:pre') as $callable)
 			{
 			  if (is_integer($affectedRows = call_user_func($callable, $this, $con)))
 			  {
@@ -744,14 +623,15 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 			}
 
 			// symfony_timestampable behavior
-			if ($this->isModified() && !$this->isColumnModified(NewsI18nPeer::UPDATED_AT_EXTRA) && $this->getChangeUpdatedAt())
-			{
-			  $this->setUpdatedAtExtra(time());
-			}
+			
 			if ($isInsert) {
 				$ret = $ret && $this->preInsert($con);
 				// symfony_timestampable behavior
-				
+				if (!$this->isColumnModified(ClearcachePeer::CREATED_AT))
+				{
+				  $this->setCreatedAt(time());
+				}
+
 			} else {
 				$ret = $ret && $this->preUpdate($con);
 			}
@@ -764,12 +644,12 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 				}
 				$this->postSave($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseNewsI18n:save:post') as $callable)
+				foreach (sfMixer::getCallables('BaseClearcache:save:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con, $affectedRows);
 				}
 
-				NewsI18nPeer::addInstanceToPool($this);
+				ClearcachePeer::addInstanceToPool($this);
 			} else {
 				$affectedRows = 0;
 			}
@@ -803,13 +683,23 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 			// method.  This object relates to these object(s) by a
 			// foreign key reference.
 
-			if ($this->aNews !== null) {
-				if ($this->aNews->isModified() || ($this->aNews->getCulture() && $this->aNews->getCurrentNewsI18n()->isModified()) || $this->aNews->isNew()) {
-					$affectedRows += $this->aNews->save($con);
+			if ($this->asfGuardUser !== null) {
+				if ($this->asfGuardUser->isModified() || $this->asfGuardUser->isNew()) {
+					$affectedRows += $this->asfGuardUser->save($con);
 				}
-				$this->setNews($this->aNews);
+				$this->setsfGuardUser($this->asfGuardUser);
 			}
 
+			if ($this->aItemtypes !== null) {
+				if ($this->aItemtypes->isModified() || $this->aItemtypes->isNew()) {
+					$affectedRows += $this->aItemtypes->save($con);
+				}
+				$this->setItemtypes($this->aItemtypes);
+			}
+
+			if ($this->isNew() ) {
+				$this->modifiedColumns[] = ClearcachePeer::ID;
+			}
 
 			// If this object has been modified, then save it to the database.
 			if ($this->isModified()) {
@@ -844,15 +734,17 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 						}
 					}
 					if ($has_non_empty_fields || ($only_service_fields_modified && !$is_i18n)) {
-						$pk = NewsI18nPeer::doInsert($this, $con);
+						$pk = ClearcachePeer::doInsert($this, $con);
 						$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically
 										 // BasePeer::doInsert() can insert multiple rows).
 
+						$this->setId($pk);  //[IMV] update autoincrement primary key
+
 						$this->setNew(false);
 					}
 				} else {
-					$affectedRows += NewsI18nPeer::doUpdate($this, $con);
+					$affectedRows += ClearcachePeer::doUpdate($this, $con);
 				}
 
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
@@ -929,14 +821,20 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 			// method.  This object relates to these object(s) by a
 			// foreign key reference.
 
-			if ($this->aNews !== null) {
-				if (!$this->aNews->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aNews->getValidationFailures());
+			if ($this->asfGuardUser !== null) {
+				if (!$this->asfGuardUser->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->asfGuardUser->getValidationFailures());
+				}
+			}
+
+			if ($this->aItemtypes !== null) {
+				if (!$this->aItemtypes->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aItemtypes->getValidationFailures());
 				}
 			}
 
 
-			if (($retval = NewsI18nPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = ClearcachePeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
@@ -959,7 +857,7 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = NewsI18nPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = ClearcachePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		$field = $this->getByPosition($pos);
 		return $field;
 	}
@@ -975,37 +873,25 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	{
 		switch($pos) {
 			case 0:
-				return $this->getUpdatedAtExtra();
-				break;
-			case 1:
-				return $this->getTitle();
-				break;
-			case 2:
-				return $this->getShortbody();
-				break;
-			case 3:
-				return $this->getBody();
-				break;
-			case 4:
-				return $this->getAuthor();
-				break;
-			case 5:
-				return $this->getTranslatedBy();
-				break;
-			case 6:
-				return $this->getLink();
-				break;
-			case 7:
-				return $this->getExtradate();
-				break;
-			case 8:
-				return $this->getDoc();
-				break;
-			case 9:
 				return $this->getId();
 				break;
-			case 10:
-				return $this->getCulture();
+			case 1:
+				return $this->getCreatedAt();
+				break;
+			case 2:
+				return $this->getSfGuardUserId();
+				break;
+			case 3:
+				return $this->getItemId();
+				break;
+			case 4:
+				return $this->getItemtypesId();
+				break;
+			case 5:
+				return $this->getItemCulture();
+				break;
+			case 6:
+				return $this->getCleared();
 				break;
 			default:
 				return null;
@@ -1026,19 +912,15 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
 	{
-		$keys = NewsI18nPeer::getFieldNames($keyType);
+		$keys = ClearcachePeer::getFieldNames($keyType);
 		$result = array(
-			$keys[0] => $this->getUpdatedAtExtra(),
-			$keys[1] => $this->getTitle(),
-			$keys[2] => $this->getShortbody(),
-			$keys[3] => $this->getBody(),
-			$keys[4] => $this->getAuthor(),
-			$keys[5] => $this->getTranslatedBy(),
-			$keys[6] => $this->getLink(),
-			$keys[7] => $this->getExtradate(),
-			$keys[8] => $this->getDoc(),
-			$keys[9] => $this->getId(),
-			$keys[10] => $this->getCulture(),
+			$keys[0] => $this->getId(),
+			$keys[1] => $this->getCreatedAt(),
+			$keys[2] => $this->getSfGuardUserId(),
+			$keys[3] => $this->getItemId(),
+			$keys[4] => $this->getItemtypesId(),
+			$keys[5] => $this->getItemCulture(),
+			$keys[6] => $this->getCleared(),
 		);
 		return $result;
 	}
@@ -1055,7 +937,7 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = NewsI18nPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = ClearcachePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -1071,37 +953,25 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	{
 		switch($pos) {
 			case 0:
-				$this->setUpdatedAtExtra($value);
-				break;
-			case 1:
-				$this->setTitle($value);
-				break;
-			case 2:
-				$this->setShortbody($value);
-				break;
-			case 3:
-				$this->setBody($value);
-				break;
-			case 4:
-				$this->setAuthor($value);
-				break;
-			case 5:
-				$this->setTranslatedBy($value);
-				break;
-			case 6:
-				$this->setLink($value);
-				break;
-			case 7:
-				$this->setExtradate($value);
-				break;
-			case 8:
-				$this->setDoc($value);
-				break;
-			case 9:
 				$this->setId($value);
 				break;
-			case 10:
-				$this->setCulture($value);
+			case 1:
+				$this->setCreatedAt($value);
+				break;
+			case 2:
+				$this->setSfGuardUserId($value);
+				break;
+			case 3:
+				$this->setItemId($value);
+				break;
+			case 4:
+				$this->setItemtypesId($value);
+				break;
+			case 5:
+				$this->setItemCulture($value);
+				break;
+			case 6:
+				$this->setCleared($value);
 				break;
 		} // switch()
 	}
@@ -1125,19 +995,15 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = NewsI18nPeer::getFieldNames($keyType);
+		$keys = ClearcachePeer::getFieldNames($keyType);
 
-		if (array_key_exists($keys[0], $arr)) $this->setUpdatedAtExtra($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setTitle($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setShortbody($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setBody($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setAuthor($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setTranslatedBy($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setLink($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setExtradate($arr[$keys[7]]);
-		if (array_key_exists($keys[8], $arr)) $this->setDoc($arr[$keys[8]]);
-		if (array_key_exists($keys[9], $arr)) $this->setId($arr[$keys[9]]);
-		if (array_key_exists($keys[10], $arr)) $this->setCulture($arr[$keys[10]]);
+		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
+		if (array_key_exists($keys[1], $arr)) $this->setCreatedAt($arr[$keys[1]]);
+		if (array_key_exists($keys[2], $arr)) $this->setSfGuardUserId($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setItemId($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setItemtypesId($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setItemCulture($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setCleared($arr[$keys[6]]);
 	}
 
 	/**
@@ -1147,19 +1013,15 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(NewsI18nPeer::DATABASE_NAME);
+		$criteria = new Criteria(ClearcachePeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(NewsI18nPeer::UPDATED_AT_EXTRA)) $criteria->add(NewsI18nPeer::UPDATED_AT_EXTRA, $this->updated_at_extra);
-		if ($this->isColumnModified(NewsI18nPeer::TITLE)) $criteria->add(NewsI18nPeer::TITLE, $this->title);
-		if ($this->isColumnModified(NewsI18nPeer::SHORTBODY)) $criteria->add(NewsI18nPeer::SHORTBODY, $this->shortbody);
-		if ($this->isColumnModified(NewsI18nPeer::BODY)) $criteria->add(NewsI18nPeer::BODY, $this->body);
-		if ($this->isColumnModified(NewsI18nPeer::AUTHOR)) $criteria->add(NewsI18nPeer::AUTHOR, $this->author);
-		if ($this->isColumnModified(NewsI18nPeer::TRANSLATED_BY)) $criteria->add(NewsI18nPeer::TRANSLATED_BY, $this->translated_by);
-		if ($this->isColumnModified(NewsI18nPeer::LINK)) $criteria->add(NewsI18nPeer::LINK, $this->link);
-		if ($this->isColumnModified(NewsI18nPeer::EXTRADATE)) $criteria->add(NewsI18nPeer::EXTRADATE, $this->extradate);
-		if ($this->isColumnModified(NewsI18nPeer::DOC)) $criteria->add(NewsI18nPeer::DOC, $this->doc);
-		if ($this->isColumnModified(NewsI18nPeer::ID)) $criteria->add(NewsI18nPeer::ID, $this->id);
-		if ($this->isColumnModified(NewsI18nPeer::CULTURE)) $criteria->add(NewsI18nPeer::CULTURE, $this->culture);
+		if ($this->isColumnModified(ClearcachePeer::ID)) $criteria->add(ClearcachePeer::ID, $this->id);
+		if ($this->isColumnModified(ClearcachePeer::CREATED_AT)) $criteria->add(ClearcachePeer::CREATED_AT, $this->created_at);
+		if ($this->isColumnModified(ClearcachePeer::SF_GUARD_USER_ID)) $criteria->add(ClearcachePeer::SF_GUARD_USER_ID, $this->sf_guard_user_id);
+		if ($this->isColumnModified(ClearcachePeer::ITEM_ID)) $criteria->add(ClearcachePeer::ITEM_ID, $this->item_id);
+		if ($this->isColumnModified(ClearcachePeer::ITEMTYPES_ID)) $criteria->add(ClearcachePeer::ITEMTYPES_ID, $this->itemtypes_id);
+		if ($this->isColumnModified(ClearcachePeer::ITEM_CULTURE)) $criteria->add(ClearcachePeer::ITEM_CULTURE, $this->item_culture);
+		if ($this->isColumnModified(ClearcachePeer::CLEARED)) $criteria->add(ClearcachePeer::CLEARED, $this->cleared);
 
 		return $criteria;
 	}
@@ -1174,43 +1036,31 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(NewsI18nPeer::DATABASE_NAME);
+		$criteria = new Criteria(ClearcachePeer::DATABASE_NAME);
 
-		$criteria->add(NewsI18nPeer::ID, $this->id);
-		$criteria->add(NewsI18nPeer::CULTURE, $this->culture);
+		$criteria->add(ClearcachePeer::ID, $this->id);
 
 		return $criteria;
 	}
 
 	/**
-	 * Returns the composite primary key for this object.
-	 * The array elements will be in same order as specified in XML.
-	 * @return     array
+	 * Returns the primary key for this object (row).
+	 * @return     int
 	 */
 	public function getPrimaryKey()
 	{
-		$pks = array();
-
-		$pks[0] = $this->getId();
-
-		$pks[1] = $this->getCulture();
-
-		return $pks;
+		return $this->getId();
 	}
 
 	/**
-	 * Set the [composite] primary key.
+	 * Generic method to set the primary key (id column).
 	 *
-	 * @param      array $keys The elements of the composite key (order must match the order in XML file).
+	 * @param      int $key Primary key.
 	 * @return     void
 	 */
-	public function setPrimaryKey($keys)
+	public function setPrimaryKey($key)
 	{
-
-		$this->setId($keys[0]);
-
-		$this->setCulture($keys[1]);
-
+		$this->setId($key);
 	}
 
 	/**
@@ -1219,37 +1069,29 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 * If desired, this method can also make copies of all associated (fkey referrers)
 	 * objects.
 	 *
-	 * @param      object $copyObj An object of NewsI18n (or compatible) type.
+	 * @param      object $copyObj An object of Clearcache (or compatible) type.
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
 	 * @throws     PropelException
 	 */
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setUpdatedAtExtra($this->updated_at_extra);
+		$copyObj->setCreatedAt($this->created_at);
 
-		$copyObj->setTitle($this->title);
+		$copyObj->setSfGuardUserId($this->sf_guard_user_id);
 
-		$copyObj->setShortbody($this->shortbody);
+		$copyObj->setItemId($this->item_id);
 
-		$copyObj->setBody($this->body);
+		$copyObj->setItemtypesId($this->itemtypes_id);
 
-		$copyObj->setAuthor($this->author);
+		$copyObj->setItemCulture($this->item_culture);
 
-		$copyObj->setTranslatedBy($this->translated_by);
-
-		$copyObj->setLink($this->link);
-
-		$copyObj->setExtradate($this->extradate);
-
-		$copyObj->setDoc($this->doc);
-
-		$copyObj->setId($this->id);
-
-		$copyObj->setCulture($this->culture);
+		$copyObj->setCleared($this->cleared);
 
 
 		$copyObj->setNew(true);
+
+		$copyObj->setId(NULL); // this is a auto-increment column, so set to default value
 
 	}
 
@@ -1262,7 +1104,7 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 * objects.
 	 *
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-	 * @return     NewsI18n Clone of current object.
+	 * @return     Clearcache Clone of current object.
 	 * @throws     PropelException
 	 */
 	public function copy($deepCopy = false)
@@ -1281,37 +1123,37 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 * same instance for all member of this class. The method could therefore
 	 * be static, but this would prevent one from overriding the behavior.
 	 *
-	 * @return     NewsI18nPeer
+	 * @return     ClearcachePeer
 	 */
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new NewsI18nPeer();
+			self::$peer = new ClearcachePeer();
 		}
 		return self::$peer;
 	}
 
 	/**
-	 * Declares an association between this object and a News object.
+	 * Declares an association between this object and a sfGuardUser object.
 	 *
-	 * @param      News $v
-	 * @return     NewsI18n The current object (for fluent API support)
+	 * @param      sfGuardUser $v
+	 * @return     Clearcache The current object (for fluent API support)
 	 * @throws     PropelException
 	 */
-	public function setNews(News $v = null)
+	public function setsfGuardUser(sfGuardUser $v = null)
 	{
 		if ($v === null) {
-			$this->setId(NULL);
+			$this->setSfGuardUserId(NULL);
 		} else {
-			$this->setId($v->getId());
+			$this->setSfGuardUserId($v->getId());
 		}
 
-		$this->aNews = $v;
+		$this->asfGuardUser = $v;
 
 		// Add binding for other direction of this n:n relationship.
-		// If this object has already been added to the News object, it will not be re-added.
+		// If this object has already been added to the sfGuardUser object, it will not be re-added.
 		if ($v !== null) {
-			$v->addNewsI18n($this);
+			$v->addClearcache($this);
 		}
 
 		return $this;
@@ -1319,25 +1161,74 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 
 
 	/**
-	 * Get the associated News object
+	 * Get the associated sfGuardUser object
 	 *
 	 * @param      PropelPDO Optional Connection object.
-	 * @return     News The associated News object.
+	 * @return     sfGuardUser The associated sfGuardUser object.
 	 * @throws     PropelException
 	 */
-	public function getNews(PropelPDO $con = null)
+	public function getsfGuardUser(PropelPDO $con = null)
 	{
-		if ($this->aNews === null && ($this->id !== null)) {
-			$this->aNews = NewsPeer::retrieveByPk($this->id);
+		if ($this->asfGuardUser === null && ($this->sf_guard_user_id !== null)) {
+			$this->asfGuardUser = sfGuardUserPeer::retrieveByPk($this->sf_guard_user_id);
 			/* The following can be used additionally to
 			   guarantee the related object contains a reference
 			   to this object.  This level of coupling may, however, be
 			   undesirable since it could result in an only partially populated collection
 			   in the referenced object.
-			   $this->aNews->addNewsI18ns($this);
+			   $this->asfGuardUser->addClearcaches($this);
 			 */
 		}
-		return $this->aNews;
+		return $this->asfGuardUser;
+	}
+
+	/**
+	 * Declares an association between this object and a Itemtypes object.
+	 *
+	 * @param      Itemtypes $v
+	 * @return     Clearcache The current object (for fluent API support)
+	 * @throws     PropelException
+	 */
+	public function setItemtypes(Itemtypes $v = null)
+	{
+		if ($v === null) {
+			$this->setItemtypesId(NULL);
+		} else {
+			$this->setItemtypesId($v->getId());
+		}
+
+		$this->aItemtypes = $v;
+
+		// Add binding for other direction of this n:n relationship.
+		// If this object has already been added to the Itemtypes object, it will not be re-added.
+		if ($v !== null) {
+			$v->addClearcache($this);
+		}
+
+		return $this;
+	}
+
+
+	/**
+	 * Get the associated Itemtypes object
+	 *
+	 * @param      PropelPDO Optional Connection object.
+	 * @return     Itemtypes The associated Itemtypes object.
+	 * @throws     PropelException
+	 */
+	public function getItemtypes(PropelPDO $con = null)
+	{
+		if ($this->aItemtypes === null && ($this->itemtypes_id !== null)) {
+			$this->aItemtypes = ItemtypesPeer::retrieveByPk($this->itemtypes_id);
+			/* The following can be used additionally to
+			   guarantee the related object contains a reference
+			   to this object.  This level of coupling may, however, be
+			   undesirable since it could result in an only partially populated collection
+			   in the referenced object.
+			   $this->aItemtypes->addClearcaches($this);
+			 */
+		}
+		return $this->aItemtypes;
 	}
 
 	/**
@@ -1354,7 +1245,8 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 		if ($deep) {
 		} // if ($deep)
 
-			$this->aNews = null;
+			$this->asfGuardUser = null;
+			$this->aItemtypes = null;
 	}
 
 	// symfony_behaviors behavior
@@ -1364,9 +1256,9 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	 */
 	public function __call($method, $arguments)
 	{
-	  if (!$callable = sfMixer::getCallable('BaseNewsI18n:'.$method))
+	  if (!$callable = sfMixer::getCallable('BaseClearcache:'.$method))
 	  {
-	    throw new sfException(sprintf('Call to undefined method BaseNewsI18n::%s', $method));
+	    throw new sfException(sprintf('Call to undefined method BaseClearcache::%s', $method));
 	  }
 	
 	  array_unshift($arguments, $this);
@@ -1374,4 +1266,4 @@ abstract class BaseNewsI18n extends BaseObject  implements Persistent {
 	  return call_user_func_array($callable, $arguments);
 	}
 
-} // BaseNewsI18n
+} // BaseClearcache

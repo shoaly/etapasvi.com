@@ -64,6 +64,22 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	return strtolower(self::$item_type_names[ $item_type_id ]);
   }
   
+  /**
+   * Get Item Type Id for an object provided
+   *
+   * @param unknown_type $object
+   */
+  public static function getObjectItemTypeId( $object )
+  {
+  	$classname = get_class( $object );
+  	foreach (self::$item_type_names as $item_type_id => $item_type_name) {
+  	  if ($item_type_name == $classname) {
+  	  	return $item_type_id;
+  	  }
+  	}
+  	return false;
+  }
+  
 //  /**
 //   * URL элемента
 //   *

@@ -59,6 +59,7 @@ class sfGuardUserTableMap extends TableMap {
     $this->addRelation('sfGuardUserPermission', 'sfGuardUserPermission', RelationMap::ONE_TO_MANY, array('id' => 'user_id', ), 'CASCADE', null);
     $this->addRelation('sfGuardUserGroup', 'sfGuardUserGroup', RelationMap::ONE_TO_MANY, array('id' => 'user_id', ), 'CASCADE', null);
     $this->addRelation('sfGuardRememberKey', 'sfGuardRememberKey', RelationMap::ONE_TO_MANY, array('id' => 'user_id', ), 'CASCADE', null);
+    $this->addRelation('Clearcache', 'Clearcache', RelationMap::ONE_TO_MANY, array('id' => 'sf_guard_user_id', ), null, null);
 	} // buildRelations()
 
 	/**

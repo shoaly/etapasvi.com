@@ -766,6 +766,9 @@ class newsActions extends autonewsActions
     {
       $this->news->setDocI18nDe($news['doc_i18n_de']);
     }
+    
+    // clear cache of a changed item
+    ClearcachePeer::processItem($this->news);
   }  
   
   

@@ -109,6 +109,16 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	private $lastsfGuardRememberKeyCriteria = null;
 
 	/**
+	 * @var        array Clearcache[] Collection to store aggregation of Clearcache objects.
+	 */
+	protected $collClearcaches;
+
+	/**
+	 * @var        Criteria The criteria used to select the current contents of collClearcaches.
+	 */
+	private $lastClearcacheCriteria = null;
+
+	/**
 	 * Flag to prevent endless save loop, if this object is referenced
 	 * by another object which falls in this transaction.
 	 * @var        boolean
@@ -687,6 +697,9 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 			$this->collsfGuardRememberKeys = null;
 			$this->lastsfGuardRememberKeyCriteria = null;
 
+			$this->collClearcaches = null;
+			$this->lastClearcacheCriteria = null;
+
 		} // if (deep)
 	}
 
@@ -914,6 +927,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collClearcaches !== null) {
+				foreach ($this->collClearcaches as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			$this->alreadyInSave = false;
 
 		}
@@ -1003,6 +1024,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 				if ($this->collsfGuardRememberKeys !== null) {
 					foreach ($this->collsfGuardRememberKeys as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collClearcaches !== null) {
+					foreach ($this->collClearcaches as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -1301,6 +1330,12 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 			foreach ($this->getsfGuardRememberKeys() as $relObj) {
 				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
 					$copyObj->addsfGuardRememberKey($relObj->copy($deepCopy));
+				}
+			}
+
+			foreach ($this->getClearcaches() as $relObj) {
+				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+					$copyObj->addClearcache($relObj->copy($deepCopy));
 				}
 			}
 
@@ -1908,6 +1943,207 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	}
 
 	/**
+	 * Clears out the collClearcaches collection (array).
+	 *
+	 * This does not modify the database; however, it will remove any associated objects, causing
+	 * them to be refetched by subsequent calls to accessor method.
+	 *
+	 * @return     void
+	 * @see        addClearcaches()
+	 */
+	public function clearClearcaches()
+	{
+		$this->collClearcaches = null; // important to set this to NULL since that means it is uninitialized
+	}
+
+	/**
+	 * Initializes the collClearcaches collection (array).
+	 *
+	 * By default this just sets the collClearcaches collection to an empty array (like clearcollClearcaches());
+	 * however, you may wish to override this method in your stub class to provide setting appropriate
+	 * to your application -- for example, setting the initial array to the values stored in database.
+	 *
+	 * @return     void
+	 */
+	public function initClearcaches()
+	{
+		$this->collClearcaches = array();
+	}
+
+	/**
+	 * Gets an array of Clearcache objects which contain a foreign key that references this object.
+	 *
+	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
+	 * Otherwise if this sfGuardUser has previously been saved, it will retrieve
+	 * related Clearcaches from storage. If this sfGuardUser is new, it will return
+	 * an empty collection or the current collection, the criteria is ignored on a new object.
+	 *
+	 * @param      PropelPDO $con
+	 * @param      Criteria $criteria
+	 * @return     array Clearcache[]
+	 * @throws     PropelException
+	 */
+	public function getClearcaches($criteria = null, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(sfGuardUserPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collClearcaches === null) {
+			if ($this->isNew()) {
+			   $this->collClearcaches = array();
+			} else {
+
+				$criteria->add(ClearcachePeer::SF_GUARD_USER_ID, $this->id);
+
+				ClearcachePeer::addSelectColumns($criteria);
+				$this->collClearcaches = ClearcachePeer::doSelect($criteria, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return the collection.
+
+
+				$criteria->add(ClearcachePeer::SF_GUARD_USER_ID, $this->id);
+
+				ClearcachePeer::addSelectColumns($criteria);
+				if (!isset($this->lastClearcacheCriteria) || !$this->lastClearcacheCriteria->equals($criteria)) {
+					$this->collClearcaches = ClearcachePeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastClearcacheCriteria = $criteria;
+		return $this->collClearcaches;
+	}
+
+	/**
+	 * Returns the number of related Clearcache objects.
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct
+	 * @param      PropelPDO $con
+	 * @return     int Count of related Clearcache objects.
+	 * @throws     PropelException
+	 */
+	public function countClearcaches(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(sfGuardUserPeer::DATABASE_NAME);
+		} else {
+			$criteria = clone $criteria;
+		}
+
+		if ($distinct) {
+			$criteria->setDistinct();
+		}
+
+		$count = null;
+
+		if ($this->collClearcaches === null) {
+			if ($this->isNew()) {
+				$count = 0;
+			} else {
+
+				$criteria->add(ClearcachePeer::SF_GUARD_USER_ID, $this->id);
+
+				$count = ClearcachePeer::doCount($criteria, false, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return count of the collection.
+
+
+				$criteria->add(ClearcachePeer::SF_GUARD_USER_ID, $this->id);
+
+				if (!isset($this->lastClearcacheCriteria) || !$this->lastClearcacheCriteria->equals($criteria)) {
+					$count = ClearcachePeer::doCount($criteria, false, $con);
+				} else {
+					$count = count($this->collClearcaches);
+				}
+			} else {
+				$count = count($this->collClearcaches);
+			}
+		}
+		return $count;
+	}
+
+	/**
+	 * Method called to associate a Clearcache object to this object
+	 * through the Clearcache foreign key attribute.
+	 *
+	 * @param      Clearcache $l Clearcache
+	 * @return     void
+	 * @throws     PropelException
+	 */
+	public function addClearcache(Clearcache $l)
+	{
+		if ($this->collClearcaches === null) {
+			$this->initClearcaches();
+		}
+		if (!in_array($l, $this->collClearcaches, true)) { // only add it if the **same** object is not already associated
+			array_push($this->collClearcaches, $l);
+			$l->setsfGuardUser($this);
+		}
+	}
+
+
+	/**
+	 * If this collection has already been initialized with
+	 * an identical criteria, it returns the collection.
+	 * Otherwise if this sfGuardUser is new, it will return
+	 * an empty collection; or if this sfGuardUser has previously
+	 * been saved, it will retrieve related Clearcaches from storage.
+	 *
+	 * This method is protected by default in order to keep the public
+	 * api reasonable.  You can provide public methods for those you
+	 * actually need in sfGuardUser.
+	 */
+	public function getClearcachesJoinItemtypes($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(sfGuardUserPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collClearcaches === null) {
+			if ($this->isNew()) {
+				$this->collClearcaches = array();
+			} else {
+
+				$criteria->add(ClearcachePeer::SF_GUARD_USER_ID, $this->id);
+
+				$this->collClearcaches = ClearcachePeer::doSelectJoinItemtypes($criteria, $con, $join_behavior);
+			}
+		} else {
+			// the following code is to determine if a new query is
+			// called for.  If the criteria is the same as the last
+			// one, just return the collection.
+
+			$criteria->add(ClearcachePeer::SF_GUARD_USER_ID, $this->id);
+
+			if (!isset($this->lastClearcacheCriteria) || !$this->lastClearcacheCriteria->equals($criteria)) {
+				$this->collClearcaches = ClearcachePeer::doSelectJoinItemtypes($criteria, $con, $join_behavior);
+			}
+		}
+		$this->lastClearcacheCriteria = $criteria;
+
+		return $this->collClearcaches;
+	}
+
+	/**
 	 * Resets all collections of referencing foreign keys.
 	 *
 	 * This method is a user-space workaround for PHP's inability to garbage collect objects
@@ -1934,11 +2170,17 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 					$o->clearAllReferences($deep);
 				}
 			}
+			if ($this->collClearcaches) {
+				foreach ((array) $this->collClearcaches as $o) {
+					$o->clearAllReferences($deep);
+				}
+			}
 		} // if ($deep)
 
 		$this->collsfGuardUserPermissions = null;
 		$this->collsfGuardUserGroups = null;
 		$this->collsfGuardRememberKeys = null;
+		$this->collClearcaches = null;
 	}
 
 	// symfony_behaviors behavior
