@@ -123,7 +123,10 @@ class ClearcachePeer extends BaseClearcachePeer {
   	  'errorDescription' => ''
   	);
     // get list of items
-    $clearcache_list = ClearcachePeer::doSelect(new Criteria());
+    $c = new Criteria();
+    $c->add(ClearcachePeer::CLEARED, false);
+    $clearcache_list = ClearcachePeer::doSelect($c);
+    
     if (count($clearcache_list)) {
       foreach ($clearcache_list as $clearcache) {
   	    sfSuperCache::clearCacheOfItem(
