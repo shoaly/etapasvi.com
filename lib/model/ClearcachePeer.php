@@ -90,6 +90,7 @@ class ClearcachePeer extends BaseClearcachePeer {
   	$c->add(ClearcachePeer::ITEM_ID, $item_id);
   	$c->add(ClearcachePeer::ITEMTYPES_ID, $itemtypes_id);
   	$c->add(ClearcachePeer::ITEM_CULTURE, $item_culture);
+  	$c->add(ClearcachePeer::CLEARED, false);
   	$unprocessed_item = ClearcachePeer::doCount($c);
   	if ($unprocessed_item) {
   	  return true;
