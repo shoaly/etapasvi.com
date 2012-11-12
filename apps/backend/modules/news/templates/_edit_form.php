@@ -956,7 +956,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_zh_cn" class="">
-<h2><?php echo __('zh_CN') ?></h2>
+<h2><?php echo __('ZH_CN') ?></h2>
 
 
 <div class="form-row">
@@ -1087,7 +1087,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_vi" class="">
-<h2><?php echo __('vi') ?></h2>
+<h2><?php echo __('VI') ?></h2>
 
 
 <div class="form-row">
@@ -1200,7 +1200,6 @@
     </div>
 </div>
 
-
 <div class="form-row">
   <?php echo label_for('news[doc_i18n_vi]', __($labels['news{doc_i18n_vi}']), '') ?>
   <div class="content<?php if ($sf_request->hasError('news{doc_i18n_vi}')): ?> form-error<?php endif; ?>">
@@ -1218,9 +1217,8 @@
 </div>
 
 </fieldset>
-
 <fieldset id="sf_fieldset_it" class="">
-<h2><?php echo __('it') ?></h2>
+<h2><?php echo __('IT') ?></h2>
 
 
 <div class="form-row">
@@ -1350,8 +1348,8 @@
 </div>
 
 </fieldset>
-<fieldset id="sf_fieldset_jp" class="">
-<h2><?php echo __('jp') ?></h2>
+<fieldset id="sf_fieldset_ja" class="">
+<h2><?php echo __('JA') ?></h2>
 
 
 <div class="form-row">
@@ -1481,7 +1479,6 @@
 </div>
 
 </fieldset>
-
 <fieldset id="sf_fieldset_es" class="">
 <h2><?php echo __('ES') ?></h2>
 
@@ -1612,6 +1609,7 @@
     </div>
 </div>
 
+</fieldset>
 <fieldset id="sf_fieldset_et" class="">
 <h2><?php echo __('ET') ?></h2>
 
@@ -1874,7 +1872,6 @@
 </div>
 
 </fieldset>
-
 <fieldset id="sf_fieldset_bn" class="">
 <h2><?php echo __('BN') ?></h2>
 
@@ -2006,7 +2003,6 @@
 </div>
 
 </fieldset>
-
 <fieldset id="sf_fieldset_he" class="">
 <h2><?php echo __('HE') ?></h2>
 
@@ -2149,7 +2145,7 @@
     <?php echo form_error('news{title_i18n_zh_tw}', array('class' => 'form-error-msg')) ?>
   <?php endif; ?>
 
-  <?php $value = object_input_tag($news, 'getTitleI18nZhTw', array (
+  <?php $value = object_input_tag($news, 'getTitleI18nZhTW', array (
   'disabled' => false,
   'control_name' => 'news[title_i18n_zh_tw]',
   'maxlength' => 255,
@@ -2165,7 +2161,7 @@
     <?php echo form_error('news{extradate_i18n_zh_tw}', array('class' => 'form-error-msg')) ?>
   <?php endif; ?>
 
-  <?php $value = object_input_tag($news, 'getExtradateI18nZhTw', array (
+  <?php $value = object_input_tag($news, 'getExtradateI18nZhTW', array (
   'disabled' => false,
   'control_name' => 'news[extradate_i18n_zh_tw]',
   'maxlength' => 255,
@@ -2181,7 +2177,7 @@
     <?php echo form_error('news{shortbody_i18n_zh_tw}', array('class' => 'form-error-msg')) ?>
   <?php endif; ?>
 
-  <?php $value = object_textarea_tag($news, 'getShortbodyI18nZhTw', array (
+  <?php $value = object_textarea_tag($news, 'getShortbodyI18nZhTW', array (
   'control_name' => 'news[shortbody_i18n_zh_tw]',
   'disabled' => false,
   'size' => '118x6',
@@ -2196,7 +2192,7 @@
     <?php echo form_error('news{body_i18n_zh_tw}', array('class' => 'form-error-msg')) ?>
   <?php endif; ?>
 
-  <?php $value = object_textarea_tag($news, 'getBodyI18nZhTw', array (
+  <?php $value = object_textarea_tag($news, 'getBodyI18nZhTW', array (
   'control_name' => 'news[body_i18n_zh_tw]',
   'disabled' => false,
   'size' => '118x6',
@@ -2211,7 +2207,7 @@
     <?php echo form_error('news{author_i18n_zh_tw}', array('class' => 'form-error-msg')) ?>
   <?php endif; ?>
 
-  <?php $value = object_input_tag($news, 'getAuthorI18nZhTw', array (
+  <?php $value = object_input_tag($news, 'getAuthorI18nZhTW', array (
   'disabled' => false,
   'control_name' => 'news[author_i18n_zh_tw]',
   'maxlength' => 255,
@@ -2227,7 +2223,7 @@
     <?php echo form_error('news{translated_by_i18n_zh_tw}', array('class' => 'form-error-msg')) ?>
   <?php endif; ?>
 
-  <?php $value = object_input_tag($news, 'getTranslatedByI18nZhTw', array (
+  <?php $value = object_input_tag($news, 'getTranslatedByI18nZhTW', array (
   'disabled' => false,
   'control_name' => 'news[translated_by_i18n_zh_tw]',
   'maxlength' => 255,
@@ -2243,7 +2239,7 @@
     <?php echo form_error('news{link_i18n_zh_tw}', array('class' => 'form-error-msg')) ?>
   <?php endif; ?>
 
-  <?php $value = object_input_tag($news, 'getLinkI18nZhTw', array (
+  <?php $value = object_input_tag($news, 'getLinkI18nZhTW', array (
   'disabled' => false,
   'control_name' => 'news[link_i18n_zh_tw]',
   'maxlength' => 255,

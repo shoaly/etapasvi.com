@@ -14,7 +14,7 @@
         });
         // mark non-empty i18n items
         $("#sf_admin_content fieldset :input[value!='']").each(function(){
-          var h2 = $(this).parents("fieldset:first").children("h2:first").css('background-color', 'lightgreen');          
+          $(this).parents("fieldset:first").children("h2:first").css('background-color', 'lightgreen');          
         });
       });
     </script>
