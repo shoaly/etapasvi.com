@@ -304,6 +304,9 @@ class photoActions extends autophotoActions
       $this->photo->setAuthorI18nDe($photo['author_i18n_de']);
     }
     
+    // clear cache of a changed item
+    ClearcachePeer::processItem($this->photo);
+    
     // заключаем в try...catch, чтобы не было 500-й ошибки при сохранении фото с повторным ORDER в альбоме
     try {
     	$this->photo->save();
@@ -342,6 +345,7 @@ class photoActions extends autophotoActions
         $this->photo->setCreatedAt(null);
       }
     }
+    
   	$this->photo->save();
     
 	if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('photo[img]'))

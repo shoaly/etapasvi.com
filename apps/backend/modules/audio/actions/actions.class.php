@@ -287,5 +287,7 @@ class audioActions extends autoaudioActions
     {
       $this->audio->setAuthorI18nDe($audio['author_i18n_de']);
     }
+    // clear cache of a changed item
+    ClearcachePeer::processItem($this->audio);
   }
 }

@@ -10,4 +10,10 @@
  */
 class photoalbumActions extends autophotoalbumActions
 {
+  protected function updatePhotoalbumFromRequest()
+  {
+  	parent::updatePhotoalbumFromRequest();
+    // clear cache of a changed item
+    ClearcachePeer::processItem($this->photoalbum);
+  }
 }

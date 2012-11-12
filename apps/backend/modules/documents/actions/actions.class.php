@@ -232,5 +232,7 @@ class documentsActions extends autodocumentsActions
     {
       $this->documents->setBodyI18nDe($documents['body_i18n_de']);
     }
+    // clear cache of a changed item
+    ClearcachePeer::processItem($this->documents);
   }
 }

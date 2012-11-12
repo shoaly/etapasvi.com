@@ -480,5 +480,7 @@ class videoActions extends autovideoActions
     {
       $this->video->setAuthorI18nDe($video['author_i18n_de']);
     }
+    // clear cache of a changed item
+    ClearcachePeer::processItem($this->video);
   }
 }
