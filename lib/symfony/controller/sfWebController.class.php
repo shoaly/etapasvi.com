@@ -28,7 +28,7 @@ abstract class sfWebController extends sfController
    *
    * @return string A URL to a symfony resource
    */
-  public function genUrl($parameters = array(), $absolute = false)
+  public function genUrl($parameters = array(), $absolute = false, $culture = '')
   {
     $route = '';
     $fragment = '';
@@ -71,7 +71,7 @@ abstract class sfWebController extends sfController
     }
 
     // routing to generate path
-    $url = $this->context->getRouting()->generate($route, $parameters, $absolute);
+    $url = $this->context->getRouting()->generate($route, $parameters, $absolute, $culture);
 
     if ($fragment)
     {

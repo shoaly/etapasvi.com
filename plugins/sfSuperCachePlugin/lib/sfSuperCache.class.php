@@ -232,7 +232,7 @@ class sfSuperCache
   	// получаем URL данного и связанных элементов
   	foreach ($items as $item_for_clearing) {
   	  try {
-  	    $url = $item_for_clearing->getUrl();  	          
+  	    $url = $item_for_clearing->getUrl($culture);  	          
   	    $urls_for_clearing[] = $url;
   	    
   	    // для фотоальбома очищаем фотографии
@@ -240,7 +240,7 @@ class sfSuperCache
   	        
   	      $photoalbum = $item_for_clearing;
   	        
-          $photoalbum_url = $photoalbum->getUrl();
+          $photoalbum_url = $photoalbum->getUrl($culture);
           $urls_for_clearing[] = $photoalbum_url;
           
           // photoalbum content with photos
@@ -290,7 +290,7 @@ class sfSuperCache
 
   	  // очищается фотоальбом
   	  if ($photoalbum) {
-      	$photoalbum_url = $photoalbum->getUrl();
+      	$photoalbum_url = $photoalbum->getUrl($culture);
       	$urls_for_clearing[] = $photoalbum_url;
   	  }
       
@@ -321,7 +321,7 @@ class sfSuperCache
   	  $c->add(PhotoPeer::PHOTOALBUM_ID, $item->getId());
   	  $photoalbum_photos = PhotoPeer::doSelect($c);
   	  foreach ($photoalbum_photos as $photo) {
-  	  	$photo_url = sfRoute::urlRewriteCompress( $photo->getUrl(), true );
+  	  	$photo_url = sfRoute::urlRewriteCompress( $photo->getUrl($culture), true );
   	  	$urls_for_clearing[] = $photo_url;
   	  	// плюс ссылка на контент
   	  	// http://www.etapasvi.com/en/photo/content/1243  	  	
@@ -423,7 +423,7 @@ class sfSuperCache
       	           " > /dev/null 2>&1 &";
   	}
 
-	// добавляем команду в файл 	  		
+	// добавляем команду в файл 
 	self::addCommandToRemoveCacheFile($command);  	
   	
   	// страница браузера ждёт и скрипт обрывается через некоторое время

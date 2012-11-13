@@ -130,7 +130,7 @@ class ClearcachePeer extends BaseClearcachePeer {
     if (count($clearcache_list)) {
       foreach ($clearcache_list as $clearcache) {
   	    sfSuperCache::clearCacheOfItem(
-		  $clearcache->getId(), 
+		  $clearcache->getItemId(), 
 		  $clearcache->getItemtypes()->getName(),
 		  $clearcache->getItemCulture()
   	    );
