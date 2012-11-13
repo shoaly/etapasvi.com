@@ -8,6 +8,7 @@ generator:
       max_per_page: 50000
       filters: [show]
       display: [id, show, created_at, _page_mnemonic_link, _link]
+      title:   Revision History
       object_actions:
         _edit:
         _delete:

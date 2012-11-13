@@ -18,8 +18,8 @@
         });
       });
     </script>
-	<div id="container" style="margin:0 auto;padding:10px">
-	  <div id="navigation" style="display:inline;float:right">
+	<div id="container" style="margin:0 auto;">
+	  <div id="navigation" >
         
         <?php
         // установка языка
@@ -28,7 +28,8 @@
             Header('Location: ' . $_SERVER['SCRIPT_URI']);
         }
         ?>
-        
+        <strong><?php echo $sf_user->getUsername() ?></strong> (<?php echo link_to('Logout', '@sf_guard_signout') ?>)
+        &nbsp;
         Language: <?php /*echo sfContext::getInstance()->getUser()->getCulture(); */ ?>
         <form action="<?php echo $_SERVER['SCRIPT_URI'] ?>" method="POST" id="culture_selector_form" style="display: inline;">
             <select name="culture_selector" onchange="document.getElementById('culture_selector_form').submit();">
@@ -45,9 +46,11 @@
             </select>
         </form>
         <br/>
+        <?php /*
         <a href="#" onclick="javascrit: if ($('#menu_container').is(':hidden')) { $('#menu_container').slideDown(); } else { $('#menu_container').slideUp(); } void(0);" >Menu</a> ↕
+*/ ?>
         
-	    <ul style="list-style-type:none;display:none" id="menu_container">
+	    <ul id="menu_container">
 		  <?php /*<li><?php echo link_to('Users', 'user/index') ?></li>*/ ?>
 	      <?php /* <li><?php echo link_to('Ideas', 'idea/index') ?></li>	*/ ?>
           <?php /*<li><?php echo link_to('Comments', 'comments/index') ?></li>*/ ?>
@@ -62,38 +65,38 @@
 	
 	      <li><?php echo link_to('News', 'news/index') ?></li>	      
 	      <li><?php echo link_to('Photo', 'photo/index?filters%5Bphotoalbum_id%5D=1&filters%5Bshow%5D=&filters%5Bimg%5D=&filter=filter') ?></li>
-	      <li><?php echo link_to('Photo Albums', 'photoalbum/index') ?></li>
+	      <li><?php echo link_to('Photoalbums', 'photoalbum/index') ?></li>
 	      <li><?php echo link_to('Video', 'video/index') ?></li>
-	      <li><?php echo link_to('Item2item', 'item2item/index') ?></li>	      
-	      <?php /*<li><?php echo link_to('Timezones', 'timezone/index') ?></li>	*/ ?>
-	      <li><?php echo link_to('Quote', 'quote/index') ?></li>	
 	      <li><?php echo link_to('Audio', 'audio/index') ?></li>
 	      <li><?php echo link_to('Documents', 'documents/index') ?></li>
-	      <?php /*<li><?php echo link_to('Mail', 'mail/index') ?></li>*/ ?>
-	      <li><?php echo link_to('Upload', 'upload/index') ?></li>	
-	       <?php /*<li><?php echo link_to('Subscribe', 'subscribe/index') ?></li>	*/ ?>
-	      <?php /*<li><?php echo link_to('Alert', 'alert/index') ?></li>	*/ ?>
-	      <?php /*<li><?php echo link_to('Spam', 'alert/spam') ?></li>	*/ ?>
-	      <li><?php echo link_to('News Types', 'newstypes/index') ?></li>	
-	      <li><?php echo link_to('Item Types', 'itemtypes/index') ?></li>	
-	      <li><?php echo link_to('Cache', 'news/cache') ?></li>	
-	      <li><?php echo link_to('Clear Cache', 'clearcache/index') ?></li>	
-	      <li><?php echo link_to('Translate', 'news/translate') ?></li>	
-	      <li><?php echo link_to('Revision History', 'revisionhistory/index') ?></li>	
 
-	      <li><hr style="margin: 15px 0 10px"/></li>
-		  <?php /*<li><?php echo link_to('Cache', 'cache/index') ?></li>*/ ?>
-		  <?php if ($sf_user->getUsername() == 'admin') : ?>
-	      <li><?php echo link_to('Users', 'sfGuardUser/index') ?></li>
+          <?php if ($sf_user->hasGroup('admin') || $sf_user->hasGroup('managers')) : ?>
+              <li class="divider"><?php echo link_to('Item2item', 'item2item/index') ?></li>	      
+              <?php /*<li><?php echo link_to('Timezones', 'timezone/index') ?></li>	*/ ?>
+              <li><?php echo link_to('Quote', 'quote/index') ?></li>	
+              <?php /*<li><?php echo link_to('Mail', 'mail/index') ?></li>*/ ?>
+              <?php /*<li><?php echo link_to('Upload', 'upload/index') ?></li>*/ ?>
+               <?php /*<li><?php echo link_to('Subscribe', 'subscribe/index') ?></li>	*/ ?>
+              <?php /*<li><?php echo link_to('Alert', 'alert/index') ?></li>	*/ ?>
+              <?php /*<li><?php echo link_to('Spam', 'alert/spam') ?></li>	*/ ?>
+              <li><?php echo link_to('News Types', 'newstypes/index') ?></li>	
+              <li><?php echo link_to('Item Types', 'itemtypes/index') ?></li>	
+              <li><?php echo link_to('Cache', 'news/cache') ?></li>	
+              <li><?php echo link_to('Clear Cache', 'clearcache/index') ?></li>	
+              <li><?php echo link_to('Translate', 'news/translate') ?></li>	
+              <li><?php echo link_to('Revision History', 'revisionhistory/index') ?></li>	
           <?php endif ?>
-	      <li><?php echo link_to('Logout', '@sf_guard_signout') ?></li>
+
+		  <?php /*<li><?php echo link_to('Cache', 'cache/index') ?></li>*/ ?>
+		  <?php if ($sf_user->isSuperAdmin()) : ?>
+            <li class="divider"><?php echo link_to('Users', 'sfGuardUser/index') ?></li>
+            <li><?php echo link_to('Groups', 'sfGuardGroup/index') ?></li>
+            <li><?php echo link_to('Permissions', 'sfGuardPermission/index') ?></li>
+          <?php endif ?>
 	    </ul>
 	  </div>
-	  <div id="title">
-	    <h1><?php echo link_to('eTapasvi', '@homepage') ?></h1>
-	  </div>
 	 
-	  <div id="content" style="clear:right">
+	  <div id="content">
 	    <?php echo $sf_data->getRaw('sf_content') ?>
 	  </div>
 	</div>

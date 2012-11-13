@@ -1,0 +1,4 @@
+cache:
+translate:
+ is_secure: true
+ credentials: [admins,managers]

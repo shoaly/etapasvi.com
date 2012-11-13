@@ -5,6 +5,7 @@ generator:
     theme:            default
     
     list:     
+      title:   Item Types
       object_actions:
         _edit:  ~
         _delete: ~

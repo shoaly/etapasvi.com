@@ -46,6 +46,7 @@
   color: #555;
   font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
   font-size: 25px;
+  clear: both;
 }
 
 #sf_admin_container fieldset h2
@@ -363,4 +364,36 @@
 #sf_admin_content fieldset#sf_fieldset_none .form-row,
 #sf_admin_content fieldset#sf_fieldset_en .form-row {
   display: block;
+}
+
+#menu_container {
+  margin: 5px 0 0;
+  padding: 0;
+}
+#menu_container li {
+  background-color: #FFFFCC;
+  border-right: 1px solid #6666FF;
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-family: Arial,sans-serif;
+  font-size: 11px;
+  margin-bottom: 1px;
+  margin-top: 5px;
+  padding: 2px 6px;
+  text-align: left;
+}
+#menu_container li a{
+  color: #333333;
+  text-decoration: none;
+}
+#menu_container li a:hover {
+  text-decoration: underline;
+}
+#menu_container li.divider {
+  border-left: 2px solid #6666FF;
+}
+#sf_admin_container .sf_admin_list table
+{
+  width:100%;
 }

@@ -12,7 +12,7 @@ generator:
 
     config:
       list:
-        title: Group list
+        title: Groups
 
       edit:
         title: Editing Group "%%name%%"

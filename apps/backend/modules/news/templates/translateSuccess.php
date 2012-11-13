@@ -1,3 +1,5 @@
+<div id="sf_admin_container">
+
 <h1>translate</h1>
 
 <?php if($result): ?>
@@ -11,3 +13,5 @@
     <input name="get_as_file" type="checkbox" value="1" /> Get as messages file<br/>
     <input name="submit_convert" type="submit" value="Convert" />
 </form>
+
+</div>

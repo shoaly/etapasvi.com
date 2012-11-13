@@ -17,4 +17,18 @@
  */
 class sfGuardUser extends PluginsfGuardUser
 {
+  public function hasGroup($name)
+  {
+  	$criteria = new Criteria();
+  	$criteria->add(sfGuardGroupPeer::NAME, $name);
+  	$criteria->addJoin(sfGuardGroupPeer::ID, sfGuardUserGroupPeer::GROUP_ID);
+  	
+	$group_list = $this->getsfGuardUserGroups($criteria);
+
+	if (count($group_list)) {
+	  return true;
+	} else {
+	  return false;
+	}
+  }
 }

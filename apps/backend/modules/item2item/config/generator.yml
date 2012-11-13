@@ -9,6 +9,7 @@ generator:
       filters:  [item1_type, item2_type]
       sort: [id, desc]
       display: [_item1_type, item1_id, _item1_title, _item2_type, item2_id, _item2_title]
+      title:   Item2item
       object_actions:
         _edit:  ~
         _delete: ~

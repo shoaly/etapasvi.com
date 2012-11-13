@@ -3,3 +3,6 @@ generator:
   param:
     model_class:      Newstypes
     theme:            default
+
+    list:
+      title:   News Types

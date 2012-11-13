@@ -9,6 +9,7 @@ generator:
       max_per_page: 1000
       sort: [order, desc]
       display: [=id, show, order, title, created_at, author]
+      title:   Photoalbums
       object_actions:
         _edit:
         _delete:

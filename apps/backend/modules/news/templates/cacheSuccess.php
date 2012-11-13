@@ -1,3 +1,5 @@
+<div id="sf_admin_container">
+
 <h1>cache</h1>
 
 <hr/>
@@ -186,3 +188,5 @@ foreach($refresh_cache_daemon_info as $key=>$value) {
     </select>
     <input type="submit" value="View" name="log">
 </form>
+
+</div>

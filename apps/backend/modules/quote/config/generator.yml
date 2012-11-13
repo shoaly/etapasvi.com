@@ -8,6 +8,7 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 100
       display: [id, =title]
+      title:   Quote
       object_actions:
         _edit:
         _delete:

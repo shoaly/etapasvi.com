@@ -10,6 +10,7 @@ generator:
       sort: [created_at, desc]
       display: [id, created_at, sf_guard_user, item_id, itemtypes, item_culture, cleared]
       filters: [sf_guard_user_id, item_id, itemtypes_id, item_culture, cleared]
+      title:   Clear Cache
       object_actions:
         _edit:
         _delete:

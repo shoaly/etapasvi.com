@@ -10,9 +10,16 @@ generator:
       sort: [order, desc]
       filters: [show, type]
       display: [id, show, order, _img, date, extradate, =title, type_name]
+      title:   News
       object_actions:
         _edit:
         _delete:
+        
+    cache:
+      title:   Cache
+      
+    translate:
+      title:   Translate
 
     edit:
       display:

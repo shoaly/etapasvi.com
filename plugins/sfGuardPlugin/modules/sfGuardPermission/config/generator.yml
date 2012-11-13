@@ -12,7 +12,7 @@ generator:
 
     config:
       list:
-        title: Permission list
+        title: Permissions
 
       edit:
         title: Editing Permission "%%name%%"

@@ -10,6 +10,7 @@ generator:
       sort: [order, asc]
       filters: [photoalbum_id, show, img]
       display: [=id, photoalbum, show, order, _img, img, title, author, created_at]
+      title:   Photo
       object_actions:
         _edit:
         _delete:
