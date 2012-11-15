@@ -223,8 +223,8 @@ class ClearcachePeer extends BaseClearcachePeer {
     }
     
     if ($document_generated) {
-      //$clearcache->setDocumentCreated($document_generated);
-      //$clearcache->save();
+      $clearcache->setDocumentCreated($document_generated);
+      $clearcache->save();
     }
     
     return $document_generated;

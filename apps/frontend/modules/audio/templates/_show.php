@@ -20,7 +20,7 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
 <div class="light small audio_descr">    
     <strong><?php echo __('Uploaded on') ?>:</strong> <?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?> | 
     <strong><?php echo __('Duration') ?>:</strong>  <?php echo $audio->getDurationFormatted(); ?> |
-    <strong><?php echo __('Size') ?>:</strong>  <?php echo $audio->getSize(); ?> Mb |    
+    <strong><?php echo __('Size') ?>:</strong>  <?php echo $audio->getSizePrepared(); ?> |    
     <a href="<?php echo $audio->getDirectUrl(); ?>" target="_blank" title="<?php echo __('Download'); ?>"><?php echo __('Download'); ?></a>
     <?php if (!empty($body)): ?>
          |  <a href="javascript:showAudioBody('<?php echo $audio->getId(); ?>')"><?php echo __('Lyrics'); ?></a>

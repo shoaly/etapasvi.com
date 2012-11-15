@@ -116,7 +116,7 @@ class Documents extends BaseDocuments {
 	 * @return unknown
 	 */
 	public function getSizePrepared($culture = null, $use_default_culture_if_empty = false) {
-		$size = $this->getSize($culture) * 1024 * 1024;
+		$size = $this->getSize($culture);
 		
 		$FS = array("B","kB","MB","GB","TB","PB","EB","ZB","YB");
 		

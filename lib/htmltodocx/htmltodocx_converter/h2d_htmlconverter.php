@@ -667,6 +667,9 @@ function htmltodocx_insert_html_recursive(&$phpword_element, $html_dom_array, &$
           // The image url is from another site. Most probably the image won't
           // appear in the Word document.
           $src = $element_src;
+          
+          // Trying to convert image URL into local path
+          $src = PhotoPeer::photoUrlToLocal($src);
         }
         elseif (strpos($element_src, '/') === 0) {
           $src = htmltodocx_doc_root() . $element_src;
@@ -674,8 +677,7 @@ function htmltodocx_insert_html_recursive(&$phpword_element, $html_dom_array, &$
         else {
           $src = htmltodocx_doc_root() . $state['base_path'] . $element_src; 
         }
-        $state['current_style']['height'] = 100;
-        $state['current_style']['width'] = 100;
+
         $phpword_element->addImage($src, $state['current_style']);
 
       break;

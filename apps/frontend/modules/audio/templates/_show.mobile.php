@@ -20,7 +20,7 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
     <?php if (empty($no_info) || !$no_info): ?>    
         <?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?> | 
         <?php /*echo __('Duration') ?>: */ ?><?php echo $audio->getDurationFormatted(); ?> | 
-        <?php /*echo __('Size') ?>: */ ?><?php echo $audio->getSize(); ?> Mb | 
+        <?php /*echo __('Size') ?>: */ ?><?php echo $audio->getSizePrepared(); ?> | 
         <?php /*echo __('Date') ?>: / ?><?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?>         */ ?>
     <?php endif ?>
     <a href="<?php echo $audio->getDirectUrl(); ?>" title="<?php echo __('Download'); ?>"><?php echo __('Download'); ?></a>

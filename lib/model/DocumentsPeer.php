@@ -30,7 +30,7 @@ class DocumentsPeer extends BaseDocumentsPeer {
   
   const CREATE_FROM_HTML_FILE_EXTENSION = 'docx';
   
-  const ORDER_INCREMETN = 1000;
+  const ORDER_INCREMENT = 1000;
   
   // ссылка на скачивание из удалённого хранилища
   //const REMOTE_DOWNLOAD_URL		= 'http://k002.kiwi6.com/download/';
@@ -63,8 +63,48 @@ class DocumentsPeer extends BaseDocumentsPeer {
   public static function addRssVisibleCriteria($c)
   {  
     self::addVisibleCriteria($c);
-  }  
+  }
   
+  /**
+   * Add new document
+   *
+   * @param unknown_type $title
+   * @param unknown_type $show
+   * @param unknown_type $file
+   * @param unknown_type $all_cultures
+   * @param unknown_type $news_id
+   */
+  public static function add($culture, $title, $show = 1, $file, $all_cultures = false, $news_id = '')
+  {  
+  	$document = new Documents();
+  	
+    $document->setCulture($culture);
+    $document->setTitle($title);
+    $document->setShow($show);
+  	$document->setFile($file);
+  	$document->setAllCultures($all_cultures);
+  	$document->setNewsId($news_id);
+  	
+  	// determine size
+  	$size = number_format(filesize(sfConfig::get('sf_upload_dir').'/'.self::DOCUMENTS_DIR.'/'.$file), 2, '.', '');
+  	$document->setSize($size);
+  	
+  	// determine order
+  	$criteria = new Criteria();
+  	$criteria->addDescendingOrderByColumn(DocumentsPeer::ORDER);
+  	
+  	$last_document = DocumentsPeer::doSelectOne($criteria);
+
+  	$document->setOrder($last_document->getOrder() + self::ORDER_INCREMENT);
+  	
+  	try {
+  	  $document->save();
+  	  return $document;
+  	} catch(Exception $e) {
+  	  return false;
+  	}
+  } 
+
   /**
    * Create document from given HTML rewriting exsiting file
    *
@@ -79,8 +119,51 @@ class DocumentsPeer extends BaseDocumentsPeer {
   	
   	self::saveHtmlToDocx($html, $file_path);
   	
+  	// create document record
+  	$add_result = false;
+  	
+  	// get document generated for the given item
+  	$criteria = new Criteria();
+  	$criteria->add(DocumentsPeer::NEWS_ID, $item_id);
+  	$criteria->add(DocumentsI18nPeer::CULTURE, $culture);
+  	$document_list = DocumentsPeer::doSelectWithI18n($criteria);
+  	$document = $document_list[0];
+  	if ($document) {
+  	  // update
+  	  $document->setCulture($culture);
+  	  $document->setTitle($title);
+  	  $document->setFile($file);
+  	  $size = number_format(filesize($file_path), 2, '.', '');
+  	  $document->setSize($size);
+  	  try {
+  	    $add_result = $document->save();
+  	  } catch(Exception $e) {
+  	    $add_result = false;
+  	  }
+  	} else {
+  	  // insert
+  	  $document = self::add($culture, $title, 1, $file, false, $item_id);  
+  	}
+	
+	if (!$document) {
+	  return false;
+	}
     // add a record into Item2item
+    try {
+    	$item2item = new Item2item();
+    	$item2item->setItem1Id($item_id);
+    	$item2item->setItem1Type(ItemtypesPeer::ITEM_TYPE_NEWS);
+    	$item2item->setItem2Id($document->getId());
+    	$item2item->setItem2Type(ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
+    	$item2item->save();
+    } catch(Exception $e) {}
+    
     // clear cache
+	sfSuperCache::clearCacheOfItem(
+	  $document->getId(), 
+	  ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS,
+	  $culture
+	);
     return true;
   }
   

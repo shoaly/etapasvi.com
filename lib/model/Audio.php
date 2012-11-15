@@ -187,4 +187,21 @@ class Audio extends BaseAudio
 	public function getRssPubDate() {
 	  return max($this->getUpdatedAt(), $this->getUpdatedAtExtra());
 	}
+	
+	/**
+	 * Get formatted size
+	 *
+	 * @param unknown_type $culture
+	 * @param unknown_type $use_default_culture_if_empty
+	 * @return unknown
+	 */
+	public function getSizePrepared() {
+		$size = $this->getSize();
+		
+		$FS = array("B","kB","MB","GB","TB","PB","EB","ZB","YB");
+		
+		$size = (float)number_format($size/pow(1024, $I=floor(log($size, 1024))), ($I >= 1) ? 2 : 0) . ' ' . $FS[$I];
+		
+		return $size;
+	}
 }

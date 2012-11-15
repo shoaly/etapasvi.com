@@ -1382,7 +1382,7 @@ abstract class BaseItem2itemPeer {
 	 */
 	static public function getUniqueColumnNames()
 	{
-	  return array();
+	  return array(array('item1_id', 'item1_type', 'item2_id', 'item2_type'));
 	}
 
 	// symfony_behaviors behavior

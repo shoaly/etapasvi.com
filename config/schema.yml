@@ -27,6 +27,8 @@ propel:
     item1_type:       { type: integer, required: true, foreignTable: itemtypes, foreignReference: id, index: true }
     item2_id:         { type: integer, required: true, index: true }
     item2_type:       { type: integer, required: true, foreignTable: itemtypes, foreignReference: id, index: true }
+    _uniques:
+      item:     [item1_id, item1_type, item2_id, item2_type]
     
   news:
     id:               ~

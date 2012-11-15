@@ -290,4 +290,34 @@ class PhotoPeer extends BasePhotoPeer
     return false;
   }
   
+  /**
+   * Convert photo url into local path
+   *
+   * @param unknown_type $url
+   * @param unknown_type $type
+   */
+  public static function photoUrlToLocal($url, $type = self::PREVIEW_DIR)
+  {
+  	// removing photo size part
+  	$url = preg_replace('/\/s[\d]+\//', '/', $url);
+  	// remove uploads/photo
+  	$url = preg_replace('/uploads\/[^\/]+\//', '', $url);
+  	
+  	$path_info = pathinfo($url);
+  	$file_name = $path_info['basename'];
+  	
+  	$url_info  = parse_url($url);
+  	$url_info  = pathinfo($url_info['path']);
+  	$dir_name  = $url_info['dirname'];
+  	
+  	// photo can belong to News
+  	//$path_local = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$file_name;
+  	$path_local = sfConfig::get('sf_upload_dir')."/".NewsPeer::PHOTO_DIR.$dir_name."/".$file_name;  
+  	if (!file_exists($path_local)) {
+  		$path_local = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR.$dir_name."/".$file_name;  
+  	}
+
+  	return $path_local;
+  }
+  
 }

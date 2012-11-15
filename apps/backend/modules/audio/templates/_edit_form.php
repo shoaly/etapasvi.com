@@ -75,7 +75,7 @@
   <?php $value = object_input_tag($audio, 'getSize', array (
   'size' => 7,
   'control_name' => 'audio[size]',
-)); echo $value ? $value : '&nbsp;' ?>
+)); echo $value ? $value : '&nbsp;' ?> bytes
     </div>
 </div>
 

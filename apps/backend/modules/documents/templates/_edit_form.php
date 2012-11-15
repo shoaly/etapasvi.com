@@ -82,7 +82,7 @@
   <?php $value = object_input_tag($documents, 'getSize', array (
   'size' => 7,
   'control_name' => 'documents[size]',
-)); echo $value ? $value : '&nbsp;' ?>
+)); echo $value ? $value : '&nbsp;' ?> bytes
     </div>
 </div>
 

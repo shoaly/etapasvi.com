@@ -66,6 +66,7 @@ CREATE TABLE `item2item`
 	`item2_id` INTEGER  NOT NULL,
 	`item2_type` INTEGER  NOT NULL,
 	PRIMARY KEY (`id`),
+	UNIQUE KEY `item` (`item1_id`, `item1_type`, `item2_id`, `item2_type`),
 	KEY `item2item_I_1`(`item1_id`),
 	KEY `item2item_I_2`(`item1_type`),
 	KEY `item2item_I_3`(`item2_id`),
