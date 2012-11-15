@@ -6,7 +6,7 @@ generator:
 
     list:
       peer_method: doSelectWithI18n
-      max_per_page: 1000
+      max_per_page: 50
       sort: [order, desc]
       display: [id, show, order, =file, title, news_id, all_cultures, created_at]
       title:   Documents

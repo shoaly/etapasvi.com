@@ -49,9 +49,11 @@ EOF;
     } else {
   	  $c = new Criteria();
   	  NewsPeer::addVisibleCriteria($c);
-      $c->setLimit(1);
-  	  $news_list = NewsPeer::doSelect($c);
-  	  echo 'Begin';
+  	  $c->setOffset(99);
+      $c->setLimit(20);
+      $c->addAscendingOrderByColumn(NewsPeer::ID);
+  	  $news_list = NewsPeer::doSelectWithI18n($c);
+	  echo 'News found: ' . count($news_list) ."\n";
   	  foreach ($news_list as $news_item) {
         $clearcache = new Clearcache();
         $clearcache->setItemCulture('all');
@@ -60,7 +62,6 @@ EOF;
         unset($clearcache);
         echo $news_item->getId() . '<br/>';
   	  }
-  	  exit();
     }
   }
   
