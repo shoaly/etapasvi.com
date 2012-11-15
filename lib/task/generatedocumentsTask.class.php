@@ -17,6 +17,7 @@ class generatedocumentsTask extends sfBaseTask
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'prod'),
       new sfCommandOption('connection', null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
       new sfCommandOption('verbose', null, sfCommandOption::PARAMETER_REQUIRED, 'Enables verbose output', true),
+      new sfCommandOption('all_news', null, sfCommandOption::PARAMETER_REQUIRED, 'Generate document for all news', 0),
       // add your own options here
     ));
 
@@ -37,12 +38,29 @@ EOF;
     $databaseManager = new sfDatabaseManager(sfProjectConfiguration::getApplicationConfiguration($options['application'], $options['prod'], true));
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();    	
   	
-    $result = ClearcachePeer::generateDocuments();
-    if (count($result['items'])) {
-    	echo "Documents have been generated for the following items:\n";
-    	print_r($result['items']);
+    if (!$options['all_news']) {
+      $result = ClearcachePeer::generateDocuments();
+      if (count($result['items'])) {
+    	  echo "Documents have been generated for the following items:\n";
+    	  print_r($result['items']);
+      } else {
+        echo 'No items';
+      }
     } else {
-      echo 'No items';
+  	  $c = new Criteria();
+  	  NewsPeer::addVisibleCriteria($c);
+      $c->setLimit(1);
+  	  $news_list = NewsPeer::doSelect($c);
+  	  echo 'Begin';
+  	  foreach ($news_list as $news_item) {
+        $clearcache = new Clearcache();
+        $clearcache->setItemCulture('all');
+        $clearcache->setItemId($news_item->getId());
+        ClearcachePeer::generateItemDocument($clearcache);
+        unset($clearcache);
+        echo $news_item->getId() . '<br/>';
+  	  }
+  	  exit();
     }
   }
   
