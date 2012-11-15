@@ -192,6 +192,10 @@
         <source>Source</source>
         <target>Источник</target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Original text</source>
+        <target>Исходный текст</target>
+      </trans-unit>
 
 <!-- misc -->
       <trans-unit id="1">

@@ -290,4 +290,26 @@ class News extends BaseNews
 	{
 	  return max($this->getUpdatedAt(), $this->getUpdatedAtExtra());
 	}
+	
+	/**
+	 * Get HTML for exporting
+	 */	
+	public function getHtml($culture = '')
+	{
+	  //sfConfig::set('sf_web_debug', false);
+	  sfLoader::loadHelpers('Partial');
+
+	  if ($culture) {
+	    $prev_culture = sfContext::getInstance()->getUser()->setCulture($culture);
+	    sfContext::getInstance()->getUser()->setCulture($culture); 
+	  }
+	  
+	  $html = get_component('news', 'show', array('newsitem'=>$this, 'no_item2item'=>true)) .
+	  		  '<br/><br/><a href="'.$this->getUrl($culture).'">'.$this->getUrl($culture).'</a>';
+      		  
+	  if ($prev_culture) {
+	  	sfContext::getInstance()->getUser()->setCulture($prev_culture);
+	  }
+      return $html;
+	}
 }

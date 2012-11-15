@@ -193,6 +193,11 @@
         <target>Source</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Original text</source>
+        <target>Texte original</target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Enlarge</source>
         <target>Elargir</target>
       </trans-unit>

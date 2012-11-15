@@ -184,6 +184,10 @@
         <source>Source</source>
         <target></target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Original text</source>
+        <target>Eredeti szöveg</target>
+      </trans-unit>
 
 <!-- misc -->
       <trans-unit id="1">

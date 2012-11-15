@@ -4,7 +4,11 @@ class newsComponents extends sfComponents
 {
   public function executeShow()
   {
-  	$newsitem = NewsPeer::retrieveByPk( $this->id );
+  	if (!$this->newsitem) {
+  	  $newsitem = NewsPeer::retrieveByPk( $this->id );
+    } else {
+      $newsitem = $this->newsitem;
+    }
     if ($newsitem && $newsitem->getShow()) {
       $this->newsitem = $newsitem;
     }

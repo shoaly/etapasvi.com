@@ -65,6 +65,13 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 	protected $cleared;
 
 	/**
+	 * The value for the document_created field.
+	 * Note: this column has a database default value of: false
+	 * @var        boolean
+	 */
+	protected $document_created;
+
+	/**
 	 * @var        sfGuardUser
 	 */
 	protected $asfGuardUser;
@@ -101,6 +108,7 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 	public function applyDefaultValues()
 	{
 		$this->cleared = false;
+		$this->document_created = false;
 	}
 
 	/**
@@ -209,6 +217,16 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 	public function getCleared()
 	{
 		return $this->cleared;
+	}
+
+	/**
+	 * Get the [document_created] column value.
+	 * 
+	 * @return     boolean
+	 */
+	public function getDocumentCreated()
+	{
+		return $this->document_created;
 	}
 
 	/**
@@ -407,6 +425,29 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 	} // setCleared()
 
 	/**
+	 * Set the value of [document_created] column.
+	 * 
+	 * @param      boolean $v new value
+	 * @return     Clearcache The current object (for fluent API support)
+	 */
+	public function setDocumentCreated($v)
+	{
+		if ($v !== null) {
+			$v = (boolean) $v;
+		}
+
+		if ($this->document_created !== $v || $this->isNew()) {
+			if ($this->document_created === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = ClearcachePeer::DOCUMENT_CREATED;
+			}
+			$this->document_created = $v;
+		}
+
+		return $this;
+	} // setDocumentCreated()
+
+	/**
 	 * Indicates whether the columns in this object are only set to default values.
 	 *
 	 * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -417,6 +458,10 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 	public function hasOnlyDefaultValues()
 	{
 			if ($this->cleared !== false) {
+				return false;
+			}
+
+			if ($this->document_created !== false) {
 				return false;
 			}
 
@@ -449,6 +494,7 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 			$this->itemtypes_id = ($row[$startcol + 4] !== null) ? (int) $row[$startcol + 4] : null;
 			$this->item_culture = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
 			$this->cleared = ($row[$startcol + 6] !== null) ? (boolean) $row[$startcol + 6] : null;
+			$this->document_created = ($row[$startcol + 7] !== null) ? (boolean) $row[$startcol + 7] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -458,7 +504,7 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 7; // 7 = ClearcachePeer::NUM_COLUMNS - ClearcachePeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 8; // 8 = ClearcachePeer::NUM_COLUMNS - ClearcachePeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Clearcache object", $e);
@@ -893,6 +939,9 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 			case 6:
 				return $this->getCleared();
 				break;
+			case 7:
+				return $this->getDocumentCreated();
+				break;
 			default:
 				return null;
 				break;
@@ -921,6 +970,7 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 			$keys[4] => $this->getItemtypesId(),
 			$keys[5] => $this->getItemCulture(),
 			$keys[6] => $this->getCleared(),
+			$keys[7] => $this->getDocumentCreated(),
 		);
 		return $result;
 	}
@@ -973,6 +1023,9 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 			case 6:
 				$this->setCleared($value);
 				break;
+			case 7:
+				$this->setDocumentCreated($value);
+				break;
 		} // switch()
 	}
 
@@ -1004,6 +1057,7 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[4], $arr)) $this->setItemtypesId($arr[$keys[4]]);
 		if (array_key_exists($keys[5], $arr)) $this->setItemCulture($arr[$keys[5]]);
 		if (array_key_exists($keys[6], $arr)) $this->setCleared($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setDocumentCreated($arr[$keys[7]]);
 	}
 
 	/**
@@ -1022,6 +1076,7 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(ClearcachePeer::ITEMTYPES_ID)) $criteria->add(ClearcachePeer::ITEMTYPES_ID, $this->itemtypes_id);
 		if ($this->isColumnModified(ClearcachePeer::ITEM_CULTURE)) $criteria->add(ClearcachePeer::ITEM_CULTURE, $this->item_culture);
 		if ($this->isColumnModified(ClearcachePeer::CLEARED)) $criteria->add(ClearcachePeer::CLEARED, $this->cleared);
+		if ($this->isColumnModified(ClearcachePeer::DOCUMENT_CREATED)) $criteria->add(ClearcachePeer::DOCUMENT_CREATED, $this->document_created);
 
 		return $criteria;
 	}
@@ -1087,6 +1142,8 @@ abstract class BaseClearcache extends BaseObject  implements Persistent {
 		$copyObj->setItemCulture($this->item_culture);
 
 		$copyObj->setCleared($this->cleared);
+
+		$copyObj->setDocumentCreated($this->document_created);
 
 
 		$copyObj->setNew(true);

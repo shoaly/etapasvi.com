@@ -481,12 +481,14 @@ CREATE TABLE `clearcache`
 	`itemtypes_id` INTEGER,
 	`item_culture` VARCHAR(7)  NOT NULL,
 	`cleared` TINYINT default 0,
+	`document_created` TINYINT default 0,
 	PRIMARY KEY (`id`),
 	KEY `sf_guard_user_id`(`sf_guard_user_id`),
 	KEY `item_id`(`item_id`),
 	KEY `itemtypes_id`(`itemtypes_id`),
 	KEY `item_culture`(`item_culture`),
 	KEY `cleared`(`cleared`),
+	KEY `document_created`(`document_created`),
 	CONSTRAINT `clearcache_FK_1`
 		FOREIGN KEY (`sf_guard_user_id`)
 		REFERENCES `sf_guard_user` (`id`),

@@ -55,12 +55,7 @@
         <target></target>
       </trans-unit>
 
-<!-- showSuccess -->
-      <trans-unit id="1">
-        <source>Original text</source>
-        <target>Texte original</target>
-      </trans-unit>
-      
+<!-- showSuccess -->      
       <trans-unit id="1">	  
         <source>Dharma Sangha does not often use the pronoun "I" in speeches, it is added to make translation easier to understand. The use of "I" is in fact rare. First person verbal indications (-chhu) are more common than the personal pronoun "I" (ma, though not to be confused with the same word, which is the post-position for "in" or "at", such as "tyo samay ma" – at that time) and sometimes the word "my" (mero). Most common is the use of "one's own" (aphno).</source>		
         <target>Dharma Sangha n'utilise pas souvent le pronom "Je" dans ses discours, il est ajouté ici pour rendre la traduction plus facile à comprendre. La conjugaison à la première personne (-chhu) est plus utilisée que le pronom personnel "Je" (ma, mais à ne pas confondre avec le même mot, qui est un postfixe pour "à" ou "dans", comme dans "tyo samay ma") et parfois le mot "mon" (mero). Le plus souvent il utilise "sa propre ..." (aphno).</target>		

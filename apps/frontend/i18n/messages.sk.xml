@@ -188,6 +188,10 @@
         <source>Source</source>
         <target></target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Original text</source>
+        <target>Izvirno besedilo</target>
+      </trans-unit>
 
 <!-- misc -->
       <trans-unit id="1">

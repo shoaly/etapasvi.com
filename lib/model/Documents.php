@@ -148,7 +148,7 @@ class Documents extends BaseDocuments {
 	 */
 	public function getDirectUrl()
 	{      
-	  return 'http://' . sfConfig::get('app_domain_name') . DocumentsPeer::DOCUMENTS_DIR . $this->getFile();
+	  return 'http://' . sfConfig::get('app_domain_name') . '/' . sfConfig::get('sf_upload_dir_name') . '/' . DocumentsPeer::DOCUMENTS_DIR . '/' . $this->getFile();
 	}
 	
     /**

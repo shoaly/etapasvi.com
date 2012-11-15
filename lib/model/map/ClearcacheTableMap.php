@@ -46,6 +46,7 @@ class ClearcacheTableMap extends TableMap {
 		$this->addForeignKey('ITEMTYPES_ID', 'ItemtypesId', 'INTEGER', 'itemtypes', 'ID', false, null, null);
 		$this->addColumn('ITEM_CULTURE', 'ItemCulture', 'VARCHAR', true, 7, null);
 		$this->addColumn('CLEARED', 'Cleared', 'BOOLEAN', false, null, false);
+		$this->addColumn('DOCUMENT_CREATED', 'DocumentCreated', 'BOOLEAN', false, null, false);
 		// validators
 	} // initialize()
 

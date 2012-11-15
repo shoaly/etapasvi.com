@@ -57,10 +57,6 @@
 
 <!-- showSuccess -->
       <trans-unit id="1">
-        <source>Original text</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
         <source>Dharma Sangha does not often use the pronoun "I" in speeches, it is added to make translation easier to understand. The use of "I" is in fact rare. First person verbal indications (-chhu) are more common than the personal pronoun "I" (ma, though not to be confused with the same word, which is the post-position for "in" or "at", such as "tyo samay ma" – at that time) and sometimes the word "my" (mero). Most common is the use of "one's own" (aphno).</source>
         <target>Dharma Sangha ei kasuta sageli asesõna "mina" oma sõnavõttudes, see on lisatud selleks, et teha tõlkimine lihtsamini mõistetavaks. Rohkem on kasutusel inimese esimene verbaalne tähis (-chhu), kui asesõna "mina" (ma, mida ei tohiks samal ajal segi ajada tagasõnaga lauses "tyo samay ma") ja mõnikord sõna "minu" (mero). "Mina" kasutamist on tegelikult harva. Kõige enam on kasutusel sõna "enda"(aphno).</target>
       </trans-unit>

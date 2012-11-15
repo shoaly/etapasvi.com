@@ -57,7 +57,8 @@
         <?php endif ?>
         </p>
     <?php endif ?>
-            
-    <?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_NEWS, 'item_id'=>$newsitem->getId())) ?> 
+    <?php if (!$no_item2item): ?>
+        <?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_NEWS, 'item_id'=>$newsitem->getId())) ?> 
+    <?php endif ?>
 
 <?php endif ?>

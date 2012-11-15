@@ -239,6 +239,11 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Original text</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Go to top</source>
         <target>gehe nach oben</target>
       </trans-unit>

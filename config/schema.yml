@@ -214,9 +214,11 @@ propel:
     itemtypes_id:      ~
     item_culture:      { type: varchar(7), required: true }
     cleared:           { type: boolean, default: 0 }
+    document_created:  { type: boolean, default: 0 }
     _indexes:
       sf_guard_user_id:  [sf_guard_user_id]
       item_id:           [item_id]
       itemtypes_id:      [itemtypes_id]
       item_culture:      [item_culture]
       cleared:           [cleared]
+      document_created:  [document_created]

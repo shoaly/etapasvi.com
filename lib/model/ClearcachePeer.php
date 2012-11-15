@@ -141,4 +141,92 @@ class ClearcachePeer extends BaseClearcachePeer {
     }
     return $result;
   }
+  
+  /**
+   * Generate documents for modified News
+   *
+   */
+  public static function generateDocuments()
+  {
+  	$result = array(
+  	  'items' => array(),
+  	  'errorDescription' => ''
+  	);
+    // get list of News
+    $c = new Criteria();
+    $c->add(ClearcachePeer::DOCUMENT_CREATED, false);
+    $c->add(ClearcachePeer::ITEMTYPES_ID, ItemtypesPeer::ITEM_TYPE_NEWS);
+    $c->addAscendingOrderByColumn(ClearcachePeer::ID);
+
+    $clearcache_list = ClearcachePeer::doSelect($c);
+    
+    if (count($clearcache_list)) {
+      foreach ($clearcache_list as $clearcache) {
+        if (self::generateItemDocument($clearcache)) {
+          $result['items'][] = $clearcache->toArray();
+        }
+      }
+    }
+    return $result;
+  }
+  
+  /**
+   * Generate document for given item
+   *
+   */
+  public static function generateItemDocument($clearcache)
+  {
+  	$document_generated = false;
+    // get News
+    if ($clearcache->getItemCulture() == UserPeer::ALL_CULTURES) {
+      // all cultures
+      foreach (UserPeer::getCultures() as $culture) {
+        $c = new Criteria();
+        $c->add(NewsPeer::ID, $clearcache->getItemId());
+        // generate documents for visible News only
+        NewsPeer::addVisibleCriteria($c);
+      
+        $news_list = NewsPeer::doSelectWithI18n($c, $culture);
+        $news_item = $news_list[0];
+      
+        $result = false;
+        if ($news_item) {
+      	  $news_item->setCulture($culture);
+      	  $result = DocumentsPeer::createFromHtml(
+      	    $news_item->getHtml($culture), $news_item->getTitle(), 
+      	    $news_item->getId(), $culture, ItemtypesPeer::ITEM_TYPE_NEWS
+      	  );
+        }
+        if ($result) {
+          $document_generated = true;
+        }
+      }
+    } else {
+      // one culture
+      $culture = $clearcache->getItemCulture();
+      
+      $c = new Criteria();
+      $c->add(NewsPeer::ID, $clearcache->getItemId());
+      // generate documents for visible News only
+      NewsPeer::addVisibleCriteria($c);
+      
+      $news_list = NewsPeer::doSelectWithI18n($c, $culture);
+      $news_item = $news_list[0];
+
+      if ($news_item) {
+      	$news_item->setCulture($culture);
+  	    $document_generated = DocumentsPeer::createFromHtml(
+  	      $news_item->getHtml($culture), $news_item->getTitle(), 
+  	      $news_item->getId(), $culture, ItemtypesPeer::ITEM_TYPE_NEWS
+  	    );
+      }
+    }
+    
+    if ($document_generated) {
+      //$clearcache->setDocumentCreated($document_generated);
+      //$clearcache->save();
+    }
+    
+    return $document_generated;
+  }
 } // ClearcachePeer

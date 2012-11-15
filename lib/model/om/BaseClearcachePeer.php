@@ -28,7 +28,7 @@ abstract class BaseClearcachePeer {
 	const TM_CLASS = 'ClearcacheTableMap';
 	
 	/** The total number of columns. */
-	const NUM_COLUMNS = 7;
+	const NUM_COLUMNS = 8;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -54,6 +54,9 @@ abstract class BaseClearcachePeer {
 	/** the column name for the CLEARED field */
 	const CLEARED = 'clearcache.CLEARED';
 
+	/** the column name for the DOCUMENT_CREATED field */
+	const DOCUMENT_CREATED = 'clearcache.DOCUMENT_CREATED';
+
 	/**
 	 * An identiy map to hold any loaded instances of Clearcache objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
@@ -77,11 +80,11 @@ abstract class BaseClearcachePeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'SfGuardUserId', 'ItemId', 'ItemtypesId', 'ItemCulture', 'Cleared', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'sfGuardUserId', 'itemId', 'itemtypesId', 'itemCulture', 'cleared', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::SF_GUARD_USER_ID, self::ITEM_ID, self::ITEMTYPES_ID, self::ITEM_CULTURE, self::CLEARED, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'sf_guard_user_id', 'item_id', 'itemtypes_id', 'item_culture', 'cleared', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'SfGuardUserId', 'ItemId', 'ItemtypesId', 'ItemCulture', 'Cleared', 'DocumentCreated', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'sfGuardUserId', 'itemId', 'itemtypesId', 'itemCulture', 'cleared', 'documentCreated', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::SF_GUARD_USER_ID, self::ITEM_ID, self::ITEMTYPES_ID, self::ITEM_CULTURE, self::CLEARED, self::DOCUMENT_CREATED, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'sf_guard_user_id', 'item_id', 'itemtypes_id', 'item_culture', 'cleared', 'document_created', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	/**
@@ -91,11 +94,11 @@ abstract class BaseClearcachePeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'SfGuardUserId' => 2, 'ItemId' => 3, 'ItemtypesId' => 4, 'ItemCulture' => 5, 'Cleared' => 6, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'sfGuardUserId' => 2, 'itemId' => 3, 'itemtypesId' => 4, 'itemCulture' => 5, 'cleared' => 6, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::SF_GUARD_USER_ID => 2, self::ITEM_ID => 3, self::ITEMTYPES_ID => 4, self::ITEM_CULTURE => 5, self::CLEARED => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'sf_guard_user_id' => 2, 'item_id' => 3, 'itemtypes_id' => 4, 'item_culture' => 5, 'cleared' => 6, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'SfGuardUserId' => 2, 'ItemId' => 3, 'ItemtypesId' => 4, 'ItemCulture' => 5, 'Cleared' => 6, 'DocumentCreated' => 7, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'sfGuardUserId' => 2, 'itemId' => 3, 'itemtypesId' => 4, 'itemCulture' => 5, 'cleared' => 6, 'documentCreated' => 7, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::SF_GUARD_USER_ID => 2, self::ITEM_ID => 3, self::ITEMTYPES_ID => 4, self::ITEM_CULTURE => 5, self::CLEARED => 6, self::DOCUMENT_CREATED => 7, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'sf_guard_user_id' => 2, 'item_id' => 3, 'itemtypes_id' => 4, 'item_culture' => 5, 'cleared' => 6, 'document_created' => 7, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	/**
@@ -172,6 +175,7 @@ abstract class BaseClearcachePeer {
 		$criteria->addSelectColumn(ClearcachePeer::ITEMTYPES_ID);
 		$criteria->addSelectColumn(ClearcachePeer::ITEM_CULTURE);
 		$criteria->addSelectColumn(ClearcachePeer::CLEARED);
+		$criteria->addSelectColumn(ClearcachePeer::DOCUMENT_CREATED);
 	}
 
 	/**
