@@ -663,21 +663,21 @@ function htmltodocx_insert_html_recursive(&$phpword_element, $html_dom_array, &$
           $element_src = $element->src;
         }
         
-        if (strpos($element_src, 'http://') === 0) {
+        /*if (strpos($element_src, 'http://') === 0) {
           // The image url is from another site. Most probably the image won't
           // appear in the Word document.
           $src = $element_src;
-          
-          // Trying to convert image URL into local path
-          $src = PhotoPeer::photoUrlToLocal($src);
         }
         elseif (strpos($element_src, '/') === 0) {
           $src = htmltodocx_doc_root() . $element_src;
         }
         else {
           $src = htmltodocx_doc_root() . $state['base_path'] . $element_src; 
-        }
-
+        }*/
+	    
+        // Trying to convert image URL into local path
+        $src = PhotoPeer::photoUrlToLocal($element_src);
+        
         $phpword_element->addImage($src, $state['current_style']);
 
       break;
