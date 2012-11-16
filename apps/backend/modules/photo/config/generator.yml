@@ -42,7 +42,7 @@ generator:
           - title_i18n_fr
           - body_i18n_fr
           - author_i18n_fr
-        "zh_CN":
+        "ZH_CN":
           - title_i18n_zh_CN
           - body_i18n_zh_CN
           - author_i18n_zh_CN
@@ -50,10 +50,6 @@ generator:
           - title_i18n_vi
           - body_i18n_vi
           - author_i18n_vi
-        "IT":
-          - title_i18n_it
-          - body_i18n_it
-          - author_i18n_it
         "JA":
           - title_i18n_ja
           - body_i18n_ja

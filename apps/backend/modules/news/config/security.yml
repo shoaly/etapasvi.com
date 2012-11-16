@@ -2,3 +2,8 @@ cache:
 translate:
  is_secure: true
  credentials: [admins,managers]
+
+delete:
+create:
+ is_secure: true
+ credentials: [admins,managers]

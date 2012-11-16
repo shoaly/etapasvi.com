@@ -70,7 +70,7 @@
 	      <li><?php echo link_to('Audio', 'audio/index') ?></li>
 	      <li><?php echo link_to('Documents', 'documents/index') ?></li>
 
-          <?php if ($sf_user->hasGroup('admin') || $sf_user->hasGroup('managers')) : ?>
+          <?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>
               <li class="divider"><?php echo link_to('Item2item', 'item2item/index') ?></li>	      
               <?php /*<li><?php echo link_to('Timezones', 'timezone/index') ?></li>	*/ ?>
               <li><?php echo link_to('Quote', 'quote/index') ?></li>	

@@ -42,9 +42,6 @@ generator:
         "VI":       
           - title_i18n_vi
           - body_i18n_vi
-        "IT":
-          - title_i18n_it
-          - body_i18n_it
         "JA":
           - title_i18n_ja
           - body_i18n_ja

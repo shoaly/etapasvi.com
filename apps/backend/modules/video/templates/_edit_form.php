@@ -6,7 +6,7 @@
 
 <?php echo object_input_hidden_tag($video, 'getId') ?>
 
-<fieldset id="sf_fieldset_none" class="">
+<fieldset id="sf_fieldset_none" class="" style="display:<?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>block<?php else: ?>none<?php endif?>">
 
 <div class="form-row">
   <?php echo label_for('video[show]', __($labels['video{show}']), '') ?>
@@ -650,7 +650,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_zh_cn" class="">
-<h2><?php echo __('zh_CN') ?></h2>
+<h2><?php echo __('ZH_CN') ?></h2>
 
 
 <div class="form-row">
@@ -1688,6 +1688,7 @@
 
 </form>
 
+<?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>
 <ul class="sf_admin_actions">
       <li class="float-left"><?php if ($video->getId()): ?>
 <?php echo button_to(__('delete'), 'video/delete?id='.$video->getId(), array (
@@ -1697,3 +1698,4 @@
 )) ?><?php endif; ?>
 </li>
   </ul>
+<?php endif ?>

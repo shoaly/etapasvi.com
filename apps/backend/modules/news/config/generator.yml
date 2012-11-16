@@ -96,15 +96,6 @@ generator:
           - translated_by_i18n_vi
           - link_i18n_vi
           - doc_i18n_vi
-        "IT":
-          - title_i18n_it
-          - extradate_i18n_it
-          - shortbody_i18n_it
-          - body_i18n_it
-          - author_i18n_it
-          - translated_by_i18n_it
-          - link_i18n_it
-          - doc_i18n_it
         "JA":
           - title_i18n_ja
           - extradate_i18n_ja
@@ -123,6 +114,15 @@ generator:
           - translated_by_i18n_es
           - link_i18n_es
           - doc_i18n_es
+        "IT":
+          - title_i18n_it
+          - extradate_i18n_it
+          - shortbody_i18n_it
+          - body_i18n_it
+          - author_i18n_it
+          - translated_by_i18n_it
+          - link_i18n_it
+          - doc_i18n_it
         "ET":
           - title_i18n_et
           - extradate_i18n_et

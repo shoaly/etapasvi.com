@@ -408,42 +408,6 @@
 </div>
 
 </fieldset>
-<fieldset id="sf_fieldset_it" class="">
-<h2><?php echo __('IT') ?></h2>
-
-
-<div class="form-row">
-  <?php echo label_for('documents[title_i18n_it]', __($labels['documents{title_i18n_it}']), '') ?>
-  <div class="content<?php if ($sf_request->hasError('documents{title_i18n_it}')): ?> form-error<?php endif; ?>">
-  <?php if ($sf_request->hasError('documents{title_i18n_it}')): ?>
-    <?php echo form_error('documents{title_i18n_it}', array('class' => 'form-error-msg')) ?>
-  <?php endif; ?>
-
-  <?php $value = object_input_tag($documents, 'getTitleI18nIt', array (
-  'disabled' => false,
-  'control_name' => 'documents[title_i18n_it]',
-  'maxlength' => 255,
-  'style' => 'width:80%',
-)); echo $value ? $value : '&nbsp;' ?>
-    </div>
-</div>
-
-<div class="form-row">
-  <?php echo label_for('documents[body_i18n_it]', __($labels['documents{body_i18n_it}']), '') ?>
-  <div class="content<?php if ($sf_request->hasError('documents{body_i18n_it}')): ?> form-error<?php endif; ?>">
-  <?php if ($sf_request->hasError('documents{body_i18n_it}')): ?>
-    <?php echo form_error('documents{body_i18n_it}', array('class' => 'form-error-msg')) ?>
-  <?php endif; ?>
-
-  <?php $value = object_textarea_tag($documents, 'getBodyI18nIt', array (
-  'control_name' => 'documents[body_i18n_it]',
-  'disabled' => false,
-  'size' => '118x6',
-)); echo $value ? $value : '&nbsp;' ?>
-    </div>
-</div>
-
-</fieldset>
 <fieldset id="sf_fieldset_ja" class="">
 <h2><?php echo __('JA') ?></h2>
 
@@ -509,6 +473,42 @@
 
   <?php $value = object_textarea_tag($documents, 'getBodyI18nEs', array (
   'control_name' => 'documents[body_i18n_es]',
+  'disabled' => false,
+  'size' => '118x6',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+</fieldset>
+<fieldset id="sf_fieldset_it" class="">
+<h2><?php echo __('IT') ?></h2>
+
+
+<div class="form-row">
+  <?php echo label_for('documents[title_i18n_it]', __($labels['documents{title_i18n_it}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('documents{title_i18n_it}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('documents{title_i18n_it}')): ?>
+    <?php echo form_error('documents{title_i18n_it}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_input_tag($documents, 'getTitleI18nIt', array (
+  'disabled' => false,
+  'control_name' => 'documents[title_i18n_it]',
+  'maxlength' => 255,
+  'style' => 'width:80%',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+<div class="form-row">
+  <?php echo label_for('documents[body_i18n_it]', __($labels['documents{body_i18n_it}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('documents{body_i18n_it}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('documents{body_i18n_it}')): ?>
+    <?php echo form_error('documents{body_i18n_it}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_textarea_tag($documents, 'getBodyI18nIt', array (
+  'control_name' => 'documents[body_i18n_it]',
   'disabled' => false,
   'size' => '118x6',
 )); echo $value ? $value : '&nbsp;' ?>
@@ -737,6 +737,7 @@
 
 </form>
 
+<?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>
 <ul class="sf_admin_actions">
       <li class="float-left"><?php if ($documents->getId()): ?>
 <?php echo button_to(__('delete'), 'documents/delete?id='.$documents->getId(), array (
@@ -746,3 +747,4 @@
 )) ?><?php endif; ?>
 </li>
   </ul>
+<?php endif ?>

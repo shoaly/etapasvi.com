@@ -10,6 +10,8 @@
 
 <fieldset id="sf_fieldset_none" class="">
 
+<div style="display:<?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>block<?php else: ?>none<?php endif?>">
+
 <div class="form-row">
   <?php echo label_for('photo[photoalbum_id]', __($labels['photo{photoalbum_id}']), '') ?>
   <div class="content<?php if ($sf_request->hasError('photo{photoalbum_id}')): ?> form-error<?php endif; ?>">
@@ -229,6 +231,8 @@
   <label for="photo_change_updated_at">Change Updated At:</label>  <div class="content">
   
   <input type="checkbox" checked="checked" value="1" id="photo_change_updated_at" name="photo[change_updated_at]">    </div>
+</div>
+
 </div>
 
 </fieldset>
@@ -545,7 +549,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_zh_cn" class="">
-<h2><?php echo __('zh_CN') ?></h2>
+<h2><?php echo __('ZH_CN') ?></h2>
 
 
 <div class="form-row">
@@ -648,7 +652,6 @@
 </div>
 
 </fieldset>
-
 <fieldset id="sf_fieldset_ja" class="">
 <h2><?php echo __('JA') ?></h2>
 
@@ -753,7 +756,6 @@
 </div>
 
 </fieldset>
-
 <fieldset id="sf_fieldset_it" class="">
 <h2><?php echo __('IT') ?></h2>
 
@@ -806,7 +808,6 @@
 </div>
 
 </fieldset>
-
 <fieldset id="sf_fieldset_et" class="">
 <h2><?php echo __('ET') ?></h2>
 
@@ -1123,7 +1124,7 @@
 <?php include_partial('edit_actions', array('photo' => $photo)) ?>
 
 </form>
-
+<?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>
 <ul class="sf_admin_actions">
       <li class="float-left"><?php if ($photo->getId()): ?>
 <?php echo button_to(__('delete'), 'photo/delete?id='.$photo->getId(), array (
@@ -1133,3 +1134,4 @@
 )) ?><?php endif; ?>
 </li>
   </ul>
+<?php endif ?>

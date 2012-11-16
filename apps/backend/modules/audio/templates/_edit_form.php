@@ -6,7 +6,7 @@
 
 <?php echo object_input_hidden_tag($audio, 'getId') ?>
 
-<fieldset id="sf_fieldset_none" class="">
+<fieldset id="sf_fieldset_none" class="" style="display:<?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>block<?php else: ?>none<?php endif?>">
 
 <div class="form-row">
   <?php echo label_for('audio[created_at]', __($labels['audio{created_at}']), '') ?>
@@ -427,7 +427,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_zh_cn" class="">
-<h2><?php echo __('zh_CN') ?></h2>
+<h2><?php echo __('ZH_CN') ?></h2>
 
 
 <div class="form-row">
@@ -479,7 +479,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_vi" class="">
-<h2><?php echo __('vi') ?></h2>
+<h2><?php echo __('VI') ?></h2>
 
 
 <div class="form-row">
@@ -530,60 +530,8 @@
 </div>
 
 </fieldset>
-<fieldset id="sf_fieldset_it" class="">
-<h2><?php echo __('it') ?></h2>
-
-
-<div class="form-row">
-  <?php echo label_for('audio[title_i18n_it]', __($labels['audio{title_i18n_it}']), '') ?>
-  <div class="content<?php if ($sf_request->hasError('audio{title_i18n_it}')): ?> form-error<?php endif; ?>">
-  <?php if ($sf_request->hasError('audio{title_i18n_it}')): ?>
-    <?php echo form_error('audio{title_i18n_it}', array('class' => 'form-error-msg')) ?>
-  <?php endif; ?>
-
-  <?php $value = object_input_tag($audio, 'getTitleI18nIt', array (
-  'disabled' => false,
-  'control_name' => 'audio[title_i18n_it]',
-  'maxlength' => 255,
-  'style' => 'width:80%',
-)); echo $value ? $value : '&nbsp;' ?>
-    </div>
-</div>
-
-<div class="form-row">
-  <?php echo label_for('audio[body_i18n_it]', __($labels['audio{body_i18n_it}']), '') ?>
-  <div class="content<?php if ($sf_request->hasError('audio{body_i18n_it}')): ?> form-error<?php endif; ?>">
-  <?php if ($sf_request->hasError('audio{body_i18n_it}')): ?>
-    <?php echo form_error('audio{body_i18n_it}', array('class' => 'form-error-msg')) ?>
-  <?php endif; ?>
-
-  <?php $value = object_textarea_tag($audio, 'getBodyI18nIt', array (
-  'control_name' => 'audio[body_i18n_it]',
-  'disabled' => false,
-  'size' => '118x6',
-)); echo $value ? $value : '&nbsp;' ?>
-    </div>
-</div>
-
-<div class="form-row">
-  <?php echo label_for('audio[author_i18n_it]', __($labels['audio{author_i18n_it}']), '') ?>
-  <div class="content<?php if ($sf_request->hasError('audio{author_i18n_it}')): ?> form-error<?php endif; ?>">
-  <?php if ($sf_request->hasError('audio{author_i18n_it}')): ?>
-    <?php echo form_error('audio{author_i18n_it}', array('class' => 'form-error-msg')) ?>
-  <?php endif; ?>
-
-  <?php $value = object_input_tag($audio, 'getAuthorI18nIt', array (
-  'disabled' => false,
-  'control_name' => 'audio[author_i18n_it]',
-  'maxlength' => 255,
-  'style' => 'width:80%',
-)); echo $value ? $value : '&nbsp;' ?>
-    </div>
-</div>
-
-</fieldset>
 <fieldset id="sf_fieldset_ja" class="">
-<h2><?php echo __('ja') ?></h2>
+<h2><?php echo __('JA') ?></h2>
 
 
 <div class="form-row">
@@ -635,7 +583,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_es" class="">
-<h2><?php echo __('es') ?></h2>
+<h2><?php echo __('ES') ?></h2>
 
 
 <div class="form-row">
@@ -686,8 +634,60 @@
 </div>
 
 </fieldset>
+<fieldset id="sf_fieldset_it" class="">
+<h2><?php echo __('IT') ?></h2>
+
+
+<div class="form-row">
+  <?php echo label_for('audio[title_i18n_it]', __($labels['audio{title_i18n_it}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('audio{title_i18n_it}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('audio{title_i18n_it}')): ?>
+    <?php echo form_error('audio{title_i18n_it}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_input_tag($audio, 'getTitleI18nIt', array (
+  'disabled' => false,
+  'control_name' => 'audio[title_i18n_it]',
+  'maxlength' => 255,
+  'style' => 'width:80%',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+<div class="form-row">
+  <?php echo label_for('audio[body_i18n_it]', __($labels['audio{body_i18n_it}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('audio{body_i18n_it}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('audio{body_i18n_it}')): ?>
+    <?php echo form_error('audio{body_i18n_it}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_textarea_tag($audio, 'getBodyI18nIt', array (
+  'control_name' => 'audio[body_i18n_it]',
+  'disabled' => false,
+  'size' => '118x6',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+<div class="form-row">
+  <?php echo label_for('audio[author_i18n_it]', __($labels['audio{author_i18n_it}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('audio{author_i18n_it}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('audio{author_i18n_it}')): ?>
+    <?php echo form_error('audio{author_i18n_it}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_input_tag($audio, 'getAuthorI18nIt', array (
+  'disabled' => false,
+  'control_name' => 'audio[author_i18n_it]',
+  'maxlength' => 255,
+  'style' => 'width:80%',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+</fieldset>
 <fieldset id="sf_fieldset_et" class="">
-<h2><?php echo __('et') ?></h2>
+<h2><?php echo __('ET') ?></h2>
 
 
 <div class="form-row">
@@ -739,7 +739,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_ne" class="">
-<h2><?php echo __('ne') ?></h2>
+<h2><?php echo __('NE') ?></h2>
 
 
 <div class="form-row">
@@ -791,7 +791,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_bn" class="">
-<h2><?php echo __('bn') ?></h2>
+<h2><?php echo __('BN') ?></h2>
 
 
 <div class="form-row">
@@ -843,7 +843,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_he" class="">
-<h2><?php echo __('he') ?></h2>
+<h2><?php echo __('HE') ?></h2>
 
 
 <div class="form-row">
@@ -895,7 +895,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_zh_tw" class="">
-<h2><?php echo __('zh_TW') ?></h2>
+<h2><?php echo __('ZH_TW') ?></h2>
 
 
 <div class="form-row">
@@ -947,7 +947,7 @@
 
 </fieldset>
 <fieldset id="sf_fieldset_de" class="">
-<h2><?php echo __('de') ?></h2>
+<h2><?php echo __('DE') ?></h2>
 
 
 <div class="form-row">
@@ -1003,6 +1003,7 @@
 
 </form>
 
+<?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>
 <ul class="sf_admin_actions">
       <li class="float-left"><?php if ($audio->getId()): ?>
 <?php echo button_to(__('delete'), 'audio/delete?id='.$audio->getId(), array (
@@ -1012,3 +1013,4 @@
 )) ?><?php endif; ?>
 </li>
   </ul>
+<?php endif ?>

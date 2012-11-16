@@ -8,6 +8,7 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 50
       sort: [order, desc]
+      filters: [show, all_cultures]
       display: [=id, show, order, created_at, _img, title, all_cultures]
       title:   Video
       object_actions:
@@ -59,7 +60,7 @@ generator:
           - title_i18n_fr
           - body_i18n_fr
           - author_i18n_fr
-        "zh_CN":
+        "ZH_CN":
           - img_i18n_zh_CN
           - _img_i18n_zh_CN
           - code_i18n_zh_CN
