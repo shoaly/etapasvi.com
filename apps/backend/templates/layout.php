@@ -17,6 +17,17 @@
           $(this).parents("fieldset:first").children("h2:first").css('background-color', 'lightgreen');          
         });
       });
+      // hide/show culture containers
+      function expandCultures()
+      {
+        if (!$('#sf_admin_content fieldset div.form-row:last').is(':visible')) {
+          // show
+          $('#sf_admin_content fieldset div.form-row').show();
+        } else {
+          // hide
+          $('#sf_admin_content fieldset:not(:first) div.form-row').hide();
+        }
+      }
     </script>
 	<div id="container" style="margin:0 auto;">
 	  <div id="navigation" >

@@ -1,5 +1,5 @@
 <ul class="sf_admin_actions">
-<li><input type="button" onclick="javascript:$('#sf_admin_content fieldset div.form-row').show()" value="expand cultures" class="sf_admin_action_list"></li>
+<li><input type="button" onclick="expandCultures()" value="expand cultures" class="sf_admin_action_list"></li>
   <li><?php echo button_to(__('list'), 'photo/list?id='.$photo->getId(), array (
   'class' => 'sf_admin_action_list',
 )) ?></li>
