@@ -1,6 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php $user_culture = $sf_user->getCulture(); echo $user_culture; ?>" >
+<!DOCTYPE html>
+<html lang="<?php $user_culture = $sf_user->getCulture(); echo $user_culture; ?>" <?php if (UserPeer::isCultureDirectionRtl()):?>dir="rtl"<?php else: ?>dir="ltr"<?php endif ?>>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <?php include_http_metas() ?>
 <meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
 <?php /*include_title()*/ ?>	
