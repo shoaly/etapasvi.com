@@ -36,7 +36,7 @@ class sfRoute implements Serializable
     $tokens            = array(),
     $customToken       = false;
     
-  // saynt2dya
+  // saynt2day
   // Принудительная перезапись URL (чтобы работала в бэкенде)
   public static $force_url_rewrite = false;
 
@@ -314,66 +314,26 @@ class sfRoute implements Serializable
     	preg_match("/^\/([^\/]+)\/([^\/]+)\/([^\/]+)\/id\/([\d]+)\/?(title\/(.+))?$/", $url, $matches);	    	   
     	if (count($matches) >= 3) {
     		$url = '/' . $matches[1] . '/' . $matches[2] . '/' . $matches[3] . '/' . $matches[4];
+    		// title
 	    	if ($matches[6]) {
 	    		$url .= '/' . $matches[6];
+	    	}
+    	}
+
+	    // /en/news/index/category/mantras/page/1
+	    // into
+	    // /en/news/mantras/page/1
+    	preg_match("/^\/([^\/]+)\/([^\/]+)\/([^\/]+)\/category\/([^\/]+)\/?(.*)?$/", $url, $matches);	    	   
+    	if (count($matches) >= 3) {
+    		$url = '/' . $matches[1] . '/' . $matches[2] . '/' . $matches[4];
+    		// al the rest
+	    	if ($matches[5]) {
+	    		$url .= '/' . $matches[5];
 	    	}
     	}
     }
     return $url;
   }
-  
-  /**
-   * Перезапись URL - расширение пути.
-   * 
-   * /ru/news/83/novosti-s-mahadarshana
-   * превращается в
-   * /ru/news/show/id/83/title/novosti-s-mahadarshana
-   *
-   * /en/photo/album/43
-   * в
-   * /en/photo/album/id/43
-   *
-   * При тестировании учитывать, что маршруты кэшируются.
-   *
-   * @param unknown_type $url
-   */
-  public static function urlRewriteExpand($url)
-  {
-  	// если находимся во фронтенде или включена принудительная перезапись URL
-	if ( sfContext::getInstance()->getConfiguration()->getApplication() == 'frontend' || self::$force_url_rewrite) {
-	    preg_match("/^\/([^\/]+)\/([^\/]+)\/([\d]+)\/?([^\/]+)?$/", $url, $matches);
-	    // если URL подлежит перезаписи, собираем его из частей
-	    if (count($matches) >= 3) {
-		    // /ru/news/83/novosti-s-mahadarshana
-		    // превращается в
-		    // /ru/news/show/id/83/title/novosti-s-mahadarshana
-	    	$url = '/' . $matches[1] . '/' . $matches[2] . '/show/id/' . $matches[3];
-	    	if ($matches[4]) {
-	    		$url .= '/title/' . $matches[4];
-	    	}
-	    } else{
-		    // /en/photo/album/43
-		    // в
-		    // /en/photo/album/id/43
-		    
-		    // /ru/photo/content/611/dharma-sangha-17-go-maya
-		    // в
-		    // /ru/photo/content/id/611/title/dharma-sangha-17-go-maya
-		    
-	    	preg_match("/^\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([\d]+)\/?([^\/]+)?$/", $url, $matches);
-
-	    	if (count($matches) >= 3) {
-	    		$url = '/' . $matches[1] . '/' . $matches[2] . '/' . $matches[3] . '/id/' . $matches[4];
-    	    	if (!empty($matches[5])) {
-    	    		$url .= '/title/' . $matches[5];
-    	    	}
-	    	}
-	    }
-	}
-	return $url;
-  }
-
-  
   
   /**
    * Generates a URL for the given parameters by using the route tokens.

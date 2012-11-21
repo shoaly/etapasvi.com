@@ -178,6 +178,10 @@
         <source>If you can help in any way – email at</source>
         <target>Si vous souhaitez nous aider d'une facon ou d'une autre - envoyez un email à</target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Category</source>
+        <target></target>
+      </trans-unit>
 
 <!-- News _show -->
       <trans-unit id="1">

@@ -65,6 +65,20 @@ class ItemtypesPeer extends BaseItemtypesPeer
   }
   
   /**
+   * Get item type names in lower case
+   *
+   * @return unknown
+   */
+  public static function getItemTypeNamesLower()
+  {
+  	$item_type_names = array();
+  	foreach (self::$item_type_names as $name) {
+  		$item_type_names[] = strtolower($name);
+  	}
+  	return $item_type_names;
+  }
+  
+  /**
    * Get Item Type Id for an object provided
    *
    * @param unknown_type $object

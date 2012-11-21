@@ -3,7 +3,7 @@
 <h1 id="up"><?php echo __('Servers') ?></h1>
 <br />
 <p>
-    <?php echo __('If you have web server, you can help to deliver content of this website to the users. For instructions on how to add your server to website server farm email at') ?> <a href="<?php echo MailPeer::MAIL_ADDRESS ?>"><?php echo MailPeer::MAIL_ADDRESS ?></a>
+    <?php echo __('If you have web server, you can help to deliver content of this website to the users. For instructions on how to add your server to website server farm email at') ?> <a href="<?php echo UserPeer::MAIL_ADDRESS ?>"><?php echo UserPeer::MAIL_ADDRESS ?></a>
 </p>
 
 <h2><?php echo __('Requirements') ?></h2>

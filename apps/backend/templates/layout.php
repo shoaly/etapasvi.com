@@ -92,7 +92,9 @@
               <?php /*<li><?php echo link_to('Spam', 'alert/spam') ?></li>	*/ ?>
               <li><?php echo link_to('News Types', 'newstypes/index') ?></li>	
               <li><?php echo link_to('Item Types', 'itemtypes/index') ?></li>	
-              <li><?php echo link_to('Translate', 'news/translate') ?></li>	
+              <li><?php echo link_to('Item Categories', 'itemcategory/index') ?></li>	
+              <li><?php echo link_to('Item2itemcategory', 'item2itemcategory/index') ?></li>	
+              <li class="divider"><?php echo link_to('Translate', 'news/translate') ?></li>	
               <li><?php echo link_to('Revision History', 'revisionhistory/index') ?></li>	
               <li class="divider"><?php echo link_to('Cache', 'news/cache') ?></li>	
               <li><?php echo link_to('Clear Cache', 'clearcache/index') ?></li>	

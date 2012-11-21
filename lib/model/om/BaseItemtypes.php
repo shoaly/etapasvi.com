@@ -54,6 +54,16 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 	private $lastItem2itemRelatedByItem2TypeCriteria = null;
 
 	/**
+	 * @var        array Item2itemcategory[] Collection to store aggregation of Item2itemcategory objects.
+	 */
+	protected $collItem2itemcategorys;
+
+	/**
+	 * @var        Criteria The criteria used to select the current contents of collItem2itemcategorys.
+	 */
+	private $lastItem2itemcategoryCriteria = null;
+
+	/**
 	 * @var        array Clearcache[] Collection to store aggregation of Clearcache objects.
 	 */
 	protected $collClearcaches;
@@ -257,6 +267,9 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 
 			$this->collItem2itemsRelatedByItem2Type = null;
 			$this->lastItem2itemRelatedByItem2TypeCriteria = null;
+
+			$this->collItem2itemcategorys = null;
+			$this->lastItem2itemcategoryCriteria = null;
 
 			$this->collClearcaches = null;
 			$this->lastClearcacheCriteria = null;
@@ -472,6 +485,14 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collItem2itemcategorys !== null) {
+				foreach ($this->collItem2itemcategorys as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collClearcaches !== null) {
 				foreach ($this->collClearcaches as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -561,6 +582,14 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 
 				if ($this->collItem2itemsRelatedByItem2Type !== null) {
 					foreach ($this->collItem2itemsRelatedByItem2Type as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collItem2itemcategorys !== null) {
+					foreach ($this->collItem2itemcategorys as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -784,6 +813,12 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 			foreach ($this->getItem2itemsRelatedByItem2Type() as $relObj) {
 				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
 					$copyObj->addItem2itemRelatedByItem2Type($relObj->copy($deepCopy));
+				}
+			}
+
+			foreach ($this->getItem2itemcategorys() as $relObj) {
+				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+					$copyObj->addItem2itemcategory($relObj->copy($deepCopy));
 				}
 			}
 
@@ -1149,6 +1184,207 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 	}
 
 	/**
+	 * Clears out the collItem2itemcategorys collection (array).
+	 *
+	 * This does not modify the database; however, it will remove any associated objects, causing
+	 * them to be refetched by subsequent calls to accessor method.
+	 *
+	 * @return     void
+	 * @see        addItem2itemcategorys()
+	 */
+	public function clearItem2itemcategorys()
+	{
+		$this->collItem2itemcategorys = null; // important to set this to NULL since that means it is uninitialized
+	}
+
+	/**
+	 * Initializes the collItem2itemcategorys collection (array).
+	 *
+	 * By default this just sets the collItem2itemcategorys collection to an empty array (like clearcollItem2itemcategorys());
+	 * however, you may wish to override this method in your stub class to provide setting appropriate
+	 * to your application -- for example, setting the initial array to the values stored in database.
+	 *
+	 * @return     void
+	 */
+	public function initItem2itemcategorys()
+	{
+		$this->collItem2itemcategorys = array();
+	}
+
+	/**
+	 * Gets an array of Item2itemcategory objects which contain a foreign key that references this object.
+	 *
+	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
+	 * Otherwise if this Itemtypes has previously been saved, it will retrieve
+	 * related Item2itemcategorys from storage. If this Itemtypes is new, it will return
+	 * an empty collection or the current collection, the criteria is ignored on a new object.
+	 *
+	 * @param      PropelPDO $con
+	 * @param      Criteria $criteria
+	 * @return     array Item2itemcategory[]
+	 * @throws     PropelException
+	 */
+	public function getItem2itemcategorys($criteria = null, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(ItemtypesPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collItem2itemcategorys === null) {
+			if ($this->isNew()) {
+			   $this->collItem2itemcategorys = array();
+			} else {
+
+				$criteria->add(Item2itemcategoryPeer::ITEM_TYPE, $this->id);
+
+				Item2itemcategoryPeer::addSelectColumns($criteria);
+				$this->collItem2itemcategorys = Item2itemcategoryPeer::doSelect($criteria, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return the collection.
+
+
+				$criteria->add(Item2itemcategoryPeer::ITEM_TYPE, $this->id);
+
+				Item2itemcategoryPeer::addSelectColumns($criteria);
+				if (!isset($this->lastItem2itemcategoryCriteria) || !$this->lastItem2itemcategoryCriteria->equals($criteria)) {
+					$this->collItem2itemcategorys = Item2itemcategoryPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastItem2itemcategoryCriteria = $criteria;
+		return $this->collItem2itemcategorys;
+	}
+
+	/**
+	 * Returns the number of related Item2itemcategory objects.
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct
+	 * @param      PropelPDO $con
+	 * @return     int Count of related Item2itemcategory objects.
+	 * @throws     PropelException
+	 */
+	public function countItem2itemcategorys(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(ItemtypesPeer::DATABASE_NAME);
+		} else {
+			$criteria = clone $criteria;
+		}
+
+		if ($distinct) {
+			$criteria->setDistinct();
+		}
+
+		$count = null;
+
+		if ($this->collItem2itemcategorys === null) {
+			if ($this->isNew()) {
+				$count = 0;
+			} else {
+
+				$criteria->add(Item2itemcategoryPeer::ITEM_TYPE, $this->id);
+
+				$count = Item2itemcategoryPeer::doCount($criteria, false, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return count of the collection.
+
+
+				$criteria->add(Item2itemcategoryPeer::ITEM_TYPE, $this->id);
+
+				if (!isset($this->lastItem2itemcategoryCriteria) || !$this->lastItem2itemcategoryCriteria->equals($criteria)) {
+					$count = Item2itemcategoryPeer::doCount($criteria, false, $con);
+				} else {
+					$count = count($this->collItem2itemcategorys);
+				}
+			} else {
+				$count = count($this->collItem2itemcategorys);
+			}
+		}
+		return $count;
+	}
+
+	/**
+	 * Method called to associate a Item2itemcategory object to this object
+	 * through the Item2itemcategory foreign key attribute.
+	 *
+	 * @param      Item2itemcategory $l Item2itemcategory
+	 * @return     void
+	 * @throws     PropelException
+	 */
+	public function addItem2itemcategory(Item2itemcategory $l)
+	{
+		if ($this->collItem2itemcategorys === null) {
+			$this->initItem2itemcategorys();
+		}
+		if (!in_array($l, $this->collItem2itemcategorys, true)) { // only add it if the **same** object is not already associated
+			array_push($this->collItem2itemcategorys, $l);
+			$l->setItemtypes($this);
+		}
+	}
+
+
+	/**
+	 * If this collection has already been initialized with
+	 * an identical criteria, it returns the collection.
+	 * Otherwise if this Itemtypes is new, it will return
+	 * an empty collection; or if this Itemtypes has previously
+	 * been saved, it will retrieve related Item2itemcategorys from storage.
+	 *
+	 * This method is protected by default in order to keep the public
+	 * api reasonable.  You can provide public methods for those you
+	 * actually need in Itemtypes.
+	 */
+	public function getItem2itemcategorysJoinItemcategory($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(ItemtypesPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collItem2itemcategorys === null) {
+			if ($this->isNew()) {
+				$this->collItem2itemcategorys = array();
+			} else {
+
+				$criteria->add(Item2itemcategoryPeer::ITEM_TYPE, $this->id);
+
+				$this->collItem2itemcategorys = Item2itemcategoryPeer::doSelectJoinItemcategory($criteria, $con, $join_behavior);
+			}
+		} else {
+			// the following code is to determine if a new query is
+			// called for.  If the criteria is the same as the last
+			// one, just return the collection.
+
+			$criteria->add(Item2itemcategoryPeer::ITEM_TYPE, $this->id);
+
+			if (!isset($this->lastItem2itemcategoryCriteria) || !$this->lastItem2itemcategoryCriteria->equals($criteria)) {
+				$this->collItem2itemcategorys = Item2itemcategoryPeer::doSelectJoinItemcategory($criteria, $con, $join_behavior);
+			}
+		}
+		$this->lastItem2itemcategoryCriteria = $criteria;
+
+		return $this->collItem2itemcategorys;
+	}
+
+	/**
 	 * Clears out the collClearcaches collection (array).
 	 *
 	 * This does not modify the database; however, it will remove any associated objects, causing
@@ -1371,6 +1607,11 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 					$o->clearAllReferences($deep);
 				}
 			}
+			if ($this->collItem2itemcategorys) {
+				foreach ((array) $this->collItem2itemcategorys as $o) {
+					$o->clearAllReferences($deep);
+				}
+			}
 			if ($this->collClearcaches) {
 				foreach ((array) $this->collClearcaches as $o) {
 					$o->clearAllReferences($deep);
@@ -1380,6 +1621,7 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 
 		$this->collItem2itemsRelatedByItem1Type = null;
 		$this->collItem2itemsRelatedByItem2Type = null;
+		$this->collItem2itemcategorys = null;
 		$this->collClearcaches = null;
 	}
 

@@ -471,11 +471,15 @@ class sfPatternRouting extends sfRouting
     return $flattenRoutes;
   }
 
-  protected function getRouteThatMatchesUrl($url)
+  protected function getRouteThatMatchesUrl($url, $exclude_routes = array())
   {
     $this->ensureDefaultParametersAreSet();
     foreach ($this->routes as $name => $route)
     {
+      if (in_array($name, $exclude_routes))
+      {
+      	continue;
+      }
       if (false === $parameters = $route->matchesUrl($url, $this->options['context']))
       {
         continue;
@@ -541,7 +545,7 @@ class sfPatternRouting extends sfRouting
     	exit();
     }
     
-	$url = sfRoute::urlRewriteExpand($url);
+	$url = $this->urlRewriteExpand($url);
     
     return $url;
   }
@@ -556,5 +560,89 @@ class sfPatternRouting extends sfRouting
       $this->cacheChanged = false;
       $this->cache->set('symfony.routing.data', serialize($this->cacheData));
     }
+  }
+  
+  /**
+   * Перезапись URL - расширение пути.
+   * 
+   * /ru/news/83/novosti-s-mahadarshana
+   * превращается в
+   * /ru/news/show/id/83/title/novosti-s-mahadarshana
+   *
+   * /en/photo/album/43
+   * в
+   * /en/photo/album/id/43
+   *
+   * При тестировании учитывать, что маршруты кэшируются.
+   *
+   * @param unknown_type $url
+   */
+  protected function urlRewriteExpand($url)
+  {
+  	// если находимся во фронтенде или включена принудительная перезапись URL
+	if ( sfContext::getInstance()->getConfiguration()->getApplication() == 'frontend' || self::$force_url_rewrite) {
+		
+	  $rewirite_done = false;
+	  preg_match("/^\/([^\/]+)\/([^\/]+)\/([\d]+)\/?([^\/]+)?$/", $url, $matches);
+	  // если URL подлежит перезаписи, собираем его из частей
+	  if (count($matches) >= 3) {
+		// /ru/news/83/novosti-s-mahadarshana
+		// превращается в
+		// /ru/news/show/id/83/title/novosti-s-mahadarshana
+	    $url = '/' . $matches[1] . '/' . $matches[2] . '/show/id/' . $matches[3];
+	    if ($matches[4]) {
+	      $url .= '/title/' . $matches[4];
+	    }
+	    $rewirite_done= true;
+	  }
+	  
+	  if (!$rewirite_done) {
+		// /en/photo/album/43
+		// в
+		// /en/photo/album/id/43
+		//
+		// /ru/photo/content/611/dharma-sangha-17-go-maya
+		// в
+		// /ru/photo/content/id/611/title/dharma-sangha-17-go-maya
+		    
+	    preg_match("/^\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([\d]+)\/?([^\/]+)?$/", $url, $matches);
+
+	   	if (count($matches) >= 3) {
+	      $url = '/' . $matches[1] . '/' . $matches[2] . '/' . $matches[3] . '/id/' . $matches[4];
+    	  if (!empty($matches[5])) {
+    	    $url .= '/title/' . $matches[5];
+    	  }
+    	  $rewirite_done= true;
+	   	}
+	  }
+	  
+	  if (!$rewirite_done) {
+	    // /en/news/mantras/page/1
+		// into
+		// /en/news/index/category/mantras/page/1
+		
+		// /en/news/mantras
+		// /en/news/mantras/
+		// /en/news/mantras/page/1
+		// /en/news/mantras/page/1/
+		   
+		// /en/news/rss can match, that is why we should check if URL matches any route from routing.yml
+		$matches_routes = $this->getRouteThatMatchesUrl($url, array('default'));
+
+		if (empty($matches_routes)) {
+	      preg_match("/^\/([^\/]+)\/(" . implode('|', ItemtypesPeer::getItemTypeNamesLower()) . ")\/([^\/]+)(.*)?$/", $url, $matches);
+
+	      if (count($matches) >= 3) {
+	    	$url = '/' . $matches[1] . '/' . $matches[2] . '/index/category/' . $matches[3];
+    		// al the rest
+	    	if ($matches[4]) {
+	    		$url .= $matches[4];
+	    	}
+    	   	$rewirite_done= true;
+	      }
+	    }
+	  }
+	}
+	return $url;
   }
 }

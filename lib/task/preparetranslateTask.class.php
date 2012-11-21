@@ -332,7 +332,7 @@ Translation should be placed here
 ' . TextPeer::TRANSLATE_ITEMS_DELIMITER . '</textarea>
 <br/><br/>
 Copy text below into any text editor (be careful with encoding, it should be UTF-8 without BOM), 
-translate and send to <a href="mailto:' . MailPeer::MAIL_ADDRESS . '">' . MailPeer::MAIL_ADDRESS . '</a> 
+translate and send to <a href="mailto:' . UserPeer::MAIL_ADDRESS . '">' . UserPeer::MAIL_ADDRESS . '</a> 
 or translate directly in the area below and click "Send" button to send:<br/><br/>
 <form action="' . TextPeer::GOOGLE_DOC_OFFER_TRANSLATE . '" method="POST" id="offer_tr_form" >
 <input type="hidden" name="entry.5.single" value="' . $url .'" id="offer_tr_uri"/>

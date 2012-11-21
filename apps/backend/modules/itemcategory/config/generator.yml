@@ -1,0 +1,199 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      Itemcategory
+    theme:            default
+
+    list:
+      peer_method: doSelectWithI18n
+      max_per_page: 100
+      sort: [order, asc]
+      display: [id, itemcategory, show, order, code, =title]
+      title:   Item Categories
+      filters: [itemcategory_id, show]
+      object_actions:
+        _edit:
+        _delete:
+        
+    edit:
+      display:
+        "NONE": [itemcategory_id, show, order, code]
+        "EN":       
+          - title_i18n_en
+          - items_count_i18n_en
+        "RU":       
+          - title_i18n_ru
+          - items_count_i18n_ru
+        "CS":       
+          - title_i18n_cs
+          - items_count_i18n_cs
+        "HU":       
+          - title_i18n_hu
+          - items_count_i18n_hu
+        "PL":       
+          - title_i18n_pl
+          - items_count_i18n_pl
+        "FR":       
+          - title_i18n_fr
+          - items_count_i18n_fr
+        "ZH_CN":       
+          - title_i18n_zh_CN
+          - items_count_i18n_zh_CN
+        "VI":       
+          - title_i18n_vi
+          - items_count_i18n_vi
+        "JA":
+          - title_i18n_ja
+          - items_count_i18n_ja
+        "ES":
+          - title_i18n_es
+          - items_count_i18n_es
+        "IT":
+          - title_i18n_it
+          - items_count_i18n_it
+        "ET":
+          - title_i18n_et
+          - items_count_i18n_et
+        "NE":
+          - title_i18n_ne
+          - items_count_i18n_ne
+        "BN":
+          - title_i18n_bn
+          - items_count_i18n_bn
+        "HE":
+          - title_i18n_he
+          - items_count_i18n_he
+        "ZH_TW":
+          - title_i18n_zh_TW
+          - items_count_i18n_zh_TW
+        "DE":       
+          - title_i18n_de
+          - items_count_i18n_de
+
+      fields:
+
+        title_i18n_en:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_en:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_ru:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_ru:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+
+        title_i18n_cs:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_cs:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_hu:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_hu:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_pl:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_pl:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_fr:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_fr:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_zh_cn:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_zh_cn:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_vi:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"     
+        items_count_i18n_vi:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_it:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_it:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_ja:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_ja:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_es:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_es:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_it:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_it:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+
+        title_i18n_et:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_et:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+          
+        title_i18n_ne:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_ne:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+
+        title_i18n_bn:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_bn:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+
+        title_i18n_he:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_he:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+
+        title_i18n_zh_tw:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_zh_tw:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"
+
+        title_i18n_de:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+        items_count_i18n_de:
+          name: Items count
+          params: disabled=true maxlength=255 style="width:80%"

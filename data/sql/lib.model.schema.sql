@@ -80,6 +80,77 @@ CREATE TABLE `item2item`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
+#-- itemcategory
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `itemcategory`;
+
+
+CREATE TABLE `itemcategory`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`itemcategory_id` INTEGER,
+	`show` TINYINT default 1,
+	`order` INTEGER  NOT NULL,
+	`code` VARCHAR(255),
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `code` (`code`),
+	KEY `order`(`order`),
+	KEY `show`(`show`),
+	INDEX `itemcategory_FI_1` (`itemcategory_id`),
+	CONSTRAINT `itemcategory_FK_1`
+		FOREIGN KEY (`itemcategory_id`)
+		REFERENCES `itemcategory` (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- itemcategory_i18n
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `itemcategory_i18n`;
+
+
+CREATE TABLE `itemcategory_i18n`
+(
+	`title` TEXT  NOT NULL,
+	`items_count` INTEGER,
+	`id` INTEGER  NOT NULL,
+	`culture` VARCHAR(7)  NOT NULL,
+	PRIMARY KEY (`id`,`culture`),
+	KEY `title`(`title`),
+	CONSTRAINT `itemcategory_i18n_FK_1`
+		FOREIGN KEY (`id`)
+		REFERENCES `itemcategory` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- item2itemcategory
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `item2itemcategory`;
+
+
+CREATE TABLE `item2itemcategory`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`itemcategory_id` INTEGER,
+	`item_id` INTEGER  NOT NULL,
+	`item_type` INTEGER  NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `item` (`itemcategory_id`, `item_id`, `item_type`),
+	KEY `itemcategory_id`(`itemcategory_id`),
+	KEY `item_id`(`item_id`),
+	KEY `item_type`(`item_type`),
+	CONSTRAINT `item2itemcategory_FK_1`
+		FOREIGN KEY (`itemcategory_id`)
+		REFERENCES `itemcategory` (`id`),
+	CONSTRAINT `item2itemcategory_FK_2`
+		FOREIGN KEY (`item_type`)
+		REFERENCES `itemtypes` (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
 #-- news
 #-----------------------------------------------------------------------------
 

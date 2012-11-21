@@ -51,6 +51,7 @@ class ItemtypesTableMap extends TableMap {
 	{
     $this->addRelation('Item2itemRelatedByItem1Type', 'Item2item', RelationMap::ONE_TO_MANY, array('id' => 'item1_type', ), null, null);
     $this->addRelation('Item2itemRelatedByItem2Type', 'Item2item', RelationMap::ONE_TO_MANY, array('id' => 'item2_type', ), null, null);
+    $this->addRelation('Item2itemcategory', 'Item2itemcategory', RelationMap::ONE_TO_MANY, array('id' => 'item_type', ), null, null);
     $this->addRelation('Clearcache', 'Clearcache', RelationMap::ONE_TO_MANY, array('id' => 'itemtypes_id', ), null, null);
 	} // buildRelations()
 

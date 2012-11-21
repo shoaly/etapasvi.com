@@ -1,10 +1,16 @@
 <?php
 if (strstr($module_action, '?')) {
-    $splitter = '&';
+    $splitter_and_parameters = '&';
 } else {
-    $splitter = '?';
+    $splitter_and_parameters = '?';
 }
-
+if (count($parameters)) {
+    foreach($parameters as $parameter=>$value) {
+        if ('' != $value) {
+            $splitter_and_parameters .= $parameter.'='.$value.'&';
+        }
+    }
+}
 ?>
 <?php if ($have_to_paginate): ?>
 <div class="navigation small">
@@ -13,11 +19,11 @@ if (strstr($module_action, '?')) {
 	<?php $show_next = $last_page != $page && ($page + $plus_digits <= $last_page - 1); ?>
 
 	<?php if ($page > 1 && $last_page > 2): ?>
-		<a href="<?php echo url_for($module_action.$splitter.'page='.($page-1)) ?>" class="arrow_prev">&lt;</a>&nbsp;
+		<a href="<?php echo url_for($module_action.$splitter_and_parameters.'page='.($page-1)) ?>" class="arrow_prev">&lt;</a>&nbsp;
 	<?php endif ?>
     
 	<?php if ($show_prev): ?>
-		<a href="<?php echo /*($orderby != '') ? url_for($module_action.$splitter.$orderby) : */url_for($module_action) ?>" class="arrow_prev">1</a>&nbsp;
+		<a href="<?php echo /*($orderby != '') ? url_for($module_action.$splitter_and_parameters.$orderby) : */url_for($module_action) ?>" class="arrow_prev">1</a>&nbsp;
 		<a href="<?php echo $page - $plus_digits; ?>" class="arrow_prev">..</a>&nbsp;
 	<?php endif ?>
 	
@@ -26,17 +32,17 @@ if (strstr($module_action, '?')) {
 		<?php if ($page_number == $page): ?>
 			<span class="nav_selected"><?php echo $page_number; ?></span>&nbsp;
 		<?php else: ?>
-			<?php echo ( ($page_number==1) ? link_to($page_number, $module_action/*.str_replace('&', '?', $orderby)*/) : link_to($page_number, $module_action.$splitter.'page='.$page_number/*.$orderby*/) ); ?>&nbsp;
+			<?php echo ( ($page_number==1) ? link_to($page_number, $module_action/*.str_replace('&', '?', $orderby)*/) : link_to($page_number, $module_action.$splitter_and_parameters.'page='.$page_number) ); ?>&nbsp;
 		<?php endif ?>
 	<?php endforeach ?>
 
 	<?php if ($show_next): ?>
-		<a href="<?php echo url_for($module_action.$splitter.'page='.($page + $plus_digits)/*.$orderby*/) ?>" class="arrow_next">..</a>&nbsp;
-		<a href="<?php echo url_for($module_action.$splitter.'page='.$last_page/*.$orderby*/) ?>" class="arrow_next"><?php echo $last_page; ?></a>&nbsp;
+		<a href="<?php echo url_for($module_action.$splitter_and_parameters.'page='.($page + $plus_digits)/*.$orderby*/) ?>" class="arrow_next">..</a>&nbsp;
+		<a href="<?php echo url_for($module_action.$splitter_and_parameters.'page='.$last_page/*.$orderby*/) ?>" class="arrow_next"><?php echo $last_page; ?></a>&nbsp;
 	<?php endif ?>
     
 	<?php if ($page < $last_page): ?>
-		<a href="<?php echo url_for($module_action.$splitter.'page='.($page+1)) ?>" class="arrow_prev">&gt;</a>&nbsp;
+		<a href="<?php echo url_for($module_action.$splitter_and_parameters.'page='.($page+1)) ?>" class="arrow_prev">&gt;</a>&nbsp;
 	<?php endif ?>
     
 </div>

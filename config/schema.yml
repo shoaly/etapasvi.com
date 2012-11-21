@@ -29,6 +29,37 @@ propel:
     item2_type:       { type: integer, required: true, foreignTable: itemtypes, foreignReference: id, index: true }
     _uniques:
       item:     [item1_id, item1_type, item2_id, item2_type]
+      
+  itemcategory:
+    id:               ~
+    itemcategory_id:  ~
+    show:             { type: boolean, defaultValue: true }
+    order:            { type: integer, required: true }
+    code:             { type: varchar(255) }
+    _indexes:
+      order:    [order]
+      show:     [show]
+    _uniques:
+      code:     [code]
+      
+  itemcategory_i18n:
+    title:            { type: longvarchar, required: true }
+    items_count:      { type: integer }
+    _indexes:
+      title:              [title]
+    
+  item2itemcategory:
+    id:               ~
+    itemcategory_id:  ~
+    item_id:         { type: integer, required: true }
+    item_type:       { type: integer, required: true, foreignTable: itemtypes, foreignReference: id }
+    _indexes:
+      itemcategory_id:   [itemcategory_id]
+      item_id:           [item_id]
+      item_type:        [item_type]
+    _uniques:
+      item:     [itemcategory_id, item_id, item_type]
+    
     
   news:
     id:               ~

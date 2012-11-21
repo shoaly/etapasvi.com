@@ -1,1 +1,0 @@
-<a href="http://www.ip2location.com/free.asp?ipaddresses=<?php echo $user->getIp(); ?>" target="_blank"><?php echo $user->getIp(); ?></a>

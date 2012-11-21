@@ -1345,6 +1345,9 @@ img.newsitem_img {
 .news_list .minimized .i_latest {
     display: none;
     }
+.category_wrapper{
+    margin-bottom: 10px;
+    }
 /* photo */
 #photo_comments_code {
     display: none;

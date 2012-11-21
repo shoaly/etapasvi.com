@@ -224,6 +224,11 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Category</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Read more</source>
         <target>続きを読む</target>
       </trans-unit>
