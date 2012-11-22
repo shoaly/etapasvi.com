@@ -1043,6 +1043,12 @@ function toggleLatestNews(id)
     $("#content .news_list #lnews_"+id+'').removeClass('minimized');   
 }
 
+//  Open url correspionding to selected category
+function gotoItemcategory(url)
+{
+    window.location.href = url;
+}
+
 
 // replace all occurences of a string
 String.prototype.replaceAll = function(search, replace){

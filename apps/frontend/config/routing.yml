@@ -89,7 +89,7 @@ news_rss:
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
 feed:
-  url:   /:sf_culture/news/feed
+  url:   /:sf_culture/news/feed/*
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
 project:
@@ -110,7 +110,7 @@ photo_show:
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
 photoalbum_index:
-  url:   /:sf_culture/photo/albums
+  url:   /:sf_culture/photo/albums/*
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
 photo_view:

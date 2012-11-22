@@ -19,12 +19,12 @@ if (count($parameters)) {
 	<?php $show_next = $last_page != $page && ($page + $plus_digits <= $last_page - 1); ?>
 
 	<?php if ($page > 1 && $last_page > 2): ?>
-		<a href="<?php echo url_for($module_action.$splitter_and_parameters.'page='.($page-1)) ?>" class="arrow_prev">&lt;</a>&nbsp;
+		<a href="<?php echo url_for($module_action.(($page-1)!=1 ? $splitter_and_parameters.'page='.($page-1) : substr($splitter_and_parameters, 0, strlen($splitter_and_parameters)-1))) ?>" class="arrow_prev">&lt;</a>&nbsp;
 	<?php endif ?>
     
 	<?php if ($show_prev): ?>
-		<a href="<?php echo /*($orderby != '') ? url_for($module_action.$splitter_and_parameters.$orderby) : */url_for($module_action) ?>" class="arrow_prev">1</a>&nbsp;
-		<a href="<?php echo $page - $plus_digits; ?>" class="arrow_prev">..</a>&nbsp;
+		<a href="<?php echo url_for($module_action.substr($splitter_and_parameters, 0, strlen($splitter_and_parameters)-1)) ?>" class="arrow_prev">1</a>&nbsp;
+		<a href="<?php echo url_for($module_action.$splitter_and_parameters.'page='.($page - $plus_digits)) ?>" class="arrow_prev">..</a>&nbsp;
 	<?php endif ?>
 	
 	<?php foreach ($page_numbers_list as $page_number): ?>	
@@ -32,7 +32,7 @@ if (count($parameters)) {
 		<?php if ($page_number == $page): ?>
 			<span class="nav_selected"><?php echo $page_number; ?></span>&nbsp;
 		<?php else: ?>
-			<?php echo ( ($page_number==1) ? link_to($page_number, $module_action/*.str_replace('&', '?', $orderby)*/) : link_to($page_number, $module_action.$splitter_and_parameters.'page='.$page_number) ); ?>&nbsp;
+			<?php echo ( ($page_number==1) ? link_to($page_number, $module_action.substr($splitter_and_parameters, 0, strlen($splitter_and_parameters)-1)) : link_to($page_number, $module_action.$splitter_and_parameters.'page='.$page_number) ); ?>&nbsp;
 		<?php endif ?>
 	<?php endforeach ?>
 

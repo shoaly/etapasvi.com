@@ -1189,9 +1189,10 @@ html #disqus_thread {
     height:22px;
     width:244px;
     }
-.navigation {
-    text-align:center;
-    margin:11px 0;
+#content .navigation {
+    font-size: 120%;
+    margin: 11px 0;
+    text-align: center;
     }
 .large_text .navigation *,
 .hieroglyphic #content .navigation * {
@@ -1347,6 +1348,7 @@ img.newsitem_img {
     }
 .category_wrapper{
     margin-bottom: 10px;
+    text-align: center;
     }
 /* photo */
 #photo_comments_code {
@@ -1518,9 +1520,9 @@ img.newsitem_img {
 	padding:10px 0px 20px;
 	}
 .video .title {
-	color:#867d4a;
-	text-align:center;
-	margin:0 auto;
+    color: #867D4A;
+    margin: 0 10px;
+    text-align: center;
 	}
 .video_info {
 	margin: 0 22px 0;

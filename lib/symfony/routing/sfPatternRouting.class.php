@@ -627,7 +627,7 @@ class sfPatternRouting extends sfRouting
 		// /en/news/mantras/page/1/
 		   
 		// /en/news/rss can match, that is why we should check if URL matches any route from routing.yml
-		$matches_routes = $this->getRouteThatMatchesUrl($url, array('default'));
+		$matches_routes = $this->getRouteThatMatchesUrl($url, array('default', 'error404'));
 
 		if (empty($matches_routes)) {
 	      preg_match("/^\/([^\/]+)\/(" . implode('|', ItemtypesPeer::getItemTypeNamesLower()) . ")\/([^\/]+)(.*)?$/", $url, $matches);
