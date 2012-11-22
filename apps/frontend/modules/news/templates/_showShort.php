@@ -11,7 +11,7 @@
         <a href="<?php echo $href; ?>" title="<?php echo __('News') ?>" class="t_txt">
             <?php echo $newsitem->getTitle(); ?> <?php /*if ($newsitem->getIsTeaching()): ?>[<?php echo __('teaching') ?>]<?php endif */?>
         </a>
-        <a class="small simple" href="<?php echo url_for('@' . $newsitem->getTypeName() . '_index'); ?>">[<?php echo __($newsitem->getTypeNameCapital()) ?>]</a>
+        <a class="small simple" href="<?php echo url_for('@news_index'); ?>">[]</a>
     </h2>    
 
     <div class="date"> 

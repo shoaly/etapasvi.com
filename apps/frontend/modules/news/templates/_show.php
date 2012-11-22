@@ -19,7 +19,7 @@
 
     <?php echo html_entity_decode(/*str_ireplace( '&lt;br /&gt;', '</p><p class="p1">',*/ $newsitem->getBodyPrepared() /*)*/ ); ?><br/>
     
-    <?php if ($sf_user->getCulture() != 'ne' && $newsitem->isTypeTeachings() && $newsitem->getOriginal()): ?>
+    <?php if ($sf_user->getCulture() != 'ne' && $newsitem->getOriginal()): ?>
         <p>
             <br/><a href="javascript:showOriginal();"><?php echo __('Original text') ?></a> <span class="slide_arrow ">▼</span>
         </p>

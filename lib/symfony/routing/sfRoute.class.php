@@ -320,10 +320,10 @@ class sfRoute implements Serializable
 	    	}
     	}
 
-	    // /en/news/index/category/mantras/page/1
+	    // /en/news/index/itemcategory/mantras/page/1
 	    // into
 	    // /en/news/mantras/page/1
-    	preg_match("/^\/([^\/]+)\/([^\/]+)\/([^\/]+)\/category\/([^\/]+)\/?(.*)?$/", $url, $matches);	    	   
+    	preg_match("/^\/([^\/]+)\/([^\/]+)\/([^\/]+)\/itemcategory\/([^\/]+)\/?(.*)?$/", $url, $matches);	    	   
     	if (count($matches) >= 3) {
     		$url = '/' . $matches[1] . '/' . $matches[2] . '/' . $matches[4];
     		// al the rest

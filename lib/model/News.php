@@ -89,7 +89,7 @@ class News extends BaseNews
 	
 	
 	
-	public function getTypeName()
+	/*public function getTypeName()
 	{
 	  return NewstypesPeer::getTypeName( $this->getType() );
 	}
@@ -102,24 +102,24 @@ class News extends BaseNews
     /**
      * Является ли новость Учением
      */
-	public function isTypeTeachings() {
+	/*public function isTypeTeachings() {
 	  if ($this->getType() == NewstypesPeer::NEWS_TYPE_TEACHINGS) {
         return true;
       } else {
         return false;
       }
-	}
+	}*/
     
     /**
      * Является ли новость Обычной новостью
      */
-	public function isTypeNews() {
+	/*public function isTypeNews() {
 	  if ($this->getType() == NewstypesPeer::NEWS_TYPE_NEWS) {
         return true;
       } else {
         return false;
       }
-	}
+	}*/
 	
     /**
      * Получение ссылки на изображение
@@ -193,9 +193,9 @@ class News extends BaseNews
 	  if (empty($culture)){
 		$culture = sfContext::getInstance()->getUser()->getCulture();
 	  }
-	  $module = $this->getTypeName();
-	  
-	  $url_pattern = $module . '/show?id=' . $this->getId();
+	  //$module = $this->getTypeName();
+	  //$url_pattern = $module . '/show?id=' . $this->getId();
+	  $url_pattern = 'news/show?id=' . $this->getId();
 	  
 	  $title_translit = TextPeer::urlTranslit($this->getTitle( $culture ), $culture );
 	  if (!empty($title_translit)) {

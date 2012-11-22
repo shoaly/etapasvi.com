@@ -8,8 +8,8 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 50
       sort: [order, desc]
-      filters: [show, type]
-      display: [id, show, order, _img, date, extradate, =title, type_name]
+      filters: [show]
+      display: [id, show, order, _img, date, extradate, =title]
       title:   News
       object_actions:
         _edit:
@@ -23,7 +23,7 @@ generator:
 
     edit:
       display:
-        "NONE": [show, order, date, img, _img, full_path, _full_link, thumb_path, _thumb_link, type, original]
+        "NONE": [show, order, date, img, _img, full_path, _full_link, thumb_path, _thumb_link, original]
         "EN":
           - title_i18n_en
           - extradate_i18n_en

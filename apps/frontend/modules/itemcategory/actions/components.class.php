@@ -15,7 +15,6 @@ class itemcategoryComponents extends sfComponents
     $c->add(ItemcategoryPeer::SHOW, 1);
     //$c->addSelectColumn(MerchantsPeer::ID);
     $c->addAscendingOrderByColumn(ItemcategoryPeer::ORDER);
-    
     $itemcategory_list = ItemcategoryPeer::doSelectWithI18n($c, null, null, Criteria::LEFT_JOIN, true);
     
     // building tree

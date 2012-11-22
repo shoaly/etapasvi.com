@@ -29,7 +29,7 @@ abstract class BaseItemcategoryI18n extends BaseObject  implements Persistent {
 
 	/**
 	 * The value for the items_count field.
-	 * @var        int
+	 * @var        string
 	 */
 	protected $items_count;
 
@@ -81,7 +81,7 @@ abstract class BaseItemcategoryI18n extends BaseObject  implements Persistent {
 	/**
 	 * Get the [items_count] column value.
 	 * 
-	 * @return     int
+	 * @return     string
 	 */
 	public function getItemsCount()
 	{
@@ -134,13 +134,13 @@ abstract class BaseItemcategoryI18n extends BaseObject  implements Persistent {
 	/**
 	 * Set the value of [items_count] column.
 	 * 
-	 * @param      int $v new value
+	 * @param      string $v new value
 	 * @return     ItemcategoryI18n The current object (for fluent API support)
 	 */
 	public function setItemsCount($v)
 	{
 		if ($v !== null) {
-			$v = (int) $v;
+			$v = (string) $v;
 		}
 
 		if ($this->items_count !== $v) {
@@ -237,7 +237,7 @@ abstract class BaseItemcategoryI18n extends BaseObject  implements Persistent {
 		try {
 
 			$this->title = ($row[$startcol + 0] !== null) ? (string) $row[$startcol + 0] : null;
-			$this->items_count = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
+			$this->items_count = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
 			$this->id = ($row[$startcol + 2] !== null) ? (int) $row[$startcol + 2] : null;
 			$this->culture = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
 			$this->resetModified();

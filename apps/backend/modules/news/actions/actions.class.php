@@ -8,6 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 5125 2007-09-16 00:53:55Z dwhittle $
  */
+
 class newsActions extends autonewsActions
 {
 
@@ -213,10 +214,10 @@ class newsActions extends autonewsActions
 	    $this->news->setThumbPath($news['thumb_path']);
 	  }
     }
-    if (isset($news['type']))
+    /*if (isset($news['type']))
     {
       $this->news->setType($news['type'] ? $news['type'] : null);
-    }
+    }*/
     // otherwise id does not save original after clearing it in backend
     //if (isset($news['original']))
     //{

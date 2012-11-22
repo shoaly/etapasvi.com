@@ -5,10 +5,10 @@
 	<ul>*/ ?>
 		<?php /*<li><a href="<?php echo url_for('@intro', true); ?>" title="<?php echo __('Buddha Boy Nepal') ?>" id="mi_intro"><?php echo __('Intro') ?></a></li> */ ?>
         <li id="mi_news"><a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('News') ?>"><?php echo __('News') ?></a></li>        
-        <li id="mi_teachings"><i>»</i> <a href="<?php echo url_for('@teachings_index', true); ?>" title="<?php echo __('Teachings') ?>"><?php echo __('Teachings') ?></a></li>
-        <li id="mi_stories"><i>»</i> <a href="<?php echo url_for('@stories_index', true); ?>" title="<?php echo __('Stories') ?>"><?php echo __('Stories') ?></a></li>
-        <li id="mi_books"><i>»</i> <a href="<?php echo url_for('@books_index', true); ?>" title="<?php echo __('Books') ?>"><?php echo __('Books') ?></a></li>
-        <li id="mi_projects"><i>»</i> <a href="<?php echo url_for('@projects_index', true); ?>" title="<?php echo __('Projects') ?>"><?php echo __('Projects') ?></a></li>
+        <li id="mi_teachings"><i>»</i> <a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('Teachings') ?>"><?php echo __('Teachings') ?></a></li>
+        <li id="mi_stories"><i>»</i> <a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('Stories') ?>"><?php echo __('Stories') ?></a></li>
+        <li id="mi_books"><i>»</i> <a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('Books') ?>"><?php echo __('Books') ?></a></li>
+        <li id="mi_projects"><i>»</i> <a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('Projects') ?>"><?php echo __('Projects') ?></a></li>
 		<li id="mi_project"><i>» »</i> <a href="<?php echo url_for('@project', true); ?>" title="<?php echo __('Dharma Hall') ?>"><?php echo __('Dharma Hall') ?></a></li>
 		<li id="mi_dharmic_forest"><i>» »</i> <a href="http://www.savenepaltapasviforest.info" title="<?php echo __('Dharmic Forest') ?>" target="_blank"><?php echo __('Dharmic Forest') ?></a></li>
 		<li id="mi_photo"><a href="<?php echo url_for('@photoalbum_index', true); ?>" title="<?php echo __('Photo') ?>"><?php echo __('Photo') ?></a></li>

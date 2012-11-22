@@ -44,7 +44,7 @@ propel:
       
   itemcategory_i18n:
     title:            { type: longvarchar, required: true }
-    items_count:      { type: integer }
+    items_count:      { type: varchar(255) }
     _indexes:
       title:              [title]
     

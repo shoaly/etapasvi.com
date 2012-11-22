@@ -134,20 +134,6 @@
 </div>
 
 <div class="form-row">
-  <?php echo label_for('news[type]', __($labels['news{type}']), 'class="required" ') ?>
-  <div class="content<?php if ($sf_request->hasError('news{type}')): ?> form-error<?php endif; ?>">
-  <?php if ($sf_request->hasError('news{type}')): ?>
-    <?php echo form_error('news{type}', array('class' => 'form-error-msg')) ?>
-  <?php endif; ?>
-
-  <?php $value = object_select_tag($news, 'getType', array (
-  'related_class' => 'Newstypes',
-  'control_name' => 'news[type]',
-)); echo $value ? $value : '&nbsp;' ?>
-    </div>
-</div>
-
-<div class="form-row">
   <?php echo label_for('news[original]', __($labels['news{original}']), 'class="required" ') ?>
   <div class="content<?php if ($sf_request->hasError('news{original}')): ?> form-error<?php endif; ?>">
   <?php if ($sf_request->hasError('news{original}')): ?>

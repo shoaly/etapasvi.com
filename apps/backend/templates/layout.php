@@ -90,7 +90,7 @@
                <?php /*<li><?php echo link_to('Subscribe', 'subscribe/index') ?></li>	*/ ?>
               <?php /*<li><?php echo link_to('Alert', 'alert/index') ?></li>	*/ ?>
               <?php /*<li><?php echo link_to('Spam', 'alert/spam') ?></li>	*/ ?>
-              <li><?php echo link_to('News Types', 'newstypes/index') ?></li>	
+              <?php /*<li><?php echo link_to('News Types', 'newstypes/index') ?></li>*/ ?>
               <li><?php echo link_to('Item Types', 'itemtypes/index') ?></li>	
               <li><?php echo link_to('Item Categories', 'itemcategory/index') ?></li>	
               <li><?php echo link_to('Item2itemcategory', 'item2itemcategory/index') ?></li>	

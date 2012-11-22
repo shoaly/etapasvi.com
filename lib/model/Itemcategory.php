@@ -125,22 +125,9 @@ class Itemcategory extends BaseItemcategory {
     /**
      * Get URL
      */
-	public function getUrl($parameters = array(), $culture = '') {
-	  if (empty($culture)){
-		$culture = sfContext::getInstance()->getUser()->getCulture();
-	  }	 
-	  
-      $url_pattern = 'news/index?category=' . $this->getCode();
-	  
-	  
-	  foreach ($parameters as $parameter=>$value) {
-	  	if ('' != $value) {
-	      $url_pattern .= '&' . $parameter . '=' . $value;
-	  	}
-	  }
-
-	  $url = sfContext::getInstance()->getController()->genUrl($url_pattern, true, $culture);
-	  return $url;
+	public function getUrl($module_action, $parameters = array(), $culture = '') 
+	{
+	  return ItemcategoryPeer::getUrl($module_action, $this->getCode(), $parameters = array(), $culture = '');
 	}
 	
 } // Itemcategory

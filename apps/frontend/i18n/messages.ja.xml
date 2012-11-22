@@ -227,6 +227,11 @@
         <source>Category</source>
         <target></target>
       </trans-unit>
+      
+      <trans-unit id="1">
+        <source>All categories</source>
+        <target></target>
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Read more</source>

@@ -113,7 +113,7 @@ DROP TABLE IF EXISTS `itemcategory_i18n`;
 CREATE TABLE `itemcategory_i18n`
 (
 	`title` TEXT  NOT NULL,
-	`items_count` INTEGER,
+	`items_count` VARCHAR(255),
 	`id` INTEGER  NOT NULL,
 	`culture` VARCHAR(7)  NOT NULL,
 	PRIMARY KEY (`id`,`culture`),

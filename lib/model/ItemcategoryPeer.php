@@ -61,6 +61,77 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
     }
   	
   	return $tree_element;
-  } 
+  }
+  
+  /**
+   * Get conditions for indexing items
+   *
+   * @param unknown_type $c
+   * @param unknown_type $item_type_id
+   * @param unknown_type $itemcategory_id
+   */
+  public static function getIndexCriteria( $c, $item_type_id, $itemcategory_code )
+  {
+  	if (!$itemcategory_code) {
+  	  return;
+  	}
+  	$itemcategory = self::getByCode($itemcategory_code);
+  	if (empty($itemcategory)) {
+  	  return;
+  	}
+  	$itemcategory_id = $itemcategory->getId();
+  	
+  	$item_peer = ItemtypesPeer::getItemTypeName($item_type_id).'Peer';
+  	
+  	$c->addJoin(
+  	  array($item_peer::ID, Item2itemcategoryPeer::ITEM_TYPE), 
+  	  array(Item2itemcategoryPeer::ITEM_ID, $item_type_id),
+  	  Criteria::INNER_JOIN
+  	);
+  	$c->add(Item2itemcategoryPeer::ITEMCATEGORY_ID, $itemcategory_id);
+  }
+  
+  /**
+   * Get element by Code
+   *
+   * @param unknown_type $code
+   * @return unknown
+   */
+  public static function getByCode( $code )
+  {
+  	$c = new Criteria();
+  	$c->add(ItemcategoryPeer::CODE, trim($code));
+  	return ItemcategoryPeer::doSelectOne($c);
+  }
+  
+  /**
+   * Generate URL
+   *
+   * @param unknown_type $module_action
+   * @param unknown_type $code
+   * @param unknown_type $parameters
+   * @param unknown_type $culture
+   */
+  public static function getUrl($module_action, $code, $parameters = array(), $culture = '')
+  {
+	  if (!$module_action) {
+	  	return '';
+	  }
+	  if (empty($culture)){
+		$culture = sfContext::getInstance()->getUser()->getCulture();
+	  }	 
+	  
+      $url_pattern = $module_action.'?itemcategory=' . $code;
+	  
+	  
+	  foreach ($parameters as $parameter=>$value) {
+	  	if ('' != $value) {
+	      $url_pattern .= '&' . $parameter . '=' . $value;
+	  	}
+	  }
+
+	  $url = sfContext::getInstance()->getController()->genUrl($url_pattern, true, $culture);
+	  return $url;
+  }
   
 } // ItemcategoryPeer

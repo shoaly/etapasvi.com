@@ -1046,6 +1046,7 @@ function toggleLatestNews(id)
 //  Open url correspionding to selected category
 function gotoItemcategory(url)
 {
+    //$(".category_wrapper").append( '<img src="/i/loader_rect.gif" />' );
     window.location.href = url;
 }
 

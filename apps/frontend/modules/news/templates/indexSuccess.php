@@ -1,7 +1,7 @@
-<?php slot('body_id') ?>body_<?php echo $type ?><?php end_slot() ?>
+<?php slot('body_id') ?>body_news<?php end_slot() ?>
 <h1><?php echo __('News') ?></h1>
 
-<?php include_component('itemcategory', 'show', array('item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_NEWS))); ?>
+<?php include_component('itemcategory', 'show', array('module_action'=>'news/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_NEWS))); ?>
 
 <?php 
 $navigation_html = get_partial('global/navigation', array('pager'=>$pager, 'module_action'=>'news/index') ); 
@@ -14,7 +14,7 @@ $news_list = $pager->getResults();
 	<?php include_partial('news/list', array('news_list'=>$news_list)); ?>
 <?php else: ?>
 	<p class="center error_list p2">
-		<?php echo __('No News') ?>.
+		<?php echo __('There is no news in this category') ?>.
 	</p>
 <?php endif ?>
 

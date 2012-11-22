@@ -16,6 +16,8 @@ if (preg_match("/^\/www\/.*/", $_SERVER['SCRIPT_NAME'])) {
 	$_SERVER['PHP_SELF']      = preg_replace("/^\/www/", '', $_SERVER['PHP_SELF']);
 }
 
+ini_set('session.gc_maxlifetime', 3600);
+
 //phpinfo();
 //exit();
 /*

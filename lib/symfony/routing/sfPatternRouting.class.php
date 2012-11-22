@@ -580,7 +580,7 @@ class sfPatternRouting extends sfRouting
   protected function urlRewriteExpand($url)
   {
   	// если находимся во фронтенде или включена принудительная перезапись URL
-	if ( sfContext::getInstance()->getConfiguration()->getApplication() == 'frontend' || self::$force_url_rewrite) {
+	if ( sfContext::getInstance()->getConfiguration()->getApplication() == 'frontend' || sfRoute::$force_url_rewrite) {
 		
 	  $rewirite_done = false;
 	  preg_match("/^\/([^\/]+)\/([^\/]+)\/([\d]+)\/?([^\/]+)?$/", $url, $matches);
@@ -619,7 +619,7 @@ class sfPatternRouting extends sfRouting
 	  if (!$rewirite_done) {
 	    // /en/news/mantras/page/1
 		// into
-		// /en/news/index/category/mantras/page/1
+		// /en/news/index/itemcategory/mantras/page/1
 		
 		// /en/news/mantras
 		// /en/news/mantras/
@@ -633,7 +633,7 @@ class sfPatternRouting extends sfRouting
 	      preg_match("/^\/([^\/]+)\/(" . implode('|', ItemtypesPeer::getItemTypeNamesLower()) . ")\/([^\/]+)(.*)?$/", $url, $matches);
 
 	      if (count($matches) >= 3) {
-	    	$url = '/' . $matches[1] . '/' . $matches[2] . '/index/category/' . $matches[3];
+	    	$url = '/' . $matches[1] . '/' . $matches[2] . '/index/itemcategory/' . $matches[3];
     		// al the rest
 	    	if ($matches[4]) {
 	    		$url .= $matches[4];

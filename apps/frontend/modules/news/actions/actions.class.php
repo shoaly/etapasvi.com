@@ -14,52 +14,48 @@ class newsActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
   	$this->id 	 = $request->getParameter('id');
-  	$this->title = $request->getParameter('title');  	
-  	/*
-  	$this->newsitem = NewsPeer::retrieveByPk( $request->getParameter('id') );
-  	$this->forward404Unless( $this->newsitem && $this->newsitem->getBody() );
-  	//if ( sfConfig::get('sf_environment') == 'prod' ) {
-    $this->forward404Unless( $this->newsitem->getShow() );
-    //}
-  	$news_title = $this->newsitem->getTitle();
-  	if ( $news_title ) {
-  	  // если на страницу перешли с другого языка, то title неверный
-  	  $news_title_translit = TextPeer::urlTranslit($news_title);
-  	  if ( $news_title_translit && $request->getParameter('title') != $news_title_translit ) {
-  		$this->redirect( $this->newsitem->getTypeName() . '/show?id=' . (int)$request->getParameter('id') . '&title=' . $news_title_translit );
-  	  }
-  		
-	  $context = sfContext::getInstance();
-	  $i18n =  $context->getI18N();
-	
-	  $title = $i18n->__('Dharma Sangha') . ' -';
-	  $response = $this->getResponse(); 
-	  $response->setTitle($title . ' ' . $news_title . ' - eTapasvi.com');
-  	}*/
-  	/*
-  	// получаем привязанные Видео
-  	$c = new Criteria();
-  	$c->add( News2videoPeer::NEWS_ID, $request->getParameter('id') );
-  	$c->addJoin( VideoPeer::ID, News2videoPeer::VIDEO_ID );
-  	$c->addJoin( VideoI18nPeer::ID, VideoPeer::ID );
-  	$c->add( VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL );
-  	$c->add( VideoI18nPeer::CULTURE, sfContext::getInstance()->getUser()->getCulture() );
-
-  	$this->video_list = News2videoPeer::doSelect($c);  	
-  	
-  	// получаем привязанные Фотоальбомы
-  	$c = new Criteria();
-  	$c->add( News2photoalbumPeer::NEWS_ID, $request->getParameter('id') );
-  	$c->addJoin( PhotoalbumPeer::ID, News2photoalbumPeer::PHOTOALBUM_ID );
-  	$c->add( PhotoalbumPeer::SHOW, 1 );
-
-  	$this->photoalbum_list = News2photoalbumPeer::doSelect($c);	*/
-  	  	
-  	// ссылка назад
-  	//if ($_SESSION['back_to_news'] != '') {
-  	//  $this->back_to_news = $_SESSION['back_to_news'];
-  	//}  	  	  	
-  }  
+  	$this->title = $request->getParameter('title');  	  	  	
+  }
+  
+  /**
+   * Redirect to news
+   *
+   * @param sfWebRequest $request
+   */
+  public function executeTeachings(sfWebRequest $request)
+  {
+  	$this->redirect('news/show?id='.$request->getParameter('id'));
+  }
+  
+  /**
+   * Redirect to news
+   *
+   * @param sfWebRequest $request
+   */
+  public function executeStories(sfWebRequest $request)
+  {
+  	$this->redirect('news/show?id='.$request->getParameter('id'));
+  }
+  
+  /**
+   * Redirect to news
+   *
+   * @param sfWebRequest $request
+   */
+  public function executeBooks(sfWebRequest $request)
+  {
+  	$this->redirect('news/show?id='.$request->getParameter('id'));
+  }
+  
+  /**
+   * Redirect to news
+   *
+   * @param sfWebRequest $request
+   */
+  public function executeProjects(sfWebRequest $request)
+  {
+  	$this->redirect('news/show?id='.$request->getParameter('id'));
+  }
   
   public function executePreview(sfWebRequest $request)
   {
@@ -76,21 +72,24 @@ class newsActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {  	
   	// определение типа новости
-	$this->type = $request->getParameter('type');
+	/*$this->type = $request->getParameter('type');
 	if (!$this->type) {
 	  $this->type = NewstypesPeer::$type_names[ NewstypesPeer::NEWS_TYPE_NEWS ];
-	}
+	}*/
 
     $c = $this->getIndexCriteria();
     
 	$pager = new sfPropelPagerI18n('News', NewsPeer::NEWS_PER_PAGE);
-	
-	//$c->add(constant('News' . 'I18nPeer::CULTURE'), sfContext::getInstance()->getUser()->getCulture());
-	
     $pager->setCriteriaI18n($c);
     $pager->setPage($this->getRequestParameter('page', 1));
     $pager->init();
     $this->pager = $pager;
+    
+    // check if Itemcategory exists
+    $itemcategory = $this->getRequestParameter('itemcategory');
+    if ($itemcategory && !ItemcategoryPeer::getByCode($itemcategory)) {
+    	$this->forward404();
+    }    
     
     // если передан номер страницы больше, чем имеется страниц
     if ($request->getParameter('page') > $this->pager->getLastPage()) {
@@ -100,18 +99,6 @@ class newsActions extends sfActions
     // установка типа в зависимости от типа
     $response = $this->getResponse(); 
 	$response->setTitle(ucfirst($this->type)); 
-    
-    // формируем заголовок
-    /*$context = sfContext::getInstance();
-	$i18n =  $context->getI18N();
-    
-    $news_type = ucfirst($this->getRequestParameter('type'));
-    if (!$news_type) {
-        $news_type = 'News';
-    }
-      
-    $response = $this->getResponse(); 
-    $response->setTitle($i18n->__('Dharma Sangha') . ' - ' . $i18n->__($news_type) . ' - eTapasvi.com');    */
   }  
   
   /**
@@ -127,13 +114,17 @@ class newsActions extends sfActions
     NewsPeer::addVisibleCriteria( $c );
     $c->addDescendingOrderByColumn( NewsPeer::ORDER );
     
+    // take Itemcategory into account
+    $itemcategory = $this->getRequestParameter('itemcategory');
+    ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_NEWS, $itemcategory);
+    
     // на странице с типом News выводятся все новости
-    $type = $this->getRequestParameter('type');
+    /*$type = $this->getRequestParameter('type');
     if ( !empty($type) && $type != NewstypesPeer::$type_names[NewstypesPeer::NEWS_TYPE_NEWS]) {
         $c->addJoin( NewstypesPeer::ID, NewsPeer::TYPE );
         $c->add( NewstypesPeer::NAME, $type );
-    }
-    
+    }*/
+
     return $c;
   }
   

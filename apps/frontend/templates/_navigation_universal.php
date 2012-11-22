@@ -13,7 +13,7 @@ if (count($parameters)) {
 }
 ?>
 <?php if ($have_to_paginate): ?>
-<div class="navigation small">
+<div class="navigation">
 
 	<?php $show_prev = $first_page != $page && ($page - $plus_digits >= 2); ?>
 	<?php $show_next = $last_page != $page && ($page + $plus_digits <= $last_page - 1); ?>

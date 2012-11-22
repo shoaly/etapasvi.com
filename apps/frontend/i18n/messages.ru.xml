@@ -180,7 +180,11 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Category</source>
-        <target>Категория</target>
+        <target>Рубрика</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>All categories</source>
+        <target>Все рубрики</target>
       </trans-unit>
 
 <!-- News _show -->

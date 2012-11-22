@@ -18,55 +18,35 @@ version_full:
 # дополнительные маршруты новостей идут до default, чтобы они срабатывали раньше
 news_index:
   url:   /:sf_culture/news/index/*
-  param: { module: news, action: index, type: news }
+  param: { module: news, action: index }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 news:
   url:   /:sf_culture/news/index/*
-  param: { module: news, action: index, type: news }
+  param: { module: news, action: index }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 news_show:
   url:   /:sf_culture/news/show/*
   param: { module: news, action: show }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
-  
 # teachings
-teachings_index:
-  url:   /:sf_culture/teachings/index/*
-  param: { module: news, action: index, type: teachings }
-  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 teachings_show:
   url:   /:sf_culture/teachings/show/*
-  param: { module: news, action: show }
+  param: { module: news, action: teachings }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
-
 # books
-books_index:
-  url:   /:sf_culture/books/index/*
-  param: { module: news, action: index, type: books }
-  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 books_show:
   url:   /:sf_culture/books/show/*
-  param: { module: news, action: show }
+  param: { module: news, action: books }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
-  
 # stoires
-stories_index:
-  url:   /:sf_culture/stories/index/*
-  param: { module: news, action: index, type: stories }
-  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 stories_show:
   url:   /:sf_culture/stories/show/*
-  param: { module: news, action: show }
+  param: { module: news, action: stories }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
-
 # projects
-projects_index:
-  url:   /:sf_culture/projects/index/*
-  param: { module: news, action: index, type: projects }
-  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 projects_show:
   url:   /:sf_culture/projects/show/*
-  param: { module: news, action: show }
+  param: { module: news, action: projects }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
 # должен быть выше default

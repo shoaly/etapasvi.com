@@ -40,7 +40,7 @@ class ItemcategoryI18nTableMap extends TableMap {
 		$this->setUseIdGenerator(false);
 		// columns
 		$this->addColumn('TITLE', 'Title', 'LONGVARCHAR', true, null, null);
-		$this->addColumn('ITEMS_COUNT', 'ItemsCount', 'INTEGER', false, null, null);
+		$this->addColumn('ITEMS_COUNT', 'ItemsCount', 'VARCHAR', false, 255, null);
 		$this->addForeignPrimaryKey('ID', 'Id', 'INTEGER' , 'itemcategory', 'ID', true, null, null);
 		$this->addPrimaryKey('CULTURE', 'Culture', 'VARCHAR', true, 7, null);
 		// validators
