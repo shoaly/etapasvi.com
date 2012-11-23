@@ -41,7 +41,7 @@ h1 {
     background: none repeat scroll 0 0 transparent;
     color: #a46362;
     font-family: Monotype Corsiva;
-    font-size: 1.3em;
+    font-size: 1.7em;
     font-style: normal;
     font-weight: bold;
     margin: 0 0 7px;
@@ -537,7 +537,13 @@ html #disqus_thread {
 	border: 1px solid #DDDDDD;
 	padding: 0 6px 4px;
 	}
-
+.itemcategories_list {
+    color: #888888;
+    margin: 4px 0 0;
+    }
+.itemcategories_list a {
+    color: #888;
+    }
 img.newsitem_img {
 	float:left;
 	/*margin:0 15px 10px 0;*/

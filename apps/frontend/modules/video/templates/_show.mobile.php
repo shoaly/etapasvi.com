@@ -25,7 +25,11 @@
             <?php endif ?>	
 		<?php else: ?>		
 			<h2 class="title"><?php echo $title; ?></h2>
-			
+            <?php include_component('itemcategory', 'showitemcategories', array(
+                                    'item_type'     => ItemtypesPeer::ITEM_TYPE_VIDEO, 
+                                    'item_id'       => $video->getId(),
+                                    'module_action' => 'video/index')); 
+            ?>
 			<p class="center_text p1_no_bottom">
                 <?php include_partial('video/code', array('code'=>$code)); ?>
 			</p>
@@ -35,7 +39,7 @@
 		<?php if (empty($short)): ?>
 			<div class="video_info">
 				<p class="date right_text p1_no_both">
-					<strong><?php echo format_date( $video->getCreatedAt(), 'd MMMM yyyy' ); ?></strong> (<?php echo __('Click "CC" in the player to show captions') ?>)
+					<strong><?php echo format_date( $video->getCreatedAt(), 'd MMMM yyyy' ); ?></strong>
 				</p>
 				<?php 
                     $body = html_entity_decode($video->getBodyPrepared($sf_user->getCulture(), true));
