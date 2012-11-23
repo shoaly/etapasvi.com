@@ -29,7 +29,7 @@ include_partial(
         'last_page'          => $last_page,
         'page'               => $page,
         'page_numbers_list'  => $page_numbers_list,
-        'parameters'         => array('category' => $sf_params->get('category'))
+        'parameters'         => array('itemcategory' => $sf_params->get('itemcategory'))
     )
 ); 
 ?>

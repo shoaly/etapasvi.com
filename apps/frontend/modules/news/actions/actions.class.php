@@ -226,17 +226,20 @@ LIMIT 0, 50
     $sub_query_counter = 0;
     $cur_culture = sfContext::getInstance()->getUser()->getCulture();
     
+    $itemcategory = $request->getParameter('itemcategory');
+
     // добавляем в выборку каждый тип элемента
 	foreach (NewsPeer::$feed_item_types as $type) {
-	  $table_name = strtolower($type);
+	  $table_name 	= strtolower($type);
+	  $item_type_id =  ItemtypesPeer::getItemTypeId($type);
 	  $c = new Criteria();
 	  
-	  // для RSS вызывается специальный метод, т.к. Фото без названий не должны показываться
-	  //if (!$rss) {
 	  $fn = array($type . 'Peer', 'addVisibleCriteria');
-	  //} else {
-	  //	$fn = array($type . 'Peer', 'addVisibleCriteria');
-	  //}	  
+
+	  // take Itemcategory into account
+	  if (!$rss) {
+	    ItemcategoryPeer::getIndexCriteria($c, $item_type_id, $itemcategory);
+	  }
 	  
 	  try {
 	    call_user_func( $fn, $c );  	
@@ -252,28 +255,29 @@ LIMIT 0, 50
 	    $criteria_sql_list = explode("\n", $criteria_string);  	    
 	    $criteria_sql      = str_replace('SQL (may not be complete): ', '', $criteria_sql_list[1]);
 	    
-	    // если в условии нет таблицы i18n, добавляем, чтобы получить updated_at_extra
-	    //if (!strstr($criteria_sql, '_i18n')) {
-	    //	$criteria_sql = str_replace(' WHERE ', ", {$table_name}_i18n WHERE ", $criteria_sql);
-	    //}	    
 	    // join clause
 	    if ($rss && (constant($table_name . 'Peer::ALL_CULTURES') || in_array($table_name, array('photo', 'audio')))) {
 	    	if (in_array($table_name, array('photo', 'audio'))) {
 	    		$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID 
-	    						AND ({$table_name}_i18n.CULTURE = '{$cur_culture}' OR {$table_name}_i18n.CULTURE = '" . sfConfig::get('sf_default_culture') . "')) WHERE";
+	    						AND ({$table_name}_i18n.CULTURE = '{$cur_culture}' OR {$table_name}_i18n.CULTURE = '" . sfConfig::get('sf_default_culture') . "')) ";
 	    	} else {
 	    		$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID 
 	    						AND ({$table_name}_i18n.CULTURE = '{$cur_culture}' OR 
-	    						({$table_name}.ALL_CULTURES = 1 AND {$table_name}_i18n.CULTURE = '" . sfConfig::get('sf_default_culture') . "'))) WHERE";
+	    						({$table_name}.ALL_CULTURES = 1 AND {$table_name}_i18n.CULTURE = '" . sfConfig::get('sf_default_culture') . "'))) ";
 	    	}
 	    } else {
 	    	$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID 
-	    		AND {$table_name}_i18n.CULTURE = '{$cur_culture}') WHERE";	
+	    		AND {$table_name}_i18n.CULTURE = '{$cur_culture}') ";	
+	    }
+	    
+	    // filter by itemcategory
+	    if (!$rss && $itemcategory) {
+			$join_sql .= " INNER JOIN item2itemcategory ON ({$table_name}.ID=item2itemcategory.ITEM_ID AND item2itemcategory.ITEM_TYPE={$item_type_id}) ";
 	    }
 	    
 	    $criteria_sql = preg_replace(
 	    	'/FROM.*WHERE/', 
-	    	$join_sql, 
+	    	$join_sql . 'WHERE', 
 	    	$criteria_sql
 	    );
 	    
@@ -285,9 +289,6 @@ LIMIT 0, 50
 	    	. $type . "' as item_type FROM", 
 	    	$criteria_sql
 		);
-		
-	    //if (strstr($criteria_sql, '_i18n')) {
-    	//$criteria_sql .= " and {$table_name}_i18n.id = {$table_name}.id ";
     	
     	// items with ALL_CULTURE attribute are shown if item exists in the current language or ALL_CULTURES = 1
     	// photo and audio are shown always
@@ -299,8 +300,6 @@ LIMIT 0, 50
     	} elseif (!in_array($table_name, array('photo', 'audio'))) {
     		$criteria_sql .= " and {$table_name}_i18n.culture = '" .  $cur_culture . "'";
     	}
-    					   
-	    //}
 	    
 	    // for RSS
 	    if ($rss) {
@@ -350,10 +349,10 @@ LIMIT 0, 50
 	    $count_items = $stmt->fetch();
 	  }
  	} catch (Exception $e) {
+ 		//echo $e->getMessage();
 		return;
 	}
 
-	
 	// получение списка
 	$query_list = "
 	 	SELECT
@@ -415,7 +414,7 @@ LIMIT 0, 50
 	    try {
 	      $list = call_user_func( $fn, $c ); 
 	    } catch (Exception $e) {
-	      echo $e->getMessage();
+	      //echo $e->getMessage();
 	      continue;
 	    }
 

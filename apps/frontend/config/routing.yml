@@ -49,11 +49,31 @@ projects_show:
   param: { module: news, action: projects }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
+#photoalbum_index:
+#  url:   /:sf_culture/photo/albums/*
+#  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+  
+photoalbum_index:
+  url:   /:sf_culture/photoalbums/index/*
+  param: { module: photo, action: albums }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+  
+photoalbum_show:
+  url:   /:sf_culture/photoalbum/show/*
+  param: { module: photo, action: album }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+
+feed:
+  url:   /:sf_culture/feed/index/*
+  param: { module: news, action: feed }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+  
 # должен быть выше default
 revisionhistory:
   url:   /:sf_culture/revision/show/*
   param: { module: revisionhistory, action: show }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+  
   
 default:
   url:   /:sf_culture/:module/:action/*
@@ -68,10 +88,6 @@ news_rss:
   url:   /:sf_culture/news/rss
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
-feed:
-  url:   /:sf_culture/news/feed/*
-  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
-
 project:
   url:   /:sf_culture/project
   param: { module: project, action: show }
@@ -84,13 +100,8 @@ photo:
   url:   /:sf_culture/photo/index
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
-
 photo_show:
   url:   /:sf_culture/photo/show
-  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
-  
-photoalbum_index:
-  url:   /:sf_culture/photo/albums/*
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
 photo_view:

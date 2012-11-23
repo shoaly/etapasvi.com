@@ -51,6 +51,10 @@ class documentsActions extends sfActions
     $c->addDescendingOrderByColumn( DocumentsPeer::ORDER );
     DocumentsPeer::addVisibleCriteria($c);
         
+    // take Itemcategory into account
+    $itemcategory = $this->getRequestParameter('itemcategory');
+    ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_DOCUMENTS, $itemcategory);
+    
 	$pager = new sfPropelPagerI18n('Documents', DocumentsPeer::ITEMS_PER_PAGE, null, 'ID', false);
     $pager->setCriteriaI18n($c);
     $pager->setPeerMethod('doSelectWithI18n');

@@ -52,6 +52,10 @@ class audioActions extends sfActions
     $c->addDescendingOrderByColumn( AudioPeer::ORDER );
     AudioPeer::addVisibleCriteria($c);
         
+    // take Itemcategory into account
+    $itemcategory = $this->getRequestParameter('itemcategory');
+    ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_AUDIO, $itemcategory);
+    
 	$pager = new sfPropelPagerI18n('Audio', AudioPeer::ITEMS_PER_PAGE);
     $pager->setCriteria($c);
     $pager->setPage($this->getRequestParameter('page', 1));

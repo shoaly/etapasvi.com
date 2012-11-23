@@ -3,7 +3,7 @@
 
 <?php include_component('itemcategory', 'show', array('module_action'=>'news/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_NEWS))); ?>
 
-<?php 
+<?php
 $navigation_html = get_partial('global/navigation', array('pager'=>$pager, 'module_action'=>'news/index') ); 
 echo $navigation_html;
 
@@ -13,9 +13,7 @@ $news_list = $pager->getResults();
 <?php if (count($news_list)): ?>
 	<?php include_partial('news/list', array('news_list'=>$news_list)); ?>
 <?php else: ?>
-	<p class="center error_list p2">
-		<?php echo __('There is no news in this category') ?>.
-	</p>
+	<br/><p class="center_text light"><?php echo __('Category is empty') ?></p>
 <?php endif ?>
 
 <?php echo $navigation_html; ?>

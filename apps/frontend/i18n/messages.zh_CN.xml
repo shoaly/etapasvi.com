@@ -186,6 +186,10 @@
         <source>All categories</source>
         <target></target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Category is empty</source>
+        <target></target>
+      </trans-unit>
       
 
 <!-- News _show -->

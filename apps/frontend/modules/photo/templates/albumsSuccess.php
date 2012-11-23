@@ -1,10 +1,10 @@
 <?php slot('body_id') ?>body_photo<?php end_slot() ?>
 <h1><?php echo __('Photo Albums') ?></h1>
 
-<?php include_component('itemcategory', 'show', array('module_action'=>'photo/albums', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_PHOTOALBUM))); ?>
+<?php include_component('itemcategory', 'show', array('module_action'=>'photoalbums/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_PHOTOALBUM))); ?>
 
 <?php 
-$navigation_html = get_partial('global/navigation', array('pager'=>$pager, 'module_action'=>'photo/albums') ); 
+$navigation_html = get_partial('global/navigation', array('pager'=>$pager, 'module_action'=>'photoalbums/index') ); 
 echo $navigation_html;
 ?>
 
@@ -29,9 +29,7 @@ echo $navigation_html;
 		<?php endforeach; ?>
 	</table>
 <?php else: ?>
-	<p class="center error_list p2">
-		<?php echo __('There is no photos in this category') ?>
-	</p>
+	<br/><p class="center_text light"><?php echo __('Category is empty') ?></p>
 <?php endif ?>
 
 <?php echo $navigation_html; ?>

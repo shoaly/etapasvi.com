@@ -1,6 +1,16 @@
 <?php slot('body_id') ?>body_feed<?php end_slot() ?>
 <h1><?php echo __('Feed') ?></h1>
 
+<?php 
+include_component(
+    'itemcategory', 
+    'show', 
+    array('module_action'=>'news/feed', 
+    'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_NEWS, ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, 
+                            ItemtypesPeer::ITEM_TYPE_VIDEO, ItemtypesPeer::ITEM_TYPE_AUDIO, ItemtypesPeer::ITEM_TYPE_DOCUMENTS)
+)); 
+?>
+
 <a href="http://feeds.feedburner.com/<?php echo $sf_user->getCulture(); ?>/etapasvi" rel="alternate" type="application/rss+xml" class="rss_link"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" /></a>
 
 <?php 
@@ -17,15 +27,16 @@ $navigation_html = get_partial(
 ); 
 echo $navigation_html;
 ?>
-
-<?php foreach($feed_list as $feed_item): ?>
-    <?php if (empty($feed_item['type']) || empty($feed_item['list'])): ?>
-        <?php continue; ?>
-    <?php endif ?>
-    <?php include_partial( strtolower($feed_item['type']) . '/list', array(strtolower($feed_item['type']) . '_list' => $feed_item['list'])); ?>
-    <br/>
-<?php endforeach ?>
-
-<a href="http://feeds.feedburner.com/<?php echo $sf_user->getCulture(); ?>/etapasvi" rel="alternate" type="application/rss+xml" class="rss_link"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" /></a>
+<?php if (count($feed_list)): ?>
+    <?php foreach($feed_list as $feed_item): ?>
+        <?php if (empty($feed_item['type']) || empty($feed_item['list'])): ?>
+            <?php continue; ?>
+        <?php endif ?>
+        <?php include_partial( strtolower($feed_item['type']) . '/list', array(strtolower($feed_item['type']) . '_list' => $feed_item['list'])); ?>
+        <br/>
+    <?php endforeach ?>
+<?php else: ?>
+	<br/><p class="center_text light"><?php echo __('Category is empty') ?></p>
+<?php endif ?>
 
 <?php echo $navigation_html; ?>

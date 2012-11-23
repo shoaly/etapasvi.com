@@ -630,11 +630,12 @@ class sfPatternRouting extends sfRouting
 		$matches_routes = $this->getRouteThatMatchesUrl($url, array('default', 'error404'));
 
 		if (empty($matches_routes)) {
-	      preg_match("/^\/([^\/]+)\/(" . implode('|', ItemtypesPeer::getItemTypeNamesLower()) . ")\/([^\/]+)(.*)?$/", $url, $matches);
+	      preg_match("/^\/([^\/]+)\/(" . implode('|', ItemtypesPeer::getItemTypeNamesLower()) . 
+	      	"|feed|photoalbums)\/([^\/]+)(.*)?$/", $url, $matches);
 
 	      if (count($matches) >= 3) {
 	    	$url = '/' . $matches[1] . '/' . $matches[2] . '/index/itemcategory/' . $matches[3];
-    		// al the rest
+    		// all the rest
 	    	if ($matches[4]) {
 	    		$url .= $matches[4];
 	    	}

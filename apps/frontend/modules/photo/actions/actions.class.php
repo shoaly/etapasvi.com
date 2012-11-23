@@ -192,6 +192,10 @@ class photoActions extends sfActions
     $c->add( PhotoalbumPeer::SHOW, 1);
     $c->addDescendingOrderByColumn( PhotoalbumPeer::ORDER );
 
+    // take Itemcategory into account
+    $itemcategory = $this->getRequestParameter('itemcategory');
+    ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, $itemcategory);
+    
 	$pager = new sfPropelPager('Photoalbum', PhotoalbumPeer::ITEMS_PER_PAGE);
     $pager->setCriteria($c);    
     $pager->setPage($this->getRequestParameter('page', 1));

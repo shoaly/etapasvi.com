@@ -25,6 +25,10 @@ class videoActions extends sfActions
     //$c->add( VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL );\
     VideoPeer::addVisibleCriteria($c);
         
+    // take Itemcategory into account
+    $itemcategory = $this->getRequestParameter('itemcategory');
+    ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_VIDEO, $itemcategory);
+    
 	$pager = new sfPropelPagerI18n('Video', VideoPeer::ITEMS_PER_PAGE, null, 'ID', false);
     $pager->setCriteriaI18n($c, true);
     $pager->setPage($this->getRequestParameter('page', 1));
