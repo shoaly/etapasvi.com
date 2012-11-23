@@ -9,15 +9,19 @@
 	<?php $href = $newsitem->getUrl(); ?>    
     <h2 class="title">
         <a href="<?php echo $href; ?>" title="<?php echo __('News') ?>" class="t_txt">
-            <?php echo $newsitem->getTitle(); ?> <?php /*if ($newsitem->getIsTeaching()): ?>[<?php echo __('teaching') ?>]<?php endif */?>
+            <?php echo $newsitem->getTitle(); ?>
         </a>
-        <a class="small simple" href="<?php echo url_for('@news_index'); ?>">[]</a>
     </h2>    
 
     <div class="date"> 
         <?php if ($newsitem->getExtradate()): ?><?php echo $newsitem->getExtradate(); ?> / <?php elseif ($newsitem->getDate()): ?><?php echo format_datetime( $newsitem->getDate(), 'd MMMM yyyy'); ?> / <?php endif ?>
         <?php echo __('Updated on') ?> <?php echo format_datetime( $newsitem->getUpdatedAtMax(), 'd MMMM yyyy'); ?>        
     </div>
+    <?php include_component('itemcategory', 'showitemcategories', array(
+                            'item_type'     => ItemtypesPeer::ITEM_TYPE_NEWS, 
+                            'item_id'       => $newsitem->getId(),
+                            'module_action' => 'news/index')); 
+    ?>
     <div class="short_body p">
         <?php if ($newsitem->getImg() && $newsitem->getThumbUrl()): ?>
             <a href="<?php echo $href; ?>" title="<?php echo $newsitem->getTitle(); ?>">

@@ -142,7 +142,7 @@ $(document).ready(function() {
     });
     
     // всплывающие названия языков
-    $("#lang_column a,strong").tipsy({gravity: 's', opacity:1});
+    $("#lang_column a, #lang_column strong").tipsy({gravity: 's', opacity:1});
 
     // быстрый поиск
     $("#quick_search_input").focus(function() {

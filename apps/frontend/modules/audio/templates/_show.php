@@ -16,7 +16,11 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
  */ ?>
 <div id="audio_<?php echo $audio->getId(); ?>" class="audio_item">
 <h2 class="title"><?php echo $author; ?> - <?php echo $title; ?></h2>
-
+<?php include_component('itemcategory', 'showitemcategories', array(
+            'item_type'     => ItemtypesPeer::ITEM_TYPE_AUDIO, 
+            'item_id'       => $audio->getId(),
+            'module_action' => 'audio/index')); 
+?>
 <div class="light small audio_descr">    
     <strong><?php echo __('Uploaded on') ?>:</strong> <?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?> | 
     <strong><?php echo __('Duration') ?>:</strong>  <?php echo $audio->getDurationFormatted(); ?> |

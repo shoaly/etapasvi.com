@@ -17,13 +17,18 @@ $author = $photoalbum->getAllAuthors($sf_user->getCulture(), $photo_list);
 </p>
 <div class="box photoalbum_container">
 <h2 class="title"><?php echo $photoalbum->getTitle($sf_user->getCulture(), true);?></h2>
-<p class="light center_text">
-    <?php echo format_datetime( $photoalbum->getCreatedAt(), 'd MMMM yyyy'); ?> | 
-    <?php echo __('Photo') ?>: <?php echo $photoalbum->countPhotos(); ?>
+<p class="light center_text small">
+    <strong><?php echo __('Date') ?>:</strong> <?php echo format_datetime( $photoalbum->getCreatedAt(), 'd MMMM yyyy'); ?> | 
+    <strong><?php echo __('Photo') ?>:</strong> <?php echo $photoalbum->countPhotos(); ?>
     <?php if ($author): ?>
-        | <?php echo __('Author') ?>: <?php echo $author ?>
+        | <strong><?php echo __('Author') ?>:</strong> <?php echo $author ?>
     <?php endif ?>
 </p>
+<?php include_component('itemcategory', 'showitemcategories', array(
+                        'item_type'     => ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, 
+                        'item_id'       => $photoalbum->getId(),
+                        'module_action' => 'photoalbums/index')); 
+?>
 <?php $body = $photoalbum->getBody($sf_user->getCulture(), true); ?>
 <?php if($body): ?>
     <p><?php echo $body;?></p>

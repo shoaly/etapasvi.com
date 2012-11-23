@@ -18,5 +18,21 @@ require 'lib/model/om/BaseItem2itemcategoryPeer.php';
  * @package    lib.model
  */
 class Item2itemcategoryPeer extends BaseItem2itemcategoryPeer {
-
+    
+  /**
+   * Get item categories by item type and Id
+   * @param type $item_type
+   * @param type $item_id
+   */
+  public static function getItemCategories($item_type, $item_id)
+  {
+    $c = new Criteria();
+    $c->addJoin(Item2itemcategoryPeer::ITEMCATEGORY_ID, ItemcategoryPeer::ID);
+    $c->add(Item2itemcategoryPeer::ITEM_TYPE, $item_type);
+    $c->add(Item2itemcategoryPeer::ITEM_ID, $item_id);
+    $itemcategory_list = ItemcategoryPeer::doSelectWithI18n($c);
+    
+    return $itemcategory_list;
+  }
+  
 } // Item2itemcategoryPeer

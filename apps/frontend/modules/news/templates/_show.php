@@ -10,6 +10,11 @@
         <?php endif ?>
         <?php echo __('Updated on') ?> <?php echo format_datetime( $newsitem->getUpdatedAtMax(), 'd MMMM yyyy'); ?>
     </p>
+    <?php include_component('itemcategory', 'showitemcategories', array(
+                            'item_type'     => ItemtypesPeer::ITEM_TYPE_NEWS, 
+                            'item_id'       => $newsitem->getId(),
+                            'module_action' => 'news/index')); 
+    ?>
     <p class="center_text p1_no_bottom">
         <?php if ($newsitem->getImg() && $newsitem->getFullUrl()): ?>
             <img src="<?php echo $newsitem->getFullUrl(); ?>" 
