@@ -134,4 +134,76 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
 	  return $url;
   }
   
+  /**
+   * Update ITEMS_COUNT field in Itemcategory table for all Item Types, cultures and Item Categories.
+   * ITEMS_COUNT is stored in JSON
+   *
+   * @param unknown_type $itemcategory_list
+   * @param unknown_type $itemcategory_el
+   * @return unknown
+   */
+  public static function updateItemsCount()
+  {
+  	$itemcategory_list = ItemcategoryPeer::doSelect(new Criteria());
+  	
+  	// Item Category
+  	foreach ($itemcategory_list as $itemcategory) {
+  		
+  	  // cultures
+  	  foreach (UserPeer::getCultures() as $culture) {
+  	  	
+  	  	// for collecting information
+  	  	sfContext::getInstance()->getUser()->setCulture($culture);
+  	  	// for saving
+  	  	$itemcategory->setCulture($culture);
+  	  	
+  	  	$items_count = array();
+  	  	
+  	    // Item Types
+  	    foreach (ItemtypesPeer::$item_type_names as $itemtype_name) {
+  	    	
+  	      // pass Photos
+  	  	  if ($itemtype_name == ItemtypesPeer::ITEM_TYPE_NAME_PHOTO) {
+  	  		continue;
+  	  	  }
+  	  	  
+  	  	  $itemtype_id = ItemtypesPeer::getItemTypeId($itemtype_name);
+  	    
+  	      $item_peer      = $itemtype_name . 'Peer';
+  	      $item_peer_i18n = $itemtype_name . 'I18nPeer';
+  	      
+  	      $c = new Criteria();
+  	      
+  	      $item_peer::addVisibleCriteria($c);
+  	      
+  	      // check if item visible criteria include I18n table
+  	      $tables_columns = $c->getTablesColumns();
+
+  	      // if there is i18n table or ALL_CULTURES field, add culture condition
+  	      if (array_key_exists($item_peer_i18n::TABLE_NAME, $tables_columns) || constant("{$item_peer}::ALL_CULTURES")) {
+  	        $c->addJoin(array($item_peer::ID, $item_peer_i18n::CULTURE), array($item_peer_i18n::ID, "'$culture'"), Criteria::LEFT_JOIN);	
+  	      }
+  	      
+	  	  $c->addJoin(
+	  	    array($item_peer::ID, Item2itemcategoryPeer::ITEM_TYPE), 
+	  	    array(Item2itemcategoryPeer::ITEM_ID, $itemtype_id),
+	  	    Criteria::INNER_JOIN
+	  	  );
+	  	  
+	  	  $c->add(Item2itemcategoryPeer::ITEMCATEGORY_ID, $itemcategory->getId());
+  	      
+	  	  $items_count[$itemtype_id] = $item_peer::doCount($c);
+	  	  
+  	      //echo $c->toString();
+  	    }
+  	    //print_r( $items_count );
+  	    $itemcategory->setItemsCount( json_encode($items_count) );
+  	    $itemcategory->save();
+  	    // save Items Count
+  	  }
+  	}
+  	
+  	return $tree_element;
+  }
+  
 } // ItemcategoryPeer
