@@ -15,7 +15,7 @@
     
     <?php if ($sf_user->getCulture() == 'ru'): ?>        
          <?php /* <a href="http://vaikuntha.ru/blog/dharmas/" target="_blank" title="<?php echo __('Вайкунтха') ?>" class="social_vaikuntha"><span><?php echo __('Вайкунтха') ?></span></a> */ ?>
-         <a href="http://vk.com/etapasvicom" target="_blank" title="<?php echo __('ВКонтакте') ?>" class="social_vkontakte"><span><?php echo __('ВКонтакте') ?></span></a> 
+         <a href="http://vk.com/etapasvi" target="_blank" title="<?php echo __('ВКонтакте') ?>" class="social_vkontakte"><span><?php echo __('ВКонтакте') ?></span></a> 
     <?php /* <?php else: ?>        
         <a href="http://etapasvi.livejournal.com/" target="_blank" title="<?php echo __('Live Journal') ?>" class="social_livejournal"><span><?php echo __('Live Journal') ?></span></a> */ ?>
     <?php endif ?>
