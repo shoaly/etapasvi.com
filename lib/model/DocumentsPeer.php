@@ -164,7 +164,8 @@ class DocumentsPeer extends BaseDocumentsPeer {
 	  ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS,
 	  $culture
 	);
-    return true;
+	
+    return $document->getId();
   }
   
   /**

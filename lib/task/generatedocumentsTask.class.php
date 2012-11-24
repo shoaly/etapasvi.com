@@ -5,6 +5,10 @@
  * Example: 
  * ./symfony project:clearcache
  * 
+ * Generate documents for all news in News table
+ * --all_news = 1
+ * 
+ * 
  *
  */
 
@@ -39,14 +43,20 @@ EOF;
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();    	
   	
     if (!$options['all_news']) {
+      // normal generation
       $result = ClearcachePeer::generateDocuments();
       if (count($result['items'])) {
     	  echo "Documents have been generated for the following items:\n";
     	  print_r($result['items']);
+    	  if ($result['error_items']) {
+    	    echo "Documents were not generated for the following items due to error:\n";
+    	    print_r($result['items']);   
+    	  }
       } else {
         echo 'No items';
       }
     } else {
+      // Generate documents for all news in News table
   	  $c = new Criteria();
   	  NewsPeer::addVisibleCriteria($c);
   	  $c->setOffset(99);

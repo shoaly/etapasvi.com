@@ -164,6 +164,8 @@ class ClearcachePeer extends BaseClearcachePeer {
       foreach ($clearcache_list as $clearcache) {
         if (self::generateItemDocument($clearcache)) {
           $result['items'][] = $clearcache->toArray();
+        } else {
+          $result['error_items'][] = $clearcache->toArray();
         }
       }
     }
@@ -176,11 +178,13 @@ class ClearcachePeer extends BaseClearcachePeer {
    */
   public static function generateItemDocument($clearcache)
   {
-  	$document_generated = false;
+  	$generated_document_id = false;
+  	
     // get News
     if ($clearcache->getItemCulture() == UserPeer::ALL_CULTURES) {
       // all cultures
       foreach (UserPeer::getCultures() as $culture) {
+        
         $c = new Criteria();
         $c->add(NewsPeer::ID, $clearcache->getItemId());
         // generate documents for visible News only
@@ -189,16 +193,23 @@ class ClearcachePeer extends BaseClearcachePeer {
         $news_list = NewsPeer::doSelectWithI18n($c, $culture);
         $news_item = $news_list[0];
       
-        $result = false;
         if ($news_item) {
       	  $news_item->setCulture($culture);
-      	  $result = DocumentsPeer::createFromHtml(
+      	  $generated_document_id = DocumentsPeer::createFromHtml(
       	    $news_item->getHtml($culture), $news_item->getTitle(), 
       	    $news_item->getId(), $culture, ItemtypesPeer::ITEM_TYPE_NEWS
       	  );
-        }
-        if ($result) {
-          $document_generated = true;
+      	  
+  	      // add document to News Itemcategory  
+          if ($generated_document_id) {
+            $item2itemcategory = new Item2itemcategory();
+            $item2itemcategory->setItemcategoryId(ItemcategoryPeer::ITEMCATEGORY_NEWS);
+            $item2itemcategory->setItemId($generated_document_id);
+            $item2itemcategory->setItemType(ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
+            try {
+              $item2itemcategory->save();
+            } catch(Exception $e) {}
+          }
         }
       }
     } else {
@@ -215,18 +226,28 @@ class ClearcachePeer extends BaseClearcachePeer {
 
       if ($news_item) {
       	$news_item->setCulture($culture);
-  	    $document_generated = DocumentsPeer::createFromHtml(
+  	    $generated_document_id = DocumentsPeer::createFromHtml(
   	      $news_item->getHtml($culture), $news_item->getTitle(), 
   	      $news_item->getId(), $culture, ItemtypesPeer::ITEM_TYPE_NEWS
   	    );
+  	  
+  	    // add document to News Itemcategory  
+        if ($generated_document_id) {
+          $item2itemcategory = new Item2itemcategory();
+          $item2itemcategory->setItemcategoryId(ItemcategoryPeer::ITEMCATEGORY_NEWS);
+          $item2itemcategory->setItemId($generated_document_id);
+          $item2itemcategory->setItemType(ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
+          try {
+            $item2itemcategory->save();
+          } catch(Exception $e) {}
+        }
       }
     }
     
-    if ($document_generated) {
-      $clearcache->setDocumentCreated($document_generated);
+    if ($generated_document_id) {
+      $clearcache->setDocumentCreated($generated_document_id);
       $clearcache->save();
     }
-    
-    return $document_generated;
+    return $generated_document_id;
   }
 } // ClearcachePeer

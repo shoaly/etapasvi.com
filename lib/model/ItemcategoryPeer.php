@@ -19,6 +19,9 @@ require 'lib/model/om/BaseItemcategoryPeer.php';
  */
 class ItemcategoryPeer extends BaseItemcategoryPeer {
 	
+  // for generated documents
+  const ITEMCATEGORY_NEWS = 9;
+    
   /**
    * Build a tree from given list of Itemcategory elements
    *
@@ -70,7 +73,7 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
     }
   	
     // if element has no children and it's Items Count is 0, do not add it to the tree
-    if (!empty($tree_element['object']) && !$tree_element['has_links'] && !$tree_element['children']) {
+    if ($remove_empty_leaves && !empty($tree_element['object']) && !$tree_element['has_links'] && !$tree_element['children']) {
       $tree_element    = array();
     }
 
