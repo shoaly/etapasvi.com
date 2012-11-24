@@ -183,8 +183,8 @@
         <target>Рубрика</target>
       </trans-unit>
       <trans-unit id="1">
-        <source>All categories</source>
-        <target>Все рубрики</target>
+        <source>All</source>
+        <target>Все</target>
       </trans-unit>
       <trans-unit id="1">
         <source>Category is empty</source>

@@ -20,10 +20,10 @@ class itemcategoryComponents extends sfComponents
     $this->itemcategory_tree  = ItemcategoryPeer::buildTree($itemcategory_list, $this->item_type_list);
     
     // calculate total items count
-    $this->total_items_count = 0;
+    /*$this->total_items_count = 0;
     foreach ($this->itemcategory_tree as $top_element) {
       $this->total_items_count += $top_element['items_count'];
-    }
+    }*/
   }
   
   /**

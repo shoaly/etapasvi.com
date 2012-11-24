@@ -180,7 +180,13 @@ class newsActions extends sfActions
    * @param sfWebRequest $request
    */
   public function executeFeed(sfWebRequest $request)
-  {  	
+  {  
+    // check if Itemcategory exists
+    $itemcategory = $this->getRequestParameter('itemcategory');
+    if ($itemcategory && !ItemcategoryPeer::getByCode($itemcategory)) {
+    	$this->forward404();
+    }  
+      
 	self::getFeed($request);
   }
   

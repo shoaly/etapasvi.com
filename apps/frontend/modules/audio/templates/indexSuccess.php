@@ -1,7 +1,7 @@
 <?php slot('body_id') ?>body_audio<?php end_slot() ?>
 <h1><?php echo __('Audio') ?></h1>
 
-<?php include_component('itemcategory', 'show', array('module_action'=>'audio/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_AUDIO))); ?>
+<?php include_component('itemcategory', 'show', array('module_action'=>'audio/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_AUDIO), 'items_count_total'=>$pager->getNbResults())); ?>
 
 <?php 
 $navigation_html = get_partial('global/navigation', array('pager'=>$pager, 'module_action'=>'audio/index') );

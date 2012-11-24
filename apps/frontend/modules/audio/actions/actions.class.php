@@ -54,6 +54,12 @@ class audioActions extends sfActions
         
     // take Itemcategory into account
     $itemcategory = $this->getRequestParameter('itemcategory');
+    
+    // check if Itemcategory exists
+    if ($itemcategory && !ItemcategoryPeer::getByCode($itemcategory)) {
+    	$this->forward404();
+    }  
+    
     ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_AUDIO, $itemcategory);
     
 	$pager = new sfPropelPagerI18n('Audio', AudioPeer::ITEMS_PER_PAGE);

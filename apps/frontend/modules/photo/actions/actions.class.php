@@ -194,6 +194,12 @@ class photoActions extends sfActions
 
     // take Itemcategory into account
     $itemcategory = $this->getRequestParameter('itemcategory');
+    
+    // check if Itemcategory exists
+    if ($itemcategory && !ItemcategoryPeer::getByCode($itemcategory)) {
+    	$this->forward404();
+    }  
+    
     ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, $itemcategory);
     
 	$pager = new sfPropelPager('Photoalbum', PhotoalbumPeer::ITEMS_PER_PAGE);
