@@ -130,4 +130,48 @@ class Itemcategory extends BaseItemcategory {
 	  return ItemcategoryPeer::getUrl($module_action, $this->getCode(), $parameters = array(), $culture = '');
 	}
 	
+    /**
+     * Get Items Count by Item Type
+     *
+     * @param unknown_type $item_type_list
+     * @return unknown
+     */
+	public function getItemsCountByItemType($item_type_list) 
+	{
+	  $result = 0;
+	  
+	  // convert $item_type_list to array
+	  if (!is_array($item_type_list) && get_class($item_type_list) == 'sfOutputEscaperArrayDecorator') {
+	    $item_type_list_buffer = array();
+	    do {
+	      $item_type_list_buffer[] = $item_type_list->current();
+	    } while($item_type_list->next());
+	    $item_type_list = $item_type_list_buffer;
+	  }
+
+	  if (empty($item_type_list)) {
+	    return 0;
+	  }
+	  $items_count = $this->getItemsCountAsArray();
+
+	  foreach ($items_count as $item_type => $count) {
+	    if (!$count || !in_array((int)$item_type, $item_type_list)) {
+	      continue;  
+	    }
+	    $result = $result + $count;
+	  }
+	  return $result;
+	}
+	
+	/**
+	 * Get Items Count as array
+	 *
+	 * @return unknown
+	 */
+	public function getItemsCountAsArray() 
+	{
+	  $items_count_obj = json_decode($this->getItemsCount());
+	  return UserPeer::object2array($items_count_obj);
+	}
+	
 } // Itemcategory

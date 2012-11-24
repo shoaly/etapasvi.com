@@ -1236,4 +1236,28 @@ class UserPeer /* extends BaseUserPeer*/
 	$config = sfYaml::load(sfConfig::get('sf_root_dir') . '/tools/config/config.yml');	
 	return $config;	
   }
+  
+  /**
+	* Convert object to array
+	*
+	* @param unknown_type $object
+	* @return unknown
+	*/
+  public static function object2array($object)
+  {
+	if (is_object($object)) {
+	  foreach ($object as $key => $value) {
+	    $array[$key] = self::object2array($value);
+	  }
+	} elseif (is_array($object)) {
+	  foreach ($object as $key => $value) {
+	    $array[$key] = self::object2array($value);
+	  }
+	} else {
+	  return $object;
+	}
+	if (isset($array)) {
+	  return $array;
+	}
+  }
 }

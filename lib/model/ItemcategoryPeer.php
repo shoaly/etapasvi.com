@@ -26,14 +26,17 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
    * @param unknown_type $itemcategory_el
    * @return unknown
    */
-  public static function buildTree( $list, $element = null, $level = 0 )
+  public static function buildTree( $list, $item_type_list = array(), $element = null, $level = 0, $remove_empty_leaves = true )
   {
-  	$next_level = $level + 1;
+  	$next_level      = $level + 1;
   	$tree_element    = array();
   	
   	if ($element) {
-  	  $tree_element['object'] = $element; //'$list_item';
-  	  $tree_element['level']  = $level;
+  	  $tree_element['object']      = $element;
+  	  $tree_element['level']       = $level;
+  	  $element_items_count         = $element->getItemsCountByItemType($item_type_list);
+  	  $tree_element['has_links']   = (bool)$element_items_count;
+  	  $tree_element['items_count'] += $element_items_count;
   	}
   	
   	foreach ($list as $list_item) {
@@ -41,12 +44,15 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
       if ($level) {
       	
 	    if ($list_item->getItemcategoryId() == $element->getId()) {
-	      $new_tree_element           = array();
-	  	  $new_tree_element['object'] = $list_item;
-	  	  $new_tree_element['level']  = $next_level;
-          $children 			      = ItemcategoryPeer::buildTree($list, $list_item, $next_level);
+
+          $children 			      = ItemcategoryPeer::buildTree($list, $item_type_list, $list_item, $next_level);
           if ($children) {
             $tree_element['children'][] = $children;
+            // if at least one children has links, this means that parent (current) element also has
+            if ($children['has_links']) {
+              $tree_element['has_links']   = true;
+              $tree_element['items_count'] += $children['items_count'];
+            }
           }
         }
         
@@ -54,12 +60,20 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
       	
         // first level - choose elements without parent only
         if (!$list_item->getItemcategoryId()) {
-          $tree_element[] = ItemcategoryPeer::buildTree($list, $list_item, $next_level);
+          $element_tree = ItemcategoryPeer::buildTree($list, $item_type_list, $list_item, $next_level);
+          if ($element_tree) {
+            $tree_element[] = $element_tree;
+          }
         }
         
       }
     }
   	
+    // if element has no children and it's Items Count is 0, do not add it to the tree
+    if (!empty($tree_element['object']) && !$tree_element['has_links'] && !$tree_element['children']) {
+      $tree_element    = array();
+    }
+
   	return $tree_element;
   }
   
