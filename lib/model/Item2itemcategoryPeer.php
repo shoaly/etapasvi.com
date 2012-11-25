@@ -28,8 +28,17 @@ class Item2itemcategoryPeer extends BaseItem2itemcategoryPeer {
   {
     $c = new Criteria();
     $c->addJoin(Item2itemcategoryPeer::ITEMCATEGORY_ID, ItemcategoryPeer::ID);
-    $c->add(Item2itemcategoryPeer::ITEM_TYPE, $item_type);
-    $c->add(Item2itemcategoryPeer::ITEM_ID, $item_id);
+    
+    // Photos are connected to it's Photoalbum
+    if ($item_type == ItemtypesPeer::ITEM_TYPE_PHOTO) {
+      $c->add(Item2itemcategoryPeer::ITEM_TYPE, ItemtypesPeer::ITEM_TYPE_PHOTOALBUM);
+      $c->addJoin(PhotoPeer::PHOTOALBUM_ID, Item2itemcategoryPeer::ITEM_ID);
+      $c->add(PhotoPeer::ID, $item_id);
+    } else {
+      $c->add(Item2itemcategoryPeer::ITEM_TYPE, $item_type);
+      $c->add(Item2itemcategoryPeer::ITEM_ID, $item_id);
+    }
+
     $itemcategory_list = ItemcategoryPeer::doSelectWithI18n($c);
     
     return $itemcategory_list;

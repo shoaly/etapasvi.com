@@ -32,6 +32,17 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	self::ITEM_TYPE_DOCUMENTS  => self::ITEM_TYPE_NAME_DOCUMENTS,
   );
   
+  // names used in index URLs
+  // used for clearing Item Categories cache
+  static $item_type_indexes  = array(
+  	self::ITEM_TYPE_NEWS 	   => 'news',
+  	self::ITEM_TYPE_PHOTOALBUM => 'photoalbums',
+  	self::ITEM_TYPE_VIDEO      => 'video',
+  	self::ITEM_TYPE_PHOTO      => 'photoalbums',
+  	self::ITEM_TYPE_AUDIO      => 'audio',
+  	self::ITEM_TYPE_DOCUMENTS  => 'documents',
+  );
+  
   /**
    * Получение названия типа по ID.
    *
@@ -57,6 +68,17 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	  }
   	}
   	return '';
+  }
+  
+  /**
+   * Get Item Type index part of URL
+   *
+   * @param unknown_type $item_type_id
+   * @return unknown
+   */
+  public static function getItemTypeIndex( $item_type_id )
+  {
+  	return self::$item_type_indexes[ $item_type_id ];
   }
   
   public static function getItemTypeNameLower( $item_type_id )

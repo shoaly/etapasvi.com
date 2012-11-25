@@ -181,8 +181,13 @@ class sfSuperCache
 
   	// Главная страница
   	$urls_for_clearing[] = $routing->generate('main', array('sf_culture'=>$culture));  	
-  	// Лента обновлений
+  	// Feed
   	$urls_for_clearing[] = $routing->generate('feed', array('sf_culture'=>$culture)) . '*';
+  	// Clear feed for all Item Categories
+  	$itemcategory_list = ItemcategoryPeer::getAllVisible();
+  	foreach ($itemcategory_list as $itemcategory) {
+  	  $urls_for_clearing[] = '/'.$culture.'/feed/'.$itemcategory->getCode().'*';
+  	}
   	// RSS
   	$urls_for_clearing[] = $routing->generate('news_rss', array('sf_culture'=>$culture)) . '*';
   	// Photoalbum view
@@ -272,18 +277,27 @@ class sfSuperCache
   	// удаление ряда страниц в зависимости от типа элемента
   	$routing = UserPeer::getRouting();
   	
-  	// очищается список элементов
+  	// Clear index pages
   	// для Photo порядок очистки особый
   	if ($item_type_name != ItemtypesPeer::ITEM_TYPE_NAME_PHOTO) {
 	  $urls_for_clearing[] = $routing->generate(strtolower($item_type_name) . '_index', array('sf_culture'=>$culture)) . '*';
   	}
   	
-  	// Новость
-  	if ($item_type_name == ItemtypesPeer::ITEM_TYPE_NAME_NEWS) {
-  	  // удаление страниц списка новостей в зависимости от типа данной новости
-  	  $urls_for_clearing[] = $routing->generate(strtolower($item->getTypeName()) . '_index', array('sf_culture'=>$culture)) . '*';
+  	// Clear feed for all Item Categories
+  	$item_type_id      = ItemtypesPeer::getItemTypeId($item_type_name);
+  	$itemcategory_list = Item2itemcategoryPeer::getItemCategories($item_type_id, $item_id);
+  	$item_type_index   = ItemtypesPeer::getItemTypeIndex( $item_type_id );
+  	foreach ($itemcategory_list as $itemcategory) {
+  	  $urls_for_clearing[] = '/'.$culture.'/'.$item_type_index.'/'.$itemcategory->getCode().'*';
   	}
-  	// Фото
+  	
+  	// Новость
+  	//if ($item_type_name == ItemtypesPeer::ITEM_TYPE_NAME_NEWS) {
+  	//  // удаление страниц списка новостей в зависимости от типа данной новости
+  	//  $urls_for_clearing[] = $routing->generate(strtolower($item->getTypeName()) . '_index', array('sf_culture'=>$culture)) . '*';
+  	//}
+  	
+  	// Photo
   	if ($item_type_name == ItemtypesPeer::ITEM_TYPE_NAME_PHOTO) {
   	  // очистка фотоальбома, которому принадлежит фото
   	  $photoalbum = $item->getPhotoalbum();

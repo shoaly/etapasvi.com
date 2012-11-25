@@ -222,4 +222,16 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
   	return $tree_element;
   }
   
+  /**
+   * Retrieving all visible Item Categories
+   */
+  public static function getAllVisible()
+  {
+    $c = new Criteria();
+    $c->add(ItemcategoryPeer::SHOW, 1);
+    $itemcategory_list = ItemcategoryPeer::doSelect($c);
+    
+    return $itemcategory_list;
+  }
+  
 } // ItemcategoryPeer
