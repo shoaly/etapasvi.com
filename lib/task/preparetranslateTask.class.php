@@ -22,6 +22,8 @@ class preparetranslateTask extends sfBaseTask
   const INDEX_FILE                       = 'index.html';
   // название модуля цитат
   const MODULE_QUOTES                    = 'quotes';
+  // Item Categories module
+  const MODULE_ITEMCATEGORIES            = 'categories';
   
   // папка с переводами
   private $translates_path = '';
@@ -76,6 +78,9 @@ EOF;
     // messages-файла для цитат нет, поэтому файл создаётся вручную
     $this->createQuotesFile(self::OTHER_MESSAGES_CODE);
     
+    // messages-file for Categories
+    $this->createItemcategoriesFile(self::OTHER_MESSAGES_CODE);
+    
     // выясняется перечень языков, на которых уже есть хотя бы один файл перевода
     $this->findFiles(sfConfig::get('sf_app_dir'), '/messages\..*\.xml$/', 'getTranslatedCultures');
     
@@ -111,7 +116,10 @@ EOF;
       
       // messages-файла для цитат нет, поэтому файл создаётся вручную
       $this->createQuotesFile($culture);
-      
+
+      // messages-file for Categories
+      $this->createItemcategoriesFile($culture);
+    
       echo "Created translate files in: " . $this->translates_path . '/' . $culture . "\n";
     }
     
@@ -266,6 +274,66 @@ EOF;
 
   	} catch (Exception $e) {
   	  $log_msg = 'Error occured preparing quotes translation file ' . $dest . ': ' . $e->getMessage();
+  	  sfContext::getInstance()->getLogger()->err($log_msg);
+  	  echo $log_msg . "\n";
+  	  return false;
+  	}
+  	return true;
+  }
+  
+  /**
+   * Создание файла перевода Цитат
+   *
+   * @param unknown_type $culture
+   * @return unknown
+   */
+  protected function createItemcategoriesFile($culture) {
+          
+  	try {
+      // предполагается, что все директории уже созданы
+      $result_file_path = $this->translates_path . '/' . $culture . '/' . self::MODULE_ITEMCATEGORIES . '.' . $culture . '.' . self::FILE_EXT;     
+      
+      // получаем список Цитат на языке по умолчанию     
+  	  $list = ItemcategoryPeer::getAllVisible();
+  	  
+      if ($culture == self::OTHER_MESSAGES_CODE) {
+        $translation_culture = sfConfig::get('sf_default_culture');
+      } else {
+        $translation_culture = $culture;
+      }
+      
+      // URL  
+      $routing = $this->getRouting();
+      $url     = 'http://' . UserPeer::DOMAIN_NAME_MAIN . $routing->generate('main', array('sf_culture' => $translation_culture));
+  	  
+  	  // подготовка массива для построения отформатированного текста
+  	  foreach ($list as $item) {
+  	      
+  	    $source_text = $item->getTitle();  	    
+  	    $translation = $item->getTitle($translation_culture);
+  	    
+  	    if ($source_text == $translation) {
+  	      $translation = '';
+  	    }
+  	      
+  	    $items[] = array(  	    
+  	      'source_text' => $source_text,
+  	      'translation' => $translation
+  	    );
+  	  }
+  	  
+  	  $formatted_text = $this->generateFormattedText($items);
+      
+      // получение HTML и сохранение в файл
+      if (!empty($formatted_text)) {
+        $dest_html = $this->getTranslateFileHtml($url, self::MODULE_ITEMCATEGORIES, $culture, $formatted_text);
+  	    file_put_contents($result_file_path, $dest_html);
+  	  } else {
+  	    throw new Exception('Categories translation text is empty');
+  	  }
+
+  	} catch (Exception $e) {
+  	  $log_msg = 'Error occured preparing Categories translation file ' . $dest . ': ' . $e->getMessage();
   	  sfContext::getInstance()->getLogger()->err($log_msg);
   	  echo $log_msg . "\n";
   	  return false;
@@ -497,6 +565,7 @@ or translate directly in the area below and click "Send" button to send:<br/><br
       $index_html .= '<div id="' . $culture . '_modules" class="' . ($culture != self::OTHER_MESSAGES_CODE ? 'hidden' : '') . ' modules">Module: <select onchange="loadTranslate(this)">';
       $module_list_updated   = $this->module_list;
       $module_list_updated[] = self::MODULE_QUOTES;
+      $module_list_updated[] = self::MODULE_ITEMCATEGORIES;
       foreach ($module_list_updated as $module) {
     	$index_html .= '<option value="http://' . UserPeer::DOMAIN_NAME_MAIN . '/uploads/' . self::PREPARED_MESSAGES_DIR . '/' .
     					$culture . '/' . $module . '.' . $culture . '.' . self::FILE_EXT . '" target="prepare_translate_iframe">' . 
