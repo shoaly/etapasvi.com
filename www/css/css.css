@@ -1232,10 +1232,8 @@ html #disqus_thread {
 	border: 1px solid #DDDDDD;
 	padding: 5px 10px 8px;
 	}
-.news_list .itemcategories_list,
-.audio_item .itemcategories_list,
-.documents_full .itemcategories_list {
-    text-align: left;
+.photoalbum_container .itemcategories_list {
+    text-align: center;
     }
 
 img.newsitem_img {
@@ -1361,13 +1359,18 @@ img.newsitem_img {
 .itemcategories_list {
     color: #888888;
     margin: 4px 0 0;
-    text-align: center;
+    text-align: left;
     }
 .itemcategories_list a {
     color: #888;
     }
 .itemcategories_list a:hover {
     text-decoration: none;
+    }
+.itemcategories_list  img {
+    margin-right: 4px;
+    margin-top: 0;
+    vertical-align: middle;
     }
 /* photo */
 #photo_comments_code {
@@ -1398,6 +1401,9 @@ img.newsitem_img {
 .album_list p {
     margin-left:9px;
     margin-right:9px;
+    }
+.album_list a {
+    text-decoration: none;
     }
 .photofull {    
     padding:20px 0 3px;

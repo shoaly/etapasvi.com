@@ -181,6 +181,13 @@
 	</table>
     */ ?>
     <div id="photo_content_title" class="hidden"><?php if ($title): ?><?php echo $title; ?> <?php else: echo __('Photo')?><?php endif ?> - <?php echo sfConfig::get('app_site_name'); ?></div>
+    <?php if ($photoalbum_id): ?>
+        <?php include_component('itemcategory', 'showitemcategories', array(
+                                'item_type'     => ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, 
+                                'item_id'       => $photoalbum_id,
+                                'module_action' => 'photoalbums/index')); 
+        ?>
+    <?php endif ?>
     <div class="photo_info">
         <?php if (!$item2item_html): ?>
             <?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, 'item_id'=>$photo->getPhotoalbumId())) ?> 

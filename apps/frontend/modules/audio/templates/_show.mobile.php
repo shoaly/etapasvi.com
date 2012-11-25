@@ -16,11 +16,7 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
  */ ?>
 <div id="audio_<?php echo $audio->getId(); ?>" class="audio_item">
     <strong id="<?php echo $audio->getFile(); ?>"><?php echo $author; ?></strong> - <?php echo $title; ?>     
-    <?php include_component('itemcategory', 'showitemcategories', array(
-                'item_type'     => ItemtypesPeer::ITEM_TYPE_AUDIO, 
-                'item_id'       => $audio->getId(),
-                'module_action' => 'audio/index')); 
-    ?>
+
     <div class="light small right audio_descr">
     <?php if (empty($no_info) || !$no_info): ?>    
         <?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?> | 
@@ -34,7 +30,11 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
     <br/><br/><strong><?php echo __('Text'); ?>:</strong><br/>
     <?php echo html_entity_decode($body); ?>
     <?php endif ?>
-
+    <?php include_component('itemcategory', 'showitemcategories', array(
+                'item_type'     => ItemtypesPeer::ITEM_TYPE_AUDIO, 
+                'item_id'       => $audio->getId(),
+                'module_action' => 'audio/index')); 
+    ?>
     </div>    
 </div>
 <?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_AUDIO, 'item_id'=>$audio->getId())) ?> 
