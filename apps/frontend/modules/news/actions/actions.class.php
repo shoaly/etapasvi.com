@@ -278,7 +278,13 @@ LIMIT 0, 50
 	    
 	    // filter by itemcategory
 	    if (!$rss && $itemcategory) {
-			$join_sql .= " INNER JOIN item2itemcategory ON ({$table_name}.ID=item2itemcategory.ITEM_ID AND item2itemcategory.ITEM_TYPE={$item_type_id}) ";
+	        if ($table_name == 'photo') {
+	          // instead of photoalbums photos are shown in Feed   
+	          $join_sql .= " INNER JOIN item2itemcategory ON ({$table_name}.PHOTOALBUM_ID=item2itemcategory.ITEM_ID AND item2itemcategory.ITEM_TYPE=" .
+	                       ItemtypesPeer::ITEM_TYPE_PHOTOALBUM . ") ";
+	        } else {
+			  $join_sql .= " INNER JOIN item2itemcategory ON ({$table_name}.ID=item2itemcategory.ITEM_ID AND item2itemcategory.ITEM_TYPE={$item_type_id}) ";
+	        }
 	    }
 	    
 	    $criteria_sql = preg_replace(
@@ -370,6 +376,7 @@ LIMIT 0, 50
 	
 	// для RSS используется ограничение по дате, поэтому не используем LIMIT
 	if (!$rss) {
+	  $this->count_items = $count_items['count'];
 	  $this->last_page = ceil($count_items['count'] / $feed_items_per_page);
 	  $limit_start 	 = ($this->page-1) * $feed_items_per_page;
 	  

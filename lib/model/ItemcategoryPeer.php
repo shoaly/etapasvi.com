@@ -39,7 +39,7 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
   	  $tree_element['level']       = $level;
   	  $element_items_count         = $element->getItemsCountByItemType($item_type_list);
   	  $tree_element['has_links']   = (bool)$element_items_count;
-  	  $tree_element['items_count'] += $element_items_count;
+  	  $tree_element['items_count'] = $tree_element['items_count'] + abs($element_items_count);
   	}
   	
   	foreach ($list as $list_item) {
@@ -54,7 +54,6 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
             // if at least one children has links, this means that parent (current) element also has
             if ($children['has_links']) {
               $tree_element['has_links']   = true;
-              $tree_element['items_count'] += $children['items_count'];
             }
           }
         }

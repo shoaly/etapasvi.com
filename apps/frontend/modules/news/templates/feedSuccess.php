@@ -7,7 +7,8 @@ include_component(
     'show', 
     array('module_action'=>'news/feed', 
     'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_NEWS, ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, 
-                            ItemtypesPeer::ITEM_TYPE_VIDEO, ItemtypesPeer::ITEM_TYPE_AUDIO, ItemtypesPeer::ITEM_TYPE_DOCUMENTS)
+                            ItemtypesPeer::ITEM_TYPE_VIDEO, ItemtypesPeer::ITEM_TYPE_AUDIO, ItemtypesPeer::ITEM_TYPE_DOCUMENTS),
+    'items_count_total'=>$count_items
 )); 
 ?>
 
