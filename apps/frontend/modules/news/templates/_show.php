@@ -10,11 +10,6 @@
         <?php endif ?>
         <?php echo __('Updated on') ?> <?php echo format_datetime( $newsitem->getUpdatedAtMax(), 'd MMMM yyyy'); ?>
     </p>
-    <?php include_component('itemcategory', 'showitemcategories', array(
-                            'item_type'     => ItemtypesPeer::ITEM_TYPE_NEWS, 
-                            'item_id'       => $newsitem->getId(),
-                            'module_action' => 'news/index')); 
-    ?>
     <p class="center_text p1_no_bottom">
         <?php if ($newsitem->getImg() && $newsitem->getFullUrl()): ?>
             <img src="<?php echo $newsitem->getFullUrl(); ?>" 
@@ -61,6 +56,14 @@
             <?php echo $link; ?>
         <?php endif ?>
         </p>
+    <?php endif ?>
+    <?php $itemcategory_html = get_component('itemcategory', 'showitemcategories', array(
+                            'item_type'     => ItemtypesPeer::ITEM_TYPE_NEWS, 
+                            'item_id'       => $newsitem->getId(),
+                            'module_action' => 'news/index')); 
+    ?>
+    <?php if (trim($itemcategory_html)): ?>
+        <br/><?php echo $itemcategory_html; ?>
     <?php endif ?>
     <?php if (!$no_item2item): ?>
         <?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_NEWS, 'item_id'=>$newsitem->getId())) ?> 
