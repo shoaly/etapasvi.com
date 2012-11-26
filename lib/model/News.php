@@ -234,7 +234,7 @@ class News extends BaseNews
 	public function getRssDescription() {
 	  $rss_description = '';
 	  if ($this->getThumbUrl()) {
-	  	$rss_description = '<p><a href="' . $this->getUrl() . '"><img src="' . $this->getThumbUrl() . '" /></a></p>';
+	  	$rss_description = '<p><a href="' . $this->getUrl() . '"><img src="' . $this->getFullUrl() . '" /></a></p>';
 	  }
       $rss_description .= $this->getShortbody();
 	  return $rss_description;

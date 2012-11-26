@@ -269,7 +269,7 @@ class Photo extends BasePhoto
 	 */
 	public function getRssDescription() {
 	  //return TextPeer::subStr($this->getBody(), NewsPeer::RSS_DESCRIPTION_LENGTH);
-	  return '<img src="' . $this->getThumbUrl() . '">';
+	  return '<img src="' . $this->getPreviewUrl() . '">';
 	}
 	
 	/**

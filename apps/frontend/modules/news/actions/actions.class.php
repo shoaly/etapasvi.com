@@ -135,6 +135,11 @@ class newsActions extends sfActions
   	}*/
   }
   
+  /**
+   * RSS
+   *
+   * @param sfWebRequest $request
+   */
   public function executeRss(sfWebRequest $request)
   {  	  	
   	$this->getResponse()->setHttpHeader('Content-type', 'text/xml; charset=UTF-8');  	
