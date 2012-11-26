@@ -60,7 +60,11 @@ function options_for_select($options = array(), $selected = '', $html_options = 
 
   if (!is_array($selected))
   {
-    $selected = array($selected);
+  	if (is_object($selected) && get_class($selected) == 'sfOutputEscaperArrayDecorator') {
+  	  	$selected = $selected->getAsArray();
+  	} else {
+      $selected = array($selected);
+  	}
   }
 
   $selected = array_map('strval', array_values($selected));

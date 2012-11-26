@@ -173,4 +173,20 @@ class sfOutputEscaperArrayDecorator extends sfOutputEscaperGetterDecorator imple
   {
     return $this->value[$key];
   }
+  
+  /**
+   * Get elements as array
+   *
+   */
+  public function getAsArray()
+  {
+  	$array = array();
+	do {
+	  $array[] = $this->current();
+	} while($this->next());
+    if ($this->current()) {
+      $array[] = $this->current();
+    }
+	return $array;
+  }
 }

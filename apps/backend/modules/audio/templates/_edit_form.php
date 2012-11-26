@@ -113,6 +113,20 @@
   <input type="checkbox" checked="checked" value="1" id="audio_change_updated_at" name="audio[change_updated_at]">    </div>
 </div>
 
+<div class="form-row">
+  <label for="audio_itemcategory">Item Categories:</label>  <div class="content">
+  <?php      
+    echo object_select_tag($audio, 'getItemcategoryIdList', array (
+      'include_blank' => true,
+      'related_class' => 'Itemcategory',
+      'peer_method' => 'getAll',
+      'text_method' => '__toString',
+      'control_name' => 'audio[itemcategory]',
+      'multiple' => true
+  ), 1);
+  ?>
+</div>
+
 </fieldset>
 <fieldset id="sf_fieldset_en" class="">
 <h2><?php echo __('EN') ?></h2>

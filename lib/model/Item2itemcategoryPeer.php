@@ -44,4 +44,60 @@ class Item2itemcategoryPeer extends BaseItem2itemcategoryPeer {
     return $itemcategory_list;
   }
   
+  /**
+   * Add new Item2itemcategory
+   *
+   * @param unknown_type $itemcategory_id
+   * @param unknown_type $item_id
+   * @param unknown_type $item_type
+   */
+  public static function add($itemcategory_id, $item_id, $item_type)
+  {
+  	if (!$itemcategory_id || !$item_id || !$item_type) {
+  	  return false;
+  	}
+    $item2itemcategory = new Item2itemcategory();
+    $item2itemcategory->setItemcategoryId($itemcategory_id);
+    $item2itemcategory->setItemId($item_id);
+    $item2itemcategory->setItemType($item_type); 
+    
+    try {
+      $item2itemcategory->save();
+    } catch(Exception $e) {}
+    
+    return $item2itemcategory;
+  }
+  
+  /**
+   * Update Item connections to Categories
+   *
+   * @param unknown_type $itemcategory_list
+   * @param unknown_type $item_type
+   * @param unknown_type $item_id
+   * @return unknown
+   */
+  public static function updateItemCategories($itemcategory_id_list, $item_type, $item_id)
+  {
+  	// get all Item Categories
+  	$itemcategory_list = self::getItemCategories($item_type, $item_id);
+  	
+  	// delete connections
+  	foreach ($itemcategory_list as $itemcategory) {
+  	  if (!in_array($itemcategory->getId(), $itemcategory_id_list)) {
+  	  	$c = new Criteria();
+  	  	$c->add(Item2itemcategoryPeer::ITEMCATEGORY_ID, $itemcategory->getId());
+  	  	$c->add(Item2itemcategoryPeer::ITEM_ID, $item_id);
+  	  	$c->add(Item2itemcategoryPeer::ITEM_TYPE, $item_type);
+  	  	$item2itemcategory = Item2itemcategoryPeer::doSelectOne($c);
+  	  	$item2itemcategory->delete();
+  	  }
+  	}
+  	// add new categories
+    if ($itemcategory_id_list) {
+      foreach ($itemcategory_id_list as $itemcategory_id) {
+      	Item2itemcategoryPeer::add($itemcategory_id, $item_id, $item_type);
+      }
+    }
+  }
+  
 } // Item2itemcategoryPeer

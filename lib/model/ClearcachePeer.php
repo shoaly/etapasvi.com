@@ -202,13 +202,7 @@ class ClearcachePeer extends BaseClearcachePeer {
       	  
   	      // add document to News Itemcategory  
           if ($generated_document_id) {
-            $item2itemcategory = new Item2itemcategory();
-            $item2itemcategory->setItemcategoryId(ItemcategoryPeer::ITEMCATEGORY_NEWS);
-            $item2itemcategory->setItemId($generated_document_id);
-            $item2itemcategory->setItemType(ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
-            try {
-              $item2itemcategory->save();
-            } catch(Exception $e) {}
+            Item2itemcategoryPeer::add(ItemcategoryPeer::ITEMCATEGORY_NEWS, $generated_document_id, ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
           }
         }
       }
@@ -233,13 +227,7 @@ class ClearcachePeer extends BaseClearcachePeer {
   	  
   	    // add document to News Itemcategory  
         if ($generated_document_id) {
-          $item2itemcategory = new Item2itemcategory();
-          $item2itemcategory->setItemcategoryId(ItemcategoryPeer::ITEMCATEGORY_NEWS);
-          $item2itemcategory->setItemId($generated_document_id);
-          $item2itemcategory->setItemType(ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
-          try {
-            $item2itemcategory->save();
-          } catch(Exception $e) {}
+          Item2itemcategoryPeer::add(ItemcategoryPeer::ITEMCATEGORY_NEWS, $generated_document_id, ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
         }
       }
     }

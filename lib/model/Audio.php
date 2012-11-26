@@ -204,4 +204,19 @@ class Audio extends BaseAudio
 		
 		return $size;
 	}
+	
+	/**
+	 * Retrieving IDs of Item Categories connected to item
+	 *
+	 */
+	public function getItemcategoryIdList()
+	{
+	  $id_list = array();
+	  $itemcategory_list = Item2itemcategoryPeer::getItemCategories(ItemtypesPeer::ITEM_TYPE_AUDIO, $this->getId());
+	  foreach ($itemcategory_list as $itemcategory) {
+	  	$id_list[] = $itemcategory->getId();
+	  }
+
+	  return $id_list;
+	}
 }

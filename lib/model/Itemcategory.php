@@ -142,11 +142,7 @@ class Itemcategory extends BaseItemcategory {
 	  
 	  // convert $item_type_list to array
 	  if (!is_array($item_type_list) && get_class($item_type_list) == 'sfOutputEscaperArrayDecorator') {
-	    $item_type_list_buffer = array();
-	    do {
-	      $item_type_list_buffer[] = $item_type_list->current();
-	    } while($item_type_list->next());
-	    $item_type_list = $item_type_list_buffer;
+	    $item_type_list = $item_type_list->getAsArray();
 	  }
 
 	  if (empty($item_type_list)) {

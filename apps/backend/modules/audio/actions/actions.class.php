@@ -290,4 +290,19 @@ class audioActions extends autoaudioActions
     // clear cache of a changed item
     ClearcachePeer::processItem($this->audio);
   }
+  
+  /**
+   * Save audio
+   *
+   * @param unknown_type $audio
+   */
+  protected function saveAudio($audio)
+  {
+    $audio->save();
+    // Process Item Categories
+    $audio = $this->getRequestParameter('audio');
+    if ($audio['itemcategory'] && $this->audio->getId()) {
+      Item2itemcategoryPeer::updateItemCategories($audio['itemcategory'], ItemtypesPeer::ITEM_TYPE_AUDIO, $this->audio->getId());
+    }
+  }
 }

@@ -119,6 +119,20 @@
   <input type="checkbox" checked="checked" value="1" id="documents_change_updated_at" name="documents[change_updated_at]">    </div>
 </div>
 
+<div class="form-row">
+  <label for="documents_itemcategory">Item Categories:</label>  <div class="content">
+  <?php      
+    echo object_select_tag($documents, 'getItemcategoryIdList', array (
+      'include_blank' => true,
+      'related_class' => 'Itemcategory',
+      'peer_method' => 'getAll',
+      'text_method' => '__toString',
+      'control_name' => 'documents[itemcategory]',
+      'multiple' => true
+  ), 1);
+  ?>
+</div>
+
 </fieldset>
 <fieldset id="sf_fieldset_en" class="">
 <h2><?php echo __('EN') ?></h2>

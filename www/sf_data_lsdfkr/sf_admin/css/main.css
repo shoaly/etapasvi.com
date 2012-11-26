@@ -398,3 +398,7 @@
 {
   width:100%;
 }
+
+.sf_admin_form_row > div {
+    overflow: hidden;
+}

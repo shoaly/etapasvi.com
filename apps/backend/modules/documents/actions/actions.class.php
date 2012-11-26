@@ -235,4 +235,20 @@ class documentsActions extends autodocumentsActions
     // clear cache of a changed item
     ClearcachePeer::processItem($this->documents);
   }
+  
+  /**
+   * Save documents
+   *
+   * @param unknown_type $documents
+   */
+  protected function saveDocuments($documents)
+  {
+    $documents->save();
+
+    // Process Item Categories
+    $documents = $this->getRequestParameter('documents');
+    if ($documents['itemcategory'] && $this->documents->getId()) {
+      Item2itemcategoryPeer::updateItemCategories($documents['itemcategory'], ItemtypesPeer::ITEM_TYPE_DOCUMENTS, $this->documents->getId());
+    }
+  }
 }

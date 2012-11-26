@@ -9,7 +9,7 @@ generator:
       max_per_page: 50
       sort: [order, desc]
       filters: [show, all_cultures]
-      display: [=id, show, order, created_at, _img, title, all_cultures]
+      display: [=id, show, order, created_at, _img, title, all_cultures, _itemcategory_list]
       title:   Video
       object_actions:
         _edit:

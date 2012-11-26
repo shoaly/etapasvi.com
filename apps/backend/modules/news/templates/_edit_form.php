@@ -149,6 +149,20 @@
 </div>
 
 <div class="form-row">
+  <label for="news_itemcategory">Item Categories:</label>  <div class="content">
+  <?php      
+    echo object_select_tag($news, 'getItemcategoryIdList', array (
+      'include_blank' => true,
+      'related_class' => 'Itemcategory',
+      'peer_method' => 'getAll',
+      'text_method' => '__toString',
+      'control_name' => 'news[itemcategory]',
+      'multiple' => true
+  ), 1);
+  ?>
+</div>
+
+<div class="form-row">
   <label for="news_change_updated_at">Change Updated At:</label>  <div class="content">
   
   <input type="checkbox" checked="checked" value="1" id="news_change_updated_at" name="news[change_updated_at]">    </div>

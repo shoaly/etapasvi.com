@@ -256,4 +256,20 @@ class photoalbumActions extends autophotoalbumActions
     // clear cache of a changed item
     ClearcachePeer::processItem($this->photoalbum);
   }
+  
+  /**
+   * Save Photoalbum
+   *
+   * @param unknown_type $photoalbum
+   */
+  protected function savePhotoalbum($photoalbum)
+  {
+    $photoalbum->save();
+
+    // Process Item Categories
+    $photoalbum = $this->getRequestParameter('photoalbum');
+    if ($photoalbum['itemcategory'] && $this->photoalbum->getId()) {
+      Item2itemcategoryPeer::updateItemCategories($photoalbum['itemcategory'], ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, $this->photoalbum->getId());
+    }
+  }
 }

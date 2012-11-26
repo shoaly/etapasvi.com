@@ -234,4 +234,16 @@ class ItemcategoryPeer extends BaseItemcategoryPeer {
     return $itemcategory_list;
   }
   
+  /**
+   * Retrieving all Item Categories
+   */
+  public static function getAll()
+  {
+    $c = new Criteria();
+    $c->addAscendingOrderByColumn(ItemcategoryPeer::ORDER);
+    $itemcategory_list = ItemcategoryPeer::doSelect($c);
+    
+    return $itemcategory_list;
+  }
+  
 } // ItemcategoryPeer

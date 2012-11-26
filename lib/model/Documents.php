@@ -210,5 +210,20 @@ class Documents extends BaseDocuments {
 	public function getRssPubDate() {
 	  return max($this->getUpdatedAt(), $this->getUpdatedAtExtra());
 	}
+	
+	/**
+	 * Retrieving IDs of Item Categories connected to item
+	 *
+	 */
+	public function getItemcategoryIdList()
+	{
+	  $id_list = array();
+	  $itemcategory_list = Item2itemcategoryPeer::getItemCategories(ItemtypesPeer::ITEM_TYPE_DOCUMENTS, $this->getId());
+	  foreach ($itemcategory_list as $itemcategory) {
+	  	$id_list[] = $itemcategory->getId();
+	  }
+
+	  return $id_list;
+	}
 
 } // Documents

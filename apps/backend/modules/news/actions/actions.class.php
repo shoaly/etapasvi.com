@@ -770,7 +770,23 @@ class newsActions extends autonewsActions
     
     // clear cache of a changed item
     ClearcachePeer::processItem($this->news);
-  }  
+  }
+  
+  /**
+   * Save News
+   *
+   * @param unknown_type $news
+   */
+  protected function saveNews($news)
+  {
+    $news->save();
+
+    // Process Item Categories
+    $news = $this->getRequestParameter('news');
+    if ($news['itemcategory'] && $this->news->getId()) {
+      Item2itemcategoryPeer::updateItemCategories($news['itemcategory'], ItemtypesPeer::ITEM_TYPE_NEWS, $this->news->getId());
+    }
+  }
   
   
   public function executeEdit($request)

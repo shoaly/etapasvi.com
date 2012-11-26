@@ -9,7 +9,7 @@ generator:
       max_per_page: 50
       sort: [order, desc]
       filters: [show]
-      display: [id, show, order, _img, date, extradate, =title]
+      display: [id, show, order, _img, date, extradate, =title, _itemcategory_list]
       title:   News
       object_actions:
         _edit:

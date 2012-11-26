@@ -51,6 +51,20 @@
     </div>
 </div>
 
+<div class="form-row">
+  <label for="photoalbum_itemcategory">Item Categories:</label>  <div class="content">
+  <?php      
+    echo object_select_tag($photoalbum, 'getItemcategoryIdList', array (
+      'include_blank' => true,
+      'related_class' => 'Itemcategory',
+      'peer_method' => 'getAll',
+      'text_method' => '__toString',
+      'control_name' => 'photoalbum[itemcategory]',
+      'multiple' => true
+  ), 1);
+  ?>
+</div>
+
 </fieldset>
 <fieldset id="sf_fieldset_en" class="">
 <h2><?php echo __('EN') ?></h2>

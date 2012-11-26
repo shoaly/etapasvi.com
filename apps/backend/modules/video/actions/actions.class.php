@@ -483,4 +483,19 @@ class videoActions extends autovideoActions
     // clear cache of a changed item
     ClearcachePeer::processItem($this->video);
   }
+  
+  /**
+   * Save video
+   *
+   * @param unknown_type $video
+   */
+  protected function saveVideo($video)
+  {
+    $video->save();
+    // Process Item Categories
+    $video = $this->getRequestParameter('video');
+    if ($video['itemcategory'] && $this->video->getId()) {
+      Item2itemcategoryPeer::updateItemCategories($video['itemcategory'], ItemtypesPeer::ITEM_TYPE_VIDEO, $this->video->getId());
+    }
+  }
 }
