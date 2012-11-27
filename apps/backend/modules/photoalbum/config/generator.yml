@@ -10,6 +10,7 @@ generator:
       sort: [order, desc]
       display: [=id, show, order, title, created_at, author, _itemcategory_list]
       title:   Photoalbums
+      filters: [show]
       object_actions:
         _edit:
         _delete:

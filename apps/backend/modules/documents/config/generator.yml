@@ -10,7 +10,7 @@ generator:
       sort: [order, desc]
       display: [id, show, order, =file, title, news_id, all_cultures, created_at, _itemcategory_list]
       title:   Documents
-      filters: [show]
+      filters: [show, news_id]
       object_actions:
         _edit:
         _delete:
