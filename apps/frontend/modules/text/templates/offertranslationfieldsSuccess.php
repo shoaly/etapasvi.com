@@ -15,6 +15,12 @@
     <input type="radio" name="offer_tr_method" value="offer_tr_method_messages" onclick="showOfferTrMethod(this)"> <?php echo __('Translate website interface from English into any other language.') ?>
 </p>
 <p class="light small">
+    <?php echo __('Tutorials:') ?>
+    <ul class="light small">
+        <li><a href="https://docs.google.com/document/pub?id=1D6D5u6nvYG-A-7o_PqmYHRHEvjMaVkHGCCUXeyGO2l8" target="_blank" class="external"><?php echo __('Instructions for eTapasvi.com translators') ?></a></li>
+    </ul>
+</p>
+<p class="light small">
     <?php echo __('Video tutorials:') ?>
     <ul class="light small">
         <li><a href="http://www.youtube.com/watch?v=WI4c1vT_yXg" target="_blank" class="external"><?php echo __('Translation Guide') ?></a></li>
@@ -27,8 +33,9 @@
         <li><?php echo __('Carefully read/watch instructions – respect your time and website programmer\'s time.') ?></li>
         <li><?php echo __('Before performing translation make sure, that text you are going to translate is not translated yet on website.') ?></li>
         <li><?php echo __('Distortion and misinterpretation of information during translation is not acceptable.') ?></li>        
-        <li><?php echo __('In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly.') ?></li>        
+        <li><?php echo __('In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.') ?></li>        
         <li><?php echo __('If you would like to correct translation you sent, send both incorrect and correct versions in your language. It would allow programmer to find text, which should be replaced with correct one.') ?></li>
+        <li><?php echo __('Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.') ?></li>
         <li><?php echo __('Received translations are usually processed once a week, you can track how they are added on website in') ?> <a href="<?php echo url_for('@feed', true); ?>" title="<?php echo __('Feed') ?>"><?php echo __('Feed') ?></a>.</li>
     </ul>
 </p>

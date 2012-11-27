@@ -365,6 +365,16 @@
       </trans-unit>
       
       <trans-unit id="1">
+        <source>Tutorials:</source>
+        <target></target>
+      </trans-unit>   
+      
+      <trans-unit id="1">
+        <source>Instructions for eTapasvi.com translators</source>
+        <target></target>
+      </trans-unit>
+      
+      <trans-unit id="1">
         <source>Video tutorials:</source>
         <target></target>
       </trans-unit>
@@ -405,7 +415,12 @@
       </trans-unit>
       
       <trans-unit id="1">
-        <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly.</source>
+        <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.</source>
+        <target></target>
+      </trans-unit>      
+      
+      <trans-unit id="1">
+        <source>Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.</source>
         <target></target>
       </trans-unit>
       

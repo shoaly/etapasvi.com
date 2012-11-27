@@ -364,6 +364,16 @@
       </trans-unit>
       
       <trans-unit id="1">
+        <source>Tutorials:</source>
+        <target>Руководства:</target>
+      </trans-unit>   
+      
+      <trans-unit id="1">
+        <source>Instructions for eTapasvi.com translators</source>
+        <target>Инструкции для переводчиков eTapasvi.com</target>
+      </trans-unit>
+      
+      <trans-unit id="1">
         <source>Video tutorials:</source>
         <target>Видео-инструкции:</target>
       </trans-unit>
@@ -404,8 +414,13 @@
       </trans-unit>
       
       <trans-unit id="1">
-        <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly.</source>
-        <target>В переведённом тексте заменяйте Фото-, Видео- и Аудиоэлементы на [photo], [video] и [audio] соответственно.</target>
+        <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.</source>
+        <target>В переведённом тексте заменяйте Фото-, Видео- и Аудиоэлементы на [photo], [video] и [audio] соответственно. Делайте ссылки подчёркнутыми.</target>
+      </trans-unit>      
+      
+      <trans-unit id="1">
+        <source>Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.</source>
+        <target>Только переводы, сделанные согласно данной инструкции и отправленные с помощью ссылки "Перевод", публикуются на сайте. Переводы, отправленные напрямую на электронную почту сайта, не публикуются.</target>
       </trans-unit>
       
       <trans-unit id="1">
