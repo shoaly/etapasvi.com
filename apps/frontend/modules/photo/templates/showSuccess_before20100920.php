@@ -22,6 +22,4 @@ if ($back_to_photo) {
 	<?php include_component('comments', 'show', array('for'=>CommentsPeer::FOR_PHOTO, 'id'=>$photo->getId())) ?>
 	<?php include_component('comments', 'post', array('from'=>UserPeer::FROM_PHOTO_COMMENT, 'id'=>$photo->getId(), 'body_id'=>'photo')) ?>
 <?php endif ?>
-<p class="back">
-	<a href="#top"><?php echo __('Go to top') ?></a>
-</p>
+<?php include_partial('global/go_to_top'); ?>

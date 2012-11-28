@@ -1,5 +1,5 @@
 <?php slot('body_id') ?>body_documents<?php end_slot() ?>
-<h1><?php echo __('Documents') ?></h1>
+<?php slot('page_header') ?><?php echo __('Documents') ?><?php end_slot() ?>
 
 <?php include_component('itemcategory', 'show', array('module_action'=>'documents/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_DOCUMENTS), 'items_count_total'=>$pager->getNbResults())); ?>
 

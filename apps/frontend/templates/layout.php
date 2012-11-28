@@ -34,6 +34,8 @@ window.onerror = function(msg, url, line) {
 
 <div id="content_wrapper">    
 	<div id="content">
+        <h1><?php include_slot('page_header') ?></h1>
+        <?php include_partial( 'global/toolbar' ); ?>
 		<?php echo $sf_content ?>
 	</div>
     <div id="menu">
@@ -75,8 +77,7 @@ window.onerror = function(msg, url, line) {
 */ ?>
     </div>
 	<div id="footer">        
-        <div id="f_line"></div>    
-        <?php include_partial( 'global/toolbar' ); ?>
+        <div id="f_line"></div>
         <?php include_partial( 'global/lang_plain', array('app_domain_name'=>$app_domain_name, 'user_culture'=>$user_culture) ); ?>     
         <?php $mobile_url = UserPeer::switchUrlMobile(sfContext::getInstance()->getRequest()->getUri());?>                
         <?php $mobile_url = preg_replace("/\?.*/", '', $mobile_url) ;?>                

@@ -2,10 +2,8 @@
 <link rel="alternate" type="application/rss+xml" title="<?php echo __('Feed') ?>" href="http://feeds.feedburner.com/<?php echo $sf_user->getCulture(); ?>/etapasvi" />
 <?php end_slot() ?>
 
+<?php slot('page_header') ?><?php echo __('A message of peace') ?><br/><?php echo __('An appeal to the world') ?><?php end_slot() ?>
 <?php slot('body_id') ?>body_main<?php end_slot() ?>
-
-<h1><?php echo __('A message of peace') ?><br/><?php echo __('An appeal to the world') ?></h1>
-
 
 <?php include_component('news', 'latest'); ?>
 <p class="goto_section">

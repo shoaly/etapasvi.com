@@ -1,6 +1,5 @@
 <?php slot('body_id') ?>body_translation_fundraising<?php end_slot() ?>
-
-<h1><?php echo __('Translation Fundraising') ?></h1>
+<?php slot('page_header') ?><?php echo __('Translation Fundraising') ?><?php end_slot() ?>
 
 <h2 class="center_text"><?php echo __('Purpose') ?></h2>
 <p>

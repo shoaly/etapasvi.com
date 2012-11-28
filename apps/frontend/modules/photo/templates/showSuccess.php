@@ -7,12 +7,6 @@ $(document).ready(function(){
 */ ?>
 
 <?php slot('body_id') ?>body_photo<?php end_slot() ?>
-<h1 id="top"><?php echo __('Photo') ?></h1>
+<?php slot('page_header') ?><?php echo __('Photo') ?><?php end_slot() ?>
 
 <?php include_partial('photo/content', array('id'=>$id, 'title'=>$title)) ?>
-
-<?php /*
-<p class="back">
-	<a href="#top"><?php echo __('Go to top') ?></a>
-</p>
-*/ ?>

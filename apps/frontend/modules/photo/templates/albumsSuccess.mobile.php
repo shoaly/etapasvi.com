@@ -1,5 +1,5 @@
 <?php slot('body_id') ?>body_photo<?php end_slot() ?>
-<h1><?php echo __('Photo Albums') ?></h1>
+<?php slot('page_header') ?><?php echo __('Photo Albums') ?><?php end_slot() ?>
 
 <?php include_component('itemcategory', 'show', array('module_action'=>'photoalbums/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_PHOTOALBUM))); ?>
 

@@ -4,7 +4,7 @@
 var ap_stopAll = function(){};
 //var audioplayer  = false;
 // здесь запоминаетс€ форма ѕредложить перевод, чтобы после подгрузки фото, еЄ восстанавливать
-var page_toolbar_clone  = '';
+//var page_toolbar_clone  = '';
 // позици€ в окне перед активацией одной из кнопок панели инструментов
 var page_toolbar_window_pos  = 0;
 // интервал показа цитат
@@ -129,7 +129,7 @@ $(document).ready(function() {
 
     // перемещение ѕредложени€ перевода наверх
 
-    $("#page_toolbar").insertAfter( "#content h1:eq(0)" );        
+    //$("#page_toolbar").insertAfter( "#content h1:eq(0)" );        
     
     // текст в футере
     if (footer_text) {

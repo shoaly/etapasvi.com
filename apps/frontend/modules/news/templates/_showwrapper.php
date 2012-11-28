@@ -2,7 +2,7 @@
 <link rel="canonical" href="<?php echo url_for('news/show?id='.$newsitem->getId() . '&title=' . TextPeer::urlTranslit($newsitem->getTitle()))?>" /><?php end_slot() */ ?>
 
 <?php slot('body_id') ?>body_news<?php end_slot() ?>
-<h1 id="top"><?php echo __('News') ?></h1>
+<?php slot('page_header') ?><?php echo __('News') ?><?php end_slot() ?>
 
 <p class="bread_crumbs">	
 	<a href="<?php echo url_for('@main'); ?>"><?php echo __('Home') ?></a> » <a href="<?php echo url_for('@news_index'); ?>"><?php echo __('News') ?></a>

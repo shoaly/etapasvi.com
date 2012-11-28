@@ -1,8 +1,7 @@
 <?php slot('body_id') ?>body_faq<?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('FAQ') ?><?php end_slot() ?>
 
 <?php $counter = 0; ?>
-
-<h1 id="up"><?php echo __('FAQ') ?></h1>
 
 <ol class="in_text">
 <?php /*	<li><a href="#where_is_he"><?php echo __('Where is Dharma Sangha now?') ?></a></li> */ ?>
@@ -138,6 +137,4 @@
 <br/>
 <?php include_component('comments', 'show'); ?>
 
-<p class="right_text">
-	<a href="#up"><?php echo __('Go to top') ?></a>
-</p>
+<?php include_partial('global/go_to_top'); ?>

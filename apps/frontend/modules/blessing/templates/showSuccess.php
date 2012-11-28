@@ -1,6 +1,5 @@
 <?php slot('body_id') ?>body_blessing<?php end_slot() ?>
-
-<h1><?php echo __('Blessing') ?></h1>
+<?php slot('page_header') ?><?php echo __('Blessing') ?><?php end_slot() ?>
 
 <div class="box">
 <?/*<img src="/uploads/photo/preview/65652a2ac8a37a4a05d7606e50043f42.jpg" />*/?>

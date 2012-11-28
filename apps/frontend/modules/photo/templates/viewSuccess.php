@@ -1,5 +1,6 @@
 <?php slot('body_id') ?>body_photo<?php end_slot() ?>
-<h1 id="top"><?php echo __('Photo') ?></h1>
+<?php slot('page_header') ?><?php echo __('Photo') ?><?php end_slot() ?>
+
 <div id="photo_content">
 <script type="text/javascript">
     $(document).ready(function() {

@@ -1,6 +1,8 @@
 <?php slot('body_id') ?>body_encyclopedia<?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Encyclopedia') ?><?php end_slot() ?>
+
 <?php $counter = 0; ?>
-<h1 id="up"><?php echo __('Encyclopedia') ?></h1>
+
 <table class="contents"><tr>
 <td>
 	<ol class="in_text contents">
@@ -73,7 +75,7 @@
 <?php echo __('After asceticism and concentrating on meditation Siddhartha is said to have discovered what Buddhists call the Middle Way. Sitting under a pipal tree, now known as the Bodhi tree, he vowed never to arise until he had found the Truth. At the age of 35, he attained enlightenment in the fifth lunar month. Gautama, from then on, was known as the Buddha or "Awakened One." Buddha is also sometimes translated as "The Enlightened One."') ?> 
 <br/><br/>
 <?php echo __('At this point, he is believed to have realized complete awakening and insight into the nature and cause of human suffering which was ignorance, along with steps necessary to eliminate it. This was then categorized into "Four Noble Truths"; the state of supreme liberation — possible for any being — was called Nirvana. He then allegedly came to possess the Ten Characteristics, which are said to belong to every Buddha.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="ten_characteristics_of_buddha"><?php echo ++$counter; ?>. <?php echo __('Ten Characteristics of Buddha') ?></h2>
 <ol>
 <li><?php echo __('thus gone (tathāgata)') ?></li>
@@ -87,12 +89,12 @@
 <li><?php echo __('teacher of the gods and humans (śāsta deva-manusyānam)') ?></li>
 <li><?php echo __('the Blessed One or fortunate one (bhagavat)') ?></li>
 </ol>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="middle_way"><?php echo ++$counter; ?>. <?php echo __('Middle Way') ?></h2>
 <?php echo __('Buddhism teaches a Middle Way, i.e. avoiding the extreme views of eternalism and nihilism.') ?> 
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>126)); ?>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="four_noble_truths"><?php echo ++$counter; ?>. <?php echo __('Four Noble Truths') ?></h2>
 <?php echo __('Four Noble Truths formulated by Sakyamuni Buddha') ?>:
 <br/><br/>
@@ -106,7 +108,7 @@
 <li><i><?php echo __('The Way (marga) Leading to the Cessation of Suffering.') ?></i><br/>
 <?php echo __('It is the Noble Eightfold Path.') ?></li>
 </ol>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="noble_eightfold_path"><?php echo ++$counter; ?>. <?php echo __('Noble Eightfold Path') ?></h2>
 <?php echo __('The Noble Eightfold Path is one of the principal teachings of the Buddha, who described it as the way leading to the cessation of suffering (dukkha) and the achievement of self-awakening. It is used to develop insight into the true nature of phenomena (or reality) and to eradicate greed, hatred, and delusion. The Noble Eightfold Path is the fourth of the Buddha\'s Four Noble Truths; the first element of the Noble Eightfold Path is, in turn, an understanding of the Four Noble Truths. It is also known as the Middle Path or Middle Way.') ?> 
 <br/><br/>
@@ -125,7 +127,7 @@
 </ol>
 <br/>
 <?php echo __('In Buddhist symbolism, the Noble Eightfold Path is often represented by means of the dharma wheel, whose eight spokes represent the eight elements of the path.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="three_marks_of_existence"><?php echo ++$counter; ?>. <?php echo __('Three marks of existence') ?></h2>
 <?php include_component('photo', 'show', array('id'=>121, 'in_list'=>true)); ?>
 
@@ -136,18 +138,18 @@
 	<li><?php echo __('Dukkha (Sanskrit duhkha) or "unsatisfactoriness". Nothing found in the physical world or even the psychological realm can bring lasting deep satisfaction.') ?></li>
 	<li><?php echo __('Anatta (Sanskrit anatman) or "non-Self".') ?></li>
 </ul>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="ten_negative_actions"><?php echo ++$counter; ?>. <?php echo __('Ten negative actions') ?></h2>
 <ul class="in_text">
 	<li><?php echo __('3 of the body: killing, stealing, sexual misconduct') ?></li>
 	<li><?php echo __('4 of the speech: lie, words that divide, bad words and twaddle') ?></li>
 	<li><?php echo __('3 of the mind: desire (to have something what belongs to an other), malevolence and mistaken visions') ?></li>
 </ul>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="samsara"><?php echo ++$counter; ?>. <?php echo __('Samsara') ?></h2>
 <?php include_component('photo', 'show', array('id'=>99)); ?>
 <?php echo __('Samsara is the cycle of birth, death and rebirth (i.e. reincarnation). The concept of samsara is closely associated with the belief that one continues to be born and reborn in various realms in the form of a human, god, animal, or other being, depending on karma ("action" or "doing"; whatever one does, says, or thinks). Thus Samsara is the cycle of cause and effect.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="nirvana"><?php echo ++$counter; ?>. <?php echo __('Nirvana') ?></h2>
 <?php include_component('photo', 'show', array('id'=>113)); ?>
 <?php echo __('The Buddha described nirvana (nibbāna) as the perfect peace of the state of mind that is free from craving, anger and other afflictive states.') ?> 
@@ -161,12 +163,12 @@
 
 <h2 id="parinirvana"><?php echo ++$counter; ?>. <?php echo __('Parinirvana') ?></h2>
 <?php echo __('When a person who has realized nirvana dies, his death is referred as parinirvāna, his fully passing away, as his life was his last link to the cycle of death and rebirth (samsara), and he will not be reborn again. What happens to a person after his parinirvāna cannot be explained, as it is outside of all conceivable experience.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="moksha"><?php echo ++$counter; ?>. <?php echo __('Moksha') ?></h2>
 <?php echo __('In Indian religions, Moksha or Mukti, literally "release" (both from a root muc "to let loose, let go"), is the liberation from samsara, the cycle of death and rebirth or reincarnation and all of the suffering and limitation of worldly existence after the realization that the Atman is in fact Paramatman in Advaita philosophy.') ?> 
 <br/><br/>
 <?php echo __('Moksha\'s meaning is similar to that of Nirvana in Buddhism.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="klesha"><?php echo ++$counter; ?>. <?php echo __('Klesha') ?></h2>
 <?php echo __('The Buddhist term klesha (kilesa) is typically translated as "defilement" or "poison". In early Buddhist texts the kleshas generally referred to mental states which temporarily cloud the mind and manifest in unskillful actions. Over time the kleshas came to be seen as the very roots of samsaric existence.') ?> 
 <br/><br/>
@@ -187,7 +189,7 @@
 	<li><?php echo __('Pride (wounded pride, low-self esteem);') ?></li>
 	<li><?php echo __('Jealousy (envy, paranoia).') ?></li>
 </ul>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="mara"><?php echo ++$counter; ?>. <?php echo __('Mara') ?></h2>
 <?php echo __('In Buddhism, Māra is the demon who tempted Siddartha Gautama the Buddha by trying to seduce him with the vision of beautiful women who, in various legends, are often said to be Mara\'s daughters. In Buddhist cosmology, Mara personifies unskillfulness, the "death" of the spiritual life. He is a tempter, distracting humans from practicing the spiritual life by making the mundane alluring or the negative seem positive.') ?> 
 <br/><br/>
@@ -204,7 +206,7 @@
 	<li><?php echo __('Skandha-mara, or Mara as metaphor for the entirety of conditioned existence.') ?></li>
 	<li><?php echo __('Devaputra-mara, or Mara the son of a deva (god), that is, Mara as an objectively existent being rather than as a metaphor.') ?></li>
 </ol>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="dharma"><?php echo ++$counter; ?>. <?php echo __('Dharma') ?></h2>
 <?php echo __('Dharma (dhamma) is the term that means one\'s righteous duty, or any virtuous path. In Indian languages it can be equivalent simply to religion, depending on context. The word dharma translates as that which upholds or supports, and is generally translated into English as law.') ?> 
 <br/><br/>
@@ -214,7 +216,7 @@
 <?php echo __('"Dharma" usually refers not only to the sayings of the Buddha, but also to the later traditions of interpretation and addition that the various schools of Buddhism have developed to help explain and to expand upon the Buddha\'s teachings. Dharma in the Buddhist scriptures has a variety of meanings, including "phenomenon" and "nature" or "characteristic".') ?> 
 <br/><br/>
 <?php echo __('For others still, they see the Dharma as referring to the "truth," or the ultimate reality of "the way that things really are". "dharma" is also used to infer one\'s duty in a righteous way; thus a Raja\'s dharma is to protect its people, a barber\'s dharma is to cut hair, a teacher\'s dharma is to teach. Dharma with a capital "D" (as opposed to thousands of dharmas or little ways and methods, with a little "d") means universal or absolute truth.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="sangha"><?php echo ++$counter; ?>. <?php echo __('Sangha') ?></h2>
 <?php echo __('Sangha is a word in Pali or Sanskrit that can be translated roughly as "association" or "assembly," "company" or "community" with common goal, vision or purpose.') ?> 
 <br/><br/>
@@ -226,7 +228,7 @@
 	<li><?php echo __('community of ordained monks and nuns;') ?></li>
 	<li><?php echo __('community of those who have attained enlightenment, who may help a practicing Buddhist to do the same.') ?></li>
 </ol>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="refuge"><?php echo ++$counter; ?>. <?php echo __('Refuge') ?></h2>
 <?php echo __('In Buddhism, instead of looking for any external savior, most Buddhists believe one can take refuge in oneself.') ?> 
 <br/><br/>
@@ -258,7 +260,7 @@
 	<li><?php echo __('To refrain from false speech.') ?></li>
 	<li><?php echo __('To refrain from intoxicants which lead to loss of mindfulness.') ?></li>
 </ol>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <?php /*
 <h2 id="schools_and_traditions_of_buddhism"><?php echo ++$counter; ?>. <?php echo __('Schools and traditions of Buddhism') ?></h2>
 <?php echo __('Buddhists generally classify themselves as either Theravada or Mahayana. An alternative scheme used by some scholars divides Buddhism into the following three traditions or geographical or cultural areas: Theravada, East Asian Buddhism and Tibetan Buddhism.') ?> 
@@ -277,7 +279,7 @@
 <br/>
 <?php echo __('There is Third Vehicle, Vajrayana, which is practiced in Tibetan Buddhism.') ?>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="mahayana"><?php echo ++$counter; ?>. <?php echo __('Mahayana ("Great Vehicle")') ?></h2>
 <?php echo __('Mahayana is one of two major divisions of Buddhism, along with Theravada.') ?> 
@@ -311,7 +313,7 @@
 <br/>
 <?php echo __('In the course of its history, Mahayana spread throughout Inner Asia and East Asia, where it took on two principal forms: Tibetan Buddhism and East Asian Buddhism. The late stage of Mahayana Buddhism in India are largely Vajrayana schools.') ?> 
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="tibetan_buddhism"><?php echo ++$counter; ?>. <?php echo __('Tibetan Buddhism') ?></h2>
 <?php include_component('photo', 'show', array('id'=>108)); ?>
@@ -322,7 +324,7 @@
 <?php echo __('In the 8th century, King Trisong Detsen (755-797) established Buddhism as the official religion of Tibet. He invited Indian Buddhist scholars to his court. In his age the famous tantric mystic Padmasambhava arrived in Tibet according to the Tibetan tradition. In addition to writing a number of important scriptures (some of which he hid for future tertons to find), Padmasambhava established the Nyingma school ("the old school").') ?> 
 <br/><br/>
 <?php echo __('Four schools of Tibetan Buddhism (Nyingma, Kagyu, Gelug, and Sakya) are using Vajrayana today.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="vajrayana"><?php echo ++$counter; ?>. <?php echo __('Vajrayana') ?></h2>
 <?php echo __('Though based upon Mahayana, Tibetan Buddhism is one of the schools that practice Vajrayana, also known as Tantric Buddhism, Secret Mantra, Esoteric Buddhism and the Diamond Vehicle. The term "vajra" denoted the thunderbolt, a legendary weapon and divine attribute that was made from an adamantine, or indestructible substance and which could therefore pierce and penetrate any obstacle or obfuscation. As a secondary meaning, "vajra" refers to this indestructible substance, and so is sometimes translated as "adamantine" or "diamond". A vajra (dorje) is also a scepter-like ritual object, which has a sphere at its centre, and a variable number of spokes, enfolding either end of the rod. The vajra is often traditionally employed in tantric rituals. Symbolically, the vajra may represent method as well as great bliss.') ?> 
 <br/><br/>
@@ -335,7 +337,7 @@
 <?php echo __('Using Vajrayana techniques, it is claimed that a practitioner can achieve Buddhahood in one lifetime, or even as little as three years. Vajrayana is said to be the fastest method for attaining Buddhahood but for unqualified practitioners it can be dangerous. To engage in Vajrayana one must receive an appropriate initiation (also known as an "empowerment") from a lama who is fully qualified to give it.') ?> 
 <br/><br/>
 <?php echo __('Vajrayana Buddhism is esoteric, in the sense that the transmission of certain teachings only occurs directly from teacher to student during an initiation or empowerment and cannot be simply learned from a book. Many techniques are also commonly said to be secret. The degree to which information on Vajrayana is now public in western languages is controversial among Tibetan Buddhists. In Buddhist teachings generally, too, there is caution about revealing information to people who may be unready for it.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="the_sakya_tradition"><?php echo ++$counter; ?>. <?php echo __('The Sakya Tradition in Tibetan Buddhism') ?></h2>
 <?php echo __('The Sakya school is one of four major schools of Tibetan Buddhism. It rose to play a significant role in the development and spread of the new Tantras that came to Tibet in the 11th century.') ?> 
 <br/><br/>
@@ -350,7 +352,7 @@
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>112)); ?>
 <?php echo __('The teaching and practice that is the essence of the Sakya tradition is called “Lamdre” or “The Path and its Fruit.” Fundamentally, the philosophical viewpoint expressed in “The Path and its Fruit,” is the “Non differentiation of Samsara and Nirvana.” According to this view, an individual cannot attain Nirvana or cyclic existence, because the mind is the root of both Samara and Nirvana. When the mind is obscured, it takes the form of Samsara and when the mind is freed of obstructions, it takes the form of Nirvana. The ultimate reality is that a person must strive to realize this fundamental inseparability through mediation.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 */ ?>
 <h2 id="tummo"><?php echo ++$counter; ?>. <?php echo __('Tummo') ?></h2>
 <?php echo __('Tummo (Tibetan: gtum-mo, also spelled Tumo, or Tum-mo; Sanskrit: caṇḍālī) is a Tibetan word, literally meaning fierce, inner fire. The Sanskrit terms caṇḍālī and kuṇḍalinī are clearly etymologically related.') ?> 
@@ -368,7 +370,7 @@
 <?php echo __('The Buddhist tantric systems present several different models of the chakras, and for tummo the "energetic winds" (prana, rlung) are being accumulated at the navel chakra, four fingers below the navel. In Tibetan Buddhism the primary purpose of Tummo is to gain control over subtle body processes as a foundation for very advanced mystical practices analogous to Completion stages of "highest yoga tantra" (Anuttarayoga Tantra). Such refined internalized yogas are practices to support entry into the highest contemplative systems, for example the Dzogchen or Mahamudra systems.') ?> 
 <br/><br/>
 <?php //include_component('photo', 'show', array('id'=>115)); ?>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="bodhisattva"><?php echo ++$counter; ?>. <?php echo __('Bodhisattva') ?></h2>
 <?php include_component('photo', 'show', array('id'=>114)); ?>
 <?php echo __('Bodhisattva means either "enlightened (bodhi) existence (sattva)" or "enlightenment-being" or "heroic-minded one (satva) for enlightenment (bodhi)". Another translation is "Wisdom-Being". It is the name given to anyone who, motivated by great compassion, has generated bodhicitta, which is a spontaneous wish to attain Buddhahood for the benefit of all living beings.') ?> 
@@ -393,7 +395,7 @@
 	<li><?php echo __('One takes the bodhisattva vows, which become a driving force - a personal destiny that leads one higher and higher.') ?></li>
 	<li><?php echo __('One practices the six perfections.') ?></li>
 </ol>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="six_paramitas"><?php echo ++$counter; ?>. <?php echo __('Six paramitas (perfections)') ?></h2>
 <ol class="in_text">
 	<li><?php echo __('Dāna paramita - self-sacrifice, transfer of one\'s own merit to others;') ?></li>
@@ -417,13 +419,13 @@
 	<li><?php echo __('sadhumati - "good intelligence", apparently, a higher order of prajñā paramita;') ?></li>
 	<li><?php echo __('dharmamegha - "clouds of Dharma": total perfection, like that of the Tathagata, bathed (as it were) in clouds of wisdom and virtue.') ?></li>
 </ol>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="dhyana"><?php echo ++$counter; ?>. <?php echo __('Dhyana') ?></h2>
 <?php echo __('Dhyāna is usually translated as "concentration," "meditation," or "meditative stability." Dhyāna is the fifth of six pāramitās (perfections).') ?> 
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>116)); ?>
 <?php echo __('In the Pali Canon the Buddha describes eight progressive states of absorption meditation or jhāna. Four are considered to be meditations of form and four are formless meditations. The first four jhānas are said by the Buddha to be conducive to a pleasant abiding and freedom from suffering. The deeper jhānas can last for many hours. When a meditator emerges from jhāna, his or her mind is empowered and able to penetrate into the deepest truths of existence.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="arhat"><?php echo ++$counter; ?>. <?php echo __('Arhat') ?></h2>
 <?php echo __('Arhat (Sanskrit) or arahant (Pali) is a spiritual practitioner who had "laid down the burden", realizing the goal of nirvana, the culmination of the spiritual life. In early Buddhist scriptures, the word arahant refers to an enlightened being. The exact interpretation and etymology this word remains disputed.') ?> 
 <br/><br/>
@@ -431,7 +433,7 @@
 <?php echo __('In Theravada, it means anyone who has reached the total Awakening and attained Nibbana, including the Buddha. Arahant is a person who has destroyed greed, hatred and delusion, the unwholesome roots which underlie all fetters. Who upon decease will not be reborn in any world, having wholly cut off all fetters that bind a person to the samsara. In the Pali Canon, the word is sometimes used as a synonym for tathagata.') ?> 
 <br/><br/>
 <?php echo __('In Mahayana, it usually means anyone who has destroyed greed and hatred, but is still subject to delusion. According to most, but not all, Mahayana authorities, an Arhat must go on to become a Bodhisattva. If they fail to do so in the lifetime in which they attain the enlightenment, they will go to some sort of dormant state, thence to be roused and taught the Bodhisattva path, presumably when ready.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="anuttara_samyak_sambodhi"><?php echo ++$counter; ?>. <?php echo __('Samyak Sambodhi (Anuttara-samyak-sambodhi)') ?></h2>
 <?php echo __('Anuttara means supreme, highest, incomparable, unsurpassed, or peerless. Samyak means right, correct, true, accurate, complete, or perfect, and sambodhi means enlightenment. The expression Samyak Sambodhi by itself is also used to mean perfect enlightenment. Bodhi and sambodhi also mean wisdom or perfect wisdom. In this sense, anuttara-samyak-sambodhi means supreme perfect wisdom.') ?> 
 <br/><br/>
@@ -442,7 +444,7 @@
 <br/><br/>
 
 <?php echo __('"The Bodhisattva Way is cultivated by those who seek the great fruit. Foreign lands are not sought after, because Bodhisattvas are not small landlords who set about conquering other countries in order to build an empire. Only Anuttarasamyaksambodhi, the highest fruit of cultivation, is the goal of great beings."') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="maitreya"><?php echo ++$counter; ?>. <?php echo __('Maitreya') ?></h2>
 <?php echo __('Maitreya (Sanskrit), Metteyya (Pāli), or Yampa (Tibetan) is a bodhisattva who in the Buddhist tradition is to appear on Earth, achieve complete enlightenment, and teach the pure dharma. According to scriptures, Maitreya will be a successor of the historic Śākyamuni Buddha, the founder of Buddhism.') ?> 
 <br/><br/>
@@ -450,7 +452,7 @@
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>118)); ?>
 <?php echo __('Maitreya currently resides in the Tusita Heaven, said to be reachable through meditation. Sakyamuni Buddha also lived here before he was born into the world as all bodhisattvas live in the Tusita Heaven before they descend to the human realm to become Buddhas.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="asanga"><?php echo ++$counter; ?>. <?php echo __('Asanga') ?></h2>
 <?php echo __('Asanga was one of the most famous Indian Buddhist saints, and lived in the fourth century. He went to the mountains to do a solitary retreat, concentrating all his meditation practice on the Buddha Maitreya, in the fervent hope that he would be blessed with a vision of this Buddha and receive teachings from him.') ?> 
 <br/><br/>
@@ -466,7 +468,7 @@
 <?php echo __('Maitreya spoke softly: "It is not true that I have never appeared to you before. I was with you all the time, but your negative karma and obscurations prevented you from seeing me. Your twelve years of practice dissolved them slightly so that you were at last able to see the dog. Then, thanks to your genuine and heartfelt compassion, all those obscurations were completely swept away and you can see me before you with your very own eyes."') ?> 
 <br/><br/>
 <?php echo __('Then the Buddha Maitreya took Asanga to the Tusita Heaven, and there gave him many sublime teachings that are among the most important in the whole of Buddhism.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="the_future_coming_of_maitreya"><?php echo ++$counter; ?>. <?php echo __('The future coming of Maitreya') ?></h2>
 <?php echo __('Maitreya is prophesied by the Buddha Shakyamuni to be the next Buddha to appear in our world system. He will be last of the the five Buddhas to gain Supreme Enlightenment in this kalpa (aeon, long period of time).') ?> 
 <br/><br/>
@@ -497,7 +499,7 @@
 <br/><br/>
 
 <?php echo __('Many Buddhist texts contain variations of the legend that Mahakasyapa, a disciple of Gautama Buddha who took over the leadership of the Sangha after Gautama\'s passing, is in deep meditation inside a mountain awaiting the coming of Maitreya so that he can pass him Gautama\'s robe. Gautama Buddha instructed four of his disciples, Mahakasyapa, Kundopadhaniya, Pindola, and Rahula, not to enter nirvana, but instead to remain in the world until Maitreya appears: "You must wait for my Law to come to its end, then you may enter nirvana." Sakyamuni particularly singles out Mahakasyapa.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <?php /*
 <h2 id="buddha_nature"><?php echo ++$counter; ?>. <?php echo __('Buddha-nature') ?></h2>
 <?php echo __('Within many schools of Mahayana Buddhism, the Buddha-nature or Buddha Principle (Buddha-dhātu), is taught to be a truly real and pure, but internally hidden immortal potency or element within the mind of all beings, for awakening and becoming a Buddha. Other terms for the Buddha-nature are Tathāgatagarbha and Sugatagarbha.') ?> 
@@ -506,7 +508,7 @@
 <?php echo __('The Mahayana Uttaratantra Shastra, one of the "Five Treatises" said to have been dictated to Asanga by the Maitreya, presents the Buddha\'s definitive teachings on how we should understand this ground of enlightenment and clarifies the nature and qualities of buddhahood.') ?> 
 <br/><br/>
 <?php echo __('Buddha-nature is completely rejected by Theravada Buddhism due to the fact that the concept comes from later Mahayana sutras which it sees as inauthentic.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 */ ?>
 <h2 id="atman"><?php echo ++$counter; ?>. <?php echo __('Atman (Buddhism)') ?></h2>
 <?php echo __('Atman or Atta (Pāli) literally means "self", but is sometimes translated as "soul" or "ego". In Buddhism, the belief in the existence of an unchanging ātman is the prime consequence of ignorance, which is itself the cause of all misery and the foundation of samsāra.') ?> 
@@ -555,10 +557,10 @@
 <?php echo __('Acharya Nagarjuna, one of the most important figures of early Buddhism, sometimes referred to as "the Second Buddha", in his commentary on the Prajnaparamita wrote: "Sometimes the Tathagata taught that the Atman verily exists, and yet at other times he taught that the Atman does not exist".') ?> 
 <br/><br/>
 <?php echo __('Buddhism greatly influenced the development of the Hindu Advaita Vedanta school of philosophy. There too there the individual self is deconstructed. Advaita however postulates the existence of a monistic metaphysical being in itself, i.e. Brahman or Paramatman as part of its interpretation of the Upanishads, while Buddhism does not.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="atman_hinduism"><?php echo ++$counter; ?>. <?php echo __('Atman (Hinduism)') ?></h2>
 <?php echo __('The Ātman is a philosophical term used within Hinduism, especially in the Vedanta school to identify the soul whether in global sense (world\'s soul) or in individual sense (of a person own soul). It is one\'s true self (hence generally translated as "Self") beyond identification with the phenomenal reality of worldly existence.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="anatman"><?php echo ++$counter; ?>. <?php echo __('Anatta (Anatman, "not-self")') ?></h2>
 <?php echo __('One of the central tenets of Buddhism, is the denial of a separate permanent "I", and is outlined in the three marks of existence.') ?> 
 <br/><br/>
@@ -592,13 +594,13 @@
 <?php echo __('The contemplation of not-self leads to the emptiness liberation. Herein the faculty of wisdom is outstanding. And one who attains the path of stream-entry in that way is called a Dharma-devotee. At the next two stages of enlightenment, one becomes a vision-attainer. And at the highest stage (arhatship) one is called "liberated by wisdom".') ?> 
 <br/><br/>
 <?php echo __('In the Diamond Sūtra it says: "If a bodhisattva abides in the signs of self, person, sentient being, or life-span, she or he is not a bodhisattva."') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="paramatman"><?php echo ++$counter; ?>. <?php echo __('Paramatman (Supersoul)') ?></h2>
 <?php include_component('photo', 'show', array('id'=>124)); ?>
 <?php echo __('In Hindu theology, Paramatman or Paramātmā is the Absolute Atman or Supreme Soul or Spirit (also known as Supersoul or Oversoul) in the Vedanta and Yoga philosophies of India.') ?> 
 <br/><br/>
 <?php echo __('Paramatman is one of the aspects of Brahman. The Upanishads compare Atman and Paramatman to two birds sitting like friends on the branch of a tree (body). The Atman eats its fruits (karma), and the Paramatman only observes the Atman as a witness of His friend\'s actions.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <?php /*
 <h2 id="god_in_buddhism"><?php echo ++$counter; ?>. <?php echo __('God in Buddhism') ?></h2>
 <?php echo __('A common misconception among non-Buddhists is that the Buddha is the Buddhist counterpart to "God." Buddhism however, is in general non-theistic, in the sense of not teaching the existence of a supreme creator god or depending on any supreme being for enlightenment. The Buddha is a guide and teacher who points the way to enlightenment, however the struggle for enlightenment is one\'s own. The commonly accepted definition of the term "God" is of a being who rules and created the universe. The Buddha of the early texts gives arguments refuting the existence of such a being.') ?> 
@@ -608,7 +610,7 @@
 <?php echo __('Mahayana Buddhism (like Theravada Buddhism) posits no Creator or ruler God. In the Avatamsaka Sutra it says, "If you want to understand all the Buddhas of the past, present, and future, then you should view the whole universe as being created by Heart." In some major traditions of Mahayana Buddhism (the Tathagatagarbha and Pure Land streams of teaching) there is a notion of the Buddha as the omnipresent, omniscient, liberative essence of reality, and Buddhas are spoken of as generators of vast "pure lands", "Buddha lands", or "Buddha paradises", in which beings will unfailingly attain Nirvana. And thus, to some extent, this conception of the Buddha draws close to pantheistic conceptions of godhead, yet it differs in that in the Mahayana tradition, anyone can become a Buddha, as compared to general theistic religions in which it is generally considered impossible to become a god or God.') ?> 
 <br/><br/>
 <?php echo __('Buddhism is neither atheistical nor theistical, and Buddhism is not a mixture of both either. Because the Buddhist teachings do not dwell in either one, thus it is called the Middle Way.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 */ ?>
 <h2 id="bhagavan"><?php echo ++$counter; ?>. <?php echo __('Bhagavan') ?></h2>
 <?php echo __('Bhagavan (Bhagwan or Bhagawan) in Hindi and Sanskrit means one who is clad in bhagwa i.e. light orange colour, that represents gyan or knowledge. Thus Bhagwān means one who wears gyan or knowledge.') ?> 
@@ -630,18 +632,18 @@
 <?php echo __('Bhagavan used as a title of veneration is often translated as "Lord", as in "Bhagavan Krishna", "Bhagavan Shiva", "Bhagavan Swaminarayan", etc. In Buddhism and Jainism, Gautama Buddha, Mahavira and other Tirthankaras, Buddhas and bodhisattvas are also venerated with this title.') ?> 
 <br/><br/>
 <?php echo __('The title is also used as a respectful form of address for a number of contemporary spiritual teachers in India.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="gyani"><?php echo ++$counter; ?>. <?php echo __('Gyani') ?></h2>
 <?php echo __('In the Hindu religion, Gyani is a person trying to perceive Absolute Truth (Bhagavan or Brahman) relying just on the strength of his mind.') ?> 
 <br/><br/>
 <?php echo __('The word "Ghian" in Punjabi means knowledge. So a "Ghiani" is someone who has spiritual and religious knowledge and can help the congregation.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="kali_yuga"><?php echo ++$counter; ?>. <?php echo __('Kali Yuga') ?></h2>
 <?php include_component('photo', 'show', array('id'=>125)); ?>
 <?php echo __('Kali Yuga ("age of vice") is the last of the four stages that the world goes through as part of the cycle of yugas described in the Indian scriptures. The "Kali" of Kali Yuga means "strife, discord, quarrel, or contention." The other ages are Satya Yuga, Treta Yuga and Dvapara Yuga. Most interpreters of Hindu scriptures believe that earth is currently in Kali Yuga. The Kali Yuga is traditionally thought to last 432,000 years.') ?> 
 <br/><br/>
 <?php echo __('Hindus believe that human civilization degenerates spiritually during the Kali Yuga, which is referred to as the Dark Age because in it people are as far removed as possible from God. Hinduism often symbolically represents morality (dharma) as a bull. In Satya Yuga, the first stage of development, the bull has four legs, but in each age morality is reduced by one quarter. By the age of Kali, morality is reduced to only a quarter of that of the golden age, so that the bull of Dharma has only one leg.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="tamang"><?php echo ++$counter; ?>. <?php echo __('Tamang') ?></h2>
 <?php echo __('The Tamang (also known as Murmi) are one of the several ethnic groups from north central hilly region of Nepal. The word Tamang may be derived from the Tibetan words "ta" and "mang", meaning horse and soldier respectively. Living mainly north and east of the country, they constitute 5.6% of Nepal\'s population, which places their population at 1,280,000, slightly higher than the Newars.') ?> 
 <br/><br/>
@@ -649,13 +651,13 @@
 <?php echo __('The name Tamang, normally it is Tamag in Tibetan, means horse warriors, Tamags were border police sent by king Trisong of Tibet around 755. They are also good mountaineers and trekking guides. Many of Tamang have been recruited to serve in Indian and British Gurkha regiments since British Raj.') ?> 
 <br/><br/>
 <?php echo __('The Tamang generally follow Tibetan Buddhism mixed with elements of the pre-Buddhist Bön and the Tambaist religion. Due to their proximity to the Newar, a slight Hindu influence can be seen in their practices. According to the 2001 census, 88.26% of the ethnic Tamang in Nepal were Buddhists and 7.69% were Hindus. The typical song and dance of the Tamangs is "tamang selo" in which they dance to the beat of a drum called "damphu." Damphu is the traditional drum of the Tamangs.') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <h2 id="kunchusum"><?php echo ++$counter; ?>. <?php echo __('Kunchusum') ?></h2>
 <?php echo __('Kunchu means "Divine Being", while Sum means "Three", thus Kunchusum is "the Three Buddha".') ?> 
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>131)); ?>
 <?php echo __('Kunchusum Lhakhang is a rural looking temple, in a short distance from Tamshing Lhakhang (the most important Nyingma school temple in Bhutan). The temple dates back to 7th century, it was discovered and restored by the treasurer in 15th century. The temple is famous for its bell, which bears an inscription from the 8th century. It was stolen from Tibet and transported to Bhutan. Perhaps the Tibetan Royal Family had cats which could hear the "sound of Buddhism".') ?> 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 <br/><br/>
 <br/>
 <?php include_component('comments', 'show'); ?>	

@@ -1,6 +1,5 @@
 <?php slot('body_id') ?>body_social_tools<?php end_slot() ?>
-
-<h1><?php echo __('Social Tools') ?></h1>
+<?php slot('page_header') ?><?php echo __('Social Tools') ?><?php end_slot() ?>
 
 <div class="cyrcle center">
     <div> </div>

@@ -1,4 +1,5 @@
 <?php slot('body_id') ?>body_photo<?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Photo Album') ?><?php end_slot() ?>
 
 <?php 
 /*
@@ -9,8 +10,6 @@ $photo_list = $pager->getResults();
 
 $author = $photoalbum->getAllAuthors($sf_user->getCulture(), $photo_list);
 ?>
-
-<h1><?php echo __('Photo Album') ?></h1>
 
 <p class="bread_crumbs">	
 	<a href="<?php echo url_for('@main'); ?>"><?php echo __('Home') ?></a> » <a href="<?php echo url_for('photoalbum_index'); ?>"><?php echo __('Photo Albums') ?></a>     

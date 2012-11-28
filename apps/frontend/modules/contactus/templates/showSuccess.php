@@ -1,6 +1,5 @@
 <?php slot('body_id') ?>body_contactus<?php end_slot() ?>
-
-<h1><?php echo __('Contact Us') ?></h1>
+<?php slot('page_header') ?><?php echo __('Contact Us') ?><?php end_slot() ?>
 
 <?php /*include_component('text', 'show', array('id'=>3)); */ ?>
 

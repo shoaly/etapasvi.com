@@ -1,5 +1,5 @@
 <?php slot('body_id') ?>body_feed<?php end_slot() ?>
-<h1><?php echo __('Feed') ?></h1>
+<?php slot('page_header') ?><?php echo __('Feed') ?><?php end_slot() ?>
 
 <?php 
 include_component(

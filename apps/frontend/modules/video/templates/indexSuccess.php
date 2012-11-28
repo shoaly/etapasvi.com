@@ -1,5 +1,5 @@
 <?php slot('body_id') ?>body_video<?php end_slot() ?>
-<h1><?php echo __('Video') ?></h1>
+<?php slot('page_header') ?><?php echo __('Video') ?><?php end_slot() ?>
 
 <?php include_component('itemcategory', 'show', array('module_action'=>'video/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_VIDEO), 'items_count_total'=>$pager->getNbResults())); ?>
 

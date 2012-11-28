@@ -1,6 +1,6 @@
 <?php slot('body_id') ?>body_servers<?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Servers') ?><?php end_slot() ?>
 
-<h1 id="up"><?php echo __('Servers') ?></h1>
 <br />
 <p>
     <?php echo __('If you have web server, you can help to deliver content of this website to the users. For instructions on how to add your server to website server farm email at') ?> <a href="<?php echo UserPeer::MAIL_ADDRESS ?>"><?php echo UserPeer::MAIL_ADDRESS ?></a>

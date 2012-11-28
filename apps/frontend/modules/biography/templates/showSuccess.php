@@ -1,6 +1,5 @@
 <?php slot('body_id') ?>body_bio<?php end_slot() ?>
-
-<h1 id="up"><?php echo __('Biography') ?></h1>
+<?php slot('page_header') ?><?php echo __('Biography') ?><?php end_slot() ?>
 
 <?php /*
 <span class="alert"><?php echo __('This text will be improved and updated. Please, don\'t translate it into other languages.') ?></span>
@@ -39,7 +38,7 @@
 <?php echo __('According to his family and neighbors, Ram Bomjan often acted differently from his childhood friends, frequently observing other people in worship and praying himself. He has been described as being born with a peaceful nature, and would never get into a fight or kill an animal. Beginning at the age of five he only took leftovers for food, and went hungry if there was nothing.') ?>
 <br/><br/>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="school_and_religious_education">2. <?php echo __('School and Religious Education') ?></h2>
 <?php include_component('photo', 'show', array('id'=>95)); ?>
@@ -68,13 +67,13 @@
 <?php echo __('It was the custom for the initiates to meditate for up to a month in a cave. Som Bahadur Lama was surprised at the ease with which Palden Dorje seemed to adapt to the situation requiring little sustenance. It was then that he realized that the boy had a natural talent for deep and prolonged meditation.') ?>
 <br/><br/>
 <?php echo __('After completing his education for two years, all nine initiates went to Lumbini, the birthplace of Lord Buddha, for sightseeing. Palden Dorje seemed utterly taken by this place and it seemed to deepen his religious resolve. The other eight initiates returned but he refused to return. Instead, he went to Dehradun to further his religious education with the Gurus of Dehradun. Later he returned to Nepal to the beautiful lakeside city of Pokhara.') ?>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="illness">3. <?php echo __('Palden Dorje\'s Illness') ?></h2>
 
 <?php echo __('Here it was that Palden Dorje became ill, and was unable to move his lower body.  Distressed, his teachers sent him home to recover.  During this time, Palden Dorje implored his family not to sacrifice any animals or take any alcohol otherwise further complications would arise.  He got better, but was still limping when he disappeared from his home the night of  May 16, 2005.') ?>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="ram_disappears">4. <?php echo __('Palden Dorje Disappears') ?></h2>
 
@@ -85,7 +84,7 @@
 <br/><br/>
 <?php echo __('At four o’clock, he picked up a couple of mangoes and began to eat one.  He told his little brother to bring him water, rice, his lama robes, a rosary and a picture of Buddha.  His little brother obeyed.  Palden Dorje’s sister came to tell Palden Dorje to come home at once.  Seeing how emaciated he looked from his previous  illness, she cried and begged him to come home.  Palden Dorje told her to stop crying, and she went home.') ?>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="meditation_begins">5. <?php echo __('Meditation Begins') ?></h2>
 
@@ -119,7 +118,7 @@
 <?php echo __('On August 18, 2005, Palden Dorje called together his friends who were lamas.  They asked him how it was that Palden Dorje was surviving without water. Palden Dorje replied that two snake gods protected him from either side.  That day Palden Dorje also changed his clothes and wore a white cloth called Ngag.') ?>
 <br/><br/>
 <?php include_component('photo', 'embed', array('id'=>22)); ?>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="snakebite_and_miracles">6. <?php echo __('Snakebite and Miracles') ?></h2>
 
@@ -133,7 +132,7 @@
 <br/><br/>
 <?php echo __('“Leave me in peace, and there will soon be peace in the country,” – Palden Dorje said. However crowds ever increased and people chanted and set up a market place, according to Radio HBC 94 FM who visited the site on December 10, 2005. The crowds were kept at a distance of about 50 meters. All witnesses claimed that Palden Dorje neither ate, drank or left to relieve himself.  He just sat and meditated under the pipal tree. Baffled onlookers were ever increasing.') ?>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="wandering_to_bara_district">7. <?php echo __('Wandering to Bara district') ?></h2>
 <?php include_component('photo', 'show', array('id'=>25)); ?>
@@ -151,7 +150,7 @@
 <br/><br/>
 <?php echo __('He reiterated his six year commitment, and said he would allow people to come and observe him, as long as they remained at some distance and didn\'t bother him. When a reporter pointed out that pilgrims to his meditation site would be making donations in his name, he asked for the donations to not be abused or used for commercial purposes. A new wave of visitors came to see him and pray at his new meditation spot. On 8 March 2007 he left Bara district to again find a quieter place to meditate.') ?>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="meditating_in_pit">8. <?php echo __('Meditating in pit') ?></h2>
 <?php include_component('photo', 'show', array('id'=>43)); ?>
@@ -161,7 +160,7 @@
 <?php echo __('According to him, the bunker had been cemented from all sides and fitted with a tiled roof. Indra Lama, a local deployed as Palden Dorje\'s caretaker since the beginning of his intensive meditation, said the bunker was prepared per Palden Dorje\'s request. “After granting audience a week ago, he expressed his desire to meditate inside the ground; so we built it,” – he said.') ?>
 <br/><br/>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="preaching_in_halkhoriya_jungle">9. <?php echo __('Preaching in Halkhoriya jungle') ?></h2>
 <?php include_component('photo', 'show', array('id'=>32)); ?>
@@ -185,7 +184,7 @@
 ?>
 <?php include_component('news', 'showText', array('id'=>29)); ?>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="buddhist_background">10. <?php echo __('Buddhist background') ?></h2>
 <?php include_component('photo', 'show', array('id'=>42)); ?>
@@ -206,7 +205,7 @@
 
 <?php echo __('Those who have called him the "reincarnation of Buddha" have been criticised. Gautama Buddha taught that after') ?> <a href="<?php echo url_for('encyclopedia'); ?>#parinirvana"><?php echo __('parinirvana') ?></a> <?php echo __('there is no more rebirth, therefore it is impossible to be a "reincarnation of Buddha", but it is possible to be another Buddha, another who has attained, or will attain, enlightenment.') ?>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="feats_of_inedia">11. <?php echo __('Feats of inedia') ?></h2>
 
@@ -224,7 +223,7 @@
 <?php echo __('In 2007, the Discovery Channel produced a documentary titled') ?> <a href="<?php echo url_for('video/show?id=25'); ?>">"<?php echo __('The Boy With Divine Powers') ?>"</a>. <?php echo __('On their first, four-day attempt, the film crew was required to stay outside a guarded barbed-wire fence, and their camera\'s infrared capabilities did not pick up evidence of a body at the base of the tree where Palden Dorje sat during their non-stop recording. On a second attempt a few weeks later, however, the film crew was able to film Palden Dorje continuously for 96 hours, day and night, during which time he did not drink any fluids or eat any food. According to scientists on the documentary, an average person would be expected to die from kidney failure after four days without drinking any fluids. The boy showed no signs of classical physical deterioration caused by dehydration. A close inspection by the film crew of the area around the tree where Palden Dorje was sitting revealed no hidden food supply or water pipes.') ?>
 <br/><br/>
 
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="reappearance_in_ratanpur_jungle">12. <?php echo __('Reappearance in Ratanpur jungle') ?></h2>
 <?php include_component('photo', 'show', array('id'=>34, 'align'=>'right')); ?>
@@ -234,7 +233,7 @@
 <?php echo __('His devotees believe he attained enlightenment at Bodh Gaya in Bihar, which borders Nepal – the place where Siddartha Gautama attained enlightenment.') ?>
 <?php /*
 <br/><br/>
-<a href="#up" class="to_top"><?php echo __('Go to top') ?></a>
+<?php include_partial('global/go_to_top'); ?>
 
 <h2 id="new_appearance_in_2009">13. <?php echo __('New Appearance in 2009') ?></h2>
 <?php include_component('photo', 'show', array('id'=>35)); ?>

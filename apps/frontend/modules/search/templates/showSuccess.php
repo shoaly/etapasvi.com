@@ -1,6 +1,5 @@
 <?php slot('body_id') ?>body_search<?php end_slot() ?>
-
-<h1 class="m_bottom"><?php echo __('Search') ?></h1>
+<?php slot('page_header') ?><?php echo __('Search') ?><?php end_slot() ?>
 
 <!-- Google Custom Search Element -->
 <div id="cse" style="width:100%;">Loading...</div>

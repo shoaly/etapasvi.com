@@ -1,4 +1,5 @@
 <?php slot('body_id') ?>body_project<?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Dharma Hall') ?><?php end_slot() ?>
 
 <?php /*
 <style type="text/css">
@@ -12,9 +13,6 @@
 }
 </style>
 */ ?>
-
-
-<h1 id="up"><?php echo __('Dharma Hall') ?></h1>
 
 <div class="free_box_container">
 

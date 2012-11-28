@@ -1,6 +1,5 @@
 <?php slot('body_id') ?>body_donation<?php end_slot() ?>
-
-<h1 id="up"><?php echo __('Donation') ?></h1>
+<?php slot('page_header') ?><?php echo __('Donation') ?><?php end_slot() ?>
 
 <h2 class="center"><?php echo __('Purpose') ?></h2>
 

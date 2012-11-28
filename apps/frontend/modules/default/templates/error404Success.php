@@ -1,5 +1,5 @@
 <?php slot('body_id') ?>body_404<?php end_slot() ?>
-<h1><?php echo __('Page Not Found or Not Translated') ?></h1>
+<?php slot('page_header') ?><?php echo __('Page Not Found or Not Translated') ?><?php end_slot() ?>
 
 <dl>
 	<dt><?php echo __("Page Not Transalated") ?></dt>
