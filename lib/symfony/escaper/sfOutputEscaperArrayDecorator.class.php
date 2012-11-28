@@ -181,12 +181,11 @@ class sfOutputEscaperArrayDecorator extends sfOutputEscaperGetterDecorator imple
   public function getAsArray()
   {
   	$array = array();
-	do {
-	  $array[] = $this->current();
-	} while($this->next());
-    if ($this->current()) {
-      $array[] = $this->current();
-    }
+  	
+  	for($key = 0; $key < $this->count(); $key++) {
+  		$array[] = $this->getRaw($key);
+  	}
+  	
 	return $array;
   }
 }

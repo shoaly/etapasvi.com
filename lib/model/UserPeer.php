@@ -1245,6 +1245,8 @@ class UserPeer /* extends BaseUserPeer*/
 	*/
   public static function object2array($object)
   {
+  	$array = array();
+  	
 	if (is_object($object)) {
 	  foreach ($object as $key => $value) {
 	    $array[$key] = self::object2array($value);
@@ -1256,8 +1258,7 @@ class UserPeer /* extends BaseUserPeer*/
 	} else {
 	  return $object;
 	}
-	if (isset($array)) {
-	  return $array;
-	}
+
+	return $array;
   }
 }
