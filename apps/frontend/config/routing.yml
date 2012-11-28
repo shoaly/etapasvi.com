@@ -44,6 +44,10 @@ stories_show:
   param: { module: news, action: stories }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 # projects
+projects_index:
+  url:   /:sf_culture/news/projects/*
+  param: { module: news, action: index, itemcategory: projects }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 projects_show:
   url:   /:sf_culture/projects/show/*
   param: { module: news, action: projects }
