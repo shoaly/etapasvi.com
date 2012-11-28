@@ -34,7 +34,7 @@
 
 		<?php if (empty($short)): ?>
 			<div class="video_info">
-				<p class="date right_text p1_no_both">
+				<p class="date right_text p1_no_top">
 					<strong><?php echo format_date( $video->getCreatedAt(), 'd MMMM yyyy' ); ?></strong>
 				</p>
 				<?php 
@@ -57,12 +57,12 @@
 					</p>
 				<?php endif */?>
                 <?php if ($author): ?>
-                    <p class="p1_no_top author">				
+                    <p class="author">				
                         <strong><?php echo __('Author') ?>:</strong> <?php echo $author; ?>
                     </p>
                 <?php endif ?>
                 <?php if ($video->getLink()): ?>
-                    <p class="p1_no_bottom source">
+                    <p class="source">
                         <strong><?php echo __('Source') ?>:</strong> <a href="<?php echo $video->getLink(); ?>"><?php echo $video->getLink(); ?></a>
                     </p>
                 <?php endif ?>
