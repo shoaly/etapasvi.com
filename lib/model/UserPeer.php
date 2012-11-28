@@ -1261,4 +1261,34 @@ class UserPeer /* extends BaseUserPeer*/
 
 	return $array;
   }
+  
+  /**
+   * Running a task
+   *
+   * @param unknown_type $task_class
+   * @param unknown_type $dispatcher
+   * @param unknown_type $arguments
+   * @param unknown_type $options
+   */
+  public static function runTask($task_class, $dispatcher, $arguments = array(), $options = array())
+  {
+  	$result = array(
+  		'result' 		=> false,
+  		'error_message' => ''
+  	);
+  	
+  	// Trick plugin into thinking you are in a project directory
+  	try {
+      chdir(sfConfig::get('sf_root_dir'));
+      
+      $task = new $task_class($dispatcher, new sfFormatter());
+      $task->run($arguments, $options);
+      
+      $result['result'] = true;
+  	} catch(Exception $e) {
+  	  $result['result'] = false;
+  	  $result['error_message'] = $e->getMessage();
+  	}
+  	return $result;
+  }
 }
