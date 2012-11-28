@@ -15,4 +15,4 @@ if (!empty($back_to_video)) {
 	<a href="<?php echo url_for('@main'); ?>"><?php echo __('Home') ?></a> » <a href="<?php echo url_for('@video_index'); ?>"><?php echo __('Video') ?></a>
 </p>
 
-<?php include_partial('show', array('video'=>$video) ); ?>
+<?php include_partial('show', array('video'=>$video, 'autoplay'=>true) ); ?>
