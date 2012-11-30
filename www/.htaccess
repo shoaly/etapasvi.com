@@ -66,11 +66,11 @@ RewriteRule ^(.*)$ http://www.savenepaltapasviforest.info/$1 [L,R=301]
 # - запрашиваемый файл находится в специальной директории
 #RewriteCond %{REQUEST_FILENAME} -f [OR]
 
-# - если запрошен файл не из папки кэша (http://www.etapasvi.com/cache/www.etapasvi.com/en/i.html)
-# привело к тому, что стал отдаваться пустой кэш
-#RewriteCond %{REQUEST_URI} !^/cache/
-RewriteCond %{REQUEST_URI} ^.*\..*$ [OR] 
-RewriteCond %{REQUEST_URI} ^/(www/)?(css|errors|i|js|php_backend|sf_data_lsdfkr|swf|uploads|stats|backup_download)/
+# Отдаётся статика:
+# Файлы, содержащие точку в названии и лежащие в корне
+# Файлы, содержащие точку в названии и лежащие в определённых папках
+RewriteCond %{REQUEST_URI} ^/(www/)?[^/]+\..*$ [OR] 
+RewriteCond %{REQUEST_URI} ^/(www/)?(cache|css|errors|i|js|php_backend|sf_data_lsdfkr|swf|uploads|stats|backup_download)/.*\..*$
 RewriteRule .* - [L]
 
 # uncomment the following line, if you are having trouble
