@@ -119,7 +119,7 @@ photo_map:
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
 video_index:
-  url:   /:sf_culture/video/index
+  url:   /:sf_culture/video/index/*
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
 video_show:
@@ -180,7 +180,7 @@ religious_forest:
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
 audio_index:
-  url:   /:sf_culture/audio/index
+  url:   /:sf_culture/audio/index/*
   param: { module: audio, action: index }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 audio:
@@ -193,7 +193,7 @@ audio_show:
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
   
 documents_index:
-  url:   /:sf_culture/documents/index
+  url:   /:sf_culture/documents/index/*
   param: { module: documents, action: index }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 documents:
