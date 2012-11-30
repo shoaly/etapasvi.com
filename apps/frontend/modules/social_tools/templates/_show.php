@@ -1,4 +1,4 @@
-<?php/*
+<?php /*
     <a href="http://www.etapasvi.com/forum/index.php?lang=<?php echo $sf_user->getCulture(); ?>" target="_blank"><img src="/i/social/forum_64.png" title="<?php echo __('Forum') ?>" alt="<?php echo __('Forum') ?>"/></a>*/?>
     
     <?php /*

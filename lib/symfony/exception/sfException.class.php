@@ -100,7 +100,8 @@ class sfException extends Exception
         }
       }
 
-      ob_start(sfConfig::get('sf_compressed') ? 'ob_gzhandler' : '');
+      // http://stackoverflow.com/questions/10380932/php-warning-warning-ob-start-function-not-found-or-invalid-function-name
+      ob_start(sfConfig::get('sf_compressed') ? 'ob_gzhandler' : null);
 
       header('HTTP/1.0 500 Internal Server Error');
     }

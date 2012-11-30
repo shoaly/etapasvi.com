@@ -5,6 +5,7 @@ SCRIPT_DIR=`which $0 | xargs dirname | xargs readlink -m`
 # внимание: может содержать относительный путь
 PROJECT_DIR="${SCRIPT_DIR}/../"
 
+echo "Project dir: ${PROJECT_DIR}\n"
 
 # на папки
 #chmod -R 775 ${PROJECT_DIR}
@@ -14,7 +15,8 @@ find ${PROJECT_DIR} -type d -exec chmod 755 {} \;
 find ${PROJECT_DIR} -type f -exec chmod 644 {} \;
 
 # конфиги
-chmod -R 640 ${PROJECT_DIR}config/*
+# if set 640 PHP working under www-data have no access
+chmod -R 644 ${PROJECT_DIR}config/*
 
 # GIT
 find ${PROJECT_DIR}.git/ -type f -exec chmod 664 {} \;
