@@ -102,6 +102,7 @@
 
 		  <?php /*<li><?php echo link_to('Cache', 'cache/index') ?></li>*/ ?>
 		  <?php if ($sf_user->isSuperAdmin()) : ?>
+            <li class="divider"><?php echo link_to('Accelerator', 'news/accelerator') ?></li>	
             <li class="divider"><?php echo link_to('Users', 'sfGuardUser/index') ?></li>
             <li><?php echo link_to('Groups', 'sfGuardGroup/index') ?></li>
             <li><?php echo link_to('Permissions', 'sfGuardPermission/index') ?></li>

@@ -7,3 +7,7 @@ delete:
 create:
  is_secure: true
  credentials: [admins,managers]
+ 
+accelerator:
+  is_secure: true
+  credentials: admin
