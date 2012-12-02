@@ -2,3 +2,5 @@ cacheSuccess:
   stylesheets:    [/sf_data_lsdfkr/sf_admin/css/main.css]
 translateSuccess:
   stylesheets:    [/sf_data_lsdfkr/sf_admin/css/main.css]
+acceleratorSuccess:
+  stylesheets:    [/sf_data_lsdfkr/sf_admin/css/main.css]
