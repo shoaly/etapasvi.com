@@ -132,7 +132,7 @@ class sfSuperCacheFilter extends sfFilter
 	      if (!$write_result) {
 	        sfContext::getInstance()->getLogger()->err('Could not write to cache file: '.$file);
 	      }
-	      chmod($file, 0666);
+	      chmod($file, 0664);
 	        
 	      sfSuperCache::unlinkDeletedCacheFile($file);
         }

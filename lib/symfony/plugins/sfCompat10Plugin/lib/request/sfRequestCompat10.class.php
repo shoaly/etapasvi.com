@@ -391,7 +391,7 @@ class sfRequestCompat10
    *
    * @throws <b>sfFileException</b> If a major error occurs while attempting to move the file
    */
-  static public function moveFile($request, $name, $file, $fileMode = 0666, $create = true, $dirMode = 0777)
+  static public function moveFile($request, $name, $file, $fileMode = 0664, $create = true, $dirMode = 0775)
   {
     if (self::hasFile($request, $name) && self::getFileValue($request, $name, 'error') == UPLOAD_ERR_OK && self::getFileValue($request, $name, 'size') > 0)
     {
