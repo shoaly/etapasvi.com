@@ -41,16 +41,15 @@ EOF;
   protected function execute($arguments = array(), $options = array())
   {
   	// получение списка вебов из Google Docs
-  	$webs_array = TextPeer::getGoogleDocAsArray(TextPeer::GOOGLE_DOC_FRONTENDS);
+  	$webs_array = TextPeer::getGoogleDocAsArray(sfConfig::get('app_frontends'));
   	foreach ($webs_array as $i=>$web_row) {
-  		if ($i==0) {
+  	    $active = $web_row[8];
+  		if ($i==0 || !$active) {
   			continue;
   		}
   		$webs_list[] = $web_row[0];
   	}
 
-
-			
 	$msg = '';
 	foreach(UserPeer::getCultures() as $culture) {
 	  $error = false;
@@ -94,7 +93,7 @@ EOF;
 	  	}
 	  }
 	}
-		
+
 	if ($msg) {	  	  
 	  // отправка уведомления админу
   	  UserPeer::adminNotify($msg, sfConfig::get('app_site_name') . ': pinger');	  

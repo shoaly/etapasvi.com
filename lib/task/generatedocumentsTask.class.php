@@ -50,7 +50,7 @@ EOF;
     	  print_r($result['items']);
     	  if ($result['error_items']) {
     	    echo "Documents were not generated for the following items due to error:\n";
-    	    print_r($result['items']);   
+    	    print_r($result['error_items']);   
     	  }
       } else {
         echo 'No items';

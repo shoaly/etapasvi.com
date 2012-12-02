@@ -178,6 +178,7 @@ class ClearcachePeer extends BaseClearcachePeer {
    */
   public static function generateItemDocument($clearcache)
   {
+    $generate_result = false;
   	$generated_document_id = false;
   	
     // get News
@@ -204,6 +205,9 @@ class ClearcachePeer extends BaseClearcachePeer {
           if ($generated_document_id) {
             Item2itemcategoryPeer::add(ItemcategoryPeer::ITEMCATEGORY_NEWS, $generated_document_id, ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
           }
+        } else {
+          // if item has been hidden, we decide that document has been successfully generated
+          $generate_result = true;
         }
       }
     } else {
@@ -229,13 +233,20 @@ class ClearcachePeer extends BaseClearcachePeer {
         if ($generated_document_id) {
           Item2itemcategoryPeer::add(ItemcategoryPeer::ITEMCATEGORY_NEWS, $generated_document_id, ItemtypesPeer::ITEM_TYPE_DOCUMENTS);
         }
+      } else {
+        // if item has been hidden, we decide that document has been successfully generated
+        $generate_result = true;
       }
     }
     
     if ($generated_document_id) {
-      $clearcache->setDocumentCreated($generated_document_id);
+      $generate_result = true;
+    }
+    
+    if ($generate_result) {
+      $clearcache->setDocumentCreated(true);
       $clearcache->save();
     }
-    return $generated_document_id;
+    return $generate_result;
   }
 } // ClearcachePeer
