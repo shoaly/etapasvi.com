@@ -13,17 +13,18 @@
 /lib/form/base/*
 #/plugins/sfGuardPlugin/lib/model/map/*
 #/plugins/sfGuardPlugin/lib/model/om/*
+/www/uploads/audio/*
 /www/uploads/news/*
 /www/uploads/photo/*
 /www/uploads/translate/*
 /www/uploads/documents/*
+/www/uploads/misc/*
 /www/backup_download
 /.htaccess
 remove_cache.sh
 /favicon.gif
 /favicon.ico
 /www/cgi-bin
-/www/uploads/misc
 /www/conf/*
 # personal config
 /config/app.yml
