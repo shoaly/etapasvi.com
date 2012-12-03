@@ -17,7 +17,6 @@
 /www/uploads/photo/*
 /www/uploads/translate/*
 /www/uploads/documents/*
-/www/main_back.conf
 /www/backup_download
 /.htaccess
 remove_cache.sh
@@ -25,9 +24,7 @@ remove_cache.sh
 /favicon.ico
 /www/cgi-bin
 /www/uploads/misc
-/www/conf/.htpasswd
-/www/conf/nginx_upstreams.conf
-/www/conf/nginx_web_auth.conf
+/www/conf/*
 # personal config
 /config/app.yml
 
