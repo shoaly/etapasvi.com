@@ -53,6 +53,10 @@ RequestHeader unset Request-Range
 RewriteCond %{REQUEST_URI} !^/(www/)?(frontend_www_etapasvi_com|frontend_m_etapasvi_com|frontend_dev_www_etapasvi_com|backbackend)
 RewriteRule \.(php|cgi|fcgi|conf|htaccess|htpasswd) /errors/404.html
 
+# Запрет доступа к директории /www/conf
+RewriteCond %{REQUEST_URI} ^/(www/)?conf/.*
+RewriteRule ^(.*)$ /errors/404.html
+
 # проверка доменного имени и рекдирект на домен по умолчанию, если передан неверный
 # учитывать, что доменное имя хардкодится в .php
 RewriteCond %{HTTP_HOST} ^[^\.]*etapasvi\.com$
