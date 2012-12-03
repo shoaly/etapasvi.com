@@ -25,9 +25,9 @@ remove_cache.sh
 /favicon.ico
 /www/cgi-bin
 /www/uploads/misc
-/www/.htpasswd
-/www/nginx_upstreams.conf
-/www/nginx_web_auth.conf
+/www/conf/.htpasswd
+/www/conf/nginx_upstreams.conf
+/www/conf/nginx_web_auth.conf
 # personal config
 /config/app.yml
 
