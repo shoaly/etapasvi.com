@@ -65,7 +65,7 @@ if (!$_COOKIE['dev_password'] && count($_GET)) {
 	$dev_password = $_COOKIE['dev_password'];
 	$dev_login    = $_COOKIE['dev_login'];
 }
-$dev_password_encrypted = http_authenticate($dev_login, $dev_password, dirname(__FILE__).'/.htpasswd');
+$dev_password_encrypted = http_authenticate($dev_login, $dev_password, dirname(__FILE__).'/conf/.htpasswd');
 if ($dev_password_encrypted){
     // ok
     setcookie('dev_login', $dev_login, time()+10*60, '/');
