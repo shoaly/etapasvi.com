@@ -2,7 +2,7 @@
 *.git
 /cache/*
 /log/*
-/secu
+/backup
 /tools
 #data/sql/*
 /www/cache/*m.etapasvi.com/*
