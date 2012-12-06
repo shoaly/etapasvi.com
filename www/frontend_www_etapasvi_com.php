@@ -17,6 +17,8 @@ if (count($matches)) {
 preg_match("/\/([^\/]+)\/.*/", $_SERVER['REQUEST_URI'], $matches);
 if (strstr($_SERVER['HTTP_HOST'], "savenepaltapasviforest.info")) {
 	$_SERVER['REQUEST_URI'] = '/' . $matches[1] . '/savenepaltapasviforest/show';
+	# for nginx fastcgi
+	$_SERVER['PATH_INFO'] = '/' . $matches[1] . '/savenepaltapasviforest/show';
 }
 
 // when script lanunched in console HTTP_HOST is not set, so it should be hardcoded
