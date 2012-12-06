@@ -12,6 +12,7 @@ class UserPeer /* extends BaseUserPeer*/
 	
 	// почтовый адрес
 	const MAIL_ADDRESS     = 'info@etapasvi.com';
+	const EMAIL_PREFIX     = '[etapasvi mail]';
 	
 	const ALL_CULTURES  = 'all';
 
@@ -1113,9 +1114,9 @@ class UserPeer /* extends BaseUserPeer*/
 	 * @param unknown_type $msg
 	 * @param unknown_type $subject
 	 */
-	public static function adminNotify( $msg, $subject = 'mailer' ) 
+	public static function adminNotify( $msg, $subject) 
 	{			
-		mail(sfConfig::get('app_admin_email'), $subject . ' (' . sfConfig::get('app_domain_name') . ')', $msg );	
+		mail(sfConfig::get('app_admin_email'), self::EMAIL_PREFIX . ' ' . $subject . ' (' . sfConfig::get('app_domain_name') . ')', $msg );	
 	}
 	
 	/**

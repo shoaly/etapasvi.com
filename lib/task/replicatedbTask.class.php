@@ -49,10 +49,10 @@ EOF;
 		$backend_list = UserPeer::getServers(UserPeer::SERVERS_BACKENDS);
 	} catch (Exception $e) {
 		// error occured
-		UserPeer::adminNotify($e->getMessage(), "etapasvi: replicate db error");
+		UserPeer::adminNotify($e->getMessage(), "Replicate db error");
 		return;
 	}
-	
+
 	foreach ($backend_list as $backend) {
 
 	  if (!$backend['replicate_db']) {
@@ -79,6 +79,6 @@ EOF;
 	$master_params['db']     = $master_pass_port[1];
 	
 	// Run replication
-	replicateDb::run($master_params, self::$slaves_params, sfConfig::get('app_admin_email'), 'etapasvi: replicate_db');
+	replicateDb::run($master_params, self::$slaves_params, sfConfig::get('app_admin_email'), UserPeer::EMAIL_PREFIX . ' Replicate DB');
   }
 }
