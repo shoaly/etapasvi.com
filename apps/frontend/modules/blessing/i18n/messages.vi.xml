@@ -1,0 +1,169 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <body>
+
+      <trans-unit id="1">
+        <source>You may send photos, names and messages all in one email to</source>
+        <target>Bạn có thể gửi các bức ảnh, tên và lời nhắn, tất cả trong một email đến</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>(add photos as .jpg attachments up to 1MB each) or use the form below.</source>
+        <target>(đính kèm các bức ảnh dưới dạng .jpg với mỗi bức lên đến 1MB) hoặc sử dụng mẫu dưới đây.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Requests are collected and periodically printed and delivered together to Maha Sambodhi Dharma Sangha for blessing (do not expect to receive answers to the questions in your requests). You will be informed by email when your submission is blessed.</source>
+        <target>Các lời thỉnh cầu được tập hợp lại, đem in và cùng trình lên ngài Maha Sambodhi Dharma Sangha một cách định kì để được ban phúc (bạn đừng trông mong sẽ nhận được các câu trả lời cho các câu hỏi trong các lời thỉnh cầu của mình). Bạn sẽ được thông báo bằng email khi sự đệ trình của bạn được ban phúc.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>I want to add photos on the next step.</source>
+        <target>Tôi muốn thêm ảnh ở bước tiếp theo.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Image Name</source>
+        <target>Tên bức ảnh</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Save</source>
+        <target>Lưu</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Cancel</source>
+        <target>Bỏ qua</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Remove</source>
+        <target>Loại bỏ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Select</source>
+        <target>Lựa chọn</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Send</source>
+        <target>Gửi</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Next</source>
+        <target>Tiếp theo</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Send</source>
+        <target>Gửi</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Collapse</source>
+        <target>Xếp lại</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Expand</source>
+        <target>Mở rộng</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>No child records to display.</source>
+        <target>Không bản ghi nhỏ nào hiển thị.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>No records to display.</source>
+        <target>Không bản ghi nào hiển thị.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>First Page</source>
+        <target>Trang đầu tiên</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Last Page</source>
+        <target>Trang cuối cùng</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Next Pages</source>
+        <target>Các trang tiếp theo</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Previous Pages</source>
+        <target>Các trang trước</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Page size:</source>
+        <target>Kích thước trang:</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Loading...</source>
+        <target>Đang tải…</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Ready</source>
+        <target>Sẵn sàng</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Blessing request</source>
+        <target>Thỉnh cầu ban phúc</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Photo(s) upload</source>
+        <target>Tải (các) bức ảnh lên</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Photo(s) cropping</source>
+        <target>Cắt xén (các) bức ảnh</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Email:</source>
+        <target>Thư điện tử:</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Invalid Email!</source>
+        <target>Thư điện tử không có hiệu lực!</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Email is required!</source>
+        <target>Yêu cầu thư điện tử!</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Message is required!</source>
+        <target>Yêu cầu lời nhắn!</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Type your message here.</source>
+        <target>Gõ lời nhắn của bạn ở đây.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Blessing request sent.</source>
+        <target>Lời thỉnh cầu ban phúc đã được gửi đi.</target>
+      </trans-unit>
+      
+<!-- утф -->
+    </body>
+  </file>
+</xliff>
