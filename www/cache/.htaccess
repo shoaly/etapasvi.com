@@ -11,10 +11,11 @@
 #  Header set Expires	"Thu, 17 Mar 2011 18:05:38 GMT"
 #  Header set Cache-Control "private, max-age=86400"
   ExpiresActive  On
-  ExpiresDefault  "access plus 1 hour"
+  ExpiresDefault  "access plus 12 hours"
 # для news/rss
   <FilesMatch "rss">
     Header set Content-Type "text/xml; charset=UTF-8"
+    ExpiresDefault  "access plus 1 hour"
   </FilesMatch>
 
   AddDefaultCharset UTF-8
