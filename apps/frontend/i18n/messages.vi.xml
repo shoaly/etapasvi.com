@@ -1,0 +1,554 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <body>
+
+      <trans-unit id="1">
+        <source>A message of peace, an appeal to the world</source>
+        <target>Một thông điệp của hòa bình, một lời khẩn cầu đến thế giới</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>A message of peace</source>
+        <target>Một thông điệp của hòa bình</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>An appeal to the world</source>
+        <target>Một lời khẩn cầu đến thế giới</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Om Namo Guru Buddha Gyani</source>
+        <target>Om Namo Guru Buddha Gyani</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Please, enable JavaScript!</source>
+        <target>Hãy bật JavaScript!</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Copyright</source>
+        <target>Bản quyền</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>All Rights Reserved</source>
+        <target>Bản quyền đã được bảo hộ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Home</source>
+        <target>Trang chủ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Buddha Boy</source>
+        <target>Cậu bé Phật</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Palden Dorje</source>
+        <target>Palden Dorje</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Dharma Sangha</source>
+        <target>Dharma Sangha</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>News</source>
+        <target>Tin tức</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Photo</source>
+        <target>Hình ảnh</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Video</source>
+        <target>Video</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Biography</source>
+        <target>Tiểu sử</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Teachings</source>
+        <target>Lời chỉ dạy</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Books</source>
+        <target>Sách</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Stories</source>
+        <target>Chuyện</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Projects</source>
+        <target>Dự án</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Encyclopedia</source>
+        <target>Bách khoa toàn thư</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Live Stream</source>
+        <target>Live Stream</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Dharma Hall</source>
+        <target>Dharma Hall</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Social Tools</source>
+        <target>Các công cụ mạng xã hội</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Other</source>
+        <target>Khác</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Twitter</source>
+        <target>Twitter</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>LJ</source>
+        <target>LJ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Live Journal</source>
+        <target>Live Journal</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Feed</source>
+        <target>Feed</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Search</source>
+        <target>Tìm kiếm</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Contact Us</source>
+        <target>Liên hệ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Forum</source>
+        <target>Diễn đàn</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Blessing</source>
+        <target>Ban phúc</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>FAQ</source>
+        <target>FAQ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Audio</source>
+        <target>Âm thanh</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Documents</source>
+        <target>Tài liệu</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Dharmic Forest</source>
+        <target>Khu rừng Dharmic</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Donation</source>
+        <target>Cúng tặng</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Chat</source>
+        <target>Tán gẫu</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Servers</source>
+        <target>Máy chủ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Visitor Map</source>
+        <target>Bản đồ khách viếng thăm</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.</source>
+        <target>Maha Sambodhi Dharma Sangha: Lời chỉ dạy, Tin tức, Hình ảnh, Video, Âm thanh, Tiểu sử.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>This page is translation of corresponding English page, switch into English language to see original text.</source>
+        <target>Trang này là bản dịch của trang tiếng Anh tương ứng, chuyển sang ngôn ngữ tiếng Anh để xem văn bản gốc.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Website is developed and supported on a voluntary basis.</source>
+        <target>Trang web được phát triển và hỗ trợ dựa trên cơ sở tình nguyện.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>If you can help in any way – email at</source>
+        <target>Nếu bạn có thể giúp đỡ theo bất cứ cách nào - hãy gửi thư điện tử về</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Category</source>
+        <target>Hạng mục</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>All</source>
+        <target>Tất cả</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Category is empty</source>
+        <target>Hạng mục trống</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Read more</source>
+        <target>Đọc thêm</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Comments</source>
+        <target>Bình luận</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Source</source>
+        <target>Nguồn</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Original text</source>
+        <target>Văn bản gốc</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Go to top</source>
+        <target>Lên trên</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Text</source>
+        <target>Văn bản</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Author</source>
+        <target>Tác giả</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>teaching</source>
+        <target>Lời chỉ dạy</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Translated by</source>
+        <target>Dịch bởi</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Download</source>
+        <target>Tải xuống</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Date</source>
+        <target>Ngày</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Updated on</source>
+        <target>Cập nhật vào</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Enlarge</source>
+        <target>Phóng to</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Terthup Dharma Hall</source>
+        <target>Terthup Dharma Hall</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Back</source>
+        <target>Về trước</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Footnote</source>
+        <target>Chú thích</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Size</source>
+        <target>Kích cỡ </target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Duration</source>
+        <target>Độ lâu</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Lyrics</source>
+        <target>Lời </target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Mobile</source>
+        <target>Di động</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Classic</source>
+        <target>Cổ điển</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Watch on YouTube</source>
+        <target>Xem trên Youtube</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Click "CC" in the player to show captions</source>
+        <target>Nhấn “CC” trên máy phát để hiển thị thuyết minh</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Title</source>
+        <target>Tiêu đề</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Type</source>
+        <target>Loại</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Uploaded on</source>
+        <target>Tải lên vào</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated News</source>
+        <target>Tin tức liên quan</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Photo</source>
+        <target>Hình ảnh liên quan</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Video</source>
+        <target>Video liên quan</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Audio</source>
+        <target>Âm thanh liên quan</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Documents</source>
+        <target>Tài liệu liên quan</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Translate</source>
+        <target>Dịch</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Error occured while loading form. Please, try again.</source>
+        <target>Lỗi xuất hiện trong khi tải mẫu. Làm ơn hãy thử lại lần nữa.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Thanks! Your translation has been sent.</source>
+        <target>Cám ơn! Bản dịch của bạn đã được gửi đi.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Translate News, Photo, Audio or Video, presented on this page into any language.</source>
+        <target>Dịch Tin tức, Hình ảnh, Âm thanh hoặc Video trên trang này sang bất kì ngôn ngữ nào.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Translate website interface from English into any other language.</source>
+        <target>Dịch giao diện trang web từ tiếng Anh sang bất kì ngôn ngữ khác.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Tutorials:</source>
+        <target>Hướng dẫn:</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Instructions for eTapasvi.com translators</source>
+        <target>Hướng dẫn cho các dịch giả của eTapasvi.com</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Video tutorials:</source>
+        <target>Video hướng dẫn:</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Translation Guide</source>
+        <target>Chỉ dẫn dịch</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Video subtitles translation</source>
+        <target>Dịch phụ đề video</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Tips for translators:</source>
+        <target>Lời khuyên cho các dịch giả:</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Carefully read/watch instructions – respect your time and website programmer's time.</source>
+        <target>Đọc/xem hướng dẫn một cách cẩn thận-quý trọng thời gian của bạn và thời gian của lập trình viên trang web.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>If you would like to correct translation you sent, send both incorrect and correct versions in your language. It would allow programmer to find text, which should be replaced with correct one.</source>
+        <target>Nếu bạn muốn sửa bản dịch bạn đã gửi, hãy gửi cả bản dịch đúng và chưa đúng bằng ngôn ngữ của bạn. Nó sẽ cho phép lập trình viên tìm ra văn bản sẽ được thay thế bởi văn bản đúng.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Before performing translation make sure, that text you are going to translate is not translated yet on website.</source>
+        <target>Trước khi thực hiện dịch, hãy chắc chắn rằng văn bản bạn sẽ dịch chưa được dịch trên trang web.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Distortion and misinterpretation of information during translation is not acceptable.</source>
+        <target>Bóp méo và dịch sai thông tin trong quá trình dịch không được chấp nhận.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.</source>
+        <target>Trong văn bản đã dịch, thay thế các chi tiết Photo, Video và Audio bằng [photo], [video] và [audio] tương ứng. Gạch chân các liên kết.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.</source>
+        <target>Chỉ những bản dịch làm đúng theo chỉ dẫn này và được gửi đi bằng cách sử dụng liên kết “Dịch” mới được đăng ở trang web. Các bản dịch gửi trực tiếp đến hòm thư điện tử của trang web sẽ không được đăng.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Received translations are usually processed once a week, you can track how they are added on website in</source>
+        <target>Các bản dịch nhận được thường được xử lý một lần một tuần, bạn có thể theo dõi xem chúng được thêm vào trang web như thế nào trong</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>for example, if you translate news item, copy it's title and whole text into this field</source>
+        <target>ví  dụ, nếu bạn dịch mục tin tức, sao chép tiêu đề của nó và toàn bộ văn bản vào trường này</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>for example, if you translate news item, paste translation of it's title and text into this field</source>
+        <target>ví  dụ, nếu bạn dịch mục tin tức, sao chép tiêu đề của nó và toàn bộ văn bản vào trường này</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Translation</source>
+        <target>Bản dịch</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Language</source>
+        <target>Ngôn ngữ</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>optional</source>
+        <target>tùy chọn</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Send</source>
+        <target>Gửi </target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Comment</source>
+        <target>Bình luận</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>revision history</source>
+        <target>lịch sử duyệt</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Current revision</source>
+        <target>Bản duyệt hiện tại</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Compare selected revisions</source>
+        <target>So sánh các bản duyệt được lựa chọn</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Embed</source>
+        <target>Nhúng</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Print version</source>
+        <target>Phiên bản in</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Page Not Found or Not Translated</source>
+        <target>Trang không được tìm thấy hoặc chưa được dịch</target>
+      </trans-unit>
+      
+<!-- утф -->
+    </body>
+  </file>
+</xliff>
