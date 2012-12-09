@@ -103,22 +103,28 @@ class newsActions extends autonewsActions
       	$fileName = $this->news->getId();
       }
       
-      $ext = $this->getRequest()->getFileExtension('news[img]');
+      $original_ext = $this->getRequest()->getFileExtension('news[img]');
+      // Images are always converted to JPG
+      $ext = '.jpg';
+      $mime_type = 'image/jpeg';
       
-      $tmp_full    = sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/".$fileName.$ext;     
-      $tmp_thumb   = sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/".$fileName.$ext;
+      $tmp_full    = sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/tmp/".$fileName.$ext;     
+      $tmp_thumb   = sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/tmp/".$fileName.$ext;
       
       $this->getRequest()->moveFile('news[img]', $tmp_full);
       $this->news->setImg($fileName.$ext);
       
+      // сохраняем исходное изображение (без каптчи)
+      PhotoPeer::moveFile($tmp_full, sfConfig::get('sf_upload_dir')."/".NewsPeer::ORIGINAL_DIR."/".$fileName.$original_ext);
+      
 	  try {
-		// создание иконки
+		// thumb
 		$img = new sfImage( $tmp_full );
 		$img->thumbnail( NewsPeer::THUMB_WIDTH, NewsPeer::THUMB_HEIGHT, 'scale' );  
-		$img->setQuality(100);
+		$img->setQuality(NewsPeer::THUMB_QUALITY);
 		$img->saveAs( $tmp_thumb );  
 		
-		// уменьшаем основное изображение
+		// full
 		$img = new sfImage( $tmp_full );	   
 		if ( $img->getWidth() > NewsPeer::IMG_WIDTH || $img->getHeight() > NewsPeer::IMG_HEIGHT ) {
 		    $img->thumbnail( NewsPeer::IMG_WIDTH, NewsPeer::IMG_HEIGHT, 'scale');  
@@ -127,7 +133,7 @@ class newsActions extends autonewsActions
 		if (isset($news['watermark'])) {	    
 		    $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), 'bottom-right'); // or you can use coords array($x,$y)
 		}
-        $img->setQuality(100);
+        $img->setQuality(NewsPeer::FULL_QUALITY);
 		$img->save();  	  
         
         // to Picasa
@@ -140,7 +146,7 @@ class newsActions extends autonewsActions
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
 		  	NewsPeer::FULL_DIR, 
 		  	$tmp_full,
-		  	$img->getMIMEType(),
+		  	$mime_type,
 		  	$fileName.$ext,
 		  	$title
 		  );
@@ -155,11 +161,16 @@ class newsActions extends autonewsActions
 		    sfConfig::get('sf_upload_dir')."/".NewsPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );		  		  
 		  
+  	      // creating symlink
+  	      $link = sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/".$fileName.$ext;
+  	      unlink($link);  	      
+  	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
+  	      
 		  // thumb
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
 		  	NewsPeer::THUMB_DIR,
 		  	$tmp_thumb,
-		  	$img->getMIMEType(),
+		  	$mime_type,
 		  	$fileName.$ext,
 		  	$title
 		  );
@@ -174,6 +185,12 @@ class newsActions extends autonewsActions
 		    $tmp_thumb, 
 		    sfConfig::get('sf_upload_dir')."/".NewsPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );
+  	      
+  	      // creating symlink
+  	      $link = sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/".$fileName.$ext;
+  	      unlink($link);  	  	      
+  	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
+  	      
 		} catch( Exception $e ) {
 		  echo $e->getMessage();
 		  exit();
@@ -202,7 +219,8 @@ class newsActions extends autonewsActions
 		} 
       
       } catch (Exception $e) {
-      	
+      	echo $e->getMessage();
+      	exit();
       }         
     } elseif (!isset($news['img_remove'])) {
 	  if (isset($news['full_path']))

@@ -21,10 +21,13 @@ class NewsPeer extends BaseNewsPeer
   
   // директории на сервере
   // и одновременно названия альбомов в удалённом хранилище
-  const FULL_DIR 		= 'news';  
+  const FULL_DIR 		= 'news/full';  
   const THUMB_DIR 		= 'news/thumb';
-  
+  const ORIGINAL_DIR 	= 'news/original';  
   const PHOTO_DIR 	    = 'news';
+  
+  const FULL_QUALITY    		= 100;
+  const THUMB_QUALITY    		= 100; 
   
   // Лента новостей
   public static $feed_item_types 	    = array(

@@ -50,4 +50,4 @@ find ${PROJECT_DIR}cache -type f -exec chmod 666 {} \;
 # .sh скрипты
 find ${PROJECT_DIR} -type f -name '*.sh' -exec chmod 755 {} \;
 chmod 755 ${PROJECT_DIR}symfony
-chmod 755 ${PROJECT_DIR}tools/log_monitor
+#chmod 755 ${PROJECT_DIR}tools/log_monitor
