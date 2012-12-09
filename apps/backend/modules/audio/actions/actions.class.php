@@ -63,9 +63,40 @@ class audioActions extends autoaudioActions
       }
     }
     $this->audio->setShow(isset($audio['show']) ? $audio['show'] : 0);
-    if (isset($audio['file']))
+    $currentFile = sfConfig::get('sf_upload_dir')."/audio/".$this->audio->getFile();
+    if (!$this->getRequest()->hasErrors() && isset($audio['file_remove']))
     {
-      $this->audio->setFile($audio['file']);
+      $this->audio->setFile('');
+      if (is_file($currentFile))
+      {
+        unlink($currentFile);
+      }
+    }
+
+    if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('audio[file]'))
+    {
+      //$fileName = md5($this->getRequest()->getFileName('audio[file]').time().rand(0, 99999));
+      //$ext = $this->getRequest()->getFileExtension('audio[file]');
+      $fileName = $this->getRequest()->getFileName('audio[file]');      
+      // getFileExtension returns "mpga" for mp3
+      $ext = strtolower(pathinfo($_FILES['audio']['name']['file'], PATHINFO_EXTENSION));
+      $fileName = substr($fileName, 0, strlen($fileName) - strlen($ext));
+      if (is_file($currentFile))
+      {
+        unlink($currentFile);
+      }
+      $this->getRequest()->moveFile('audio[file]', sfConfig::get('sf_upload_dir')."/audio/".$fileName.$ext);
+      $this->audio->setFile($fileName.$ext);
+    } else {
+	  if (isset($audio['file']))
+	  {
+	    $this->audio->setFile($audio['file']);
+
+	    // check if file exists
+	    if (!file_exists(sfConfig::get('sf_upload_dir')."/audio/".$audio['file'])) {
+	      $this->getUser()->setFlash('warning', 'Warning: File ' . $audio['file'] . ' not found.');
+	    }
+	  }
     }
     if (isset($audio['remote']))
     {

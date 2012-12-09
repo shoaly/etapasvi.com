@@ -88,6 +88,14 @@ generator:
           - author_i18n_de
 
       fields:        
+        file:
+          name: File
+          type: admin_input_file_tag
+          upload_dir: audio
+          params: 
+            include_link: audio
+            include_remove: true   
+            
         title_i18n_en:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"

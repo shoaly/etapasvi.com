@@ -48,6 +48,12 @@
   'size' => 80,
   'control_name' => 'audio[file]',
 )); echo $value ? $value : '&nbsp;' ?>
+  <br/><br/>
+  <?php $value = object_admin_input_file_tag($audio, 'getFile', array (
+  'control_name' => 'audio[file]',
+  'include_link' => 'audio',
+  'include_remove' => true,
+)); echo $value ? $value : '&nbsp;' ?>
     </div>
 </div>
 
