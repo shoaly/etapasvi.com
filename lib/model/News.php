@@ -164,7 +164,7 @@ class News extends BaseNews
 	  $file = $this->getImg();
 
 	  if ($path && $file) {	    	    
-	    return sfConfig::get('sf_upload_dir') . "/" . NewsPeer::FULL_DIR . "/" . $path . "/" . $file;
+	    return sfConfig::get('sf_upload_dir') . "/" . NewsPeer::PHOTO_DIR . "/" . $path . "/" . $file;
 	  } else {
 	    return '';	
 	  }
@@ -179,7 +179,7 @@ class News extends BaseNews
 	  $file = $this->getImg();
 
 	  if ($path && $file) {	    	    
-	    return sfConfig::get('sf_upload_dir') . "/" . NewsPeer::THUMB_DIR . "/" . $path . "/" . $file;
+	    return sfConfig::get('sf_upload_dir') . "/" . NewsPeer::PHOTO_DIR . "/" . $path . "/" . $file;
 	  } else {
 	    return '';	
 	  }
