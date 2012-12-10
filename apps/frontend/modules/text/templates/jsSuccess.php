@@ -3,52 +3,52 @@
 // main
 var ap_stopAll = function(){};
 //var audioplayer  = false;
-// здесь запоминается форма Предложить перевод, чтобы после подгрузки фото, её восстанавливать
+// Р·РґРµСЃСЊ Р·Р°РїРѕРјРёРЅР°РµС‚СЃСЏ С„РѕСЂРјР° РџСЂРµРґР»РѕР¶РёС‚СЊ РїРµСЂРµРІРѕРґ, С‡С‚РѕР±С‹ РїРѕСЃР»Рµ РїРѕРґРіСЂСѓР·РєРё С„РѕС‚Рѕ, РµС‘ РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ
 //var page_toolbar_clone  = '';
-// позиция в окне перед активацией одной из кнопок панели инструментов
+// РїРѕР·РёС†РёСЏ РІ РѕРєРЅРµ РїРµСЂРµРґ Р°РєС‚РёРІР°С†РёРµР№ РѕРґРЅРѕР№ РёР· РєРЅРѕРїРѕРє РїР°РЅРµР»Рё РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ
 var page_toolbar_window_pos  = 0;
-// интервал показа цитат
+// РёРЅС‚РµСЂРІР°Р» РїРѕРєР°Р·Р° С†РёС‚Р°С‚
 var rotate_quotes_interval  = 15000;
-// номер последней показанной цитаты
+// РЅРѕРјРµСЂ РїРѕСЃР»РµРґРЅРµР№ РїРѕРєР°Р·Р°РЅРЅРѕР№ С†РёС‚Р°С‚С‹
 var last_quote_index  = -1;
-// минимальный размер окна, при котором скрываются элементы
+// РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ РѕРєРЅР°, РїСЂРё РєРѕС‚РѕСЂРѕРј СЃРєСЂС‹РІР°СЋС‚СЃСЏ СЌР»РµРјРµРЅС‚С‹
 var window_size_hide_el  = 1000;
-// ссылки на фото преобразованы
+// СЃСЃС‹Р»РєРё РЅР° С„РѕС‚Рѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅС‹
 var ph_links_ready = false;
-// ссылка на текущую фотографию
+// СЃСЃС‹Р»РєР° РЅР° С‚РµРєСѓС‰СѓСЋ С„РѕС‚РѕРіСЂР°С„РёСЋ
 var global_photo_href;
-// режим отображения страницы
+// СЂРµР¶РёРј РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‚СЂР°РЅРёС†С‹
 var page_mode = '';
-// режим отображения страницы до открыти всплывающего окна
+// СЂРµР¶РёРј РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‚СЂР°РЅРёС†С‹ РґРѕ РѕС‚РєСЂС‹С‚Рё РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
 var prev_page_mode = '';
-// минимальная ширина фото во всплывающем окне
+// РјРёРЅРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° С„РѕС‚Рѕ РІРѕ РІСЃРїР»С‹РІР°СЋС‰РµРј РѕРєРЅРµ
 var min_photo_full_width = 566;
-// минимальная высота фото во всплывающем окне
+// РјРёРЅРёРјР°Р»СЊРЅР°СЏ РІС‹СЃРѕС‚Р° С„РѕС‚Рѕ РІРѕ РІСЃРїР»С‹РІР°СЋС‰РµРј РѕРєРЅРµ
 var min_photo_full_height = 300;
-// отступы при вычислении размеров всплывающего окна
+// РѕС‚СЃС‚СѓРїС‹ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё СЂР°Р·РјРµСЂРѕРІ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
 var p_cb_horiz_margin = 50;
-var p_cb_vert_margin  = 80; // только снизу
+var p_cb_vert_margin  = 80; // С‚РѕР»СЊРєРѕ СЃРЅРёР·Сѓ
 var p_cb_horiz_padding = 50;
 var p_cb_vert_padding  = 0;
-// вертикальную позицию в окне
+// РІРµСЂС‚РёРєР°Р»СЊРЅСѓСЋ РїРѕР·РёС†РёСЋ РІ РѕРєРЅРµ
 var cb_window_pos = 0;
-// период вызова resize всплывающего окна
+// РїРµСЂРёРѕРґ РІС‹Р·РѕРІР° resize РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
 var cb_resize_period = 200;
-// пространство, изначально выделяемое для комментариев
+// РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ, РёР·РЅР°С‡Р°Р»СЊРЅРѕ РІС‹РґРµР»СЏРµРјРѕРµ РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
 //var cb_comments_height = 398;
 var cb_comments_height = 0;
-// после открытия resize всплывающего окна ещё не делаллся
+// РїРѕСЃР»Рµ РѕС‚РєСЂС‹С‚РёСЏ resize РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР° РµС‰С‘ РЅРµ РґРµР»Р°Р»Р»СЃСЏ
 var cb_first_resize = true;
-// URL до открытия всплывающего окна
+// URL РґРѕ РѕС‚РєСЂС‹С‚РёСЏ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
 var cb_prev_url = "";
-// заголовок страницы до открытия всплывающего окна
+// Р·Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹ РґРѕ РѕС‚РєСЂС‹С‚РёСЏ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
 var cb_prev_title = "";
-// всплывающее окно было открыто на странице с фото
+// РІСЃРїР»С‹РІР°СЋС‰РµРµ РѕРєРЅРѕ Р±С‹Р»Рѕ РѕС‚РєСЂС‹С‚Рѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ СЃ С„РѕС‚Рѕ
 var cb_from_photo_page = false;
-// адрес страницы для страницы комментариев до открытия всплывающего окна
+// Р°РґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РґРѕ РѕС‚РєСЂС‹С‚РёСЏ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
 var cb_prev_dusqus_url = '';
 var cb_prev_disqus_identifier = '';
-// циклический ресайз после открытия фото во всплывающем окне
+// С†РёРєР»РёС‡РµСЃРєРёР№ СЂРµСЃР°Р№Р· РїРѕСЃР»Рµ РѕС‚РєСЂС‹С‚РёСЏ С„РѕС‚Рѕ РІРѕ РІСЃРїР»С‹РІР°СЋС‰РµРј РѕРєРЅРµ
 var first_cyclic_resize = true;
 // content list of the album
 var album_content = {};
@@ -70,24 +70,24 @@ $(document).ready(function() {
     page_mode = hash.substring(1);
     
     //if (page_mode == 'enlarge_photo') {
-    //    // увеличенное фото
+    //    // СѓРІРµР»РёС‡РµРЅРЅРѕРµ С„РѕС‚Рѕ
     //    $("body").addClass("enlarge_photo");
     //    return;
     //} else {
-    // страница встроена
+    // СЃС‚СЂР°РЅРёС†Р° РІСЃС‚СЂРѕРµРЅР°
     if (top !== self) { 
         $("body").addClass("embedded");
         page_mode = "embedded";
         embedded_or_print = true;
     }
-    // версия для печати
+    // РІРµСЂСЃРёСЏ РґР»СЏ РїРµС‡Р°С‚Рё
     if (page_mode == "print_version") {
         $("body").addClass("print_version");
         embedded_or_print = true;
     }
     if (embedded_or_print) {
-        // сообщение о том, что страница встроена
-        // путь без параметров и хэша 
+        // СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ СЃС‚СЂР°РЅРёС†Р° РІСЃС‚СЂРѕРµРЅР°
+        // РїСѓС‚СЊ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ Рё С…СЌС€Р° 
 
         var embed_source = window.location + "";
         //embed_source = embed_source.substring(0, embed_source.indexOf('#'));
@@ -99,10 +99,10 @@ $(document).ready(function() {
     }
     //}
 
-    // сокрытие элементов в зависимости от размера окна
+    // СЃРѕРєСЂС‹С‚РёРµ СЌР»РµРјРµРЅС‚РѕРІ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂР°Р·РјРµСЂР° РѕРєРЅР°
     onWindowResize();
 
-    // цитаты отображаются, если есть перевод и размер окна больше минимального
+    // С†РёС‚Р°С‚С‹ РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ, РµСЃР»Рё РµСЃС‚СЊ РїРµСЂРµРІРѕРґ Рё СЂР°Р·РјРµСЂ РѕРєРЅР° Р±РѕР»СЊС€Рµ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ
     if (quote_list) {
         showQuotes();        
     }
@@ -127,24 +127,24 @@ $(document).ready(function() {
 	// select language
 	//$("span.lang_selector").colorbox({inline:true, fixed:true, href:"#lang_box", opacity:"0.5", transition:"none", close:"X"});
 
-    // перемещение Предложения перевода наверх
+    // РїРµСЂРµРјРµС‰РµРЅРёРµ РџСЂРµРґР»РѕР¶РµРЅРёСЏ РїРµСЂРµРІРѕРґР° РЅР°РІРµСЂС…
 
     //$("#page_toolbar").insertAfter( "#content h1:eq(0)" );        
     
-    // текст в футере
+    // С‚РµРєСЃС‚ РІ С„СѓС‚РµСЂРµ
     if (footer_text) {
         $("#lang_plain").after(footer_text);
     }   
     
-    // сокрытие элементов в зависимости от размера окна
+    // СЃРѕРєСЂС‹С‚РёРµ СЌР»РµРјРµРЅС‚РѕРІ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂР°Р·РјРµСЂР° РѕРєРЅР°
     $(window).resize(function() {
         onWindowResize();
     });
     
-    // всплывающие названия языков
+    // РІСЃРїР»С‹РІР°СЋС‰РёРµ РЅР°Р·РІР°РЅРёСЏ СЏР·С‹РєРѕРІ
     $("#lang_column a, #lang_column strong").tipsy({gravity: 's', opacity:1});
 
-    // быстрый поиск
+    // Р±С‹СЃС‚СЂС‹Р№ РїРѕРёСЃРє
     $("#quick_search_input").focus(function() {
         $(this).addClass('focused');
     });
@@ -153,7 +153,7 @@ $(document).ready(function() {
     });
 });
 
-// сокрытие элементов в зависимости от размера окна
+// СЃРѕРєСЂС‹С‚РёРµ СЌР»РµРјРµРЅС‚РѕРІ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂР°Р·РјРµСЂР° РѕРєРЅР°
 function onWindowResize() 
 {
 
@@ -173,30 +173,30 @@ function onWindowResize()
         } 
     }
 
-    // если просматриваем фото
+    // РµСЃР»Рё РїСЂРѕСЃРјР°С‚СЂРёРІР°РµРј С„РѕС‚Рѕ
     if (page_mode == 'enlarge_photo') {
-        // если в функции сделать alert, Mozilla зависает
+        // РµСЃР»Рё РІ С„СѓРЅРєС†РёРё СЃРґРµР»Р°С‚СЊ alert, Mozilla Р·Р°РІРёСЃР°РµС‚
         resizePhotoColorbox();
         cbResize();
     }
 }
 
-// скрывает цитату
+// СЃРєСЂС‹РІР°РµС‚ С†РёС‚Р°С‚Сѓ
 function hideQuotes()
 {
-    // fadeOut для элемента p вешает IE    
+    // fadeOut РґР»СЏ СЌР»РµРјРµРЅС‚Р° p РІРµС€Р°РµС‚ IE    
     $("#quote_p_cont").fadeOut(600);
     setTimeout( showQuotes, 700);
 }
 
-// отображает случайную цитату
+// РѕС‚РѕР±СЂР°Р¶Р°РµС‚ СЃР»СѓС‡Р°Р№РЅСѓСЋ С†РёС‚Р°С‚Сѓ
 function showQuotes()
 {
-    // если размер окна удовлетворяет, показываем цитату    
+    // РµСЃР»Рё СЂР°Р·РјРµСЂ РѕРєРЅР° СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚, РїРѕРєР°Р·С‹РІР°РµРј С†РёС‚Р°С‚Сѓ    
     if ($(window).width() > window_size_hide_el) {
         var quote_el = $("#bubble_quote p:first");    
         var quote_index = Math.floor(Math.random( ) * (quote_list.length));
-        // если выбрана прошлая цитата, берём предыдущую в списке или последнюю
+        // РµСЃР»Рё РІС‹Р±СЂР°РЅР° РїСЂРѕС€Р»Р°СЏ С†РёС‚Р°С‚Р°, Р±РµСЂС‘Рј РїСЂРµРґС‹РґСѓС‰СѓСЋ РІ СЃРїРёСЃРєРµ РёР»Рё РїРѕСЃР»РµРґРЅСЋСЋ
         if (quote_index == last_quote_index) {
             if (quote_index > 1) {
                 quote_index = quote_index - 1;
@@ -214,7 +214,7 @@ function showQuotes()
     setTimeout( hideQuotes, rotate_quotes_interval);
 }
 
-// исходный текст учения
+// РёСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚ СѓС‡РµРЅРёСЏ
 function showOriginal() 
 {
 	if ( $("#elOriginal").is(":hidden") ) {
@@ -224,7 +224,7 @@ function showOriginal()
 	}
 }
 
-// текст аудиозаписи
+// С‚РµРєСЃС‚ Р°СѓРґРёРѕР·Р°РїРёСЃРё
 function showAudioBody(id) 
 {    
     var element_id = "#elAudioBody" + id;
@@ -236,14 +236,14 @@ function showAudioBody(id)
 	}
 }
 
-//  модификация ссылок для подгрузки содержимого
+//  РјРѕРґРёС„РёРєР°С†РёСЏ СЃСЃС‹Р»РѕРє РґР»СЏ РїРѕРґРіСЂСѓР·РєРё СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
 function preparePhotoContent()
 {    
     $(document).ready(function() {
-        // если фото открыто во всплывающем окне в iframe
+        // РµСЃР»Рё С„РѕС‚Рѕ РѕС‚РєСЂС‹С‚Рѕ РІРѕ РІСЃРїР»С‹РІР°СЋС‰РµРј РѕРєРЅРµ РІ iframe
         if (page_mode == "enlarge_photo") {
             var full_photo_img = $("#colorbox img.full_photo_img");            
-            // замена превью на полную версию фото
+            // Р·Р°РјРµРЅР° РїСЂРµРІСЊСЋ РЅР° РїРѕР»РЅСѓСЋ РІРµСЂСЃРёСЋ С„РѕС‚Рѕ
             //full_photo_img.attr("src", $("#photo_full_url").val());
             resizePhotoColorbox(full_photo_img);
             // align loader in the middle of the photo and show it
@@ -257,7 +257,7 @@ function preparePhotoContent()
             document.title = unescapeHTML(content_title);
         }
 
-        // преобразование ссылок на предыдущую и следующую фото
+        // РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃСЃС‹Р»РѕРє РЅР° РїСЂРµРґС‹РґСѓС‰СѓСЋ Рё СЃР»РµРґСѓСЋС‰СѓСЋ С„РѕС‚Рѕ
         /*var href;
         $("#photo_content a.photo_content_link").each(function(index) {
             href = $(this).attr('href');
@@ -268,35 +268,35 @@ function preparePhotoContent()
     });
 }
 
-// преобразование HTML-сущностей в их печатные аналоги
+// РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ HTML-СЃСѓС‰РЅРѕСЃС‚РµР№ РІ РёС… РїРµС‡Р°С‚РЅС‹Рµ Р°РЅР°Р»РѕРіРё
 function unescapeHTML(html) {
    return $("<div />").html(html).text();
 }
 
-// подгонка размера фото
+// РїРѕРґРіРѕРЅРєР° СЂР°Р·РјРµСЂР° С„РѕС‚Рѕ
 function resizePhotoColorbox(full_photo_img)
 {
     if (!full_photo_img) {
         full_photo_img = $("#colorbox img.full_photo_img");
     }
 
-    // установка размера фото, контейнеров и всплывающего окна
-    // размеры окна
+    // СѓСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂР° С„РѕС‚Рѕ, РєРѕРЅС‚РµР№РЅРµСЂРѕРІ Рё РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
+    // СЂР°Р·РјРµСЂС‹ РѕРєРЅР°
     var w_width  = $(window).width() * 1;
     var w_height = $(window).height() * 1;
-    // размеры фото
+    // СЂР°Р·РјРµСЂС‹ С„РѕС‚Рѕ
     var p_width  = photo_full_info['width'] * 1;
     var p_height = photo_full_info['height'] * 1;
 
-    // подобранные размеры
+    // РїРѕРґРѕР±СЂР°РЅРЅС‹Рµ СЂР°Р·РјРµСЂС‹
     var rect_width;
     var rect_height;
 
-    // Подбор ширины и высоты области с фото (rect_):
-    // Если размер фото меньше минимально допустимого или размер окна меньше минимально допустимого
-    // размер области устанавливается равным минимально допустимому.
-    // Если размер фото больше размера окна, устанавливаем размер области равным размеру окна.
-    // Иначе размер области устанавливается равным размеру фото
+    // РџРѕРґР±РѕСЂ С€РёСЂРёРЅС‹ Рё РІС‹СЃРѕС‚С‹ РѕР±Р»Р°СЃС‚Рё СЃ С„РѕС‚Рѕ (rect_):
+    // Р•СЃР»Рё СЂР°Р·РјРµСЂ С„РѕС‚Рѕ РјРµРЅСЊС€Рµ РјРёРЅРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРіРѕ РёР»Рё СЂР°Р·РјРµСЂ РѕРєРЅР° РјРµРЅСЊС€Рµ РјРёРЅРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРіРѕ
+    // СЂР°Р·РјРµСЂ РѕР±Р»Р°СЃС‚Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ СЂР°РІРЅС‹Рј РјРёРЅРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРјСѓ.
+    // Р•СЃР»Рё СЂР°Р·РјРµСЂ С„РѕС‚Рѕ Р±РѕР»СЊС€Рµ СЂР°Р·РјРµСЂР° РѕРєРЅР°, СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЂР°Р·РјРµСЂ РѕР±Р»Р°СЃС‚Рё СЂР°РІРЅС‹Рј СЂР°Р·РјРµСЂСѓ РѕРєРЅР°.
+    // РРЅР°С‡Рµ СЂР°Р·РјРµСЂ РѕР±Р»Р°СЃС‚Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ СЂР°РІРЅС‹Рј СЂР°Р·РјРµСЂСѓ С„РѕС‚Рѕ
     if (p_width > min_photo_full_width && w_width > min_photo_full_width + p_cb_horiz_margin) {
         if (p_width > (w_width - p_cb_horiz_margin - p_cb_horiz_padding) ) {
             rect_width = w_width - p_cb_horiz_margin;
@@ -316,7 +316,7 @@ function resizePhotoColorbox(full_photo_img)
         rect_height = min_photo_full_height;
     }   
 
-    // пропорционально изменяем размеры фото    
+    // РїСЂРѕРїРѕСЂС†РёРѕРЅР°Р»СЊРЅРѕ РёР·РјРµРЅСЏРµРј СЂР°Р·РјРµСЂС‹ С„РѕС‚Рѕ    
     p_width     += 0.0;
     p_height    += 0.0;
     rect_width  += 0.0;
@@ -326,10 +326,10 @@ function resizePhotoColorbox(full_photo_img)
     new_photo_height = rect_height - p_cb_vert_padding;
 
     if ( (p_width / p_height) > (new_photo_width / new_photo_height) ) {
-        // уменьшаем высоту       
+        // СѓРјРµРЅСЊС€Р°РµРј РІС‹СЃРѕС‚Сѓ       
         new_photo_height = Math.floor( (p_height * new_photo_width) / p_width );        
     } else {
-        // уменьшаем ширину
+        // СѓРјРµРЅСЊС€Р°РµРј С€РёСЂРёРЅСѓ
         new_photo_width  = Math.floor( (p_width * new_photo_height) / p_height );        
     }
 
@@ -341,8 +341,8 @@ function resizePhotoColorbox(full_photo_img)
         new_photo_width = p_width;
     }
     
-    // устанавливаем размеры области после пересчёта размера изображения
-    // если одна из сторон получилась меньше минимальной, устанавливаем равной минимальной 
+    // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЂР°Р·РјРµСЂС‹ РѕР±Р»Р°СЃС‚Рё РїРѕСЃР»Рµ РїРµСЂРµСЃС‡С‘С‚Р° СЂР°Р·РјРµСЂР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+    // РµСЃР»Рё РѕРґРЅР° РёР· СЃС‚РѕСЂРѕРЅ РїРѕР»СѓС‡РёР»Р°СЃСЊ РјРµРЅСЊС€Рµ РјРёРЅРёРјР°Р»СЊРЅРѕР№, СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЂР°РІРЅРѕР№ РјРёРЅРёРјР°Р»СЊРЅРѕР№ 
     rect_height = new_photo_height + p_cb_vert_padding;
     if (rect_height < min_photo_full_height) {
         rect_height = min_photo_full_height;
@@ -352,9 +352,9 @@ function resizePhotoColorbox(full_photo_img)
         rect_width = min_photo_full_width;
     }
 
-    // после открытия colorbox считывает размеры содержимого
+    // РїРѕСЃР»Рµ РѕС‚РєСЂС‹С‚РёСЏ colorbox СЃС‡РёС‚С‹РІР°РµС‚ СЂР°Р·РјРµСЂС‹ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
     $("#photo_content").css( {"width": rect_width/*, "height": rect_height*/} );
-    // шириной фото руководит родительский элемент
+    // С€РёСЂРёРЅРѕР№ С„РѕС‚Рѕ СЂСѓРєРѕРІРѕРґРёС‚ СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ СЌР»РµРјРµРЅС‚
     full_photo_img.css( {"max-width": new_photo_width/*, "height": new_photo_height*/} );
     //$("#colorbox a.photo_frame").css( {"width": (rect_width - p_cb_horiz_padding)} );
 
@@ -366,9 +366,9 @@ function resizePhotoColorbox(full_photo_img)
     cbResize();    
 }
 
-// установка размеров всплывающего окна
-// необходимо вызывать resize с явно указанными размерами, 
-// т.к. после открытия colorbox больше не считывает размеры содержимого
+// СѓСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂРѕРІ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
+// РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹Р·С‹РІР°С‚СЊ resize СЃ СЏРІРЅРѕ СѓРєР°Р·Р°РЅРЅС‹РјРё СЂР°Р·РјРµСЂР°РјРё, 
+// С‚.Рє. РїРѕСЃР»Рµ РѕС‚РєСЂС‹С‚РёСЏ colorbox Р±РѕР»СЊС€Рµ РЅРµ СЃС‡РёС‚С‹РІР°РµС‚ СЂР°Р·РјРµСЂС‹ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
 function cbResize(scroll_to_pos)
 {    
     $("#colorbox #photo_content .prev_next a").css('visibility', 'visible');
@@ -376,12 +376,12 @@ function cbResize(scroll_to_pos)
     if (page_mode != "enlarge_photo") {
         return;
     }
-    // первый вызов после открытия всплывающего окна пропускаем
-    // т.к. после открытия колорбокс сам делает ресайз
+    // РїРµСЂРІС‹Р№ РІС‹Р·РѕРІ РїРѕСЃР»Рµ РѕС‚РєСЂС‹С‚РёСЏ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР° РїСЂРѕРїСѓСЃРєР°РµРј
+    // С‚.Рє. РїРѕСЃР»Рµ РѕС‚РєСЂС‹С‚РёСЏ РєРѕР»РѕСЂР±РѕРєСЃ СЃР°Рј РґРµР»Р°РµС‚ СЂРµСЃР°Р№Р·
     if (cb_first_resize) {
         cb_first_resize = false;
-        // webkit-браузеры при окрытии всплывающего окна выставляют высоту не по контенту, а по своему усмотрению
-        // если вызвать ресайз через какое-то время, высота будет подобрана верно
+        // webkit-Р±СЂР°СѓР·РµСЂС‹ РїСЂРё РѕРєСЂС‹С‚РёРё РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР° РІС‹СЃС‚Р°РІР»СЏСЋС‚ РІС‹СЃРѕС‚Сѓ РЅРµ РїРѕ РєРѕРЅС‚РµРЅС‚Сѓ, Р° РїРѕ СЃРІРѕРµРјСѓ СѓСЃРјРѕС‚СЂРµРЅРёСЋ
+        // РµСЃР»Рё РІС‹Р·РІР°С‚СЊ СЂРµСЃР°Р№Р· С‡РµСЂРµР· РєР°РєРѕРµ-С‚Рѕ РІСЂРµРјСЏ, РІС‹СЃРѕС‚Р° Р±СѓРґРµС‚ РїРѕРґРѕР±СЂР°РЅР° РІРµСЂРЅРѕ
         
         if ($.browser.webkit) {
             setTimeout(function(){ cbResize(); }, cb_resize_period);
@@ -389,8 +389,8 @@ function cbResize(scroll_to_pos)
             return;
         }
     } else {
-        // если высота всплывающего окна удовлетворительная, выходим
-        // иначе вызываем ресайз высплывающего окна
+        // РµСЃР»Рё РІС‹СЃРѕС‚Р° РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР° СѓРґРѕРІР»РµС‚РІРѕСЂРёС‚РµР»СЊРЅР°СЏ, РІС‹С…РѕРґРёРј
+        // РёРЅР°С‡Рµ РІС‹Р·С‹РІР°РµРј СЂРµСЃР°Р№Р· РІС‹СЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°
         if (!first_cyclic_resize && $("#cboxLoadedContent").height() >= cb_height) {
             first_cyclic_resize = false;
             return;
@@ -405,19 +405,19 @@ function cbResize(scroll_to_pos)
     //}
 
     $.colorbox.resize({width: cb_width});
-    // прокручиваем окно к указанной позиции    
+    // РїСЂРѕРєСЂСѓС‡РёРІР°РµРј РѕРєРЅРѕ Рє СѓРєР°Р·Р°РЅРЅРѕР№ РїРѕР·РёС†РёРё    
     if (typeof scroll_to_pos != "undefined") {
         $(window).scrollTop(scroll_to_pos);
     }
     
-    // функция ресайза запускается до тех пор, пока высота всплывающего окна не будет адекватной
+    // С„СѓРЅРєС†РёСЏ СЂРµСЃР°Р№Р·Р° Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° РІС‹СЃРѕС‚Р° РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР° РЅРµ Р±СѓРґРµС‚ Р°РґРµРєРІР°С‚РЅРѕР№
     setTimeout(function(){ cbResize(); }, cb_resize_period);
     first_cyclic_resize = false;    
     
     switchBetweenFullAndPreview();
 }
 
-//  модификация ссылок на фотографии (не испольузется)
+//  РјРѕРґРёС„РёРєР°С†РёСЏ СЃСЃС‹Р»РѕРє РЅР° С„РѕС‚РѕРіСЂР°С„РёРё (РЅРµ РёСЃРїРѕР»СЊСѓР·РµС‚СЃСЏ)
 function phLinks()
 {    
     if (ph_links_ready) {
@@ -435,7 +435,7 @@ function phLinks()
     ph_links_ready = true;
 }
 
-// подгрузка содержимого фото
+// РїРѕРґРіСЂСѓР·РєР° СЃРѕРґРµСЂР¶РёРјРѕРіРѕ С„РѕС‚Рѕ
 function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
 {
     if (!photoalbum_id) {
@@ -443,31 +443,31 @@ function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
         return;
     }
 
-    // запоминается режим, чтобы после закрытия всплывающего окна, восстановить
+    // Р·Р°РїРѕРјРёРЅР°РµС‚СЃСЏ СЂРµР¶РёРј, С‡С‚РѕР±С‹ РїРѕСЃР»Рµ Р·Р°РєСЂС‹С‚РёСЏ РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР°, РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ
     prev_page_mode = page_mode;
     page_mode      = 'enlarge_photo';
     
-    // фото было увеличено со страницы фотографии
+    // С„РѕС‚Рѕ Р±С‹Р»Рѕ СѓРІРµР»РёС‡РµРЅРѕ СЃРѕ СЃС‚СЂР°РЅРёС†С‹ С„РѕС‚РѕРіСЂР°С„РёРё
     if (from_photo_page) {
         cb_from_photo_page = true;
     } else {
         cb_from_photo_page = false;
     }
     
-    // запоминаем вертикальную позицию в окне
+    // Р·Р°РїРѕРјРёРЅР°РµРј РІРµСЂС‚РёРєР°Р»СЊРЅСѓСЋ РїРѕР·РёС†РёСЋ РІ РѕРєРЅРµ
     //cb_window_pos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     cb_window_pos   = $(window).scrollTop();
     if (cb_window_pos) {
-        // фиксируем позицию и устанавливаем высоту контейнера страницы
+        // С„РёРєСЃРёСЂСѓРµРј РїРѕР·РёС†РёСЋ Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІС‹СЃРѕС‚Сѓ РєРѕРЅС‚РµР№РЅРµСЂР° СЃС‚СЂР°РЅРёС†С‹
         $("#wrapper").css({"top": (cb_window_pos*(-1))});
         $(window).scrollTop(0);
     }   
     
-    // устанавливаем URL страницы
+    // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј URL СЃС‚СЂР°РЅРёС†С‹
     cb_prev_url = document.location + "";
     setUrl(href);
     
-    // запоминаем адрес страницы для скрипта комментариев
+    // Р·Р°РїРѕРјРёРЅР°РµРј Р°РґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ СЃРєСЂРёРїС‚Р° РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
     if (typeof disqus_url != "undefined") {
         cb_prev_dusqus_url        = disqus_url;
         cb_prev_disqus_identifier = disqus_identifier;
@@ -497,11 +497,11 @@ function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
                 window.location.href = cb_prev_url;
             }
         
-            // восстанавливаем размер и позицию основного контейнера страницы
+            // РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЂР°Р·РјРµСЂ Рё РїРѕР·РёС†РёСЋ РѕСЃРЅРѕРІРЅРѕРіРѕ РєРѕРЅС‚РµР№РЅРµСЂР° СЃС‚СЂР°РЅРёС†С‹
             $("#wrapper").css({"top": 0});
             $(window).scrollTop(cb_window_pos);            
             cb_from_photo_page
-            // устанавливаем URL, который был до открытия колорбокса
+            // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј URL, РєРѕС‚РѕСЂС‹Р№ Р±С‹Р» РґРѕ РѕС‚РєСЂС‹С‚РёСЏ РєРѕР»РѕСЂР±РѕРєСЃР°
             if (cb_prev_url) {
                 setUrl(cb_prev_url, true);
                 cb_prev_url = "";
@@ -512,10 +512,10 @@ function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
                 cb_prev_title = "";
             }
             
-            // в IE изменение адресной строки прокручивает окно наверх
+            // РІ IE РёР·РјРµРЅРµРЅРёРµ Р°РґСЂРµСЃРЅРѕР№ СЃС‚СЂРѕРєРё РїСЂРѕРєСЂСѓС‡РёРІР°РµС‚ РѕРєРЅРѕ РЅР°РІРµСЂС…
             $(window).scrollTop(cb_window_pos);
 
-            // восстанавливаем комментарии на основной странице
+            // РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєРѕРјРјРµРЅС‚Р°СЂРёРё РЅР° РѕСЃРЅРѕРІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
             //eval( $("#disqus_config_script").text() );   
             disqus_url        = cb_prev_dusqus_url;
             disqus_identifier = cb_prev_disqus_identifier;
@@ -529,8 +529,8 @@ function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
                     //"(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); " + 
                     "</script>"
                 );
-                // в IE обработка скрипта работает с небольшой задержкой, поэтому скрипт disqs надо подключать немного погодя
-                // при динамической вставке disqus как script в DOM сыпятся ошибки
+                // РІ IE РѕР±СЂР°Р±РѕС‚РєР° СЃРєСЂРёРїС‚Р° СЂР°Р±РѕС‚Р°РµС‚ СЃ РЅРµР±РѕР»СЊС€РѕР№ Р·Р°РґРµСЂР¶РєРѕР№, РїРѕСЌС‚РѕРјСѓ СЃРєСЂРёРїС‚ disqs РЅР°РґРѕ РїРѕРґРєР»СЋС‡Р°С‚СЊ РЅРµРјРЅРѕРіРѕ РїРѕРіРѕРґСЏ
+                // РїСЂРё РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РІСЃС‚Р°РІРєРµ disqus РєР°Рє script РІ DOM СЃС‹РїСЏС‚СЃСЏ РѕС€РёР±РєРё
                 //if ($.browser.msie) {
                     //setTimeout(function() {
                         //$("#disqus_thread").html(
@@ -550,7 +550,7 @@ function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
             cb_prev_disqus_identifier  = '';
         },
         onComplete: function () {
-            // перемещаем page_toolbar из основной страницы во всплывающее окно
+            // РїРµСЂРµРјРµС‰Р°РµРј page_toolbar РёР· РѕСЃРЅРѕРІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ РІРѕ РІСЃРїР»С‹РІР°СЋС‰РµРµ РѕРєРЅРѕ
             //$("#page_toolbar").insertAfter("#dsq-brlink");            
             //$("#page_toolbar").insertAfter("#dsq-brlink");            
         }
@@ -608,14 +608,14 @@ function getPhotoIdFromUrl(url)
     return id;
 }
 
-// получение адреса content фото из полного URL фотографии
+// РїРѕР»СѓС‡РµРЅРёРµ Р°РґСЂРµСЃР° content С„РѕС‚Рѕ РёР· РїРѕР»РЅРѕРіРѕ URL С„РѕС‚РѕРіСЂР°С„РёРё
 function getContentUrl(href)
 {
     href = href.replace(/http:\/\/[^\/]+\//, '');
     return '/' + href.replace(/\/photo\//, '/photo/content/');
 }
 
-// подгрузка содержимого фото
+// РїРѕРґРіСЂСѓР·РєР° СЃРѕРґРµСЂР¶РёРјРѕРіРѕ С„РѕС‚Рѕ
 function loadPhotoContent(href, photoalbum_id, hide_content, domain)
 {
     if (!href || loading_photo) {
@@ -625,15 +625,15 @@ function loadPhotoContent(href, photoalbum_id, hide_content, domain)
     // set to 0 after opening comments
     cb_comments_height = 0;
     
-    // чтобы при просмотре фотографий, пользователь постепенно не смещался вниз
-    // перед отрытием всплывающего окна запоминаем позицию в окне и при переходе по фотографиям,
-    // прокручиваем окно к запомненной позиции
+    // С‡С‚РѕР±С‹ РїСЂРё РїСЂРѕСЃРјРѕС‚СЂРµ С„РѕС‚РѕРіСЂР°С„РёР№, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїРѕСЃС‚РµРїРµРЅРЅРѕ РЅРµ СЃРјРµС‰Р°Р»СЃСЏ РІРЅРёР·
+    // РїРµСЂРµРґ РѕС‚СЂС‹С‚РёРµРј РІСЃРїР»С‹РІР°СЋС‰РµРіРѕ РѕРєРЅР° Р·Р°РїРѕРјРёРЅР°РµРј РїРѕР·РёС†РёСЋ РІ РѕРєРЅРµ Рё РїСЂРё РїРµСЂРµС…РѕРґРµ РїРѕ С„РѕС‚РѕРіСЂР°С„РёСЏРј,
+    // РїСЂРѕРєСЂСѓС‡РёРІР°РµРј РѕРєРЅРѕ Рє Р·Р°РїРѕРјРЅРµРЅРЅРѕР№ РїРѕР·РёС†РёРё
     if (page_mode == 'enlarge_photo') {
         //$(window).scrollTop(cb_window_pos);        
         $(window).scrollTop(0);
     }
     
-    // получаем домен
+    // РїРѕР»СѓС‡Р°РµРј РґРѕРјРµРЅ
     if (!domain) {
         domain = href.replace(/http:\/\/([^\/]+).*/, '$1');
     }
@@ -641,7 +641,7 @@ function loadPhotoContent(href, photoalbum_id, hide_content, domain)
         return;
     }
 
-    // домен не включается
+    // РґРѕРјРµРЅ РЅРµ РІРєР»СЋС‡Р°РµС‚СЃСЏ
     href = href.replace(/http:\/\/[^\/]+\//, '');
 
     if (hide_content) {
@@ -654,24 +654,24 @@ function loadPhotoContent(href, photoalbum_id, hide_content, domain)
     
     loading_photo = true;
 
-    // сохраняем форму Предложить перевод
+    // СЃРѕС…СЂР°РЅСЏРµРј С„РѕСЂРјСѓ РџСЂРµРґР»РѕР¶РёС‚СЊ РїРµСЂРµРІРѕРґ
     //$("#offer_tr").hide();
     //page_toolbar_clone = $("#page_toolbar").clone();
 
-    // отправка запроса
+    // РѕС‚РїСЂР°РІРєР° Р·Р°РїСЂРѕСЃР°
     var photo_id = getElementIdFromUrl(global_photo_href)
     /*var photo_html = getPhotoHtml(photo_id, photoalbum_id);
         
-    // модификация URL
+    // РјРѕРґРёС„РёРєР°С†РёСЏ URL
     setUrl(global_photo_href);
 
     $("#photo_content").replaceWith(photo_html);
-    // восстанавливаем форму Предложить перевод
+    // РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„РѕСЂРјСѓ РџСЂРµРґР»РѕР¶РёС‚СЊ РїРµСЂРµРІРѕРґ
     //page_toolbar_clone.insertAfter( "#content h1:eq(0)" );      
 
-    // указывается новый URL в форме Предложить перевод
+    // СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РЅРѕРІС‹Р№ URL РІ С„РѕСЂРјРµ РџСЂРµРґР»РѕР¶РёС‚СЊ РїРµСЂРµРІРѕРґ
     $("#offer_tr_uri").val(global_photo_href);
-    // вытаскивается ID из URL
+    // РІС‹С‚Р°СЃРєРёРІР°РµС‚СЃСЏ ID РёР· URL
     $("#offer_tr_id").val(photo_id);*/
 
     if (typeof album_content[ photoalbum_id ] == "undefined" || typeof album_content[ photoalbum_id ][ photo_id ] == "undefined") {
@@ -734,7 +734,7 @@ function setPhotoHtml(photo_html, photo_id)
     if (!photo_html) {
         return;
     }
-    // модификация URL
+    // РјРѕРґРёС„РёРєР°С†РёСЏ URL
     setUrl(global_photo_href);
                  
     // get Preview infoz
@@ -789,12 +789,12 @@ function setPhotoHtml(photo_html, photo_id)
     switchBetweenFullAndPreview();
 
     $("#photo_content").replaceWith(photo_html);
-    // восстанавливаем форму Предложить перевод
+    // РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„РѕСЂРјСѓ РџСЂРµРґР»РѕР¶РёС‚СЊ РїРµСЂРµРІРѕРґ
     //page_toolbar_clone.insertAfter( "#content h1:eq(0)" );      
 
-    // указывается новый URL в форме Предложить перевод
+    // СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РЅРѕРІС‹Р№ URL РІ С„РѕСЂРјРµ РџСЂРµРґР»РѕР¶РёС‚СЊ РїРµСЂРµРІРѕРґ
     $("#offer_tr_uri").val(global_photo_href);
-    // вытаскивается ID из URL
+    // РІС‹С‚Р°СЃРєРёРІР°РµС‚СЃСЏ ID РёР· URL
     $("#offer_tr_id").val(photo_id);
     
     // if link points to the comment, show comments
@@ -844,13 +844,13 @@ function getElementIdFromUrl(url)
     return match[1];
 }
 
-// получение адреса из хэша и редирект на страницу
+// РїРѕР»СѓС‡РµРЅРёРµ Р°РґСЂРµСЃР° РёР· С…СЌС€Р° Рё СЂРµРґРёСЂРµРєС‚ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
 function loadPhotoContentFromHash(domain)
 {    
     var hash_url = $.address.value();
     if (hash_url && hash_url.substr(0, 2) == '/!') {            
         //loadPhotoContent( hash_url.substr(2, hash_url.length), true, domain );
-        // получение домена 
+        // РїРѕР»СѓС‡РµРЅРёРµ РґРѕРјРµРЅР° 
         if (!domain) {
             domain = document.domain;
         }
@@ -858,7 +858,7 @@ function loadPhotoContentFromHash(domain)
     }
 }
 
-// установка URL
+// СѓСЃС‚Р°РЅРѕРІРєР° URL
 function setUrl(full, remove_hash)
 {
     if (!full) {
@@ -869,18 +869,18 @@ function setUrl(full, remove_hash)
             history.pushState({isMine:true}, 'title',  full );
         } else {
             if (remove_hash) {
-                // удаляем хэш полностью, чтобы восстановить прежний адрес страницы
-                // если использовать
+                // СѓРґР°Р»СЏРµРј С…СЌС€ РїРѕР»РЅРѕСЃС‚СЊСЋ, С‡С‚РѕР±С‹ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРµР¶РЅРёР№ Р°РґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹
+                // РµСЃР»Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
                 // $.address.value(''); 
-                // браузер прокрутит на самый верх страницы
+                // Р±СЂР°СѓР·РµСЂ РїСЂРѕРєСЂСѓС‚РёС‚ РЅР° СЃР°РјС‹Р№ РІРµСЂС… СЃС‚СЂР°РЅРёС†С‹
                 window.location.hash = '';
             } else {
-                // получаем всё, что идёт после домена без начального /
+                // РїРѕР»СѓС‡Р°РµРј РІСЃС‘, С‡С‚Рѕ РёРґС‘С‚ РїРѕСЃР»Рµ РґРѕРјРµРЅР° Р±РµР· РЅР°С‡Р°Р»СЊРЅРѕРіРѕ /
                 relative_url = full.replace(/http:\/\/[^\/]+\//, '');
                 $.address.value('/!' + relative_url); 
             }
         }
-        // меняем ссылку на мобильную версию и язык
+        // РјРµРЅСЏРµРј СЃСЃС‹Р»РєСѓ РЅР° РјРѕР±РёР»СЊРЅСѓСЋ РІРµСЂСЃРёСЋ Рё СЏР·С‹Рє
         if (page_mode != 'enlarge_photo') {
             setUrlMobile(full);
             setUrlLangList(full);
@@ -889,7 +889,7 @@ function setUrl(full, remove_hash)
     }
 }
 
-// установка ссылки на мобильную версию
+// СѓСЃС‚Р°РЅРѕРІРєР° СЃСЃС‹Р»РєРё РЅР° РјРѕР±РёР»СЊРЅСѓСЋ РІРµСЂСЃРёСЋ
 function setUrlMobile(url)
 {
     var mobile_url = url.replace("www.", "m.");
@@ -902,7 +902,7 @@ function setUrlMobile(url)
     });
 }
 
-// установка ссылок в переключателе языка
+// СѓСЃС‚Р°РЅРѕРІРєР° СЃСЃС‹Р»РѕРє РІ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»Рµ СЏР·С‹РєР°
 function setUrlLangList(href)
 {
     cur_href_no_culture = href.replace(/http:\/\/[^\/]+\//, '').replace(/[^\/]+\//, '');
@@ -913,15 +913,15 @@ function setUrlLangList(href)
     });  
 }
 
-// отображение формы Предолжить перевод
+// РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ С„РѕСЂРјС‹ РџСЂРµРґРѕР»Р¶РёС‚СЊ РїРµСЂРµРІРѕРґ
 function switchOfferTr(fields_url, error_msg) 
 {    
-    // если поля уже загружены
+    // РµСЃР»Рё РїРѕР»СЏ СѓР¶Рµ Р·Р°РіСЂСѓР¶РµРЅС‹
     if (!$("#offer_tr_fields").is(':empty')) {
         if ( $("#offer_tr").is(":hidden") ) {
             pageToolsTriggerShow("offer_tr");
             
-            // если форма была отправлена
+            // РµСЃР»Рё С„РѕСЂРјР° Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР°
             if (!$("#offer_tr_success").is(":hidden")) {
                 $("#offer_tr_fields textarea").val('');            
             }
@@ -930,7 +930,7 @@ function switchOfferTr(fields_url, error_msg)
             pageToolsTriggerHide("offer_tr");
         }
     } else {
-        // загрузка полей
+        // Р·Р°РіСЂСѓР·РєР° РїРѕР»РµР№
         $("#offer_tr_loader").show();
         pageToolsTriggerShow("offer_tr");
         
@@ -950,7 +950,7 @@ function switchOfferTr(fields_url, error_msg)
     }
 }
 
-// отправка Перевода
+// РѕС‚РїСЂР°РІРєР° РџРµСЂРµРІРѕРґР°
 function offerTrSubmit()
 {    
     $("#offer_tr_success").show();
@@ -958,7 +958,7 @@ function offerTrSubmit()
     return true;
 }
 
-// отображения формы отправки перевода
+// РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С„РѕСЂРјС‹ РѕС‚РїСЂР°РІРєРё РїРµСЂРµРІРѕРґР°
 function showOfferTrMethod(radio)
 {    
     $(".offer_tr_method").hide();
@@ -966,7 +966,7 @@ function showOfferTrMethod(radio)
     cbResize($(window).scrollTop());
 }
 
-// отображение Истории изменений
+// РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РСЃС‚РѕСЂРёРё РёР·РјРµРЅРµРЅРёР№
 function switchRevhistory()
 {
     if ( $("#revhistory").is(":hidden") ) {
@@ -976,7 +976,7 @@ function switchRevhistory()
     }
 }
 
-// отображение Истории изменений
+// РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РСЃС‚РѕСЂРёРё РёР·РјРµРЅРµРЅРёР№
 function switchEmbed()
 {
     if ( $("#embed").is(":hidden") ) {
@@ -986,10 +986,10 @@ function switchEmbed()
     }
 }
 
-// показать кнопку
+// РїРѕРєР°Р·Р°С‚СЊ РєРЅРѕРїРєСѓ
 function pageToolsTriggerShow(mnemonic_id)
 {
-    // скрываются все остальные кнопки
+    // СЃРєСЂС‹РІР°СЋС‚СЃСЏ РІСЃРµ РѕСЃС‚Р°Р»СЊРЅС‹Рµ РєРЅРѕРїРєРё
     $(".page_tools").each(function(index) {
         pageToolsTriggerHide( $(this).attr('id') );
     });    
@@ -999,7 +999,7 @@ function pageToolsTriggerShow(mnemonic_id)
     cbResize($(window).scrollTop());
 }
 
-// скрыть кнопку
+// СЃРєСЂС‹С‚СЊ РєРЅРѕРїРєСѓ
 function pageToolsTriggerHide(mnemonic_id)
 {
     if ( !$("#"+mnemonic_id).is(":hidden") ) {
@@ -1051,10 +1051,18 @@ function gotoItemcategory(url)
 // Run Carousel
 function runCarousel()
 {
-    $("#carousel_main").html(
+    $("#carousel_main").css('height','300px').html(
 
 '<ul>'+
-        '<li data-transition="fade" data-startalign="right,bottom" data-zoom="in" data-zoomfact="3" data-endAlign="center,top" data-panduration="12" data-colortransition="4"><img alt="" src="/i/slides/image1.jpg" data-bw="/i/slides/image1_blur.jpg" data-thumb="/i/slides/thumb1.jpg">'+
+        '<li data-transition="fade" data-startalign="random" data-zoom="random" data-zoomfact="1" data-endAlign="random" data-panduration="20" data-colortransition="0" ><img alt="" src="/i/slides/image1.jpg" >'+
+                '<div class="creative_layer">'+
+                    '<div class="cp-bottom fadeup">'+
+//                        '<p class="cp-title">Maha Sambodhi Dharma Sangha</p>'+
+                        '<p>This is the product that you A Ken Burns JQuery Banner solution which is fully-responsive and offering cutting-edge caption effects! <a href="#">...</a><br/><strong class="right">вЂ• Maha Sambodhi Dharma Sangha</strong></p>'+									
+                    '</div>'+
+                '</div>'+
+        '</li>'+
+        '<li data-transition="fade" data-startalign="random" data-zoom="random" data-zoomfact="1" data-endAlign="random" data-panduration="20" data-colortransition="0" ><img alt="" src="/i/slides/image1.jpg" >'+
                 '<div class="creative_layer">'+
                     '<div class="cp-bottom fadeup">'+
 //                        '<p class="cp-title">Maha Sambodhi Dharma Sangha</p>'+
@@ -1077,9 +1085,12 @@ function runCarousel()
 */
 
     jQuery('#carousel_main').kenburn({
-        /*width:800,
-        height:320,*/
-        responsive:'off',
+        /*width:800,*/
+        /*height:300,*/
+        //responsive:'off', // option does not work in plugin
+        buttonsArrows:"off",
+        blurwrap:"off",
+        //rescaleBGColor:"#fff", // does not work
         thumbWidth:50,
         thumbHeight:50,
         thumbAmount:4,
@@ -1395,362 +1406,6 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 (function(N,d,p,K,k,H){var b=this;var n=Math.floor(Math.random()*10000);var q=Function.prototype;var Q=/^((http.?:)\/\/([^:\/\s]+)(:\d+)*)/;var R=/[\-\w]+\/\.\.\//;var F=/([^:])\/\//g;var I="";var o={};var M=N.easyXDM;var U="easyXDM_";var E;var y=false;var i;var h;function C(X,Z){var Y=typeof X[Z];return Y=="function"||(!!(Y=="object"&&X[Z]))||Y=="unknown"}function u(X,Y){return !!(typeof(X[Y])=="object"&&X[Y])}function r(X){return Object.prototype.toString.call(X)==="[object Array]"}function c(){try{var X=new ActiveXObject("ShockwaveFlash.ShockwaveFlash");i=Array.prototype.slice.call(X.GetVariable("$version").match(/(\d+),(\d+),(\d+),(\d+)/),1);h=parseInt(i[0],10)>9&&parseInt(i[1],10)>0;X=null;return true}catch(Y){return false}}var v,x;if(C(N,"addEventListener")){v=function(Z,X,Y){Z.addEventListener(X,Y,false)};x=function(Z,X,Y){Z.removeEventListener(X,Y,false)}}else{if(C(N,"attachEvent")){v=function(X,Z,Y){X.attachEvent("on"+Z,Y)};x=function(X,Z,Y){X.detachEvent("on"+Z,Y)}}else{throw new Error("Browser not supported")}}var W=false,J=[],L;if("readyState" in d){L=d.readyState;W=L=="complete"||(~navigator.userAgent.indexOf("AppleWebKit/")&&(L=="loaded"||L=="interactive"))}else{W=!!d.body}function s(){if(W){return}W=true;for(var X=0;X<J.length;X++){J[X]()}J.length=0}if(!W){if(C(N,"addEventListener")){v(d,"DOMContentLoaded",s)}else{v(d,"readystatechange",function(){if(d.readyState=="complete"){s()}});if(d.documentElement.doScroll&&N===top){var g=function(){if(W){return}try{d.documentElement.doScroll("left")}catch(X){K(g,1);return}s()};g()}}v(N,"load",s)}function G(Y,X){if(W){Y.call(X);return}J.push(function(){Y.call(X)})}function m(){var Z=parent;if(I!==""){for(var X=0,Y=I.split(".");X<Y.length;X++){Z=Z[Y[X]]}}return Z.easyXDM}function e(X){N.easyXDM=M;I=X;if(I){U="easyXDM_"+I.replace(".","_")+"_"}return o}function z(X){return X.match(Q)[3]}function f(X){return X.match(Q)[4]||""}function j(Z){var X=Z.toLowerCase().match(Q);var aa=X[2],ab=X[3],Y=X[4]||"";if((aa=="http:"&&Y==":80")||(aa=="https:"&&Y==":443")){Y=""}return aa+"//"+ab+Y}function B(X){X=X.replace(F,"$1/");if(!X.match(/^(http||https):\/\//)){var Y=(X.substring(0,1)==="/")?"":p.pathname;if(Y.substring(Y.length-1)!=="/"){Y=Y.substring(0,Y.lastIndexOf("/")+1)}X=p.protocol+"//"+p.host+Y+X}while(R.test(X)){X=X.replace(R,"")}return X}function P(X,aa){var ac="",Z=X.indexOf("#");if(Z!==-1){ac=X.substring(Z);X=X.substring(0,Z)}var ab=[];for(var Y in aa){if(aa.hasOwnProperty(Y)){ab.push(Y+"="+H(aa[Y]))}}return X+(y?"#":(X.indexOf("?")==-1?"?":"&"))+ab.join("&")+ac}var S=(function(X){X=X.substring(1).split("&");var Z={},aa,Y=X.length;while(Y--){aa=X[Y].split("=");Z[aa[0]]=k(aa[1])}return Z}(/xdm_e=/.test(p.search)?p.search:p.hash));function t(X){return typeof X==="undefined"}var O=function(){var Y={};var Z={a:[1,2,3]},X='{"a":[1,2,3]}';if(typeof JSON!="undefined"&&typeof JSON.stringify==="function"&&JSON.stringify(Z).replace((/\s/g),"")===X){return JSON}if(Object.toJSON){if(Object.toJSON(Z).replace((/\s/g),"")===X){Y.stringify=Object.toJSON}}if(typeof String.prototype.evalJSON==="function"){Z=X.evalJSON();if(Z.a&&Z.a.length===3&&Z.a[2]===3){Y.parse=function(aa){return aa.evalJSON()}}}if(Y.stringify&&Y.parse){O=function(){return Y};return Y}return null};function T(X,Y,Z){var ab;for(var aa in Y){if(Y.hasOwnProperty(aa)){if(aa in X){ab=Y[aa];if(typeof ab==="object"){T(X[aa],ab,Z)}else{if(!Z){X[aa]=Y[aa]}}}else{X[aa]=Y[aa]}}}return X}function a(){var Y=d.body.appendChild(d.createElement("form")),X=Y.appendChild(d.createElement("input"));X.name=U+"TEST"+n;E=X!==Y.elements[X.name];d.body.removeChild(Y)}function A(X){if(t(E)){a()}var Z;if(E){Z=d.createElement('<iframe name="'+X.props.name+'"/>')}else{Z=d.createElement("IFRAME");Z.name=X.props.name}Z.id=Z.name=X.props.name;delete X.props.name;if(X.onLoad){v(Z,"load",X.onLoad)}if(typeof X.container=="string"){X.container=d.getElementById(X.container)}if(!X.container){T(Z.style,{position:"absolute",top:"-2000px"});X.container=d.body}var Y=X.props.src;delete X.props.src;T(Z,X.props);Z.border=Z.frameBorder=0;Z.allowTransparency=true;X.container.appendChild(Z);Z.src=Y;X.props.src=Y;return Z}function V(aa,Z){if(typeof aa=="string"){aa=[aa]}var Y,X=aa.length;while(X--){Y=aa[X];Y=new RegExp(Y.substr(0,1)=="^"?Y:("^"+Y.replace(/(\*)/g,".$1").replace(/\?/g,".")+"$"));if(Y.test(Z)){return true}}return false}function l(Z){var ae=Z.protocol,Y;Z.isHost=Z.isHost||t(S.xdm_p);y=Z.hash||false;if(!Z.props){Z.props={}}if(!Z.isHost){Z.channel=S.xdm_c;Z.secret=S.xdm_s;Z.remote=S.xdm_e;ae=S.xdm_p;if(Z.acl&&!V(Z.acl,Z.remote)){throw new Error("Access denied for "+Z.remote)}}else{Z.remote=B(Z.remote);Z.channel=Z.channel||"default"+n++;Z.secret=Math.random().toString(16).substring(2);if(t(ae)){if(j(p.href)==j(Z.remote)){ae="4"}else{if(C(N,"postMessage")||C(d,"postMessage")){ae="1"}else{if(Z.swf&&C(N,"ActiveXObject")&&c()){ae="6"}else{if(navigator.product==="Gecko"&&"frameElement" in N&&navigator.userAgent.indexOf("WebKit")==-1){ae="5"}else{if(Z.remoteHelper){Z.remoteHelper=B(Z.remoteHelper);ae="2"}else{ae="0"}}}}}}}Z.protocol=ae;switch(ae){case"0":T(Z,{interval:100,delay:2000,useResize:true,useParent:false,usePolling:false},true);if(Z.isHost){if(!Z.local){var ac=p.protocol+"//"+p.host,X=d.body.getElementsByTagName("img"),ad;var aa=X.length;while(aa--){ad=X[aa];if(ad.src.substring(0,ac.length)===ac){Z.local=ad.src;break}}if(!Z.local){Z.local=N}}var ab={xdm_c:Z.channel,xdm_p:0};if(Z.local===N){Z.usePolling=true;Z.useParent=true;Z.local=p.protocol+"//"+p.host+p.pathname+p.search;ab.xdm_e=Z.local;ab.xdm_pa=1}else{ab.xdm_e=B(Z.local)}if(Z.container){Z.useResize=false;ab.xdm_po=1}Z.remote=P(Z.remote,ab)}else{T(Z,{channel:S.xdm_c,remote:S.xdm_e,useParent:!t(S.xdm_pa),usePolling:!t(S.xdm_po),useResize:Z.useParent?false:Z.useResize})}Y=[new o.stack.HashTransport(Z),new o.stack.ReliableBehavior({}),new o.stack.QueueBehavior({encode:true,maxLength:4000-Z.remote.length}),new o.stack.VerifyBehavior({initiate:Z.isHost})];break;case"1":Y=[new o.stack.PostMessageTransport(Z)];break;case"2":Y=[new o.stack.NameTransport(Z),new o.stack.QueueBehavior(),new o.stack.VerifyBehavior({initiate:Z.isHost})];break;case"3":Y=[new o.stack.NixTransport(Z)];break;case"4":Y=[new o.stack.SameOriginTransport(Z)];break;case"5":Y=[new o.stack.FrameElementTransport(Z)];break;case"6":if(!i){c()}Y=[new o.stack.FlashTransport(Z)];break}Y.push(new o.stack.QueueBehavior({lazy:Z.lazy,remove:true}));return Y}function D(aa){var ab,Z={incoming:function(ad,ac){this.up.incoming(ad,ac)},outgoing:function(ac,ad){this.down.outgoing(ac,ad)},callback:function(ac){this.up.callback(ac)},init:function(){this.down.init()},destroy:function(){this.down.destroy()}};for(var Y=0,X=aa.length;Y<X;Y++){ab=aa[Y];T(ab,Z,true);if(Y!==0){ab.down=aa[Y-1]}if(Y!==X-1){ab.up=aa[Y+1]}}return ab}function w(X){X.up.down=X.down;X.down.up=X.up;X.up=X.down=null}T(o,{version:"2.4.15.118",query:S,stack:{},apply:T,getJSONObject:O,whenReady:G,noConflict:e});o.DomHelper={on:v,un:x,requiresJSON:function(X){if(!u(N,"JSON")){d.write('<script type="text/javascript" src="'+X+'"><\/script>')}}};(function(){var X={};o.Fn={set:function(Y,Z){X[Y]=Z},get:function(Z,Y){var aa=X[Z];if(Y){delete X[Z]}return aa}}}());o.Socket=function(Y){var X=D(l(Y).concat([{incoming:function(ab,aa){Y.onMessage(ab,aa)},callback:function(aa){if(Y.onReady){Y.onReady(aa)}}}])),Z=j(Y.remote);this.origin=j(Y.remote);this.destroy=function(){X.destroy()};this.postMessage=function(aa){X.outgoing(aa,Z)};X.init()};o.Rpc=function(Z,Y){if(Y.local){for(var ab in Y.local){if(Y.local.hasOwnProperty(ab)){var aa=Y.local[ab];if(typeof aa==="function"){Y.local[ab]={method:aa}}}}}var X=D(l(Z).concat([new o.stack.RpcBehavior(this,Y),{callback:function(ac){if(Z.onReady){Z.onReady(ac)}}}]));this.origin=j(Z.remote);this.destroy=function(){X.destroy()};X.init()};o.stack.SameOriginTransport=function(Y){var Z,ab,aa,X;return(Z={outgoing:function(ad,ae,ac){aa(ad);if(ac){ac()}},destroy:function(){if(ab){ab.parentNode.removeChild(ab);ab=null}},onDOMReady:function(){X=j(Y.remote);if(Y.isHost){T(Y.props,{src:P(Y.remote,{xdm_e:p.protocol+"//"+p.host+p.pathname,xdm_c:Y.channel,xdm_p:4}),name:U+Y.channel+"_provider"});ab=A(Y);o.Fn.set(Y.channel,function(ac){aa=ac;K(function(){Z.up.callback(true)},0);return function(ad){Z.up.incoming(ad,X)}})}else{aa=m().Fn.get(Y.channel,true)(function(ac){Z.up.incoming(ac,X)});K(function(){Z.up.callback(true)},0)}},init:function(){G(Z.onDOMReady,Z)}})};o.stack.FlashTransport=function(aa){var ac,X,ab,ad,Y,ae;function af(ah,ag){K(function(){ac.up.incoming(ah,ad)},0)}function Z(ah){var ag=aa.swf+"?host="+aa.isHost;var aj="easyXDM_swf_"+Math.floor(Math.random()*10000);o.Fn.set("flash_loaded"+ah.replace(/[\-.]/g,"_"),function(){o.stack.FlashTransport[ah].swf=Y=ae.firstChild;var ak=o.stack.FlashTransport[ah].queue;for(var al=0;al<ak.length;al++){ak[al]()}ak.length=0});if(aa.swfContainer){ae=(typeof aa.swfContainer=="string")?d.getElementById(aa.swfContainer):aa.swfContainer}else{ae=d.createElement("div");T(ae.style,h&&aa.swfNoThrottle?{height:"20px",width:"20px",position:"fixed",right:0,top:0}:{height:"1px",width:"1px",position:"absolute",overflow:"hidden",right:0,top:0});d.body.appendChild(ae)}var ai="callback=flash_loaded"+ah.replace(/[\-.]/g,"_")+"&proto="+b.location.protocol+"&domain="+z(b.location.href)+"&port="+f(b.location.href)+"&ns="+I;ae.innerHTML="<object height='20' width='20' type='application/x-shockwave-flash' id='"+aj+"' data='"+ag+"'><param name='allowScriptAccess' value='always'></param><param name='wmode' value='transparent'><param name='movie' value='"+ag+"'></param><param name='flashvars' value='"+ai+"'></param><embed type='application/x-shockwave-flash' FlashVars='"+ai+"' allowScriptAccess='always' wmode='transparent' src='"+ag+"' height='1' width='1'></embed></object>"}return(ac={outgoing:function(ah,ai,ag){Y.postMessage(aa.channel,ah.toString());if(ag){ag()}},destroy:function(){try{Y.destroyChannel(aa.channel)}catch(ag){}Y=null;if(X){X.parentNode.removeChild(X);X=null}},onDOMReady:function(){ad=aa.remote;o.Fn.set("flash_"+aa.channel+"_init",function(){K(function(){ac.up.callback(true)})});o.Fn.set("flash_"+aa.channel+"_onMessage",af);aa.swf=B(aa.swf);var ah=z(aa.swf);var ag=function(){o.stack.FlashTransport[ah].init=true;Y=o.stack.FlashTransport[ah].swf;Y.createChannel(aa.channel,aa.secret,j(aa.remote),aa.isHost);if(aa.isHost){if(h&&aa.swfNoThrottle){T(aa.props,{position:"fixed",right:0,top:0,height:"20px",width:"20px"})}T(aa.props,{src:P(aa.remote,{xdm_e:j(p.href),xdm_c:aa.channel,xdm_p:6,xdm_s:aa.secret}),name:U+aa.channel+"_provider"});X=A(aa)}};if(o.stack.FlashTransport[ah]&&o.stack.FlashTransport[ah].init){ag()}else{if(!o.stack.FlashTransport[ah]){o.stack.FlashTransport[ah]={queue:[ag]};Z(ah)}else{o.stack.FlashTransport[ah].queue.push(ag)}}},init:function(){G(ac.onDOMReady,ac)}})};o.stack.PostMessageTransport=function(aa){var ac,ad,Y,Z;function X(ae){if(ae.origin){return j(ae.origin)}if(ae.uri){return j(ae.uri)}if(ae.domain){return p.protocol+"//"+ae.domain}throw"Unable to retrieve the origin of the event"}function ab(af){var ae=X(af);if(ae==Z&&af.data.substring(0,aa.channel.length+1)==aa.channel+" "){ac.up.incoming(af.data.substring(aa.channel.length+1),ae)}}return(ac={outgoing:function(af,ag,ae){Y.postMessage(aa.channel+" "+af,ag||Z);if(ae){ae()}},destroy:function(){x(N,"message",ab);if(ad){Y=null;ad.parentNode.removeChild(ad);ad=null}},onDOMReady:function(){Z=j(aa.remote);if(aa.isHost){var ae=function(af){if(af.data==aa.channel+"-ready"){Y=("postMessage" in ad.contentWindow)?ad.contentWindow:ad.contentWindow.document;x(N,"message",ae);v(N,"message",ab);K(function(){ac.up.callback(true)},0)}};v(N,"message",ae);T(aa.props,{src:P(aa.remote,{xdm_e:j(p.href),xdm_c:aa.channel,xdm_p:1}),name:U+aa.channel+"_provider"});ad=A(aa)}else{v(N,"message",ab);Y=("postMessage" in N.parent)?N.parent:N.parent.document;Y.postMessage(aa.channel+"-ready",Z);K(function(){ac.up.callback(true)},0)}},init:function(){G(ac.onDOMReady,ac)}})};o.stack.FrameElementTransport=function(Y){var Z,ab,aa,X;return(Z={outgoing:function(ad,ae,ac){aa.call(this,ad);if(ac){ac()}},destroy:function(){if(ab){ab.parentNode.removeChild(ab);ab=null}},onDOMReady:function(){X=j(Y.remote);if(Y.isHost){T(Y.props,{src:P(Y.remote,{xdm_e:j(p.href),xdm_c:Y.channel,xdm_p:5}),name:U+Y.channel+"_provider"});ab=A(Y);ab.fn=function(ac){delete ab.fn;aa=ac;K(function(){Z.up.callback(true)},0);return function(ad){Z.up.incoming(ad,X)}}}else{if(d.referrer&&j(d.referrer)!=S.xdm_e){N.top.location=S.xdm_e}aa=N.frameElement.fn(function(ac){Z.up.incoming(ac,X)});Z.up.callback(true)}},init:function(){G(Z.onDOMReady,Z)}})};o.stack.NameTransport=function(ab){var ac;var ae,ai,aa,ag,ah,Y,X;function af(al){var ak=ab.remoteHelper+(ae?"#_3":"#_2")+ab.channel;ai.contentWindow.sendMessage(al,ak)}function ad(){if(ae){if(++ag===2||!ae){ac.up.callback(true)}}else{af("ready");ac.up.callback(true)}}function aj(ak){ac.up.incoming(ak,Y)}function Z(){if(ah){K(function(){ah(true)},0)}}return(ac={outgoing:function(al,am,ak){ah=ak;af(al)},destroy:function(){ai.parentNode.removeChild(ai);ai=null;if(ae){aa.parentNode.removeChild(aa);aa=null}},onDOMReady:function(){ae=ab.isHost;ag=0;Y=j(ab.remote);ab.local=B(ab.local);if(ae){o.Fn.set(ab.channel,function(al){if(ae&&al==="ready"){o.Fn.set(ab.channel,aj);ad()}});X=P(ab.remote,{xdm_e:ab.local,xdm_c:ab.channel,xdm_p:2});T(ab.props,{src:X+"#"+ab.channel,name:U+ab.channel+"_provider"});aa=A(ab)}else{ab.remoteHelper=ab.remote;o.Fn.set(ab.channel,aj)}ai=A({props:{src:ab.local+"#_4"+ab.channel},onLoad:function ak(){var al=ai||this;x(al,"load",ak);o.Fn.set(ab.channel+"_load",Z);(function am(){if(typeof al.contentWindow.sendMessage=="function"){ad()}else{K(am,50)}}())}})},init:function(){G(ac.onDOMReady,ac)}})};o.stack.HashTransport=function(Z){var ac;var ah=this,af,aa,X,ad,am,ab,al;var ag,Y;function ak(ao){if(!al){return}var an=Z.remote+"#"+(am++)+"_"+ao;((af||!ag)?al.contentWindow:al).location=an}function ae(an){ad=an;ac.up.incoming(ad.substring(ad.indexOf("_")+1),Y)}function aj(){if(!ab){return}var an=ab.location.href,ap="",ao=an.indexOf("#");if(ao!=-1){ap=an.substring(ao)}if(ap&&ap!=ad){ae(ap)}}function ai(){aa=setInterval(aj,X)}return(ac={outgoing:function(an,ao){ak(an)},destroy:function(){N.clearInterval(aa);if(af||!ag){al.parentNode.removeChild(al)}al=null},onDOMReady:function(){af=Z.isHost;X=Z.interval;ad="#"+Z.channel;am=0;ag=Z.useParent;Y=j(Z.remote);if(af){Z.props={src:Z.remote,name:U+Z.channel+"_provider"};if(ag){Z.onLoad=function(){ab=N;ai();ac.up.callback(true)}}else{var ap=0,an=Z.delay/50;(function ao(){if(++ap>an){throw new Error("Unable to reference listenerwindow")}try{ab=al.contentWindow.frames[U+Z.channel+"_consumer"]}catch(aq){}if(ab){ai();ac.up.callback(true)}else{K(ao,50)}}())}al=A(Z)}else{ab=N;ai();if(ag){al=parent;ac.up.callback(true)}else{T(Z,{props:{src:Z.remote+"#"+Z.channel+new Date(),name:U+Z.channel+"_consumer"},onLoad:function(){ac.up.callback(true)}});al=A(Z)}}},init:function(){G(ac.onDOMReady,ac)}})};o.stack.ReliableBehavior=function(Y){var aa,ac;var ab=0,X=0,Z="";return(aa={incoming:function(af,ad){var ae=af.indexOf("_"),ag=af.substring(0,ae).split(",");af=af.substring(ae+1);if(ag[0]==ab){Z="";if(ac){ac(true)}}if(af.length>0){aa.down.outgoing(ag[1]+","+ab+"_"+Z,ad);if(X!=ag[1]){X=ag[1];aa.up.incoming(af,ad)}}},outgoing:function(af,ad,ae){Z=af;ac=ae;aa.down.outgoing(X+","+(++ab)+"_"+af,ad)}})};o.stack.QueueBehavior=function(Z){var ac,ad=[],ag=true,aa="",af,X=0,Y=false,ab=false;function ae(){if(Z.remove&&ad.length===0){w(ac);return}if(ag||ad.length===0||af){return}ag=true;var ah=ad.shift();ac.down.outgoing(ah.data,ah.origin,function(ai){ag=false;if(ah.callback){K(function(){ah.callback(ai)},0)}ae()})}return(ac={init:function(){if(t(Z)){Z={}}if(Z.maxLength){X=Z.maxLength;ab=true}if(Z.lazy){Y=true}else{ac.down.init()}},callback:function(ai){ag=false;var ah=ac.up;ae();ah.callback(ai)},incoming:function(ak,ai){if(ab){var aj=ak.indexOf("_"),ah=parseInt(ak.substring(0,aj),10);aa+=ak.substring(aj+1);if(ah===0){if(Z.encode){aa=k(aa)}ac.up.incoming(aa,ai);aa=""}}else{ac.up.incoming(ak,ai)}},outgoing:function(al,ai,ak){if(Z.encode){al=H(al)}var ah=[],aj;if(ab){while(al.length!==0){aj=al.substring(0,X);al=al.substring(aj.length);ah.push(aj)}while((aj=ah.shift())){ad.push({data:ah.length+"_"+aj,origin:ai,callback:ah.length===0?ak:null})}}else{ad.push({data:al,origin:ai,callback:ak})}if(Y){ac.down.init()}else{ae()}},destroy:function(){af=true;ac.down.destroy()}})};o.stack.VerifyBehavior=function(ab){var ac,aa,Y,Z=false;function X(){aa=Math.random().toString(16).substring(2);ac.down.outgoing(aa)}return(ac={incoming:function(af,ad){var ae=af.indexOf("_");if(ae===-1){if(af===aa){ac.up.callback(true)}else{if(!Y){Y=af;if(!ab.initiate){X()}ac.down.outgoing(af)}}}else{if(af.substring(0,ae)===Y){ac.up.incoming(af.substring(ae+1),ad)}}},outgoing:function(af,ad,ae){ac.down.outgoing(aa+"_"+af,ad,ae)},callback:function(ad){if(ab.initiate){X()}}})};o.stack.RpcBehavior=function(ad,Y){var aa,af=Y.serializer||O();var ae=0,ac={};function X(ag){ag.jsonrpc="2.0";aa.down.outgoing(af.stringify(ag))}function ab(ag,ai){var ah=Array.prototype.slice;return function(){var aj=arguments.length,al,ak={method:ai};if(aj>0&&typeof arguments[aj-1]==="function"){if(aj>1&&typeof arguments[aj-2]==="function"){al={success:arguments[aj-2],error:arguments[aj-1]};ak.params=ah.call(arguments,0,aj-2)}else{al={success:arguments[aj-1]};ak.params=ah.call(arguments,0,aj-1)}ac[""+(++ae)]=al;ak.id=ae}else{ak.params=ah.call(arguments,0)}if(ag.namedParams&&ak.params.length===1){ak.params=ak.params[0]}X(ak)}}function Z(an,am,ai,al){if(!ai){if(am){X({id:am,error:{code:-32601,message:"Procedure not found."}})}return}var ak,ah;if(am){ak=function(ao){ak=q;X({id:am,result:ao})};ah=function(ao,ap){ah=q;var aq={id:am,error:{code:-32099,message:ao}};if(ap){aq.error.data=ap}X(aq)}}else{ak=ah=q}if(!r(al)){al=[al]}try{var ag=ai.method.apply(ai.scope,al.concat([ak,ah]));if(!t(ag)){ak(ag)}}catch(aj){ah(aj.message)}}return(aa={incoming:function(ah,ag){var ai=af.parse(ah);if(ai.method){if(Y.handle){Y.handle(ai,X)}else{Z(ai.method,ai.id,Y.local[ai.method],ai.params)}}else{var aj=ac[ai.id];if(ai.error){if(aj.error){aj.error(ai.error)}}else{if(aj.success){aj.success(ai.result)}}delete ac[ai.id]}},init:function(){if(Y.remote){for(var ag in Y.remote){if(Y.remote.hasOwnProperty(ag)){ad[ag]=ab(Y.remote[ag],ag)}}}aa.down.init()},destroy:function(){for(var ag in Y.remote){if(Y.remote.hasOwnProperty(ag)&&ad.hasOwnProperty(ag)){delete ad[ag]}}aa.down.destroy()}})};b.easyXDM=o})(window,document,location,window.setTimeout,decodeURIComponent,encodeURIComponent);
 
 
-// kb-plugin
-// jquery.googlefonts.js
-(function(a,b){
-
-	// EASINGS
-	jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(a,b,c,d,e){return jQuery.easing[jQuery.easing.def](a,b,c,d,e)},easeInQuad:function(a,b,c,d,e){return d*(b/=e)*b+c},easeOutQuad:function(a,b,c,d,e){return-d*(b/=e)*(b-2)+c},easeInOutQuad:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b+c;return-d/2*(--b*(b-2)-1)+c},easeInCubic:function(a,b,c,d,e){return d*(b/=e)*b*b+c},easeOutCubic:function(a,b,c,d,e){return d*((b=b/e-1)*b*b+1)+c},easeInOutCubic:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b*b+c;return d/2*((b-=2)*b*b+2)+c},easeInQuart:function(a,b,c,d,e){return d*(b/=e)*b*b*b+c},easeOutQuart:function(a,b,c,d,e){return-d*((b=b/e-1)*b*b*b-1)+c},easeInOutQuart:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b*b*b+c;return-d/2*((b-=2)*b*b*b-2)+c},easeInQuint:function(a,b,c,d,e){return d*(b/=e)*b*b*b*b+c},easeOutQuint:function(a,b,c,d,e){return d*((b=b/e-1)*b*b*b*b+1)+c},easeInOutQuint:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b*b*b*b+c;return d/2*((b-=2)*b*b*b*b+2)+c},easeInSine:function(a,b,c,d,e){return-d*Math.cos(b/e*(Math.PI/2))+d+c},easeOutSine:function(a,b,c,d,e){return d*Math.sin(b/e*(Math.PI/2))+c},easeInOutSine:function(a,b,c,d,e){return-d/2*(Math.cos(Math.PI*b/e)-1)+c},easeInExpo:function(a,b,c,d,e){return b==0?c:d*Math.pow(2,10*(b/e-1))+c},easeOutExpo:function(a,b,c,d,e){return b==e?c+d:d*(-Math.pow(2,-10*b/e)+1)+c},easeInOutExpo:function(a,b,c,d,e){if(b==0)return c;if(b==e)return c+d;if((b/=e/2)<1)return d/2*Math.pow(2,10*(b-1))+c;return d/2*(-Math.pow(2,-10*--b)+2)+c},easeInCirc:function(a,b,c,d,e){return-d*(Math.sqrt(1-(b/=e)*b)-1)+c},easeOutCirc:function(a,b,c,d,e){return d*Math.sqrt(1-(b=b/e-1)*b)+c},easeInOutCirc:function(a,b,c,d,e){if((b/=e/2)<1)return-d/2*(Math.sqrt(1-b*b)-1)+c;return d/2*(Math.sqrt(1-(b-=2)*b)+1)+c},easeInElastic:function(a,b,c,d,e){var f=1.70158;var g=0;var h=d;if(b==0)return c;if((b/=e)==1)return c+d;if(!g)g=e*.3;if(h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return-(h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g))+c},easeOutElastic:function(a,b,c,d,e){var f=1.70158;var g=0;var h=d;if(b==0)return c;if((b/=e)==1)return c+d;if(!g)g=e*.3;if(h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return h*Math.pow(2,-10*b)*Math.sin((b*e-f)*2*Math.PI/g)+d+c},easeInOutElastic:function(a,b,c,d,e){var f=1.70158;var g=0;var h=d;if(b==0)return c;if((b/=e/2)==2)return c+d;if(!g)g=e*.3*1.5;if(h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);if(b<1)return-.5*h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)+c;return h*Math.pow(2,-10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)*.5+d+c},easeInBack:function(a,b,c,d,e,f){if(f==undefined)f=1.70158;return d*(b/=e)*b*((f+1)*b-f)+c},easeOutBack:function(a,b,c,d,e,f){if(f==undefined)f=1.70158;return d*((b=b/e-1)*b*((f+1)*b+f)+1)+c},easeInOutBack:function(a,b,c,d,e,f){if(f==undefined)f=1.70158;if((b/=e/2)<1)return d/2*b*b*(((f*=1.525)+1)*b-f)+c;return d/2*((b-=2)*b*(((f*=1.525)+1)*b+f)+2)+c},easeInBounce:function(a,b,c,d,e){return d-jQuery.easing.easeOutBounce(a,e-b,0,d,e)+c},easeOutBounce:function(a,b,c,d,e){if((b/=e)<1/2.75){return d*7.5625*b*b+c}else if(b<2/2.75){return d*(7.5625*(b-=1.5/2.75)*b+.75)+c}else if(b<2.5/2.75){return d*(7.5625*(b-=2.25/2.75)*b+.9375)+c}else{return d*(7.5625*(b-=2.625/2.75)*b+.984375)+c}},easeInOutBounce:function(a,b,c,d,e){if(b<e/2)return jQuery.easing.easeInBounce(a,b*2,0,d,e)*.5+c;return jQuery.easing.easeOutBounce(a,b*2-e,0,d,e)*.5+d*.5+c}})		
-	
-	
-	// WAIT FOR IMAGES
-	/*
-	* waitForImages 1.4
-	* -----------------
-	* Provides a callback when all images have loaded in your given selector.
-	* http://www.alexanderdickson.com/
-	*
-	*
-	* Copyright (c) 2011 Alex Dickson
-	* Licensed under the MIT licenses.
-	* See website for more info.
-	*
-	*/
-	a.waitForImages={hasImageProperties:["backgroundImage","listStyleImage","borderImage","borderCornerImage"]};a.expr[":"].uncached=function(b){var c=document.createElement("img");c.src=b.src;return a(b).is('img[src!=""]')&&!c.complete};a.fn.waitForImages=function(b,c,d){if(a.isPlainObject(arguments[0])){c=b.each;d=b.waitForAll;b=b.finished}b=b||a.noop;c=c||a.noop;d=!!d;if(!a.isFunction(b)||!a.isFunction(c)){throw new TypeError("An invalid callback was supplied.")}return this.each(function(){var e=a(this),f=[];if(d){var g=a.waitForImages.hasImageProperties||[],h=/url\((['"]?)(.*?)\1\)/g;e.find("*").each(function(){var b=a(this);if(b.is("img:uncached")){f.push({src:b.attr("src"),element:b[0]})}a.each(g,function(a,c){var d=b.css(c);if(!d){return true}var e;while(e=h.exec(d)){f.push({src:e[2],element:b[0]})}})})}else{e.find("img:uncached").each(function(){f.push({src:this.src,element:this})})}var i=f.length,j=0;if(i==0){b.call(e[0])}a.each(f,function(d,f){var g=new Image;a(g).bind("load error",function(a){j++;c.call(f.element,j,i,a.type=="load");if(j==i){b.call(e[0]);return false}});g.src=f.src})})}
-	
-	
-	// CSS ANIMATE
-	/**************************************\
-	 *  cssAnimate 1.1.5 for jQuery       *
-	 *  (c) 2012 - Clemens Damke          *
-	 *  Licensed under MIT License        *
-	 *  Works with jQuery >=1.4.3         *
-	/**************************************/
-	var b = ["Webkit", "Moz", "O", "Ms", "Khtml", ""];
-	var c = ["borderRadius", "boxShadow", "userSelect", "transformOrigin", "transformStyle", "transition", "transitionDuration", "transitionProperty", "transitionTimingFunction", "backgroundOrigin", "backgroundSize", "animation", "filter", "zoom", "columns", "perspective", "perspectiveOrigin", "appearance"];
-	a.fn.cssSetQueue = function (b, c) {
-		v = this;
-		var d = v.data("cssQueue") ? v.data("cssQueue") : [];
-		var e = v.data("cssCall") ? v.data("cssCall") : [];
-		var f = 0;
-		var g = {};
-		a.each(c, function (a, b) {
-			g[a] = b
-		});
-		while (1) {
-			if (!e[f]) {
-				e[f] = g.complete;
-				break
-			}
-			f++
-		}
-		g.complete = f;
-		d.push([b, g]);
-		v.data({
-			cssQueue : d,
-			cssRunning : true,
-			cssCall : e
-		})
-	};
-	a.fn.cssRunQueue = function () {
-		v = this;
-		var a = v.data("cssQueue") ? v.data("cssQueue") : [];
-		if (a[0])
-			v.cssEngine(a[0][0], a[0][1]);
-		else
-			v.data("cssRunning", false);
-		a.shift();
-		v.data("cssQueue", a)
-	};
-	a.cssMerge = function (b, c, d) {
-		a.each(c, function (c, e) {
-			a.each(d, function (a, d) {
-				b[d + c] = e
-			})
-		});
-		return b
-	};
-	a.fn.cssAnimationData = function (a, b) {
-		var c = this;
-		var d = c.data("cssAnimations");
-		if (!d)
-			d = {};
-		if (!d[a])
-			d[a] = [];
-		d[a].push(b);
-		c.data("cssAnimations", d);
-		return d[a]
-	};
-	a.fn.cssAnimationRemove = function () {
-		var b = this;
-		if (b.data("cssAnimations") != undefined) {
-			var c = b.data("cssAnimations");
-			var d = b.data("identity");
-			a.each(c, function (a, b) {
-				c[a] = b.splice(d + 1, 1)
-			});
-			b.data("cssAnimations", c)
-		}
-	};
-	a.css3D = function (c) {
-		a("body").data("cssPerspective", isFinite(c) ? c : c ? 1e3 : 0).cssOriginal(a.cssMerge({}, {
-				TransformStyle : c ? "preserve-3d" : "flat"
-			}, b))
-	};
-	a.cssPropertySupporter = function (d) {
-		a.each(c, function (c, e) {
-			if (d[e])
-				a.each(b, function (a, b) {
-					var c = e.substr(0, 1);
-					d[b + c[b ? "toUpperCase" : "toLowerCase"]() + e.substr(1)] = d[e]
-				})
-		});
-		return d
-	};
-	a.cssAnimateSupport = function () {
-		var c = false;
-		a.each(b, function (a, b) {
-			c = document.body.style[b + "AnimationName"] !== undefined ? true : c
-		});
-		return c
-	};
-	a.fn.cssEngine = function (c, d) {
-		function e(a) {
-			return String(a).replace(/([A-Z])/g, "-$1").toLowerCase()
-		}
-		var f = this;
-		var f = this;
-		if (typeof d.complete == "number")
-			f.data("cssCallIndex", d.complete);
-		var g = {
-			linear : "linear",
-			swing : "ease",
-			easeIn : "ease-in",
-			easeOut : "ease-out",
-			easeInOut : "ease-in-out"
-		};
-		var h = {};
-		var i = a("body").data("cssPerspective");
-		if (c.transform)
-			a.each(b, function (a, b) {
-				var d = b + (b ? "T" : "t") + "ransform";
-				var g = f.cssOriginal(e(d));
-				var j = c.transform;
-				if (!g || g == "none")
-					h[d] = "scale(1)";
-				c[d] = (i && !/perspective/gi.test(j) ? "perspective(" + i + ") " : "") + j
-			});
-		c = a.cssPropertySupporter(c);
-		var j = [];
-		a.each(c, function (a, b) {
-			j.push(e(a))
-		});
-		var k = false;
-		var l = [];
-		var m = [];
-		if (j != undefined) {
-			for (var n = 0; n < j.length; n++) {
-				l.push(String(d.duration / 1e3) + "s");
-				var o = g[d.easing];
-				m.push(o ? o : d.easing)
-			}
-			l = f.cssAnimationData("dur", l.join(", ")).join(", ");
-			m = f.cssAnimationData("eas", m.join(", ")).join(", ");
-			var p = f.cssAnimationData("prop", j.join(", "));
-			f.data("identity", p.length - 1);
-			p = p.join(", ");
-			var q = {
-				TransitionDuration : l,
-				TransitionProperty : p,
-				TransitionTimingFunction : m
-			};
-			var r = {};
-			r = a.cssMerge(r, q, b);
-			var s = c;
-			a.extend(r, c);
-			if (r.display == "callbackHide")
-				k = true;
-			else if (r.display)
-				h["display"] = r.display;
-			f.cssOriginal(h)
-		}
-		setTimeout(function () {
-			f.cssOriginal(r);
-			var b = f.data("runningCSS");
-			b = !b ? s : a.extend(b, s);
-			f.data("runningCSS", b);
-			setTimeout(function () {
-				f.data("cssCallIndex", "a");
-				if (k)
-					f.cssOriginal("display", "none");
-				f.cssAnimationRemove();
-				if (d.queue)
-					f.cssRunQueue();
-				if (typeof d.complete == "number") {
-					f.data("cssCall")[d.complete].call(f);
-					f.data("cssCall")[d.complete] = 0
-				} else
-					d.complete.call(f)
-			}, d.duration)
-		}, 0)
-	};
-	a.str2Speed = function (a) {
-		return isNaN(a) ? a == "slow" ? 1e3 : a == "fast" ? 200 : 600 : a
-	};
-	a.fn.cssAnimate = function (b, c, d, e) {
-		var f = this;
-		var g = {
-			duration : 0,
-			easing : "swing",
-			complete : function () {},
-			queue : true
-		};
-		var h = {};
-		h = typeof c == "object" ? c : {
-			duration : c
-		};
-		h[d ? typeof d == "function" ? "complete" : "easing" : 0] = d;
-		h[e ? "complete" : 0] = e;
-		h.duration = a.str2Speed(h.duration);
-		a.extend(g, h);
-		if (a.cssAnimateSupport()) {
-			f.each(function (c, d) {
-				d = a(d);
-				if (g.queue) {
-					var e = !d.data("cssRunning");
-					d.cssSetQueue(b, g);
-					if (e)
-						d.cssRunQueue()
-				} else
-					d.cssEngine(b, g)
-			})
-		} else
-			f.animate(b, g);
-		return f
-	};
-	a.cssPresetOptGen = function (a, b) {
-		var c = {};
-		c[a ? typeof a == "function" ? "complete" : "easing" : 0] = a;
-		c[b ? "complete" : 0] = b;
-		return c
-	};
-	a.fn.cssFadeTo = function (b, c, d, e) {
-		var f = this;
-		opt = a.cssPresetOptGen(d, e);
-		var g = {
-			opacity : c
-		};
-		opt.duration = b;
-		if (a.cssAnimateSupport()) {
-			f.each(function (b, d) {
-				d = a(d);
-				if (d.data("displayOriginal") != d.cssOriginal("display") && d.cssOriginal("display") != "none")
-					d.data("displayOriginal", d.cssOriginal("display") ? d.cssOriginal("display") : "block");
-				else
-					d.data("displayOriginal", "block");
-				g.display = c ? d.data("displayOriginal") : "callbackHide";
-				d.cssAnimate(g, opt)
-			})
-		} else
-			f.fadeTo(b, opt);
-		return f
-	};
-	a.fn.cssFadeOut = function (b, c, d) {
-		if (a.cssAnimateSupport()) {
-			if (!this.cssOriginal("opacity"))
-				this.cssOriginal("opacity", 1);
-			this.cssFadeTo(b, 0, c, d)
-		} else
-			this.fadeOut(b, c, d);
-		return this
-	};
-	a.fn.cssFadeIn = function (b, c, d) {
-		if (a.cssAnimateSupport()) {
-			if (this.cssOriginal("opacity"))
-				this.cssOriginal("opacity", 0);
-			this.cssFadeTo(b, 1, c, d)
-		} else
-			this.fadeIn(b, c, d);
-		return this
-	};
-	a.cssPx2Int = function (a) {
-		return a.split("p")[0] * 1
-	};
-	a.fn.cssStop = function () {
-		var c = this,
-		d = 0;
-		c.data("cssAnimations", false).each(function (e, f) {
-			f = a(f);
-			var g = {
-				TransitionDuration : "0s"
-			};
-			var h = f.data("runningCSS");
-			var i = {};
-			if (h)
-				a.each(h, function (b, c) {
-					c = isFinite(a.cssPx2Int(c)) ? a.cssPx2Int(c) : c;
-					var d = [0, 1];
-					var e = {
-						color : ["#000", "#fff"],
-						background : ["#000", "#fff"],
-						"float" : ["none", "left"],
-						clear : ["none", "left"],
-						border : ["none", "0px solid #fff"],
-						position : ["absolute", "relative"],
-						family : ["Arial", "Helvetica"],
-						display : ["none", "block"],
-						visibility : ["hidden", "visible"],
-						transform : ["translate(0,0)", "scale(1)"]
-					};
-					a.each(e, function (a, c) {
-						if ((new RegExp(a, "gi")).test(b))
-							d = c
-					});
-					i[b] = d[0] != c ? d[0] : d[1]
-				});
-			else
-				h = {};
-			g = a.cssMerge(i, g, b);
-			f.cssOriginal(g);
-			setTimeout(function () {
-				var b = a(c[d]);
-				b.cssOriginal(h).data({
-					runningCSS : {},
-					cssAnimations : {},
-					cssQueue : [],
-					cssRunning : false
-				});
-				if (typeof b.data("cssCallIndex") == "number")
-					b.data("cssCall")[b.data("cssCallIndex")].call(b);
-				b.data("cssCall", []);
-				d++
-			}, 0)
-		});
-		return c
-	};
-	a.fn.cssDelay = function (a) {
-		return this.cssAnimate({}, a)
-	};
-	if (a.fn.cssOriginal != undefined)
-		a.fn.css = a.fn.cssOriginal;
-	a.fn.cssOriginal = a.fn.css;
-	
-	
-	// SWIPE FUNCTION
-	/**
-	 * jQuery Plugin to obtain touch gestures from iPhone, iPod Touch and iPad, should also work with Android mobile phones (not tested yet!)
-	 * Common usage: wipe images (left and right to show the previous or next image)
-	 * 
-	 * @author Andreas Waltl, netCU Internetagentur (http://www.netcu.de)
-	 * @version 1.1.1 (9th December 2010) - fix bug (older IE's had problems)
-	 * @version 1.1 (1st September 2010) - support wipe up and wipe down
-	 * @version 1.0 (15th July 2010)
-	 */
-	a.fn.swipe=function(b){if(!this)return false;var c={fingers:1,threshold:75,swipe:null,swipeLeft:null,swipeRight:null,swipeUp:null,swipeDown:null,swipeStatus:null,click:null,triggerOnTouchEnd:true,allowPageScroll:"auto"};var d="left";var e="right";var f="up";var g="down";var h="none";var i="horizontal";var j="vertical";var k="auto";var l="start";var m="move";var n="end";var o="cancel";var p="ontouchstart"in window,q=p?"touchstart":"mousedown",r=p?"touchmove":"mousemove",s=p?"touchend":"mouseup",t="touchcancel";var u="start";if(b.allowPageScroll==undefined&&(b.swipe!=undefined||b.swipeStatus!=undefined))b.allowPageScroll=h;if(b)a.extend(c,b);return this.each(function(){function J(){var a=I();if(a<=45&&a>=0)return d;else if(a<=360&&a>=315)return d;else if(a>=135&&a<=225)return e;else if(a>45&&a<135)return g;else return f}function I(){var a=y.x-z.x;var b=z.y-y.y;var c=Math.atan2(b,a);var d=Math.round(c*180/Math.PI);if(d<0)d=360-Math.abs(d);return d}function H(){return Math.round(Math.sqrt(Math.pow(z.x-y.x,2)+Math.pow(z.y-y.y,2)))}function G(a,b){if(c.allowPageScroll==h){a.preventDefault()}else{var l=c.allowPageScroll==k;switch(b){case d:if(c.swipeLeft&&l||!l&&c.allowPageScroll!=i)a.preventDefault();break;case e:if(c.swipeRight&&l||!l&&c.allowPageScroll!=i)a.preventDefault();break;case f:if(c.swipeUp&&l||!l&&c.allowPageScroll!=j)a.preventDefault();break;case g:if(c.swipeDown&&l||!l&&c.allowPageScroll!=j)a.preventDefault();break}}}function F(a,b){if(c.swipeStatus)c.swipeStatus.call(v,a,b,direction||null,distance||0);if(b==o){if(c.click&&(x==1||!p)&&(isNaN(distance)||distance==0))c.click.call(v,a,a.target)}if(b==n){if(c.swipe){c.swipe.call(v,a,direction,distance)}switch(direction){case d:if(c.swipeLeft)c.swipeLeft.call(v,a,direction,distance);break;case e:if(c.swipeRight)c.swipeRight.call(v,a,direction,distance);break;case f:if(c.swipeUp)c.swipeUp.call(v,a,direction,distance);break;case g:if(c.swipeDown)c.swipeDown.call(v,a,direction,distance);break}}}function E(a){x=0;y.x=0;y.y=0;z.x=0;z.y=0;A.x=0;A.y=0}function D(a){a.preventDefault();distance=H();direction=J();if(c.triggerOnTouchEnd){u=n;if((x==c.fingers||!p)&&z.x!=0){if(distance>=c.threshold){F(a,u);E(a)}else{u=o;F(a,u);E(a)}}else{u=o;F(a,u);E(a)}}else if(u==m){u=o;F(a,u);E(a)}b.removeEventListener(r,C,false);b.removeEventListener(s,D,false)}function C(a){if(u==n||u==o)return;var b=p?a.touches[0]:a;z.x=b.pageX;z.y=b.pageY;direction=J();if(p){x=a.touches.length}u=m;G(a,direction);if(x==c.fingers||!p){distance=H();if(c.swipeStatus)F(a,u,direction,distance);if(!c.triggerOnTouchEnd){if(distance>=c.threshold){u=n;F(a,u);E(a)}}}else{u=o;F(a,u);E(a)}}function B(a){var d=p?a.touches[0]:a;u=l;if(p){x=a.touches.length}distance=0;direction=null;if(x==c.fingers||!p){y.x=z.x=d.pageX;y.y=z.y=d.pageY;if(c.swipeStatus)F(a,u)}else{E(a)}b.addEventListener(r,C,false);b.addEventListener(s,D,false)}var b=this;var v=a(this);var w=null;var x=0;var y={x:0,y:0};var z={x:0,y:0};var A={x:0,y:0};try{this.addEventListener(q,B,false);this.addEventListener(t,E)}catch(K){}})}	
-
-})(jQuery)
-
-
 
 /**************************************************************************
  * jquery.themepunch.kenburn.js - jQuery Plugin for kenburn Slider
@@ -1816,6 +1471,7 @@ Additional Feature Update from 8th of March 2012 :
             var defaults = {	
 			
                 responsive:"on",
+                blurwrap: "on",
                 noresponsiveWidth:600,
                 noresponsiveHeight:300,
                 fixHeight:false,
@@ -1836,8 +1492,8 @@ Additional Feature Update from 8th of March 2012 :
                 googleFonts:'PT+Sans+Narrow:400,700',
                 googleFontJS:'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js',
                 debug:"no",
-                rescaleBGColor:"#333"
-			
+                rescaleBGColor:"#333",
+                buttonsArrows: 'on'
             };
 		
             options = $.extend({}, $.fn.kenburn.defaults, options);
@@ -1853,15 +1509,12 @@ Additional Feature Update from 8th of March 2012 :
                     jQuery('body').data('googlefonts','loaded');
                 }
             };
-				
 					
             return this.each(function() {
 							
-				
                 var opt=options;
                 if (opt.vCorrection==undefined) opt.vCorrection=10;
                 if (opt.hCorrection==undefined) opt.hCorrection=10;
-				
 				
                 if (opt.debug=="yes" || opt.debug=="on")
                     $('body').append('<div class="testinfo" style="z-index:99999;position:fixed;background:#000;color:#fff;width:700px;height:200px;top:10px;left:10px;"></div>');
@@ -1879,25 +1532,22 @@ Additional Feature Update from 8th of March 2012 :
                     jQuery('body').data('googlefonts','loaded');
                 }
 				
-				
                 opt.savedTimer=opt.timer;
                 var top_container=$(this);
                 if (top_container.attr('id') == undefined) top_container.attr('id',Math.round(Math.random()*100000));
 				
+                top_container.find('ul').show();
+
                 var minW = top_container.css('minWidth');
                 var maxW = top_container.css('maxWidth');
                 opt.whproportion =  parseInt(top_container.css('height'),0) / parseInt(top_container.css('maxWidth'),0);
 				
-				
                 opt.width=top_container.width()-opt.hCorrection;	
                 opt.height = top_container.height()-opt.vCorrection;				
-				
-				
 				
                 if (!opt.fixHeight || !opt.fixHeight=="true") {
                     opt.height=opt.width * opt.whproportion;
                 }
-				
 				
                 opt.originalwidth = parseInt(top_container.css('maxWidth'),0);
                 opt.originalheight = parseInt(top_container.css('height'),0);
@@ -1910,7 +1560,6 @@ Additional Feature Update from 8th of March 2012 :
                     opt._proph = 1;
                 }
 									
-				
                 top_container.height(opt.height+opt.vCorrection);
 				
                 //opt.height=top_container.height()-10;
@@ -1940,15 +1589,9 @@ Additional Feature Update from 8th of March 2012 :
                 startToPrepare(top_container,opt);
                 opt.videoWasOn=-1;
 				
-				
-				
-				
                 // Create Responsive Listener
-				
                 if (responsive)
                     $(window).resize(function() {
-					
-					
 					
                         if (top_container.find('.videoon').length>0 && opt.videoWasOn==-1) {
                             opt.videoWasOn=1 
@@ -1956,8 +1599,6 @@ Additional Feature Update from 8th of March 2012 :
                             if (opt.videoWasOn==-1) opt.videoWasOn=0;
                         }
 						
-					
-				
                         clearInterval(opt.aktKenInterval);
                         clearInterval(opt.timerinterval);
                         clearInterval(opt.waitForWF);
@@ -2001,41 +1642,33 @@ Additional Feature Update from 8th of March 2012 :
     ///////////////////////////////
 		
     function startToPrepare(top_container,opt) {
-								
-								
-								
+					
         // DEBUGGING INFORMATIONS HERE
         if (opt.debug==="on")
             $('body').append('<div class="khinfo" style="background:#fff;color:#000;width:300px;height:250px;position:fixed;left:10px;top:10px;"></div>');
         //top_container.css({'width':opt.width+"px",'height':opt.height+"px"});
 								
         top_container.append('<div class="kenburn-preloader"></div>');
-        $('body').find('.khinfo').html('Start Slider');
+        
 								
         prepareSlidesContainer(top_container,opt);
-        $('body').find('.khinfo').html('Prepared Container');
+        
 								
         prepareSlides(top_container,opt);
-        $('body').find('.khinfo').html('Prepared Preloaded Slides');
-								
-								
-								
-								
-												
-        $('body').find('.khinfo').html('Waiting for Images...');
+        
+																
+        
         opt.loadedImages=0;
         top_container.waitForImages(
             function() {   
-                $('body').find('.khinfo').html('Preloaded Images has been loaded');
+                
                 opt.waitForWF = setInterval(function() {
-														
-															
-																
-																
-                    $('body').find('.khinfo').html('Waiting for Google Fonts');
+											
+                    
 															
                     // IF THE GOOGLE FONT IS LOADED WE CAN START TO ROTATE THE IMAGES
-                    if ($('body').data('googlefonts') != undefined && $('body').data('googlefonts')=="loaded") {
+                    if (!opt.googleFonts.length || ($('body').data('googlefonts') != undefined && $('body').data('googlefonts')=="loaded")) {
+                    //if ($('body').data('googlefonts') != undefined && $('body').data('googlefonts')=="loaded") {
 															
                         opt.lastThumb=opt.currentThumb;
                         // CREATE THE THUMBNAILS HERE
@@ -2046,13 +1679,13 @@ Additional Feature Update from 8th of March 2012 :
                             createBullets(top_container,opt);
 																	
 																	
-                        $('body').find('.khinfo').html('Google Fonts are here');
+                        
                         clearInterval(opt.waitForWF);
 																
 																
                         startRotation(top_container,opt);																
 																
-                        $('body').find('.khinfo').html('Rotation Started');
+                        
                         prepareRestSlides(top_container,opt);										
                         if (opt.thumbStyle=="both") top_container.find('.thumbbuttons').css({
                             'visibility':'hidden'
@@ -2072,7 +1705,7 @@ Additional Feature Update from 8th of March 2012 :
                 },10);				
             }, 
             function() {
-                $('body').find('.khinfo').html(opt.loadedImages+'. Image has been Loaded');
+                
                 opt.loadedImages=opt.loadedImages+1;
             });
 								
@@ -2696,36 +2329,37 @@ Additional Feature Update from 8th of March 2012 :
         var full = opt.width + opt.padleft + opt.padright;
 						
         // Create BULLET CONTAINER
-        top.append('<div class="thumbbuttons"><div class="grainme"><div class="leftarrow"></div><div class="thumbs"></div><div class="rightarrow"></div></div></div>');
-        var leftb = top.find('.leftarrow');
-        var rightb = top.find('.rightarrow');
-						
-						
-        rightb.click(function() 
-        { 
-            var newitem = top.data('currentSlide');	
-            if (newitem.index()<opt.maxitem-1) {
-                var next=top.find('ul li:eq('+(newitem.index()+1)+')');
-            } else {
-                var next=top.find('ul li:first');
-            }
-            swapBanner(newitem,next,top,opt);
-        });
-        leftb.click(function() 
-        {
-            var newitem = top.data('currentSlide');	
-            if (newitem.index()>0) {
-                var next=top.find('ul li:eq('+(newitem.index()-1)+')');
-            } else {
-                var next=top.find('ul li:eq('+(opt.maxitem-1)+')');
-            }
-            swapBanner(newitem,next,top,opt);
-        });
-									
+
+        if (opt.buttonsArrows == "on") {
+            top.append('<div class="thumbbuttons"><div class="grainme"><div class="leftarrow"></div><div class="thumbs"></div><div class="rightarrow"></div></div></div>');
+            var leftb = top.find('.leftarrow');
+            var rightb = top.find('.rightarrow');
+                            
+                            
+            rightb.click(function() 
+            { 
+                var newitem = top.data('currentSlide');	
+                if (newitem.index()<opt.maxitem-1) {
+                    var next=top.find('ul li:eq('+(newitem.index()+1)+')');
+                } else {
+                    var next=top.find('ul li:first');
+                }
+                swapBanner(newitem,next,top,opt);
+            });
+            leftb.click(function() 
+            {
+                var newitem = top.data('currentSlide');	
+                if (newitem.index()>0) {
+                    var next=top.find('ul li:eq('+(newitem.index()-1)+')');
+                } else {
+                    var next=top.find('ul li:eq('+(opt.maxitem-1)+')');
+                }
+                swapBanner(newitem,next,top,opt);
+            });
+        } else {
+            top.append('<div class="thumbbuttons"><div class="grainme"><div class="thumbs"></div></div></div>');
+        }
         var minithumbs = top.find('.thumbs');
-						
-								
-						
 						
         // GO THROUGHT THE ITEMS, AND CREATE AN THUMBNAIL AS WE NEED
         top.find('ul >li').each(function(i) {
@@ -3142,7 +2776,9 @@ Additional Feature Update from 8th of March 2012 :
                 var canvasbw=sour.parent().find('.canvas-now-canvas-bw')[0];
 										
 										
-                sour.parent().find('.canvas-now-bw').wrap('<div class="blurwrap" style="width:'+clw+'px;height:'+clh+'px;position:absolute;top:'+clt+'px;left:'+cll+'px;overflow:hidden"></div>');
+                if (opt.blurwrap == 'on') {
+                    sour.parent().find('.canvas-now-bw').wrap('<div class="blurwrap" style="width:'+clw+'px;height:'+clh+'px;position:absolute;top:'+clt+'px;left:'+cll+'px;overflow:hidden"></div>');
+                }
                 var contextbw = canvasbw.getContext('2d');
             }
         } else {
@@ -3942,6 +3578,358 @@ Additional Feature Update from 8th of March 2012 :
 					
     }
 })(jQuery);			
-				
-			
-			   
+
+// kb-plugin
+// must be placed after main kb code
+(function(a,b){
+
+	// EASINGS
+	jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(a,b,c,d,e){return jQuery.easing[jQuery.easing.def](a,b,c,d,e)},easeInQuad:function(a,b,c,d,e){return d*(b/=e)*b+c},easeOutQuad:function(a,b,c,d,e){return-d*(b/=e)*(b-2)+c},easeInOutQuad:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b+c;return-d/2*(--b*(b-2)-1)+c},easeInCubic:function(a,b,c,d,e){return d*(b/=e)*b*b+c},easeOutCubic:function(a,b,c,d,e){return d*((b=b/e-1)*b*b+1)+c},easeInOutCubic:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b*b+c;return d/2*((b-=2)*b*b+2)+c},easeInQuart:function(a,b,c,d,e){return d*(b/=e)*b*b*b+c},easeOutQuart:function(a,b,c,d,e){return-d*((b=b/e-1)*b*b*b-1)+c},easeInOutQuart:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b*b*b+c;return-d/2*((b-=2)*b*b*b-2)+c},easeInQuint:function(a,b,c,d,e){return d*(b/=e)*b*b*b*b+c},easeOutQuint:function(a,b,c,d,e){return d*((b=b/e-1)*b*b*b*b+1)+c},easeInOutQuint:function(a,b,c,d,e){if((b/=e/2)<1)return d/2*b*b*b*b*b+c;return d/2*((b-=2)*b*b*b*b+2)+c},easeInSine:function(a,b,c,d,e){return-d*Math.cos(b/e*(Math.PI/2))+d+c},easeOutSine:function(a,b,c,d,e){return d*Math.sin(b/e*(Math.PI/2))+c},easeInOutSine:function(a,b,c,d,e){return-d/2*(Math.cos(Math.PI*b/e)-1)+c},easeInExpo:function(a,b,c,d,e){return b==0?c:d*Math.pow(2,10*(b/e-1))+c},easeOutExpo:function(a,b,c,d,e){return b==e?c+d:d*(-Math.pow(2,-10*b/e)+1)+c},easeInOutExpo:function(a,b,c,d,e){if(b==0)return c;if(b==e)return c+d;if((b/=e/2)<1)return d/2*Math.pow(2,10*(b-1))+c;return d/2*(-Math.pow(2,-10*--b)+2)+c},easeInCirc:function(a,b,c,d,e){return-d*(Math.sqrt(1-(b/=e)*b)-1)+c},easeOutCirc:function(a,b,c,d,e){return d*Math.sqrt(1-(b=b/e-1)*b)+c},easeInOutCirc:function(a,b,c,d,e){if((b/=e/2)<1)return-d/2*(Math.sqrt(1-b*b)-1)+c;return d/2*(Math.sqrt(1-(b-=2)*b)+1)+c},easeInElastic:function(a,b,c,d,e){var f=1.70158;var g=0;var h=d;if(b==0)return c;if((b/=e)==1)return c+d;if(!g)g=e*.3;if(h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return-(h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g))+c},easeOutElastic:function(a,b,c,d,e){var f=1.70158;var g=0;var h=d;if(b==0)return c;if((b/=e)==1)return c+d;if(!g)g=e*.3;if(h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return h*Math.pow(2,-10*b)*Math.sin((b*e-f)*2*Math.PI/g)+d+c},easeInOutElastic:function(a,b,c,d,e){var f=1.70158;var g=0;var h=d;if(b==0)return c;if((b/=e/2)==2)return c+d;if(!g)g=e*.3*1.5;if(h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);if(b<1)return-.5*h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)+c;return h*Math.pow(2,-10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)*.5+d+c},easeInBack:function(a,b,c,d,e,f){if(f==undefined)f=1.70158;return d*(b/=e)*b*((f+1)*b-f)+c},easeOutBack:function(a,b,c,d,e,f){if(f==undefined)f=1.70158;return d*((b=b/e-1)*b*((f+1)*b+f)+1)+c},easeInOutBack:function(a,b,c,d,e,f){if(f==undefined)f=1.70158;if((b/=e/2)<1)return d/2*b*b*(((f*=1.525)+1)*b-f)+c;return d/2*((b-=2)*b*(((f*=1.525)+1)*b+f)+2)+c},easeInBounce:function(a,b,c,d,e){return d-jQuery.easing.easeOutBounce(a,e-b,0,d,e)+c},easeOutBounce:function(a,b,c,d,e){if((b/=e)<1/2.75){return d*7.5625*b*b+c}else if(b<2/2.75){return d*(7.5625*(b-=1.5/2.75)*b+.75)+c}else if(b<2.5/2.75){return d*(7.5625*(b-=2.25/2.75)*b+.9375)+c}else{return d*(7.5625*(b-=2.625/2.75)*b+.984375)+c}},easeInOutBounce:function(a,b,c,d,e){if(b<e/2)return jQuery.easing.easeInBounce(a,b*2,0,d,e)*.5+c;return jQuery.easing.easeOutBounce(a,b*2-e,0,d,e)*.5+d*.5+c}})		
+	
+	
+	// WAIT FOR IMAGES
+	/*
+	* waitForImages 1.4
+	* -----------------
+	* Provides a callback when all images have loaded in your given selector.
+	* http://www.alexanderdickson.com/
+	*
+	*
+	* Copyright (c) 2011 Alex Dickson
+	* Licensed under the MIT licenses.
+	* See website for more info.
+	*
+	*/
+	a.waitForImages={hasImageProperties:["backgroundImage","listStyleImage","borderImage","borderCornerImage"]};a.expr[":"].uncached=function(b){var c=document.createElement("img");c.src=b.src;return a(b).is('img[src!=""]')&&!c.complete};a.fn.waitForImages=function(b,c,d){if(a.isPlainObject(arguments[0])){c=b.each;d=b.waitForAll;b=b.finished}b=b||a.noop;c=c||a.noop;d=!!d;if(!a.isFunction(b)||!a.isFunction(c)){throw new TypeError("An invalid callback was supplied.")}return this.each(function(){var e=a(this),f=[];if(d){var g=a.waitForImages.hasImageProperties||[],h=/url\((['"]?)(.*?)\1\)/g;e.find("*").each(function(){var b=a(this);if(b.is("img:uncached")){f.push({src:b.attr("src"),element:b[0]})}a.each(g,function(a,c){var d=b.css(c);if(!d){return true}var e;while(e=h.exec(d)){f.push({src:e[2],element:b[0]})}})})}else{e.find("img:uncached").each(function(){f.push({src:this.src,element:this})})}var i=f.length,j=0;if(i==0){b.call(e[0])}a.each(f,function(d,f){var g=new Image;a(g).bind("load error",function(a){j++;c.call(f.element,j,i,a.type=="load");if(j==i){b.call(e[0]);return false}});g.src=f.src})})}
+	
+	
+	// CSS ANIMATE
+	/**************************************\
+	 *  cssAnimate 1.1.5 for jQuery       *
+	 *  (c) 2012 - Clemens Damke          *
+	 *  Licensed under MIT License        *
+	 *  Works with jQuery >=1.4.3         *
+	/**************************************/
+	var b = ["Webkit", "Moz", "O", "Ms", "Khtml", ""];
+	var c = ["borderRadius", "boxShadow", "userSelect", "transformOrigin", "transformStyle", "transition", "transitionDuration", "transitionProperty", "transitionTimingFunction", "backgroundOrigin", "backgroundSize", "animation", "filter", "zoom", "columns", "perspective", "perspectiveOrigin", "appearance"];
+	a.fn.cssSetQueue = function (b, c) {
+		v = this;
+		var d = v.data("cssQueue") ? v.data("cssQueue") : [];
+		var e = v.data("cssCall") ? v.data("cssCall") : [];
+		var f = 0;
+		var g = {};
+		a.each(c, function (a, b) {
+			g[a] = b
+		});
+		while (1) {
+			if (!e[f]) {
+				e[f] = g.complete;
+				break
+			}
+			f++
+		}
+		g.complete = f;
+		d.push([b, g]);
+		v.data({
+			cssQueue : d,
+			cssRunning : true,
+			cssCall : e
+		})
+	};
+	a.fn.cssRunQueue = function () {
+		v = this;
+		var a = v.data("cssQueue") ? v.data("cssQueue") : [];
+		if (a[0])
+			v.cssEngine(a[0][0], a[0][1]);
+		else
+			v.data("cssRunning", false);
+		a.shift();
+		v.data("cssQueue", a)
+	};
+	a.cssMerge = function (b, c, d) {
+		a.each(c, function (c, e) {
+			a.each(d, function (a, d) {
+				b[d + c] = e
+			})
+		});
+		return b
+	};
+	a.fn.cssAnimationData = function (a, b) {
+		var c = this;
+		var d = c.data("cssAnimations");
+		if (!d)
+			d = {};
+		if (!d[a])
+			d[a] = [];
+		d[a].push(b);
+		c.data("cssAnimations", d);
+		return d[a]
+	};
+	a.fn.cssAnimationRemove = function () {
+		var b = this;
+		if (b.data("cssAnimations") != undefined) {
+			var c = b.data("cssAnimations");
+			var d = b.data("identity");
+			a.each(c, function (a, b) {
+				c[a] = b.splice(d + 1, 1)
+			});
+			b.data("cssAnimations", c)
+		}
+	};
+	a.css3D = function (c) {
+		a("body").data("cssPerspective", isFinite(c) ? c : c ? 1e3 : 0).cssOriginal(a.cssMerge({}, {
+				TransformStyle : c ? "preserve-3d" : "flat"
+			}, b))
+	};
+	a.cssPropertySupporter = function (d) {
+		a.each(c, function (c, e) {
+			if (d[e])
+				a.each(b, function (a, b) {
+					var c = e.substr(0, 1);
+					d[b + c[b ? "toUpperCase" : "toLowerCase"]() + e.substr(1)] = d[e]
+				})
+		});
+		return d
+	};
+	a.cssAnimateSupport = function () {
+		var c = false;
+		a.each(b, function (a, b) {
+			c = document.body.style[b + "AnimationName"] !== undefined ? true : c
+		});
+		return c
+	};
+	a.fn.cssEngine = function (c, d) {
+		function e(a) {
+			return String(a).replace(/([A-Z])/g, "-$1").toLowerCase()
+		}
+		var f = this;
+		var f = this;
+		if (typeof d.complete == "number")
+			f.data("cssCallIndex", d.complete);
+		var g = {
+			linear : "linear",
+			swing : "ease",
+			easeIn : "ease-in",
+			easeOut : "ease-out",
+			easeInOut : "ease-in-out"
+		};
+		var h = {};
+		var i = a("body").data("cssPerspective");
+		if (c.transform)
+			a.each(b, function (a, b) {
+				var d = b + (b ? "T" : "t") + "ransform";
+				var g = f.cssOriginal(e(d));
+				var j = c.transform;
+				if (!g || g == "none")
+					h[d] = "scale(1)";
+				c[d] = (i && !/perspective/gi.test(j) ? "perspective(" + i + ") " : "") + j
+			});
+		c = a.cssPropertySupporter(c);
+		var j = [];
+		a.each(c, function (a, b) {
+			j.push(e(a))
+		});
+		var k = false;
+		var l = [];
+		var m = [];
+		if (j != undefined) {
+			for (var n = 0; n < j.length; n++) {
+				l.push(String(d.duration / 1e3) + "s");
+				var o = g[d.easing];
+				m.push(o ? o : d.easing)
+			}
+			l = f.cssAnimationData("dur", l.join(", ")).join(", ");
+			m = f.cssAnimationData("eas", m.join(", ")).join(", ");
+			var p = f.cssAnimationData("prop", j.join(", "));
+			f.data("identity", p.length - 1);
+			p = p.join(", ");
+			var q = {
+				TransitionDuration : l,
+				TransitionProperty : p,
+				TransitionTimingFunction : m
+			};
+			var r = {};
+			r = a.cssMerge(r, q, b);
+			var s = c;
+			a.extend(r, c);
+			if (r.display == "callbackHide")
+				k = true;
+			else if (r.display)
+				h["display"] = r.display;
+			f.cssOriginal(h)
+		}
+		setTimeout(function () {
+			f.cssOriginal(r);
+			var b = f.data("runningCSS");
+			b = !b ? s : a.extend(b, s);
+			f.data("runningCSS", b);
+			setTimeout(function () {
+				f.data("cssCallIndex", "a");
+				if (k)
+					f.cssOriginal("display", "none");
+				f.cssAnimationRemove();
+				if (d.queue)
+					f.cssRunQueue();
+				if (typeof d.complete == "number") {
+					f.data("cssCall")[d.complete].call(f);
+					f.data("cssCall")[d.complete] = 0
+				} else
+					d.complete.call(f)
+			}, d.duration)
+		}, 0)
+	};
+	a.str2Speed = function (a) {
+		return isNaN(a) ? a == "slow" ? 1e3 : a == "fast" ? 200 : 600 : a
+	};
+	a.fn.cssAnimate = function (b, c, d, e) {
+		var f = this;
+		var g = {
+			duration : 0,
+			easing : "swing",
+			complete : function () {},
+			queue : true
+		};
+		var h = {};
+		h = typeof c == "object" ? c : {
+			duration : c
+		};
+		h[d ? typeof d == "function" ? "complete" : "easing" : 0] = d;
+		h[e ? "complete" : 0] = e;
+		h.duration = a.str2Speed(h.duration);
+		a.extend(g, h);
+		if (a.cssAnimateSupport()) {
+			f.each(function (c, d) {
+				d = a(d);
+				if (g.queue) {
+					var e = !d.data("cssRunning");
+					d.cssSetQueue(b, g);
+					if (e)
+						d.cssRunQueue()
+				} else
+					d.cssEngine(b, g)
+			})
+		} else
+			f.animate(b, g);
+		return f
+	};
+	a.cssPresetOptGen = function (a, b) {
+		var c = {};
+		c[a ? typeof a == "function" ? "complete" : "easing" : 0] = a;
+		c[b ? "complete" : 0] = b;
+		return c
+	};
+	a.fn.cssFadeTo = function (b, c, d, e) {
+		var f = this;
+		opt = a.cssPresetOptGen(d, e);
+		var g = {
+			opacity : c
+		};
+		opt.duration = b;
+		if (a.cssAnimateSupport()) {
+			f.each(function (b, d) {
+				d = a(d);
+				if (d.data("displayOriginal") != d.cssOriginal("display") && d.cssOriginal("display") != "none")
+					d.data("displayOriginal", d.cssOriginal("display") ? d.cssOriginal("display") : "block");
+				else
+					d.data("displayOriginal", "block");
+				g.display = c ? d.data("displayOriginal") : "callbackHide";
+				d.cssAnimate(g, opt)
+			})
+		} else
+			f.fadeTo(b, opt);
+		return f
+	};
+	a.fn.cssFadeOut = function (b, c, d) {
+		if (a.cssAnimateSupport()) {
+			if (!this.cssOriginal("opacity"))
+				this.cssOriginal("opacity", 1);
+			this.cssFadeTo(b, 0, c, d)
+		} else
+			this.fadeOut(b, c, d);
+		return this
+	};
+	a.fn.cssFadeIn = function (b, c, d) {
+		if (a.cssAnimateSupport()) {
+			if (this.cssOriginal("opacity"))
+				this.cssOriginal("opacity", 0);
+			this.cssFadeTo(b, 1, c, d)
+		} else
+			this.fadeIn(b, c, d);
+		return this
+	};
+	a.cssPx2Int = function (a) {
+		return a.split("p")[0] * 1
+	};
+	a.fn.cssStop = function () {
+		var c = this,
+		d = 0;
+		c.data("cssAnimations", false).each(function (e, f) {
+			f = a(f);
+			var g = {
+				TransitionDuration : "0s"
+			};
+			var h = f.data("runningCSS");
+			var i = {};
+			if (h)
+				a.each(h, function (b, c) {
+					c = isFinite(a.cssPx2Int(c)) ? a.cssPx2Int(c) : c;
+					var d = [0, 1];
+					var e = {
+						color : ["#000", "#fff"],
+						background : ["#000", "#fff"],
+						"float" : ["none", "left"],
+						clear : ["none", "left"],
+						border : ["none", "0px solid #fff"],
+						position : ["absolute", "relative"],
+						family : ["Arial", "Helvetica"],
+						display : ["none", "block"],
+						visibility : ["hidden", "visible"],
+						transform : ["translate(0,0)", "scale(1)"]
+					};
+					a.each(e, function (a, c) {
+						if ((new RegExp(a, "gi")).test(b))
+							d = c
+					});
+					i[b] = d[0] != c ? d[0] : d[1]
+				});
+			else
+				h = {};
+			g = a.cssMerge(i, g, b);
+			f.cssOriginal(g);
+			setTimeout(function () {
+				var b = a(c[d]);
+				b.cssOriginal(h).data({
+					runningCSS : {},
+					cssAnimations : {},
+					cssQueue : [],
+					cssRunning : false
+				});
+				if (typeof b.data("cssCallIndex") == "number")
+					b.data("cssCall")[b.data("cssCallIndex")].call(b);
+				b.data("cssCall", []);
+				d++
+			}, 0)
+		});
+		return c
+	};
+	a.fn.cssDelay = function (a) {
+		return this.cssAnimate({}, a)
+	};
+	if (a.fn.cssOriginal != undefined)
+		a.fn.css = a.fn.cssOriginal;
+	a.fn.cssOriginal = a.fn.css;
+	
+	
+	// SWIPE FUNCTION
+	/**
+	 * jQuery Plugin to obtain touch gestures from iPhone, iPod Touch and iPad, should also work with Android mobile phones (not tested yet!)
+	 * Common usage: wipe images (left and right to show the previous or next image)
+	 * 
+	 * @author Andreas Waltl, netCU Internetagentur (http://www.netcu.de)
+	 * @version 1.1.1 (9th December 2010) - fix bug (older IE's had problems)
+	 * @version 1.1 (1st September 2010) - support wipe up and wipe down
+	 * @version 1.0 (15th July 2010)
+	 */
+	a.fn.swipe=function(b){if(!this)return false;var c={fingers:1,threshold:75,swipe:null,swipeLeft:null,swipeRight:null,swipeUp:null,swipeDown:null,swipeStatus:null,click:null,triggerOnTouchEnd:true,allowPageScroll:"auto"};var d="left";var e="right";var f="up";var g="down";var h="none";var i="horizontal";var j="vertical";var k="auto";var l="start";var m="move";var n="end";var o="cancel";var p="ontouchstart"in window,q=p?"touchstart":"mousedown",r=p?"touchmove":"mousemove",s=p?"touchend":"mouseup",t="touchcancel";var u="start";if(b.allowPageScroll==undefined&&(b.swipe!=undefined||b.swipeStatus!=undefined))b.allowPageScroll=h;if(b)a.extend(c,b);return this.each(function(){function J(){var a=I();if(a<=45&&a>=0)return d;else if(a<=360&&a>=315)return d;else if(a>=135&&a<=225)return e;else if(a>45&&a<135)return g;else return f}function I(){var a=y.x-z.x;var b=z.y-y.y;var c=Math.atan2(b,a);var d=Math.round(c*180/Math.PI);if(d<0)d=360-Math.abs(d);return d}function H(){return Math.round(Math.sqrt(Math.pow(z.x-y.x,2)+Math.pow(z.y-y.y,2)))}function G(a,b){if(c.allowPageScroll==h){a.preventDefault()}else{var l=c.allowPageScroll==k;switch(b){case d:if(c.swipeLeft&&l||!l&&c.allowPageScroll!=i)a.preventDefault();break;case e:if(c.swipeRight&&l||!l&&c.allowPageScroll!=i)a.preventDefault();break;case f:if(c.swipeUp&&l||!l&&c.allowPageScroll!=j)a.preventDefault();break;case g:if(c.swipeDown&&l||!l&&c.allowPageScroll!=j)a.preventDefault();break}}}function F(a,b){if(c.swipeStatus)c.swipeStatus.call(v,a,b,direction||null,distance||0);if(b==o){if(c.click&&(x==1||!p)&&(isNaN(distance)||distance==0))c.click.call(v,a,a.target)}if(b==n){if(c.swipe){c.swipe.call(v,a,direction,distance)}switch(direction){case d:if(c.swipeLeft)c.swipeLeft.call(v,a,direction,distance);break;case e:if(c.swipeRight)c.swipeRight.call(v,a,direction,distance);break;case f:if(c.swipeUp)c.swipeUp.call(v,a,direction,distance);break;case g:if(c.swipeDown)c.swipeDown.call(v,a,direction,distance);break}}}function E(a){x=0;y.x=0;y.y=0;z.x=0;z.y=0;A.x=0;A.y=0}function D(a){a.preventDefault();distance=H();direction=J();if(c.triggerOnTouchEnd){u=n;if((x==c.fingers||!p)&&z.x!=0){if(distance>=c.threshold){F(a,u);E(a)}else{u=o;F(a,u);E(a)}}else{u=o;F(a,u);E(a)}}else if(u==m){u=o;F(a,u);E(a)}b.removeEventListener(r,C,false);b.removeEventListener(s,D,false)}function C(a){if(u==n||u==o)return;var b=p?a.touches[0]:a;z.x=b.pageX;z.y=b.pageY;direction=J();if(p){x=a.touches.length}u=m;G(a,direction);if(x==c.fingers||!p){distance=H();if(c.swipeStatus)F(a,u,direction,distance);if(!c.triggerOnTouchEnd){if(distance>=c.threshold){u=n;F(a,u);E(a)}}}else{u=o;F(a,u);E(a)}}function B(a){var d=p?a.touches[0]:a;u=l;if(p){x=a.touches.length}distance=0;direction=null;if(x==c.fingers||!p){y.x=z.x=d.pageX;y.y=z.y=d.pageY;if(c.swipeStatus)F(a,u)}else{E(a)}b.addEventListener(r,C,false);b.addEventListener(s,D,false)}var b=this;var v=a(this);var w=null;var x=0;var y={x:0,y:0};var z={x:0,y:0};var A={x:0,y:0};try{this.addEventListener(q,B,false);this.addEventListener(t,E)}catch(K){}})}	
+
+})(jQuery)
