@@ -5,6 +5,8 @@
 <?php slot('page_header') ?><?php echo __('A message of peace') ?><br/><?php echo __('An appeal to the world') ?><?php end_slot() ?>
 <?php slot('body_id') ?>body_main<?php end_slot() ?>
 
+<?php include_partial('photo/carousel'); ?>
+
 <?php include_component('news', 'latest'); ?>
 <p class="goto_section">
 	<a href="<?php echo url_for('news_index'); ?>" class="no_decor"><?php echo __('News') ?> »</a>
@@ -64,6 +66,6 @@ Email: <input type="text" style="width:140px" name="email"/> &nbsp;<input type="
 </form>
 <br/>
 
-<?php include_component('comments', 'show') ?>
+<?php /*include_component('comments', 'show') */ ?>
 
 <?php include_partial('comments/count'); ?>
