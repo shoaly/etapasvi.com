@@ -30,6 +30,8 @@ EOF;
 
   protected function execute($arguments = array(), $options = array())
   {
+  	echo date("y-m-d H:i:s")."\n";
+  	
   	// creating context
   	sfContext::createInstance($this->configuration);
   	
@@ -39,10 +41,17 @@ EOF;
   	
     $result = ClearcachePeer::clearCache();
     if (count($result['items'])) {
-    	echo "Cleared cache of the following items:\n";
-    	print_r($result['items']);
+      if (!$result['errorDescription']) {
+        echo "Status: Successfully cleared cache of the itmems\n";
+      } else {
+    	echo "Errors occured clearing cache:\n";
+    	echo $result['errorDescription']."\n";
+    	echo UserPeer::adminNotify($result['errorDescription'], 'Clearcache task');
+      }
+      echo "Items:\n";
+      print_r($result['items']);    	
     } else {
-      echo 'No items';
+      echo "No items for clearing cache\n";
     }
   }
   

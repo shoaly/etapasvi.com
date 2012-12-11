@@ -135,8 +135,12 @@ class ClearcachePeer extends BaseClearcachePeer {
 		  $clearcache->getItemCulture()
   	    );
         $result['items'][] = $clearcache->toArray();
-        $clearcache->setCleared(true);
-        $clearcache->save();
+        if (!sfSuperCache::hasErrors()) {
+          $clearcache->setCleared(true);
+          $clearcache->save();
+        } else {
+          $result['errorDescription'] .= $clearcache->getItemId() . ': ' . implode('; ', sfSuperCache::getErrors() ); 
+        }
       }
     }
     return $result;

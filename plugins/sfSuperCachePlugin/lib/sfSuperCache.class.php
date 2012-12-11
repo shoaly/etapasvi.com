@@ -58,6 +58,9 @@ class sfSuperCache
   // список команд на удаление кэша
   private static $remove_file_path_list      = array();
   
+  // list of errors occrured
+  private static $error_list      = array();
+  
     
   /**
    * Clears the super cache by listening to the task.cache.clear event.
@@ -270,7 +273,7 @@ class sfSuperCache
   	    }
   	    
   	  } catch (Exception $e) {
-  	  	echo $e->getMessage();
+  	  	self::$error_list[] = $e->getMessage();
   	  }
   	}
   	
@@ -487,12 +490,19 @@ class sfSuperCache
   {
     $remove_file_path = sfConfig::get('sf_root_dir') . '/' . self::REMOVE_CACHE_FILE_NAME;
 	try {
-	  $fh = fopen($remove_file_path, 'a') or die("Can't open file: " . $remove_file_path);			
-	  fwrite($fh, "\n" . $command);			
-	  fclose($fh);
+	  $fh = fopen($remove_file_path, 'a');			
+	  if ($fh) {
+	    fwrite($fh, "\n" . $command);			
+	    fclose($fh);
+	  } else {
+        self::$error_list[] = "Can't open file: " . $remove_file_path;
+	    return false;
+	  }
 	} catch(Exception $e) {
-	  echo $e->getMessage();
+	  self::$error_list[] = $e->getMessage();
+	  return false;
 	}
+	return true;
   }
   
   /**
@@ -898,6 +908,7 @@ class sfSuperCache
   	  try {
         $pid = file_get_contents(self::refreshCacheGetPidFilePath());
   	  } catch (Exception $e) {
+  	  	self::$error_list[] = $e->getMessage();
   	  	return true;
   	  }
       // проверяем на наличие процесса
@@ -1558,6 +1569,27 @@ class sfSuperCache
   {  
   	$command = 'kill -s 9 ' . $pid;
     pclose(popen($command, "r"));	  
+  }
+  
+  /**
+   * Check if any errors occured
+   *
+   */
+  public static function hasErrors()
+  {
+  	if (!empty(self::$error_list)) {
+  	  return true;
+  	} else {
+  	  return false;
+  	}
+  }
+  
+  /**
+   * Get list of errors occured
+   */
+  public static function getErrors()
+  {
+  	return self::$error_list;
   }
   
 }
