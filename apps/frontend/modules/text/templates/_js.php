@@ -8,6 +8,16 @@ foreach($quote_list as $i=>$quote):
 endforeach
 ?>
 );
+var carousel_photo_list = new Array(
+<?php 
+foreach($carousel_photo_list as $i=>$carousel_photo): 
+    echo '"' . $carousel_photo->getFullUrl(PhotoPeer::CAROUSEL_PHOTO_SIZE) . '"';
+    if ($i != count($carousel_photo_list) - 1) {
+        echo ', ';
+    }
+endforeach
+?>
+);
 <?php /*
 var audio_list = new Array(
 <?php 

@@ -117,6 +117,7 @@ propel:
     link:             { type: varchar(255) }
     width:            { type: integer }
     height:           { type: integer }
+    carousel:         { type: boolean, defaultValue: false }
     _indexes:
       photoalbum_id:  [photoalbum_id]
       updated_at:     [updated_at]
@@ -125,6 +126,7 @@ propel:
       full_path:      [full_path]
       preview_path:   [preview_path]
       thumb_path:     [thumb_path]
+      carousel:       [carousel]
     _uniques:
       photoalbum_order:     [photoalbum_id, order]
 

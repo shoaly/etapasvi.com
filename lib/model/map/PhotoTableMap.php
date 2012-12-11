@@ -52,6 +52,7 @@ class PhotoTableMap extends TableMap {
 		$this->addColumn('LINK', 'Link', 'VARCHAR', false, 255, null);
 		$this->addColumn('WIDTH', 'Width', 'INTEGER', false, null, null);
 		$this->addColumn('HEIGHT', 'Height', 'INTEGER', false, null, null);
+		$this->addColumn('CAROUSEL', 'Carousel', 'BOOLEAN', false, null, false);
 		// validators
 	} // initialize()
 

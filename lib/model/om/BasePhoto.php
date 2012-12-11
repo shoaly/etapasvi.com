@@ -101,6 +101,13 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 	protected $height;
 
 	/**
+	 * The value for the carousel field.
+	 * Note: this column has a database default value of: false
+	 * @var        boolean
+	 */
+	protected $carousel;
+
+	/**
 	 * @var        Photoalbum
 	 */
 	protected $aPhotoalbum;
@@ -154,6 +161,7 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 	public function applyDefaultValues()
 	{
 		$this->show = true;
+		$this->carousel = false;
 	}
 
 	/**
@@ -350,6 +358,16 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 	public function getHeight()
 	{
 		return $this->height;
+	}
+
+	/**
+	 * Get the [carousel] column value.
+	 * 
+	 * @return     boolean
+	 */
+	public function getCarousel()
+	{
+		return $this->carousel;
 	}
 
 	/**
@@ -708,6 +726,29 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 	} // setHeight()
 
 	/**
+	 * Set the value of [carousel] column.
+	 * 
+	 * @param      boolean $v new value
+	 * @return     Photo The current object (for fluent API support)
+	 */
+	public function setCarousel($v)
+	{
+		if ($v !== null) {
+			$v = (boolean) $v;
+		}
+
+		if ($this->carousel !== $v || $this->isNew()) {
+			if ($this->carousel === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = PhotoPeer::CAROUSEL;
+			}
+			$this->carousel = $v;
+		}
+
+		return $this;
+	} // setCarousel()
+
+	/**
 	 * Indicates whether the columns in this object are only set to default values.
 	 *
 	 * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -718,6 +759,10 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 	public function hasOnlyDefaultValues()
 	{
 			if ($this->show !== true) {
+				return false;
+			}
+
+			if ($this->carousel !== false) {
 				return false;
 			}
 
@@ -756,6 +801,7 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 			$this->link = ($row[$startcol + 10] !== null) ? (string) $row[$startcol + 10] : null;
 			$this->width = ($row[$startcol + 11] !== null) ? (int) $row[$startcol + 11] : null;
 			$this->height = ($row[$startcol + 12] !== null) ? (int) $row[$startcol + 12] : null;
+			$this->carousel = ($row[$startcol + 13] !== null) ? (boolean) $row[$startcol + 13] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -765,7 +811,7 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 13; // 13 = PhotoPeer::NUM_COLUMNS - PhotoPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 14; // 14 = PhotoPeer::NUM_COLUMNS - PhotoPeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Photo object", $e);
@@ -1223,6 +1269,9 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 			case 12:
 				return $this->getHeight();
 				break;
+			case 13:
+				return $this->getCarousel();
+				break;
 			default:
 				return null;
 				break;
@@ -1257,6 +1306,7 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 			$keys[10] => $this->getLink(),
 			$keys[11] => $this->getWidth(),
 			$keys[12] => $this->getHeight(),
+			$keys[13] => $this->getCarousel(),
 		);
 		return $result;
 	}
@@ -1327,6 +1377,9 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 			case 12:
 				$this->setHeight($value);
 				break;
+			case 13:
+				$this->setCarousel($value);
+				break;
 		} // switch()
 	}
 
@@ -1364,6 +1417,7 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[10], $arr)) $this->setLink($arr[$keys[10]]);
 		if (array_key_exists($keys[11], $arr)) $this->setWidth($arr[$keys[11]]);
 		if (array_key_exists($keys[12], $arr)) $this->setHeight($arr[$keys[12]]);
+		if (array_key_exists($keys[13], $arr)) $this->setCarousel($arr[$keys[13]]);
 	}
 
 	/**
@@ -1388,6 +1442,7 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(PhotoPeer::LINK)) $criteria->add(PhotoPeer::LINK, $this->link);
 		if ($this->isColumnModified(PhotoPeer::WIDTH)) $criteria->add(PhotoPeer::WIDTH, $this->width);
 		if ($this->isColumnModified(PhotoPeer::HEIGHT)) $criteria->add(PhotoPeer::HEIGHT, $this->height);
+		if ($this->isColumnModified(PhotoPeer::CAROUSEL)) $criteria->add(PhotoPeer::CAROUSEL, $this->carousel);
 
 		return $criteria;
 	}
@@ -1465,6 +1520,8 @@ abstract class BasePhoto extends BaseObject  implements Persistent {
 		$copyObj->setWidth($this->width);
 
 		$copyObj->setHeight($this->height);
+
+		$copyObj->setCarousel($this->carousel);
 
 
 		if ($deepCopy) {

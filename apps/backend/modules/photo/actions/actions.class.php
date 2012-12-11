@@ -99,6 +99,7 @@ class photoActions extends autophotoActions
     {
       $this->photo->setHeight($photo['height']);
     }    
+    $this->photo->setCarousel(isset($photo['carousel']) ? $photo['carousel'] : 0);
     if (isset($photo['title_i18n_en']))
     {
       $this->photo->setTitleI18nEn($photo['title_i18n_en']);

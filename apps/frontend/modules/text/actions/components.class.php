@@ -18,6 +18,9 @@ class textComponents extends sfComponents
     $c->add(QuoteI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
   	$this->quote_list = QuotePeer::doSelectWithI18n($c);
   	
+    // get list of photos for carousel
+  	$this->carousel_photo_list = PhotoPeer::getCarouselPhotoList();
+  	
     // получаем список Аудио
     /*
     $c = new Criteria();

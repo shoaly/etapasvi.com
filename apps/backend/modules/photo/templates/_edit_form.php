@@ -228,6 +228,19 @@
 </div>
 
 <div class="form-row">
+  <?php echo label_for('photo[carousel]', __($labels['photo{carousel}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('photo{carousel}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('photo{carousel}')): ?>
+    <?php echo form_error('photo{carousel}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_checkbox_tag($photo, 'getCarousel', array (
+  'control_name' => 'photo[carousel]',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+<div class="form-row">
   <label for="photo_change_updated_at">Change Updated At:</label>  <div class="content">
   
   <input type="checkbox" checked="checked" value="1" id="photo_change_updated_at" name="photo[change_updated_at]">    </div>

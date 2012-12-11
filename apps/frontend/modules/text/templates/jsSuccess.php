@@ -1051,38 +1051,33 @@ function gotoItemcategory(url)
 // Run Carousel
 function runCarousel()
 {
-    $("#carousel_main").css('height','300px').html(
-
-'<ul>'+
-        '<li data-transition="fade" data-startalign="random" data-zoom="random" data-zoomfact="1" data-endAlign="random" data-panduration="20" data-colortransition="0" ><img alt="" src="/i/slides/image1.jpg" >'+
-                '<div class="creative_layer">'+
-                    '<div class="cp-bottom fadeup">'+
-//                        '<p class="cp-title">Maha Sambodhi Dharma Sangha</p>'+
-                        '<p>This is the product that you A Ken Burns JQuery Banner solution which is fully-responsive and offering cutting-edge caption effects! <a href="#">...</a><br/><strong class="right">― Maha Sambodhi Dharma Sangha</strong></p>'+									
+    if ($.browser.ie && jQuery.browser.version < 7) {
+        return;
+    }
+    var carousel_html = '<ul>';
+    
+    $.each(carousel_photo_list, function(index, photo_url){
+        carousel_html = carousel_html +
+            '<li data-transition="fade" data-startalign="random" data-zoom="in" data-zoomfact="1" data-endAlign="random" data-panduration="15" data-colortransition="0" ><img alt="" src="'+photo_url+'" >'+
+                    '<div class="creative_layer">'+
+                        '<div class="cp-bottom fadeup">'+
+                            '<p><a href="#" title="<?php echo __("Read more") ?>">This is the product that you A Ken Burns JQuery Banner solution which is fully-responsive and offering cutting-edge caption effects!</a><br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p>'+									
+                        '</div>'+
                     '</div>'+
-                '</div>'+
-        '</li>'+
-        '<li data-transition="fade" data-startalign="random" data-zoom="random" data-zoomfact="1" data-endAlign="random" data-panduration="20" data-colortransition="0" ><img alt="" src="/i/slides/image1.jpg" >'+
-                '<div class="creative_layer">'+
-                    '<div class="cp-bottom fadeup">'+
-//                        '<p class="cp-title">Maha Sambodhi Dharma Sangha</p>'+
-                        '<p>This is the product that you<i><strong>all have been waiting for!</strong></i> A Ken Burns JQuery Banner solution which is fully-responsive and offering cutting-edge caption effects!</p>'+									
-                    '</div>'+
-                '</div>'+
-        '</li>'+
-    '</ul>'
-    );
+            '</li>';
+        /*var quote_index = Math.floor(Math.random( ) * (quote_list.length));
+        // если выбрана прошлая цитата, берём предыдущую в списке или последнюю
+        if (quote_index == last_quote_index) {
+            if (quote_index > 1) {
+                quote_index = quote_index - 1;
+            } else {
+                quote_index = quote_list.length - 1;
+            }
+        }*/
+    });
+    carousel_html = carousel_html + '</ul>';
 
-/*     (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-     })();
-*/
+    $("#carousel_main").css('height','300px').html(carousel_html);
 
     jQuery('#carousel_main').kenburn({
         /*width:800,*/
@@ -1105,32 +1100,23 @@ function runCarousel()
         thumbYOffset:40,
 
         bulletXOffset:0,
-        bulletYOffset:-16,
+        bulletYOffset:0,
 
         repairChromeBug:"on",
         touchenabled:'on',
         pauseOnRollOverThumbs:'off',
         pauseOnRollOverMain:'on',
         preloadedSlides:2,
-        timer:7,
+        timer:15,
         debug:"off",
 
-        captionParallaxX:-40,
-        captionParallaxY:2,
+        captionParallaxX:0,
+        captionParallaxY:0,
 
         googleFonts: '',
         googleFontJS: ''
 
-        //shadow:'true'
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Google Fonts !! //
-        // local GoogleFont JS from your server: http://www.yourdomain.com/kb-plugin/js/jquery.googlefonts.js //
-        // GoogleFonts from Original Source: http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js or https:... //
-        // PT+Sans+Narrow:400,700 //
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //googleFonts:'Oswald',
-        //googleFontJS:'http://www.themepunch.com/codecanyon/kenburner-responsive/kb-plugin/js/jquery.googlefonts.js'
+        //shadow:'true' // do not work
     }); 
 }
 
@@ -2743,11 +2729,11 @@ Additional Feature Update from 8th of March 2012 :
         var hascaption = true;
         // CAPTION POSITION AND SIZING
         if (newitem.find('.creative_layer div').length>0) {
-									
-            var clw = newitem.find('.creative_layer div').outerWidth();
-            var clh = newitem.find('.creative_layer div').outerHeight();
-            var clt = newitem.find('.creative_layer div').position().top;
-            var cll = newitem.find('.creative_layer div').position().left;
+			var creative_layer_div = newitem.find('.creative_layer div');
+            var clw = creative_layer_div.outerWidth();
+            var clh = creative_layer_div.outerHeight();
+            var clt = creative_layer_div.position().top;
+            var cll = creative_layer_div.position().left;
         } else {
             hascaption=false;
             var clw=0;
@@ -3438,26 +3424,22 @@ Additional Feature Update from 8th of March 2012 :
         var counter=2;
 				
         item.find('.creative_layer div').each(function(i) {
-															
+			
             var $this=$(this);
-															
+												
             // REMEMBER OLD VALUES
             if ($this.data('_top') == undefined) $this.data('_top',$this.position().top);
             if ($this.data('_left') == undefined) $this.data('_left',$this.position().left);
             if ($this.data('_op') == undefined) {
                 $this.data('_op',$this.css('opacity'));
             }
-															
-													
+								
             // CHANGE THE z-INDEX HERE
             $this.css({
-                'z-index':1200
+                'z-index':1200,
+                'visibility':'visible'
             });
-															
-															
-																	
-																	
-																	
+													
             //console.log('TEXTANIM : ANIMATION FADE UP CHECK');
             //console.log('TEXTANIM : '+$this.data('_left'));
             //// -  FADE UP   -   ////

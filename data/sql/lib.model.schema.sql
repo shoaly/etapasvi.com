@@ -261,6 +261,7 @@ CREATE TABLE `photo`
 	`link` VARCHAR(255),
 	`width` INTEGER,
 	`height` INTEGER,
+	`carousel` TINYINT default 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `photoalbum_order` (`photoalbum_id`, `order`),
 	KEY `photoalbum_id`(`photoalbum_id`),
@@ -270,6 +271,7 @@ CREATE TABLE `photo`
 	KEY `full_path`(`full_path`),
 	KEY `preview_path`(`preview_path`),
 	KEY `thumb_path`(`thumb_path`),
+	KEY `carousel`(`carousel`),
 	CONSTRAINT `photo_FK_1`
 		FOREIGN KEY (`photoalbum_id`)
 		REFERENCES `photoalbum` (`id`)

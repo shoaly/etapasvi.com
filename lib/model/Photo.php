@@ -142,7 +142,7 @@ class Photo extends BasePhoto
     /**
      * Получение ссылки на изображение
      */
-	public function getFullUrl() {
+	public function getFullUrl($size = 0) {
 	  $path = $this->getFullPath();
 	  $file = $this->getImg();
 
@@ -152,6 +152,11 @@ class Photo extends BasePhoto
 	    	    
 	    $picasa_dimention = '';
 	    $max_dimention = $this->getMaxDimention();
+	    if ($size) {
+	      // fit image into square
+	      $min_dimention = $this->getMinDimention();
+	      $max_dimention = ceil(($max_dimention * $size) / $min_dimention);
+	    }
 	    if ($max_dimention > PhotoPeer::PICASA_MAX_DIMENTION) {
 	      $max_dimention = PhotoPeer::PICASA_MAX_DIMENTION;
 	    }
@@ -314,5 +319,14 @@ class Photo extends BasePhoto
 	 */
 	public function getMaxDimention() {
 	  return max($this->getWidth(), $this->getHeight());
+	}
+	
+	/**
+	 * Get minimum dimention
+	 *
+	 * @return unknown
+	 */
+	public function getMinDimention() {
+	  return min($this->getWidth(), $this->getHeight());
 	}
 }
