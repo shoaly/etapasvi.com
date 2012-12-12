@@ -27,8 +27,8 @@ class PhotoPeer extends BasePhotoPeer
   const ORIGINAL_DIR 			= 'photo/original';
   
   // number of photos shown in carousel
-  const CAROUSEL_COUNT 			= 7;
-  const CAROUSEL_PHOTO_SIZE	    = 590;
+  const CAROUSEL_PHOTO_WIDTH    = 581;
+  const CAROUSEL_PHOTO_HEIGHT   = 300;
   
   // Получить ID альбома: Албомы -> Каналы RSS (справа)
   static $dir_to_remote_storage_id = array(
@@ -333,7 +333,6 @@ class PhotoPeer extends BasePhotoPeer
     $c = new Criteria();
     $c->add(PhotoPeer::SHOW, 1);
     $c->add(PhotoPeer::CAROUSEL, 1);
-    $c->setLimit(PhotoPeer::CAROUSEL_COUNT);
   	return PhotoPeer::doSelect($c);
   }
   

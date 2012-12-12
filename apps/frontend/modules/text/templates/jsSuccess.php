@@ -8,9 +8,9 @@ var ap_stopAll = function(){};
 // позиция в окне перед активацией одной из кнопок панели инструментов
 var page_toolbar_window_pos  = 0;
 // интервал показа цитат
-var rotate_quotes_interval  = 15000;
+//var rotate_quotes_interval  = 15000;
 // номер последней показанной цитаты
-var last_quote_index  = -1;
+//var last_quote_index  = -1;
 // минимальный размер окна, при котором скрываются элементы
 var window_size_hide_el  = 1000;
 // ссылки на фото преобразованы
@@ -60,6 +60,8 @@ var photo_full_info = [];
 // calculated width and height of the photo in Colorbox
 var new_photo_width;
 var new_photo_height;
+// number of photos in carousel
+var carousel_photo_count =7;
 
 $(document).ready(function() {
     var embedded_or_print = false;
@@ -103,9 +105,9 @@ $(document).ready(function() {
     onWindowResize();
 
     // цитаты отображаются, если есть перевод и размер окна больше минимального
-    if (quote_list) {
-        showQuotes();        
-    }
+    //if (quote_list) {
+    //    showQuotes();        
+    //}
     
     // random audio   
     /*if (audio_list) {
@@ -182,14 +184,15 @@ function onWindowResize()
 }
 
 // скрывает цитату
-function hideQuotes()
+/*function hideQuotes()
 {
     // fadeOut для элемента p вешает IE    
     $("#quote_p_cont").fadeOut(600);
     setTimeout( showQuotes, 700);
-}
+}*/
 
 // отображает случайную цитату
+/*
 function showQuotes()
 {
     // если размер окна удовлетворяет, показываем цитату    
@@ -212,7 +215,7 @@ function showQuotes()
         $("#quote_p_cont").fadeIn(600);
     }
     setTimeout( hideQuotes, rotate_quotes_interval);
-}
+}*/
 
 // исходный текст учения
 function showOriginal() 
@@ -1048,33 +1051,86 @@ function gotoItemcategory(url)
     window.location.href = url;
 }
 
+// Randomize array element order in-place.
+// Using Fisher-Yates shuffle algorithm.
+function shuffleArray(array)
+{
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+function pickRandomArrayElement(array)
+{
+    return array[Math.floor(Math.random()*array.length)];
+}
+
+
+
 // Run Carousel
 function runCarousel()
 {
     if ($.browser.ie && jQuery.browser.version < 7) {
         return;
     }
+    
+    var data_align_h = ['left', 'center', 'right'];
+    var data_align_v = ['top', 'center', 'bottom'];
+    
+    var photo_direction = ''
     var carousel_html = '<ul>';
     
-    $.each(carousel_photo_list, function(index, photo_url){
-        carousel_html = carousel_html +
-            '<li data-transition="fade" data-startalign="random" data-zoom="in" data-zoomfact="1" data-endAlign="random" data-panduration="15" data-colortransition="0" ><img alt="" src="'+photo_url+'" >'+
-                    '<div class="creative_layer">'+
-                        '<div class="cp-bottom fadeup">'+
-                            '<p><a href="#" title="<?php echo __("Read more") ?>">This is the product that you A Ken Burns JQuery Banner solution which is fully-responsive and offering cutting-edge caption effects!</a><br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p>'+									
-                        '</div>'+
-                    '</div>'+
-            '</li>';
-        /*var quote_index = Math.floor(Math.random( ) * (quote_list.length));
-        // если выбрана прошлая цитата, берём предыдущую в списке или последнюю
-        if (quote_index == last_quote_index) {
-            if (quote_index > 1) {
-                quote_index = quote_index - 1;
+    // randomize quotes
+    quote_list = shuffleArray(quote_list);
+
+    // fetch random photos
+    carousel_photo_list = shuffleArray(carousel_photo_list);
+    for (i=0; i<carousel_photo_list.length; i++) {
+        photo = carousel_photo_list[i];
+        
+        photo_direction = photo[1];
+        if (photo_direction == 'h') {
+            // horizontal photo
+            if (Math.random() > 0.5) {
+                data_startalign = "left";
+                data_endalign   = "right";
             } else {
-                quote_index = quote_list.length - 1;
+                data_startalign = "right";
+                data_endalign   = "left";
             }
-        }*/
-    });
+            data_startalign = data_startalign+","+pickRandomArrayElement(data_align_v);
+            data_endalign   = data_endalign+","+pickRandomArrayElement(data_align_v);
+        } else {
+            // vertical photo
+            if (Math.random() > 0.5) {
+                data_startalign = "top";
+                data_endalign   = "bottom";
+            } else {
+                data_startalign = "bottom";
+                data_endalign   = "top";
+            }
+            data_startalign = pickRandomArrayElement(data_align_h)+","+data_startalign;
+            data_endalign   = pickRandomArrayElement(data_align_h)+","+data_endalign;
+        }
+        
+        carousel_html = carousel_html +
+            '<li data-transition="fade" data-startalign="'+data_startalign+'" data-endAlign="'+data_endalign+'" data-zoom="in" data-zoomfact="1" data-panduration="15" data-colortransition="0" ><img alt="" src="'+photo[0]+'" >';
+
+        if (typeof(quote_list[i]) != "undefined") {
+
+            carousel_html = carousel_html + '<div class="creative_layer">'+
+                '<div class="cp-bottom fadeup">'+
+                    '<a href="#" title="<?php echo __("Read more") ?>"><p>'+quote_list[i]+'<br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p></a>'+									
+                '</div>'+
+            '</div>';
+        }
+
+        carousel_html = carousel_html + '</li>';
+    }
     carousel_html = carousel_html + '</ul>';
 
     $("#carousel_main").css('height','300px').html(carousel_html);

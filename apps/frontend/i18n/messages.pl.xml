@@ -15,6 +15,10 @@
         <target>dla naszego dzisiejszego Świata</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Maha Sambodhi Dharma Sangha</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
         <source>Om Namo Guru Buddha Gyani</source>
         <target>Om Namo Guru Buddha Gyani</target>
       </trans-unit>

@@ -11,7 +11,14 @@ endforeach
 var carousel_photo_list = new Array(
 <?php 
 foreach($carousel_photo_list as $i=>$carousel_photo): 
-    echo '"' . $carousel_photo->getFullUrl(PhotoPeer::CAROUSEL_PHOTO_SIZE) . '"';
+    echo '[';
+    echo '"' . $carousel_photo->getFullUrl( array('max_width'=>PhotoPeer::CAROUSEL_PHOTO_WIDTH, 'min_height'=>PhotoPeer::CAROUSEL_PHOTO_HEIGHT) ) . '",';
+    if ($carousel_photo->getWidth() > $carousel_photo->getHeight()) {
+        echo '"h"';
+    } else {
+        echo '"v"';
+    }
+    echo ']';
     if ($i != count($carousel_photo_list) - 1) {
         echo ', ';
     }

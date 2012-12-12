@@ -15,6 +15,10 @@
         <target>нашему сегодняшнему миру</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Maha Sambodhi Dharma Sangha</source>
+        <target>Маха Самбодхи Дхарма Сангха</target>
+      </trans-unit>
+      <trans-unit id="1">
         <source>Om Namo Guru Buddha Gyani</source>
         <target>Ом Намо Гуру Будда Гьяни</target>
       </trans-unit>

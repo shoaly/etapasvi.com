@@ -13,7 +13,11 @@
       <trans-unit id="1">
         <source>An appeal to the world</source>
         <target>a mai világnak</target>
-      </trans-unit> 
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Maha Sambodhi Dharma Sangha</source>
+        <target></target>
+      </trans-unit>
       <trans-unit id="1">
         <source>Om Namo Guru Buddha Gyani</source>
         <target>Om Namo Guru Buddha Gyani</target>

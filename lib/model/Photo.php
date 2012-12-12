@@ -142,7 +142,7 @@ class Photo extends BasePhoto
     /**
      * Получение ссылки на изображение
      */
-	public function getFullUrl($size = 0) {
+	public function getFullUrl($constraints = array()) {
 	  $path = $this->getFullPath();
 	  $file = $this->getImg();
 
@@ -152,10 +152,29 @@ class Photo extends BasePhoto
 	    	    
 	    $picasa_dimention = '';
 	    $max_dimention = $this->getMaxDimention();
-	    if ($size) {
-	      // fit image into square
-	      $min_dimention = $this->getMinDimention();
-	      $max_dimention = ceil(($max_dimention * $size) / $min_dimention);
+	    if ($constraints) {
+	      // fit image size
+	      if ($this->getWidth() > $this->getHeight()) {
+	        // horizonral image
+	        if ($constraints['max_width'] && $this->getWidth() > $constraints['max_width']) {
+	          $max_dimention = $constraints['max_width'];
+	          $new_height = ceil(($this->getHeight() * $constraints['max_width']) / $this->getWidth());
+	        }
+	        if ($constraints['min_height'] && $new_height < $constraints['min_height']) {
+	          // set height to min_height
+	          $max_dimention = ceil(($this->getWidth() * $constraints['min_height']) / $this->getHeight());
+	        }
+	      } else {
+	        // vertical image
+	        if ($constraints['max_width'] && $this->getWidth() > $constraints['max_width']) {
+	          // calculate new height
+	          $max_dimention = ceil(($this->getHeight() * $constraints['max_width']) / $this->getWidth());
+	        }
+	        if ($constraints['min_height'] && $max_dimention < $constraints['min_height']) {
+	          // set height to min_height
+	          $max_dimention = ceil(($this->getWidth() * $constraints['min_height']) / $this->getHeight());
+	        }
+	      }
 	    }
 	    if ($max_dimention > PhotoPeer::PICASA_MAX_DIMENTION) {
 	      $max_dimention = PhotoPeer::PICASA_MAX_DIMENTION;
