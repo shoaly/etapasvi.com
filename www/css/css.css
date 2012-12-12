@@ -111,11 +111,11 @@ p,
     margin-bottom:0;
     }
 
-#bubble_quote p:first-letter {
+/*#bubble_quote p:first-letter {
 	font-size: 20px;
 	font-family: Monotype Corsiva;
     }
-
+*/
 
 h1 {
     background: none repeat scroll 0 0 transparent;
@@ -627,7 +627,7 @@ p.p2{
 *:first-child+html #bubble_quote {
     padding-top:63px;
     }
-#bubble_quote p {
+/*#bubble_quote p {
 	font: italic 8pt/20pt georgia;
     margin-right: 27px;
     margin-top:0;
@@ -636,7 +636,7 @@ p.p2{
 *:first-child+html #bubble_quote p {
     padding-top: 10px;
     }
-
+*/
 #bubble_click {
 	background: url("../i/interface_sprite.jpg") no-repeat scroll 1px -22px transparent;
     height: 308px;
@@ -1718,10 +1718,11 @@ label.error {
     left: auto;
 	right: -308px;
 	}
-.direction_rtl #bubble_quote  {
+/*.direction_rtl #bubble_quote  {
     left: auto;
 	right: -241px;
 	}
+*/
 .direction_rtl #bubble_mantra   {
     left: auto;
 	right: -2px;

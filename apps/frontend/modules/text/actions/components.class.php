@@ -15,6 +15,7 @@ class textComponents extends sfComponents
   {
     // получаем список Цитат
     $c = new Criteria();
+    $c->add(QuotePeer::SHOW, 1);
     $c->add(QuoteI18nPeer::TITLE, '', Criteria::NOT_EQUAL);
   	$this->quote_list = QuotePeer::doSelectWithI18n($c);
   	

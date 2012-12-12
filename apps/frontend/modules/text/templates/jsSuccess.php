@@ -1078,8 +1078,8 @@ function runCarousel()
         return;
     }
     
-    var data_align_h = ['left', 'center', 'right'];
-    var data_align_v = ['top', 'center', 'bottom'];
+    var data_align_h = ['left', 'right'];
+    var data_align_v = ['top', 'bottom'];
     
     var photo_direction = ''
     var carousel_html = '<ul>';
@@ -1089,7 +1089,8 @@ function runCarousel()
 
     // fetch random photos
     carousel_photo_list = shuffleArray(carousel_photo_list);
-    for (i=0; i<carousel_photo_list.length; i++) {
+
+    for (i=0; i<carousel_photo_count; i++) {
         photo = carousel_photo_list[i];
         
         photo_direction = photo[1];
@@ -1102,8 +1103,14 @@ function runCarousel()
                 data_startalign = "right";
                 data_endalign   = "left";
             }
-            data_startalign = data_startalign+","+pickRandomArrayElement(data_align_v);
-            data_endalign   = data_endalign+","+pickRandomArrayElement(data_align_v);
+            var v_align = pickRandomArrayElement(data_align_v);
+            data_startalign = data_startalign+","+v_align;
+            if (v_align == 'top') {
+                v_align = 'bottom';
+            } else {
+                v_align = 'top';
+            }
+            data_endalign   = data_endalign+","+v_align;
         } else {
             // vertical photo
             if (Math.random() > 0.5) {
@@ -1113,18 +1120,27 @@ function runCarousel()
                 data_startalign = "bottom";
                 data_endalign   = "top";
             }
-            data_startalign = pickRandomArrayElement(data_align_h)+","+data_startalign;
-            data_endalign   = pickRandomArrayElement(data_align_h)+","+data_endalign;
+            var h_align = pickRandomArrayElement(data_align_h);
+            data_startalign = h_align+","+data_startalign;
+            if (h_align == 'left') {
+                h_align = 'right';
+            } else {
+                h_align = 'left';
+            }
+            data_endalign   = h_align+","+data_endalign;
         }
         
         carousel_html = carousel_html +
             '<li data-transition="fade" data-startalign="'+data_startalign+'" data-endAlign="'+data_endalign+'" data-zoom="in" data-zoomfact="1" data-panduration="15" data-colortransition="0" ><img alt="" src="'+photo[0]+'" >';
 
         if (typeof(quote_list[i]) != "undefined") {
-
+            quote_text = quote_list[i];
+            <?php if (!UserPeer::isCultureHieroglyphic()): ?>
+                quote_text = quote_text + '...';
+            <?php endif ?>
             carousel_html = carousel_html + '<div class="creative_layer">'+
                 '<div class="cp-bottom fadeup">'+
-                    '<a href="#" title="<?php echo __("Read more") ?>"><p>'+quote_list[i]+'<br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p></a>'+									
+                    '<a href="#" title="<?php echo __("Read more") ?>"><p>'+quote_text+'<br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p></a>'+									
                 '</div>'+
             '</div>';
         }

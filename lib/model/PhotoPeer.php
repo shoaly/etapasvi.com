@@ -333,6 +333,8 @@ class PhotoPeer extends BasePhotoPeer
     $c = new Criteria();
     $c->add(PhotoPeer::SHOW, 1);
     $c->add(PhotoPeer::CAROUSEL, 1);
+    $c->add(PhotoPeer::WIDTH, self::CAROUSEL_PHOTO_WIDTH, Criteria::GREATER_THAN);
+    $c->add(PhotoPeer::HEIGHT, self::CAROUSEL_PHOTO_HEIGHT, Criteria::GREATER_THAN);
   	return PhotoPeer::doSelect($c);
   }
   

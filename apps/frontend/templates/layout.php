@@ -148,24 +148,7 @@ window.onerror = function(msg, url, line) {
 */ ?>    
 </div>
 
-<div id="bubble_quote">
-
-<?php /*if (IdeaPeer::isThinkingNow()): ?>
-	<?php include_component( 'user', 'thinkingnow' ); ?>
-<? else: */?>
-	<?php /*if (!UserPeer::authIsLoggedIn() ): ?>
-		<?php include_component( 'user', 'minilogin' ); ?>
-	<?php else: ?>
-		<?php include_component( 'user', 'thinkingtime' ); ?>
-	<?php endif */?>
-<?php /*endif */?>
-    <div id="quote_p_cont"><p><?php /*
-        $quote = include_component( 'quote', 'showtitle' ); 
-        if ($quote) {
-            echo $quote;
-        }*/
-    ?>&nbsp;</p></div>
-</div>
+<div id="bubble_quote"></div>
 
 <div id="bubble_sound">
 <?php /*if ($_GET['debug'] != 1): ?>
