@@ -1155,6 +1155,8 @@ function runCarousel()
         /*width:800,*/
         /*height:300,*/
         //responsive:'off', // option does not work in plugin
+        adjustToWindowSize:'off',
+        trackWindowResize:'off',
         buttonsArrows:"off",
         blurwrap:"off",
         //rescaleBGColor:"#fff", // does not work
@@ -1528,6 +1530,8 @@ Additional Feature Update from 8th of March 2012 :
             ////////////////////////////////
             var defaults = {	
 			
+                adjustToWindowSize:"on",
+                trackWindowResize:"on",
                 responsive:"on",
                 blurwrap: "on",
                 noresponsiveWidth:600,
@@ -1648,7 +1652,8 @@ Additional Feature Update from 8th of March 2012 :
                 opt.videoWasOn=-1;
 				
                 // Create Responsive Listener
-                if (responsive)
+                if (responsive && opt.trackWindowResize == 'on') {
+
                     $(window).resize(function() {
 					
                         if (top_container.find('.videoon').length>0 && opt.videoWasOn==-1) {
@@ -1691,6 +1696,7 @@ Additional Feature Update from 8th of March 2012 :
                         },200);
 					
                     });
+                }
             })
         }
     })
@@ -1807,7 +1813,7 @@ Additional Feature Update from 8th of March 2012 :
 					
     function prepareSlides(top,opt) {
         top.find('iframe').attr("frameborder",0);						
-						
+	
         top.find('ul').wrap('<div class="slide_mainmask" style="z-index:10;position:absolute;top:'+(opt.padtop+opt.botop)+'px;left:'+(opt.padleft+opt.boleft)+'px;width:'+opt.width+'px;height:'+opt.height+'px;overflow:hidden"></div>');
         top.find('ul .slide_mainmask').css({
             'opacity':'0.0'
@@ -1851,17 +1857,21 @@ Additional Feature Update from 8th of March 2012 :
                 // SET THE SIZES OD THE CAPTIONS DEPENDING ON THE BROWSER SIZE
                 top.removeClass('kb-minisize').removeClass('kb-halfsize').removeClass('kb-fullsize');
 										
-                if ($(window).width()<=570)
-                    top.addClass('kb-minisize');
-                else
-                if ($(window).width()<=767) 
-                    top.addClass('kb-smallsize');
-                else 
-                if($(window).width()<=959)
-                    top.addClass('kb-mediumsize');
-                else
-                if($(window).width()>959)
+                if (opt.adjustToWindowSize == 'on') {
+                    if ($(window).width()<=570)
+                        top.addClass('kb-minisize');
+                    else
+                    if ($(window).width()<=767) 
+                        top.addClass('kb-smallsize');
+                    else 
+                    if ($(window).width()<=959)
+                        top.addClass('kb-mediumsize');
+                    else
+                    if ($(window).width()>959)
+                        top.addClass('kb-fullsize');
+                } else {
                     top.addClass('kb-fullsize');
+                }
 										
 										
 										
@@ -2043,13 +2053,15 @@ Additional Feature Update from 8th of March 2012 :
 						
 						
         if ($.browser.msie) {
-            if (bg.css('paddingTop') !=undefined && bg.css('paddingTop') !=null)			
-                if (bg.css('paddingTop').length>0)
-                    opt.padtop=parseInt(bg.css('paddingTop'),0);
-							
-            if (bg.css('paddingLeft') !=undefined && bg.css('paddingLeft') !=null)				
-                if (bg.css('paddingLeft').length>0)	
-                    opt.padleft=parseInt(bg.css('paddingLeft'),0);
+            if (bg.css('paddingTop') !=undefined && bg.css('paddingTop') !=null && bg.css('paddingTop').length>0) {
+                opt.padtop=parseInt(bg.css('paddingTop'),0);
+                top.css('paddingTop', parseInt(bg.css('paddingTop'))+1);
+            }
+			
+            if (bg.css('paddingLeft') !=undefined && bg.css('paddingLeft') !=null && bg.css('paddingLeft').length>0) {
+                opt.padleft=parseInt(bg.css('paddingLeft'),0);
+                top.css('paddingLeft', parseInt(bg.css('paddingLeft'))+1);
+            }
 							
             if (bg.css('paddingRight') !=undefined && bg.css('paddingRight') !=null)									
                 if (bg.css('paddingRight').length>0)
@@ -2098,20 +2110,8 @@ Additional Feature Update from 8th of March 2012 :
 							
             if (bg.css('borderBottomWidth').length>0)
                 opt.bobottom=parseInt(bg.css('borderBottomWidth'),0);						
-        }
-							
-							
-						
-    }
-									
-						
-						
-					
-					
-		
-					
-					
-					
+        }				
+    }										
 					
     ///////////////////////////
     // CREATE THE THUMBNAILS //
@@ -2948,7 +2948,6 @@ Additional Feature Update from 8th of March 2012 :
             //contextbw.css({'-webkit-transform':'translateZ(0)'});
             context.drawImage(sour[0],newL,newT,newW,newH);
             if (sourbw.length>0 && hascaption) {		
-											
                 contextbw.drawImage(sourbw[0],newL,newT,newW,newH);
                 setTimeout(function() {
                     sour.parent().find('.canvas-now-bw').cssAnimate({

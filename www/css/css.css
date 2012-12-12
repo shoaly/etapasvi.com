@@ -2085,6 +2085,7 @@ Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
     max-width: 566px;
     overflow: hidden;
     position: relative;
+
 }
 #responsivecarousel_main {
     margin-bottom: 14px;
@@ -2123,7 +2124,7 @@ website:   	http://www.themepunch.com
 /***********************************************
 	-	THE BACKGROUND OF THE SLIDER	-
 ************************************************/
-#responsivecarousel_main .light .kenburn-bg{
+#responsivecarousel_main .light .kenburn-bg {
 	/*background:url(../i/kb-plugin-assets/bg/white25.png) repeat;	*/
 	background:url(../i/kb-plugin-assets/bg/frame.png) repeat;	
     background-repeat: no-repeat;
@@ -2134,7 +2135,7 @@ website:   	http://www.themepunch.com
 	-moz-border-radius: 3px; 
 	-webkit-border-radius: 3px;
 }
-#responsivecarousel_main .dark .kenburn-bg{
+#responsivecarousel_main .dark .kenburn-bg {
 	background:url(../i/kb-plugin-assets/bg/black25.png) repeat;	
 	padding:4px;
 	/*border:1px solid #222;*/
@@ -2220,7 +2221,7 @@ website:   	http://www.themepunch.com
 	text-shadow: 0px 1px 0px #000000;
 }
 
-#responsivecarousel_main .kb-fullsize p{
+#responsivecarousel_main .kb-fullsize p {
 	font-family: Arial, sans-serif;	
 	font-size:12px;
 	/*color:#777;	*/
