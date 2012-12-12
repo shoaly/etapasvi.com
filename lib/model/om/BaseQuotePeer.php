@@ -28,13 +28,19 @@ abstract class BaseQuotePeer {
 	const TM_CLASS = 'QuoteTableMap';
 	
 	/** The total number of columns. */
-	const NUM_COLUMNS = 1;
+	const NUM_COLUMNS = 3;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 	/** the column name for the ID field */
 	const ID = 'quote.ID';
+
+	/** the column name for the SHOW field */
+	const SHOW = 'quote.SHOW';
+
+	/** the column name for the NEWS_ID field */
+	const NEWS_ID = 'quote.NEWS_ID';
 
 	/**
 	 * An identiy map to hold any loaded instances of Quote objects.
@@ -59,11 +65,11 @@ abstract class BaseQuotePeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', ),
-		BasePeer::TYPE_NUM => array (0, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'Show', 'NewsId', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'show', 'newsId', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::SHOW, self::NEWS_ID, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'show', 'news_id', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, )
 	);
 
 	/**
@@ -73,11 +79,11 @@ abstract class BaseQuotePeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, ),
-		BasePeer::TYPE_NUM => array (0, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Show' => 1, 'NewsId' => 2, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'show' => 1, 'newsId' => 2, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::SHOW => 1, self::NEWS_ID => 2, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'show' => 1, 'news_id' => 2, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, )
 	);
 
 	/**
@@ -148,6 +154,8 @@ abstract class BaseQuotePeer {
 	public static function addSelectColumns(Criteria $criteria)
 	{
 		$criteria->addSelectColumn(QuotePeer::ID);
+		$criteria->addSelectColumn(QuotePeer::SHOW);
+		$criteria->addSelectColumn(QuotePeer::NEWS_ID);
 	}
 
 	/**
@@ -407,6 +415,264 @@ abstract class BaseQuotePeer {
 		$stmt->closeCursor();
 		return $results;
 	}
+
+	/**
+	 * Returns the number of rows matching criteria, joining the related News table
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     int Number of matching rows.
+	 */
+	public static function doCountJoinNews(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		// we're going to modify criteria, so copy it first
+		$criteria = clone $criteria;
+
+		// We need to set the primary table name, since in the case that there are no WHERE columns
+		// it will be impossible for the BasePeer::createSelectSql() method to determine which
+		// tables go into the FROM clause.
+		$criteria->setPrimaryTableName(QuotePeer::TABLE_NAME);
+
+		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->setDistinct();
+		}
+
+		if (!$criteria->hasSelectClause()) {
+			QuotePeer::addSelectColumns($criteria);
+		}
+		
+		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
+		
+		// Set the correct dbName
+		$criteria->setDbName(self::DATABASE_NAME);
+
+		if ($con === null) {
+			$con = Propel::getConnection(QuotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+		}
+
+		$criteria->addJoin(QuotePeer::NEWS_ID, NewsPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseQuotePeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doCount($criteria, $con);
+
+		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$count = (int) $row[0];
+		} else {
+			$count = 0; // no rows returned; we infer that means 0 matches.
+		}
+		$stmt->closeCursor();
+		return $count;
+	}
+
+
+	/**
+	 * Selects a collection of Quote objects pre-filled with their News objects.
+	 * @param      Criteria  $criteria
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     array Array of Quote objects.
+	 * @throws     PropelException Any exceptions caught during processing will be
+	 *		 rethrown wrapped into a PropelException.
+	 */
+	public static function doSelectJoinNews(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		$criteria = clone $criteria;
+
+		// Set the correct dbName if it has not been overridden
+		if ($criteria->getDbName() == Propel::getDefaultDB()) {
+			$criteria->setDbName(self::DATABASE_NAME);
+		}
+
+		QuotePeer::addSelectColumns($criteria);
+		$startcol = (QuotePeer::NUM_COLUMNS - QuotePeer::NUM_LAZY_LOAD_COLUMNS);
+		NewsPeer::addSelectColumns($criteria);
+
+		$criteria->addJoin(QuotePeer::NEWS_ID, NewsPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseQuotePeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doSelect($criteria, $con);
+		$results = array();
+
+		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$key1 = QuotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = QuotePeer::getInstanceFromPool($key1))) {
+				// We no longer rehydrate the object, since this can cause data loss.
+				// See http://propel.phpdb.org/trac/ticket/509
+				// $obj1->hydrate($row, 0, true); // rehydrate
+			} else {
+
+				$cls = QuotePeer::getOMClass(false);
+
+				$obj1 = new $cls();
+				$obj1->hydrate($row);
+				QuotePeer::addInstanceToPool($obj1, $key1);
+			} // if $obj1 already loaded
+
+			$key2 = NewsPeer::getPrimaryKeyHashFromRow($row, $startcol);
+			if ($key2 !== null) {
+				$obj2 = NewsPeer::getInstanceFromPool($key2);
+				if (!$obj2) {
+
+					$cls = NewsPeer::getOMClass(false);
+
+					$obj2 = new $cls();
+					$obj2->hydrate($row, $startcol);
+					NewsPeer::addInstanceToPool($obj2, $key2);
+				} // if obj2 already loaded
+				
+				// Add the $obj1 (Quote) to $obj2 (News)
+				$obj2->addQuote($obj1);
+
+			} // if joined row was not null
+
+			$results[] = $obj1;
+		}
+		$stmt->closeCursor();
+		return $results;
+	}
+
+
+	/**
+	 * Returns the number of rows matching criteria, joining all related tables
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     int Number of matching rows.
+	 */
+	public static function doCountJoinAll(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		// we're going to modify criteria, so copy it first
+		$criteria = clone $criteria;
+
+		// We need to set the primary table name, since in the case that there are no WHERE columns
+		// it will be impossible for the BasePeer::createSelectSql() method to determine which
+		// tables go into the FROM clause.
+		$criteria->setPrimaryTableName(QuotePeer::TABLE_NAME);
+
+		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->setDistinct();
+		}
+
+		if (!$criteria->hasSelectClause()) {
+			QuotePeer::addSelectColumns($criteria);
+		}
+		
+		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
+		
+		// Set the correct dbName
+		$criteria->setDbName(self::DATABASE_NAME);
+
+		if ($con === null) {
+			$con = Propel::getConnection(QuotePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+		}
+
+		$criteria->addJoin(QuotePeer::NEWS_ID, NewsPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseQuotePeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doCount($criteria, $con);
+
+		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$count = (int) $row[0];
+		} else {
+			$count = 0; // no rows returned; we infer that means 0 matches.
+		}
+		$stmt->closeCursor();
+		return $count;
+	}
+
+	/**
+	 * Selects a collection of Quote objects pre-filled with all related objects.
+	 *
+	 * @param      Criteria  $criteria
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     array Array of Quote objects.
+	 * @throws     PropelException Any exceptions caught during processing will be
+	 *		 rethrown wrapped into a PropelException.
+	 */
+	public static function doSelectJoinAll(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		$criteria = clone $criteria;
+
+		// Set the correct dbName if it has not been overridden
+		if ($criteria->getDbName() == Propel::getDefaultDB()) {
+			$criteria->setDbName(self::DATABASE_NAME);
+		}
+
+		QuotePeer::addSelectColumns($criteria);
+		$startcol2 = (QuotePeer::NUM_COLUMNS - QuotePeer::NUM_LAZY_LOAD_COLUMNS);
+
+		NewsPeer::addSelectColumns($criteria);
+		$startcol3 = $startcol2 + (NewsPeer::NUM_COLUMNS - NewsPeer::NUM_LAZY_LOAD_COLUMNS);
+
+		$criteria->addJoin(QuotePeer::NEWS_ID, NewsPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseQuotePeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doSelect($criteria, $con);
+		$results = array();
+
+		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$key1 = QuotePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = QuotePeer::getInstanceFromPool($key1))) {
+				// We no longer rehydrate the object, since this can cause data loss.
+				// See http://propel.phpdb.org/trac/ticket/509
+				// $obj1->hydrate($row, 0, true); // rehydrate
+			} else {
+				$cls = QuotePeer::getOMClass(false);
+
+				$obj1 = new $cls();
+				$obj1->hydrate($row);
+				QuotePeer::addInstanceToPool($obj1, $key1);
+			} // if obj1 already loaded
+
+			// Add objects for joined News rows
+
+			$key2 = NewsPeer::getPrimaryKeyHashFromRow($row, $startcol2);
+			if ($key2 !== null) {
+				$obj2 = NewsPeer::getInstanceFromPool($key2);
+				if (!$obj2) {
+
+					$cls = NewsPeer::getOMClass(false);
+
+					$obj2 = new $cls();
+					$obj2->hydrate($row, $startcol2);
+					NewsPeer::addInstanceToPool($obj2, $key2);
+				} // if obj2 loaded
+
+				// Add the $obj1 (Quote) to the collection in $obj2 (News)
+				$obj2->addQuote($obj1);
+			} // if joined row not null
+
+			$results[] = $obj1;
+		}
+		$stmt->closeCursor();
+		return $results;
+	}
+
 	/**
 	 * Returns the TableMap related to this peer.
 	 * This method is not needed for general use but a specific application could have a need.

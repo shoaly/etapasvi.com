@@ -7,14 +7,16 @@ generator:
     list:
       peer_method: doSelectWithI18n
       max_per_page: 100
-      display: [id, =title]
+      display: [id, show, =title, news_id]
       title:   Quote
+      filters: [show, news_id]
       object_actions:
         _edit:
         _delete:
 
     edit:
       display:
+        "NONE": [show, news_id]
         "EN":
           - title_i18n_en         
         "RU":

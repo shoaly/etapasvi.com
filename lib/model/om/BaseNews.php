@@ -99,6 +99,16 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	private $lastNewsI18nCriteria = null;
 
 	/**
+	 * @var        array Quote[] Collection to store aggregation of Quote objects.
+	 */
+	protected $collQuotes;
+
+	/**
+	 * @var        Criteria The criteria used to select the current contents of collQuotes.
+	 */
+	private $lastQuoteCriteria = null;
+
+	/**
 	 * @var        array Documents[] Collection to store aggregation of Documents objects.
 	 */
 	protected $collDocumentss;
@@ -730,6 +740,9 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 			$this->collNewsI18ns = null;
 			$this->lastNewsI18nCriteria = null;
 
+			$this->collQuotes = null;
+			$this->lastQuoteCriteria = null;
+
 			$this->collDocumentss = null;
 			$this->lastDocumentsCriteria = null;
 
@@ -955,6 +968,14 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collQuotes !== null) {
+				foreach ($this->collQuotes as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collDocumentss !== null) {
 				foreach ($this->collDocumentss as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -1048,6 +1069,14 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 
 				if ($this->collNewsI18ns !== null) {
 					foreach ($this->collNewsI18ns as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collQuotes !== null) {
+					foreach ($this->collQuotes as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -1356,6 +1385,12 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 				}
 			}
 
+			foreach ($this->getQuotes() as $relObj) {
+				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+					$copyObj->addQuote($relObj->copy($deepCopy));
+				}
+			}
+
 			foreach ($this->getDocumentss() as $relObj) {
 				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
 					$copyObj->addDocuments($relObj->copy($deepCopy));
@@ -1613,6 +1648,160 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 	}
 
 	/**
+	 * Clears out the collQuotes collection (array).
+	 *
+	 * This does not modify the database; however, it will remove any associated objects, causing
+	 * them to be refetched by subsequent calls to accessor method.
+	 *
+	 * @return     void
+	 * @see        addQuotes()
+	 */
+	public function clearQuotes()
+	{
+		$this->collQuotes = null; // important to set this to NULL since that means it is uninitialized
+	}
+
+	/**
+	 * Initializes the collQuotes collection (array).
+	 *
+	 * By default this just sets the collQuotes collection to an empty array (like clearcollQuotes());
+	 * however, you may wish to override this method in your stub class to provide setting appropriate
+	 * to your application -- for example, setting the initial array to the values stored in database.
+	 *
+	 * @return     void
+	 */
+	public function initQuotes()
+	{
+		$this->collQuotes = array();
+	}
+
+	/**
+	 * Gets an array of Quote objects which contain a foreign key that references this object.
+	 *
+	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
+	 * Otherwise if this News has previously been saved, it will retrieve
+	 * related Quotes from storage. If this News is new, it will return
+	 * an empty collection or the current collection, the criteria is ignored on a new object.
+	 *
+	 * @param      PropelPDO $con
+	 * @param      Criteria $criteria
+	 * @return     array Quote[]
+	 * @throws     PropelException
+	 */
+	public function getQuotes($criteria = null, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(NewsPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collQuotes === null) {
+			if ($this->isNew()) {
+			   $this->collQuotes = array();
+			} else {
+
+				$criteria->add(QuotePeer::NEWS_ID, $this->id);
+
+				QuotePeer::addSelectColumns($criteria);
+				$this->collQuotes = QuotePeer::doSelect($criteria, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return the collection.
+
+
+				$criteria->add(QuotePeer::NEWS_ID, $this->id);
+
+				QuotePeer::addSelectColumns($criteria);
+				if (!isset($this->lastQuoteCriteria) || !$this->lastQuoteCriteria->equals($criteria)) {
+					$this->collQuotes = QuotePeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastQuoteCriteria = $criteria;
+		return $this->collQuotes;
+	}
+
+	/**
+	 * Returns the number of related Quote objects.
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct
+	 * @param      PropelPDO $con
+	 * @return     int Count of related Quote objects.
+	 * @throws     PropelException
+	 */
+	public function countQuotes(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(NewsPeer::DATABASE_NAME);
+		} else {
+			$criteria = clone $criteria;
+		}
+
+		if ($distinct) {
+			$criteria->setDistinct();
+		}
+
+		$count = null;
+
+		if ($this->collQuotes === null) {
+			if ($this->isNew()) {
+				$count = 0;
+			} else {
+
+				$criteria->add(QuotePeer::NEWS_ID, $this->id);
+
+				$count = QuotePeer::doCount($criteria, false, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return count of the collection.
+
+
+				$criteria->add(QuotePeer::NEWS_ID, $this->id);
+
+				if (!isset($this->lastQuoteCriteria) || !$this->lastQuoteCriteria->equals($criteria)) {
+					$count = QuotePeer::doCount($criteria, false, $con);
+				} else {
+					$count = count($this->collQuotes);
+				}
+			} else {
+				$count = count($this->collQuotes);
+			}
+		}
+		return $count;
+	}
+
+	/**
+	 * Method called to associate a Quote object to this object
+	 * through the Quote foreign key attribute.
+	 *
+	 * @param      Quote $l Quote
+	 * @return     void
+	 * @throws     PropelException
+	 */
+	public function addQuote(Quote $l)
+	{
+		if ($this->collQuotes === null) {
+			$this->initQuotes();
+		}
+		if (!in_array($l, $this->collQuotes, true)) { // only add it if the **same** object is not already associated
+			array_push($this->collQuotes, $l);
+			$l->setNews($this);
+		}
+	}
+
+	/**
 	 * Clears out the collDocumentss collection (array).
 	 *
 	 * This does not modify the database; however, it will remove any associated objects, causing
@@ -1783,6 +1972,11 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 					$o->clearAllReferences($deep);
 				}
 			}
+			if ($this->collQuotes) {
+				foreach ((array) $this->collQuotes as $o) {
+					$o->clearAllReferences($deep);
+				}
+			}
 			if ($this->collDocumentss) {
 				foreach ((array) $this->collDocumentss as $o) {
 					$o->clearAllReferences($deep);
@@ -1791,6 +1985,7 @@ abstract class BaseNews extends BaseObject  implements Persistent {
 		} // if ($deep)
 
 		$this->collNewsI18ns = null;
+		$this->collQuotes = null;
 		$this->collDocumentss = null;
 			$this->aNewstypes = null;
 	}

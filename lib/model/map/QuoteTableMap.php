@@ -40,6 +40,8 @@ class QuoteTableMap extends TableMap {
 		$this->setUseIdGenerator(true);
 		// columns
 		$this->addPrimaryKey('ID', 'Id', 'INTEGER', true, null, null);
+		$this->addColumn('SHOW', 'Show', 'BOOLEAN', false, null, true);
+		$this->addForeignKey('NEWS_ID', 'NewsId', 'INTEGER', 'news', 'ID', false, null, null);
 		// validators
 	} // initialize()
 
@@ -48,6 +50,7 @@ class QuoteTableMap extends TableMap {
 	 */
 	public function buildRelations()
 	{
+    $this->addRelation('News', 'News', RelationMap::MANY_TO_ONE, array('news_id' => 'id', ), null, null);
     $this->addRelation('QuoteI18n', 'QuoteI18n', RelationMap::ONE_TO_MANY, array('id' => 'id', ), 'CASCADE', null);
 	} // buildRelations()
 

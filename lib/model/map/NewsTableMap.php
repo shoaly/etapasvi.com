@@ -59,6 +59,7 @@ class NewsTableMap extends TableMap {
 	{
     $this->addRelation('Newstypes', 'Newstypes', RelationMap::MANY_TO_ONE, array('type' => 'id', ), null, null);
     $this->addRelation('NewsI18n', 'NewsI18n', RelationMap::ONE_TO_MANY, array('id' => 'id', ), 'CASCADE', null);
+    $this->addRelation('Quote', 'Quote', RelationMap::ONE_TO_MANY, array('id' => 'news_id', ), null, null);
     $this->addRelation('Documents', 'Documents', RelationMap::ONE_TO_MANY, array('id' => 'news_id', ), null, null);
 	} // buildRelations()
 

@@ -28,6 +28,24 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 	protected $id;
 
 	/**
+	 * The value for the show field.
+	 * Note: this column has a database default value of: true
+	 * @var        boolean
+	 */
+	protected $show;
+
+	/**
+	 * The value for the news_id field.
+	 * @var        int
+	 */
+	protected $news_id;
+
+	/**
+	 * @var        News
+	 */
+	protected $aNews;
+
+	/**
 	 * @var        array QuoteI18n[] Collection to store aggregation of QuoteI18n objects.
 	 */
 	protected $collQuoteI18ns;
@@ -68,6 +86,27 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 	protected $current_i18n = array();
 
 	/**
+	 * Applies default values to this object.
+	 * This method should be called from the object's constructor (or
+	 * equivalent initialization method).
+	 * @see        __construct()
+	 */
+	public function applyDefaultValues()
+	{
+		$this->show = true;
+	}
+
+	/**
+	 * Initializes internal state of BaseQuote object.
+	 * @see        applyDefaults()
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->applyDefaultValues();
+	}
+
+	/**
 	 * Get the [id] column value.
 	 * 
 	 * @return     int
@@ -75,6 +114,26 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 	public function getId()
 	{
 		return $this->id;
+	}
+
+	/**
+	 * Get the [show] column value.
+	 * 
+	 * @return     boolean
+	 */
+	public function getShow()
+	{
+		return $this->show;
+	}
+
+	/**
+	 * Get the [news_id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getNewsId()
+	{
+		return $this->news_id;
 	}
 
 	/**
@@ -101,6 +160,56 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 	} // setId()
 
 	/**
+	 * Set the value of [show] column.
+	 * 
+	 * @param      boolean $v new value
+	 * @return     Quote The current object (for fluent API support)
+	 */
+	public function setShow($v)
+	{
+		if ($v !== null) {
+			$v = (boolean) $v;
+		}
+
+		if ($this->show !== $v || $this->isNew()) {
+			if ($this->show === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = QuotePeer::SHOW;
+			}
+			$this->show = $v;
+		}
+
+		return $this;
+	} // setShow()
+
+	/**
+	 * Set the value of [news_id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Quote The current object (for fluent API support)
+	 */
+	public function setNewsId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->news_id !== $v) {
+			if ($this->news_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = QuotePeer::NEWS_ID;
+			}
+			$this->news_id = $v;
+		}
+
+		if ($this->aNews !== null && $this->aNews->getId() !== $v) {
+			$this->aNews = null;
+		}
+
+		return $this;
+	} // setNewsId()
+
+	/**
 	 * Indicates whether the columns in this object are only set to default values.
 	 *
 	 * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -110,6 +219,10 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 	 */
 	public function hasOnlyDefaultValues()
 	{
+			if ($this->show !== true) {
+				return false;
+			}
+
 		// otherwise, everything was equal, so return TRUE
 		return true;
 	} // hasOnlyDefaultValues()
@@ -133,6 +246,8 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 		try {
 
 			$this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
+			$this->show = ($row[$startcol + 1] !== null) ? (boolean) $row[$startcol + 1] : null;
+			$this->news_id = ($row[$startcol + 2] !== null) ? (int) $row[$startcol + 2] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -142,7 +257,7 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 1; // 1 = QuotePeer::NUM_COLUMNS - QuotePeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 3; // 3 = QuotePeer::NUM_COLUMNS - QuotePeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Quote object", $e);
@@ -165,6 +280,9 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 	public function ensureConsistency()
 	{
 
+		if ($this->aNews !== null && $this->news_id !== $this->aNews->getId()) {
+			$this->aNews = null;
+		}
 	} // ensureConsistency
 
 	/**
@@ -204,6 +322,7 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 
 		if ($deep) {  // also de-associate any related objects?
 
+			$this->aNews = null;
 			$this->collQuoteI18ns = null;
 			$this->lastQuoteI18nCriteria = null;
 
@@ -349,6 +468,18 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 		if (!$this->alreadyInSave) {
 			$this->alreadyInSave = true;
 
+			// We call the save method on the following object(s) if they
+			// were passed to this object by their coresponding set
+			// method.  This object relates to these object(s) by a
+			// foreign key reference.
+
+			if ($this->aNews !== null) {
+				if ($this->aNews->isModified() || $this->aNews->isNew()) {
+					$affectedRows += $this->aNews->save($con);
+				}
+				$this->setNews($this->aNews);
+			}
+
 			if ($this->isNew() ) {
 				$this->modifiedColumns[] = QuotePeer::ID;
 			}
@@ -476,6 +607,18 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 			$failureMap = array();
 
 
+			// We call the validate method on the following object(s) if they
+			// were passed to this object by their coresponding set
+			// method.  This object relates to these object(s) by a
+			// foreign key reference.
+
+			if ($this->aNews !== null) {
+				if (!$this->aNews->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aNews->getValidationFailures());
+				}
+			}
+
+
 			if (($retval = QuotePeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
@@ -525,6 +668,12 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 			case 0:
 				return $this->getId();
 				break;
+			case 1:
+				return $this->getShow();
+				break;
+			case 2:
+				return $this->getNewsId();
+				break;
 			default:
 				return null;
 				break;
@@ -547,6 +696,8 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 		$keys = QuotePeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
+			$keys[1] => $this->getShow(),
+			$keys[2] => $this->getNewsId(),
 		);
 		return $result;
 	}
@@ -581,6 +732,12 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 			case 0:
 				$this->setId($value);
 				break;
+			case 1:
+				$this->setShow($value);
+				break;
+			case 2:
+				$this->setNewsId($value);
+				break;
 		} // switch()
 	}
 
@@ -606,6 +763,8 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 		$keys = QuotePeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
+		if (array_key_exists($keys[1], $arr)) $this->setShow($arr[$keys[1]]);
+		if (array_key_exists($keys[2], $arr)) $this->setNewsId($arr[$keys[2]]);
 	}
 
 	/**
@@ -618,6 +777,8 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 		$criteria = new Criteria(QuotePeer::DATABASE_NAME);
 
 		if ($this->isColumnModified(QuotePeer::ID)) $criteria->add(QuotePeer::ID, $this->id);
+		if ($this->isColumnModified(QuotePeer::SHOW)) $criteria->add(QuotePeer::SHOW, $this->show);
+		if ($this->isColumnModified(QuotePeer::NEWS_ID)) $criteria->add(QuotePeer::NEWS_ID, $this->news_id);
 
 		return $criteria;
 	}
@@ -671,6 +832,10 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 	 */
 	public function copyInto($copyObj, $deepCopy = false)
 	{
+
+		$copyObj->setShow($this->show);
+
+		$copyObj->setNewsId($this->news_id);
 
 
 		if ($deepCopy) {
@@ -729,6 +894,55 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 			self::$peer = new QuotePeer();
 		}
 		return self::$peer;
+	}
+
+	/**
+	 * Declares an association between this object and a News object.
+	 *
+	 * @param      News $v
+	 * @return     Quote The current object (for fluent API support)
+	 * @throws     PropelException
+	 */
+	public function setNews(News $v = null)
+	{
+		if ($v === null) {
+			$this->setNewsId(NULL);
+		} else {
+			$this->setNewsId($v->getId());
+		}
+
+		$this->aNews = $v;
+
+		// Add binding for other direction of this n:n relationship.
+		// If this object has already been added to the News object, it will not be re-added.
+		if ($v !== null) {
+			$v->addQuote($this);
+		}
+
+		return $this;
+	}
+
+
+	/**
+	 * Get the associated News object
+	 *
+	 * @param      PropelPDO Optional Connection object.
+	 * @return     News The associated News object.
+	 * @throws     PropelException
+	 */
+	public function getNews(PropelPDO $con = null)
+	{
+		if ($this->aNews === null && ($this->news_id !== null)) {
+			$this->aNews = NewsPeer::retrieveByPk($this->news_id);
+			/* The following can be used additionally to
+			   guarantee the related object contains a reference
+			   to this object.  This level of coupling may, however, be
+			   undesirable since it could result in an only partially populated collection
+			   in the referenced object.
+			   $this->aNews->addQuotes($this);
+			 */
+		}
+		return $this->aNews;
 	}
 
 	/**
@@ -905,6 +1119,7 @@ abstract class BaseQuote extends BaseObject  implements Persistent {
 		} // if ($deep)
 
 		$this->collQuoteI18ns = null;
+			$this->aNews = null;
 	}
 
 	// symfony_behaviors behavior

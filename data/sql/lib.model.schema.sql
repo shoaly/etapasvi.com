@@ -398,7 +398,14 @@ DROP TABLE IF EXISTS `quote`;
 CREATE TABLE `quote`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	PRIMARY KEY (`id`)
+	`show` TINYINT default 1,
+	`news_id` INTEGER,
+	PRIMARY KEY (`id`),
+	KEY `show`(`show`),
+	INDEX `quote_FI_1` (`news_id`),
+	CONSTRAINT `quote_FK_1`
+		FOREIGN KEY (`news_id`)
+		REFERENCES `news` (`id`)
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

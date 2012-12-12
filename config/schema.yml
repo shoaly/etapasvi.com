@@ -179,6 +179,10 @@ propel:
 
   quote:
     id:               ~
+    show:             { type: boolean, defaultValue: true }
+    news_id:          ~
+    _indexes:
+      show:          [show]
 
   quote_i18n:
     title:            { type: longvarchar, required: true }
