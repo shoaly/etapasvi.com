@@ -1718,11 +1718,10 @@ label.error {
     left: auto;
 	right: -308px;
 	}
-/*.direction_rtl #bubble_quote  {
+.direction_rtl #bubble_quote  {
     left: auto;
 	right: -241px;
 	}
-*/
 .direction_rtl #bubble_mantra   {
     left: auto;
 	right: -2px;
@@ -2081,11 +2080,18 @@ Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
 }
 
 /* carousel */
+.direction_rtl #carousel_main {
+    direction: ltr;
+}
 #carousel_main {
     max-width: 566px;
     overflow: hidden;
     position: relative;
-
+	font: italic 8pt/20pt georgia;
+}
+#carousel_main p:first-letter {
+	font-size: 20px;
+	font-family: Monotype Corsiva;
 }
 #responsivecarousel_main {
     margin-bottom: 14px;
@@ -2184,6 +2190,7 @@ website:   	http://www.themepunch.com
 	color:#fff;
 	/*background:url(../i/kb-plugin-assets/bg/black65.png);*/
     background: url("../i/kb-plugin-assets/bg/white67.png") repeat scroll 0 0 transparent;
+    /*background:url(../i/kb-plugin-assets/bg/white_gradient67.png) repeat scroll right 0 transparent;	*/
     /*background:#000;*/
 	/*opacity:0.5;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);*/
@@ -2205,13 +2212,74 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .kb-fullsize .cp-left	{ padding:30px 40px 30px 40px; top:0px;    left:0px;  height:100%; }
 #responsivecarousel_main .kb-fullsize .cp-top	{ padding:5px 40px 5px 40px; top:0px;    left:0px;  width:100%;  }
 #responsivecarousel_main .kb-fullsize .cp-bottom	{ 
-    /*padding:5px 40px 5px 40px; */
-    bottom:0px; 
-    left:0px;  
-    /*width:100%;  */
+    bottom:10px;
+    left:-3px;
+    margin-right:70px;
+    padding: 10px 10px 10px 13px;
+    visibility: hidden;
+    width: auto;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius:3px;
+    
+    behavior: url("/css/PIE.htc");
+    
+/*
+    bottom:0;
+    left:0;
+    margin-right:70px;
+    padding: 10px;
+    visibility: hidden;
+    width: auto;
+*/
+    
+/*
+    bottom:10px;
+    left:10px;
+    margin-right:70px;
+    padding: 10px;
+    visibility: hidden;
+    width: auto;
+*/    
+    
+/*
+    bottom:10px;
+    left:-3px;
+    margin-right:70px;
+    padding: 10px 10px 10px 13px;
+    visibility: hidden;
+    width: auto;
+*/
+    
+/*
+    bottom:10px;
+    left:-3px;
+    margin-right:70px;
+    padding: 10px 80px 10px 13px;
+    visibility: hidden;
+    width: auto;
+*/
+    
+/*
+    bottom:0; 
+    left:0;
+    margin-right:70px;
+    padding: 10px;
+    visibility: hidden;
+    width: 530px;
+    width: auto;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius:3px;
+*/
+    
+    /*
+    bottom:0; 
+    left:0;  
     padding: 10px 13px 0;
     visibility: hidden;
     width: 530px;
+*/
 }
 
 #responsivecarousel_main .kb-fullsize .cp-title{		

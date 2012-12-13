@@ -1,7 +1,12 @@
 var quote_list = new Array(
 <?php 
 foreach($quote_list as $i=>$quote): 
+    echo '[';
     echo '"' . addslashes(html_entity_decode($quote->getTitle())) . '"';
+    if ($quote->getNews()) {
+        echo ',"' . $quote->getNews()->getUrl() . '"';
+    }
+    echo ']';
     if ($i != count($quote_list) - 1) {
         echo ', ';
     }

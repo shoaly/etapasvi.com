@@ -1134,15 +1134,22 @@ function runCarousel()
             '<li data-transition="fade" data-startalign="'+data_startalign+'" data-endAlign="'+data_endalign+'" data-zoom="in" data-zoomfact="1" data-panduration="15" data-colortransition="0" ><img alt="" src="'+photo[0]+'" >';
 
         if (typeof(quote_list[i]) != "undefined") {
-            quote_text = quote_list[i];
+            quote_text = quote_list[i][0];
             <?php if (!UserPeer::isCultureHieroglyphic()): ?>
                 quote_text = quote_text + '...';
             <?php endif ?>
-            carousel_html = carousel_html + '<div class="creative_layer">'+
-                '<div class="cp-bottom fadeup">'+
-                    '<a href="#" title="<?php echo __("Read more") ?>"><p>'+quote_text+'<br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p></a>'+									
-                '</div>'+
-            '</div>';
+
+            carousel_html = carousel_html + '<div class="creative_layer"><div class="cp-bottom faderight">';
+
+            if (typeof(quote_list[i][1]) != "undefined") {
+                // there is a link to teaching
+                //if ($.browser.ie && $.browser.version < 8) {
+                quote_url = quote_list[i][1];
+            } else {
+                quote_url = '#';
+            }
+            carousel_html = carousel_html + '<a href="'+quote_url+'" title="<?php echo __("Read more") ?>"><p>'+quote_text+'<br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p></a>';
+            carousel_html = carousel_html + '</div></div>';
         }
 
         carousel_html = carousel_html + '</li>';
@@ -2158,6 +2165,7 @@ Additional Feature Update from 8th of March 2012 :
         thc.hover(
             function() {
                 $(this).addClass('overme');
+                opt.overme = 'on';
                 thc.animate({
                     'opacity':1
                 },{
@@ -2167,8 +2175,9 @@ Additional Feature Update from 8th of March 2012 :
             }, 
             function() {
                 $(this).removeClass('overme');
+                opt.overme = 'off';
                 var sm = top.find('.slide_mainmask');
-								
+				
                 setTimeout(function() {
                     if (opt.hideThumbs=="on" && !sm.hasClass('overon') && !$('body').hasClass('tp_showthumbsalways')) {
                         thc.animate({
@@ -2358,6 +2367,7 @@ Additional Feature Update from 8th of March 2012 :
         if (opt.hideThumbs=="on") {
 								
             thc.removeClass('overme');
+            opt.overme = 'off';
             var sm = top.find('.slide_mainmask');
 								
             setTimeout(function() {
@@ -2548,6 +2558,7 @@ Additional Feature Update from 8th of March 2012 :
             var par = slide.find('.parallax_container');
             var layers = slide.find('.layer_container');
             $this.removeClass("overme");		
+            opt.overme = 'off';
             $this.removeClass('overon');
 								
             // FIND THE RIGHT THUMBNAIL HOLDER OBJECT							
@@ -2570,8 +2581,10 @@ Additional Feature Update from 8th of March 2012 :
         top.mousemove(function(e) {
 						
             var $this = $(this);	
-            if (opt.pauseOnRollOverMain != "off") 
+            if (opt.pauseOnRollOverMain != "off") {
                 $this.addClass("overme");
+                opt.overme = 'on';
+            }
             // FIND THE RIGHT THUMBNAIL HOLDER OBJECT							
             var thma = $this.parent().find('.kenburn_thumb_container #thumbmask');
             slidertop.find('.kenburn_thumb_container').css({
@@ -2682,10 +2695,8 @@ Additional Feature Update from 8th of March 2012 :
             newitem.data('startalign','center,center');
             newitem.data('endalign','center,center');
             newitem.data('zoom','none');
-            newitem.data('zoomfact',0);
-									
+            newitem.data('zoomfact', 0);
         }
-								
 							
         // Lets Save the Size of the IMG first in the DATA
         if (newitem.data('ww') == undefined) {
@@ -2716,15 +2727,10 @@ Additional Feature Update from 8th of March 2012 :
             var oldW = newitem.data('ww');
             var oldH = newitem.data('hh');
         }
-							
-					
-							
-        oldW = oldW*(opt._propw);
-        oldH = oldH*(opt._proph);
-							
-					
-							
-						
+
+        oldW = Math.floor( oldW*(opt._propw) );
+        oldH = Math.floor( oldH*(opt._proph) );
+
         // Create the Standard Values
         var newT=0;
         var newL=0;
@@ -2783,10 +2789,7 @@ Additional Feature Update from 8th of March 2012 :
 								
         // Remove the Interval of the old item. So it do not disturb the CPU any more
         clearInterval(item.data('interval'));
-								
-								
-								
-															
+												
         sour.parent().find('.canvas-now').remove();
         sour.parent().find('.canvas-now-bw').remove();
 								
@@ -2794,9 +2797,7 @@ Additional Feature Update from 8th of March 2012 :
         if (kenburn) {
             var hasCanvas=isCanvasSupported();
             var isIEunder9 = $.browser.msie && $.browser.version < 9;																		
-            if (isIEunder9) hasCanvas=false;
-									
-									
+            if (isIEunder9) hasCanvas=false;						
         }
         var hascaption = true;
         // CAPTION POSITION AND SIZING
@@ -2833,17 +2834,18 @@ Additional Feature Update from 8th of March 2012 :
                 });
                 var canvasbw=sour.parent().find('.canvas-now-canvas-bw')[0];
 										
-										
                 if (opt.blurwrap == 'on') {
                     sour.parent().find('.canvas-now-bw').wrap('<div class="blurwrap" style="width:'+clw+'px;height:'+clh+'px;position:absolute;top:'+clt+'px;left:'+cll+'px;overflow:hidden"></div>');
                 }
                 var contextbw = canvasbw.getContext('2d');
             }
         } else {
-									
+
             if (sourbw.parent().hasClass("blurwrap")) {
             } else {
-                sourbw.wrap('<div class="blurwrap" style="width:'+clw+'px;height:'+clh+'px;position:absolute;top:'+clt+'px;left:'+cll+'px;overflow:hidden;"></div>');								
+                if (opt.blurwrap == 'on') {
+                    sourbw.wrap('<div class="blurwrap" style="width:'+clw+'px;height:'+clh+'px;position:absolute;top:'+clt+'px;left:'+cll+'px;overflow:hidden;"></div>');								
+                }
             }
 									
         }
@@ -2861,6 +2863,7 @@ Additional Feature Update from 8th of March 2012 :
         // DEFAULT VALUES FOR SCALING AND MOVING THE IMAGE
         var scalerX=0;
         var scalerY=0;
+
         var newW=oldW;
         var newH=oldH;
 								
@@ -2964,8 +2967,6 @@ Additional Feature Update from 8th of March 2012 :
         sour.cssStop(true,true);
         sourbw.cssStop(true,true);
 								
-								
-								
         if (kenburn) {
             sour.css({
                 'position':'absolute',
@@ -3037,14 +3038,17 @@ Additional Feature Update from 8th of March 2012 :
         //console.log('SWAPBANNER : READY FOR KEN BURN');
         // NOW WE CAN CREATE AN INTERVAL, WHICH WILL SHOW 25 FRAMES PER SEC (TO MINIMIZE THE CPU STEPS)
         if (kenburn) {
+            opt.overme = 'off';
             opt.aktKenInterval = setInterval(function() {				
-                $('body').find('.testinfo').html(opt.aktKenInterval+"  "+Math.floor(Math.random()*10000));
-											
-                if (!slider_container.parent().parent().find('.kenburn_thumb_container #thumbmask').hasClass('overme') && !slider_container.find('.slide_mainmask').hasClass('overme') && !slider_container.find('.slide_mainmask').hasClass('videoon')) {
+                //$('body').find('.testinfo').html(opt.aktKenInterval+"  "+Math.floor(Math.random()*10000));
+                // accelerating
+                //if (!slider_container.parent().parent().find('.kenburn_thumb_container #thumbmask').hasClass('overme') && !slider_container.find('.slide_mainmask').hasClass('overme') && !slider_container.find('.slide_mainmask').hasClass('videoon')) {
+                
+                if (opt.overme != 'on') {
 												
                     newW=newW+scalerX;		//CHANGE THE SCALING PARAMETES
                     newH=newH+scalerY;									
-												
+                    					
                     newL=newL+movX;			// MOVE THE POSITION OF THE IMAGES 
                     newT=newT+movY;
 												
@@ -3052,27 +3056,27 @@ Additional Feature Update from 8th of March 2012 :
                     if (newT>0) newT=0;
                     if (newL<(opt.width - newW)) newL=opt.width-newW;
                     if (newT<(opt.height - newH)) newT=opt.height-newH;
-												
+					
                     if (hasCanvas) {																			
                         context.drawImage(sour[0],newL,newT,newW,newH);
                         if (sourbw.length>0) contextbw.drawImage(sourbw[0],(newL-cll),(newT-clt),newW,newH);										
                     } else {
-														
+							
                         var s=newW/oldWW;
                         var p1=newL - oldL;
                         var p2=newT - oldT;
-                        var p3=newL - oldL - cll;
-                        var p4=newT - oldT - clt;
-															 
+                        //var p3=newL - oldL - cll;
+                        //var p4=newT - oldT - clt;
+                        
                         if( jQuery.browser.msie ) {
-																	
+															
                             sour.css({
                                 'filter': 'progid:DXImageTransform.Microsoft.Matrix(FilterType="bilinear",M11=' + s + ',M12=0,M21=0,M22=' + s + ',Dx=' + p1 + ',Dy=' + p2 + ')'
-                                });
-                            sour.css({
+                                })
+                                .css({
                                 '-ms-filter': 'progid:DXImageTransform.Microsoft.Matrix(FilterType="bilinear",M11=' + s + ',M12=0,M21=0,M22=' + s + ',Dx=' + p1 + ',Dy=' + p2 + ')'
                                 });
-																   
+								   
                             // sourbw.css({'filter': 'progid:DXImageTransform.Microsoft.Matrix(FilterType="bilinear",M11=' + s + ',M12=0,M21=0,M22=' + s + ',Dx=' + p3 + ',Dy=' + p4 + ')'});
                             // sourbw.css({'-ms-filter': 'progid:DXImageTransform.Microsoft.Matrix(FilterType="bilinear",M11=' + s + ',M12=0,M21=0,M22=' + s + ',Dx=' + p3 + ',Dy=' + p4 + ')'});
 																   
@@ -3533,11 +3537,8 @@ Additional Feature Update from 8th of March 2012 :
                     queue:true
                 })
                 counter++;
-            }
-																	
-																	
-            //// -  FADE RIGHT   -   ////
-            if ($this.hasClass('faderight')) {
+            } else if ($this.hasClass('faderight')) {
+                //// -  FADE RIGHT   -   ////
                 $this.animate({
                     'left':$this.data('_left')-20+"px",
                     'opacity':0
@@ -3556,11 +3557,8 @@ Additional Feature Update from 8th of March 2012 :
                     queue:true
                 })
                 counter++;
-            }
-																	
-																	
-            //// -  FADE DOWN  -   ////
-            if ($this.hasClass('fadedown')) {
+            } else if ($this.hasClass('fadedown')) {
+                //// -  FADE DOWN  -   ////
                 $this.animate({
                     'top':$this.data('_top')-20+"px",
                     'opacity':0
@@ -3579,11 +3577,8 @@ Additional Feature Update from 8th of March 2012 :
                     queue:true
                 })
                 counter++;
-            }
-																	
-																	
-            //// -  FADE LEFT   -   ////
-            if ($this.hasClass('fadeleft')) {
+            } else if ($this.hasClass('fadeleft')) {
+                //// -  FADE LEFT   -   ////
                 $this.animate({
                     'left':$this.data('_left')+20+"px",
                     'opacity':0
@@ -3602,10 +3597,8 @@ Additional Feature Update from 8th of March 2012 :
                     queue:true
                 })
                 counter++;
-            }
-																	
-            //// -  FADE   -   ////
-            if ($this.hasClass('fade')) {
+            } else if ($this.hasClass('fade')) {
+                //// -  FADE   -   ////
                 $this.animate({
                     'opacity':0
                 },

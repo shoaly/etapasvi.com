@@ -1,4 +1,4 @@
- <!-- jQuery KenBurn Slider  -->	
+<!-- jQuery KenBurn Slider  -->	
 <script type="text/javascript">
 $(document).ready(function() {
 runCarousel();

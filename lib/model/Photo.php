@@ -158,21 +158,21 @@ class Photo extends BasePhoto
 	        // horizonral image
 	        if ($constraints['max_width'] && $this->getWidth() > $constraints['max_width']) {
 	          $max_dimention = $constraints['max_width'];
-	          $new_height = ceil(($this->getHeight() * $constraints['max_width']) / $this->getWidth());
+	          $new_height = floor(($this->getHeight() * $constraints['max_width']) / $this->getWidth());
 	        }
 	        if ($constraints['min_height'] && $new_height < $constraints['min_height']) {
 	          // set height to min_height
-	          $max_dimention = ceil(($this->getWidth() * $constraints['min_height']) / $this->getHeight());
+	          $max_dimention = floor(($this->getWidth() * $constraints['min_height']) / $this->getHeight());
 	        }
 	      } else {
 	        // vertical image
 	        if ($constraints['max_width'] && $this->getWidth() > $constraints['max_width']) {
 	          // calculate new height
-	          $max_dimention = ceil(($this->getHeight() * $constraints['max_width']) / $this->getWidth());
+	          $max_dimention = floor(($this->getHeight() * $constraints['max_width']) / $this->getWidth());
 	        }
 	        if ($constraints['min_height'] && $max_dimention < $constraints['min_height']) {
 	          // set height to min_height
-	          $max_dimention = ceil(($this->getWidth() * $constraints['min_height']) / $this->getHeight());
+	          $max_dimention = floor(($this->getWidth() * $constraints['min_height']) / $this->getHeight());
 	        }
 	      }
 	    }
