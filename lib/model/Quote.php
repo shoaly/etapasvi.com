@@ -34,4 +34,20 @@ class Quote extends BaseQuote
 	
 	  return call_user_func_array(array($this, $method), $arguments);
 	}		
+	
+	/**
+	 * Расширенный метод для получения заголовка.
+	 * Если $use_default_culture_if_empty, то возвращается значение на языке по умолчанию.
+	 */	
+	public function getTitle($culture = null, $use_default_culture_if_empty = false)
+	{
+	  $title = parent::getTitle($culture);
+
+	  if ($use_default_culture_if_empty) {
+        if (!$title) {
+          $title = $this->getTitle(sfConfig::get('sf_default_culture'));
+        }
+	  }
+      return trim($title);
+	}
 }

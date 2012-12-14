@@ -2,7 +2,7 @@ var quote_list = new Array(
 <?php 
 foreach($quote_list as $i=>$quote): 
     echo '[';
-    echo '"' . addslashes(html_entity_decode($quote->getTitle())) . '"';
+    echo '"' . addslashes(html_entity_decode($quote->getTitle($sf_user->getCulture(), true))) . '"';
     if ($quote->getNews()) {
         echo ',"' . $quote->getNews()->getUrl() . '"';
     }
