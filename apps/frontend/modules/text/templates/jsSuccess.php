@@ -1074,7 +1074,12 @@ function pickRandomArrayElement(array)
 // Run Carousel
 function runCarousel()
 {
-    if ($.browser.ie && jQuery.browser.version < 7) {
+    // do not show carousel in:
+    // - IE <7
+    // - IE <= 7 and RTL culture
+    if ( ($.browser.ie && jQuery.browser.version < 7) || 
+        ($("body").hasClass('direction_rtl') && $.browser.ie && jQuery.browser.version <= 7)
+    ) {
         return;
     }
     
@@ -2688,7 +2693,8 @@ Additional Feature Update from 8th of March 2012 :
 							
 							
         var kenburn=true;
-        if (newitem.data('kenburn')=="off" || (navigator.userAgent.match(/Android/i)) )
+        // native Android browser supports canvas
+        if (newitem.data('kenburn')=="off" || ((navigator.userAgent.match(/Android/i)) && !$.browser.webkit) )
         {
             hasCanvas=false;
             kenburn=false;
@@ -3032,9 +3038,7 @@ Additional Feature Update from 8th of March 2012 :
             },1200);
         //sourbw.remove();
         }							
-												
-							
-							
+                        
         //console.log('SWAPBANNER : READY FOR KEN BURN');
         // NOW WE CAN CREATE AN INTERVAL, WHICH WILL SHOW 25 FRAMES PER SEC (TO MINIMIZE THE CPU STEPS)
         if (kenburn) {
@@ -3043,7 +3047,7 @@ Additional Feature Update from 8th of March 2012 :
                 //$('body').find('.testinfo').html(opt.aktKenInterval+"  "+Math.floor(Math.random()*10000));
                 // accelerating
                 //if (!slider_container.parent().parent().find('.kenburn_thumb_container #thumbmask').hasClass('overme') && !slider_container.find('.slide_mainmask').hasClass('overme') && !slider_container.find('.slide_mainmask').hasClass('videoon')) {
-                
+
                 if (opt.overme != 'on') {
 												
                     newW=newW+scalerX;		//CHANGE THE SCALING PARAMETES
