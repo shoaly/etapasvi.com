@@ -1144,7 +1144,7 @@ function runCarousel()
                 quote_text = quote_text + '...';
             <?php endif ?>
 
-            carousel_html = carousel_html + '<div class="creative_layer"><div class="cp-bottom faderight">';
+            carousel_html = carousel_html + '<div class="creative_layer"><div class="cp-bottom fade">';
 
             if (typeof(quote_list[i][1]) != "undefined") {
                 // there is a link to teaching
