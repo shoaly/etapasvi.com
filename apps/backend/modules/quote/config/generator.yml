@@ -7,7 +7,7 @@ generator:
     list:
       peer_method: doSelectWithI18n
       max_per_page: 100
-      display: [id, show, =title, news_id]
+      display: [id, show, =title, news_id, news]
       title:   Quote
       filters: [show, news_id]
       object_actions:
