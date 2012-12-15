@@ -29,12 +29,10 @@ generator:
           - title_i18n_pl
         "FR":
           - title_i18n_fr
-        "zh_CN":
+        "ZH_CN":
           - title_i18n_zh_CN
         "VI":
           - title_i18n_vi
-        "DE":
-          - title_i18n_de
         "JA":
           - title_i18n_ja
         "ES":
@@ -43,12 +41,16 @@ generator:
           - title_i18n_it
         "ET":
           - title_i18n_et
+        "NE":
+          - title_i18n_ne
         "BN":
           - title_i18n_bn
         "HE":
           - title_i18n_he
         "ZH_TW":
-          - title_i18n_zh_tw
+          - title_i18n_zh_TW
+        "DE":
+          - title_i18n_de          
       fields:        
         title_i18n_en:
           name: Title
@@ -81,10 +83,6 @@ generator:
         title_i18n_vi:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
-          
-        title_i18n_de:
-          name: Title
-          params: disabled=false maxlength=255 style="width:80%"          
 
         title_i18n_ja:
           name: Title
@@ -102,6 +100,10 @@ generator:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
           
+        title_i18n_ne:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+          
         title_i18n_bn:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -113,3 +115,7 @@ generator:
         title_i18n_zh_tw:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
+          
+        title_i18n_de:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"      
