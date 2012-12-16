@@ -62,6 +62,8 @@ var new_photo_width;
 var new_photo_height;
 // number of photos in carousel
 var carousel_photo_count =7;
+// browser update
+var $buoop = {};
 
 $(document).ready(function() {
     var embedded_or_print = false;
@@ -153,6 +155,18 @@ $(document).ready(function() {
     $("#quick_search_input").focusout(function() {
         setTimeout('$("#quick_search_input").removeClass("focused")', 200);
     });
+    
+    // browser update - show on main page only
+    // http://www.browser-update.org
+    if ($("body#body_main").size()) {
+        $buoop.ol = window.onload; 
+
+        try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+        var e = document.createElement("script"); 
+        e.setAttribute("type", "text/javascript"); 
+        e.setAttribute("src", "http://browser-update.org/update.js"); 
+        document.body.appendChild(e); 
+    }
 });
 
 // сокрытие элементов в зависимости от размера окна
