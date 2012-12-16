@@ -441,7 +441,7 @@ function phLinks()
 // подгрузка содержимого фото
 function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
 {
-    if (!photoalbum_id) {
+    if (!photoalbum_id ||  ((navigator.userAgent.match(/Android/i)) && $.browser.opera)) {
         document.location = href;
         return;
     }
