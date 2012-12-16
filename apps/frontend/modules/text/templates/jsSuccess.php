@@ -2708,7 +2708,8 @@ Additional Feature Update from 8th of March 2012 :
 							
         var kenburn=true;
         // native Android browser supports canvas
-        if (newitem.data('kenburn')=="off" || ((navigator.userAgent.match(/Android/i)) && !$.browser.webkit) )
+        if (newitem.data('kenburn')=="off" 
+            || ((navigator.userAgent.match(/Android/i)) && !$.browser.webkit)) 
         {
             hasCanvas=false;
             kenburn=false;
@@ -2717,7 +2718,12 @@ Additional Feature Update from 8th of March 2012 :
             newitem.data('zoom','none');
             newitem.data('zoomfact', 0);
         }
-							
+	
+        // in Opera Mini kenburn does not work
+        if ((navigator.userAgent.match(/Android/i)) && $.browser.opera) {
+            kenburn=false;
+        }
+        
         // Lets Save the Size of the IMG first in the DATA
         if (newitem.data('ww') == undefined) {
             var oldW=newitem.find('img').width()			//Read out the Width					
@@ -3023,7 +3029,6 @@ Additional Feature Update from 8th of March 2012 :
                 newH = opt.height;
             }
 											
-											
             sour.css({
                 'position':'absolute',
                 'left':newL+"px",
@@ -3032,7 +3037,7 @@ Additional Feature Update from 8th of March 2012 :
                 'height':newH+"px",
                 'opacity':1.0
             });
-											
+
             sourbw.css({
                 'position':'absolute',
                 'left':(newL-cll)+"px",
