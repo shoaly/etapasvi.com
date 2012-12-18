@@ -560,12 +560,17 @@ p.p2{
     height:496px;
     }
 #footer {
-    font-family:verdana;
-    font-size:9px;
-    color:#888;
-    padding:10px 0;
-    margin:10px 0;
-    text-align:center;
+    background: url("../i/lotus.jpg") no-repeat scroll 0 bottom transparent;
+    color: #888888;
+    font-family: verdana;
+    font-size: 9px;
+    /*margin: 0 74px 0 -74px;*/
+    padding: 10px 74px 270px;
+    position: relative;
+    left: -74px;
+    width: 100%;
+    z-index: 0;
+    text-align: center;
     }
 #footer a img {
     text-decoration:none;
