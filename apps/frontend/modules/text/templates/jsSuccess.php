@@ -1167,7 +1167,7 @@ function runCarousel()
             } else {
                 quote_url = '#';
             }
-            carousel_html = carousel_html + '<a href="'+quote_url+'" title="<?php echo __("Read more") ?>"><p>'+quote_text+'<br/><span class="right">― <?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p></a>';
+            carousel_html = carousel_html + '<a href="'+quote_url+'" title="<?php echo __("Read more") ?>"><p>'+quote_text+'<br/><span class="right"><?php echo __("Maha Sambodhi Dharma Sangha") ?></span></p></a>';
             carousel_html = carousel_html + '</div></div>';
         }
 
