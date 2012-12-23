@@ -261,3 +261,15 @@ propel:
       item_culture:      [item_culture]
       cleared:           [cleared]
       document_created:  [document_created]
+      
+  contactus:
+    id:               ~
+    created_at:       ~
+    show:             { type: boolean, defaultValue: true }
+    order:            { type: integer, required: true }
+    culture:          { type: varchar(7), required: true }
+    title:            { type: varchar(255) }
+    link:             { type: varchar(255) }
+    _indexes:
+      show:       [show]
+      culture:    [culture]

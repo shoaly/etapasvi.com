@@ -578,5 +578,26 @@ CREATE TABLE `clearcache`
 		REFERENCES `itemtypes` (`id`)
 )Type=MyISAM;
 
+#-----------------------------------------------------------------------------
+#-- contactus
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `contactus`;
+
+
+CREATE TABLE `contactus`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`created_at` DATETIME,
+	`show` TINYINT default 1,
+	`order` INTEGER  NOT NULL,
+	`culture` VARCHAR(7)  NOT NULL,
+	`title` VARCHAR(255),
+	`link` VARCHAR(255),
+	PRIMARY KEY (`id`),
+	KEY `show`(`show`),
+	KEY `culture`(`culture`)
+)Type=MyISAM;
+
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

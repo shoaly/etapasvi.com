@@ -357,9 +357,9 @@ class TextPeer extends BaseTextPeer
 	 * @param unknown_type $link
 	 * @return unknown
 	 */
-	public static function cropLink($link) {
-		if (strlen($link) > self::LINK_MAX_LENGTH) {
-			$link = substr($link, 0, self::LINK_MAX_LENGTH) . '...';
+	public static function cropLink($link, $max_length = self::LINK_MAX_LENGTH) {
+		if (strlen($link) > $max_length) {
+			$link = substr($link, 0, $max_length) . '...';
 		}
 		return $link;
 	}

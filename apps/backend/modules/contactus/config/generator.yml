@@ -1,0 +1,20 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      Contactus
+    theme:            default
+
+    list:
+      peer_method: doSelect
+      max_per_page: 100
+      sort: [culture, asc]
+      display: [id, created_at, show, order, culture, title, link]
+      filters: [culture, show]
+      title:   Contact Us
+      object_actions:
+        _edit:
+        _delete:
+        
+    edit:
+      display:
+        "NONE": [created_at, show, order, culture, title, link]

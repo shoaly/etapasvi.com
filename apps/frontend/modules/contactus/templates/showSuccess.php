@@ -7,9 +7,29 @@
     <?php echo __('If you have any questions, please, try to find answer or ask on the') ?> <a href="<?php echo UserPeer::FORUM_URL; ?>"><?php echo __('Forum') ?></a>. <?php echo __('Send your message to the email below in case of special emergency only. It is difficult for website programmer to answer all emails (there are only 24 hours in a day).') ?>
 </p>
 */ ?>
-<p>
-    <strong><?php echo __('E-mail') ?>:</strong> <a href="mailto:<?php echo UserPeer::MAIL_ADDRESS ?>"><?php echo UserPeer::MAIL_ADDRESS ?></a>
-</p>
+
+<strong><?php echo __('E-mail') ?>:</strong> <a href="mailto:<?php echo UserPeer::MAIL_ADDRESS ?>"><?php echo UserPeer::MAIL_ADDRESS ?></a>
+<br/><br/>
+<table class="documents_tbl">
+    <tr>
+        <th><div><?php echo __('Language'); ?></div></th>
+        <th><div><?php echo __('Contact Details'); ?></div></th>
+    </tr>
+    <?php foreach($contactus_list as $contactus): ?>
+        <tr>
+            <td><strong><?php echo $contactus['language']; ?></strong> <span class="small light">(<?php echo $contactus['language_en']; ?>)</span></td>
+            <td>
+            <?php foreach($contactus['list'] as $i=>$contactus_list_item): ?>
+                    <?php if ($contactus_list_item['link']): ?>
+                        <a href="<?php if (strstr($contactus_list_item['link'], '@')): ?><?php endif ?><?php echo $contactus_list_item['link']; ?>"><?php echo __($contactus_list_item['description']); ?></a><?php else: ?>
+                        <?php echo __($contactus_list_item['description']); ?>
+                    <?php endif ?><?php if ($i != count($contactus['list'])-1 ): ?> :: <?php endif ?>
+            <?php endforeach ?>
+            </td>
+        </tr>
+    <?php endforeach ?>
+</table>
+
 <?php /*
 <p>
     <strong><?php echo __('Official website') ?>:</strong> <a href="http://www.dharmasangha.org.np">www.dharmasangha.org.np</a>

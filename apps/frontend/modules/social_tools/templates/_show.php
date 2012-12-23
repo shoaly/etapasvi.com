@@ -22,9 +22,7 @@
 
     <a href="http://www.facebook.com/<?php echo UserPeer::getCultureFbGroup(); ?>/" target="_blank" title="<?php echo __('Facebook') ?>" class="social_facebook"><span><?php echo __('Facebook') ?></span></a> 
 
-    <?php if ($sf_user->getCulture() == 'hu'): ?>
-        <a href="http://groups.google.com/group/buddhafiu/" target="_blank" title="<?php echo __('Google') ?>" class="social_google"><span><?php echo __('Google') ?></span></a>
-    <?php elseif ($sf_user->getCulture() == 'ja'): ?>
+    <?php if ($sf_user->getCulture() == 'ja'): ?>
         <a href="http://groups.google.com/group/dharmasangha-jp" target="_blank" title="<?php echo __('Google') ?>" class="social_google"><span><?php echo __('Google') ?></span></a>
     <?php elseif ($sf_user->getCulture() != 'ru'): ?>
         <a href="https://groups.google.com/forum/?fromgroups=#!forum/maha-sambodhi-dharma-sangha-" target="_blank" title="<?php echo __('Google') ?>" class="social_google"><span><?php echo __('Google') ?></span></a>
