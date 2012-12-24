@@ -992,7 +992,9 @@ input[type="radio"] {
 .field_input {
     text-align: left;
     }
-
+.nowrap {
+    white-space: nowrap;
+    }
 .right {
 	float: right;
 	overflow: hidden;

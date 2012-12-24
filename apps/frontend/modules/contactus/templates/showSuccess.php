@@ -21,8 +21,8 @@
             <td class="wrap">
             <?php foreach($contactus['list'] as $i=>$contactus_list_item): ?>
                     <?php if ($contactus_list_item['link']): ?>
-                        <a href="<?php if (strstr($contactus_list_item['link'], '@')): ?><?php endif ?><?php echo $contactus_list_item['link']; ?>" class="external"><?php echo __($contactus_list_item['description']); ?></a><?php else: ?>
-                        <?php echo __($contactus_list_item['description']); ?>
+                        <a href="<?php if (strstr($contactus_list_item['link'], '@')): ?><?php endif ?><?php echo $contactus_list_item['link']; ?>" class="external nowrap"><?php echo __($contactus_list_item['description']); ?></a><?php else: ?>
+                        <span class="nowrap"><?php echo __($contactus_list_item['description']); ?></span>
                     <?php endif ?><?php if ($i != count($contactus['list'])-1 ): ?>&nbsp;&nbsp;<?php endif  ?>
             <?php endforeach ?>
             </td>

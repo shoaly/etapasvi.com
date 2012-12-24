@@ -30,16 +30,6 @@ class contactusActions extends sfActions
     foreach ($cultures_data as $culture => $culture_data) {
 
       $list = array();
-          
-      foreach($contactus_db_list as $contactus_db) {
-        if ($contactus_db->getCulture() != $culture) {
-          continue;
-        }
-        $list[] = array(
-          'description' => $contactus_db->getTitle(),
-          'link'        => $contactus_db->getLink()
-        );
-      }
 
       // Google
       if (UserPeer::getCultureGoogle($culture)) {
@@ -60,6 +50,16 @@ class contactusActions extends sfActions
         $list[] = array(
           'description' => 'Twitter',
           'link'        => ContactusPeer::getTwitterLink(UserPeer::getCultureTwitter($culture))
+        );
+      }
+      
+      foreach($contactus_db_list as $contactus_db) {
+        if ($contactus_db->getCulture() != $culture) {
+          continue;
+        }
+        $list[] = array(
+          'description' => $contactus_db->getTitle(),
+          'link'        => $contactus_db->getLink()
         );
       }
 
