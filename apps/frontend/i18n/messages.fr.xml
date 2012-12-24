@@ -502,6 +502,12 @@
         <target>Page non trouvée ou non traduite</target>
       </trans-unit>
 
+<!-- contactus -->
+      <trans-unit id="1">
+        <source>Contact Details</source>
+        <target></target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

@@ -555,6 +555,12 @@
         <target>Seite wurde nicht gefunden oder nicht übersetzt.</target>
       </trans-unit>
       
+<!-- contactus -->
+      <trans-unit id="1">
+        <source>Contact Details</source>
+        <target></target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>

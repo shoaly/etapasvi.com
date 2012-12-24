@@ -1796,6 +1796,9 @@ table.documents_tbl {
     text-align: left;
     white-space: nowrap;
     }
+.documents_tbl td.wrap {
+    white-space: normal ;
+    }
 .documents_tbl .middle td { 
     border-bottom: 1px dashed #DDDDDD;
     }

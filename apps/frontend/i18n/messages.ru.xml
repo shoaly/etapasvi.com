@@ -500,6 +500,12 @@
         <target>Страница не найдена или не переведена</target>
       </trans-unit>
 
+<!-- contactus -->
+      <trans-unit id="1">
+        <source>Contact Details</source>
+        <target>Контактная информация</target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>

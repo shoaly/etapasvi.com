@@ -18,12 +18,12 @@
     <?php foreach($contactus_list as $contactus): ?>
         <tr>
             <td><strong><?php echo $contactus['language']; ?></strong> <span class="small light">(<?php echo $contactus['language_en']; ?>)</span></td>
-            <td>
+            <td class="wrap">
             <?php foreach($contactus['list'] as $i=>$contactus_list_item): ?>
                     <?php if ($contactus_list_item['link']): ?>
-                        <a href="<?php if (strstr($contactus_list_item['link'], '@')): ?><?php endif ?><?php echo $contactus_list_item['link']; ?>"><?php echo __($contactus_list_item['description']); ?></a><?php else: ?>
+                        <a href="<?php if (strstr($contactus_list_item['link'], '@')): ?><?php endif ?><?php echo $contactus_list_item['link']; ?>" class="external"><?php echo __($contactus_list_item['description']); ?></a><?php else: ?>
                         <?php echo __($contactus_list_item['description']); ?>
-                    <?php endif ?><?php if ($i != count($contactus['list'])-1 ): ?> :: <?php endif ?>
+                    <?php endif ?><?php if ($i != count($contactus['list'])-1 ): ?>&nbsp;&nbsp;<?php endif  ?>
             <?php endforeach ?>
             </td>
         </tr>

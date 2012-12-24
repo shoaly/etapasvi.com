@@ -553,6 +553,12 @@
         <target>Trang không được tìm thấy hoặc chưa được dịch</target>
       </trans-unit>
       
+<!-- contactus -->
+      <trans-unit id="1">
+        <source>Contact Details</source>
+        <target></target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>
