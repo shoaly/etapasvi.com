@@ -160,10 +160,11 @@ class UserPeer /* extends BaseUserPeer*/
 		              //'feedburner_loc' 		 => 'ru_RU'
 		              'disqus_culture' 		 => 'en',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-ne-%E0%A4%A8%E0%A5%87%E0%A4%BE%E0%A5%80/427189564014033',
-		              'google_group' 		 => '',
+		              'google_group' 		 => 'etapasvi-ne',
 		              'blessing_ln' 		 => 'ne-NP'
 		),
 		'bn' => array('name'    			 => 'বাংলা',
+		              'en_name'    			 => 'Bengali',
 		              'iso'     			 => 'bn',
 		              'hieroglyphic'  		 => true,
 		              'large_text'	 		 => true,
@@ -171,10 +172,12 @@ class UserPeer /* extends BaseUserPeer*/
 		              //'feedburner_loc' 		 => 'ru_RU'
 					  'disqus_culture' 		 => 'en',
 					  'fb_group' 		 	 => 'pages/eTapasvicom-bn-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE/434001003314417',
+					  'google_group' 		 => 'etapasvi-bn',
 					  'blessing_ln' 		 => 'bn-BD'
 		),			
 		'he' => array(
 					  'name'     			 => 'עברית',
+					  'en_name'    			 => 'Hebrew',
                       'iso'      			 => 'he',				
 		              'hieroglyphic'  		 => true,
 		              'large_text'	 		 => true,
@@ -182,26 +185,30 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'direction_rtl' 		 => true,
 		              'fb_group' 		 	 => 'pages/eTapasvicom-he-%D7%A2%D7%91%D7%A8%D7%99%D7%AA/389776024435475',
+		              'google_group' 		 => 'etapasvi-he',
 		              'blessing_ln' 		 => 'he-IL'
          ),
          // Taiwan / Lee Ming / Traditional Chinese language
 		'zh_TW' => array(
 					  'name'     			 => '傳統漢字',
+					  'en_name'    			 => 'Traditional Chinese',
                       'iso'      			 => 'zh-tw',				
 		              'hieroglyphic'  		 => true,
 		              'comments_category_id' => 1417917,
 		              'feedburner_loc' 		 => '',
 		              'disqus_culture' 		 => 'zh_HANT',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-zh-tw-%E5%82%B3%E7%B5%B1%E6%BC%A2%E5%AD%97/124329524389601',
-		              'google_group' 		 => 'etapasvi-chinese',
+		              'google_group' 		 => 'etapasvi-cn',
 		              'blessing_ln' 		 => 'zh-TW'
          ),
 		'de' => array('name'     			 => 'Deutsch',
+					  'en_name'    		     => 'German',
                       'iso'      			 => 'de',						             
 		              'comments_category_id' => 1456893,
 		              'feedburner_loc' 		 => '',
 		              'disqus_culture' 		 => 'de_formal',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-de-Deutsch/245816235544764',
+		              'google_group' 		 => 'etapasvi-de',
 		              'blessing_ln' 		 => 'de-DE'
 		),
 	);
