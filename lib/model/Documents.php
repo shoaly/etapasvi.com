@@ -225,5 +225,15 @@ class Documents extends BaseDocuments {
 
 	  return $id_list;
 	}
+	
+	/**
+	 * Get item type name
+	 *
+	 * @return unknown
+	 */
+	public function getItemTypeName()
+	{
+		return ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS;
+	}
 
 } // Documents

@@ -348,4 +348,14 @@ class Photo extends BasePhoto
 	public function getMinDimention() {
 	  return min($this->getWidth(), $this->getHeight());
 	}
+	
+	/**
+	 * Get item type name
+	 *
+	 * @return unknown
+	 */
+	public function getItemTypeName()
+	{
+		return ItemtypesPeer::ITEM_TYPE_NAME_PHOTO;
+	}
 }

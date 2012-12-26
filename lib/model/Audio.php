@@ -219,4 +219,14 @@ class Audio extends BaseAudio
 
 	  return $id_list;
 	}
+	
+	/**
+	 * Get item type name
+	 *
+	 * @return unknown
+	 */
+	public function getItemTypeName()
+	{
+		return ItemtypesPeer::ITEM_TYPE_NAME_AUDIO;
+	}
 }

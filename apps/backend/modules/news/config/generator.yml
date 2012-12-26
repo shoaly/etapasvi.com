@@ -9,7 +9,7 @@ generator:
       max_per_page: 50
       sort: [order, desc]
       filters: [show]
-      display: [id, show, order, _img, date, extradate, =title, _itemcategory_list]
+      display: [id, show, order, _img, date, extradate, =title, _itemcategory_list, _item2item_list]
       title:   News
       object_actions:
         _edit:
@@ -23,7 +23,7 @@ generator:
 
     edit:
       display:
-        "NONE": [show, order, date, img, _img, full_path, _full_link, thumb_path, _thumb_link, original]
+        "NONE": [show, order, date, img, _img, full_path, _full_link, thumb_path, _thumb_link, original, _item2item_list]
         "EN":
           - title_i18n_en
           - extradate_i18n_en

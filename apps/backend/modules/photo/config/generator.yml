@@ -9,7 +9,7 @@ generator:
       max_per_page: 100000
       sort: [order, asc]
       filters: [photoalbum_id, show, img, carousel]
-      display: [=id, photoalbum, show, order, _img, img, title, author, created_at, width, height, carousel]
+      display: [=id, photoalbum, show, order, _img, img, title, author, created_at, width, height, carousel, _item2item_list]
       title:   Photo
       object_actions:
         _edit:
@@ -17,7 +17,7 @@ generator:
 
     edit:
       display:
-        "NONE": [photoalbum_id, show, order, img, _img, full_path, _full_link, preview_path, _preview_link, thumb_path, _thumb_link, created_at, link, width, height, carousel]
+        "NONE": [photoalbum_id, show, order, img, _img, full_path, _full_link, preview_path, _preview_link, thumb_path, _thumb_link, created_at, link, width, height, carousel, _item2item_list]
         "EN":
           - title_i18n_en
           - body_i18n_en

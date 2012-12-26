@@ -161,6 +161,18 @@
   ), 1);
   ?>
 </div>
+</div>
+
+<div class="form-row">
+  <?php echo label_for('news[item2item_list]', __($labels['news{item2item_list}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('news{item2item_list}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('news{item2item_list}')): ?>
+    <?php echo form_error('news{item2item_list}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = get_partial('item2item_list', array('type' => 'edit', 'news' => $news)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
 
 <div class="form-row">
   <label for="news_change_updated_at">Change Updated At:</label>  <div class="content">

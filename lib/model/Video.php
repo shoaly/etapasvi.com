@@ -253,4 +253,14 @@ class Video extends BaseVideo
 
 	  return $id_list;
 	}
+	
+	/**
+	 * Get item type name
+	 *
+	 * @return unknown
+	 */
+	public function getItemTypeName()
+	{
+		return ItemtypesPeer::ITEM_TYPE_NAME_VIDEO;
+	}
 }

@@ -8,7 +8,7 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 50
       sort: [order, desc]
-      display: [id, show, order, =file, title, news_id, all_cultures, created_at, _itemcategory_list]
+      display: [id, show, order, =file, title, news_id, all_cultures, created_at, _itemcategory_list, _item2item_list]
       title:   Documents
       filters: [show, news_id]
       object_actions:
@@ -17,7 +17,7 @@ generator:
         
     edit:
       display:
-        "NONE": [created_at, news_id, show, file, size, order, all_cultures]
+        "NONE": [created_at, news_id, show, file, size, order, all_cultures, _item2item_list]
         "EN":       
           - title_i18n_en
           - body_i18n_en

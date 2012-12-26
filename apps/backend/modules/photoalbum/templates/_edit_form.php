@@ -64,6 +64,18 @@
   ), 1);
   ?>
 </div>
+</div>
+
+<div class="form-row">
+  <?php echo label_for('photoalbum[item2item_list]', __($labels['photoalbum{item2item_list}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('photoalbum{item2item_list}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('photoalbum{item2item_list}')): ?>
+    <?php echo form_error('photoalbum{item2item_list}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = get_partial('item2item_list', array('type' => 'edit', 'photoalbum' => $photoalbum)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
 
 </fieldset>
 <fieldset id="sf_fieldset_en" class="">

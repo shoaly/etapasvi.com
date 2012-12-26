@@ -156,4 +156,14 @@ class Photoalbum extends BasePhotoalbum
 
 	  return $id_list;
 	}	
+	
+	/**
+	 * Get item type name
+	 *
+	 * @return unknown
+	 */
+	public function getItemTypeName()
+	{
+		return ItemtypesPeer::ITEM_TYPE_NAME_PHOTOALBUM;
+	}
 }

@@ -241,6 +241,17 @@
 </div>
 
 <div class="form-row">
+  <?php echo label_for('photo[item2item_list]', __($labels['photo{item2item_list}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('photo{item2item_list}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('photo{item2item_list}')): ?>
+    <?php echo form_error('photo{item2item_list}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = get_partial('item2item_list', array('type' => 'edit', 'photo' => $photo)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+<div class="form-row">
   <label for="photo_change_updated_at">Change Updated At:</label>  <div class="content">
   
   <input type="checkbox" checked="checked" value="1" id="photo_change_updated_at" name="photo[change_updated_at]">    </div>

@@ -132,6 +132,18 @@
   ), 1);
   ?>
 </div>
+</div>
+
+<div class="form-row">
+  <?php echo label_for('documents[item2item_list]', __($labels['documents{item2item_list}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('documents{item2item_list}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('documents{item2item_list}')): ?>
+    <?php echo form_error('documents{item2item_list}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = get_partial('item2item_list', array('type' => 'edit', 'documents' => $documents)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
 
 </fieldset>
 <fieldset id="sf_fieldset_en" class="">
