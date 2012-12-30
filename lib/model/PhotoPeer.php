@@ -27,7 +27,7 @@ class PhotoPeer extends BasePhotoPeer
   const ORIGINAL_DIR 			= 'photo/original';
   
   // number of photos shown in carousel
-  const CAROUSEL_PHOTO_WIDTH    = 581;
+  const CAROUSEL_PHOTO_WIDTH    = 585;
   const CAROUSEL_PHOTO_HEIGHT   = 300;
   
   // Получить ID альбома: Албомы -> Каналы RSS (справа)

@@ -5,4 +5,4 @@ runCarousel();
 });
 </script>
 
-<div id="carousel_main" class="centerme light"></div>
+<div id="carousel_main_wrapper"><div id="carousel_main" class="centerme light"></div></div>

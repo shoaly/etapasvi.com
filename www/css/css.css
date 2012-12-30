@@ -2103,12 +2103,35 @@ Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
 .direction_rtl #responsivecarousel_main #carousel_main .cp-bottom  * {
     direction: rtl;
 }
+#carousel_main_wrapper {
+    border: 0;
+    background:url("../i/kb-plugin-assets/bg/frame.png") no-repeat scroll 0 0 transparent;	
+	padding:4px;
+    position: relative;
+    left: -3px;
+    width: 566px;
+    display:none;
+}
 #carousel_main {
+    //position: relative;
+    //left: -1px;
+    //top: -1px;
     max-width: 566px;
     overflow: hidden;
     position: relative;
 	font: italic 8pt/20pt georgia;
     width: 566px;
+    height: 300px;
+    /*margin: 0 2px;*/
+  
+  /*
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    -pie-box-shadow: 0 0 1px 1px rgb(213, 213, 213);
+    -webkit-box-shadow: 0 0 1px 1px rgb(213, 213, 213);
+    -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    behavior: url("/css/PIE.htc");
+    background-color: white;
+    */
 }
 #carousel_main p:first-letter {
 	font-size: 20px;
@@ -2156,10 +2179,13 @@ website:   	http://www.themepunch.com
 ************************************************/
 #responsivecarousel_main .light .kenburn-bg {
 	/*background:url(../i/kb-plugin-assets/bg/white25.png) repeat;	*/
-	background:url(../i/kb-plugin-assets/bg/frame.png) repeat;	
+    
+    background-color: transparent;
+	
+    /*background:url(../i/kb-plugin-assets/bg/frame.png) repeat;	
     background-repeat: no-repeat;
     background-size: 100% auto;
-	padding:4px;
+	padding:4px;*/
 
 	/*border:1px solid #fff;*/
 	/*border-radius: 3px; 
@@ -2758,7 +2784,8 @@ website:   	http://www.themepunch.com
 	height:15px;*/
 	width:7px;
 	height:7px;
-	margin-top:9px;	
+	/*margin-top:9px;	*/
+	margin-top:5px;	
 	margin-left:6px;	
 	float:left;
 	cursor:pointer;

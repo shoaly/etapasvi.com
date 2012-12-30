@@ -1175,7 +1175,8 @@ function runCarousel()
     }
     carousel_html = carousel_html + '</ul>';
 
-    $("#carousel_main").css('height','300px').html(carousel_html);
+    $("#carousel_main").html(carousel_html);
+    $("#carousel_main_wrapper").show();
 
     jQuery('#carousel_main').kenburn({
         /*width:800,*/
@@ -1214,7 +1215,9 @@ function runCarousel()
         captionParallaxY:0,
 
         googleFonts: '',
-        googleFontJS: ''
+        googleFontJS: '',
+        hCorrection: 0,
+        vCorrection: 0
 
         //shadow:'true' // do not work
     }); 
