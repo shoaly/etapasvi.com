@@ -362,6 +362,11 @@
         <source>Title</source>
         <target>Tiêu đề</target>
       </trans-unit>
+      
+      <trans-unit id="1">
+        <source>Document</source>
+        <target></target>
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Type</source>

@@ -1,6 +1,6 @@
 <table class="documents_tbl <?php if (!$short): ?>full<?php endif ?>">
 <tr>
-        <th><div><?php echo __('Title'); ?></div></th>
+        <th><div><?php echo __('Document'); ?></div></th>
         <th><div><?php echo __('Type'); ?></div></th>
         <th><div><?php echo __('Size'); ?></div></th>
         <?php if (!$short): ?>

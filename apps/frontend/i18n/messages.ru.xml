@@ -306,6 +306,11 @@
       </trans-unit>
       
       <trans-unit id="1">
+        <source>Document</source>
+        <target>Документ</target>
+      </trans-unit>
+      
+      <trans-unit id="1">
         <source>Type</source>
         <target>Тип</target>
       </trans-unit>
