@@ -14,6 +14,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> 
 <script type="text/javascript" src="<?php echo url_for('@js'); ?>"></script> 
 <link rel="stylesheet" type="text/css" media="screen" href="http://<?php echo $app_domain_name; ?>/css/css.css" />
+<?php /*
 <script type="text/javascript">
 var _gaq = window._gaq || [];
 window.onerror = function(msg, url, line) {
@@ -22,6 +23,7 @@ window.onerror = function(msg, url, line) {
     return preventErrorAlert;
 };
 </script>
+*/ ?>
 </head>
 <?php $body_id = get_slot('body_id'); ?>
 <body id="<?php echo $body_id; ?>" class="<?php if (UserPeer::isCultureHieroglyphic()):?>hieroglyphic<?php endif ?> <?php include_slot('body_class') ?><?php if (UserPeer::isCultureLargeText()):?> large_text<?php endif ?><?php if (UserPeer::isCultureDirectionRtl()):?> direction_rtl<?php endif ?>">
