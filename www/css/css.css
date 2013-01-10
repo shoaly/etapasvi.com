@@ -2024,12 +2024,13 @@ Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
     z-index: 100000;
 }
 .tipsy-inner {
-    background-color: #F2F2F2;    
+    background-color: white;    
     background-image:-webkit-gradient(linear,0 0,0 100%,from(#FFFFFF),to(#F2F2F2));  
     background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);
     background-image:-o-linear-gradient(top,#FFFFFF,#F2F2F2);
     background-image:-ms-linear-gradient(top,#FFFFFF,#F2F2F2);
     background-image:linear-gradient(top,#FFFFFF,#F2F2F2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#F2F2F2');
     border: 1px solid darkgray;
     max-width: 200px;
     padding: 5px 8px 4px;
