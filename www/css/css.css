@@ -1096,12 +1096,12 @@ html #disqus_thread {
 #dsq-content .dsq-item-trackback{
     display:none;
     }
-#wrapper #dsq-content #dsq-global-toolbar,
-#cboxContent #dsq-content #dsq-global-toolbar {
+.like-toolbar {
     background-color: #F2F2F2;
     border: 1px solid #DDDDDD;
-    margin-top: -1px;
-    padding: 6px 8px 0;
+    margin: -1px 0 10px;
+    height: 20px;
+    padding: 6px 8px;
     }
 *:first-child+html  #wrapper #dsq-content #dsq-global-toolbar,
 *:first-child+html  #cboxContent #dsq-content #dsq-global-toolbar {
