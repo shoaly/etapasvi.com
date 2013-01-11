@@ -511,6 +511,41 @@
         <target>Контактная информация</target>
       </trans-unit>
 
+<!-- like -->
+
+      <trans-unit id="1">
+        <source>Like</source>
+        <target>Мне нравится</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Dislike</source>
+        <target>Не нравится</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>I like this</source>
+        <target>Мне это нравится</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>I dislike this</source>
+        <target>Мне это не нравится</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Unlike</source>
+        <target>Отменить</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Undislike</source>
+        <target>Отменить</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Would you like to share?</source>
+        <target>Хотите поделиться?</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Close</source>
+        <target>Закрыть</target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>
