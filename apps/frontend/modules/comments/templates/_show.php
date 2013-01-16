@@ -1,4 +1,4 @@
-<div class="like-toolbar"><?php include_partial('global/like', array('identifier'=>$comments_identifier));  ?></div>
+<?php if (!$no_toolbar): ?><div class="like-toolbar"><?php include_partial('global/like', array('identifier'=>$comments_identifier));  ?></div><?php endif ?>
 <div id="disqus_thread"></div>
 <script type="text/javascript" id="disqus_config_script">
 <?php
