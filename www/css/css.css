@@ -246,6 +246,12 @@ a.no_decor {
 .hieroglyphic .files {
     padding: 0 0 0 19px;
     }
+div.files {
+    padding: 0 0 0 19px;
+    width: auto;
+    min-height: 16px;
+    height: auto;
+}
 .pdf, 
 .PDF {
     background-position: 0 -21px;
