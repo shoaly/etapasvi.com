@@ -338,4 +338,32 @@ class PhotoPeer extends BasePhotoPeer
   	return PhotoPeer::doSelect($c);
   }
   
+  /**
+   * Get photo URL
+   * 
+   * @param type $culture
+   * @return type
+   */
+  public static function getUrl($id, $culture = '') 
+  {
+    if (empty($culture)){
+      $culture = sfContext::getInstance()->getUser()->getCulture();
+    }	 
+
+    $url_pattern = 'photo/show?id=' . $id;
+    
+    // get Photo
+    $photo = PhotoPeer::retrieveByPk($id);
+
+    if ($photo) {
+      $title_translit = TextPeer::urlTranslit($photo->getTitle($culture), $culture);
+      if (!empty($title_translit)) {
+        $url_pattern .= '&title=' . $title_translit;
+      }
+    }
+
+    $url = sfContext::getInstance()->getController()->genUrl($url_pattern, true, $culture);
+    return $url;
+  }
+  
 }
