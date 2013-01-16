@@ -12,6 +12,7 @@
 <?php endif ?>
 <link rel="stylesheet" type="text/css" href="http://<?php echo sfConfig::get('app_domain_name'); ?>/css/m_css.css" />	
 <link rel="shortcut icon" type="image/x-icon" href="http://<?php echo sfConfig::get('app_domain_name'); ?>/favicon.ico" />
+<link rel="apple-touch-icon" href="http://<?php echo sfConfig::get('app_domain_name'); ?>/apple-touch-icon.png">
 <script type="text/javascript">
     function switchCulture() {
         var c_list_top = document.getElementById("culture_list_top");

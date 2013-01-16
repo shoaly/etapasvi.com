@@ -11,6 +11,7 @@
 <title><?php echo __(html_entity_decode($sf_response->getTitle())); ?> - <?php echo sfConfig::get('app_site_name'); ?></title>
 <?php $app_domain_name = sfConfig::get('app_domain_name'); ?>
 <link rel="shortcut icon" type="image/x-icon" href="http://<?php echo $app_domain_name; ?>/favicon.ico" />
+<link rel="apple-touch-icon" href="http://<?php echo $app_domain_name; ?>/apple-touch-icon.png">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> 
 <script type="text/javascript" src="<?php echo url_for('@js'); ?>"></script> 
 <link rel="stylesheet" type="text/css" media="screen" href="http://<?php echo $app_domain_name; ?>/css/css.css" />
