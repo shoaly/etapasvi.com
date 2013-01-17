@@ -547,7 +547,7 @@ p.p2{
 #menu ul a:hover { 
 	text-decoration: underline;
 	}
-#menu i {
+#menu li i {
     color: lightgray;
     font-style: normal;
     }
@@ -607,10 +607,12 @@ p.p2{
     }
 #share {
     float: left;
-    margin-top: 8px;
+    margin-top: 15px;
     }
 #share .s_item {
-    margin: 9px 0;
+    /*margin: 9px 0;*/
+    height: 0;
+    overflow: hidden;
     }
 .direction_rtl #share * {
     direction: ltr;
@@ -1793,11 +1795,11 @@ label.error {
 .direction_rtl #share {
     width: 300px;
     }
-.direction_rtl #share .s_item {
+/*.direction_rtl #share .s_item {
     float: right;
     overflow: visible;
     clear: both;
-    }
+    }*/
 
 /* documents */
 table.documents_tbl {

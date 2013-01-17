@@ -515,7 +515,7 @@
 
       <trans-unit id="1">
         <source>Like</source>
-        <target>Мне нравится</target>
+        <target>Нравится</target>
       </trans-unit>
       <trans-unit id="1">
         <source>Dislike</source>

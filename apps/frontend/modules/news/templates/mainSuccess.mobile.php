@@ -5,4 +5,4 @@
 <?php include_partial('global/menu', array('body_id'=>$body_id /*, 'is_logged_in'=>UserPeer::authIsLoggedIn()*/) ); ?>	
 </div>
 
-<?php include_component('comments', 'show') ?>
+<?php /*include_component('comments', 'show') */ ?>
