@@ -1091,8 +1091,9 @@ function runCarousel()
     // do not show carousel in:
     // - IE <7
     // - IE <= 7 and RTL culture
-    if ( ($.browser.ie && jQuery.browser.version < 7) || 
-        ($("body").hasClass('direction_rtl') && $.browser.ie && jQuery.browser.version <= 7)
+
+    if ( ($.browser.msie && jQuery.browser.version < 7.0) || 
+        ($("body").hasClass('direction_rtl') && $.browser.msie && jQuery.browser.version <= 7)
     ) {
         return;
     }
@@ -1162,7 +1163,7 @@ function runCarousel()
 
             if (typeof(quote_list[i][1]) != "undefined") {
                 // there is a link to teaching
-                //if ($.browser.ie && $.browser.version < 8) {
+                //if ($.browser.msie && $.browser.version < 8) {
                 quote_url = quote_list[i][1];
             } else {
                 quote_url = '#';
