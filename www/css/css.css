@@ -613,6 +613,7 @@ p.p2{
     /*margin: 9px 0;*/
     height: 0;
     overflow: hidden;
+    visibility: hidden;
     }
 .direction_rtl #share * {
     direction: ltr;
