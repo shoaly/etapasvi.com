@@ -8,7 +8,7 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 50
       sort: [order, desc]
-      filters: [show, all_cultures]
+      filters: [show, all_cultures, link]
       display: [=id, show, order, created_at, _img, title, all_cultures, _itemcategory_list, _item2item_list]
       title:   Video
       object_actions:
@@ -19,123 +19,123 @@ generator:
       display:
         "NONE": [show, order, created_at, link, all_cultures, _item2item_list]
         "EN":
-          - img_i18n_en
-          - _img_i18n_en
-          - code_i18n_en
           - title_i18n_en
           - body_i18n_en
+          - code_i18n_en
+          - img_i18n_en
+          - _img_i18n_en
           - author_i18n_en
         "RU":
-          - img_i18n_ru
-          - _img_i18n_ru
-          - code_i18n_ru
           - title_i18n_ru
           - body_i18n_ru
+          - code_i18n_ru
+          - img_i18n_ru
+          - _img_i18n_ru
           - author_i18n_ru
         "CS":
-          - img_i18n_cs
-          - _img_i18n_cs
-          - code_i18n_cs
           - title_i18n_cs
           - body_i18n_cs
+          - code_i18n_cs
+          - img_i18n_cs
+          - _img_i18n_cs
           - author_i18n_cs
         "HU":
-          - img_i18n_hu
-          - _img_i18n_hu
-          - code_i18n_hu
           - title_i18n_hu
           - body_i18n_hu
+          - code_i18n_hu
+          - img_i18n_hu
+          - _img_i18n_hu
           - author_i18n_hu
         "PL":
-          - img_i18n_pl
-          - _img_i18n_pl
-          - code_i18n_pl
           - title_i18n_pl
           - body_i18n_pl
+          - code_i18n_pl
+          - img_i18n_pl
+          - _img_i18n_pl
           - author_i18n_pl
         "FR":
-          - img_i18n_fr
-          - _img_i18n_fr
-          - code_i18n_fr
           - title_i18n_fr
           - body_i18n_fr
+          - code_i18n_fr
+          - img_i18n_fr
+          - _img_i18n_fr
           - author_i18n_fr
         "ZH_CN":
-          - img_i18n_zh_CN
-          - _img_i18n_zh_CN
-          - code_i18n_zh_CN
           - title_i18n_zh_CN
           - body_i18n_zh_CN
+          - code_i18n_zh_CN
+          - img_i18n_zh_CN
+          - _img_i18n_zh_CN
           - author_i18n_zh_CN
         "VI":
-          - img_i18n_vi
-          - _img_i18n_vi
-          - code_i18n_vi
           - title_i18n_vi
           - body_i18n_vi
+          - code_i18n_vi
+          - img_i18n_vi
+          - _img_i18n_vi
           - author_i18n_vi
         "JA":
-          - img_i18n_ja
-          - _img_i18n_ja
-          - code_i18n_ja
           - title_i18n_ja
           - body_i18n_ja
+          - code_i18n_ja
+          - img_i18n_ja
+          - _img_i18n_ja
           - author_i18n_ja
         "ES":
-          - img_i18n_es
-          - _img_i18n_es
-          - code_i18n_es
           - title_i18n_es
           - body_i18n_es
+          - code_i18n_es
+          - img_i18n_es
+          - _img_i18n_es
           - author_i18n_es
         "IT":
-          - img_i18n_it
-          - _img_i18n_it
-          - code_i18n_it
           - title_i18n_it
           - body_i18n_it
+          - code_i18n_it
+          - img_i18n_it
+          - _img_i18n_it
           - author_i18n_it
         "ET":
-          - img_i18n_et
-          - _img_i18n_et
-          - code_i18n_et
           - title_i18n_et
           - body_i18n_et
+          - code_i18n_et
+          - img_i18n_et
+          - _img_i18n_et
           - author_i18n_et
         "NE":
-          - img_i18n_ne
-          - _img_i18n_ne
-          - code_i18n_ne
           - title_i18n_ne
           - body_i18n_ne
+          - code_i18n_ne
+          - img_i18n_ne
+          - _img_i18n_ne
           - author_i18n_ne
         "BN":
-          - img_i18n_bn
-          - _img_i18n_bn
-          - code_i18n_bn
           - title_i18n_bn
           - body_i18n_bn
+          - code_i18n_bn
+          - img_i18n_bn
+          - _img_i18n_bn
           - author_i18n_bn
         "HE":
-          - img_i18n_he
-          - _img_i18n_he
-          - code_i18n_he
           - title_i18n_he
           - body_i18n_he
+          - code_i18n_he
+          - img_i18n_he
+          - _img_i18n_he
           - author_i18n_he
         "ZH_TW":
-          - img_i18n_zh_tw
-          - _img_i18n_zh_tw
-          - code_i18n_zh_tw
           - title_i18n_zh_tw
           - body_i18n_zh_tw
+          - code_i18n_zh_tw
+          - img_i18n_zh_tw
+          - _img_i18n_zh_tw
           - author_i18n_zh_tw
         "DE":
-          - img_i18n_de
-          - _img_i18n_de
-          - code_i18n_de
           - title_i18n_de
           - body_i18n_de
+          - code_i18n_de
+          - img_i18n_de
+          - _img_i18n_de
           - author_i18n_de
       fields:
 

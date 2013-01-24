@@ -8,7 +8,7 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 100000
       sort: [order, asc]
-      filters: [photoalbum_id, show, img, carousel]
+      filters: [photoalbum_id, show, img, carousel, width, height, link]
       display: [=id, photoalbum, show, order, _img, img, title, author, created_at, width, height, carousel, _item2item_list]
       title:   Photo
       object_actions:

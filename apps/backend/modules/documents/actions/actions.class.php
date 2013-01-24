@@ -251,4 +251,44 @@ class documentsActions extends autodocumentsActions
       Item2itemcategoryPeer::updateItemCategories($documents['itemcategory'], ItemtypesPeer::ITEM_TYPE_DOCUMENTS, $this->documents->getId());
     }
   }
+  
+  protected function addFiltersCriteria($c)
+  {
+    if (isset($this->filters['show_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(DocumentsPeer::SHOW, '');
+      $criterion->addOr($c->getNewCriterion(DocumentsPeer::SHOW, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['show']) && $this->filters['show'] !== '')
+    {
+      $c->add(DocumentsPeer::SHOW, $this->filters['show']);
+    }
+    if (isset($this->filters['news_id_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(DocumentsPeer::NEWS_ID, '');
+      $criterion->addOr($c->getNewCriterion(DocumentsPeer::NEWS_ID, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['news_id']) && $this->filters['news_id'] !== '')
+    {
+      $c->add(DocumentsPeer::NEWS_ID, $this->filters['news_id']);
+    }
+    
+    // File
+    if (isset($this->filters['file']))
+    {
+      $c->add(DocumentsPeer::FILE, '%'.$this->filters['file'].'%', Criteria::LIKE);
+    }
+    // Title
+    if (isset($this->filters['title']))
+    {
+      $c->add(DocumentsI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
+    }
+    // Body
+    if (isset($this->filters['body']))
+    {
+      $c->add(DocumentsI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
+    }
+  }
 }

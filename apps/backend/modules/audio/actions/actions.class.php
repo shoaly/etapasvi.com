@@ -336,4 +336,34 @@ class audioActions extends autoaudioActions
       Item2itemcategoryPeer::updateItemCategories($audio['itemcategory'], ItemtypesPeer::ITEM_TYPE_AUDIO, $this->audio->getId());
     }
   }
+  
+  protected function addFiltersCriteria($c)
+  {
+    if (isset($this->filters['show_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(AudioPeer::SHOW, '');
+      $criterion->addOr($c->getNewCriterion(AudioPeer::SHOW, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['show']) && $this->filters['show'] !== '')
+    {
+      $c->add(AudioPeer::SHOW, $this->filters['show']);
+    }
+    
+    // Title
+    if (isset($this->filters['title']))
+    {
+      $c->add(AudioI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
+    }
+    // Body
+    if (isset($this->filters['body']))
+    {
+      $c->add(AudioI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
+    }
+    // Author
+    if (isset($this->filters['author']))
+    {
+      $c->add(AudioI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
+    }
+  }
 }

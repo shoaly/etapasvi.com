@@ -498,4 +498,64 @@ class videoActions extends autovideoActions
       Item2itemcategoryPeer::updateItemCategories($video['itemcategory'], ItemtypesPeer::ITEM_TYPE_VIDEO, $this->video->getId());
     }
   }
+  
+protected function addFiltersCriteria($c)
+  {
+    if (isset($this->filters['show_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(VideoPeer::SHOW, '');
+      $criterion->addOr($c->getNewCriterion(VideoPeer::SHOW, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['show']) && $this->filters['show'] !== '')
+    {
+      $c->add(VideoPeer::SHOW, $this->filters['show']);
+    }
+    if (isset($this->filters['all_cultures_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(VideoPeer::ALL_CULTURES, '');
+      $criterion->addOr($c->getNewCriterion(VideoPeer::ALL_CULTURES, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['all_cultures']) && $this->filters['all_cultures'] !== '')
+    {
+      $c->add(VideoPeer::ALL_CULTURES, $this->filters['all_cultures']);
+    }
+    if (isset($this->filters['link_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(VideoPeer::LINK, '');
+      $criterion->addOr($c->getNewCriterion(VideoPeer::LINK, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['link']) && $this->filters['link'] !== '')
+    {
+      $c->add(VideoPeer::LINK, strtr($this->filters['link'], '*', '%'), Criteria::LIKE);
+    }
+    
+    // Title
+    if (isset($this->filters['title']))
+    {
+      $c->add(VideoI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
+    }
+    // Body
+    if (isset($this->filters['body']))
+    {
+      $c->add(VideoI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
+    }
+    // Code
+    if (isset($this->filters['code']))
+    {
+      $c->add(VideoI18nPeer::CODE, '%'.$this->filters['code'].'%', Criteria::LIKE);
+    }
+    // Image
+    if (isset($this->filters['img']))
+    {
+      $c->add(VideoI18nPeer::IMG, '%'.$this->filters['img'].'%', Criteria::LIKE);
+    }
+    // Author
+    if (isset($this->filters['author']))
+    {
+      $c->add(VideoI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
+    }
+  }
 }

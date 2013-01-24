@@ -1734,4 +1734,83 @@ class newsActions extends autonewsActions
     ob_clean();
   }
   
+  protected function addFiltersCriteria($c)
+  {
+if (isset($this->filters['show_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(NewsPeer::SHOW, '');
+      $criterion->addOr($c->getNewCriterion(NewsPeer::SHOW, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['show']) && $this->filters['show'] !== '')
+    {
+      $c->add(NewsPeer::SHOW, $this->filters['show']);
+    }
+    if (isset($this->filters['date_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(NewsPeer::DATE, '');
+      $criterion->addOr($c->getNewCriterion(NewsPeer::DATE, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['date']))
+    {
+      if (isset($this->filters['date']['from']) && $this->filters['date']['from'] !== '')
+      {
+        $criterion = $c->getNewCriterion(NewsPeer::DATE, date('Y-m-d', $this->filters['date']['from']), Criteria::GREATER_EQUAL);
+      }
+      if (isset($this->filters['date']['to']) && $this->filters['date']['to'] !== '')
+      {
+        if (isset($criterion))
+        {
+          $criterion->addAnd($c->getNewCriterion(NewsPeer::DATE, date('Y-m-d', $this->filters['date']['to']), Criteria::LESS_EQUAL));
+        }
+        else
+        {
+          $criterion = $c->getNewCriterion(NewsPeer::DATE, date('Y-m-d', $this->filters['date']['to']), Criteria::LESS_EQUAL);
+        }
+      }
+
+      if (isset($criterion))
+      {
+        $c->add($criterion);
+      }
+    }
+
+    // Title
+    if (isset($this->filters['title']))
+    {
+      $c->add(NewsI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
+    }
+    // Short body
+    if (isset($this->filters['shortbody']))
+    {
+      $c->add(NewsI18nPeer::SHORTBODY, '%'.$this->filters['shortbody'].'%', Criteria::LIKE);
+    }
+    // Body
+    if (isset($this->filters['body']))
+    {
+      $c->add(NewsI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
+    }
+    // Extradate
+    if (isset($this->filters['extradate']))
+    {
+      $c->add(NewsI18nPeer::EXTRADATE, '%'.$this->filters['extradate'].'%', Criteria::LIKE);
+    }
+    // Author
+    if (isset($this->filters['author']))
+    {
+      $c->add(NewsI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
+    }
+    // Translated by
+    if (isset($this->filters['translated_by']))
+    {
+      $c->add(NewsI18nPeer::TRANSLATED_BY, '%'.$this->filters['translated_by'].'%', Criteria::LIKE);
+    }
+    // Link
+    if (isset($this->filters['link']))
+    {
+      $c->add(NewsI18nPeer::LINK, '%'.$this->filters['link'].'%', Criteria::LIKE);
+    }
+  }
+  
 }

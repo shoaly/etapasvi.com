@@ -272,4 +272,34 @@ class photoalbumActions extends autophotoalbumActions
       Item2itemcategoryPeer::updateItemCategories($photoalbum['itemcategory'], ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, $this->photoalbum->getId());
     }
   }
+  
+  protected function addFiltersCriteria($c)
+  {
+    if (isset($this->filters['show_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoalbumPeer::SHOW, '');
+      $criterion->addOr($c->getNewCriterion(PhotoalbumPeer::SHOW, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['show']) && $this->filters['show'] !== '')
+    {
+      $c->add(PhotoalbumPeer::SHOW, $this->filters['show']);
+    }
+    
+    // Title
+    if (isset($this->filters['title']))
+    {
+      $c->add(PhotoalbumI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
+    }
+    // Body
+    if (isset($this->filters['body']))
+    {
+      $c->add(PhotoalbumI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
+    }
+    // Author
+    if (isset($this->filters['author']))
+    {
+      $c->add(PhotoalbumI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
+    }
+  }
 }

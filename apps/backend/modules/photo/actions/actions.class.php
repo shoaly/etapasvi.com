@@ -843,6 +843,96 @@ class photoActions extends autophotoActions
   	//}
   }
   
+  protected function addFiltersCriteria($c)
+  {
+    if (isset($this->filters['photoalbum_id_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoPeer::PHOTOALBUM_ID, '');
+      $criterion->addOr($c->getNewCriterion(PhotoPeer::PHOTOALBUM_ID, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['photoalbum_id']) && $this->filters['photoalbum_id'] !== '')
+    {
+      $c->add(PhotoPeer::PHOTOALBUM_ID, $this->filters['photoalbum_id']);
+    }
+    if (isset($this->filters['show_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoPeer::SHOW, '');
+      $criterion->addOr($c->getNewCriterion(PhotoPeer::SHOW, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['show']) && $this->filters['show'] !== '')
+    {
+      $c->add(PhotoPeer::SHOW, $this->filters['show']);
+    }
+    if (isset($this->filters['img_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoPeer::IMG, '');
+      $criterion->addOr($c->getNewCriterion(PhotoPeer::IMG, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['img']) && $this->filters['img'] !== '')
+    {
+      $c->add(PhotoPeer::IMG, strtr($this->filters['img'], '*', '%'), Criteria::LIKE);
+    }
+    if (isset($this->filters['carousel_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoPeer::CAROUSEL, '');
+      $criterion->addOr($c->getNewCriterion(PhotoPeer::CAROUSEL, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['carousel']) && $this->filters['carousel'] !== '')
+    {
+      $c->add(PhotoPeer::CAROUSEL, $this->filters['carousel']);
+    }
+    if (isset($this->filters['width_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoPeer::WIDTH, '');
+      $criterion->addOr($c->getNewCriterion(PhotoPeer::WIDTH, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['width']) && $this->filters['width'] !== '')
+    {
+      $c->add(PhotoPeer::WIDTH, $this->filters['width']);
+    }
+    if (isset($this->filters['height_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoPeer::HEIGHT, '');
+      $criterion->addOr($c->getNewCriterion(PhotoPeer::HEIGHT, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['height']) && $this->filters['height'] !== '')
+    {
+      $c->add(PhotoPeer::HEIGHT, $this->filters['height']);
+    }
+    if (isset($this->filters['link_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(PhotoPeer::LINK, '');
+      $criterion->addOr($c->getNewCriterion(PhotoPeer::LINK, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['link']) && $this->filters['link'] !== '')
+    {
+      $c->add(PhotoPeer::LINK, strtr($this->filters['link'], '*', '%'), Criteria::LIKE);
+    }
+    
+    // Title
+    if (isset($this->filters['title']))
+    {
+      $c->add(PhotoI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
+    }
+    // Body
+    if (isset($this->filters['body']))
+    {
+      $c->add(PhotoI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
+    }
+    // Author
+    if (isset($this->filters['author']))
+    {
+      $c->add(PhotoI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
+    }
+  }
+  
 }
 
 
