@@ -1114,9 +1114,9 @@ html #disqus_thread {
 .like-toolbar {
     background-color: #F2F2F2;
     border: 1px solid #DDDDDD;
+    height: 29px;
     margin: -1px 0 10px;
-    height: 20px;
-    padding: 6px 8px;
+    padding: 0 5px;
     }
 *:first-child+html  #wrapper #dsq-content #dsq-global-toolbar,
 *:first-child+html  #cboxContent #dsq-content #dsq-global-toolbar {
