@@ -566,6 +566,43 @@
         <target></target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>Like</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Dislike</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>I like this</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>I dislike this</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Unlike</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Undislike</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Would you like to share?</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Close</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Glad you liked it</source>
+        <target></target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>

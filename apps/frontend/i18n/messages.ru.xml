@@ -545,6 +545,10 @@
         <source>Close</source>
         <target>Закрыть</target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Glad you liked it</source>
+        <target>Рады, что вам это понравилось</target>
+      </trans-unit>
 
 <!-- утф -->
     </body>
