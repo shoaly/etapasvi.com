@@ -206,5 +206,6 @@ $(document).ready(function(){
 <br/><br/><a href="http://coinmill.com/NPR_calculator.html" target="_blank"><?php echo __('Currency Converter') ?></a>
 </div>
 */ ?>
+<br/><a href="http://coinmill.com/NPR_calculator.html" target="_blank"><?php echo __('Currency Converter') ?></a>
 <br /><br />
 <?php include_component('comments', 'show'); ?>	
