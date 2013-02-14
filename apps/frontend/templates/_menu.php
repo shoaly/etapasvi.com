@@ -24,7 +24,7 @@
 		<li id="mi_religious_forest"><a href="<?php echo url_for('@religious_forest', true); ?>" title="<?php echo __('Religious Forest') ?>"><?php echo __('Religious Forest') ?></a></li>
 */
 ?>
-        <li id="mi_donation"><a href="<?php echo url_for('@donation', true); ?>" title="<?php echo __('Donation') ?>"><?php echo __('Donation') ?></a></li>
+        <li id="mi_donation"><a href="<?php echo url_for('@donation', true); ?>" title="<?php echo __('Donations') ?>"><?php echo __('Donations') ?></a></li>
 		<?php /*<li><a href="<?php echo url_for('@livestream', true); ?>" title="<?php echo __('Buddha Boy Live Stream') ?>" id="mi_livestream"><?php echo __('Live Stream') ?></a></li>	*/ ?>
 		<?php /* <li><a href="<?php echo url_for('@translation_fundraising', true); ?>" title="<?php echo __('Buddha Boy Live Stream') ?>" id="mi_ltj_fundraising"><?php echo __('Translation Fundraising') ?></a></li>	*/ ?>
 

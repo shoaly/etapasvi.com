@@ -107,6 +107,81 @@
         <source>for instructions.</source>
         <target></target>
       </trans-unit>
+
+      <trans-unit id="1">
+        <source>Donations support a wide range of causes: constructions, shelters, protection of the environment, food, transport, rents... It all is done through your kindness and generosity only.</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>PayPal or Credit Card</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>PayPal - The safer, easier way to pay online!</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Recurring Donation</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Donation amount</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>USD</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Payment cycle</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>day(s)</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>week(s)</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>month(s)</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>year(s)</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>After how many cycles should sending donations stop</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Never</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>You have control over your payments through your Paypal account and can cancel at any time.</source>
+        <target></target>
+      </trans-unit>      
+
+    <trans-unit id="1">
+        <source>Detailed reports on received donations and expenses are being sent personally to donors.</source>
+        <target></target>
+      </trans-unit>
       
 <!-- утф -->
     </body>

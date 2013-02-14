@@ -31,7 +31,10 @@ class UserPeer /* extends BaseUserPeer*/
 		              'twitter' 		 	 => 'etapasvi',
 		              'fb_group' 		 	 => 'etapasvi.en',
 		              'google_group' 		 => 'maha-sambodhi-dharma-sangha-',
-		              'blessing_ln' 		 => ''
+		              'blessing_ln' 		 => '',
+                               // https://www.paypalobjects.com/pl_PL/PL/i/btn/btn_subscribeCC_LG.gif
+                               // https://www.paypalobjects.com/zh_CN/i/btn/btn_donateCC_LG.gif
+		              'paypal_button' 		 => 'en_US' 
 		),            
 		'ru' => array('name'    			 => 'Русский',
 					  'en_name'    			 => 'Russian',
@@ -40,7 +43,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'comments_category_id' => 686465,
 		              'feedburner_loc' 		 => 'ru_RU',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-ru-%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9/367816743307548',
-		              'blessing_ln' 		 => 'ru-RU'
+		              'blessing_ln' 		 => 'ru-RU',
+                              'paypal_button' 		 => 'ru_RU/RU'
 		),
 		'cs' => array('name'    			 => 'Čeština',
 					  'en_name'    			 => 'Czech',
@@ -49,7 +53,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-cz-%C4%8Ce%C5%A1tina/217592821707394',
 		              'google_group' 		 => 'etapasvi-cz',
-		              'blessing_ln' 		 => 'cs-CZ'
+		              'blessing_ln' 		 => 'cs-CZ',
+                              'paypal_button' 		 => 'en_US'
 		),
 		'hu' => array('name'    			 => 'Magyar',
 					  'en_name'    			 => 'Hungarian',
@@ -58,7 +63,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-hu-Magyar/422601807795163',
 		              'google_group' 		 => 'etapasvi-hu',
-		              'blessing_ln' 		 => 'hu-HU'
+		              'blessing_ln' 		 => 'hu-HU',
+                              'paypal_button' 		 => 'en_US'
 		),
 		'pl' => array('name'    			 => 'Polski',
 		              'en_name'    			 => 'Polish',
@@ -68,7 +74,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-pl-Polski/509286569090423',
 		              'google_group' 		 => 'etapasvi-pl',
-		              'blessing_ln' 		 => 'pl-PL'
+		              'blessing_ln' 		 => 'pl-PL',
+                              'paypal_button' 		 => 'pl_PL/PL'
 		),
 		'fr' => array('name'    			 => 'Français',
 					  'en_name'    			 => 'French',
@@ -78,7 +85,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => 'fr_FR',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-fr-Français/417833841617774',
 		              'google_group' 		 => 'etapasvi-fr',
-		              'blessing_ln' 		 => 'fr-FR'
+		              'blessing_ln' 		 => 'fr-FR',
+                              'paypal_button' 		 => 'fr_FR'
 		),
 		// Mandarin Chinese (Simplified script) - упрошённый китайский
 		'zh_CN'  => array(
@@ -91,7 +99,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-zh-cn-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87/300889923359900',
 		              'google_group' 		 => 'etapasvi-cn',
-		              'blessing_ln' 		 => 'zh-CN'
+		              'blessing_ln' 		 => 'zh-CN',
+                              'paypal_button' 		 => 'zh_CN'
 		),
 		'vi' => array('name'    			 => 'Tiếng Việt',
 					  'en_name'    			 => 'Vietnamese',
@@ -102,7 +111,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'fb_group' 		 	 => 'pages/eTapasvicom-vn-Ti%E1%BA%BFng-Vi%E1%BB%87t/365871553502958',
 		              'google_group' 		 => 'etapasvi-vietnamese',
 		              'google_group' 		 => 'etapasvi-vn',
-		              'blessing_ln' 		 => 'vi-VN'
+		              'blessing_ln' 		 => 'vi-VN',
+                              'paypal_button' 		 => 'en_US'
 		),       
 		'ja' => array('name'    			 => '日本語',
 					  'en_name'    			 => 'Japanese',
@@ -113,7 +123,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => 'ja_JP',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-jp-日本語/216899785109288',
 		              'google_group' 		 => 'dharmasangha-jp',
-		              'blessing_ln' 		 => 'ja-JP'
+		              'blessing_ln' 		 => 'ja-JP',
+                              'paypal_button' 		 => 'ja_JP'
 		),
 		'es' => array('name'    			 => 'Español',
 					  'en_name'    			 => 'Spanish',
@@ -124,7 +135,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'disqus_culture' 		 => 'es_ES',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-es-Espa%C3%B1ol/162128630600687',
 		              'google_group' 		 => 'etapasvi-es',
-		              'blessing_ln' 		 => 'es-ES'
+		              'blessing_ln' 		 => 'es-ES',
+                               'paypal_button' 		 => 'en_US'
 		),
 		'it' => array('name'    			 => 'Italiano',
 					  'en_name'    			 => 'Italian',
@@ -134,7 +146,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-it-Italiano/482400528458711',
 		              'google_group' 		 => 'etapasvi-it',
-		              'blessing_ln' 		 => 'it-IT'
+		              'blessing_ln' 		 => 'it-IT',
+                              'paypal_button' 		 => 'it_IT'
 		),
 /*		              		              
 
@@ -150,7 +163,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-ee-Eesti/262816543841522',
 		              'google_group' 		 => 'etapasvi-ee',
-		              'blessing_ln' 		 => 'et-EE'
+		              'blessing_ln' 		 => 'et-EE',
+                              'paypal_button' 		 => 'en_US'
 		),
 		'ne' => array('name'    			 => 'नेाी',
 					  'en_name'    			 => 'Nepali',
@@ -161,7 +175,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'disqus_culture' 		 => 'en',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-ne-%E0%A4%A8%E0%A5%87%E0%A4%BE%E0%A5%80/427189564014033',
 		              'google_group' 		 => 'etapasvi-ne',
-		              'blessing_ln' 		 => 'ne-NP'
+		              'blessing_ln' 		 => 'ne-NP',
+                              'paypal_button' 		 => 'en_US'
 		),
 		'bn' => array('name'    			 => 'বাংলা',
 		              'en_name'    			 => 'Bengali',
@@ -173,7 +188,8 @@ class UserPeer /* extends BaseUserPeer*/
 					  'disqus_culture' 		 => 'en',
 					  'fb_group' 		 	 => 'pages/eTapasvicom-bn-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE/434001003314417',
 					  'google_group' 		 => 'etapasvi-bn',
-					  'blessing_ln' 		 => 'bn-BD'
+					  'blessing_ln' 		 => 'bn-BD',
+                               'paypal_button' 		 => 'en_US'
 		),			
 		'he' => array(
 					  'name'     			 => 'עברית',
@@ -186,7 +202,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'direction_rtl' 		 => true,
 		              'fb_group' 		 	 => 'pages/eTapasvicom-he-%D7%A2%D7%91%D7%A8%D7%99%D7%AA/389776024435475',
 		              'google_group' 		 => 'etapasvi-he',
-		              'blessing_ln' 		 => 'he-IL'
+		              'blessing_ln' 		 => 'he-IL',
+                              'paypal_button' 		 => 'he_IL'
          ),
          // Taiwan / Lee Ming / Traditional Chinese language
 		'zh_TW' => array(
@@ -199,7 +216,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'disqus_culture' 		 => 'zh_HANT',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-zh-tw-%E5%82%B3%E7%B5%B1%E6%BC%A2%E5%AD%97/124329524389601',
 		              'google_group' 		 => 'etapasvi-cn',
-		              'blessing_ln' 		 => 'zh-TW'
+		              'blessing_ln' 		 => 'zh-TW',
+                              'paypal_button' 		 => 'zh_CN'
          ),
 		'de' => array('name'     			 => 'Deutsch',
 					  'en_name'    		     => 'German',
@@ -209,7 +227,8 @@ class UserPeer /* extends BaseUserPeer*/
 		              'disqus_culture' 		 => 'de_formal',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-de-Deutsch/245816235544764',
 		              'google_group' 		 => 'etapasvi-de',
-		              'blessing_ln' 		 => 'de-DE'
+		              'blessing_ln' 		 => 'de-DE',
+                              'paypal_button' 		 => 'de_DE'
 		),
 	);
 	
@@ -1043,6 +1062,19 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return self::$cultures[ $culture ][ 'google_group' ];
 	}
+        
+	public static function getCulturePaypalButton( $culture = '' )
+	{	
+		if (!$culture) {
+			$culture = sfContext::getInstance()->getUser()->getCulture();
+		}
+		
+		if (self::$cultures[ $culture ]['paypal_button']) {
+			return self::$cultures[ $culture ]['paypal_button'];
+		} else {
+			return self::$cultures[ 'en' ]['paypal_button'];	
+		}		
+	}	
 	
 	/**
 	 * Проверка, является ли страница главной

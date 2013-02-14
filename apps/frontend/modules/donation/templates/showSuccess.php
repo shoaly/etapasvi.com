@@ -1,18 +1,23 @@
 <?php slot('body_id') ?>body_donation<?php end_slot() ?>
-<?php slot('page_header') ?><?php echo __('Donation') ?><?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Donations') ?><?php end_slot() ?>
 
 <h2 class="center"><?php echo __('Purpose') ?></h2>
-
+<div>
+<?php echo __('Donations support a wide range of causes: constructions, shelters, protection of the environment, food, transport, rents... It all is done through your kindness and generosity only.') ?>
+</div>
+<?php/*
 <?php 
 /*
 $news = NewsPeer::retrieveByPk(98);
 $news_link = $news->getUrl();
-*/
+/
 $purpose_link = url_for('@projects_index');
 ?>
 <p class="center_text">
 <a href="<?php echo $purpose_link ?>" target="_blank"><?php echo $purpose_link ?></a>
 </p>
+*/ ?>
+
 <?php /*
 <p>
 <?php echo __('Bodhi Shrawan Dharma Sangha is planning for the auspicious day, when Dharma Sangha\'s meditation will end on May 17, Buddha Jayanti\'s day. After that Dharma Sangha will be giving blessings to devotees for 15 days from 9am to 6pm tentatively.') ?>
@@ -23,18 +28,64 @@ $purpose_link = url_for('@projects_index');
 </p>
 */
 ?>
-<h2 class="center"><?php echo __('PayPal') ?></h2>
+<h2 class="center"><?php echo __('PayPal or Credit Card') ?></h2>
 <div class="center_text">
 <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
     <input type="hidden" value="_donations" name="cmd" />
     <input type="hidden" value="BSDSUSA@gmail.com" name="business" />
-    <input type="hidden" value="US" name="lc" />
+    <input type="hidden" value="<?php echo strtoupper($sf_user->getCulture()) ?>" name="lc" />
     <input type="hidden" value="Bodhi Shrawan Dharma Sangha" name="item_name" />
     <input type="hidden" value="0" name="no_note" />
     <input type="hidden" value="USD" name="currency_code" />
     <input type="hidden" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest" name="bn" />
-    <input type="image" alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypalobjects.com/WEBSCR-640-20110401-1/en_US/i/btn/btn_donateCC_LG.gif" style="border:0" />
+    <input type="image" src="https://www.paypalobjects.com/<?php echo UserPeer::getCulturePaypalButton() ?>/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="<?php echo __('PayPal - The safer, easier way to pay online!') ?>" style="border:0">
 </form>
+<br/>
+<a href="javascript:toggleRecurringDonation(); void(0);"><?php echo __('Recurring Donation') ?></a>
+
+    <div class="hidden" id="reccuring_donation">
+        <br/>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            
+            <table class="left_text bordered" id="recurring_donation_form">
+                <tr>
+                    <td><?php echo __('Donation amount') ?></td>
+                    <td>
+                        <input type="text" value="" name="a3" onkeyup="recurringFormAmountChange(this)"/>
+                        <?php echo __('USD') ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td><?php echo __('Payment cycle') ?></td>
+                    <td>
+                        <select name="p3"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+            
+                        <select name="t3"><option value="D"><?php echo __('day(s)') ?></option><option value="W"><?php echo __('week(s)') ?></option><option selected="" value="M"><?php echo __('month(s)') ?></option><option value="Y"><?php echo __('year(s)') ?></option></select>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td><?php echo __('After how many cycles should sending donations stop') ?></td>
+                    <td>
+                        <select name="srt"><option value=""><?php echo __('Never') ?></option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>                        
+                    </td>
+                </tr>
+            </table>
+
+            <input name="cmd" type="hidden" value="_xclick-subscriptions" />
+            <input type="hidden" value="BSDSUSA@gmail.com" name="business" />
+            <input type="hidden" value="<?php echo strtoupper($sf_user->getCulture()) ?>" name="lc" />
+            <input type="hidden" value="Bodhi Shrawan Dharma Sangha" name="item_name" />
+            <input type="hidden" value="0" name="no_note" />
+            <input type="hidden" value="1" name="no_shipping" />
+            <input type="hidden" value="USD" name="currency_code" />
+            <input type="hidden" name="src" value="1">
+            <input type="hidden" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest" name="bn" />
+            <br/>
+            <input type="image" alt="<?php echo __('PayPal - The safer, easier way to pay online!') ?>" name="submit" src="https://www.paypalobjects.com/<?php echo UserPeer::getCulturePaypalButton() ?>/i/btn/btn_donateCC_LG.gif" style="border:0" />
+        </form>        
+        <span class="light"><?php echo __('You have control over your payments through your Paypal account and can cancel at any time.') ?></span>
+        <br/><br/>
+    </div>
 </div>
 <?php /*
 <h2 class="center"><?php echo __('PayPal') ?></h2>
@@ -141,15 +192,19 @@ $(document).ready(function(){
 */ ?>
 
 <h2 class="center"><?php echo __('Bank account') ?></h2>
-<p class="center_text">    
+<p>    
     <?php echo __('Email at') ?> <a href="mailto:info@etapasvi.com">info@etapasvi.com</a> <?php echo __('for instructions.') ?>
 </p>
 
 <h2 class="center"><?php echo __('Reports') ?></h2>
+<div>
+    <?php echo __('Detailed reports on received donations and expenses are being sent personally to donors.') ?>
+</div>
+<?php /*
 <div class="center_text">
 <a href="https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0ApLTjOcBiwykdDlYNjBLZWVSaUlhaVg4ZG55S0VZdXc&single=true&gid=0&output=html" target="_blank"><?php echo __('Donations received') ?></a> | <a href="https://docs.google.com/document/pub?id=1bIX95gsuNxFDxrTbopjKXTK3ypPk894SHiKZmEOoBGU" target="_blank"><?php echo __('Planned expenses') ?></a> | <a href="https://docs.google.com/document/pub?id=1v46QPZq6iZnVWhmBRWRBSdVIqHW7kAsONfnbIWfViAI" target="_blank"><?php echo __('Income / Expenses') ?></a>
 <br/><br/><a href="http://coinmill.com/NPR_calculator.html" target="_blank"><?php echo __('Currency Converter') ?></a>
 </div>
-
+*/ ?>
 <br /><br />
 <?php include_component('comments', 'show'); ?>	

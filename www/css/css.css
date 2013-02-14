@@ -452,6 +452,9 @@ table {
     text-align: left;
 	padding:3px;
 	}
+table.bordered td { 
+    border: 1px solid #DDDDDD;
+}
 code {
 	font-family: "Verdana,Helvetica,sans-serif";
 	}
@@ -1943,6 +1946,13 @@ table.documents_tbl {
     height: 54px;
     width: 460px;
     }
+    
+/* donation */
+#recurring_donation_form td {
+    padding: 3px;
+    width: 50%;
+}
+
     
 /*
     ColorBox Core Style:

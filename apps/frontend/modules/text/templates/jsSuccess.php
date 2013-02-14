@@ -1224,6 +1224,18 @@ function runCarousel()
     }); 
 }
 
+// toggle reccuring donation container
+function toggleRecurringDonation()
+{
+    $("#reccuring_donation").toggle();
+}
+
+// recurring donation form submit
+function recurringFormAmountChange(el)
+{
+    el.value = el.value.replace(/,/, '.').replace(/[^0-9.]/, '');
+}
+
 
 // replace all occurences of a string
 String.prototype.replaceAll = function(search, replace){

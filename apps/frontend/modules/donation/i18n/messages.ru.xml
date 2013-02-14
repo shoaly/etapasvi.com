@@ -106,7 +106,82 @@
 
       <trans-unit id="1">
         <source>for instructions.</source>
-        <target>для получения инструкций</target>
+        <target>для получения инструкций.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Donations support a wide range of causes: constructions, shelters, protection of the environment, food, transport, rents... It all is done through your kindness and generosity only.</source>
+        <target>Собранные пожертвования идут на самые разные нужды: возведение и ремонт построек, временные укрытия, защиту окружающей среды, питание, транспорт, покрытие арендных плат... Всё это только благодаря вашей доброте и отзывчивости.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>PayPal or Credit Card</source>
+        <target>PayPal или кредитная карта</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>PayPal - The safer, easier way to pay online!</source>
+        <target>PayPal — более безопасный и легкий способ оплаты через Интернет!</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Recurring Donation</source>
+        <target>Повторяющееся пожертвование</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Donation amount</source>
+        <target>Размер пожертвования</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>USD</source>
+        <target>доллара(ов) США</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Payment cycle</source>
+        <target>Период</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>day(s)</source>
+        <target>дня (дней)</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>week(s)</source>
+        <target>недели (недель)</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>month(s)</source>
+        <target>месяца (месяцев)</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>year(s)</source>
+        <target>года (лет)</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>After how many cycles should sending donations stop</source>
+        <target>Через сколько повторов прекратится отправка пожертвований</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Never</source>
+        <target>Никогда</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>You have control over your payments through your Paypal account and can cancel at any time.</source>
+        <target>Вы имеете полный контроль над своими платежами через свой аккаунт PayPal и можете в любой момент отменить отправку средств.</target>
+      </trans-unit>      
+
+    <trans-unit id="1">
+        <source>Detailed reports on received donations and expenses are being sent personally to donors.</source>
+        <target>Подробные отчёты о собранных средствах и расходах перидически отправляются лично донорам.</target>
       </trans-unit>
 
 <!-- утф -->
