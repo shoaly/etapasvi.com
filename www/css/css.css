@@ -1397,7 +1397,11 @@ img.newsitem_img {
 .itemcategories_list a:hover {
     text-decoration: none;
     }
-.itemcategories_list  img {
+.itemcategory_badge {
+    background: url("../i/interface_sprite.jpg") no-repeat scroll -698px -294px transparent;
+    height: 16px;
+    width: 16px;
+    display: inline-block;
     margin-right: 4px;
     margin-top: 0;
     vertical-align: middle;
