@@ -587,6 +587,10 @@ p.p2{
     z-index: 0;
     text-align: center;
     }
+.direction_rtl #footer {
+    padding-right: 74px;
+    right: -74px;
+}
 #footer a img {
     text-decoration:none;
     }
