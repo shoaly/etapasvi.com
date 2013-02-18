@@ -32,7 +32,7 @@ $purpose_link = url_for('@projects_index');
 <div class="center_text">
 <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
     <input type="hidden" value="_donations" name="cmd" />
-    <input type="hidden" value="BSDSUSA@gmail.com" name="business" />
+    <input type="hidden" value="bsdsusa@gmail.com" name="business" />
     <input type="hidden" value="<?php echo strtoupper($sf_user->getCulture()) ?>" name="lc" />
     <input type="hidden" value="Bodhi Shrawan Dharma Sangha" name="item_name" />
     <input type="hidden" value="0" name="no_note" />
@@ -72,7 +72,7 @@ $purpose_link = url_for('@projects_index');
             </table>
 
             <input name="cmd" type="hidden" value="_xclick-subscriptions" />
-            <input type="hidden" value="BSDSUSA@gmail.com" name="business" />
+            <input type="hidden" value="bsdsusa@gmail.com" name="business" />
             <input type="hidden" value="<?php echo strtoupper($sf_user->getCulture()) ?>" name="lc" />
             <input type="hidden" value="Bodhi Shrawan Dharma Sangha" name="item_name" />
             <input type="hidden" value="0" name="no_note" />
