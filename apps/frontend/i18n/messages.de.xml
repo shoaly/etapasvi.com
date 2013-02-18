@@ -563,7 +563,7 @@
 <!-- contactus -->
       <trans-unit id="1">
         <source>Contact Details</source>
-        <target></target>
+        <target>Kontaktangaben</target>
       </trans-unit>
 
         <trans-unit id="1">
