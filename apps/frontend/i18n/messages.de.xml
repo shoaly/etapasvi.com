@@ -491,8 +491,18 @@
       </trans-unit>
 
       <trans-unit id="1">
-        <source>Received translations are usually processed once a week, you can track how they are added on website in</source>
-        <target>Empfangene Übersetzungen werden gewöhnlich einmal pro Woche hochgeladen, du kannst das Hinzufügen auf der Webseite verfolgen unter </target>
+        <source>Received translations are usually processed once a week, you can check sent translations status</source>
+        <target>Empfangene Übersetzungen werden gewöhnlich einmal pro Woche hochgeladen, du kannst das Hinzufügen auf der Webseite verfolgen unter</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>here</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>and in</source>
+        <target></target>
       </trans-unit>
 
       <trans-unit id="1">

@@ -433,8 +433,18 @@
       </trans-unit>
       
       <trans-unit id="1">
-        <source>Received translations are usually processed once a week, you can track how they are added on website in</source>
-        <target>Полученные переводы обычно обрабатываются один раз в неделю, вы можете отслеживать добавление переводов на сайт в разделе</target>
+        <source>Received translations are usually processed once a week, you can check sent translations status</source>
+        <target>Полученные переводы обычно обрабатываются один раз в неделю, вы можете отслеживать статус отправленных переводов</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>here</source>
+        <target>по ссылке</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>and in</source>
+        <target>и в разделе</target>
       </trans-unit>
 
       <trans-unit id="1">

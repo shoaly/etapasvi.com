@@ -36,7 +36,7 @@
         <li><?php echo __('In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.') ?></li>        
         <li><?php echo __('If you would like to correct translation you sent, send both incorrect and correct versions in your language. It would allow programmer to find text, which should be replaced with correct one.') ?></li>
         <li><?php echo __('Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.') ?></li>
-        <li><?php echo __('Received translations are usually processed once a week, you can track how they are added on website in') ?> <a href="<?php echo url_for('@feed', true); ?>" title="<?php echo __('Feed') ?>"><?php echo __('Feed') ?></a>.</li>
+        <li><?php echo __('Received translations are usually processed once a week, you can check sent translations status') ?>  <a href="https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0ApLTjOcBiwykdF91dUtXaFFIcEZwNUptc3Z3Z3N3MVE&single=true&gid=4&output=html" title="<?php echo __('eTapasvi.com Translation : Status') ?>" target="_blank"><?php echo __('here') ?></a> <?php echo __('and in') ?> <a href="<?php echo url_for('@feed', true); ?>" title="<?php echo __('Feed') ?>"><?php echo __('Feed') ?></a>.</li>
     </ul>
 </p>
 <hr class="light"/>

@@ -494,6 +494,16 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>here</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>and in</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>for example, if you translate news item, copy it's title and whole text into this field</source>
         <target>ví  dụ, nếu bạn dịch mục tin tức, sao chép tiêu đề của nó và toàn bộ văn bản vào trường này</target>
       </trans-unit>
