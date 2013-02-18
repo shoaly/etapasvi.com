@@ -553,42 +553,42 @@
         <target></target>
       </trans-unit>
 
-      <trans-unit id="1">
-        <source>Like</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Dislike</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>I like this</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>I dislike this</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Unlike</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Undislike</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Would you like to share?</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Close</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Glad you liked it</source>
-        <target></target>
-      </trans-unit>
+        <trans-unit id="1">
+            <source>Like</source>
+            <target>気に入り</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Dislike</source>
+            <target>好きではない</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>I like this</source>
+            <target>れは気に入りました</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>I dislike this</source>
+            <target>これは好きではありません</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Unlike</source>
+            <target>好きではない</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Undislike</source>
+            <target>嫌いではない</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Would you like to share?</source>
+            <target>シェアしたいですか。</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Close</source>
+            <target>閉じる</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Glad you liked it!</source>
+            <target>気に入っていただいてありがとうございます。</target>
+        </trans-unit>
 
 <!-- утф -->
     </body>

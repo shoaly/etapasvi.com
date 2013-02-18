@@ -566,42 +566,42 @@
         <target></target>
       </trans-unit>
 
-      <trans-unit id="1">
-        <source>Like</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Dislike</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>I like this</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>I dislike this</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Unlike</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Undislike</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Would you like to share?</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Close</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Glad you liked it</source>
-        <target></target>
-      </trans-unit>
+        <trans-unit id="1">
+            <source>Like</source>
+            <target>Mag ich</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Dislike</source>
+            <target>Mag ich nicht</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>I like this</source>
+            <target>Gefällt mir</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>I dislike this</source>
+            <target>Gefällt mir nicht</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Unlike</source>
+            <target>Unlike</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Undislike</source>
+            <target>Undislike</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Would you like to share?</source>
+            <target>Möchtest du es mit anderen teilen?</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Close</source>
+            <target>Schließen</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Glad you liked it!</source>
+            <target>Schön, dass es dir gefällt!</target>
+        </trans-unit>
 
 <!-- утф -->
     </body>
