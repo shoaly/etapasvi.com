@@ -924,16 +924,16 @@ select,
 textarea,
 #body_search input.gsc-input,
 #body_search input.gsc-search-button {
-        -webkit-border-radius:2px;
-        -moz-border-radius:2px;
-        border-radius:2px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
 	border: 1px solid #CCCCCC;
     padding: 1px 2px;
 	font-family: "Lucida Grande",Verdana,Helvetica,sans-serif;
 	font-weight: normal;
 	font-size: 1em;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-        transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 	}
 .large_text .gsc-search-button {
     height: 26px;
@@ -956,15 +956,19 @@ input[type="radio"] {
     border: 1px outset #CCCCCC;
     cursor: pointer;
     padding: 1px 4px;
-        -webkit-border-radius:0;
-        -moz-border-radius:0;
-        border-radius:0;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
 	}
 .input_button:hover,
 #body_search input.gsc-search-button:hover {	
     background: none repeat scroll 0 0 #f0f0f0;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#f0f0f0');
     }
+input[type="image"] {
+    box-shadow: none;
+    }
+
 /*
 .hieroglyphic .input_button {
     height: 21px;
