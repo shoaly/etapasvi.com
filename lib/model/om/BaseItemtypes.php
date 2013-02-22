@@ -64,6 +64,16 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 	private $lastItem2itemcategoryCriteria = null;
 
 	/**
+	 * @var        array Revisionhistory[] Collection to store aggregation of Revisionhistory objects.
+	 */
+	protected $collRevisionhistorys;
+
+	/**
+	 * @var        Criteria The criteria used to select the current contents of collRevisionhistorys.
+	 */
+	private $lastRevisionhistoryCriteria = null;
+
+	/**
 	 * @var        array Clearcache[] Collection to store aggregation of Clearcache objects.
 	 */
 	protected $collClearcaches;
@@ -270,6 +280,9 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 
 			$this->collItem2itemcategorys = null;
 			$this->lastItem2itemcategoryCriteria = null;
+
+			$this->collRevisionhistorys = null;
+			$this->lastRevisionhistoryCriteria = null;
 
 			$this->collClearcaches = null;
 			$this->lastClearcacheCriteria = null;
@@ -493,6 +506,14 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collRevisionhistorys !== null) {
+				foreach ($this->collRevisionhistorys as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collClearcaches !== null) {
 				foreach ($this->collClearcaches as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -590,6 +611,14 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 
 				if ($this->collItem2itemcategorys !== null) {
 					foreach ($this->collItem2itemcategorys as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collRevisionhistorys !== null) {
+					foreach ($this->collRevisionhistorys as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -819,6 +848,12 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 			foreach ($this->getItem2itemcategorys() as $relObj) {
 				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
 					$copyObj->addItem2itemcategory($relObj->copy($deepCopy));
+				}
+			}
+
+			foreach ($this->getRevisionhistorys() as $relObj) {
+				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+					$copyObj->addRevisionhistory($relObj->copy($deepCopy));
 				}
 			}
 
@@ -1385,6 +1420,160 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 	}
 
 	/**
+	 * Clears out the collRevisionhistorys collection (array).
+	 *
+	 * This does not modify the database; however, it will remove any associated objects, causing
+	 * them to be refetched by subsequent calls to accessor method.
+	 *
+	 * @return     void
+	 * @see        addRevisionhistorys()
+	 */
+	public function clearRevisionhistorys()
+	{
+		$this->collRevisionhistorys = null; // important to set this to NULL since that means it is uninitialized
+	}
+
+	/**
+	 * Initializes the collRevisionhistorys collection (array).
+	 *
+	 * By default this just sets the collRevisionhistorys collection to an empty array (like clearcollRevisionhistorys());
+	 * however, you may wish to override this method in your stub class to provide setting appropriate
+	 * to your application -- for example, setting the initial array to the values stored in database.
+	 *
+	 * @return     void
+	 */
+	public function initRevisionhistorys()
+	{
+		$this->collRevisionhistorys = array();
+	}
+
+	/**
+	 * Gets an array of Revisionhistory objects which contain a foreign key that references this object.
+	 *
+	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
+	 * Otherwise if this Itemtypes has previously been saved, it will retrieve
+	 * related Revisionhistorys from storage. If this Itemtypes is new, it will return
+	 * an empty collection or the current collection, the criteria is ignored on a new object.
+	 *
+	 * @param      PropelPDO $con
+	 * @param      Criteria $criteria
+	 * @return     array Revisionhistory[]
+	 * @throws     PropelException
+	 */
+	public function getRevisionhistorys($criteria = null, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(ItemtypesPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRevisionhistorys === null) {
+			if ($this->isNew()) {
+			   $this->collRevisionhistorys = array();
+			} else {
+
+				$criteria->add(RevisionhistoryPeer::ITEMTYPES_ID, $this->id);
+
+				RevisionhistoryPeer::addSelectColumns($criteria);
+				$this->collRevisionhistorys = RevisionhistoryPeer::doSelect($criteria, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return the collection.
+
+
+				$criteria->add(RevisionhistoryPeer::ITEMTYPES_ID, $this->id);
+
+				RevisionhistoryPeer::addSelectColumns($criteria);
+				if (!isset($this->lastRevisionhistoryCriteria) || !$this->lastRevisionhistoryCriteria->equals($criteria)) {
+					$this->collRevisionhistorys = RevisionhistoryPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastRevisionhistoryCriteria = $criteria;
+		return $this->collRevisionhistorys;
+	}
+
+	/**
+	 * Returns the number of related Revisionhistory objects.
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct
+	 * @param      PropelPDO $con
+	 * @return     int Count of related Revisionhistory objects.
+	 * @throws     PropelException
+	 */
+	public function countRevisionhistorys(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(ItemtypesPeer::DATABASE_NAME);
+		} else {
+			$criteria = clone $criteria;
+		}
+
+		if ($distinct) {
+			$criteria->setDistinct();
+		}
+
+		$count = null;
+
+		if ($this->collRevisionhistorys === null) {
+			if ($this->isNew()) {
+				$count = 0;
+			} else {
+
+				$criteria->add(RevisionhistoryPeer::ITEMTYPES_ID, $this->id);
+
+				$count = RevisionhistoryPeer::doCount($criteria, false, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return count of the collection.
+
+
+				$criteria->add(RevisionhistoryPeer::ITEMTYPES_ID, $this->id);
+
+				if (!isset($this->lastRevisionhistoryCriteria) || !$this->lastRevisionhistoryCriteria->equals($criteria)) {
+					$count = RevisionhistoryPeer::doCount($criteria, false, $con);
+				} else {
+					$count = count($this->collRevisionhistorys);
+				}
+			} else {
+				$count = count($this->collRevisionhistorys);
+			}
+		}
+		return $count;
+	}
+
+	/**
+	 * Method called to associate a Revisionhistory object to this object
+	 * through the Revisionhistory foreign key attribute.
+	 *
+	 * @param      Revisionhistory $l Revisionhistory
+	 * @return     void
+	 * @throws     PropelException
+	 */
+	public function addRevisionhistory(Revisionhistory $l)
+	{
+		if ($this->collRevisionhistorys === null) {
+			$this->initRevisionhistorys();
+		}
+		if (!in_array($l, $this->collRevisionhistorys, true)) { // only add it if the **same** object is not already associated
+			array_push($this->collRevisionhistorys, $l);
+			$l->setItemtypes($this);
+		}
+	}
+
+	/**
 	 * Clears out the collClearcaches collection (array).
 	 *
 	 * This does not modify the database; however, it will remove any associated objects, causing
@@ -1612,6 +1801,11 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 					$o->clearAllReferences($deep);
 				}
 			}
+			if ($this->collRevisionhistorys) {
+				foreach ((array) $this->collRevisionhistorys as $o) {
+					$o->clearAllReferences($deep);
+				}
+			}
 			if ($this->collClearcaches) {
 				foreach ((array) $this->collClearcaches as $o) {
 					$o->clearAllReferences($deep);
@@ -1622,6 +1816,7 @@ abstract class BaseItemtypes extends BaseObject  implements Persistent {
 		$this->collItem2itemsRelatedByItem1Type = null;
 		$this->collItem2itemsRelatedByItem2Type = null;
 		$this->collItem2itemcategorys = null;
+		$this->collRevisionhistorys = null;
 		$this->collClearcaches = null;
 	}
 

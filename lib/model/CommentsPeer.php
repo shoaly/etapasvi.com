@@ -25,14 +25,9 @@ class CommentsPeer /*extends BaseCommentsPeer*/
 			$sf_context  = sfContext::getInstance();
 			$culture	 = $sf_context->getUser()->getCulture();			
 		  	$module    	 = $sf_context->getModuleName();
-		  	// для Учений - хардкод
-		  	
-			if ($module == 'news') {
-				$action = 'show';
-			} else {
-				$action      = $sf_context->getActionName();
-			}
-			
+
+			$action      = $sf_context->getActionName();
+            
 			// хардкод для подгружаемых фото
 			if ( $module == 'photo' && ($action == 'content' || $action == 'albumcontent') ) {
 			    $action = 'show';

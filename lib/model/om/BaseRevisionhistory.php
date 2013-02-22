@@ -47,10 +47,33 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 	protected $page_mnemonic;
 
 	/**
+	 * The value for the item_id field.
+	 * @var        int
+	 */
+	protected $item_id;
+
+	/**
+	 * The value for the itemtypes_id field.
+	 * @var        int
+	 */
+	protected $itemtypes_id;
+
+	/**
+	 * The value for the item_culture field.
+	 * @var        string
+	 */
+	protected $item_culture;
+
+	/**
 	 * The value for the body field.
 	 * @var        string
 	 */
 	protected $body;
+
+	/**
+	 * @var        Itemtypes
+	 */
+	protected $aItemtypes;
 
 	/**
 	 * Flag to prevent endless save loop, if this object is referenced
@@ -157,6 +180,36 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 	public function getPageMnemonic()
 	{
 		return $this->page_mnemonic;
+	}
+
+	/**
+	 * Get the [item_id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getItemId()
+	{
+		return $this->item_id;
+	}
+
+	/**
+	 * Get the [itemtypes_id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getItemtypesId()
+	{
+		return $this->itemtypes_id;
+	}
+
+	/**
+	 * Get the [item_culture] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getItemCulture()
+	{
+		return $this->item_culture;
 	}
 
 	/**
@@ -288,6 +341,79 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 	} // setPageMnemonic()
 
 	/**
+	 * Set the value of [item_id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Revisionhistory The current object (for fluent API support)
+	 */
+	public function setItemId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->item_id !== $v) {
+			if ($this->item_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = RevisionhistoryPeer::ITEM_ID;
+			}
+			$this->item_id = $v;
+		}
+
+		return $this;
+	} // setItemId()
+
+	/**
+	 * Set the value of [itemtypes_id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Revisionhistory The current object (for fluent API support)
+	 */
+	public function setItemtypesId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->itemtypes_id !== $v) {
+			if ($this->itemtypes_id === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = RevisionhistoryPeer::ITEMTYPES_ID;
+			}
+			$this->itemtypes_id = $v;
+		}
+
+		if ($this->aItemtypes !== null && $this->aItemtypes->getId() !== $v) {
+			$this->aItemtypes = null;
+		}
+
+		return $this;
+	} // setItemtypesId()
+
+	/**
+	 * Set the value of [item_culture] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Revisionhistory The current object (for fluent API support)
+	 */
+	public function setItemCulture($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->item_culture !== $v) {
+			if ($this->item_culture === null && $v === '') {
+			} else {
+			  $this->modifiedColumns[] = RevisionhistoryPeer::ITEM_CULTURE;
+			}
+			$this->item_culture = $v;
+		}
+
+		return $this;
+	} // setItemCulture()
+
+	/**
 	 * Set the value of [body] column.
 	 * 
 	 * @param      string $v new value
@@ -350,7 +476,10 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 			$this->created_at = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
 			$this->show = ($row[$startcol + 2] !== null) ? (boolean) $row[$startcol + 2] : null;
 			$this->page_mnemonic = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-			$this->body = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
+			$this->item_id = ($row[$startcol + 4] !== null) ? (int) $row[$startcol + 4] : null;
+			$this->itemtypes_id = ($row[$startcol + 5] !== null) ? (int) $row[$startcol + 5] : null;
+			$this->item_culture = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
+			$this->body = ($row[$startcol + 7] !== null) ? (string) $row[$startcol + 7] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -360,7 +489,7 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 5; // 5 = RevisionhistoryPeer::NUM_COLUMNS - RevisionhistoryPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 8; // 8 = RevisionhistoryPeer::NUM_COLUMNS - RevisionhistoryPeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Revisionhistory object", $e);
@@ -383,6 +512,9 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 	public function ensureConsistency()
 	{
 
+		if ($this->aItemtypes !== null && $this->itemtypes_id !== $this->aItemtypes->getId()) {
+			$this->aItemtypes = null;
+		}
 	} // ensureConsistency
 
 	/**
@@ -422,6 +554,7 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 
 		if ($deep) {  // also de-associate any related objects?
 
+			$this->aItemtypes = null;
 		} // if (deep)
 	}
 
@@ -572,6 +705,18 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		if (!$this->alreadyInSave) {
 			$this->alreadyInSave = true;
 
+			// We call the save method on the following object(s) if they
+			// were passed to this object by their coresponding set
+			// method.  This object relates to these object(s) by a
+			// foreign key reference.
+
+			if ($this->aItemtypes !== null) {
+				if ($this->aItemtypes->isModified() || $this->aItemtypes->isNew()) {
+					$affectedRows += $this->aItemtypes->save($con);
+				}
+				$this->setItemtypes($this->aItemtypes);
+			}
+
 			if ($this->isNew() ) {
 				$this->modifiedColumns[] = RevisionhistoryPeer::ID;
 			}
@@ -691,6 +836,18 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 			$failureMap = array();
 
 
+			// We call the validate method on the following object(s) if they
+			// were passed to this object by their coresponding set
+			// method.  This object relates to these object(s) by a
+			// foreign key reference.
+
+			if ($this->aItemtypes !== null) {
+				if (!$this->aItemtypes->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aItemtypes->getValidationFailures());
+				}
+			}
+
+
 			if (($retval = RevisionhistoryPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
@@ -742,6 +899,15 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 				return $this->getPageMnemonic();
 				break;
 			case 4:
+				return $this->getItemId();
+				break;
+			case 5:
+				return $this->getItemtypesId();
+				break;
+			case 6:
+				return $this->getItemCulture();
+				break;
+			case 7:
 				return $this->getBody();
 				break;
 			default:
@@ -769,7 +935,10 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 			$keys[1] => $this->getCreatedAt(),
 			$keys[2] => $this->getShow(),
 			$keys[3] => $this->getPageMnemonic(),
-			$keys[4] => $this->getBody(),
+			$keys[4] => $this->getItemId(),
+			$keys[5] => $this->getItemtypesId(),
+			$keys[6] => $this->getItemCulture(),
+			$keys[7] => $this->getBody(),
 		);
 		return $result;
 	}
@@ -814,6 +983,15 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 				$this->setPageMnemonic($value);
 				break;
 			case 4:
+				$this->setItemId($value);
+				break;
+			case 5:
+				$this->setItemtypesId($value);
+				break;
+			case 6:
+				$this->setItemCulture($value);
+				break;
+			case 7:
 				$this->setBody($value);
 				break;
 		} // switch()
@@ -844,7 +1022,10 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[1], $arr)) $this->setCreatedAt($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setShow($arr[$keys[2]]);
 		if (array_key_exists($keys[3], $arr)) $this->setPageMnemonic($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setBody($arr[$keys[4]]);
+		if (array_key_exists($keys[4], $arr)) $this->setItemId($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setItemtypesId($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setItemCulture($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setBody($arr[$keys[7]]);
 	}
 
 	/**
@@ -860,6 +1041,9 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(RevisionhistoryPeer::CREATED_AT)) $criteria->add(RevisionhistoryPeer::CREATED_AT, $this->created_at);
 		if ($this->isColumnModified(RevisionhistoryPeer::SHOW)) $criteria->add(RevisionhistoryPeer::SHOW, $this->show);
 		if ($this->isColumnModified(RevisionhistoryPeer::PAGE_MNEMONIC)) $criteria->add(RevisionhistoryPeer::PAGE_MNEMONIC, $this->page_mnemonic);
+		if ($this->isColumnModified(RevisionhistoryPeer::ITEM_ID)) $criteria->add(RevisionhistoryPeer::ITEM_ID, $this->item_id);
+		if ($this->isColumnModified(RevisionhistoryPeer::ITEMTYPES_ID)) $criteria->add(RevisionhistoryPeer::ITEMTYPES_ID, $this->itemtypes_id);
+		if ($this->isColumnModified(RevisionhistoryPeer::ITEM_CULTURE)) $criteria->add(RevisionhistoryPeer::ITEM_CULTURE, $this->item_culture);
 		if ($this->isColumnModified(RevisionhistoryPeer::BODY)) $criteria->add(RevisionhistoryPeer::BODY, $this->body);
 
 		return $criteria;
@@ -921,6 +1105,12 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 
 		$copyObj->setPageMnemonic($this->page_mnemonic);
 
+		$copyObj->setItemId($this->item_id);
+
+		$copyObj->setItemtypesId($this->itemtypes_id);
+
+		$copyObj->setItemCulture($this->item_culture);
+
 		$copyObj->setBody($this->body);
 
 
@@ -969,6 +1159,55 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 	}
 
 	/**
+	 * Declares an association between this object and a Itemtypes object.
+	 *
+	 * @param      Itemtypes $v
+	 * @return     Revisionhistory The current object (for fluent API support)
+	 * @throws     PropelException
+	 */
+	public function setItemtypes(Itemtypes $v = null)
+	{
+		if ($v === null) {
+			$this->setItemtypesId(NULL);
+		} else {
+			$this->setItemtypesId($v->getId());
+		}
+
+		$this->aItemtypes = $v;
+
+		// Add binding for other direction of this n:n relationship.
+		// If this object has already been added to the Itemtypes object, it will not be re-added.
+		if ($v !== null) {
+			$v->addRevisionhistory($this);
+		}
+
+		return $this;
+	}
+
+
+	/**
+	 * Get the associated Itemtypes object
+	 *
+	 * @param      PropelPDO Optional Connection object.
+	 * @return     Itemtypes The associated Itemtypes object.
+	 * @throws     PropelException
+	 */
+	public function getItemtypes(PropelPDO $con = null)
+	{
+		if ($this->aItemtypes === null && ($this->itemtypes_id !== null)) {
+			$this->aItemtypes = ItemtypesPeer::retrieveByPk($this->itemtypes_id);
+			/* The following can be used additionally to
+			   guarantee the related object contains a reference
+			   to this object.  This level of coupling may, however, be
+			   undesirable since it could result in an only partially populated collection
+			   in the referenced object.
+			   $this->aItemtypes->addRevisionhistorys($this);
+			 */
+		}
+		return $this->aItemtypes;
+	}
+
+	/**
 	 * Resets all collections of referencing foreign keys.
 	 *
 	 * This method is a user-space workaround for PHP's inability to garbage collect objects
@@ -982,6 +1221,7 @@ abstract class BaseRevisionhistory extends BaseObject  implements Persistent {
 		if ($deep) {
 		} // if ($deep)
 
+			$this->aItemtypes = null;
 	}
 
 	// symfony_behaviors behavior

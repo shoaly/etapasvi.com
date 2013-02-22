@@ -216,9 +216,15 @@ propel:
     created_at:       ~
     show:             { type: boolean, defaultValue: true }
     page_mnemonic:    { type: varchar(255) }
+    item_id:           { type: integer }
+    itemtypes_id:      ~
+    item_culture:      { type: varchar(7) }
     body:             { type: longvarchar }
     _indexes:
       main:          [page_mnemonic, show]
+      item_id:       [item_id]
+      itemtypes_id:  [itemtypes_id]
+      item_culture:  [item_culture]
       
   documents:
     id:               ~

@@ -116,6 +116,161 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	return false;
   }
   
+  /**
+   * Retrieving current item info
+   * 
+   * @return type
+   */
+  public static function getCurrentItemInfo()
+  {
+    $item_info = array(
+      'item_id'         => '',
+      'itemtypes_id'    => '',
+      'item_culture'    => '',
+    );
+    
+    $sf_context  = sfContext::getInstance();
+    
+    $item_info['item_culture'] = $sf_context->getUser()->getCulture();
+    $item_info['item_id']      = $sf_context->getRequest()->getParameter('id');
+    
+    // determine Item Type by module and action
+    $module    	 = $sf_context->getModuleName();
+	$action      = $sf_context->getActionName();
+    
+    if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_NEWS) && $action == 'show') {
+      $item_info['itemtypes_id'] = self::ITEM_TYPE_NEWS;
+    }
+    if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_PHOTO) && $action == 'album') {
+      $item_info['itemtypes_id'] = self::ITEM_TYPE_PHOTOALBUM;
+    }
+    if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_VIDEO) && $action == 'show') {
+      $item_info['itemtypes_id'] = self::ITEM_TYPE_VIDEO;
+    }
+    if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_PHOTO) && $action == 'show') {
+      $item_info['itemtypes_id'] = self::ITEM_TYPE_PHOTO;
+    }
+    if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_AUDIO) && $action == 'show') {
+      $item_info['itemtypes_id'] = self::ITEM_TYPE_AUDIO;
+    }
+    if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_DOCUMENTS) && $action == 'show') {
+      $item_info['itemtypes_id'] = self::ITEM_TYPE_DOCUMENTS;
+    }
+   
+    return $item_info;
+  }
+  
+  /**
+   * Get Item by ID and Type ID
+   * 
+   * @param type $item_id
+   * @param type $itemtypes_id
+   * @return null
+   */
+  public static function getItem($item_id, $itemtypes_id)
+  {
+    if (!$item_id || !$itemtypes_id) {
+      return null;
+    }
+	$type = self::getItemTypeName($itemtypes_id);
+	$fn = array($type . 'Peer', 'retrieveByPk');
+
+	try {
+	  return call_user_func( $fn, $item_id );
+    } catch(Exception $e) {
+      return null;
+    }
+  }
+  
+  /**
+   * Retrieve item title from URL
+   * 
+   * @param type $url
+   */
+  public static function getItemTitleFromUrl($url)
+  {
+    $parse_url = parse_url($url);
+      
+    preg_match("/^\/[^\/]+\/[^\/]+\/\d+\/(.*)/", $parse_url['path'], $matches);
+    return $matches[1];
+  }
+  
+  /**
+   * Check if check_url is valid
+   * 
+   * @param type $item_utl
+   * @param type $check_url
+   */
+  public static function isItemUrlValid($item_url)
+  {
+    // for photo: /ru/photo/view
+    if ($_SERVER['PATH_INFO']) {
+      $path_info_url = $_SERVER['PATH_INFO'];
+    } else {
+      $path_info_url = $_SERVER['REQUEST_URI'];  
+    }
+      
+    $path_info_url = preg_replace("/\?.*/", "", $path_info_url);
+
+    // cut out revision id
+    $path_info_url = preg_replace(RevisionhistoryPeer::getRevisionUrlRegex(), "", $path_info_url);
+
+  	// если адрес новости неверный, редиректим на нужный адрес
+  	$url_parse = parse_url($item_url);
+
+  	if ( $path_info_url && ($path_info_url != $url_parse['path'])) {
+	  return false;
+	} else {
+      return true;
+    }
+  }
+  
+  /**
+   * Get current item revision from URL
+   * 
+   */
+  public static function getCurrentItemRevision()
+  {
+    $revision = RevisionhistoryPeer::getRevisionFromUrl();
+    
+    if (!$revision) {
+      return null;
+    }
+    
+    // check if passed revision belongs to current item
+    $item_info = self::getCurrentItemInfo();
+
+    if ($revision->getItemId() == $item_info['item_id'] && 
+        $revision->getItemtypesId() == $item_info['itemtypes_id'] &&
+        $revision->getItemCulture() == $item_info['item_culture']) 
+    {
+      return $revision;
+    }
+    return null;
+  }
+  
+  /**
+   * Set item attributes from revision passed in URL
+   * 
+   * @param type $item
+   */
+  public static function setItemFromRevision($item)
+  {
+    $revision = ItemtypesPeer::getCurrentItemRevision();
+    if ($revision && $revision->getBody()) {
+        
+      $context = sfContext::getInstance();
+      $i18n =  $context->getI18N();
+
+      // use default culture title if empty
+      $title = $item->getTitle(sfContext::getInstance()->getUser()->getCulture(), true);
+      $title .= ' ('.$i18n->__('Revision from').' '.$revision->getCreatedAt().')';
+      
+      $item->setTitle($title);
+      $item->setBody($revision->getBody());
+    }
+  }
+  
 //  /**
 //   * URL элемента
 //   *

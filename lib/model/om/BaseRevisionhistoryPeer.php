@@ -28,7 +28,7 @@ abstract class BaseRevisionhistoryPeer {
 	const TM_CLASS = 'RevisionhistoryTableMap';
 	
 	/** The total number of columns. */
-	const NUM_COLUMNS = 5;
+	const NUM_COLUMNS = 8;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -44,6 +44,15 @@ abstract class BaseRevisionhistoryPeer {
 
 	/** the column name for the PAGE_MNEMONIC field */
 	const PAGE_MNEMONIC = 'revisionhistory.PAGE_MNEMONIC';
+
+	/** the column name for the ITEM_ID field */
+	const ITEM_ID = 'revisionhistory.ITEM_ID';
+
+	/** the column name for the ITEMTYPES_ID field */
+	const ITEMTYPES_ID = 'revisionhistory.ITEMTYPES_ID';
+
+	/** the column name for the ITEM_CULTURE field */
+	const ITEM_CULTURE = 'revisionhistory.ITEM_CULTURE';
 
 	/** the column name for the BODY field */
 	const BODY = 'revisionhistory.BODY';
@@ -71,11 +80,11 @@ abstract class BaseRevisionhistoryPeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'Show', 'PageMnemonic', 'Body', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'show', 'pageMnemonic', 'body', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::SHOW, self::PAGE_MNEMONIC, self::BODY, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'show', 'page_mnemonic', 'body', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'Show', 'PageMnemonic', 'ItemId', 'ItemtypesId', 'ItemCulture', 'Body', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'show', 'pageMnemonic', 'itemId', 'itemtypesId', 'itemCulture', 'body', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::SHOW, self::PAGE_MNEMONIC, self::ITEM_ID, self::ITEMTYPES_ID, self::ITEM_CULTURE, self::BODY, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'show', 'page_mnemonic', 'item_id', 'itemtypes_id', 'item_culture', 'body', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	/**
@@ -85,11 +94,11 @@ abstract class BaseRevisionhistoryPeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'Show' => 2, 'PageMnemonic' => 3, 'Body' => 4, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'show' => 2, 'pageMnemonic' => 3, 'body' => 4, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::SHOW => 2, self::PAGE_MNEMONIC => 3, self::BODY => 4, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'show' => 2, 'page_mnemonic' => 3, 'body' => 4, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'Show' => 2, 'PageMnemonic' => 3, 'ItemId' => 4, 'ItemtypesId' => 5, 'ItemCulture' => 6, 'Body' => 7, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'show' => 2, 'pageMnemonic' => 3, 'itemId' => 4, 'itemtypesId' => 5, 'itemCulture' => 6, 'body' => 7, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::SHOW => 2, self::PAGE_MNEMONIC => 3, self::ITEM_ID => 4, self::ITEMTYPES_ID => 5, self::ITEM_CULTURE => 6, self::BODY => 7, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'show' => 2, 'page_mnemonic' => 3, 'item_id' => 4, 'itemtypes_id' => 5, 'item_culture' => 6, 'body' => 7, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	/**
@@ -163,6 +172,9 @@ abstract class BaseRevisionhistoryPeer {
 		$criteria->addSelectColumn(RevisionhistoryPeer::CREATED_AT);
 		$criteria->addSelectColumn(RevisionhistoryPeer::SHOW);
 		$criteria->addSelectColumn(RevisionhistoryPeer::PAGE_MNEMONIC);
+		$criteria->addSelectColumn(RevisionhistoryPeer::ITEM_ID);
+		$criteria->addSelectColumn(RevisionhistoryPeer::ITEMTYPES_ID);
+		$criteria->addSelectColumn(RevisionhistoryPeer::ITEM_CULTURE);
 		$criteria->addSelectColumn(RevisionhistoryPeer::BODY);
 	}
 
@@ -420,6 +432,264 @@ abstract class BaseRevisionhistoryPeer {
 		$stmt->closeCursor();
 		return $results;
 	}
+
+	/**
+	 * Returns the number of rows matching criteria, joining the related Itemtypes table
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     int Number of matching rows.
+	 */
+	public static function doCountJoinItemtypes(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		// we're going to modify criteria, so copy it first
+		$criteria = clone $criteria;
+
+		// We need to set the primary table name, since in the case that there are no WHERE columns
+		// it will be impossible for the BasePeer::createSelectSql() method to determine which
+		// tables go into the FROM clause.
+		$criteria->setPrimaryTableName(RevisionhistoryPeer::TABLE_NAME);
+
+		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->setDistinct();
+		}
+
+		if (!$criteria->hasSelectClause()) {
+			RevisionhistoryPeer::addSelectColumns($criteria);
+		}
+		
+		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
+		
+		// Set the correct dbName
+		$criteria->setDbName(self::DATABASE_NAME);
+
+		if ($con === null) {
+			$con = Propel::getConnection(RevisionhistoryPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+		}
+
+		$criteria->addJoin(RevisionhistoryPeer::ITEMTYPES_ID, ItemtypesPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseRevisionhistoryPeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doCount($criteria, $con);
+
+		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$count = (int) $row[0];
+		} else {
+			$count = 0; // no rows returned; we infer that means 0 matches.
+		}
+		$stmt->closeCursor();
+		return $count;
+	}
+
+
+	/**
+	 * Selects a collection of Revisionhistory objects pre-filled with their Itemtypes objects.
+	 * @param      Criteria  $criteria
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     array Array of Revisionhistory objects.
+	 * @throws     PropelException Any exceptions caught during processing will be
+	 *		 rethrown wrapped into a PropelException.
+	 */
+	public static function doSelectJoinItemtypes(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		$criteria = clone $criteria;
+
+		// Set the correct dbName if it has not been overridden
+		if ($criteria->getDbName() == Propel::getDefaultDB()) {
+			$criteria->setDbName(self::DATABASE_NAME);
+		}
+
+		RevisionhistoryPeer::addSelectColumns($criteria);
+		$startcol = (RevisionhistoryPeer::NUM_COLUMNS - RevisionhistoryPeer::NUM_LAZY_LOAD_COLUMNS);
+		ItemtypesPeer::addSelectColumns($criteria);
+
+		$criteria->addJoin(RevisionhistoryPeer::ITEMTYPES_ID, ItemtypesPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseRevisionhistoryPeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doSelect($criteria, $con);
+		$results = array();
+
+		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$key1 = RevisionhistoryPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = RevisionhistoryPeer::getInstanceFromPool($key1))) {
+				// We no longer rehydrate the object, since this can cause data loss.
+				// See http://propel.phpdb.org/trac/ticket/509
+				// $obj1->hydrate($row, 0, true); // rehydrate
+			} else {
+
+				$cls = RevisionhistoryPeer::getOMClass(false);
+
+				$obj1 = new $cls();
+				$obj1->hydrate($row);
+				RevisionhistoryPeer::addInstanceToPool($obj1, $key1);
+			} // if $obj1 already loaded
+
+			$key2 = ItemtypesPeer::getPrimaryKeyHashFromRow($row, $startcol);
+			if ($key2 !== null) {
+				$obj2 = ItemtypesPeer::getInstanceFromPool($key2);
+				if (!$obj2) {
+
+					$cls = ItemtypesPeer::getOMClass(false);
+
+					$obj2 = new $cls();
+					$obj2->hydrate($row, $startcol);
+					ItemtypesPeer::addInstanceToPool($obj2, $key2);
+				} // if obj2 already loaded
+				
+				// Add the $obj1 (Revisionhistory) to $obj2 (Itemtypes)
+				$obj2->addRevisionhistory($obj1);
+
+			} // if joined row was not null
+
+			$results[] = $obj1;
+		}
+		$stmt->closeCursor();
+		return $results;
+	}
+
+
+	/**
+	 * Returns the number of rows matching criteria, joining all related tables
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     int Number of matching rows.
+	 */
+	public static function doCountJoinAll(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		// we're going to modify criteria, so copy it first
+		$criteria = clone $criteria;
+
+		// We need to set the primary table name, since in the case that there are no WHERE columns
+		// it will be impossible for the BasePeer::createSelectSql() method to determine which
+		// tables go into the FROM clause.
+		$criteria->setPrimaryTableName(RevisionhistoryPeer::TABLE_NAME);
+
+		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->setDistinct();
+		}
+
+		if (!$criteria->hasSelectClause()) {
+			RevisionhistoryPeer::addSelectColumns($criteria);
+		}
+		
+		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
+		
+		// Set the correct dbName
+		$criteria->setDbName(self::DATABASE_NAME);
+
+		if ($con === null) {
+			$con = Propel::getConnection(RevisionhistoryPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+		}
+
+		$criteria->addJoin(RevisionhistoryPeer::ITEMTYPES_ID, ItemtypesPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseRevisionhistoryPeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doCount($criteria, $con);
+
+		if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$count = (int) $row[0];
+		} else {
+			$count = 0; // no rows returned; we infer that means 0 matches.
+		}
+		$stmt->closeCursor();
+		return $count;
+	}
+
+	/**
+	 * Selects a collection of Revisionhistory objects pre-filled with all related objects.
+	 *
+	 * @param      Criteria  $criteria
+	 * @param      PropelPDO $con
+	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
+	 * @return     array Array of Revisionhistory objects.
+	 * @throws     PropelException Any exceptions caught during processing will be
+	 *		 rethrown wrapped into a PropelException.
+	 */
+	public static function doSelectJoinAll(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		$criteria = clone $criteria;
+
+		// Set the correct dbName if it has not been overridden
+		if ($criteria->getDbName() == Propel::getDefaultDB()) {
+			$criteria->setDbName(self::DATABASE_NAME);
+		}
+
+		RevisionhistoryPeer::addSelectColumns($criteria);
+		$startcol2 = (RevisionhistoryPeer::NUM_COLUMNS - RevisionhistoryPeer::NUM_LAZY_LOAD_COLUMNS);
+
+		ItemtypesPeer::addSelectColumns($criteria);
+		$startcol3 = $startcol2 + (ItemtypesPeer::NUM_COLUMNS - ItemtypesPeer::NUM_LAZY_LOAD_COLUMNS);
+
+		$criteria->addJoin(RevisionhistoryPeer::ITEMTYPES_ID, ItemtypesPeer::ID, $join_behavior);
+
+		// symfony_behaviors behavior
+		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
+		{
+		  call_user_func($sf_hook, 'BaseRevisionhistoryPeer', $criteria, $con);
+		}
+
+		$stmt = BasePeer::doSelect($criteria, $con);
+		$results = array();
+
+		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+			$key1 = RevisionhistoryPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = RevisionhistoryPeer::getInstanceFromPool($key1))) {
+				// We no longer rehydrate the object, since this can cause data loss.
+				// See http://propel.phpdb.org/trac/ticket/509
+				// $obj1->hydrate($row, 0, true); // rehydrate
+			} else {
+				$cls = RevisionhistoryPeer::getOMClass(false);
+
+				$obj1 = new $cls();
+				$obj1->hydrate($row);
+				RevisionhistoryPeer::addInstanceToPool($obj1, $key1);
+			} // if obj1 already loaded
+
+			// Add objects for joined Itemtypes rows
+
+			$key2 = ItemtypesPeer::getPrimaryKeyHashFromRow($row, $startcol2);
+			if ($key2 !== null) {
+				$obj2 = ItemtypesPeer::getInstanceFromPool($key2);
+				if (!$obj2) {
+
+					$cls = ItemtypesPeer::getOMClass(false);
+
+					$obj2 = new $cls();
+					$obj2->hydrate($row, $startcol2);
+					ItemtypesPeer::addInstanceToPool($obj2, $key2);
+				} // if obj2 loaded
+
+				// Add the $obj1 (Revisionhistory) to the collection in $obj2 (Itemtypes)
+				$obj2->addRevisionhistory($obj1);
+			} // if joined row not null
+
+			$results[] = $obj1;
+		}
+		$stmt->closeCursor();
+		return $results;
+	}
+
 	/**
 	 * Returns the TableMap related to this peer.
 	 * This method is not needed for general use but a specific application could have a need.

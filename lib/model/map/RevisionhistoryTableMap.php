@@ -43,6 +43,9 @@ class RevisionhistoryTableMap extends TableMap {
 		$this->addColumn('CREATED_AT', 'CreatedAt', 'TIMESTAMP', false, null, null);
 		$this->addColumn('SHOW', 'Show', 'BOOLEAN', false, null, true);
 		$this->addColumn('PAGE_MNEMONIC', 'PageMnemonic', 'VARCHAR', false, 255, null);
+		$this->addColumn('ITEM_ID', 'ItemId', 'INTEGER', false, null, null);
+		$this->addForeignKey('ITEMTYPES_ID', 'ItemtypesId', 'INTEGER', 'itemtypes', 'ID', false, null, null);
+		$this->addColumn('ITEM_CULTURE', 'ItemCulture', 'VARCHAR', false, 7, null);
 		$this->addColumn('BODY', 'Body', 'LONGVARCHAR', false, null, null);
 		// validators
 	} // initialize()
@@ -52,6 +55,7 @@ class RevisionhistoryTableMap extends TableMap {
 	 */
 	public function buildRelations()
 	{
+    $this->addRelation('Itemtypes', 'Itemtypes', RelationMap::MANY_TO_ONE, array('itemtypes_id' => 'id', ), null, null);
 	} // buildRelations()
 
 	/**

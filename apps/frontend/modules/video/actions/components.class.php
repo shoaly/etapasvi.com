@@ -38,12 +38,15 @@ class videoComponents extends sfComponents
   	
   	if ($video_title) {
   		
-  		// если на траницу перешли с другого языка, то title неверный
-  		$video_title_translit = TextPeer::urlTranslit($video_title);
-  		if ( $this->title != $video_title_translit ) {
-  			//sfActions::redirect( 'video/show?id=' . (int)$this->id . '&title=' . $video_title_translit );
-  			sfActions::redirect( $this->video->getUrl() );
-  		}
+  		// если на страницу перешли с другого языка, то title неверный
+//  		$video_title_translit = TextPeer::urlTranslit($video_title);
+//  		if ( $this->title != $video_title_translit ) {
+//  			//sfActions::redirect( 'video/show?id=' . (int)$this->id . '&title=' . $video_title_translit );
+//  			sfActions::redirect( $this->video->getUrl() );
+//  		}
+        if (!ItemtypesPeer::isItemUrlValid($this->video->getUrl())) {
+            sfActions::redirect( $this->video->getUrl() );
+        }
   		
 	    $context = sfContext::getInstance();
 	    $i18n =  $context->getI18N();
@@ -53,8 +56,14 @@ class videoComponents extends sfComponents
 	    $response->setTitle($video_title);	
   	} elseif (!$video_title && $this->title) {
   		// если у элемента нет Заголовка, а в URL передан title, редиректим
-  		sfActions::redirect( $this->video->getUrl() );
+  		//sfActions::redirect( $this->video->getUrl() );
+        if (!ItemtypesPeer::isItemUrlValid($this->video->getUrl())) {
+          sfActions::redirect( $this->video->getUrl() );
+        }
   	}
+    
+    // set attributes from revision if needed
+    ItemtypesPeer::setItemFromRevision($this->video);
   }
   
   /**

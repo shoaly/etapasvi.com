@@ -44,7 +44,7 @@ class newsComponents extends sfComponents
     } 
   }   
   
-  public function executeShowwrapper($action)
+  public function executeShowwrapper()
   {
 	$this->newsitem = NewsPeer::retrieveByPk( $this->id );
 
@@ -54,23 +54,23 @@ class newsComponents extends sfComponents
   		//@sfActions::forward404('123');
   		throw new sfError404Exception();
   	  }
-    
+
   	  $newitem_url = $this->newsitem->getUrl();
-  	
+
   	  // если адрес новости неверный, редиректим на нужный адрес
-  	  $url_parse = parse_url($newitem_url);
-  	  if ( (!empty($_SERVER['PATH_INFO']) && preg_replace("/\?.*/", "", $_SERVER['PATH_INFO']) != $url_parse['path']) || 
-  		 (!empty($_SERVER['REQUEST_URI']) && preg_replace("/\?.*/", "", $_SERVER['REQUEST_URI']) != $url_parse['path'])
-	  ) {
+  	  if (!ItemtypesPeer::isItemUrlValid($newitem_url)) {
 		sfActions::redirect( $newitem_url );
 	  }
 	//}
+      
+    // set attributes from revision if needed
+    ItemtypesPeer::setItemFromRevision($this->newsitem);
   	
 	// установка заголовка страницы
 	$news_title = $this->newsitem->getTitle();
 	
-    $context = sfContext::getInstance();
-    $i18n =  $context->getI18N();
+    //$context = sfContext::getInstance();
+    //$i18n =  $context->getI18N();
 
     //$title = $i18n->__('Dharma Sangha') . ' -';
     $response = $this->getResponse(); 

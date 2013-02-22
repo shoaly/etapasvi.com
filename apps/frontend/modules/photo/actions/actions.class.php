@@ -145,7 +145,6 @@ class photoActions extends sfActions
     }
     $c->addAscendingOrderByColumn( PhotoPeer::ORDER );
     
-    
 	//$pager = new sfPropelPagerI18n('Photo', PhotoPeer::ITEMS_PER_PAGE);
     //$pager->setCriteriaI18n($c);
 	$pager = new sfPropelPager('Photo', PhotoPeer::ITEMS_PER_PAGE);
@@ -164,18 +163,27 @@ class photoActions extends sfActions
       if ($title) {
         
         // проверка, соответствует ли переданный title названию альбома
-        $title_translit = TextPeer::urlTranslit($title);
-        if ( $request->getParameter('title') != $title_translit ) {
-          $this->redirect( $this->photoalbum->getUrl() );
-        }  	
+//        $title_translit = TextPeer::urlTranslit($title);
+//        if ( $request->getParameter('title') != $title_translit ) {
+//          $this->redirect( $this->photoalbum->getUrl() );
+//        }  	
+        if (!ItemtypesPeer::isItemUrlValid($this->photoalbum->getUrl())) {
+            sfActions::redirect( $this->photoalbum->getUrl() );
+        }
         
         $response = $this->getResponse(); 
 	    $response->setTitle($title);
       } elseif ($request->getParameter('title')) {
         // если у фотоальбома нет заголовка, а в URL он передан    
-        $this->redirect( $this->photoalbum->getUrl() );
+        //$this->redirect( $this->photoalbum->getUrl() );
+        if (!ItemtypesPeer::isItemUrlValid($this->photoalbum->getUrl())) {
+          sfActions::redirect( $this->photoalbum->getUrl() );
+        }
       }
     }
+    
+    // set attributes from revision if needed
+    ItemtypesPeer::setItemFromRevision($this->photoalbum);
     
     // запоминаем адрес
     //$_SESSION['back_to_photo'] = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];

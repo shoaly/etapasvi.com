@@ -29,10 +29,13 @@ class audioActions extends sfActions
   	
   	if ($audio_title) {  		
   		// если на траницу перешли с другого языка, то title неверный
-  		$audio_title_translit = TextPeer::urlTranslit($audio_title);
-  		if ( $this->title != $audio_title_translit ) {
-  			sfActions::redirect( $this->audio->getUrl() );
-  		}
+//  		$audio_title_translit = TextPeer::urlTranslit($audio_title);
+//  		if ( $this->title != $audio_title_translit ) {
+//  			sfActions::redirect( $this->audio->getUrl() );
+//  		}
+        if (!ItemtypesPeer::isItemUrlValid($this->audio->getUrl())) {
+            sfActions::redirect( $this->audio->getUrl() );
+        }
   		
 	    $context = sfContext::getInstance();
 	    $i18n =  $context->getI18N();
@@ -41,8 +44,13 @@ class audioActions extends sfActions
 	    $response->setTitle($audio_title);	
   	} elseif (!$audio_title && $this->title) {
   		// если у элемента нет Заголовка, а в URL передан title, редиректим
-  		sfActions::redirect( $this->audio->getUrl() );
-  	}  	
+  		//sfActions::redirect( $this->audio->getUrl() );
+        if (!ItemtypesPeer::isItemUrlValid($this->audio->getUrl())) {
+          sfActions::redirect( $this->audio->getUrl() );
+        }
+  	}
+    // set attributes from revision if needed
+    ItemtypesPeer::setItemFromRevision($this->audio);
   }     
     
   public function executeIndex(sfWebRequest $request)

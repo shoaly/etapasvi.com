@@ -485,8 +485,8 @@
 <!-- Revision history -->
 
       <trans-unit id="1">
-        <source>revision history</source>
-        <target>история изменений</target>
+        <source>Revision history</source>
+        <target>История изменений</target>
       </trans-unit>
       
       <trans-unit id="1">
@@ -507,6 +507,11 @@
       <trans-unit id="1">
         <source>Print version</source>
         <target>Версия для печати</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Revision from</source>
+        <target>Версия от</target>
       </trans-unit>
 
 <!-- 404 -->

@@ -112,16 +112,22 @@ class photoComponents extends sfComponents
   	  $photo_title = $this->photo->getTitle();
   	  if ( $photo_title ) {
   		
-  	    // если на траницу перешли с другого языка, то title неверный
-  	    $photo_title_translit = TextPeer::urlTranslit($photo_title);
-  	    
-  	    // чтобы в том случае, если со страницы фото был запрос за content и title изменился,
-  	    // редиректить content на этот title не надо
-  	    if ( $this->title != $photo_title_translit && sfContext::getInstance()->getActionName() != 'content') {
-    	  //$this->redirect( 'photo/show?id=' . (int)$this->id . '&title=' . $photo_title_translit );
-    	  //sfActions::redirect( 'photo/show?id=' . (int)$this->id . '&title=' . $photo_title_translit );
-    	  sfActions::redirect( $this->photo->getUrl() );
-    	}
+        // check title in URL on full page only
+        if (sfContext::getInstance()->getActionName() != 'content') {
+          // если на траницу перешли с другого языка, то title неверный
+          //$photo_title_translit = TextPeer::urlTranslit($photo_title);
+
+          // чтобы в том случае, если со страницы фото был запрос за content и title изменился,
+          // редиректить content на этот title не надо
+//          if ( $this->title != $photo_title_translit) {
+//            //$this->redirect( 'photo/show?id=' . (int)$this->id . '&title=' . $photo_title_translit );
+//            //sfActions::redirect( 'photo/show?id=' . (int)$this->id . '&title=' . $photo_title_translit );
+//            sfActions::redirect( $this->photo->getUrl() );
+//          }
+          if (!ItemtypesPeer::isItemUrlValid($this->photo->getUrl())) {
+            sfActions::redirect( $this->photo->getUrl() );
+          }
+        }
   		
 	    $context = sfContext::getInstance();
 	    $i18n =  $context->getI18N();
@@ -131,9 +137,15 @@ class photoComponents extends sfComponents
 	    $response->setTitle($photo_title); 	
   	  } elseif (!$photo_title && $this->title) {
   		// если у элемента нет Заголовка, а в URL передан title, редиректим
-  		sfActions::redirect( $this->photo->getUrl() );
+  		//sfActions::redirect( $this->photo->getUrl() );
+        if (!ItemtypesPeer::isItemUrlValid($this->photo->getUrl())) {
+          sfActions::redirect( $this->photo->getUrl() );
+        }
       }
   	}
+    
+    // set attributes from revision if needed
+    ItemtypesPeer::setItemFromRevision($this->photo);
   	  	
   	if (!empty($photoalbum)) {
   		$photoalbum_id = $photoalbum->getId();

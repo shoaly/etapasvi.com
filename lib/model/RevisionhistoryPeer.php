@@ -52,5 +52,60 @@ class RevisionhistoryPeer extends BaseRevisionhistoryPeer {
         
     return RevisionhistoryPeer::doSelect($c);
   }
+  
+  /**
+   * Get item revision history
+   * 
+   * @param type $item_id
+   * @param type $itemtype
+   * @param type $item_culture
+   * @return type
+   */
+  public static function getByItem($item_id, $itemtype, $item_culture)
+  {
+    $c = new Criteria();
+    $c->add(RevisionhistoryPeer::SHOW, 1);
+    $c->add(RevisionhistoryPeer::ITEM_ID, $item_id);
+    $c->add(RevisionhistoryPeer::ITEMTYPES_ID, $itemtype);
+    $c->add(RevisionhistoryPeer::ITEM_CULTURE, $item_culture);
+    $c->addDescendingOrderByColumn(RevisionhistoryPeer::CREATED_AT);
+        
+    return RevisionhistoryPeer::doSelect($c);
+  }
+  
+  /**
+   * Returns regular expression for finding revision in URL
+   */
+  public static function getRevisionUrlRegex()
+  {
+    return "/[\-\/]?revision(\d+)\-from-\d\d\d\d\-\d\d\-\d\d\-at\-\d\d\-\d\d\-\d\d/";
+  }
+  
+  /**
+   * Get revision from URL
+   * 
+   */
+  public static function getRevisionFromUrl()
+  {
+    // /ru/news/124/vstupitelnaya-rech-na-molitve-o-lyubvi-i-mire-vo-vsyom-mire-21-marta-2012-revision17-2013-02-21-at-18-08-47
+    if ($_SERVER['PATH_INFO']) {
+      $url = $_SERVER['PATH_INFO'];
+    } else {
+      $url = $_SERVER['REQUEST_URI'];
+    }
+
+    preg_match(RevisionhistoryPeer::getRevisionUrlRegex(), $url, $matches);
+
+    $revisionhistory_id = $matches[1];
+    
+    if ($revisionhistory_id) {
+      $c = new Criteria();
+      $c->add(RevisionhistoryPeer::SHOW, 1);
+      $c->add(RevisionhistoryPeer::ID, $revisionhistory_id);      
+      return RevisionhistoryPeer::doSelectOne($c);
+    } else {
+      return null;
+    }
+  }
 
 } // RevisionhistoryPeer

@@ -29,10 +29,13 @@ class documentsActions extends sfActions
   	
   	if ($documents_title) {  		
   		// если на траницу перешли с другого языка, то title неверный
-  		$documents_title_translit = TextPeer::urlTranslit($documents_title);
-  		if ( $this->title != $documents_title_translit ) {
-  			sfActions::redirect( $this->documents->getUrl() );
-  		}
+//  		$documents_title_translit = TextPeer::urlTranslit($documents_title);
+//  		if ( $this->title != $documents_title_translit ) {
+//  			sfActions::redirect( $this->documents->getUrl() );
+//  		}
+        if (!ItemtypesPeer::isItemUrlValid($this->documents->getUrl())) {
+            sfActions::redirect( $this->documents->getUrl() );
+        }
   		
 	    $context = sfContext::getInstance();
 	    $i18n =  $context->getI18N();
@@ -41,7 +44,10 @@ class documentsActions extends sfActions
 	    $response->setTitle($documents_title);	
   	} elseif (!$documents_title && $this->title) {
   		// если у элемента нет Заголовка, а в URL передан title, редиректим
-  		sfActions::redirect( $this->documents->getUrl() );
+  		//sfActions::redirect( $this->documents->getUrl() );
+        if (!ItemtypesPeer::isItemUrlValid($this->documents->getUrl())) {
+          sfActions::redirect( $this->documents->getUrl() );
+        }
   	}  	
   }     
     

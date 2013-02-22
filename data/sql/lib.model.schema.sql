@@ -489,9 +489,18 @@ CREATE TABLE `revisionhistory`
 	`created_at` DATETIME,
 	`show` TINYINT default 1,
 	`page_mnemonic` VARCHAR(255),
+	`item_id` INTEGER,
+	`itemtypes_id` INTEGER,
+	`item_culture` VARCHAR(7),
 	`body` TEXT,
 	PRIMARY KEY (`id`),
-	KEY `main`(`page_mnemonic`, `show`)
+	KEY `main`(`page_mnemonic`, `show`),
+	KEY `item_id`(`item_id`),
+	KEY `itemtypes_id`(`itemtypes_id`),
+	KEY `item_culture`(`item_culture`),
+	CONSTRAINT `revisionhistory_FK_1`
+		FOREIGN KEY (`itemtypes_id`)
+		REFERENCES `itemtypes` (`id`)
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

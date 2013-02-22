@@ -7,7 +7,8 @@ generator:
     list:
       max_per_page: 50000
       filters: [show]
-      display: [id, show, created_at, _page_mnemonic_link, _link]
+      sort: [created_at, desc]
+      display: [id, show, created_at, _page_mnemonic_link, item_id, itemtypes_id, item_culture, _link]
       title:   Revision History
       object_actions:
         _edit:
