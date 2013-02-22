@@ -98,7 +98,7 @@ class UserPeer /* extends BaseUserPeer*/
 		              'comments_category_id' => 686582,
 		              'feedburner_loc' 		 => '',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-zh-cn-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87/300889923359900',
-		              'google_group' 		 => 'etapasvi-cn',
+		              'google_group' 		 => 'etapasvi-zh',
 		              'blessing_ln' 		 => 'zh-CN',
                               'paypal_button' 		 => 'zh_CN'
 		),
@@ -215,7 +215,7 @@ class UserPeer /* extends BaseUserPeer*/
 		              'feedburner_loc' 		 => '',
 		              'disqus_culture' 		 => 'zh_HANT',
 		              'fb_group' 		 	 => 'pages/eTapasvicom-zh-tw-%E5%82%B3%E7%B5%B1%E6%BC%A2%E5%AD%97/124329524389601',
-		              'google_group' 		 => 'etapasvi-cn',
+		              'google_group' 		 => 'etapasvi-zh',
 		              'blessing_ln' 		 => 'zh-TW',
                               'paypal_button' 		 => 'zh_CN'
          ),
