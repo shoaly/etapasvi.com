@@ -2,7 +2,7 @@
 <a href="javascript:switchRevhistory()" id="revhistory_trigger" class="page_tools_trigger" title="<?php echo __('revision history') ?>"><?php /*<i class="pt_btn pt_btn_revision_history"></i>*/ ?><?php echo __('Revision history') ?></a>
 
 <div id="revhistory" class="page_tools">        
-    <form action="http://www.w3.org/2007/10/htmldiff" target="_blank" class="box">
+    <form action="http://services.w3.org/htmldiff" target="_blank" class="box">
         <input type="radio" name="doc1" value="<?php echo sfContext::getInstance()->getRequest()->getUri(); ?>" checked="checked" /> <?php echo __('Current revision') ?><br/>
         <?php foreach($revisionhistory as $i=>$item): ?>
              <?php $item_url = $item->getUrl(); ?>
