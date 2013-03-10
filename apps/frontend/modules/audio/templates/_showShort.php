@@ -1,14 +1,17 @@
 <?php if (!empty($audio)): ?>
-<?php 
-// åñëè Çàãîëîâîê èëè Àâòîð íå óêàçàí íà òåêóùåì ÿçûêå áåð¸ì èç ÿçûêà ïî óìîë÷àíèþ
+<?php
+// ÐµÑÐ»Ð¸ Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¸Ð»Ð¸ ÐÐ²Ñ‚Ð¾Ñ€ Ð½Ðµ ÑƒÐºÐ°Ð·Ð°Ð½ Ð½Ð° Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ·Ñ‹ÐºÐµ Ð±ÐµÑ€Ñ‘Ð¼ Ð¸Ð· ÑÐ·Ñ‹ÐºÐ° Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ
 $title  = $audio->getTitle($sf_user->getCulture(), true);
 $author = $audio->getAuthor($sf_user->getCulture(), true);
 ?>
 <div id="audio_<?php echo $audio->getId(); ?>" class="audio_item">
-<a href="<?php echo $audio->getUrl(); ?>"><strong><?php echo $author; ?></strong> - <?php echo $title; ?></a> <i class="right"><?php echo $audio->getDurationFormatted(); ?></i>
+<a href="<?php echo $audio->getUrl(); ?>" class="left"><strong><?php echo $author; ?></strong> - <?php echo $title; ?></a> <i class="right"><?php echo $audio->getDurationFormatted(); ?></i>
 <br />
+<?php /*
 <object type="application/x-shockwave-flash" data="http://kiwi6.com/swf/player.swf" class="audioplayer" height="22" width="290" allowscriptaccess="always">
 <param name="movie" value="http://kiwi6.com/swf/player.swf" /><param name="FlashVars" value="playerID=audioplayer&amp;soundFile=<?php echo $audio->getDirectUrl(); ?>" />
-<param name="quality" value="high" /><param name="menu" value="false" /><param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /></object>
+<param name="quality" value="high" /><param name="menu" value="false" /><param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /></object>*/ ?>
+<?php /*<audio class="mejs-ted" src="<?php echo $audio->getDirectUrl(false); ?>" type="audio/mp3" controls="controls">*/ ?>
+<a class="audio" href="<?php echo $audio->getDirectUrl(false); ?>"><?php echo $title; ?></a>
 </div>
 <?php endif ?>

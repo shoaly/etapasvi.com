@@ -12,8 +12,9 @@
 <?php $app_domain_name = sfConfig::get('app_domain_name'); ?>
 <link rel="shortcut icon" type="image/x-icon" href="http://<?php echo $app_domain_name; ?>/favicon.ico" />
 <link rel="apple-touch-icon" href="http://<?php echo $app_domain_name; ?>/apple-touch-icon.png">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> 
-<script type="text/javascript" src="<?php echo url_for('@js'); ?>"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="http://<?php echo $app_domain_name; ?>/js/mb.miniAudioPlayer/jquery.mb.miniPlayer.js"></script>
+<script type="text/javascript" src="<?php echo url_for('@js'); ?>"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="http://<?php echo $app_domain_name; ?>/css/css.css" />
 <?php /*
 <script type="text/javascript">
@@ -35,18 +36,18 @@ window.onerror = function(msg, url, line) {
 	<a href="<?php echo url_for('@main', true); ?>" title="<?php echo __('Home') ?>" class="no_decor"><i id="bubble_title">Tapasvi.<span>com</span></i></a>
 </div>
 
-<div id="content_wrapper">    
+<div id="content_wrapper">
 	<div id="content">
         <h1><?php include_slot('page_header') ?></h1>
         <?php include_partial( 'global/toolbar' ); ?>
 		<?php echo $sf_content ?>
 	</div>
     <div id="menu">
-        <?php include_partial('global/menu', array('body_id'=>$body_id /*, 'is_logged_in'=>UserPeer::authIsLoggedIn()*/) ); ?>	
+        <?php include_partial('global/menu', array('body_id'=>$body_id /*, 'is_logged_in'=>UserPeer::authIsLoggedIn()*/) ); ?>
         <?php  include_partial('global/share');  ?>
         <?php /*
-        <span id="lang_column"><!--UDLS-->     
-        <?php 
+        <span id="lang_column"><!--UDLS-->
+        <?php
             $uri          = $sf_request->getPathInfo();
             foreach( UserPeer::getCultures() as $culture) {
                 $user_cultures[] = '/' . $culture . '/';
@@ -63,10 +64,10 @@ window.onerror = function(msg, url, line) {
             //}
             $i = 0;
         ?>
-        <?php foreach($user_cultures_data as $culture => $culture_data): ?>                                
+        <?php foreach($user_cultures_data as $culture => $culture_data): ?>
             <?php $i++ ?>
             <?php if ($i > count(UserPeer::getCultures())) break; ?>
-            
+
             <?php if ($user_culture == $culture): ?>
                 <u><?php echo UserPeer::getCultureName( $culture ) ?></u>
             <?php else: ?>
@@ -76,14 +77,14 @@ window.onerror = function(msg, url, line) {
                 <br/>
             <?php endif ?>
         <?php endforeach?>
-        <!--UDLE--></span> 
+        <!--UDLE--></span>
 */ ?>
     </div>
-	<div id="footer">        
+	<div id="footer">
         <div id="f_line"></div>
-        <?php include_partial( 'global/lang_plain', array('app_domain_name'=>$app_domain_name, 'user_culture'=>$user_culture) ); ?>     
-        <?php $mobile_url = UserPeer::switchUrlMobile(sfContext::getInstance()->getRequest()->getUri());?>                
-        <?php $mobile_url = preg_replace("/\?.*/", '', $mobile_url) ;?>                
+        <?php include_partial( 'global/lang_plain', array('app_domain_name'=>$app_domain_name, 'user_culture'=>$user_culture) ); ?>
+        <?php $mobile_url = UserPeer::switchUrlMobile(sfContext::getInstance()->getRequest()->getUri());?>
+        <?php $mobile_url = preg_replace("/\?.*/", '', $mobile_url) ;?>
         <div id="m_link">
             <?php /*<br/>
             <a href="<?php echo $mobile_url; ?>" title="<?php echo __('Mobile') ?>"><img src="http://qrcode.kaywa.com/img.php?s=3&amp;d=<?php echo urlencode($mobile_url); ?>" alt="<?php echo __('Mobile') ?>"/></a>*/ ?>
@@ -96,7 +97,7 @@ window.onerror = function(msg, url, line) {
 	<map name="bubble_click_map" id="bubble_click_map">
 	<area shape="circle" coords="154,135,135" href="<?php echo url_for('@main', true); ?>" title="<?php echo __('Home') ?>" />
 	</map>
-	<img usemap="#bubble_click_map" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="308" alt=""/>	
+	<img usemap="#bubble_click_map" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="308" alt=""/>
 </div>
 
 <div id="bubble_mantra">
@@ -105,33 +106,33 @@ window.onerror = function(msg, url, line) {
 /*
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var time = new Date(Date.parse('<?php include_component( 'idea', 'getthinkingtime' ); ?>')); 
+			var time = new Date(Date.parse('<?php include_component( 'idea', 'getthinkingtime' ); ?>'));
 			$('#countdown').countdown(
 				{until: time, compact: true, compactLabels: ['y', 'm', 'w', '<?php echo __('d') ?>']}
-			); 
+			);
 		});
 	</script>
 	<acronym id="countdown" title="<?php echo __('Time remaining until meditation') ?>">
-	</acronym>	
+	</acronym>
 */
-?>	
+?>
 </div>
 
-<div id="bubble_lang">	
+<div id="bubble_lang">
 <?php /*
-	<span class="lang_name lang_selector b-fg b-fg_<?php echo strtoupper(UserPeer::getCultureIso( $user_culture ));?>" title="<?php echo UserPeer::getCultureName( $user_culture );?>"><img src="http://<?php echo $app_domain_name; ?>/i/fg.png" alt="<?php echo UserPeer::getCultureIso( $user_culture );?>" /></span> 
+	<span class="lang_name lang_selector b-fg b-fg_<?php echo strtoupper(UserPeer::getCultureIso( $user_culture ));?>" title="<?php echo UserPeer::getCultureName( $user_culture );?>"><img src="http://<?php echo $app_domain_name; ?>/i/fg.png" alt="<?php echo UserPeer::getCultureIso( $user_culture );?>" /></span>
 	<?php // <span class="slide_arrow lang_selector">▼</span> ?>
     <?php // id используется в /lib/symfony/exception/sfError404Exception.class.php  ?>
 	<div id="lang_list"><!--UDLS-->
         <table id="lang_box">
         <?php $i = 0; ?>
-		<?php foreach($user_cultures_data as $culture => $culture_data): ?>	
+		<?php foreach($user_cultures_data as $culture => $culture_data): ?>
             <?php if ($i%2 == 0): ?>
                 <tr>
             <?php endif ?>
-            <td>                
+            <td>
                 <?php if ($i > count(UserPeer::getCultures())) break; ?>
-                <i class="b-fg b-fg_<?php echo strtoupper($culture_data['iso']);?>"><img src="http://<?php echo $app_domain_name; ?>/i/fg.png"/></i> 
+                <i class="b-fg b-fg_<?php echo strtoupper($culture_data['iso']);?>"><img src="http://<?php echo $app_domain_name; ?>/i/fg.png"/></i>
                 <?php if ($user_culture == $culture): ?>
                     <span class="light"><?php echo $culture_data['name']?></span>
                 <?php else: ?>
@@ -145,22 +146,22 @@ window.onerror = function(msg, url, line) {
                 <td>&nbsp;</td></tr>
             <?php endif ?>
             <?php $i++ ?>
-		<?php endforeach ?>		
+		<?php endforeach ?>
         </table><!--UDLE-->
-    </div>	
-*/ ?>    
+    </div>
+*/ ?>
 </div>
 
 <div id="bubble_quote"></div>
 
 <div id="bubble_sound">
 <?php /*if ($_GET['debug'] != 1): ?>
-    <?php 
+    <?php
         $song = get_component( 'song', 'randomsong' );
     ?>
 	<div id="mp3" title="<?php echo $song; ?>" class="audio_player"><span><?php echo $song; ?></span></div>
 <?php else: */?>
-    <?php 
+    <?php
         //$audio = get_component( 'audio', 'random' );
     ?>
 	<?php /*<div id="mp3" title="" class="audio_item"><span>&nbsp;</span></div>*/ ?>
@@ -186,7 +187,7 @@ window.onerror = function(msg, url, line) {
                     accurateTrackBounce:true});
         } catch(e) {}
     });
-    
+
     var n = d.getElementsByTagName("script")[0],
         s = d.createElement("script"),
         f = function () { n.parentNode.insertBefore(s, n); };
