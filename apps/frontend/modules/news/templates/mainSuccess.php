@@ -12,25 +12,25 @@
 	<a href="<?php echo url_for('news_index'); ?>" class="no_decor"><?php echo __('News') ?> »</a>
 </p>
 
-<h2><?php echo __('Latest Photos') ?></h2>
+<h2><?php echo __('Photo') ?></h2>
 <?php include_component('photo', 'latest'); ?>
 <p class="goto_section">
 	<a href="<?php echo url_for('photoalbum_index'); ?>" class="no_decor"><?php echo __('Photo') ?> »</a>
 </p>
 
-<h2><?php echo __('Latest Video') ?></h2>
+<h2><?php echo __('Video') ?></h2>
 <?php include_component('video', 'latest'); ?>
 <p class="goto_section">
 	<a href="<?php echo url_for('video_index'); ?>" class="no_decor"><?php echo __('Video') ?> »</a>
 </p>
 
-<h2><?php echo __('Latest Audio') ?></h2>
+<h2><?php echo __('Audio') ?></h2>
 <?php include_component('audio', 'latest'); ?>
 <p class="goto_section">
 	<a href="<?php echo url_for('audio_index'); ?>" class="no_decor"><?php echo __('Audio') ?> »</a>
 </p>
 
-<h2><?php echo __('Latest Documents') ?></h2>
+<h2><?php echo __('Documents') ?></h2>
 <?php include_component('documents', 'latest'); ?>
 <p class="goto_section">
 	<a href="<?php echo url_for('documents_index'); ?>" class="no_decor"><?php echo __('Documents') ?> »</a>
