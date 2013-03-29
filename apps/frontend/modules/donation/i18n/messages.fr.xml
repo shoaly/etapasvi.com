@@ -7,58 +7,58 @@
       <trans-unit id="1">
         <source>Purpose</source>
         <target>Objectif</target>
-      </trans-unit>                 
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Bank account</source>
         <target>Compte bancaire</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Account Holder's Name</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Account Number</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Bank Name</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Branch</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Address</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>street</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>sity</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>district</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>country</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>SWIFT (BIC)</source>
         <target></target>
@@ -68,22 +68,22 @@
         <source>Phone</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Fax</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Reports</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Income / Expenses</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Planned expenses</source>
         <target></target>
@@ -108,7 +108,7 @@
         <source>for instructions.</source>
         <target></target>
       </trans-unit>
-      
+
 <trans-unit id="1">
         <source>Donations support a wide range of causes: constructions, shelters, protection of the environment, food, transport, rents... It all is done through your kindness and generosity only.</source>
         <target></target>
@@ -177,10 +177,20 @@
       <trans-unit id="1">
         <source>You have control over your payments through your Paypal account and can cancel at any time.</source>
         <target></target>
-      </trans-unit>      
+      </trans-unit>
 
-    <trans-unit id="1">
+      <trans-unit id="1">
         <source>Detailed reports on received donations and expenses are being sent personally to donors.</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Order of</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Address to</source>
         <target></target>
       </trans-unit>
 

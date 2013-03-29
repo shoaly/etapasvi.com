@@ -6,7 +6,7 @@
 <?php echo __('Donations support a wide range of causes: constructions, shelters, protection of the environment, food, transport, rents... It all is done through your kindness and generosity only.') ?>
 </div>
 <?php/*
-<?php 
+<?php
 /*
 $news = NewsPeer::retrieveByPk(98);
 $news_link = $news->getUrl();
@@ -46,7 +46,7 @@ $purpose_link = url_for('@projects_index');
     <div class="hidden" id="reccuring_donation">
         <br/>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            
+
             <table class="left_text bordered" id="recurring_donation_form">
                 <tr>
                     <td><?php echo __('Donation amount') ?></td>
@@ -59,14 +59,14 @@ $purpose_link = url_for('@projects_index');
                     <td><?php echo __('Payment cycle') ?></td>
                     <td>
                         <select name="p3"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
-            
-                        <select name="t3"><option value="D"><?php echo __('day(s)') ?></option><option value="W"><?php echo __('week(s)') ?></option><option selected="" value="M"><?php echo __('month(s)') ?></option><option value="Y"><?php echo __('year(s)') ?></option></select>                        
+
+                        <select name="t3"><option value="D"><?php echo __('day(s)') ?></option><option value="W"><?php echo __('week(s)') ?></option><option selected="" value="M"><?php echo __('month(s)') ?></option><option value="Y"><?php echo __('year(s)') ?></option></select>
                     </td>
                 </tr>
                 <tr>
                     <td><?php echo __('After how many cycles should sending donations stop') ?></td>
                     <td>
-                        <select name="srt"><option value=""><?php echo __('Never') ?></option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>                        
+                        <select name="srt"><option value=""><?php echo __('Never') ?></option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
                     </td>
                 </tr>
             </table>
@@ -82,7 +82,7 @@ $purpose_link = url_for('@projects_index');
             <input type="hidden" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest" name="bn" />
             <br/>
             <input type="image" alt="<?php echo __('PayPal - The safer, easier way to pay online!') ?>" name="submit" src="https://www.paypalobjects.com/<?php echo UserPeer::getCulturePaypalButton() ?>/i/btn/btn_donateCC_LG.gif" style="border:0" />
-        </form>        
+        </form>
         <span class="light"><?php echo __('You have control over your payments through your Paypal account and can cancel at any time.') ?></span>
         <br/><br/>
     </div>
@@ -133,10 +133,10 @@ smsDonateLanguage = "english";
 <?php endif ?>
 </script>
 <script type="text/javascript" src="http://donate.smscoin.com/js/smsdonate.js"></script>
-*/ 
+*/
 ?>
 <?php /*
-<script src="http://www.zaypay.com/pay/116564.js" type="text/javascript"></script><a href="http://www.zaypay.com/pay/116564" onclick="ZPayment(this); return false"><img src="http://www.zaypay.com/pay/116564/img" border="0" /></a>  
+<script src="http://www.zaypay.com/pay/116564.js" type="text/javascript"></script><a href="http://www.zaypay.com/pay/116564" onclick="ZPayment(this); return false"><img src="http://www.zaypay.com/pay/116564/img" border="0" /></a>
 */ ?>
 
 <?php /*
@@ -153,13 +153,13 @@ $(document).ready(function(){
 
 <?php /*
 <h2 class="center"><?php echo __('Bank account') ?></h2>
-<p class="center_text">    
+<p class="center_text">
 <?php /*
     <strong>Organisation Name:</strong> Bodhi Shrawan Dharma Sangha
     <br/><strong>Bank Name:</strong> Standard Chartered Bank
     <br/><strong>Branch:</strong> Lazimpat Branch
     <br/><strong>Account No:</strong> 01-2231700-01
-    <br/><strong>Street:</strong> Lazimpat 
+    <br/><strong>Street:</strong> Lazimpat
     <br/><strong>Swift Code:</strong> SCBLNPKA
     <br/><strong>Address:</strong> P.O.Box 3990, Lazimpat, Kathmandu, Nepal
     <br/><strong>Tel:</strong> 977-1-4418456
@@ -167,34 +167,55 @@ $(document).ready(function(){
 * ?>
     <strong><?php echo __('Account Holder\'s Name') ?>:</strong> Nil Bdr / Tomasz Hen
     <br/><strong><?php echo __('Account Number') ?>:</strong> 00700501204269
-    <br/><strong><?php echo __('Bank Name') ?>:</strong> Everest Bank Limited       
-    <br/><strong><?php echo __('Branch') ?>:</strong> Simara Branch        
+    <br/><strong><?php echo __('Bank Name') ?>:</strong> Everest Bank Limited
+    <br/><strong><?php echo __('Branch') ?>:</strong> Simara Branch
     <br/><strong><?php echo __('Address') ?>:</strong> Simara Chowk (<?php echo __('street') ?>), Simara (<?php echo __('sity') ?>), Bara (<?php echo __('district') ?>), Nepal (<?php echo __('country') ?>)
     <br/><strong><?php echo __('SWIFT (BIC)') ?>:</strong> EVBLNPKA
-    <br/><strong><?php echo __('Phone') ?>:</strong> 977-53-520506 
-    <br/><strong><?php echo __('Fax') ?>:</strong> 977-53-520616 
+    <br/><strong><?php echo __('Phone') ?>:</strong> 977-53-520506
+    <br/><strong><?php echo __('Fax') ?>:</strong> 977-53-520616
     <br/><strong>Email:</strong> eblsim@ebl.com.np
 </p>
 */ ?>
 <?php /*
 <h2 class="center"><?php echo __('Bank account') ?></h2>
-<p class="center_text">    
+<p class="center_text">
     <strong><?php echo __('Account Holder\'s Name') ?>:</strong> Darshan Limbu / Nil Bahadur Thing
     <br/><strong><?php echo __('Account Number') ?>:</strong> 00700501204924
-    <br/><strong><?php echo __('Bank Name') ?>:</strong> Everest Bank Limited       
-    <br/><strong><?php echo __('Branch') ?>:</strong> Simara Branch        
+    <br/><strong><?php echo __('Bank Name') ?>:</strong> Everest Bank Limited
+    <br/><strong><?php echo __('Branch') ?>:</strong> Simara Branch
     <br/><strong><?php echo __('Address') ?>:</strong> Simara Chowk (<?php echo __('street') ?>), Simara (<?php echo __('sity') ?>), Bara (<?php echo __('district') ?>), Nepal (<?php echo __('country') ?>)
     <br/><strong><?php echo __('SWIFT (BIC)') ?>:</strong> EVBLNPKA
-    <br/><strong><?php echo __('Phone') ?>:</strong> 977-53-520506 
-    <br/><strong><?php echo __('Fax') ?>:</strong> 977-53-520616 
+    <br/><strong><?php echo __('Phone') ?>:</strong> 977-53-520506
+    <br/><strong><?php echo __('Fax') ?>:</strong> 977-53-520616
     <br/><strong>Email:</strong> eblsim@ebl.com.np
 </p>
 */ ?>
 
 <h2 class="center"><?php echo __('Bank account') ?></h2>
-<p>    
+<p>
     <?php echo __('Email at') ?> <a href="mailto:info@etapasvi.com">info@etapasvi.com</a> <?php echo __('for instructions.') ?>
 </p>
+<?php if ($sf_user->getCulture() != 'ru'): ?>
+<h2 class="center"><?php echo __('Sending a check') ?></h2>
+<p>
+    <table class="left_text bordered general_table">
+    <tr>
+        <td><strong><?php echo __('Order of') ?></strong></td>
+        <td>Bodhi Shrawan Dharma Sangha USA</td>
+    </tr>
+    <tr>
+        <td><strong><?php echo __('Address to') ?></strong></td>
+        <td>
+            BSDS-USA<br/>
+            Kim Nguyen<br/>
+            9315 Bolsa Avenue, # 111<br/>
+            Westminster, CA 92683<br/>
+            USA
+        </td>
+    </tr>
+    </table>
+</p>
+<?php endif ?>
 
 <h2 class="center"><?php echo __('Reports') ?></h2>
 <div>
@@ -208,4 +229,4 @@ $(document).ready(function(){
 */ ?>
 <br/><a href="http://coinmill.com/NPR_calculator.html" target="_blank"><?php echo __('Currency Converter') ?></a>
 <br /><br />
-<?php include_component('comments', 'show'); ?>	
+<?php include_component('comments', 'show'); ?>

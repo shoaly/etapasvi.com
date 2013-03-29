@@ -185,7 +185,17 @@
         <target>Detaillierte Berichte über erhaltene Spenden und Ausgaben werden persönlich an die Spender gesandt.
 </target>
       </trans-unit>
-      
+
+      <trans-unit id="1">
+        <source>Order of</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Address to</source>
+        <target></target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>
