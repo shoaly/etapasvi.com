@@ -207,7 +207,6 @@ $(document).ready(function(){
         <td><strong><?php echo __('Address to') ?></strong></td>
         <td>
             BSDS-USA<br/>
-            Kim Nguyen<br/>
             9315 Bolsa Avenue, # 111<br/>
             Westminster, CA 92683<br/>
             USA
