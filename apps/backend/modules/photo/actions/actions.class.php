@@ -23,31 +23,31 @@ error_reporting(E_ALL);*/
  */
 class photoActions extends autophotoActions
 {
-	
+
   protected function updatePhotoFromRequest()
   {
     $photo = $this->getRequestParameter('photo');
-    
+
     // Empty string to null
     //
-    // backend saves empty strings as ''    
+    // backend saves empty strings as ''
     // some fields in DB has DEFAULT NULL
     // so their value changes from NULL to ''
     // it is impossible to set DEFAULT '' for all types of fields:
-    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
+    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.
     /*foreach ($photo as $i => $value) {
     	if ($value === '') {
     		$photo[ $i ] = null;
     	}
     }*/
-    
+
     // set change_updated_at
     $this->photo->setChangeUpdatedAt($photo['change_updated_at']);
     $photo_i18ns = $this->photo->getPhotoI18ns();
     foreach ($photo_i18ns as $photo_i18n) {
     	$photo_i18n->setChangeUpdatedAt($photo['change_updated_at']);
     }
-    
+
     if (isset($photo['photoalbum_id']))
     {
       $this->photo->setPhotoalbumId($photo['photoalbum_id'] ? $photo['photoalbum_id'] : null);
@@ -58,35 +58,35 @@ class photoActions extends autophotoActions
     {
       $this->photo->setOrder($photo['order']);
     }
-    
+
     $full_local    = $this->photo->getFullLocal();
     $preview_local = $this->photo->getPreviewLocal();
     $thumb_local   = $this->photo->getThumbLocal();
-    
+
     // удаляем файлы, если выбрали remove или загружают новые
     if (!$this->getRequest()->hasErrors() && isset($photo['img_remove']))
     {
       $this->photo->setImg('');
       $this->photo->setFullPath('');
       $this->photo->setPreviewPath('');
-      $this->photo->setThumbPath('');           
+      $this->photo->setThumbPath('');
 
       if (is_file($full_local))
       {
         unlink($full_local);
       }
-      // thumb      
+      // thumb
       if (is_file($preview_local))
       {
         unlink($preview_local);
-      }      
-      // preview      
+      }
+      // preview
       if (is_file($thumb_local))
       {
         unlink($thumb_local);
-      }   
-    }   
-    
+      }
+    }
+
     if (isset($photo['link']))
     {
       $this->photo->setLink($photo['link']);
@@ -98,7 +98,7 @@ class photoActions extends autophotoActions
     if (isset($photo['height']))
     {
       $this->photo->setHeight($photo['height']);
-    }    
+    }
     $this->photo->setCarousel(isset($photo['carousel']) ? $photo['carousel'] : 0);
     if (isset($photo['title_i18n_en']))
     {
@@ -304,10 +304,10 @@ class photoActions extends autophotoActions
     {
       $this->photo->setAuthorI18nDe($photo['author_i18n_de']);
     }
-    
+
     // clear cache of a changed item
     ClearcachePeer::processItem($this->photo);
-    
+
     // заключаем в try...catch, чтобы не было 500-й ошибки при сохранении фото с повторным ORDER в альбоме
     try {
     	$this->photo->save();
@@ -315,8 +315,8 @@ class photoActions extends autophotoActions
     	$this->getRequest()->setError('edit', $e->getMessage());
     	echo $e->getMessage();
     	exit();
-    }    
-    
+    }
+
     // created_at must be assigned after saving a photo
     if (isset($photo['created_at']))
     {
@@ -346,101 +346,101 @@ class photoActions extends autophotoActions
         $this->photo->setCreatedAt(null);
       }
     }
-    
+
   	$this->photo->save();
-    
+
 	if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('photo[img]'))
     {
       //$fileName = md5($this->getRequest()->getFileName('photo[img]').time().rand(0, 99999));
       $fileName = $this->photo->getId();
-      
+
       // если фото создаётся, ID ещё неизвестен
       if (!$fileName) {
       	/*$c = new Criteria();
       	$c->addDescendingOrderByColumn(PhotoPeer::ID);
       	$last_record = PhotoPeer::doSelectOne($c);
       	$fileName = $last_record->getId() + 1;*/
-      	
+
       	// устанавливаем дату
       	$this->photo->setCreatedAt( date("Y-m-d H:i:s") );
       	$this->photo->save();
       	$fileName = $this->photo->getId();
       }
-      
+
       // Original file extension
       $original_ext = $this->getRequest()->getFileExtension('photo[img]');
       // Images are always converted to JPG
       $ext = '.jpg';
       $mime_type = 'image/jpeg';
-      
-      $tmp_full    = sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/tmp/".$fileName.$ext;      
+
+      $tmp_full    = sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/tmp/".$fileName.$ext;
       $tmp_preview = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/tmp/".$fileName.$ext;
       $tmp_thumb   = sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/tmp/".$fileName.$ext;
-     
+
       $this->getRequest()->moveFile('photo[img]', $tmp_full);
       $this->photo->setImg($fileName.$ext);
-      
+
       // сохраняем исходное изображение (без каптчи)
       PhotoPeer::moveFile($tmp_full, sfConfig::get('sf_upload_dir')."/".PhotoPeer::ORIGINAL_DIR."/".$fileName.$original_ext);
-      
+
       if ($photo['watermark_position']) {
 		$watermark_position = $photo['watermark_position'];
 	  } else {
 		$watermark_position = 'bottom-right';
 	  }
-      
+
       try {
-		// thumb      
+		// thumb
         $img = new sfImage( $tmp_full );
-        $img->thumbnail(PhotoPeer::IMG_THUMB_WIDTH, PhotoPeer::IMG_THUMB_HEIGHT, 'scale');     
+        $img->thumbnail(PhotoPeer::IMG_THUMB_WIDTH, PhotoPeer::IMG_THUMB_HEIGHT, 'scale');
         $img->setQuality( PhotoPeer::THUMB_QUALITY );
-        $img->saveAs( $tmp_thumb );           
-        
+        $img->saveAs( $tmp_thumb );
+
         // preview
         copy($tmp_full, $tmp_preview);
-        
+
         if (isset($photo['resize_preview']) || isset($photo['watermark']) || $original_ext != $ext) {
-        	
+
         	$img = new sfImage( $tmp_preview );
-        	
+
         	if (isset($photo['resize_preview'])) {
 		        if ( $img->getWidth() > PhotoPeer::IMG_PREVIEW_WIDTH || $img->getHeight() > PhotoPeer::IMG_PREVIEW_HEIGHT ) {
-		        	$img->thumbnail(PhotoPeer::IMG_PREVIEW_WIDTH, PhotoPeer::IMG_PREVIEW_HEIGHT, 'scale');  
+		        	$img->thumbnail(PhotoPeer::IMG_PREVIEW_WIDTH, PhotoPeer::IMG_PREVIEW_HEIGHT, 'scale');
 		        }
         	}
-	        
+
 	        // водяной знак
 	        if (isset($photo['watermark'])) {
 		      $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), $watermark_position);
 	        }
-	        
-	        $img->setQuality( PhotoPeer::PREVIEW_QUALITY );        
+
+	        $img->setQuality( PhotoPeer::PREVIEW_QUALITY );
 	        $img->save();
         }
-        
-        // full        
-		$img = new sfImage( $tmp_full );	
-        	      
+
+        // full
+		$img = new sfImage( $tmp_full );
+
 		// исходный размер фото
 		$this->photo->setWidth( $img->getWidth() );
 		$this->photo->setHeight( $img->getHeight() );
-		
+
 		// водяной знак
-        if (isset($photo['watermark'])) {          
+        if (isset($photo['watermark'])) {
 	      $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), $watermark_position);
           $img->setQuality( PhotoPeer::FULL_QUALITY );
 	      $img->save();
         }
-        
+
         // to Picasa
         try
-		{		
+		{
 		  $title = $fileName . ($photo['title_i18n_en'] !='' ? ' - ' . $photo['title_i18n_en'] : '');
 		  $title .= ' (' . UserPeer::DOMAIN_NAME_MAIN . ')';
 
 		  // full
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
-		  	PhotoPeer::FULL_DIR, 
+		  	PhotoPeer::FULL_DIR,
 		  	$tmp_full,
 		  	$mime_type,
 //		  	$img->getMIMEType(),
@@ -453,18 +453,18 @@ class photoActions extends autophotoActions
 		  }
 		  $this->photo->setFullPath( $remote_post_result['url'] );
 		  // перемещение файла в локальную директорию, аналогичнцю удалённой
-		  PhotoPeer::moveFile( 
-		    $tmp_full, 
+		  PhotoPeer::moveFile(
+		    $tmp_full,
 		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );
   	      // creating symlink
   	      $link = sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$fileName.$ext;
   	      unlink($link);
   	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
-		  
+
 		  // preview
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
-		  	PhotoPeer::PREVIEW_DIR, 
+		  	PhotoPeer::PREVIEW_DIR,
 		  	$tmp_preview,
 		  	$mime_type,
 		  	$fileName.$ext,
@@ -476,15 +476,15 @@ class photoActions extends autophotoActions
 		  }
 		  $this->photo->setPreviewPath( $remote_post_result['url'] );
 		  // перемещение файла в локальную директорию, аналогичнцю удалённой
-		  PhotoPeer::moveFile( 
-		    $tmp_preview, 
+		  PhotoPeer::moveFile(
+		    $tmp_preview,
 		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );
   	      // creating symlink
   	      $link = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$fileName.$ext;
-  	      unlink($link);  	      
+  	      unlink($link);
   	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
-		  
+
 		  // thumb
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
 		  	PhotoPeer::THUMB_DIR,
@@ -500,56 +500,56 @@ class photoActions extends autophotoActions
 		  }
 		  $this->photo->setThumbPath( $remote_post_result['url'] );
 		  // перемещение файла в локальную директорию, аналогичнцю удалённой
-		  PhotoPeer::moveFile( 
-		    $tmp_thumb, 
-		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext		    
+		  PhotoPeer::moveFile(
+		    $tmp_thumb,
+		    sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );
   	      // creating symlink
   	      $link = sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$fileName.$ext;
-  	      unlink($link);  	  	      
+  	      unlink($link);
   	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
-  	      
+
 		} catch( Exception $e ) {
 		  echo $e->getMessage();
 		  exit();
 		}
-		
+
 		// удаляем временные файлы
         if (is_file($tmp_full))
         {
             unlink($tmp_full);
-        }     
-        // preview      
+        }
+        // preview
         if (is_file($tmp_preview))
         {
             unlink($tmp_preview);
-        } 
-        // thumb      
+        }
+        // thumb
         if (is_file($tmp_thumb))
         {
             unlink($tmp_thumb);
         }
-        
+
         // удаляем прошлые файлы
 		if (is_file($full_local))
 		{
 			unlink($full_local);
 		}
-		// thumb      
+		// thumb
 		if (is_file($preview_local))
 		{
 			unlink($preview_local);
-		}      
-		// preview      
+		}
+		// preview
 		if (is_file($thumb_local))
 		{
 			unlink($thumb_local);
-		} 
-      
+		}
+
       } catch (Exception $e) {
       	echo $e->getMessage();
       	exit();
-      }    
+      }
     } elseif (!isset($photo['img_remove'])) {
 	    if (isset($photo['full_path']))
 	    {
@@ -579,19 +579,19 @@ class photoActions extends autophotoActions
 	    }*/
     }
   }
-  
+
   public function executeEdit($request)
-  {    	
+  {
   	parent::executeEdit($request);
-  	
+
   	// проверка авторизации
   	if (!PhotoPeer::remoteStorageCheckAutenthication()) {
-  	  $this->url_to_login_page = Picasa::getUrlToLoginPage($_SERVER['SCRIPT_URI']);  	  
+  	  $this->url_to_login_page = Picasa::getUrlToLoginPage($_SERVER['SCRIPT_URI']);
   	} else {
   	  $this->url_to_login_page = '';
   	}
   }
-  
+
   /**
    * Загрузка фото в удалённое хранилище (Picasa)
    *
@@ -603,14 +603,14 @@ class photoActions extends autophotoActions
   	//$c->add(PhotoPeer::ID, 29);
   	//$c->setLimit(2);
   	$photo_list = PhotoPeer::doSelect($c);
-  	
-  	foreach ($photo_list as $photo) {  		  	
-  		
-  		echo $photo->getId() . '<br>';  		
-  		
+
+  	foreach ($photo_list as $photo) {
+
+  		echo $photo->getId() . '<br>';
+
   		$full_old_path = sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$photo->getImg();
-  		
-  		$title    = $photo->getId() . ($photo->getTitle() !='' ? ' - ' . $photo->getTitle() : '');	  		
+
+  		$title    = $photo->getId() . ($photo->getTitle() !='' ? ' - ' . $photo->getTitle() : '');
   		$pathinfo = pathinfo($full_old_path);
   		$ext      = $pathinfo['extension'];
   		if (!$ext) {
@@ -619,15 +619,15 @@ class photoActions extends autophotoActions
   			continue;
   		}
   		$filename = $photo->getId() . '.' . $ext;
-  		
+
   		if (file_exists(sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$filename)
   			&& file_exists(sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$filename)
   			&& file_exists(sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$filename)
   		) {
   			echo 'exists';
   			continue;
-  		}  		
-  		
+  		}
+
   		//$mime_type = mime_content_type($full_old_path); //'image/jpeg';
   		switch (strtolower($ext)) {
   			case 'jpg':
@@ -640,12 +640,12 @@ class photoActions extends autophotoActions
   				$mime_type = 'image/jpeg';
   				break;  				*/
   		}
-  		
-  		// full  
-  		echo 'full<br>';		  		
-  		
+
+  		// full
+  		echo 'full<br>';
+
 		$remote_post_result = PhotoPeer::remoteStoragePostImage(
-			PhotoPeer::FULL_DIR, 
+			PhotoPeer::FULL_DIR,
 			$full_old_path,
 			$mime_type,
 			$filename,
@@ -656,22 +656,22 @@ class photoActions extends autophotoActions
 		}
 		$photo->setFullPath( $remote_post_result['url'] );
 		// перемещение файла в локальную директорию, аналогичнцю удалённой
-		PhotoPeer::moveFile( 
-			$full_old_path, 
+		PhotoPeer::moveFile(
+			$full_old_path,
 			sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$filename
-		);		
-		PhotoPeer::moveFile( 
-			$full_old_path, 
+		);
+		PhotoPeer::moveFile(
+			$full_old_path,
 			sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$filename
 		);
 		echo $remote_post_result['url'] . '<br>';
-		
+
   		// preview
   		echo 'preview<br>';
   		$preview_old_path = sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$photo->getImg();
-  		
+
 		$remote_post_result = PhotoPeer::remoteStoragePostImage(
-			PhotoPeer::PREVIEW_DIR, 
+			PhotoPeer::PREVIEW_DIR,
 			$preview_old_path,
 			$mime_type,
 			$filename,
@@ -682,22 +682,22 @@ class photoActions extends autophotoActions
 		}
 		$photo->setPreviewPath( $remote_post_result['url'] );
 		// перемещение файла в локальную директорию, аналогичнцю удалённой
-		PhotoPeer::moveFile( 
-			$preview_old_path, 
+		PhotoPeer::moveFile(
+			$preview_old_path,
 			sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$filename
 		);
-		PhotoPeer::moveFile( 
-			$preview_old_path, 
+		PhotoPeer::moveFile(
+			$preview_old_path,
 			sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$filename
 		);
 		echo $remote_post_result['url'] . '<br>';
-		
+
   		// thumb
   		echo 'thumb<br>';
   		$thumb_old_path = sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$photo->getImg();
-  		
+
 		$remote_post_result = PhotoPeer::remoteStoragePostImage(
-			PhotoPeer::THUMB_DIR, 
+			PhotoPeer::THUMB_DIR,
 			$thumb_old_path,
 			$mime_type,
 			$filename,
@@ -708,31 +708,31 @@ class photoActions extends autophotoActions
 		}
 		$photo->setThumbPath( $remote_post_result['url'] );
 		// перемещение файла в локальную директорию, аналогичнцю удалённой
-		PhotoPeer::moveFile( 
-			$thumb_old_path, 
+		PhotoPeer::moveFile(
+			$thumb_old_path,
 			sfConfig::get('sf_upload_dir')."/".PhotoPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$filename
 		);
-		PhotoPeer::moveFile( 
-			$thumb_old_path, 
+		PhotoPeer::moveFile(
+			$thumb_old_path,
 			sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$filename
 		);
 		echo $remote_post_result['url'] . '<br>';
-		
+
 		$photo->setPrevImg( $filename );
 		$photo->save();
-		
-		echo '<br><br>';		
+
+		echo '<br><br>';
   	}
-  	
+
   	/*
     $username = PhotoPeer::REMOTE_STORAGE_USERNAME;
 	$album    = 'photo'; //PhotoPeer::getRemoteStorageAlbum( PhotoPeer::PREVIEW_DIR );
-		
+
 	try
 	{
-		
-	  $pic = new Picasa();	  
-	  $album = $pic->getAlbumById($username, $album);	  
+
+	  $pic = new Picasa();
+	  $album = $pic->getAlbumById($username, $album);
 	  $this->images = $album->getImages();
 	  $this->title  = $album->getTitle();
  	  echo $this->images[0]->getContent();
@@ -747,7 +747,7 @@ class photoActions extends autophotoActions
 	  echo $e->getMessage();
 	}*/
   }
-  
+
   /**
    * Изменение путей к фотографиям в новостях
    *
@@ -759,20 +759,20 @@ class photoActions extends autophotoActions
   	$c->add(NewsI18nPeer::BODY, '%/uploads/photo/preview/%', Criteria::LIKE);
   	//$c->setLimit(2);
   	$news_list = NewsI18nPeer::doSelect($c);
-  	
-  	foreach ($news_list as $news) {  	
+
+  	foreach ($news_list as $news) {
   	    echo $news->getId() . ' ' . $news->getCulture() . '<br>';
   	    $body = $news->getBody();
   	    //echo htmlspecialchars( $body );
-  	    
+
   	    preg_match_all("/(:?http:\/\/www.etapasvi.com)?\/uploads\/photo\/preview\/[A-z0-9]{32}\.[A-z]{3}/m", $body, $matches);
-  	    
-  	    foreach ($matches[0] as $old_path) {  	         	       
+
+  	    foreach ($matches[0] as $old_path) {
   	       $c = new Criteria();
   	       $c->add(PhotoPeer::IMG, basename($old_path) );
   	       $photo_item = PhotoPeer::doSelectOne($c);
   	       if ($photo_item) {
-  	           $new_path = $photo_item->getPreviewUrl();  	           
+  	           $new_path = $photo_item->getPreviewUrl();
   	       } else {
   	           echo 'photo not found: ' . $old_path;
   	           //exit();
@@ -786,7 +786,7 @@ class photoActions extends autophotoActions
   	    echo '<br><br>';
   	}
   }
-  
+
   /**
    * Получение размеров полных фотографий (width, height) и сохраненеи в БД
    *
@@ -796,10 +796,10 @@ class photoActions extends autophotoActions
   {
   	ini_set('max_execution_time', 60*60*24);
   	ini_set('memory_limit', '128M');
-  	
+
   	// для открытия некоторых sfImage не хватает памяти
   	$miss_ids = array(970 );
-  	
+
   	//$count = 1400;
   	//$step  = 100;
 
@@ -809,26 +809,26 @@ class photoActions extends autophotoActions
   	//$c->add(PhotoPeer::ID, 800, Criteria::GREATER_THAN);
   	//$c->setOffset($i);
   	//$c->setLimit($step);
-  	
+
   	$list = PhotoPeer::doSelect($c);
-  	
-  	foreach ($list as $photo) {  	
-  		
+
+  	foreach ($list as $photo) {
+
   		if (in_array($photo->getId(), $miss_ids)) {
   			continue;
   		}
-  		
+
   		$full_local = $photo->getFullLocal();
-  		
+
   	    echo $photo->getId() . ' ' . $full_local . ' ';
-  	   
-  	    $img = new sfImage( $full_local );	
+
+  	    $img = new sfImage( $full_local );
 
   	    $width  = $img->getWidth();
   	    $height = $img->getHeight();
-  	    
+
   	    echo ' width=' . $width . ' height=' . $height . ' ';
-  	    
+
   	    if ($width && $height) {
 			$photo->setWidth( $width );
 			$photo->setHeight( $height );
@@ -842,7 +842,7 @@ class photoActions extends autophotoActions
 
   	//}
   }
-  
+
   protected function addFiltersCriteria($c)
   {
     if (isset($this->filters['photoalbum_id_is_empty']))
@@ -915,24 +915,24 @@ class photoActions extends autophotoActions
     {
       $c->add(PhotoPeer::LINK, strtr($this->filters['link'], '*', '%'), Criteria::LIKE);
     }
-    
+
     // Title
-    if (isset($this->filters['title']))
+    if (!empty($this->filters['title']))
     {
       $c->add(PhotoI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
     }
     // Body
-    if (isset($this->filters['body']))
+    if (!empty($this->filters['body']))
     {
       $c->add(PhotoI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
     }
     // Author
-    if (isset($this->filters['author']))
+    if (!empty($this->filters['author']))
     {
       $c->add(PhotoI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
     }
   }
-  
+
 }
 
 

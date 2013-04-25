@@ -14,28 +14,28 @@ class newsActions extends autonewsActions
 
   protected function updateNewsFromRequest()
   {
-    $news = $this->getRequestParameter('news');        
+    $news = $this->getRequestParameter('news');
 
     // Empty string to null
     //
-    // backend saves empty strings as ''    
+    // backend saves empty strings as ''
     // some fields in DB has DEFAULT NULL
     // so their value changes from NULL to ''
     // it is impossible to set DEFAULT '' for all types of fields:
-    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
+    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.
     /*foreach ($news as $i => $value) {
     	if ($value === '') {
     		$news[ $i ] = null;
     	}
     }*/
-    
+
     // set change_updated_at
     $this->news->setChangeUpdatedAt($news['change_updated_at']);
     $news_i18ns = $this->news->getNewsI18ns();
     foreach ($news_i18ns as $news_i18n) {
     	$news_i18n->setChangeUpdatedAt($news['change_updated_at']);
     }
-    
+
     $this->news->setShow(isset($news['show']) ? $news['show'] : 0);
     if (isset($news['order']))
     {
@@ -70,10 +70,10 @@ class newsActions extends autonewsActions
       }
     }
 
-    
-    $full_local    = $this->news->getFullLocal();    
+
+    $full_local    = $this->news->getFullLocal();
     $thumb_local   = $this->news->getThumbLocal();
-        
+
     // удаляем изображения
     if (!$this->getRequest()->hasErrors() && isset($news['img_remove']))
     {
@@ -84,67 +84,67 @@ class newsActions extends autonewsActions
       if (is_file($full_local))
       {
         unlink($full_local);
-      }   
-      // thumb      
+      }
+      // thumb
       if (is_file($thumb_local))
       {
         unlink($thumb_local);
-      } 
+      }
     }
-        
+
 
     if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('news[img]'))
     {
       $fileName = $this->news->getId();
-      
+
       // если новость создаётся, ID ещё неизвестен
       if (!$fileName) {
       	$this->news->save();
       	$fileName = $this->news->getId();
       }
-      
+
       $original_ext = $this->getRequest()->getFileExtension('news[img]');
       // Images are always converted to JPG
       $ext = '.jpg';
       $mime_type = 'image/jpeg';
-      
-      $tmp_full    = sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/tmp/".$fileName.$ext;     
+
+      $tmp_full    = sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/tmp/".$fileName.$ext;
       $tmp_thumb   = sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/tmp/".$fileName.$ext;
-      
+
       $this->getRequest()->moveFile('news[img]', $tmp_full);
       $this->news->setImg($fileName.$ext);
-      
+
       // сохраняем исходное изображение (без каптчи)
       PhotoPeer::moveFile($tmp_full, sfConfig::get('sf_upload_dir')."/".NewsPeer::ORIGINAL_DIR."/".$fileName.$original_ext);
-      
+
 	  try {
 		// thumb
 		$img = new sfImage( $tmp_full );
-		$img->thumbnail( NewsPeer::THUMB_WIDTH, NewsPeer::THUMB_HEIGHT, 'scale' );  
+		$img->thumbnail( NewsPeer::THUMB_WIDTH, NewsPeer::THUMB_HEIGHT, 'scale' );
 		$img->setQuality(NewsPeer::THUMB_QUALITY);
-		$img->saveAs( $tmp_thumb );  
-		
+		$img->saveAs( $tmp_thumb );
+
 		// full
-		$img = new sfImage( $tmp_full );	   
+		$img = new sfImage( $tmp_full );
 		if ( $img->getWidth() > NewsPeer::IMG_WIDTH || $img->getHeight() > NewsPeer::IMG_HEIGHT ) {
-		    $img->thumbnail( NewsPeer::IMG_WIDTH, NewsPeer::IMG_HEIGHT, 'scale');  
+		    $img->thumbnail( NewsPeer::IMG_WIDTH, NewsPeer::IMG_HEIGHT, 'scale');
 		}
-		// водяной знак   	  
-		if (isset($news['watermark'])) {	    
+		// водяной знак
+		if (isset($news['watermark'])) {
 		    $img->overlay(new sfImage(sfConfig::get('sf_web_dir') . '/i/watermark.png'), 'bottom-right'); // or you can use coords array($x,$y)
 		}
         $img->setQuality(NewsPeer::FULL_QUALITY);
-		$img->save();  	  
-        
+		$img->save();
+
         // to Picasa
         try
-		{		
-		  $title = $fileName . ($news['title_i18n_en'] !='' ? ' - ' . $news['title_i18n_en'] : '');	
+		{
+		  $title = $fileName . ($news['title_i18n_en'] !='' ? ' - ' . $news['title_i18n_en'] : '');
 		  $title .= ' (' . UserPeer::DOMAIN_NAME_MAIN . ')';
-		  
+
 		  // full
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
-		  	NewsPeer::FULL_DIR, 
+		  	NewsPeer::FULL_DIR,
 		  	$tmp_full,
 		  	$mime_type,
 		  	$fileName.$ext,
@@ -156,16 +156,16 @@ class newsActions extends autonewsActions
 		  }
 		  $this->news->setFullPath( $remote_post_result['url'] );
 		  // перемещение файла в локальную директорию, аналогичнцю удалённой
-		  PhotoPeer::moveFile( 
-		    $tmp_full, 
+		  PhotoPeer::moveFile(
+		    $tmp_full,
 		    sfConfig::get('sf_upload_dir')."/".NewsPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
-  	      );		  		  
-		  
+  	      );
+
   	      // creating symlink
   	      $link = sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/".$fileName.$ext;
-  	      unlink($link);  	      
+  	      unlink($link);
   	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
-  	      
+
 		  // thumb
 		  $remote_post_result = PhotoPeer::remoteStoragePostImage(
 		  	NewsPeer::THUMB_DIR,
@@ -181,52 +181,52 @@ class newsActions extends autonewsActions
 		  }
 		  $this->news->setThumbPath( $remote_post_result['url'] );
 		  // перемещение файла в локальную директорию, аналогичнцю удалённой
-		  PhotoPeer::moveFile( 
-		    $tmp_thumb, 
+		  PhotoPeer::moveFile(
+		    $tmp_thumb,
 		    sfConfig::get('sf_upload_dir')."/".NewsPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$fileName.$ext
   	      );
-  	      
+
   	      // creating symlink
   	      $link = sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/".$fileName.$ext;
-  	      unlink($link);  	  	      
+  	      unlink($link);
   	      symlink('../'.$remote_post_result['url']."/".$fileName.$ext, $link);
-  	      
+
 		} catch( Exception $e ) {
 		  echo $e->getMessage();
 		  exit();
 		}
-		
+
 		// удаляем временные файлы
         if (is_file($tmp_full))
         {
             unlink($tmp_full);
-        }            
-        // thumb      
+        }
+        // thumb
         if (is_file($tmp_thumb))
         {
             unlink($tmp_thumb);
         }
-        
+
         // удаляем прошлые файлы
 		if (is_file($full_local))
 		{
 			unlink($full_local);
-		}     
-		// thumb      
+		}
+		// thumb
 		if (is_file($thumb_local))
 		{
 			unlink($thumb_local);
-		} 
-      
+		}
+
       } catch (Exception $e) {
       	echo $e->getMessage();
       	exit();
-      }         
+      }
     } elseif (!isset($news['img_remove'])) {
 	  if (isset($news['full_path']))
 	  {
 	    $this->news->setFullPath($news['full_path']);
-	  }	    
+	  }
 	  if (isset($news['thumb_path']))
 	  {
 	    $this->news->setThumbPath($news['thumb_path']);
@@ -240,7 +240,7 @@ class newsActions extends autonewsActions
     //if (isset($news['original']))
     //{
     $this->news->setOriginal($news['original']);
-    //}    
+    //}
 	if (isset($news['title_i18n_en']))
     {
       $this->news->setTitleI18nEn($news['title_i18n_en']);
@@ -785,11 +785,11 @@ class newsActions extends autonewsActions
     {
       $this->news->setDocI18nDe($news['doc_i18n_de']);
     }
-    
+
     // clear cache of a changed item
     ClearcachePeer::processItem($this->news);
   }
-  
+
   /**
    * Save News
    *
@@ -805,20 +805,20 @@ class newsActions extends autonewsActions
       Item2itemcategoryPeer::updateItemCategories($news['itemcategory'], ItemtypesPeer::ITEM_TYPE_NEWS, $this->news->getId());
     }
   }
-  
-  
+
+
   public function executeEdit($request)
-  {  
+  {
   	parent::executeEdit($request);
-  	
+
   	// проверка авторизации
   	if (!PhotoPeer::remoteStorageCheckAutenthication()) {
-  	  $this->url_to_login_page = Picasa::getUrlToLoginPage($_SERVER['SCRIPT_URI']);  	  
+  	  $this->url_to_login_page = Picasa::getUrlToLoginPage($_SERVER['SCRIPT_URI']);
   	} else {
   	  $this->url_to_login_page = '';
   	}
   }
-  
+
  /**
    * Загрузка фото в удалённое хранилище (Picasa)
    *
@@ -832,14 +832,14 @@ class newsActions extends autonewsActions
   	$c->add(NewsPeer::IMG, '', Criteria::NOT_EQUAL);
   	//$c->setLimit(2);
   	$news_list = NewsPeer::doSelect($c);
-  	
-  	foreach ($news_list as $news) {  		  	
-  		
-  		echo $news->getId() . '<br>';  		
-  		
+
+  	foreach ($news_list as $news) {
+
+  		echo $news->getId() . '<br>';
+
   		$full_old_path = sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/".$news->getImg();
-  		
-  		$title    = $news->getId() . ($news->getTitle() !='' ? ' - ' . $news->getTitle() : '');	  		
+
+  		$title    = $news->getId() . ($news->getTitle() !='' ? ' - ' . $news->getTitle() : '');
   		$pathinfo = pathinfo($full_old_path);
   		$ext      = $pathinfo['extension'];
   		if (!$ext) {
@@ -848,12 +848,12 @@ class newsActions extends autonewsActions
   			continue;
   		}
   		$filename = $news->getId() . '.' . $ext;
-  		
+
   		if ( file_exists($news->getFullLocal()) && file_exists($news->getThumbLocal()) ) {
   			echo 'exists';
   			continue;
-  		}  		
-  		
+  		}
+
   		//$mime_type = mime_content_type($full_old_path); //'image/jpeg';
   		switch (strtolower($ext)) {
   			case 'jpg':
@@ -866,12 +866,12 @@ class newsActions extends autonewsActions
   				$mime_type = 'image/jpeg';
   				break;  				*/
   		}
-  		
-  		// full  
-  		echo 'full<br>';		  		
-  		
+
+  		// full
+  		echo 'full<br>';
+
 		$remote_post_result = PhotoPeer::remoteStoragePostImage(
-			NewsPeer::FULL_DIR, 
+			NewsPeer::FULL_DIR,
 			$full_old_path,
 			$mime_type,
 			$filename,
@@ -882,22 +882,22 @@ class newsActions extends autonewsActions
 		}
 		$news->setFullPath( $remote_post_result['url'] );
 		// перемещение файла в локальную директорию, аналогичнцю удалённой
-		PhotoPeer::moveFile( 
-			$full_old_path, 
+		PhotoPeer::moveFile(
+			$full_old_path,
 			sfConfig::get('sf_upload_dir')."/".NewsPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$filename
-		);		
-		/*PhotoPeer::moveFile( 
-			$full_old_path, 
+		);
+		/*PhotoPeer::moveFile(
+			$full_old_path,
 			sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/".$filename
 		);*/
-		echo $remote_post_result['url'] . '<br>';		  		
-		
+		echo $remote_post_result['url'] . '<br>';
+
   		// thumb
   		echo 'thumb<br>';
   		$thumb_old_path = sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/".$news->getImg();
-  		
+
 		$remote_post_result = PhotoPeer::remoteStoragePostImage(
-			NewsPeer::THUMB_DIR, 
+			NewsPeer::THUMB_DIR,
 			$thumb_old_path,
 			$mime_type,
 			$filename,
@@ -908,77 +908,77 @@ class newsActions extends autonewsActions
 		}
 		$news->setThumbPath( $remote_post_result['url'] );
 		// перемещение файла в локальную директорию, аналогичнцю удалённой
-		PhotoPeer::moveFile( 
-			$thumb_old_path, 
+		PhotoPeer::moveFile(
+			$thumb_old_path,
 			sfConfig::get('sf_upload_dir')."/".NewsPeer::PHOTO_DIR."/".$remote_post_result['url']."/".$filename
-		);		
+		);
 		echo $remote_post_result['url'] . '<br>';
-		
+
 		$news->setPrevImg( $filename );
 		$news->save();
-		
-		echo '<br><br>';		
+
+		echo '<br><br>';
   	}
 
   }
-  
+
   /**
    * Очистка кэша
    *
    * @param unknown_type $request
    */
   public function executeCache($request)
-  {    
+  {
     // остановка обновления кэша
-    if (!empty($_POST['kill']) && !empty($_POST['pid'])) {    	
-      sfSuperCache::stopRefershCacheTask($_POST['pid']);      
+    if (!empty($_POST['kill']) && !empty($_POST['pid'])) {
+      sfSuperCache::stopRefershCacheTask($_POST['pid']);
     }
-    
+
     // остановка обновления кэша
-    if (!empty($_POST['log']) && !empty($_POST['pid'])) {    	
-      echo sfSuperCache::refreshCacheGetLogContent($_POST['pid']);      
+    if (!empty($_POST['log']) && !empty($_POST['pid'])) {
+      echo sfSuperCache::refreshCacheGetLogContent($_POST['pid']);
       exit();
-    }    
+    }
 
     // загрузка информации о логах
-    if (!empty($_POST['load_log_list'])) {    	
-      $this->log_list = sfSuperCache::refreshCacheGetLogList();   
-    }    
-    
+    if (!empty($_POST['load_log_list'])) {
+      $this->log_list = sfSuperCache::refreshCacheGetLogList();
+    }
+
     // запуск обновления кэша
-    // исключение страниц из обработки    
+    // исключение страниц из обработки
     if (!empty($_POST['refresh_cache'])) {
-        
+
       // исключение объектов
-	  if (!empty($_POST['refresh_exclude_path_regexp_flag']) && !empty($_POST['refresh_exclude_path_regexp'])) {	      	      
-	  	$refresh_exclude_path_regexp = $_POST['refresh_exclude_path_regexp'];	  	
+	  if (!empty($_POST['refresh_exclude_path_regexp_flag']) && !empty($_POST['refresh_exclude_path_regexp'])) {
+	  	$refresh_exclude_path_regexp = $_POST['refresh_exclude_path_regexp'];
 	  	// экранируем символы \ и -
-	  	$refresh_exclude_path_regexp = preg_replace("/[\/-]/", "\\\\$0", $refresh_exclude_path_regexp);	  	
+	  	$refresh_exclude_path_regexp = preg_replace("/[\/-]/", "\\\\$0", $refresh_exclude_path_regexp);
 	  } else {
 	  	$refresh_exclude_path_regexp = '';
 	  }
-	  
+
       // включение объектов
-	  if (!empty($_POST['refresh_include_path_regexp_flag']) && !empty($_POST['refresh_include_path_regexp'])) {	      	      
-	  	$refresh_include_path_regexp = $_POST['refresh_include_path_regexp'];	  	
+	  if (!empty($_POST['refresh_include_path_regexp_flag']) && !empty($_POST['refresh_include_path_regexp'])) {
+	  	$refresh_include_path_regexp = $_POST['refresh_include_path_regexp'];
 	  	// экранируем символы \ и -
-	  	$refresh_include_path_regexp = preg_replace("/[\/-]/", "\\\\$0", $refresh_include_path_regexp);	  	
+	  	$refresh_include_path_regexp = preg_replace("/[\/-]/", "\\\\$0", $refresh_include_path_regexp);
 	  } else {
 	  	$refresh_include_path_regexp = '';
 	  }
 
       sfSuperCache::runRefreshCacheTask(
-        $_POST['refresh_cache_domain_name'], 
+        $_POST['refresh_cache_domain_name'],
         @$_POST['refresh_cache_multi_process'],
         @$_POST['refresh_cache_console'],
         $refresh_exclude_path_regexp,
         $refresh_include_path_regexp
-      ); 
+      );
     }
-    
+
     // информация о процессах, обновляющих кэш
     $this->refresh_cache_daemon_info = sfSuperCache::refreshCacheGetDaemonInfo();
-      
+
     // очистка/восстановление кэша
   	if (!empty($_POST['path'])) {
   	  if (!empty($_POST['al_cultures'])) {
@@ -993,90 +993,90 @@ class newsActions extends autonewsActions
   	  	$delete = false;
   	  }
   	  try {
-		$this->clear_pathes = sfSuperCache::alterCacheByPath($delete, $_POST['path'], $all_cultures);		
+		$this->clear_pathes = sfSuperCache::alterCacheByPath($delete, $_POST['path'], $all_cultures);
 		// запуск удаления запомненных путей
 	    sfSuperCache::executRemoveFilePathListProcess();
   	  } catch(Exception $e) {
   	  	$this->error_message = $e->getMessage();
   	  }
-  	}  	  
-  	
+  	}
+
   	// Удаление страниц кэша, которое необходимо выполнять при добавлении/изменении любого окнтента.
   	if (!empty($_POST['clear_on_any_change_submit'])) {
   	  $this->clear_pathes = sfSuperCache::clearCacheOnAnyContentChange($_POST['clear_on_any_change_culture']);
   	}
-  	
+
   	// Удаление страниц элемента контента и страниц всех связанных с ним элементов
   	$this->item_types = ItemtypesPeer::doSelect(new Criteria());
   	if (!empty($_POST['clear_item_submit'])) {
   	  $this->clear_pathes = sfSuperCache::clearCacheOfItem(
-  	    						$_POST['clear_item_id'], 
+  	    						$_POST['clear_item_id'],
   	    						$_POST['clear_item_type_name'],
   	    						$_POST['clear_item_culture']
   	  );
   	}
-  	
-  	
+
+
   	// информация об объёме и кол-ве файлов
   	if (!empty($_POST['info'])) {
-	  $this->cache_info = sfSuperCache::getInfo($_POST['info_domain_name'], $_POST['info_path_filter']);	
+	  $this->cache_info = sfSuperCache::getInfo($_POST['info_domain_name'], $_POST['info_path_filter']);
   	}
-  	
+
   	// очистка кэша CloudFlare
   	if (!empty($_POST['submit_purge_cloudfront'])) {
 	  $purge_cloudfront_result = sfSuperCache::cloudFlareRequest('fpurge_ts');
 	  $this->cloudfront_result = $purge_cloudfront_result;
-  	}  
+  	}
 
   	// Console cache refresh
   	if (!empty($_POST['submit_console_refresh'])) {
 	  sfSuperCache::consoleRefreshCache('fpurge_ts');
   	}
-  
+
   	if (!empty($_POST['submit_console_refresh_kill'])) {
 	  sfSuperCache::consoleRefreshCacheProcessKill($_POST['console_refresh_pid']);
   	}
-  	 	  	
+
   	$this->console_refresh_processes_list = sfSuperCache::listConsoleRefreshProcesses();
-  	
+
   }
-  
+
   /**
    * Работа с файлами переводов
    *
    * @param unknown_type $request
    */
   public function executeTranslate($request)
-  { 
+  {
       $this->result = '';
-      
+
       if ($_POST['submit_convert'] && $_POST['plain_text']) {
           // конвертация plain текста в messages файл
           $this->result = $_POST['plain_text'];
-          
+
           // удаляется первый разделитель
           $this->result = preg_replace("/^" . preg_quote(TextPeer::TRANSLATE_ITEMS_DELIMITER) . "(\r)?\n/", '', $this->result);
-     
+
           // удаляется последний разделитель
           $this->result = preg_replace("/(\r)?\n" . preg_quote(TextPeer::TRANSLATE_ITEMS_DELIMITER) . "([\s]+)?$/", '', $this->result);
 
           // разделитель между элементами
           $this->result = preg_replace(
-            "/(\r)?\n" . preg_quote(TextPeer::TRANSLATE_ITEMS_DELIMITER) . "(\r)?\n/", 
+            "/(\r)?\n" . preg_quote(TextPeer::TRANSLATE_ITEMS_DELIMITER) . "(\r)?\n/",
             '</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>',
-            $this->result);  
-            
+            $this->result);
+
           // разделитель между текстом и переводом
           $this->result = preg_replace(
-            "/(\r)?\n" . preg_quote(TextPeer::TRANSLATE_BETWEEN_DELIMITER) . "(\r)?\n/", 
+            "/(\r)?\n" . preg_quote(TextPeer::TRANSLATE_BETWEEN_DELIMITER) . "(\r)?\n/",
             '</source>
-        <target>', 
+        <target>',
             $this->result);
-          
+
           $this->result = '<?xml version="1.0" ?>
 <xliff version="1.0">
   <file original="global" source-language="en" datatype="plaintext">
@@ -1085,14 +1085,14 @@ class newsActions extends autonewsActions
       <trans-unit id="1">
         <source>' . $this->result . '</target>
       </trans-unit>
-      
+
 <!-- утф -->
     </body>
   </file>
 </xliff>';
-    
-          
-          
+
+
+
           if ($_POST['get_as_file']) {
             ob_clean();
         	header('Content-Type: application/xml;');
@@ -1107,12 +1107,12 @@ class newsActions extends autonewsActions
     		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
             header('Pragma: public');
     		header('Content-Length: ' . strlen($this->result) );
-    		
+
     		echo $this->result;
           }
       }
-  }  
-  
+  }
+
  /**
    * Temporatry function
    *
@@ -1124,7 +1124,7 @@ class newsActions extends autonewsActions
   	$c = new Criteria();
   	//$c->setLimit(10);
   	$list = PhotoPeer::doSelect($c);
-  	
+
   	$result = array(
   		'photo_count' 		  => 0,
   		'full_count'     	  => 0,
@@ -1134,47 +1134,47 @@ class newsActions extends autonewsActions
   		'preview_symlink'     => 0,
   		'thumb_symlink'       => 0,
   	);
-  	
+
   	$result['photo_count'] = count($list);
-  	
-  	foreach ($list as $item) {  		  	
+
+  	foreach ($list as $item) {
   	  $file_name = $item->getImg();
-  		
+
   	  if (!$file_name) {
   	    continue;
   	  }
-  		
+
   	  $full_path 	   = $item->getFullPath();
   	  $full_path_local = $item->getFullLocal();
-  	  
+
   	  if ( $full_path && file_exists($full_path_local) ) {
   	  	$result['full_count']++;
-  	  	
-  	  	$symlink_result = symlink('../'.$full_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$file_name);  	  	
+
+  	  	$symlink_result = symlink('../'.$full_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::FULL_DIR."/".$file_name);
   	  	if ($symlink_result) {
   	  		$result['full_symlink']++;
   	  	}
   	  }
-  	  
+
   	  $preview_path 	  = $item->getPreviewPath();
   	  $preview_path_local = $item->getPreviewLocal();
-  	  
+
   	  if ( $preview_path && file_exists($preview_path_local) ) {
   	  	$result['preview_count']++;
-  	  	
-  	  	$symlink_result = symlink('../'.$preview_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$file_name);  	  	
+
+  	  	$symlink_result = symlink('../'.$preview_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::PREVIEW_DIR."/".$file_name);
   	  	if ($symlink_result) {
   	  		$result['preview_symlink']++;
   	  	}
   	  }
-  	  
+
   	  $thumb_path 	  = $item->getThumbPath();
   	  $thumb_path_local = $item->getThumbLocal();
-  	  
+
   	  if ( $thumb_path && file_exists($thumb_path_local) ) {
   	  	$result['thumb_count']++;
-  	  	
-  	  	$symlink_result = symlink('../'.$thumb_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$file_name);  	  	
+
+  	  	$symlink_result = symlink('../'.$thumb_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".PhotoPeer::THUMB_DIR."/".$file_name);
   	  	if ($symlink_result) {
   	  		$result['thumb_symlink']++;
   	  	}
@@ -1185,7 +1185,7 @@ class newsActions extends autonewsActions
   	exit();
 
   }
-  
+
  /**
    * Temporatry function
    *
@@ -1197,7 +1197,7 @@ class newsActions extends autonewsActions
   	$c = new Criteria();
   	//$c->setLimit(10);
   	$list = NewsPeer::doSelect($c);
-  	
+
   	$result = array(
   		'count' 		      => 0,
   		'full_count'     	  => 0,
@@ -1205,36 +1205,36 @@ class newsActions extends autonewsActions
   		'full_symlink'     	  => 0,
   		'thumb_symlink'       => 0,
   	);
-  	
+
   	$result['count'] = count($list);
 
-  	foreach ($list as $item) {  		  	
+  	foreach ($list as $item) {
 
   	  $file_name = $item->getImg();
-  		
+
   	  if (!$file_name) {
   	    continue;
   	  }
-  	    
+
   	  $full_path 	   = $item->getFullPath();
   	  $full_path_local = $item->getFullLocal();
 
   	  if ( $full_path && file_exists($full_path_local) ) {
   	  	$result['full_count']++;
 
-  	  	$symlink_result = symlink('../'.$full_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/".$file_name);  	  	
+  	  	$symlink_result = symlink('../'.$full_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".NewsPeer::FULL_DIR."/".$file_name);
   	  	if ($symlink_result) {
   	  		$result['full_symlink']++;
   	  	}
-  	  }  	  
-  	  
+  	  }
+
   	  $thumb_path 	  = $item->getThumbPath();
   	  $thumb_path_local = $item->getThumbLocal();
-  	  
+
   	  if ( $thumb_path && file_exists($thumb_path_local) ) {
   	  	$result['thumb_count']++;
 
-  	  	$symlink_result = symlink('../'.$thumb_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/".$file_name);  	  	
+  	  	$symlink_result = symlink('../'.$thumb_path."/".$file_name, sfConfig::get('sf_upload_dir')."/".NewsPeer::THUMB_DIR."/".$file_name);
   	  	if ($symlink_result) {
   	  		$result['thumb_symlink']++;
   	  	}
@@ -1245,23 +1245,23 @@ class newsActions extends autonewsActions
   	exit();
 
   }
-  
+
   public function executeAccelerator($request)
   {
     ob_start();
-      
+
     /*** CONFIG ***/
     $auth = false;		// Set to false to disable authentication
     $user = "admin";
     $pw = "eAccelerator";
-    
+
     $npp = 50;		// Number of records per page (script / key cache listings)
-    
-    /*** TODO for API / reporting / this script: 
+
+    /*** TODO for API / reporting / this script:
          + want script ttl from API
          + would be cool to have init_time for scripts (time of caching) - could then get hit rates etc.
     */
-    
+
     // Inline media
     if (isset($_GET['img']) && $_GET['img']) {
         $img = strtolower($_GET['img']);
@@ -1269,37 +1269,37 @@ class newsActions extends autonewsActions
         $imgs['dnarr'][1] = 'H4sIAAAAAAAAA3P3dLOwTORlEGBoZ2BYsP3Y0t0nlu85ueHQ2U1Hzu86efnguetHL968cPPBtbuPbzx4+vTV24+fv3768u3nr9+/f//59+/f////GUbBKBgWQPEnCzMDgyCDDogDyhMMHP4MyhwyHhsWHGzmENaKOSHAyMDAKMWTI/BAkYmDTU6oQuAhY2M7m4JLgcGDh40c7HJ8BQaBBw4z8bMaaOx4sPAsK7voDZ8GAadTzEqSXLJWBgoM1gBhknrUcgMAAA==';
         $imgs['uparr'][0] = 201;
         $imgs['uparr'][1] = 'H4sIAAAAAAAAA3P3dLOwTORlEGBoZ2BYsP3Y0t0nlu85ueHQ2U1Hzu86efnguetHL968cPPBtbuPbzx4+vTV24+fv3768u3nr9+/f//59+/f////GUbBKBgWQPEnCzMDgyCDDogDyhMMHIEMyhwyHhsWHGzmENaKOTFBoYWZgc/BYQVDw1EWdvGIOzsWJDAzinFHiBxIWNDMKMbv0sCR0NDMIcATofJB4RAzkxivg0OCoUNzIy9ThMuFDRqHGxisAZtUvS50AwAA';
-    
-        if (!$imgs[$img] || strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') === false) 
+
+        if (!$imgs[$img] || strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') === false)
             exit();
-    
+
         header("Expires: ".gmdate("D, d M Y H:i:s", time()+(86400*30))." GMT");
         header("Last-Modified: ".gmdate("D, d M Y H:i:s", time())." GMT");
         header('Content-Length: '.$imgs[$img][0]);
         header('Content-Type: image/gif');
         header('Content-Encoding: gzip');
-    
+
         echo base64_decode($imgs[$img][1]);
         exit();
     }
-    
+
     // Authenticate before proceeding
     if ($auth && (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) ||
             $_SERVER['PHP_AUTH_USER'] != $user || $_SERVER['PHP_AUTH_PW'] != $pw)) {
         header('WWW-Authenticate: Basic realm="eAccelerator control panel"');
         header('HTTP/1.0 401 Unauthorized');
         exit;
-    } 
-    
+    }
+
     $sec = isset($_GET['sec']) ? (int)$_GET['sec'] : 0;
-    
+
     // No-cache headers
     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
     header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
     header("Cache-Control: no-store, no-cache, must-revalidate");
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
-    
+
     function print_footer() {
         global $info;
         ?>
@@ -1320,11 +1320,11 @@ class newsActions extends autonewsActions
         </div>
         <?php
     }
-    
+
     if (!function_exists('eaccelerator_info')) {
         die('eAccelerator isn\'t installed or isn\'t compiled with info support!');
     }
-    
+
     // formats sizes
     function format_size ($x) {
         $a = array('bytes', 'kb', 'mb', 'gb');
@@ -1335,21 +1335,21 @@ class newsActions extends autonewsActions
         }
         return number_format($x, ($i > 0)?2:0, '.', ',').' '.$a[$i];
     }
-    
+
     // Generates a simple & colourful horizontal bar graph. $x:$y is used:free
     function space_graph ($x, $y) {
         $colr = 183; $colg = 225; $colb = 149;	// #B7E195
-    
+
         $colr = base_convert($colr + floor(($x/$y)*(50+exp($x*3/$y))), 10, 16);
         $colg = base_convert($colg - floor(($x/$y)*(100+exp($x*4/$y))), 10, 16);
         $colb = base_convert($colb - floor(($x/$y)*(70+exp($x*4/$y))), 10, 16);
-    
+
         $s = '<table class="hgraph"><tr>';
         $s .= '<td class="hgraph_pri" style="width:'.floor(($x/$y)*100).'%">&nbsp;</td>';
         $s .= '<td class="hgraph_sec" style="background-color: #'.$colr.$colg.$colb.'; width:'.ceil(100 - ($x/$y)*100).'%">&nbsp;</td></tr></table>';
         return $s;
     }
-    
+
     // Messy algorithm to generate neat page selectors
     function pageselstr ($pg, $pgs) {
         $pg += 1;
@@ -1386,7 +1386,7 @@ class newsActions extends autonewsActions
         }
         return $pgstr;
     }
-    
+
     // Returns qstring with updated key / value pairs.
     function qstring_update ($arr) {
         $qs = '';
@@ -1397,29 +1397,29 @@ class newsActions extends autonewsActions
         }
         return $qs;
     }
-    
+
     // Returns standard column headers for the lists
     function colheadstr ($nme, $id) {
         $cursrt = isset($_GET['ordby']) ? $_GET['ordby'] : 0;
         $srtdir = isset($_GET['dir']) ? $_GET['dir'] : "";
         return '<a href="'.$_SERVER['PHP_SELF'].'?'.qstring_update(array('ordby' => $id, 'dir' => ($cursrt == $id)?1-$srtdir:0)).'">'.$nme.'&nbsp;'.(($cursrt == $id)?'<img src="'.$_SERVER['PHP_SELF'].'?img='.(($srtdir)?'dnarr':'uparr').'" width="13" height="16" border="0" alt="'.(($srtdir)?'v':'^').'"/>':'');
     }
-    
+
     // Array sorting callback function
     function arrsort ($a, $b) {
         global $ordby, $ordbystr;
-        if ($ordbystr) 
+        if ($ordbystr)
             $val = strnatcmp($a[$ordby], $b[$ordby]);
-        else 
+        else
             $val = ($a[$ordby] == $b[$ordby]) ? 0 : (($a[$ordby] < $b[$ordby]) ? -1: 1);
         if (isset($_GET['dir']) && $_GET['dir'])
             $val = -1*$val;
         return $val;
     }
-    
+
     // Global info array
     $info = eaccelerator_info();
-    
+
     ?>
     <style type="text/css" media="all">
         #sf_admin_container.accelerator_wrapper .head1 {background-color: #A9CFDD; width: 100%; font-size: 32px; color: #ffffff;padding-top: 20px;font-family: Tahoma, sans-serif;}
@@ -1436,7 +1436,7 @@ class newsActions extends autonewsActions
         #sf_admin_container.accelerator_wrapper .mnbody {padding:15px; padding-top: 30px; margin-right: auto; margin-left: auto; text-align: center;bottom: 60px;}
 
         #sf_admin_container.accelerator_wrapper .mnbody table {border-collapse: collapse; margin-right: auto; margin-left: auto;}
-        
+
         #sf_admin_container.accelerator_wrapper td {padding: 3px 10px 3px 10px; border: #ffffff 2px solid;vertical-align:top}
         #sf_admin_container.accelerator_wrapper .el {text-align: left;background-color: #e1eff8;}
         #sf_admin_container.accelerator_wrapper .er {text-align: right;background-color: #e1eff8;}
@@ -1455,19 +1455,19 @@ class newsActions extends autonewsActions
         #sf_admin_container.accelerator_wrapper .hgraph td {border: 0px;padding: 0px;}
         #sf_admin_container.accelerator_wrapper .hgraph_pri {background-color: #62ADC2;}
         #sf_admin_container.accelerator_wrapper .hgraph_sec {}
-        
-        
+
+
         #sf_admin_container.accelerator_wrapper .footer {width: 100%;text-align: center;font-size: 9pt;color: #ababab;}
         #sf_admin_container.accelerator_wrapper .footer a:link {color: #ababab;}
         #sf_admin_container.accelerator_wrapper .footer a:visited {color: #ababab;}
         #sf_admin_container.accelerator_wrapper .footer a:active {color: #000000;}
         #sf_admin_container.accelerator_wrapper .footer a:hover {color: #000000;}
-        
+
         #sf_admin_container.accelerator_wrapper small {font-size: 10pt;}
         #sf_admin_container.accelerator_wrapper .s {color: #676767;}
 
     </style>
-    
+
     <script type="text/javascript">
       function menusel(i) {
         if (i.className == "menuitem_hov") i.className = "menuitem";
@@ -1482,10 +1482,10 @@ class newsActions extends autonewsActions
     <div class="head2">
     <?php
     $items = array(0 => 'Status', 1 => 'Script Cache');
-    
+
     foreach ($items as $i => $item) {
         echo '<span class="menuitem'.(($sec == $i)?'_sel':'').'" onmouseover="menusel(this)" onmouseout="menusel(this)" onclick="gosec('.$i.')">'.(($sec != $i)?'<a href="'.$_SERVER['PHP_SELF'].'?sec='.$i.'">'.$item.'</a>':$item).'</span>';
-    }  
+    }
     ?>
     </div>
     <div class="mnbody">
@@ -1494,33 +1494,33 @@ class newsActions extends autonewsActions
         default:
         case 0:
             /******************************     STATUS / CONTROL     ******************************/
-    
+
             if (isset($_POST['cachingoff'])) eaccelerator_caching(false);
             if (isset($_POST['cachingon'])) eaccelerator_caching(true);
-    
+
             if (isset($_POST['optoff']) && function_exists('eaccelerator_optimizer')) eaccelerator_optimizer(false);
             if (isset($_POST['opton']) && function_exists('eaccelerator_optimizer')) eaccelerator_optimizer(true);
-    
+
             if (isset($_POST['mtimeoff'])) eaccelerator_check_mtime(false);
             if (isset($_POST['mtimeon'])) eaccelerator_check_mtime(true);
-    
+
             if (isset($_POST['clear'])) eaccelerator_clear();
             if (isset($_POST['clean'])) eaccelerator_clean();
             if (isset($_POST['purge'])) eaccelerator_purge();
-    
+
             $info = eaccelerator_info();
-    
+
     ?>
     <table>
     <tr><td>
-    
+
     <form action="<?php echo $_SERVER['PHP_SELF']?>?sec=0" method="post">
     <table>
     <tr>
         <td class="h" colspan="2">Usage statistics</td>
     </tr>
     <tr>
-        <td class="er">Caching enabled</td> 
+        <td class="er">Caching enabled</td>
         <td class="fl"><?php echo $info['cache'] ? '<span style="color:green"><b>yes</b></span>&nbsp;&nbsp;&nbsp;<input type="submit" name="cachingoff" value=" Disable "/>':'<span style="color:red"><b>no</b></span>&nbsp;&nbsp;&nbsp;<input type="submit" name="cachingon" value=" Enable "/>' ?></td>
     </tr>
     <tr>
@@ -1551,79 +1551,79 @@ class newsActions extends autonewsActions
         <td class="fl"><?php echo number_format($info['cachedScripts']); ?></td>
     </tr>
     <tr>
-        <td class="er">Removed scripts</td> 
+        <td class="er">Removed scripts</td>
         <td class="fl"><?php echo number_format($info['removedScripts']); ?></td>
     </tr>
     </table>
     </form>
-    
+
     </td><td>
-    
+
     <table>
     <tr>
         <td class="h" colspan="2">Build information</td>
     </tr>
     <tr>
-        <td class="er">eAccelerator version</td> 
+        <td class="er">eAccelerator version</td>
         <td class="fl"><?php echo $info['version']; ?></td>
     </tr>
     <tr>
-        <td class="er">Shared memory type</td> 
+        <td class="er">Shared memory type</td>
         <td class="fl"><?php echo $info['shm_type']; ?></td>
     </tr>
     <tr>
-        <td class="er">Semaphore type</td> 
+        <td class="er">Semaphore type</td>
         <td class="fl"><?php echo $info['sem_type']; ?></td>
     </tr>
     </table>
-    
+
     </td></tr>
     </table>
-    
+
     <br/><br/>
-    
+
     <form action="<?php echo $_SERVER['PHP_SELF']?>?sec=0" method="post">
     <table>
     <tr>
         <td class="h" colspan="2">Maintenance</td>
     </tr>
     <tr>
-        <td class="ec"><input type="submit" name="clear" value=" Clear cache "/></td> 
+        <td class="ec"><input type="submit" name="clear" value=" Clear cache "/></td>
         <td class="fl">Removed all scripts and data from shared memory and / or disk.</td>
     </tr>
     <tr>
-        <td class="ec"><input type="submit" name="clean" value=" Delete expired "/></td> 
+        <td class="ec"><input type="submit" name="clean" value=" Delete expired "/></td>
         <td class="fl">Removed all expired scripts and data from shared memory and / or disk.</td>
     </tr>
     <tr>
-        <td class="ec"><input type="submit" name="purge" value=" Purge cache "/></td> 
+        <td class="ec"><input type="submit" name="purge" value=" Purge cache "/></td>
         <td class="fl">Delete all 'removed' scripts from shared memory.</td>
     </tr>
     </table>
     </form>
-    
+
     <?php
             break;
         case 1:
             /******************************     SCRIPT CACHE     ******************************/
-        
+
             $scripts = eaccelerator_cached_scripts();
             $removed = eaccelerator_removed_scripts();
-        
+
             // combine arrays
             function removedmod ($val) {
                 $val['removed'] = true;
                 return $val;
             }
             $scripts = array_merge($scripts, array_map('removedmod', $removed));
-        
+
             // search
             function scriptsearch ($val) {
                 $str = isset($_GET['str']) ? $_GET['str'] : '';
                 return preg_match('/'.preg_quote($str, '/').'/i', $val['file']);
             }
             $scripts = array_filter($scripts, 'scriptsearch');
-        
+
             // sort
             $ordby = isset($_GET['ordby']) ? intval($_GET['ordby']) : 0;
             switch ($ordby) {
@@ -1637,18 +1637,18 @@ class newsActions extends autonewsActions
                 case 6: $ordby = 'hits'; $ordbystr = false; break;
             }
             usort($scripts, 'arrsort');
-     
+
             // slice
             $numtot = count($scripts);
-    
+
             $pg = (isset($_GET['pg']) ? (int)$_GET['pg'] : 0); // zero-starting
             $pgs = ceil($numtot/$npp);
-    
+
             if ($pg + 1 > $pgs)
                 $pg = $pgs-1;
             if ($pg < 0)
                 $pg = 0;
-    
+
             $scripts = array_slice($scripts, $pg*$npp, $npp);
             $numres = count($scripts);
     ?>
@@ -1658,16 +1658,16 @@ class newsActions extends autonewsActions
     </tr>
     <tr>
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="get"><input type="hidden" name="sec" value="1"/>
-        <td class="el">Match filename:</td> 
+        <td class="el">Match filename:</td>
         <td class="fl"><input type="text" name="str" size="40" value="<?php echo isset($_GET['str']) ? $_GET['str'] : '' ?>"/>&nbsp;<input type="submit" value=" Find "/></td>
         </form>
     </tr>
     </table>
-    
+
     <br/><br/>
-    
+
     <?php
-            if (count($scripts) == 0) 
+            if (count($scripts) == 0)
                 echo '<div class="center"><i>No scripts found</i></div>';
             else {
     ?>
@@ -1692,11 +1692,11 @@ class newsActions extends autonewsActions
                     if ($disassembler && !$removed) {
                         $file_col = sprintf('<a href="dasm.php?file=%s">%s</a>', $scripts[$i]['file'], $scripts[$i]['file']);
                     } elseif ($removed) {
-                        $file_col = sprintf('<span class="s">%s</span>', $scripts[$i]['file']);   
+                        $file_col = sprintf('<span class="s">%s</span>', $scripts[$i]['file']);
                     } else {
                         $file_col = $scripts[$i]['file'];
                     }
-    
+
                     if ($scripts[$i]['ttl'] != 0) {
                         $ttl_col = $scripts[$i]['ttl'] - time();
                         if ($ttl_col <= 0) {
@@ -1727,13 +1727,13 @@ class newsActions extends autonewsActions
                 }
                 break;
         }
-    
+
     print_footer();
-    
+
     $this->content = ob_get_contents();
     ob_clean();
   }
-  
+
   protected function addFiltersCriteria($c)
   {
 if (isset($this->filters['show_is_empty']))
@@ -1777,40 +1777,40 @@ if (isset($this->filters['show_is_empty']))
     }
 
     // Title
-    if (isset($this->filters['title']))
+    if (!empty($this->filters['title']))
     {
       $c->add(NewsI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
     }
     // Short body
-    if (isset($this->filters['shortbody']))
+    if (!empty($this->filters['shortbody']))
     {
       $c->add(NewsI18nPeer::SHORTBODY, '%'.$this->filters['shortbody'].'%', Criteria::LIKE);
     }
     // Body
-    if (isset($this->filters['body']))
+    if (!empty($this->filters['body']))
     {
       $c->add(NewsI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
     }
     // Extradate
-    if (isset($this->filters['extradate']))
+    if (!empty($this->filters['extradate']))
     {
       $c->add(NewsI18nPeer::EXTRADATE, '%'.$this->filters['extradate'].'%', Criteria::LIKE);
     }
     // Author
-    if (isset($this->filters['author']))
+    if (!empty($this->filters['author']))
     {
       $c->add(NewsI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
     }
     // Translated by
-    if (isset($this->filters['translated_by']))
+    if (!empty($this->filters['translated_by']))
     {
       $c->add(NewsI18nPeer::TRANSLATED_BY, '%'.$this->filters['translated_by'].'%', Criteria::LIKE);
     }
     // Link
-    if (isset($this->filters['link']))
+    if (!empty($this->filters['link']))
     {
       $c->add(NewsI18nPeer::LINK, '%'.$this->filters['link'].'%', Criteria::LIKE);
     }
   }
-  
+
 }

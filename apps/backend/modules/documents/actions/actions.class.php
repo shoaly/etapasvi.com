@@ -13,14 +13,14 @@ class documentsActions extends autodocumentsActions
   protected function updateDocumentsFromRequest()
   {
     $documents = $this->getRequestParameter('documents');
-    
+
     // set change_updated_at
     $this->documents->setChangeUpdatedAt($documents['change_updated_at']);
     $documents_i18ns = $this->documents->getDocumentsI18ns();
     foreach ($documents_i18ns as $documents_i18n) {
     	$documents_i18n->setChangeUpdatedAt($documents['change_updated_at']);
     }
-    
+
     if (isset($documents['created_at']))
     {
       if ($documents['created_at'])
@@ -67,7 +67,7 @@ class documentsActions extends autodocumentsActions
     if (!$this->getRequest()->hasErrors() && $this->getRequest()->getFileSize('documents[file]'))
     {
       //$fileName = md5($this->getRequest()->getFileName('documents[file]').time().rand(0, 99999));
-      $fileName = $this->getRequest()->getFileName('documents[file]');      
+      $fileName = $this->getRequest()->getFileName('documents[file]');
       $ext = strtolower($this->getRequest()->getFileExtension('documents[file]'));
       $fileName = substr($fileName, 0, strlen($fileName) - strlen($ext));
       if (is_file($currentFile))
@@ -235,7 +235,7 @@ class documentsActions extends autodocumentsActions
     // clear cache of a changed item
     ClearcachePeer::processItem($this->documents);
   }
-  
+
   /**
    * Save documents
    *
@@ -251,7 +251,7 @@ class documentsActions extends autodocumentsActions
       Item2itemcategoryPeer::updateItemCategories($documents['itemcategory'], ItemtypesPeer::ITEM_TYPE_DOCUMENTS, $this->documents->getId());
     }
   }
-  
+
   protected function addFiltersCriteria($c)
   {
     if (isset($this->filters['show_is_empty']))
@@ -274,19 +274,19 @@ class documentsActions extends autodocumentsActions
     {
       $c->add(DocumentsPeer::NEWS_ID, $this->filters['news_id']);
     }
-    
+
     // File
-    if (isset($this->filters['file']))
+    if (!empty($this->filters['file']))
     {
       $c->add(DocumentsPeer::FILE, '%'.$this->filters['file'].'%', Criteria::LIKE);
     }
     // Title
-    if (isset($this->filters['title']))
+    if (!empty($this->filters['title']))
     {
       $c->add(DocumentsI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
     }
     // Body
-    if (isset($this->filters['body']))
+    if (!empty($this->filters['body']))
     {
       $c->add(DocumentsI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
     }

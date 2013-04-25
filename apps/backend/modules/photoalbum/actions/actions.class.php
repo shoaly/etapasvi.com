@@ -10,11 +10,11 @@
  */
 class photoalbumActions extends autophotoalbumActions
 {
-	
+
   protected function updatePhotoalbumFromRequest()
   {
     $photoalbum = $this->getRequestParameter('photoalbum');
-    
+
     $this->photoalbum->setShow(isset($photoalbum['show']) ? $photoalbum['show'] : 0);
     if (isset($photoalbum['order']))
     {
@@ -252,11 +252,11 @@ class photoalbumActions extends autophotoalbumActions
     {
       $this->photoalbum->setAuthorI18nDe($photoalbum['author_i18n_de']);
     }
-    
+
     // clear cache of a changed item
     ClearcachePeer::processItem($this->photoalbum);
   }
-  
+
   /**
    * Save Photoalbum
    *
@@ -272,7 +272,7 @@ class photoalbumActions extends autophotoalbumActions
       Item2itemcategoryPeer::updateItemCategories($photoalbum['itemcategory'], ItemtypesPeer::ITEM_TYPE_PHOTOALBUM, $this->photoalbum->getId());
     }
   }
-  
+
   protected function addFiltersCriteria($c)
   {
     if (isset($this->filters['show_is_empty']))
@@ -285,19 +285,19 @@ class photoalbumActions extends autophotoalbumActions
     {
       $c->add(PhotoalbumPeer::SHOW, $this->filters['show']);
     }
-    
+
     // Title
-    if (isset($this->filters['title']))
+    if (!empty($this->filters['title']))
     {
       $c->add(PhotoalbumI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
     }
     // Body
-    if (isset($this->filters['body']))
+    if (!empty($this->filters['body']))
     {
       $c->add(PhotoalbumI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
     }
     // Author
-    if (isset($this->filters['author']))
+    if (!empty($this->filters['author']))
     {
       $c->add(PhotoalbumI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
     }

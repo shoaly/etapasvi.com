@@ -33,7 +33,7 @@ class quoteActions extends autoquoteActions
       $c->add(QuotePeer::NEWS_ID, $this->filters['news_id']);
     }
     // Title
-    if (isset($this->filters['title']))
+    if (!empty($this->filters['title']))
     {
       $c->add(QuoteI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
     }

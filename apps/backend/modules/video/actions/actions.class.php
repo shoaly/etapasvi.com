@@ -16,24 +16,24 @@ class videoActions extends autovideoActions
 
     // Empty string to null
     //
-    // backend saves empty strings as ''    
+    // backend saves empty strings as ''
     // some fields in DB has DEFAULT NULL
     // so their value changes from NULL to ''
     // it is impossible to set DEFAULT '' for all types of fields:
-    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
+    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.
     /*foreach ($video as $i => $value) {
     	if ($value === '') {
     		$video[ $i ] = null;
     	}
     }*/
-    
+
     // set change_updated_at
     $this->video->setChangeUpdatedAt($video['change_updated_at']);
     $video_i18ns = $this->video->getVideoI18ns();
     foreach ($video_i18ns as $video_i18n) {
     	$video_i18n->setChangeUpdatedAt($video['change_updated_at']);
     }
-    
+
     $this->video->setShow(isset($video['show']) ? $video['show'] : 0);
     if (isset($video['order']))
     {
@@ -483,7 +483,7 @@ class videoActions extends autovideoActions
     // clear cache of a changed item
     ClearcachePeer::processItem($this->video);
   }
-  
+
   /**
    * Save video
    *
@@ -498,7 +498,7 @@ class videoActions extends autovideoActions
       Item2itemcategoryPeer::updateItemCategories($video['itemcategory'], ItemtypesPeer::ITEM_TYPE_VIDEO, $this->video->getId());
     }
   }
-  
+
 protected function addFiltersCriteria($c)
   {
     if (isset($this->filters['show_is_empty']))
@@ -531,29 +531,29 @@ protected function addFiltersCriteria($c)
     {
       $c->add(VideoPeer::LINK, strtr($this->filters['link'], '*', '%'), Criteria::LIKE);
     }
-    
+
     // Title
-    if (isset($this->filters['title']))
+    if (!empty($this->filters['title']))
     {
       $c->add(VideoI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
     }
     // Body
-    if (isset($this->filters['body']))
+    if (!empty($this->filters['body']))
     {
       $c->add(VideoI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
     }
     // Code
-    if (isset($this->filters['code']))
+    if (!empty($this->filters['code']))
     {
       $c->add(VideoI18nPeer::CODE, '%'.$this->filters['code'].'%', Criteria::LIKE);
     }
     // Image
-    if (isset($this->filters['img']))
+    if (!empty($this->filters['img']))
     {
       $c->add(VideoI18nPeer::IMG, '%'.$this->filters['img'].'%', Criteria::LIKE);
     }
     // Author
-    if (isset($this->filters['author']))
+    if (!empty($this->filters['author']))
     {
       $c->add(VideoI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
     }

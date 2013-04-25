@@ -16,24 +16,24 @@ class audioActions extends autoaudioActions
 
     // Empty string to null
     //
-    // backend saves empty strings as ''    
+    // backend saves empty strings as ''
     // some fields in DB has DEFAULT NULL
     // so their value changes from NULL to ''
     // it is impossible to set DEFAULT '' for all types of fields:
-    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.    
+    //     build-propel.xml:196:10: BLOB and TEXT columns cannot have DEFAULT values. in MySQL.
     /*foreach ($audio as $i => $value) {
     	if ($value === '') {
     		$audio[ $i ] = null;
     	}
     }*/
-    
+
     // set change_updated_at
     $this->audio->setChangeUpdatedAt($audio['change_updated_at']);
     $audio_i18ns = $this->audio->getAudioI18ns();
     foreach ($audio_i18ns as $audio_i18n) {
     	$audio_i18n->setChangeUpdatedAt($audio['change_updated_at']);
     }
-    
+
     if (isset($audio['created_at']))
     {
       if ($audio['created_at'])
@@ -77,7 +77,7 @@ class audioActions extends autoaudioActions
     {
       //$fileName = md5($this->getRequest()->getFileName('audio[file]').time().rand(0, 99999));
       //$ext = $this->getRequest()->getFileExtension('audio[file]');
-      $fileName = $this->getRequest()->getFileName('audio[file]');      
+      $fileName = $this->getRequest()->getFileName('audio[file]');
       // getFileExtension returns "mpga" for mp3
       $ext = strtolower(pathinfo($_FILES['audio']['name']['file'], PATHINFO_EXTENSION));
       $fileName = substr($fileName, 0, strlen($fileName) - strlen($ext));
@@ -321,7 +321,7 @@ class audioActions extends autoaudioActions
     // clear cache of a changed item
     ClearcachePeer::processItem($this->audio);
   }
-  
+
   /**
    * Save audio
    *
@@ -336,7 +336,7 @@ class audioActions extends autoaudioActions
       Item2itemcategoryPeer::updateItemCategories($audio['itemcategory'], ItemtypesPeer::ITEM_TYPE_AUDIO, $this->audio->getId());
     }
   }
-  
+
   protected function addFiltersCriteria($c)
   {
     if (isset($this->filters['show_is_empty']))
@@ -349,19 +349,19 @@ class audioActions extends autoaudioActions
     {
       $c->add(AudioPeer::SHOW, $this->filters['show']);
     }
-    
+
     // Title
-    if (isset($this->filters['title']))
+    if (!empty($this->filters['title']))
     {
       $c->add(AudioI18nPeer::TITLE, '%'.$this->filters['title'].'%', Criteria::LIKE);
     }
     // Body
-    if (isset($this->filters['body']))
+    if (!empty($this->filters['body']))
     {
       $c->add(AudioI18nPeer::BODY, '%'.$this->filters['body'].'%', Criteria::LIKE);
     }
     // Author
-    if (isset($this->filters['author']))
+    if (!empty($this->filters['author']))
     {
       $c->add(AudioI18nPeer::AUTHOR, '%'.$this->filters['author'].'%', Criteria::LIKE);
     }
