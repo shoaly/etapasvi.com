@@ -10,3 +10,5 @@ $(document).ready(function(){
 <?php slot('page_header') ?><?php echo __('Photo') ?><?php end_slot() ?>
 
 <?php include_partial('photo/content', array('id'=>$id, 'title'=>$title)) ?>
+
+<?php slot('share_items') ?>hide<?php end_slot() ?>
