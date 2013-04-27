@@ -6,6 +6,7 @@
 		<?php /*<li><a href="<?php echo url_for('@intro', true); ?>" title="<?php echo __('Buddha Boy Nepal') ?>" id="mi_intro"><?php echo __('Intro') ?></a></li> */ ?>
         <li id="mi_news"><a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('News') ?>"><?php echo __('News') ?></a></li>        
         <li id="mi_teachings"><i>»</i> <a href="<?php echo url_for('news/index?itemcategory=teachings', true); ?>" title="<?php echo __('Teachings') ?>"><?php echo __('Teachings') ?></a></li>
+        <li id="mi_precepts"><i>» »</i> <a href="<?php echo url_for('news/index?itemcategory=precepts', true); ?>" title="<?php echo __('Precepts') ?>"><?php echo __('Precepts') ?></a></li>
         <?php /*<li id="mi_stories"><i>»</i> <a href="<?php echo url_for('@news/index?itemcategory=teachings', true); ?>" title="<?php echo __('Stories') ?>"><?php echo __('Stories') ?></a></li>*/ ?>
         <?php /*<li id="mi_books"><i>»</i> <a href="<?php echo url_for('@news_index', true); ?>" title="<?php echo __('Books') ?>"><?php echo __('Books') ?></a></li>*/ ?>
         <li id="mi_projects"><i>»</i> <a href="<?php echo url_for('news/index?itemcategory=projects', true); ?>" title="<?php echo __('Projects') ?>"><?php echo __('Projects') ?></a></li>

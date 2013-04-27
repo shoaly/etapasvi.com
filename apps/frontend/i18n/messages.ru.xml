@@ -194,6 +194,10 @@
         <source>Category is empty</source>
         <target>Рубрика пустая</target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Precepts</source>
+        <target>Заповеди</target>
+      </trans-unit>
 
 <!-- News _show -->
       <trans-unit id="1">
