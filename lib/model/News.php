@@ -12,15 +12,15 @@ class News extends BaseNews
 	public function __call($method, $arguments)
 	{
 	  $data = preg_split('/I18n/', $method, 2);
-	
+
 	  if( count($data) != 2 )
 	  {
 	    // original call for support sfPropelBehavior
 	    return parent::__call($method, $arguments);
 	  }
-	
+
 	  list( $method, $culture ) = $data;
-	
+
 	  if (4 == strlen($culture))
 	  {
 	    $culture = strtolower(substr($culture, 0, 2)) . '_' . strtoupper(substr($culture, 2, 2));
@@ -29,25 +29,25 @@ class News extends BaseNews
 	  {
 	    $culture = strtolower($culture);
 	  }
-	
+
 	  $this->setCulture( $culture );
-	
+
 	  return call_user_func_array(array($this, $method), $arguments);
-	}	
+	}
 
 	public function __toString() {
 		return $this->getTitle();
 	}
-	
+
     public function getTitle($culture = null) {
 		return trim(parent::getTitle($culture));
 	}
-	
+
 	/*public function getTitle() {
-		
+
 		return parent::getTitle();
 	}*/
-	
+
 	public function getBodyPrepared() {
 		//return $this->prepareText( $this->getBody() );
 		return TextPeer::prepareText( $this->getBody() );
@@ -56,24 +56,24 @@ class News extends BaseNews
 	public function geShortbodyPrepared() {
 		return nl2br( $this->getShortbody() );
 	}
-	
+
 	public function getOriginalPrepared() {
 		return TextPeer::prepareText( $this->getOriginal() );
-	}	
-	
+	}
+
 	/*public function prepareText($text) {
 		$text = nl2br($text);
 		$text = str_ireplace( '<br />', '&nbsp;</p><p>', $text );
 		return $text;
 	}	*/
-	
+
 	/*
 	public function getCommentsCount()
-	{		
+	{
 		return (int)CommentsPeer::getCommentsCount( ItemtypesPeer::ITEM_TYPE_NAME_NEWS, $this->getId() );
 	}*/
-		
-	
+
+
 	/**
 	 * Получение ID стрницы для системы комментариев
 	 *
@@ -84,21 +84,21 @@ class News extends BaseNews
 	  if (empty($culture)){
 		$culture = sfContext::getInstance()->getUser()->getCulture();
 	  }
-	  return CommentsPeer::getCommentsIdentifier($culture, 'news', 'show', array('id' => $this->getId()));	  
+	  return CommentsPeer::getCommentsIdentifier($culture, 'news', 'show', array('id' => $this->getId()));
 	}
-	
-	
-	
+
+
+
 	/*public function getTypeName()
 	{
 	  return NewstypesPeer::getTypeName( $this->getType() );
 	}
-	
+
 	public function getTypeNameCapital()
 	{
 	  return ucfirst(NewstypesPeer::getTypeName( $this->getType() ));
 	}
-    
+
     /**
      * Является ли новость Учением
      */
@@ -109,7 +109,7 @@ class News extends BaseNews
         return false;
       }
 	}*/
-    
+
     /**
      * Является ли новость Обычной новостью
      */
@@ -120,7 +120,7 @@ class News extends BaseNews
         return false;
       }
 	}*/
-	
+
     /**
      * Получение ссылки на изображение
      */
@@ -131,15 +131,15 @@ class News extends BaseNews
 	  if ($path && $file) {
 	    //return PhotoPeer::remoteStorageGetUrl( $this->getThumbPath(), $this->getImg() );
 	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . NewsPeer::PHOTO_DIR . '/' . $path . '/' . $file;
-	    
+
 	    // If file requested without specifying it's size, Picasa would choose size by itself
 	    // for example return 512x512 while real size is 546x546
 	    return PhotoPeer::REMOTE_STORAGE_URL . $path . '/s' . NewsPeer::IMG_WIDTH . '/' . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
     /**
      * Получение ссылки на изображение
      */
@@ -152,40 +152,40 @@ class News extends BaseNews
 	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . NewsPeer::PHOTO_DIR . '/' . $path . '/' . $file;
 	    return PhotoPeer::REMOTE_STORAGE_URL . $path . '/' . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
     /**
      * Получение локального пути к изображению
-     */    
+     */
 	public function getFullLocal() {
 	  $path = $this->getFullPath();
 	  $file = $this->getImg();
 
-	  if ($path && $file) {	    	    
+	  if ($path && $file) {
 	    return sfConfig::get('sf_upload_dir') . "/" . NewsPeer::PHOTO_DIR . "/" . $path . "/" . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
-	
+
+
     /**
      * Получение локального пути к изображению
-     */    
+     */
 	public function getThumbLocal() {
 	  $path = $this->getThumbPath();
 	  $file = $this->getImg();
 
-	  if ($path && $file) {	    	    
+	  if ($path && $file) {
 	    return sfConfig::get('sf_upload_dir') . "/" . NewsPeer::PHOTO_DIR . "/" . $path . "/" . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
-	
+
+
     /**
      * Получение ссылки на новость
      */
@@ -196,18 +196,18 @@ class News extends BaseNews
 	  //$module = $this->getTypeName();
 	  //$url_pattern = $module . '/show?id=' . $this->getId();
 	  $url_pattern = 'news/show?id=' . $this->getId();
-	  
+
 	  $title_translit = TextPeer::urlTranslit($this->getTitle( $culture ), $culture );
 	  if (!empty($title_translit)) {
 	    $url_pattern .= '&title=' . $title_translit;
 	  }
 
 	  $url = sfContext::getInstance()->getController()->genUrl($url_pattern, true, $culture);
-	  
+
 	  return $url;
 	}
 
-	
+
 	/**
 	 * Заголовок для RSS
 	 *
@@ -216,7 +216,7 @@ class News extends BaseNews
 	public function getRssTitle() {
 	  return $this->getTitle();
 	}
-	
+
 	/**
 	 * Ссылка для RSS
 	 *
@@ -225,7 +225,7 @@ class News extends BaseNews
 	public function getRssLink() {
 	  return $this->getUrl();
 	}
-	
+
 	/**
 	 * Описание для RSS
 	 *
@@ -239,7 +239,7 @@ class News extends BaseNews
       $rss_description .= $this->getShortbody();
 	  return $rss_description;
 	}
-	
+
 	/**
 	 * Дата публикации для RSS.
 	 *
@@ -248,11 +248,11 @@ class News extends BaseNews
 	public function getRssPubDate() {
 	  return max($this->getUpdatedAt(), $this->getUpdatedAtExtra());
 	}
-	
+
 	/**
 	 * Расширенный метод для получения автора.
 	 * Если $use_default_culture_if_empty, то возвращается значение на языке по умолчанию.
-	 */	
+	 */
 	public function getAuthor($culture = null, $use_default_culture_if_empty = false)
 	{
 	  $author = parent::getAuthor($culture);
@@ -263,12 +263,12 @@ class News extends BaseNews
         }
 	  }
       return $author;
-	}	
-	
+	}
+
 	/**
 	 * Расширенный метод для получения ссылки.
 	 * Если $use_default_culture_if_empty, то возвращается значение на языке по умолчанию.
-	 */	
+	 */
 	public function getLink($culture = null, $use_default_culture_if_empty = false)
 	{
 	  $link = parent::getLink($culture);
@@ -280,7 +280,7 @@ class News extends BaseNews
 	  }
       return trim($link);
 	}
-	
+
 	/**
 	 * Получение последней даты обновления.
 	 * Берётся максимальная из дат updated_at и updated_at_extra
@@ -290,10 +290,10 @@ class News extends BaseNews
 	{
 	  return max($this->getUpdatedAt(), $this->getUpdatedAtExtra());
 	}
-	
+
 	/**
 	 * Get HTML for exporting
-	 */	
+	 */
 	public function getHtml($culture = '')
 	{
 	  //sfConfig::set('sf_web_debug', false);
@@ -301,18 +301,18 @@ class News extends BaseNews
 
 	  if ($culture) {
 	    $prev_culture = sfContext::getInstance()->getUser()->setCulture($culture);
-	    sfContext::getInstance()->getUser()->setCulture($culture); 
+	    sfContext::getInstance()->getUser()->setCulture($culture);
 	  }
-	  
-	  $html = get_component('news', 'show', array('newsitem'=>$this, 'no_item2item'=>true));
+
+	  $html = get_component('news', 'show', array('newsitem'=>$this, 'no_item2item'=>true, 'no_original'=>true, 'no_itemcategory'=>true));
 	  $html .= '<br/><br/><a href="'.$this->getUrl($culture).'">'.$this->getUrl($culture).'</a>';
-      		  
+
 	  if ($prev_culture) {
 	  	sfContext::getInstance()->getUser()->setCulture($prev_culture);
 	  }
       return $html;
 	}
-	
+
 	/**
 	 * Retrieving Item Categories connected to item
 	 *
@@ -321,7 +321,7 @@ class News extends BaseNews
 	{
 	  return Item2itemcategoryPeer::getItemCategories(ItemtypesPeer::ITEM_TYPE_NEWS, $this->getId());
 	}
-	
+
 	/**
 	 * Retrieving IDs of Item Categories connected to item
 	 *
@@ -336,7 +336,7 @@ class News extends BaseNews
 
 	  return $id_list;
 	}
-	
+
 	/**
 	 * Get item type name
 	 *
@@ -346,5 +346,5 @@ class News extends BaseNews
 	{
 		return ItemtypesPeer::ITEM_TYPE_NAME_NEWS;
 	}
-	
+
 }

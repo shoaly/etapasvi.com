@@ -4,7 +4,7 @@
 <?php include_component('itemcategory', 'show', array('module_action'=>'news/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_NEWS), 'items_count_total'=>$pager->getNbResults())); ?>
 
 <?php
-$navigation_html = get_partial('global/navigation', array('pager'=>$pager, 'module_action'=>'news/index') ); 
+$navigation_html = get_partial('global/navigation', array('pager'=>$pager, 'module_action'=>'news/index') );
 echo $navigation_html;
 
 $news_list = $pager->getResults();
@@ -24,3 +24,8 @@ $news_list = $pager->getResults();
 <br/>
 <a href="https://docs.google.com/document/d/10igx0jLsoVeemdKxEasxJG5xbrqI2cfRWh3pJnn28iQ/edit"><?php echo __("Dictionary") ?></a> (<?php echo __("by Andy Good/LTJ") ?>)
 <?php endif ?>
+
+<?php if (in_array($sf_request->getParameter('itemcategory'), array('teachings', 'messages'))): ?>
+    <br/><br/>
+    <?php include_component('documents', 'showTeachings'); ?>
+<?php endif; ?>

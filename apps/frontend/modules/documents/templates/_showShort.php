@@ -3,8 +3,8 @@
     // если Заголовок или Автор не указан на текущем языке берём из языка по умолчанию
     $title  = $documents->getTitle($sf_user->getCulture(), true);
     ?>
-    <?php if (!$hide_wrapper): ?>
-        <?php include_partial('documents/listHeader'); ?>	
+    <?php if (empty($hide_wrapper) || !$hide_wrapper): ?>
+        <?php include_partial('documents/listHeader', array('short'=>$short)); ?>	
     <?php endif ?>
     <tr <?php if (!$last): ?>class="middle"<?php endif ?>>
         <td class="main_col"><a href="<?php echo $documents->getUrl(); ?>"><?php echo $title; ?></a></td>
@@ -14,7 +14,7 @@
         <td><?php echo format_datetime( $documents->getUpdatedAt(), 'd MMMM yyyy'); ?></td>
         <td><a href="<?php echo $documents->getDirectUrl(); ?>" target="_blank" class="file" title="<?php echo __('Download'); ?>"><?php echo __('Download'); ?></a></td> */ ?>
     </tr>
-   <?php if (!$hide_wrapper): ?>
+   <?php if (empty($hide_wrapper) || !$hide_wrapper): ?>
     </table>
     <?php endif ?>
 <?php endif ?>
