@@ -52,7 +52,7 @@
     </tr>
     <?php foreach($chapter_list as $i=>$chapter_row): ?>
         <?php 
-        // 1-ю строку пропускаем
+        // 1-СЋ СЃС‚СЂРѕРєСѓ РїСЂРѕРїСѓСЃРєР°РµРј
         if ($i == 0) {
             continue;
         }

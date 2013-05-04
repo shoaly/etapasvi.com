@@ -3,7 +3,7 @@
 # перестаёт создвать SQL по данному файлу - причина может быть в комментариях. - какой-то косяк в #
 # $this->lines = explode("\n", $this->cleanup($value)); #
 # /lib/symfony/yaml/sfYamlParser.php #
-# 
+#
 # и проверить, что кодировка UTF-8
 #
 
@@ -16,7 +16,7 @@ propel:
   text_i18n:
     title:            { type: varchar(255), required: true }
     body:             { type: longvarchar }
-    
+
   itemtypes:
     id:               ~
     name:             { type: varchar(10), required: true }
@@ -29,7 +29,7 @@ propel:
     item2_type:       { type: integer, required: true, foreignTable: itemtypes, foreignReference: id, index: true }
     _uniques:
       item:     [item1_id, item1_type, item2_id, item2_type]
-      
+
   itemcategory:
     id:               ~
     itemcategory_id:  ~
@@ -41,13 +41,13 @@ propel:
       show:     [show]
     _uniques:
       code:     [code]
-      
+
   itemcategory_i18n:
     title:            { type: longvarchar, required: true }
     items_count:      { type: varchar(255) }
     _indexes:
       title:              [title]
-    
+
   item2itemcategory:
     id:               ~
     itemcategory_id:  ~
@@ -59,8 +59,8 @@ propel:
       item_type:        [item_type]
     _uniques:
       item:     [itemcategory_id, item_id, item_type]
-    
-    
+
+
   news:
     id:               ~
     date:             { type: date }
@@ -77,10 +77,10 @@ propel:
       updated_at:     [updated_at]
       date:           [date]
       show:           [show]
-      order:          [order] 
+      order:          [order]
 
   news_i18n:
-    updated_at_extra:       ~ 
+    updated_at_extra:       ~
     title:            { type: longvarchar, required: true }
     shortbody:        { type: longvarchar, required: true }
     body:             { type: longvarchar, required: true }
@@ -93,7 +93,7 @@ propel:
       culture:              [culture]
       updated_at_extra:     [updated_at_extra]
       body:                 [body]
-    
+
   newstypes:
     id:               ~
     name:             { type: varchar(20), required: true }
@@ -137,7 +137,7 @@ propel:
     author:           { type: varchar(255) }
     _indexes:
       updated_at_extra:     [updated_at_extra]
-    
+
   photoalbum:
     id:               ~
     created_at:       ~
@@ -150,7 +150,7 @@ propel:
   photoalbum_i18n:
     title:            { type: longvarchar }
     body:             { type: longvarchar }
-    author:           { type: varchar(255) }    
+    author:           { type: varchar(255) }
 
   video:
     id:               ~
@@ -202,7 +202,7 @@ propel:
       show:           [show]
       file:           [file]
       remote:         [remote]
-    
+
   audio_i18n:
     updated_at_extra: ~
     title:            { type: longvarchar }
@@ -210,7 +210,7 @@ propel:
     author:           { type: longvarchar }
     _indexes:
       updated_at_extra:     [updated_at_extra]
-      
+
   revisionhistory:
     id:               ~
     created_at:       ~
@@ -225,7 +225,7 @@ propel:
       item_id:       [item_id]
       itemtypes_id:  [itemtypes_id]
       item_culture:  [item_culture]
-      
+
   documents:
     id:               ~
     created_at:       ~
@@ -242,7 +242,7 @@ propel:
       all_cultures:   [all_cultures]
     _uniques:
       file:           [file]
-    
+
   documents_i18n:
     updated_at_extra: ~
     title:            { type: longvarchar }
@@ -250,7 +250,7 @@ propel:
     body:             { type: longvarchar }
     _indexes:
       updated_at_extra:     [updated_at_extra]
-      
+
   clearcache:
     id:               ~
     created_at:       ~
@@ -267,7 +267,7 @@ propel:
       item_culture:      [item_culture]
       cleared:           [cleared]
       document_created:  [document_created]
-      
+
   contactus:
     id:               ~
     created_at:       ~
@@ -279,3 +279,31 @@ propel:
     _indexes:
       show:       [show]
       culture:    [culture]
+
+  location:
+    id:               ~
+    location_id:      ~
+    created_at:       ~
+    show:             { type: boolean, defaultValue: true }
+    order:            { type: integer, required: true }
+    lat:              { type: double }
+    lng:              { type: double }
+    _indexes:
+      order:    [order]
+      show:     [show]
+
+  location_i18n:
+    title:            { type: longvarchar }
+
+  locationlink:
+    id:               ~
+    location_id:      ~
+    upto_location_id: { type: integer, foreignTable: location, foreignReference: id }
+    created_at:       ~
+    show:             { type: boolean, defaultValue: true }
+    order:            { type: integer, required: true }
+    title:            { type: varchar(255) }
+    link:             { type: varchar(255) }
+    _indexes:
+      show:       [show]
+      order:      [order]

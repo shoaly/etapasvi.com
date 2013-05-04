@@ -1,0 +1,15 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      Locationlink
+    theme:            default
+
+    list:
+      max_per_page: 1000
+      sort: [order, desc]
+      display: [id, _location, _upto_location, created_at, show, order, =title, link]
+      title:   Location Link
+      filters: [show, location_id]
+      object_actions:
+        _edit:
+        _delete:

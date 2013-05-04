@@ -608,5 +608,79 @@ CREATE TABLE `contactus`
 	KEY `culture`(`culture`)
 )Type=MyISAM;
 
+#-----------------------------------------------------------------------------
+#-- location
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `location`;
+
+
+CREATE TABLE `location`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`location_id` INTEGER,
+	`created_at` DATETIME,
+	`show` TINYINT default 1,
+	`order` INTEGER  NOT NULL,
+	`lat` DOUBLE,
+	`lng` DOUBLE,
+	PRIMARY KEY (`id`),
+	KEY `order`(`order`),
+	KEY `show`(`show`),
+	INDEX `location_FI_1` (`location_id`),
+	CONSTRAINT `location_FK_1`
+		FOREIGN KEY (`location_id`)
+		REFERENCES `location` (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- location_i18n
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `location_i18n`;
+
+
+CREATE TABLE `location_i18n`
+(
+	`title` TEXT,
+	`id` INTEGER  NOT NULL,
+	`culture` VARCHAR(7)  NOT NULL,
+	PRIMARY KEY (`id`,`culture`),
+	CONSTRAINT `location_i18n_FK_1`
+		FOREIGN KEY (`id`)
+		REFERENCES `location` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- locationlink
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `locationlink`;
+
+
+CREATE TABLE `locationlink`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`location_id` INTEGER,
+	`upto_location_id` INTEGER,
+	`created_at` DATETIME,
+	`show` TINYINT default 1,
+	`order` INTEGER  NOT NULL,
+	`title` VARCHAR(255),
+	`link` VARCHAR(255),
+	PRIMARY KEY (`id`),
+	KEY `show`(`show`),
+	KEY `order`(`order`),
+	INDEX `locationlink_FI_1` (`location_id`),
+	CONSTRAINT `locationlink_FK_1`
+		FOREIGN KEY (`location_id`)
+		REFERENCES `location` (`id`),
+	INDEX `locationlink_FI_2` (`upto_location_id`),
+	CONSTRAINT `locationlink_FK_2`
+		FOREIGN KEY (`upto_location_id`)
+		REFERENCES `location` (`id`)
+)Type=MyISAM;
+
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

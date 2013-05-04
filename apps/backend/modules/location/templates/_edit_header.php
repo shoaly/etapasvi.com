@@ -1,0 +1,1 @@
+<a href="http://universimmedia.pagesperso-orange.fr/geo/loc.htm" target="_blank">Lat/Lng</a><br/><br/>

@@ -1,0 +1,122 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      Location
+    theme:            default
+
+    list:
+      peer_method: doSelectWithI18n
+      max_per_page: 1000
+      sort: [order, desc]
+      display: [id, location_id, created_at, show, order, lat, lng, =title]
+      title:   Location
+      filters: [show, location_id]
+      object_actions:
+        _edit:
+        _delete:
+
+    edit:
+      display:
+        "NONE": [location_id, created_at, show, order, lat, lng]
+        "EN":
+          - title_i18n_en
+        "RU":
+          - title_i18n_ru
+        "CS":
+          - title_i18n_cs
+        "HU":
+          - title_i18n_hu
+        "PL":
+          - title_i18n_pl
+        "FR":
+          - title_i18n_fr
+        "ZH_CN":
+          - title_i18n_zh_CN
+        "VI":
+          - title_i18n_vi
+        "JA":
+          - title_i18n_ja
+        "ES":
+          - title_i18n_es
+        "IT":
+          - title_i18n_it
+        "ET":
+          - title_i18n_et
+        "NE":
+          - title_i18n_ne
+        "BN":
+          - title_i18n_bn
+        "HE":
+          - title_i18n_he
+        "ZH_TW":
+          - title_i18n_zh_TW
+        "DE":
+          - title_i18n_de
+      fields:
+        title_i18n_en:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_ru:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_cs:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_hu:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_pl:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_fr:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_zh_cn:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_vi:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_ja:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_es:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_it:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_et:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_ne:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_bn:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_he:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_zh_tw:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
+
+        title_i18n_de:
+          name: Title
+          params: disabled=false maxlength=255 style="width:80%"
