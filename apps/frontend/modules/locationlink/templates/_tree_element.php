@@ -35,7 +35,7 @@
         </td>
         <td class="wrap">
             <?php foreach ($element['links'] as $locationlink): ?>
-                <a href="<?php echo $locationlink->getLink(); ?>" class="external nowrap"><?php if($locationlink->getTitle()): ?><?php echo $locationlink->getTitle(); ?><?php else: ?><?php echo $locationlink->getLinkPrepared(); ?><?php endif ?></a>&nbsp;&nbsp;
+                <a href="<?php echo $locationlink->getLink(); ?>" class="external nowrap" rel="nofollow"><?php if($locationlink->getTitle()): ?><?php echo $locationlink->getTitle(); ?><?php else: ?><?php echo $locationlink->getLinkPrepared(); ?><?php endif ?></a>&nbsp;&nbsp;
             <?php endforeach ?>
         </td>
     </tr>
