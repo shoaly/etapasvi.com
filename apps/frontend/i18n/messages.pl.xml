@@ -194,6 +194,26 @@
         <source>Category is empty</source>
         <target></target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Precepts</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Sangha</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>By location</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>By language</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Location</source>
+        <target></target>
+      </trans-unit>
 
 <!-- News _show -->
       <trans-unit id="1">

@@ -45,7 +45,7 @@
       <trans-unit id="1">
         <source>Palden Dorje</source>
         <target>Палден Дордже</target>
-      </trans-unit>     
+      </trans-unit>
       <trans-unit id="1">
         <source>Dharma Sangha</source>
         <target>Дхарма Сангха</target>
@@ -65,7 +65,7 @@
       <trans-unit id="1">
         <source>Biography</source>
         <target>Биография</target>
-      </trans-unit>      
+      </trans-unit>
 	  <trans-unit id="1">
         <source>Teachings</source>
         <target>Учения</target>
@@ -133,7 +133,7 @@
       <trans-unit id="1">
         <source>Blessing</source>
         <target>Благословение</target>
-      </trans-unit>  
+      </trans-unit>
       <trans-unit id="1">
         <source>FAQ</source>
         <target>Вопросы-ответы</target>
@@ -161,7 +161,7 @@
       <trans-unit id="1">
         <source>Servers</source>
         <target>Сервера</target>
-      </trans-unit>      
+      </trans-unit>
       <trans-unit id="1">
         <source>Visitor Map</source>
         <target>Карта посетителей</target>
@@ -169,7 +169,7 @@
       <trans-unit id="1">
         <source>Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.</source>
         <target>Маха Самбодхи Дхарма Сангха: учения, новости, фото, видео, аудио, биография.</target>
-      </trans-unit>      
+      </trans-unit>
       <trans-unit id="1">
         <source>This page is translation of corresponding English page, switch into English language to see original text.</source>
         <target>На данной странице представлен перевод соответствующей страницы английской версии.</target>
@@ -197,6 +197,22 @@
       <trans-unit id="1">
         <source>Precepts</source>
         <target>Заповеди</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Sangha</source>
+        <target>Сангха</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>By location</source>
+        <target>По местоположению</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>By language</source>
+        <target>По языку</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Location</source>
+        <target>Местоположение</target>
       </trans-unit>
 
 <!-- News _show -->
@@ -266,23 +282,23 @@
         <source>Footnote</source>
         <target>Примечение</target>
       </trans-unit>
-      
+
 <!-- audio -->
       <trans-unit id="1">
         <source>Size</source>
         <target>Размер</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Duration</source>
         <target>Время</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Lyrics</source>
         <target>Текст</target>
       </trans-unit>
-      
+
 <!-- mobile -->
       <trans-unit id="1">
         <source>Mobile</source>
@@ -308,12 +324,12 @@
         <source>Title</source>
         <target>Название</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Document</source>
         <target>Документ</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Type</source>
         <target>Тип</target>
@@ -354,7 +370,7 @@
       <trans-unit id="1">
         <source>Translate</source>
         <target>Перевести</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Error occured while loading form. Please, try again.</source>
@@ -375,42 +391,42 @@
         <source>Translate website interface from English into any other language.</source>
         <target>Перевести интерфейс сайта с английского языка на любой другой язык.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Tutorials:</source>
         <target>Руководства:</target>
-      </trans-unit>   
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Instructions for eTapasvi.com translators</source>
         <target>Инструкции для переводчиков eTapasvi.com</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Video tutorials:</source>
         <target>Видео-инструкции:</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Translation Guide</source>
         <target>Руководство по переводу</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Video subtitles translation</source>
         <target>Перевод субтитров к видео</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Tips for translators:</source>
         <target>Советы переводчикам:</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Carefully read/watch instructions – respect your time and website programmer's time.</source>
         <target>Внимательно ознакомьтесь с инструкциями – цените своё время и время программиста.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>If you would like to correct translation you sent, send both incorrect and correct versions in your language. It would allow programmer to find text, which should be replaced with correct one.</source>
         <target>Если вы хотите внести изменения в ранее отправленный перевод, отправляйте и прежний и новый варианты. Это позволит программисту найти текст, который должен быть заменён.</target>
@@ -420,22 +436,22 @@
         <source>Before performing translation make sure, that text you are going to translate is not translated yet on website.</source>
         <target>Перед тем, как выполнять перевод, убедитесь, что текст на сайте уже не переведён.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Distortion and misinterpretation of information during translation is not acceptable.</source>
         <target>Искажение информации в процессе перевода и вольный перевод недопустимы.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.</source>
         <target>В переведённом тексте заменяйте Фото-, Видео- и Аудиоэлементы на [photo], [video] и [audio] соответственно. Делайте ссылки подчёркнутыми.</target>
-      </trans-unit>      
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.</source>
         <target>Только переводы, сделанные согласно данной инструкции и отправленные с помощью ссылки "Перевод", публикуются на сайте. Переводы, отправленные напрямую на электронную почту сайта, не публикуются.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Received translations are usually processed once a week, you can check sent translations status</source>
         <target>Полученные переводы обычно обрабатываются один раз в неделю, вы можете отслеживать статус отправленных переводов</target>
@@ -455,12 +471,12 @@
         <source>for example, if you translate news item, copy it's title and whole text into this field</source>
         <target>например, если вы переводите новость, скопируйте её заголовок и текст в это поле</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>for example, if you translate news item, paste translation of it's title and text into this field</source>
         <target>например, если вы переводите новость, вставьте перевод её заголовка и текста в это поле</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Translation</source>
         <target>Перевод</target>
@@ -484,20 +500,20 @@
       <trans-unit id="1">
         <source>Comment</source>
         <target>Комментарий</target>
-      </trans-unit> 
-      
+      </trans-unit>
+
 <!-- Revision history -->
 
       <trans-unit id="1">
         <source>Revision history</source>
         <target>История изменений</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Current revision</source>
         <target>Текущая версия</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Compare selected revisions</source>
         <target>Сравнить выбранные версии</target>

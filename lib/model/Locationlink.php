@@ -48,4 +48,12 @@ class Locationlink extends BaseLocationlink {
 		return LocationPeer::retrieveByPk($this->getUptoLocationId());
 	}
 
+    /**
+     * Get link without protocol
+     */
+    public function getLinkPrepared()
+    {
+        return preg_replace("/.*\/\//", '', $this->getLink());
+    }
+
 } // Locationlink

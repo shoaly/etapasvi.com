@@ -32,7 +32,7 @@
 #body_bio #mi_bio a,
 #body_bio_v1 #mi_bio_v1 a,
 #body_encyclopedia #mi_encyclopedia a,
-#body_contactus #mi_contactus a,
+#body_sangha #mi_sangha a,
 #body_search #mi_search a,
 #body_project #mi_project a,
 #body_faq #mi_faq a,
@@ -1978,6 +1978,11 @@ table.documents_tbl {
 #recurring_donation_form td {
     padding: 3px;
     width: 50%;
+}
+
+/* sangha */
+#location_map {
+    height: 400px;
 }
 
 

@@ -1,5 +1,5 @@
-<?php slot('body_id') ?>body_contactus<?php end_slot() ?>
-<?php slot('page_header') ?><?php echo __('Contact Us') ?><?php end_slot() ?>
+<?php slot('body_id') ?>body_sangha<?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Sangha') ?><?php end_slot() ?>
 
 <?php /*include_component('text', 'show', array('id'=>3)); */ ?>
 <?php /*
@@ -10,6 +10,11 @@
 
 <strong><?php echo __('E-mail') ?>:</strong> <a href="mailto:<?php echo UserPeer::MAIL_ADDRESS ?>"><?php echo UserPeer::MAIL_ADDRESS ?></a>
 <br/><br/>
+
+<h2 id="by_location"><?php echo __('By location'); ?></h2>
+<?php include_component('locationlink', 'show');  ?>
+
+<h2 id="by_language"><?php echo __('By language'); ?></h2>
 <table class="documents_tbl">
     <tr>
         <th><div><?php echo __('Language'); ?></div></th>
@@ -51,7 +56,7 @@
         <th><?php echo __('E-mail') ?></th>
     </tr>
     <?php foreach($chapter_list as $i=>$chapter_row): ?>
-        <?php 
+        <?php
         // 1-ю строку пропускаем
         if ($i == 0) {
             continue;
@@ -73,4 +78,4 @@
 <?php endif ?>
 */ ?>
 <br/>
-<?php include_component('comments', 'show'); ?>	
+<?php include_component('comments', 'show'); ?>

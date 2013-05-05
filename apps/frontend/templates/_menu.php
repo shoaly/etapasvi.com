@@ -70,7 +70,9 @@
 		<?php /*<li id="mi_forum"><a href="http://forum.etapasvi.com" title="<?php echo __('Forum') ?>"><?php echo __('Forum') ?></a></li>*/ ?>
 		<li id="mi_search"><a href="<?php echo url_for('@search', true); ?>" title="<?php echo __('Search') ?>"><?php echo __('Search') ?></a></li>
         <?php /* <li id="mi_servers"><a href="<?php echo url_for('@servers', true); ?>" title="<?php echo __('Servers') ?>"><?php echo __('Servers') ?></a></li> */ ?>
-		<li id="mi_contactus"><a href="<?php echo url_for('@contactus', true); ?>" title="<?php echo __('Contact Us') ?>"><?php echo __('Contact Us') ?></a></li>
+		<li id="mi_sangha"><a href="<?php echo url_for('@sangha', true); ?>" title="<?php echo __('Sangha') ?>"><?php echo __('Sangha') ?></a></li>
+        <li id="mi_contactus_by_location"><i>»</i> <a href="<?php echo url_for('@sangha', true); ?>#by_location" title="<?php echo __('By location') ?>"><?php echo __('By location') ?></a></li>
+        <li id="mi_contactus_by_language"><i>»</i> <a href="<?php echo url_for('@sangha', true); ?>#by_language" title="<?php echo __('By language') ?>"><?php echo __('By language') ?></a></li>
 		<li>&nbsp;</li>
 		<li>
             <form action="<?php echo url_for('@search', true); ?>">

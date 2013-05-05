@@ -64,6 +64,10 @@ var new_photo_height;
 var carousel_photo_count =7;
 // browser update
 var $buoop = {};
+// location map
+var location_map;
+// markers and info windows for the location map
+var location_markers = [];
 
 $(document).ready(function() {
     var embedded_or_print = false;
@@ -1250,6 +1254,42 @@ function recurringFormAmountChange(el)
     el.value = el.value.replace(/,/, '.').replace(/[^0-9.]/, '');
 }
 
+// initialize sangha location map
+function locationMap()
+{
+    var myLatlng = new google.maps.LatLng(37.073527, 145.722125);
+    var myOptions = {
+        zoom: 1,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    location_map = new google.maps.Map(document.getElementById("location_map"), myOptions);
+
+    // adding markers and info windows
+    var marker_info;
+    for (location_marker_index in location_markers) {
+        marker_info = location_markers[ location_marker_index ];
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(marker_info.lat, marker_info.lng),
+            map: location_map,
+            title: marker_info.title,
+            location_id: marker_info.location_id
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            $('html, body').animate({scrollTop: $("#location_"+this.location_id).offset().top}, 500);
+        });
+    }
+}
+// fosuc location map on certain location
+function locationMapFocus(location_id, zoom, title)
+{
+    if (typeof(location_markers[location_id]) != "undefined") {
+        //window.location.hash = '#'+title;
+        $('html, body').animate({scrollTop: $("#location_map").position().top}, 500);
+        location_map.panTo(new google.maps.LatLng(location_markers[location_id].lat, location_markers[location_id].lng));
+        location_map.setZoom(zoom);
+    }
+}
 
 // replace all occurences of a string
 String.prototype.replaceAll = function(search, replace){
