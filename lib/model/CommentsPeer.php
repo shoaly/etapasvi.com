@@ -4,13 +4,13 @@ class CommentsPeer /*extends BaseCommentsPeer*/
 {
 	// для doCountWithI18n
 	const COUNT_DISTINCT = 'COUNT(DISTINCT comments.ID)';
-	
+
 	const STATUS_VISIBLE = 0;
 	const STATUS_HIDDEN  = 1;
-	
+
 	const DISQUS_EMBED  = 'http://etapasvi.disqus.com/embed.js';
 	//const DISQUS_EMBED  = 'http://mediacdn.disqus.com/1299805542/build/system/embed.js';
-	
+
 
 	/**
 	 * ID страницы для систем комментирования, пример:
@@ -21,13 +21,15 @@ class CommentsPeer /*extends BaseCommentsPeer*/
 	public static function getCommentsIdentifier($culture = '', $module = '', $action = '', $parameters = array())
 	{
 		if (!$culture || !$module || !$action) {
-			
+
 			$sf_context  = sfContext::getInstance();
-			$culture	 = $sf_context->getUser()->getCulture();			
+            if (!$culture) {
+                $culture	 = $sf_context->getUser()->getCulture();
+            }
 		  	$module    	 = $sf_context->getModuleName();
 
 			$action      = $sf_context->getActionName();
-            
+
 			// хардкод для подгружаемых фото
 			if ( $module == 'photo' && ($action == 'content' || $action == 'albumcontent') ) {
 			    $action = 'show';
@@ -52,12 +54,12 @@ class CommentsPeer /*extends BaseCommentsPeer*/
 	 * @return unknown
 	 */
 	public static function getCommentsPageUrl($comments_page_url = '') {
-  	  // убираем всё что после ?  	  	  
+  	  // убираем всё что после ?
   	  $comments_page_url = preg_replace("/\?.*/", "", $comments_page_url) ;
-  	  // подставляем домен  	  
+  	  // подставляем домен
   	  $comments_page_url = preg_replace('/(http:\/\/)([^\/]+)(\/.*)/', '$1' . UserPeer::DOMAIN_NAME_MAIN . '$3', $comments_page_url);
-  	  
+
   	  return $comments_page_url;
 	}
-	
+
 }
