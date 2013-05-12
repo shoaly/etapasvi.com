@@ -3,7 +3,7 @@
 <?php include_component('photo', 'showwrapper', array('id'=>$id, 'title'=>$title, 'photo'=>$photo, 'no_check_title'=>$no_check_title, 'next_photo'=>$next_photo, 'prev_photo'=>$prev_photo, 'item2item_html'=>$item2item_html)); ?>
 <?php /* include_partial('comments/tools', array('empty'=>true));*/ ?>
 
-<?php 
+<?php
 // http://tasks.etapasvi.com/issues/389#note-6
 // http://www.electrictoolbox.com/running-javascript-functions-after-disqus-loaded/
 ?>
@@ -25,12 +25,14 @@
 
 <?php if (!empty($photo)): ?>
     <?php $comments_identifier = CommentsPeer::getCommentsIdentifier('', '', '', array('id'=>$photo->getId())); ?>
+    <?php $like_identifier = CommentsPeer::getCommentsIdentifier(sfConfig::get('sf_default_culture'), '', '', array('id'=>$photo->getId())); ?>
 <?php else: ?>
     <?php $comments_identifier = CommentsPeer::getCommentsIdentifier('', '', '', array('id'=>$id)); ?>
+    <?php $like_identifier = CommentsPeer::getCommentsIdentifier(sfConfig::get('sf_default_culture'), '', '', array('id'=>$id)); ?>
 <?php endif ?>
-<div class="like-toolbar"><?php include_partial('global/like', array('identifier'=>$comments_identifier, 'init'=>true));  ?></div>
+<div class="like-toolbar"><?php include_partial('global/like', array('identifier'=>$like_identifier, 'init'=>true));  ?></div>
 
-<div id="photo_comments">    
+<div id="photo_comments">
     <?php if (!empty($photo)): ?>
         <?php include_partial('comments/count'); ?>
         <a href="#" onclick="showPhotoComments(this)"><?php echo __('Comments') ?></a>: <a href="#disqus_thread" onclick="showPhotoComments(this)" data-disqus-identifier="<?php echo $comments_identifier; ?>" class="no_decor">0</a>
