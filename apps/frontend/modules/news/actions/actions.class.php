@@ -10,13 +10,13 @@
  */
 class newsActions extends sfActions
 {
- 
+
   public function executeShow(sfWebRequest $request)
   {
   	$this->id 	 = $request->getParameter('id');
-  	$this->title = $request->getParameter('title');  	  	  	
+  	$this->title = $request->getParameter('title');
   }
-  
+
   /**
    * Redirect to news
    *
@@ -26,7 +26,7 @@ class newsActions extends sfActions
   {
   	$this->redirect('news/show?id='.$request->getParameter('id'));
   }
-  
+
   /**
    * Redirect to news
    *
@@ -36,7 +36,7 @@ class newsActions extends sfActions
   {
   	$this->redirect('news/show?id='.$request->getParameter('id'));
   }
-  
+
   /**
    * Redirect to news
    *
@@ -46,7 +46,7 @@ class newsActions extends sfActions
   {
   	$this->redirect('news/show?id='.$request->getParameter('id'));
   }
-  
+
   /**
    * Redirect to news
    *
@@ -56,21 +56,21 @@ class newsActions extends sfActions
   {
   	$this->redirect('news/show?id='.$request->getParameter('id'));
   }
-  
+
   public function executePreview(sfWebRequest $request)
   {
   	$this->id 	 = $request->getParameter('id');
-  	$this->title = $request->getParameter('title'); 
-    $this->setTemplate('show');	
-  }  
-  
+  	$this->title = $request->getParameter('title');
+    $this->setTemplate('show');
+  }
+
   /**
    * Список новостей
    *
    * @param sfWebRequest $request
    */
   public function executeIndex(sfWebRequest $request)
-  {  	
+  {
   	// определение типа новости
 	/*$this->type = $request->getParameter('type');
 	if (!$this->type) {
@@ -78,29 +78,29 @@ class newsActions extends sfActions
 	}*/
 
     $c = $this->getIndexCriteria();
-    
+
 	$pager = new sfPropelPagerI18n('News', NewsPeer::NEWS_PER_PAGE);
     $pager->setCriteriaI18n($c);
     $pager->setPage($this->getRequestParameter('page', 1));
     $pager->init();
     $this->pager = $pager;
-    
+
     // check if Itemcategory exists
     $itemcategory = $this->getRequestParameter('itemcategory');
     if ($itemcategory && !ItemcategoryPeer::getByCode($itemcategory)) {
     	$this->forward404();
-    }    
-    
+    }
+
     // если передан номер страницы больше, чем имеется страниц
     if ($request->getParameter('page') > $this->pager->getLastPage()) {
     	$this->forward404();
     }
-    
+
     // установка типа в зависимости от типа
-    $response = $this->getResponse(); 
-	$response->setTitle(ucfirst($this->type)); 
-  }  
-  
+    $response = $this->getResponse();
+	$response->setTitle(ucfirst($this->type));
+  }
+
   /**
    * Получения условия для выбора списка новостей
    *
@@ -110,14 +110,14 @@ class newsActions extends sfActions
   {
     $c = new Criteria();
     $c->add( NewsPeer::SHOW, 1);
-    //$c->add( NewsI18nPeer::BODY, '', Criteria::NOT_EQUAL );      
+    //$c->add( NewsI18nPeer::BODY, '', Criteria::NOT_EQUAL );
     NewsPeer::addVisibleCriteria( $c );
     $c->addDescendingOrderByColumn( NewsPeer::ORDER );
-    
+
     // take Itemcategory into account
     $itemcategory = $this->getRequestParameter('itemcategory');
     ItemcategoryPeer::getIndexCriteria($c, ItemtypesPeer::ITEM_TYPE_NEWS, $itemcategory);
-    
+
     // на странице с типом News выводятся все новости
     /*$type = $this->getRequestParameter('type');
     if ( !empty($type) && $type != NewstypesPeer::$type_names[NewstypesPeer::NEWS_TYPE_NEWS]) {
@@ -127,45 +127,45 @@ class newsActions extends sfActions
 
     return $c;
   }
-  
+
   public function executeMain(sfWebRequest $request)
   {
   	/*if (IdeaPeer::isThinkingNow()) {
       $this->best_idea = IdeaPeer::getBestIdea();
   	}*/
   }
-  
+
   /**
    * RSS
    *
    * @param sfWebRequest $request
    */
   public function executeRss(sfWebRequest $request)
-  {  	  	
-  	$this->getResponse()->setHttpHeader('Content-type', 'text/xml; charset=UTF-8');  	
-  	
+  {
+  	$this->getResponse()->setHttpHeader('Content-type', 'text/xml; charset=UTF-8');
+
   	// получаем элементы в $this->feed_list
   	self::getFeed($request, true);
-  	
+
   	$user_culture = $this->getUser()->getCulture();
-  	 	
+
   	$this->link 			 = sfConfig::get('app_domain_name');
   	$this->last_build_date   = date( 'r', time());
   	$this->language          = UserPeer::getCultureIso( $user_culture );
-  	
+
   	$items = array();
 	foreach ($this->feed_list as $group) {
 	  foreach ($group['list'] as $item) {
 	  	 $link    = $item->getRssLink();
-	  	 
+
 	  	 // description
 	  	 $description = $item->getRssDescription();
-	  	 if ($group['type'] != ItemtypesPeer::ITEM_TYPE_NAME_PHOTO && 
+	  	 if ($group['type'] != ItemtypesPeer::ITEM_TYPE_NAME_PHOTO &&
 	  	     $group['type'] != ItemtypesPeer::ITEM_TYPE_NAME_VIDEO && $description
 	  	 ) {
 	  	 	$description = $description . '...';
-	  	 } 
-	  	
+	  	 }
+
 	     $items[] = array(
 	       'title' 	     => $item->getRssTitle(),
 	       'link'  	     => $link,
@@ -176,44 +176,44 @@ class newsActions extends sfActions
 	  }
 	}
 
-	$this->items = $items;  	
+	$this->items = $items;
   }
-  
+
   /**
    * Обновления
    *
    * @param sfWebRequest $request
    */
   public function executeFeed(sfWebRequest $request)
-  {  
+  {
     // check if Itemcategory exists
     $itemcategory = $this->getRequestParameter('itemcategory');
     if ($itemcategory && !ItemcategoryPeer::getByCode($itemcategory)) {
     	$this->forward404();
-    }  
-      
+    }
+
 	self::getFeed($request);
   }
-  
+
   /**
    * Получение Ленты обновлений
    *
    * @param получение элементов для RSS $rss
    */
   public function getFeed( sfWebRequest $request, $rss = false )
-  {  	
+  {
 	$this->feed_list 	 = array();
 	$limit_start 		 = 0;
 	$feed_items_per_page = NewsPeer::FEED_ITEMS_PER_PAGE;
 	// кол-во страниц влево и вправо от текущей
 	$plus_digits 		 = 5;
-  	
+
 	// навигация
 	$this->page = (int)$request->getParameter('page');
 	if ($this->page < 1) {
 		$this->page = 1;
 	}
-	
+
 	$con = Propel::getConnection();
  /*
 SELECT
@@ -231,12 +231,12 @@ LIMIT 0, 50
 		WHERE ".LetterBannerPeer::LETTER." = ?
 		AND ".LetterBannerPeer::REGION_ID." = ?
 		GROUP BY (".LetterBannerPeer::LETTER.")";*/
- 	
+
  	// Добавляем SELECT'ы выбора элементов
 	$sub_query = '';
     $sub_query_counter = 0;
     $cur_culture = sfContext::getInstance()->getUser()->getCulture();
-    
+
     $itemcategory = $request->getParameter('itemcategory');
 
     // добавляем в выборку каждый тип элемента
@@ -244,69 +244,69 @@ LIMIT 0, 50
 	  $table_name 	= strtolower($type);
 	  $item_type_id =  ItemtypesPeer::getItemTypeId($type);
 	  $c = new Criteria();
-	  
+
 	  $fn = array($type . 'Peer', 'addVisibleCriteria');
 
 	  // take Itemcategory into account
 	  if (!$rss) {
 	    ItemcategoryPeer::getIndexCriteria($c, $item_type_id, $itemcategory);
 	  }
-	  
+
 	  try {
-	    call_user_func( $fn, $c );  	
+	    call_user_func( $fn, $c );
 
 	    $criteria_string = $c->toString();
 
 	  	// Criteria:
 		// SQL (may not be complete): SELECT  FROM `news`, `news_i18n` WHERE news.SHOW=:p1 AND news_i18n.BODY<>:p2
-		// Params: news.SHOW => 1, news_i18n.BODY => '' 
+		// Params: news.SHOW => 1, news_i18n.BODY => ''
 	    if (!$criteria_string) {
 	  	  continue;
 	    }
-	    $criteria_sql_list = explode("\n", $criteria_string);  	    
+	    $criteria_sql_list = explode("\n", $criteria_string);
 	    $criteria_sql      = str_replace('SQL (may not be complete): ', '', $criteria_sql_list[1]);
-	    
+
 	    // join clause
 	    if ($rss && (constant($table_name . 'Peer::ALL_CULTURES') || in_array($table_name, array('photo', 'audio')))) {
 	    	if (in_array($table_name, array('photo', 'audio'))) {
-	    		$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID 
+	    		$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID
 	    						AND ({$table_name}_i18n.CULTURE = '{$cur_culture}' OR {$table_name}_i18n.CULTURE = '" . sfConfig::get('sf_default_culture') . "')) ";
 	    	} else {
-	    		$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID 
-	    						AND ({$table_name}_i18n.CULTURE = '{$cur_culture}' OR 
+	    		$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID
+	    						AND ({$table_name}_i18n.CULTURE = '{$cur_culture}' OR
 	    						({$table_name}.ALL_CULTURES = 1 AND {$table_name}_i18n.CULTURE = '" . sfConfig::get('sf_default_culture') . "'))) ";
 	    	}
 	    } else {
-	    	$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID 
-	    		AND {$table_name}_i18n.CULTURE = '{$cur_culture}') ";	
+	    	$join_sql = "FROM {$table_name} LEFT JOIN {$table_name}_i18n ON ({$table_name}_i18n.ID = {$table_name}.ID
+	    		AND {$table_name}_i18n.CULTURE = '{$cur_culture}') ";
 	    }
-	    
+
 	    // filter by itemcategory
 	    if (!$rss && $itemcategory) {
 	        if ($table_name == 'photo') {
-	          // instead of photoalbums photos are shown in Feed   
+	          // instead of photoalbums photos are shown in Feed
 	          $join_sql .= " INNER JOIN item2itemcategory ON ({$table_name}.PHOTOALBUM_ID=item2itemcategory.ITEM_ID AND item2itemcategory.ITEM_TYPE=" .
 	                       ItemtypesPeer::ITEM_TYPE_PHOTOALBUM . ") ";
 	        } else {
 			  $join_sql .= " INNER JOIN item2itemcategory ON ({$table_name}.ID=item2itemcategory.ITEM_ID AND item2itemcategory.ITEM_TYPE={$item_type_id}) ";
 	        }
 	    }
-	    
+
 	    $criteria_sql = preg_replace(
-	    	'/FROM.*WHERE/', 
-	    	$join_sql . 'WHERE', 
+	    	'/FROM.*WHERE/',
+	    	$join_sql . 'WHERE',
 	    	$criteria_sql
 	    );
-	    
+
 	    // прописываем выбираемые параметры
 	    $criteria_sql      = str_replace(
-	    	'SELECT  FROM', 
-	    	"SELECT {$table_name}.id, if({$table_name}.updated_at > {$table_name}_i18n.updated_at_extra || {$table_name}_i18n.updated_at_extra is NULL, 
-	    	{$table_name}.updated_at, {$table_name}_i18n.updated_at_extra) as updated_at, '" 
-	    	. $type . "' as item_type FROM", 
+	    	'SELECT  FROM',
+	    	"SELECT {$table_name}.id, if({$table_name}.updated_at > {$table_name}_i18n.updated_at_extra || {$table_name}_i18n.updated_at_extra is NULL,
+	    	{$table_name}.updated_at, {$table_name}_i18n.updated_at_extra) as updated_at, '"
+	    	. $type . "' as item_type FROM",
 	    	$criteria_sql
 		);
-    	
+
     	// items with ALL_CULTURE attribute are shown if item exists in the current language or ALL_CULTURES = 1
     	// photo and audio are shown always
     	if (constant($table_name . 'Peer::ALL_CULTURES')) {
@@ -317,29 +317,29 @@ LIMIT 0, 50
     	} elseif (!in_array($table_name, array('photo', 'audio'))) {
     		$criteria_sql .= " and {$table_name}_i18n.culture = '" .  $cur_culture . "'";
     	}
-	    
+
 	    // for RSS
 	    if ($rss) {
 	    	// ограничиваем по дате
 	    	$min_date = date("Y-m-d H:i:s", strtotime(NewsPeer::RSS_PERIOD));
-	    	$criteria_sql .= " and (updated_at >= '" . $min_date . "' 
+	    	$criteria_sql .= " and (updated_at >= '" . $min_date . "'
 	    					  or {$table_name}_i18n.updated_at_extra >= '" . $min_date . "') ";
 	    	// выбираются только элементы с заголовками
 	    	$criteria_sql .= " and {$table_name}_i18n.title != '' ";
-	    	// do not show Documents generated from News
-	    	if ($type == ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS) {
-	    		$criteria_sql .= " and ({$table_name}.news_id = '' or {$table_name}.news_id is NULL) ";	
-	    	}
 	    }
-		
+        // do not show Documents generated from News
+        if ($type == ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS) {
+            $criteria_sql .= " and ({$table_name}.news_id = '' or {$table_name}.news_id is NULL) ";
+        }
+
 	    // получаем значения параметров
 	    preg_match_all("/ => ([^,]+)/", $criteria_sql_list[2], $criteria_params);
 	    foreach ($criteria_params[1] as $i=>$param) {
 	      $criteria_sql = str_replace(':p' . ($i + 1), $param, $criteria_sql);
-	    }	    
-	    
+	    }
+
 	    $criteria_sql .= " GROUP BY {$table_name}.ID ";
-	    
+
 	    if ($sub_query_counter > 0) {
 	      $sub_query .= ' UNION ';
 	    }
@@ -353,15 +353,15 @@ LIMIT 0, 50
 	// подсчитываем кол-во
 	$query_count = "
 	 	SELECT count(*) as count
-		FROM ({$sub_query}) as feed"; 	
+		FROM ({$sub_query}) as feed";
  	// выполняем сформированный запрос
  	try {
 	  $stmt = $con->prepare($query_count);
-	
+
 	  // ограничиваем кол-во записей
-	  //$stmt->bindValue(1, 0); 
-	  //$stmt->bindValue(2, 20); 
-	
+	  //$stmt->bindValue(1, 0);
+	  //$stmt->bindValue(2, 20);
+
 	  if ($stmt->execute()) {
 	    $count_items = $stmt->fetch();
 	  }
@@ -374,36 +374,36 @@ LIMIT 0, 50
 	$query_list = "
 	 	SELECT
 		    id, item_type, updated_at
-		FROM 
+		FROM
 			({$sub_query}) as feed
 		ORDER BY
 		    updated_at DESC";
-	
+
 	// для RSS используется ограничение по дате, поэтому не используем LIMIT
 	if (!$rss) {
 	  $this->count_items = $count_items['count'];
 	  $this->last_page = ceil($count_items['count'] / $feed_items_per_page);
 	  $limit_start 	 = ($this->page-1) * $feed_items_per_page;
-	  
-	  $query_list .= " 
-	  	LIMIT {$limit_start}, {$feed_items_per_page}";	  
+
+	  $query_list .= "
+	  	LIMIT {$limit_start}, {$feed_items_per_page}";
 	}
 
  	// выполняем сформированный запрос
  	try {
 	  $stmt = $con->prepare($query_list);
-	
+
 	  // ограничиваем кол-во записей
-	  //$stmt->bindValue(1, 0); 
-	  //$stmt->bindValue(2, 20); 
-	
+	  //$stmt->bindValue(1, 0);
+	  //$stmt->bindValue(2, 20);
+
 	  if ($stmt->execute()) {
 	    $all_items = $stmt->fetchAll();
 	  }
  	} catch (Exception $e) {
 		return;
 	}
-	
+
 	// группируем элементы по типам
 	$grouped_items = array();
 
@@ -422,15 +422,15 @@ LIMIT 0, 50
 	foreach ($grouped_items as $group) {
 		// получаем тип элементов группы по первому элементу группы
 		$type = $group['type'];
-		
+
 		// Использование строки, как имени статического класса позволяет только PHP > 5.3, поэтому хардкодим
 		$c = new Criteria();
 		$c->add( strtolower($type) . '.ID', $group['list'], Criteria::IN);
 		//$c->addDescendingOrderByColumn( strtolower($type) . '.UPDATED_AT' );
-		
+
 		$fn = array($type . 'Peer', 'doSelectWithI18n');
 	    try {
-	      $list = call_user_func( $fn, $c ); 
+	      $list = call_user_func( $fn, $c );
 	    } catch (Exception $e) {
 	      //echo $e->getMessage();
 	      continue;
@@ -446,7 +446,7 @@ LIMIT 0, 50
 	    		}
 	    	}
 	    }
-	    
+
 		$this->feed_list[] = array('type'=>$type, 'list'=>$list_sorted);
 	}
 
@@ -458,9 +458,9 @@ LIMIT 0, 50
 	  }
 	  if ($i > $this->last_page) {
 		break;
-	  }	
-	  $this->page_numbers_list[] = $i;	  	
-	}	
+	  }
+	  $this->page_numbers_list[] = $i;
+	}
   }
-  
+
 }
