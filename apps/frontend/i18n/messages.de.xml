@@ -20,7 +20,7 @@
 
       <trans-unit id="1">
         <source>Maha Sambodhi Dharma Sangha</source>
-        <target></target>
+        <target>Maha Sambodhi Dharma Sangha</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -180,12 +180,12 @@
 
       <trans-unit id="1">
         <source>Documents</source>
-        <target></target>
+        <target>Dokumente</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Dharmic Forest</source>
-        <target></target>
+        <target>Dharmischer Wald</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -210,7 +210,7 @@
 
       <trans-unit id="1">
         <source>Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.</source>
-        <target>Dharma Sangha (vormals Palden Dorje, Ram Bahadur Bomjan, Buddha Boy aus Nepal): neue Nachrichten, Photo, Video, Biographie, Reden.</target>
+        <target>Maha Sambodhi Dharma Sangha: Lehren, neue Nachrichten, Photo, Video, Audio, Biographie.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -230,42 +230,42 @@
 
       <trans-unit id="1">
         <source>Category</source>
-        <target></target>
+        <target>Kategorie</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>All</source>
-        <target></target>
+        <target>Alle</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Category is empty</source>
-        <target></target>
+        <target>Kategorie ist leer</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Precepts</source>
-        <target></target>
+        <target>Grundprinzipien</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Sangha</source>
-        <target></target>
+        <target>Sangha</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>By location</source>
-        <target></target>
+        <target>nach Ort</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>By language</source>
-        <target></target>
+        <target>nach Sprache</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Location</source>
-        <target></target>
+        <target>Ort</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -285,7 +285,7 @@
 
       <trans-unit id="1">
         <source>Original text</source>
-        <target></target>
+        <target>Originaltext</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -357,10 +357,10 @@
         <source>Duration</source>
         <target>Dauer</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Lyrics</source>
-        <target></target>
+        <target>Liedtext</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -377,62 +377,60 @@
         <source>Watch on YouTube</source>
         <target>Siehe auf YouTube</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Click "CC" in the player to show captions</source>
-        <target></target>
+        <target>Clicke "CC" auf dem Abspieler um Untertitel zu zeigen</target>
       </trans-unit>
 
-<!-- documents -->
       <trans-unit id="1">
         <source>Title</source>
-        <target></target>
+        <target>Titel</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Document</source>
-        <target></target>
+        <target>Dokument</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Type</source>
-        <target></target>
+        <target>Typ</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Uploaded on</source>
-        <target></target>
+        <target>Hochgeladen am </target>
       </trans-unit>
 
-<!-- item2item -->
       <trans-unit id="1">
         <source>Associated News</source>
-        <target></target>
+        <target>Dazugehörige neue Nachrichten</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Associated Photo</source>
-        <target></target>
+        <target>Dazugehöriges Photo</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Associated Video</source>
-        <target></target>
+        <target>Dazugehöriges Video</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Associated Audio</source>
-        <target></target>
+        <target>Dazugehöriges Audio</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Associated Documents</source>
-        <target></target>
+        <target>Dazugehörige Dokumente</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Translate</source>
-        <target>Übersetze</target>
+        <target>Übersetzen</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -452,32 +450,32 @@
 
       <trans-unit id="1">
         <source>Translate website interface from English into any other language.</source>
-        <target>Übersetze das ""Interface"" der Webseite von Englisch in eine andere Sprache.</target>
+        <target>Übersetze das "Interface" der Webseite von Englisch in eine andere Sprache.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Tutorials:</source>
-        <target></target>
-      </trans-unit>   
-      
+        <target>Tutorien:</target>
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Instructions for eTapasvi.com translators</source>
-        <target></target>
+        <target>Hinweise für eTapasvi.com Übersetzer</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Video tutorials:</source>
-        <target></target>
+        <target>Video Tutorien:</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Translation Guide</source>
-        <target></target>
+        <target>Übersetzungsanleitung</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Video subtitles translation</source>
-        <target></target>
+        <target>Übersetzen von Video Untertiteln</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -504,40 +502,40 @@
         <source>Distortion and misinterpretation of information during translation is not acceptable.</source>
         <target>Entstellungen und Fehlinterpretationen von Informationen können bei der Übersetzung nicht akzeptiert werden.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.</source>
-        <target>Ersetze Photo-, Video- und Audio-Elemente im übersetzten Text mit entsprechenden Kennzeichnungen [Photo], [Video] und [Audio].</target>
-      </trans-unit>      
-      
+        <target>Ersetze Photo-, Video- und Audio-Elemente im übersetzten Text mit entsprechenden Kennzeichnungen [Photo], [Video] und [Audio]. Links sind zu unterstreichen.</target>
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.</source>
-        <target></target>
+        <target>Es werden nur Übersetzungen auf der Webseite veröffentlicht, die entsprechend den Instruktionen gefertigt und unter Verwendung des "Übersetzen" Links versandt wurden.</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Received translations are usually processed once a week, you can check sent translations status</source>
-        <target>Empfangene Übersetzungen werden gewöhnlich einmal pro Woche hochgeladen, du kannst das Hinzufügen auf der Webseite verfolgen unter</target>
+        <target>Empfangene Übersetzungen werden gewöhnlich einmal pro Woche hochgeladen, du kannst das Hinzufügen auf der Webseite verfolgen </target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>here</source>
-        <target></target>
+        <target>hier</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>and in</source>
-        <target></target>
+        <target>und in </target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>for example, if you translate news item, copy it's title and whole text into this field</source>
-        <target>wenn du z. B. einen Artikel aus ""neue Nachrichten"" übersetzt, kopiere den Titel und den gesamten Text in dieses Feld</target>
+        <target>wenn du z. B. einen Artikel aus "neue Nachrichten" übersetzt, kopiere den Titel und den gesamten Text in dieses Feld</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>for example, if you translate news item, paste translation of it's title and text into this field</source>
-        <target>wenn du z. B. eine Artikel aus ""neue Nachrichten"" übersetzt, kopiere die Übersetzung des Titels und Textes in dieses Feld</target>
+        <target>wenn du z. B. einen Artikel aus "neue Nachrichten" übersetzt, kopiere die Übersetzung des Titels und Textes in dieses Feld</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -594,49 +592,56 @@
         <source>Page Not Found or Not Translated</source>
         <target>Seite wurde nicht gefunden oder nicht übersetzt.</target>
       </trans-unit>
-      
-<!-- contactus -->
+
       <trans-unit id="1">
         <source>Contact Details</source>
         <target>Kontaktangaben</target>
       </trans-unit>
 
-        <trans-unit id="1">
-            <source>Like</source>
-            <target>Mag ich</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>Dislike</source>
-            <target>Mag ich nicht</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>I like this</source>
-            <target>Gefällt mir</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>I dislike this</source>
-            <target>Gefällt mir nicht</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>Unlike</source>
-            <target>Unlike</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>Undislike</source>
-            <target>Undislike</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>Would you like to share?</source>
-            <target>Möchtest du es mit anderen teilen?</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>Close</source>
-            <target>Schließen</target>
-        </trans-unit>
-        <trans-unit id="1">
-            <source>Glad you liked it!</source>
-            <target>Schön, dass es dir gefällt!</target>
-        </trans-unit>
+      <trans-unit id="1">
+        <source>Like</source>
+        <target>Mag ich</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Dislike</source>
+        <target>Mag ich nicht</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>I like this</source>
+        <target>Gefällt mir</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>I dislike this</source>
+        <target>Gefällt mir nicht</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Unlike</source>
+        <target>Mag ich doch nicht</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Undislike</source>
+        <target>Mag ich doch</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Would you like to share?</source>
+        <target>Möchtest du es mit anderen teilen?</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Close</source>
+        <target>Schließen</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Glad you liked it!</source>
+        <target>Schön, dass es dir gefällt!</target>
+      </trans-unit>
 
 <!-- утф -->
     </body>
