@@ -1175,6 +1175,8 @@ html #disqus_thread {
 .social_visitor_map,
 .social_youtube,
 .social_picasa,
+.social_odnoklassniki,
+.social_moimir,
 .social_rss,
 .social_zoho,
 .social_github {
@@ -1216,6 +1218,12 @@ html #disqus_thread {
     }
 .social_picasa {
     background-position: -128px -64px;
+    }
+.social_odnoklassniki {
+    background-position: -129px -256px;
+    }
+.social_moimir {
+    background-position: 0 -256px;
     }
 .social_rss {
     background-position: -0 -128px;
@@ -1724,6 +1732,9 @@ label.error {
     }
 .st_container a {
     margin: 0 4px 0 0;
+    }
+.culture_ru .st_container a {
+    margin: 0 -4px 0 0;
     }
 .large_text #content .st_container {
     font-size: 10px;

@@ -28,7 +28,14 @@
     <a href="http://whos.amung.us/stats/ppc9yoe3440f/" target="_blank" title="<?php echo __('Visitor Map') ?>" class="social_visitor_map"><span><?php echo __('Visitor Map') ?></span></a>
     <a href="http://www.youtube.com/user/etapasvi" target="_blank" title="<?php echo __('YouTube') ?>" class="social_youtube"><span><?php echo __('YouTube') ?></span></a>
 
-    <a href="https://picasaweb.google.com/105320929368395530858" target="_blank" title="<?php echo __('Picasa') ?>" class="social_picasa"><span><?php echo __('Picasa') ?></span></a>
+    <?php if ($sf_user->getCulture() == 'ru'): ?>
+        <a href="http://odnoklassniki.ru/group/52853546877166" target="_blank" title="<?php echo __('Одноклассники') ?>" class="social_odnoklassniki"><span><?php echo __('Одноклассники') ?></span></a>
+    <? else: ?>
+        <a href="https://picasaweb.google.com/105320929368395530858" target="_blank" title="<?php echo __('Picasa') ?>" class="social_picasa"><span><?php echo __('Picasa') ?></span></a>
+    <? endif ?>
     <br/>
     <a href="https://github.com/etapasvi/etapasvi.com" target="_blank" title="<?php echo __('GitHub') ?>" class="social_github"><span><?php echo __('GitHub') ?></span></a>
     <a href="http://feeds.feedburner.com/<?php echo $sf_user->getCulture(); ?>/etapasvi" target="_blank" title="<?php echo __('RSS') ?>" class="social_rss"><span><?php echo __('RSS') ?></span></a>
+    <?php if ($sf_user->getCulture() == 'ru'): ?>
+        <a href="http://my.mail.ru/community/etapasvi/" target="_blank" title="<?php echo __('Мой Мир@Mail.Ru') ?>" class="social_moimir"><span><?php echo __('Мой Мир@Mail.Ru') ?></span></a>
+    <? endif ?>
