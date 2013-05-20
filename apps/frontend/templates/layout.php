@@ -208,8 +208,7 @@ var _gaq = _gaq || [];
 _gaq.push(
     ['_setAccount', 'UA-4047144-3'],
     ['_setDomainName', 'www.etapasvi.com'],
-    ['_trackPageview'],
-    ['_trackPageLoadTime']
+    ['_trackPageview']
 );
 (function() {
  var ga = document.createElement('script');
@@ -217,9 +216,6 @@ _gaq.push(
  ga.setAttribute('async', 'true');
  document.documentElement.firstChild.appendChild(ga);
 })();
-jQuery.error = function (message) {
-    _gaq.push(['_trackEvent', 'jQuery Error', message, navigator.userAgent]);
-}
 </script>
 <?php /*<img style="width:0px;height:0px" src="http://www.maploco.com/vm24/s/3901457.png" />*/ ?>
 </body>
