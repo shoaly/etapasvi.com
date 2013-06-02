@@ -1,12 +1,7 @@
 <?php slot('body_id') ?>body_404<?php end_slot() ?>
-<?php slot('page_header') ?><?php echo __('Page Not Found or Not Translated') ?><?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Page Not Found') ?><?php end_slot() ?>
 
-<dl>
-	<dt><?php echo __("Page Not Transalated") ?></dt>
-    <dd><?php echo __("If you can translate this page into your language please email us at") ?> <a href="mailto:<?php echo UserPeer::MAIL_ADDRESS ?>"><?php echo UserPeer::MAIL_ADDRESS ?></a></dd>
+<?php echo __("You may have typed the address (URL) incorrectly. Check it to make sure you've got the exact right spelling, capitalization or switch to another lamguage") ?>.
 
-	<dt><?php echo __("Page Not Found") ?></dt>
-    <dd><?php echo __("You may have typed the address (URL) incorrectly. Check it to make sure you've got the exact right spelling, capitalization or switch to another lamguage") ?>.</dd>
-</dl>
-<br/>
+<br/><br/>
 <a href="javascript:history.back();void(0)"><?php echo __("Back") ?></a>

@@ -1,5 +1,5 @@
 <?php
- 
+
 class videoComponents extends sfComponents
 {
   public function executeShow()
@@ -12,60 +12,60 @@ class videoComponents extends sfComponents
   	$c = new Criteria();
   	$c->addDescendingOrderByColumn( VideoPeer::ID );
     $c->add( VideoPeer::SHOW, 1);
-    //$c->add( VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL );   
+    //$c->add( VideoI18nPeer::CODE, '', Criteria::NOT_EQUAL );
     VideoPeer::addVisibleCriteria($c);
   	$c->setLimit( 3 );
-  	
+
   	$video_list = VideoPeer::doSelectWithI18n( $c );
-  	
+
     if ($video_list) {
       $this->video_list = $video_list;
-    } 
-  }  
-  
-  public function executeShowwrapper($action)
-  {  	
-	$this->video = VideoPeer::retrieveByPk( $this->id );
-  	//$this->forward404Unless( $this->video && $this->video->getCode() && $this->video->getShow() );  
-  	$culture = sfContext::getInstance()->getUser()->getCulture();
-  	
-  	if (!$this->video || !$this->video->getCode($culture, $this->video->getAllCultures()) || !$this->video->getShow()) {
-  		//@sfActions::forward('default', 'error404');
-  		throw new sfError404Exception();
-  	}	
-
-  	$video_title = $this->video->getTitle();
-  	
-  	if ($video_title) {
-  		
-  		// если на страницу перешли с другого языка, то title неверный
-//  		$video_title_translit = TextPeer::urlTranslit($video_title);
-//  		if ( $this->title != $video_title_translit ) {
-//  			//sfActions::redirect( 'video/show?id=' . (int)$this->id . '&title=' . $video_title_translit );
-//  			sfActions::redirect( $this->video->getUrl() );
-//  		}
-        if (!ItemtypesPeer::isItemUrlValid($this->video->getUrl())) {
-            sfActions::redirect( $this->video->getUrl() );
-        }
-  		
-	    $context = sfContext::getInstance();
-	    $i18n =  $context->getI18N();
-	    
-	    //$title = $i18n->__('Dharma Sangha') . ' -';	    
-	    $response = $this->getResponse(); 
-	    $response->setTitle($video_title);	
-  	} elseif (!$video_title && $this->title) {
-  		// если у элемента нет Заголовка, а в URL передан title, редиректим
-  		//sfActions::redirect( $this->video->getUrl() );
-        if (!ItemtypesPeer::isItemUrlValid($this->video->getUrl())) {
-          sfActions::redirect( $this->video->getUrl() );
-        }
-  	}
-    
-    // set attributes from revision if needed
-    ItemtypesPeer::setItemFromRevision($this->video);
+    }
   }
-  
+
+//  public function executeShowwrapper($action)
+//  {
+//	$this->video = VideoPeer::retrieveByPk( $this->id );
+//  	//$this->forward404Unless( $this->video && $this->video->getCode() && $this->video->getShow() );
+//  	$culture = sfContext::getInstance()->getUser()->getCulture();
+//
+//  	if (!$this->video || !$this->video->getCode($culture, $this->video->getAllCultures()) || !$this->video->getShow()) {
+//  		//@sfActions::forward('default', 'error404');
+//  		throw new sfError404Exception();
+//  	}
+//
+//  	$video_title = $this->video->getTitle();
+//
+//  	if ($video_title) {
+//
+//  		// если на страницу перешли с другого языка, то title неверный
+////  		$video_title_translit = TextPeer::urlTranslit($video_title);
+////  		if ( $this->title != $video_title_translit ) {
+////  			//sfActions::redirect( 'video/show?id=' . (int)$this->id . '&title=' . $video_title_translit );
+////  			sfActions::redirect( $this->video->getUrl() );
+////  		}
+//        if (!ItemtypesPeer::isItemUrlValid($this->video->getUrl())) {
+//            sfActions::redirect( $this->video->getUrl() );
+//        }
+//
+//	    $context = sfContext::getInstance();
+//	    $i18n =  $context->getI18N();
+//
+//	    //$title = $i18n->__('Dharma Sangha') . ' -';
+//	    $response = $this->getResponse();
+//	    $response->setTitle($video_title);
+//  	} elseif (!$video_title && $this->title) {
+//  		// если у элемента нет Заголовка, а в URL передан title, редиректим
+//  		//sfActions::redirect( $this->video->getUrl() );
+//        if (!ItemtypesPeer::isItemUrlValid($this->video->getUrl())) {
+//          sfActions::redirect( $this->video->getUrl() );
+//        }
+//  	}
+//
+//    // set attributes from revision if needed
+//    ItemtypesPeer::setItemFromRevision($this->video);
+//  }
+
   /**
    * Встранивание видео
    *
@@ -77,7 +77,7 @@ class videoComponents extends sfComponents
       if ($video) {
         $this->code  = $video->getCode(sfContext::getInstance()->getUser()->getCulture(), true);
       }
-    } 
+    }
   }
- 
+
 }

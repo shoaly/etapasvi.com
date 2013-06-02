@@ -3,14 +3,14 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <?php include_http_metas() ?>
-<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
-<?php /*include_title()*/ ?>	
+<meta name="robots" content="noindex,nofollow" />
+<?php /*include_title()*/ ?>
 <?php if (UserPeer::isHomePage()): ?>
     <title><?php echo sfConfig::get('app_site_name'); ?></title>
 <?php else: ?>
     <title><?php echo __(html_entity_decode($sf_response->getTitle())); ?> - <?php echo sfConfig::get('app_site_name'); ?></title>
 <?php endif ?>
-<link rel="stylesheet" type="text/css" href="http://<?php echo sfConfig::get('app_domain_name'); ?>/css/m_css.css" />	
+<link rel="stylesheet" type="text/css" href="http://<?php echo sfConfig::get('app_domain_name'); ?>/css/m_css.css" />
 <link rel="shortcut icon" type="image/x-icon" href="http://<?php echo sfConfig::get('app_domain_name'); ?>/favicon.ico" />
 <link rel="apple-touch-icon" href="http://<?php echo sfConfig::get('app_domain_name'); ?>/apple-touch-icon.png">
 <script type="text/javascript">
@@ -24,7 +24,7 @@
         } else {
             c_list_top.parentNode.removeChild(c_list_top);
         }
-    }    
+    }
 </script>
 </head>
 
@@ -40,8 +40,8 @@
         <td width="118">
             <a href="<?php echo url_for('@main', true); ?>" title="<?php echo __('Home') ?>" class="no_decor" id="bubble_title"><i></i>Tapasvi.<span>com</span></a>
         </td>
-        <td>  
-            <a href="#" onclick="switchCulture()" id="bubble_lang"><?php echo UserPeer::getCultureIso($user_culture); ?></a>      
+        <td>
+            <a href="#" onclick="switchCulture()" id="bubble_lang"><?php echo UserPeer::getCultureIso($user_culture); ?></a>
         </td>
         <td>
             <i class="slide_arrow" onclick="switchCulture()"></i>
@@ -50,16 +50,16 @@
     </table>
 </div>
 
-<div id="content_wrapper">    
+<div id="content_wrapper">
 	<div id="content">
         <h1><?php include_slot('page_header') ?></h1>
 		<?php echo $sf_content ?>
 	</div>
     <?php /* id используется в /lib/symfony/exception/sfError404Exception.class.php */ ?>
-	<div id="footer">        
-        <?php include_partial('global/share'); ?>        
+	<div id="footer">
+        <?php include_partial('global/share'); ?>
         <div id="culture_list"><!--UDLS-->
-            <?php 
+            <?php
                 $uri          = $sf_request->getPathInfo();
                 foreach( UserPeer::getCultures() as $culture) {
                     $user_cultures[] = '/' . $culture . '/';
@@ -68,10 +68,10 @@
                 $i = 0;
             ?>
 
-            <?php foreach(UserPeer::getCulturesData() as $culture => $culture_data): ?>                                
+            <?php foreach(UserPeer::getCulturesData() as $culture => $culture_data): ?>
                 <?php $i++ ?>
                 <?php if ($i > count(UserPeer::getCultures())) break; ?>
-                
+
                 <?php if ($user_culture == $culture): ?>
                     <strong><?php echo UserPeer::getCultureIso( $culture ) ?></strong>&nbsp;
                 <?php else: ?>
@@ -80,7 +80,7 @@
             <?php endforeach?>
         <!--UDLE--></div>
 		<?php echo __('Copyright') ?> &copy; 2009-<?php echo date("Y"); ?>, www.eTapasvi.com
-        <?php 
+        <?php
             // Генерация ссылки на Полную версию
             $url_full = UserPeer::switchUrlMobile();
             // В ссылке на гланую страницу Полной версии добавляется /version/full

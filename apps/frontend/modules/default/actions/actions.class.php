@@ -3,7 +3,7 @@
 /*
  * This file is part of the symfony package.
  * (c) 2004-2006 Fabien Potencier <fabien.potencier@symfony-project.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -18,7 +18,7 @@
  */
 class defaultActions extends sfActions
 {
-  
+
   /**
    * Error page for page not found (404) error
    *
@@ -27,13 +27,21 @@ class defaultActions extends sfActions
   {
     // http://bsds.etapasvi.com/issues/65
     // получаем файл 404 ошибки из кэша
-    
-    // Выводим закэшированную 404 страницу, если 
+
+    // Выводим закэшированную 404 страницу, если
     // - находимся на основном вебе
     //if (UserPeer::isMainBack()) {
     sfSuperCache::showError404();
     //}
-     	
+
+  }
+
+  /**
+   * The same as 404 but having noindex meta tag
+   */
+  public function executeNottranslated()
+  {
+
   }
 
 }

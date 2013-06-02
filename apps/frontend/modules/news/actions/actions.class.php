@@ -15,6 +15,42 @@ class newsActions extends sfActions
   {
   	$this->id 	 = $request->getParameter('id');
   	$this->title = $request->getParameter('title');
+
+    $this->newsitem = NewsPeer::retrieveByPk( $this->id );
+
+    if ( !$this->newsitem || !$this->newsitem->getShow()) {
+      //sfActions::forward('default', 'error404');
+      //@sfActions::forward404('123');
+      throw new sfError404Exception();
+    }
+
+    if (!$this->newsitem->getBody()) {
+      //sfActions::forward('default', 'error404');
+      sfActions::forward('default', 'nottranslated');
+      //sfActions::redirect('news', 'index');
+      //$this->getContext()->getActionStack()->getLastEntry()->getActionInstance()->redirect('default/nottranslated');
+      return false;
+    }
+
+    $newitem_url = $this->newsitem->getUrl();
+
+    // если адрес новости неверный, редиректим на нужный адрес
+    if (!ItemtypesPeer::isItemUrlValid($newitem_url)) {
+      sfActions::redirect( $newitem_url );
+    }
+
+    // set attributes from revision if needed
+    ItemtypesPeer::setItemFromRevision($this->newsitem);
+
+	// установка заголовка страницы
+	$news_title = $this->newsitem->getTitle();
+
+    //$context = sfContext::getInstance();
+    //$i18n =  $context->getI18N();
+
+    //$title = $i18n->__('Dharma Sangha') . ' -';
+    $response = $this->getResponse();
+    $response->setTitle($news_title);
   }
 
   /**

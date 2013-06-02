@@ -1,3 +1,7 @@
 error404Success:
   metas:
-    title:        Page Not Found or Not Translated
+    title:        Page Not Found
+
+nottranslatedSuccess:
+  metas:
+    title:        Page Not Translated
