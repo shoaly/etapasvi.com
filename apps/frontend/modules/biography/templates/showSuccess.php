@@ -27,7 +27,7 @@
 
 <h2 id="family_and_childhood">1. <?php echo __('Family and Childhood') ?></h2>
 <?php include_component('photo', 'show', array('id'=>18)); ?>
-<?php echo __('Maha Sambodhi Dharma Sangha (earlier Palden Dorje, born Ram Bahadur Bomjan) was born on April 10, 1990 between 2:25am and 4am (information on date and time is still controversial and will be checked and clarified) in Ratanpur village, Bara district, Nepal.') ?>
+<?php echo __('Maha Sambodhi Dharma Sangha (earlier Palden Dorje, born Ram Bahadur Bomjan) was born on April 9, 1990 between 2:25am and 4am in Ratanpur village, Bara district, Nepal.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>17)); ?>
 <?php echo __('Ram’s parents are farmers. His mother, Maya Devi was married at 12.  She had 5 sons and 4 daughters.  Ram was her third son.  When she was in her pregnancy, she found she was unable to eat meat without becoming ill.  The son, whom she named Ram, would not eat meat.  He would leave the house for long intervals from an early age.') ?>
@@ -42,14 +42,14 @@
 
 <h2 id="school_and_religious_education">2. <?php echo __('School and Religious Education') ?></h2>
 <?php include_component('photo', 'show', array('id'=>95)); ?>
-<?php echo __('He took his studies seriously and rarely played with other children, choosing instead to remain alone. He spent his time reading scriptures, meditating and worshipping the pipal tree which seemed to bring him joy. Seeing this behavior, Ram’s father sent him to study the scriptures of Lama Chhyoi with Samden Lama in their village.  After that Ram decided to embrace a religious life.') ?> 
+<?php echo __('He took his studies seriously and rarely played with other children, choosing instead to remain alone. He spent his time reading scriptures, meditating and worshipping the pipal tree which seemed to bring him joy. Seeing this behavior, Ram’s father sent him to study the scriptures of Lama Chhyoi with Samden Lama in their village.  After that Ram decided to embrace a religious life.') ?>
 <br/><br/>
 <?php echo __('He was accepted into the monkhood by Som Bahadur Lama of Sudha, Ward 8 of Chitwan Village Development Committee.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>19)); ?>
 <?php echo __('Som Bahadur Lama said the following of his ward: “He was obedient. He never said ‘no’ to my word. He was friendly and sociable and he received education in that manner. He used to say frequently that his attention was much more drawn towards meditation than towards reading books.”') ?>
 <br/><br/>
-<?php echo __('He was granted the initiation of') ?> 
+<?php echo __('He was granted the initiation of') ?>
 <a href="<?php echo url_for('encyclopedia'); ?>#refuge"><?php echo __('Panchasheel') ?></a>.
 <?php echo __('Panchasheel is a Sanskrit word for a Buddhist initiation consisting of five vows, which are as follows:') ?>
 <br/><br/>
@@ -77,10 +77,10 @@
 
 <h2 id="ram_disappears">4. <?php echo __('Palden Dorje Disappears') ?></h2>
 
-<?php echo __('When his mother became aware of the situation, she alerted the village, and everyone joined in the search for him.  A local boy claimed to have seen him while he was shaking a mango tree.  Palden Dorje had come up and picked up a mango, and stepped fully clothed into the river. “I thought you had disappeared,” – the boy remarked to Palden Dorje.') ?>  
+<?php echo __('When his mother became aware of the situation, she alerted the village, and everyone joined in the search for him.  A local boy claimed to have seen him while he was shaking a mango tree.  Palden Dorje had come up and picked up a mango, and stepped fully clothed into the river. “I thought you had disappeared,” – the boy remarked to Palden Dorje.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>30)); ?>
-<?php echo __('“Have I?” – Palden Dorje  replied. – “You’d better go home, and be careful not to touch me.” The boy ran home to tell his story, but nobody believed him at first.  Palden Dorje’s relatives went to the ravine.  Palden Dorje smiled at them when they found him as was his habit.  They told him to come home.  “I’ll go home at four o’clock,” – Palden Dorje said.  His family decided it would be wise to keep an eye on him, and so some of his siblings stayed with him.') ?>  
+<?php echo __('“Have I?” – Palden Dorje  replied. – “You’d better go home, and be careful not to touch me.” The boy ran home to tell his story, but nobody believed him at first.  Palden Dorje’s relatives went to the ravine.  Palden Dorje smiled at them when they found him as was his habit.  They told him to come home.  “I’ll go home at four o’clock,” – Palden Dorje said.  His family decided it would be wise to keep an eye on him, and so some of his siblings stayed with him.') ?>
 <br/><br/>
 <?php echo __('At four o’clock, he picked up a couple of mangoes and began to eat one.  He told his little brother to bring him water, rice, his lama robes, a rosary and a picture of Buddha.  His little brother obeyed.  Palden Dorje’s sister came to tell Palden Dorje to come home at once.  Seeing how emaciated he looked from his previous  illness, she cried and begged him to come home.  Palden Dorje told her to stop crying, and she went home.') ?>
 
@@ -93,8 +93,8 @@
 <?php include_component('photo', 'show', array('id'=>20)); ?>
 <?php echo __('They feared he must be ill or crazy.  When Palden Dorje’s older brother touched him, Palden Dorje’s body became exceedingly hot and turned red. “Please leave me alone, or one of us may die,” – Palden Dorje said. – “If anyone disturbs me or my things at midnight, I will have to meditate for 20 years, but if all goes well, I will meditate for 6 years.”') ?>
 <br/><br/>
-<?php echo __('Then Palden Dorje, followed by his brother, and at a distance by the villagers set out to find a good meditation  place in the forest. His parents insisted he take some food and water with him.  Finally, he reached his destination  at 11:00 AM on May 18, 2005. This was the day the villagers of Ratanpur celebrated') ?> 
-<a href="<?php echo __('http://en.wikipedia.org/wiki/Vesak') ?>" title="<?php echo __('Buddha Jayanti (Vesak)') ?>" rel="nofollow" class="external"><?php echo __('Buddha Jayanti (Vesak)') ?></a>. 
+<?php echo __('Then Palden Dorje, followed by his brother, and at a distance by the villagers set out to find a good meditation  place in the forest. His parents insisted he take some food and water with him.  Finally, he reached his destination  at 11:00 AM on May 18, 2005. This was the day the villagers of Ratanpur celebrated') ?>
+<a href="<?php echo __('http://en.wikipedia.org/wiki/Vesak') ?>" title="<?php echo __('Buddha Jayanti (Vesak)') ?>" rel="nofollow" class="external"><?php echo __('Buddha Jayanti (Vesak)') ?></a>.
 <?php echo __('He settled himself under a pipal tree, having offered 10 kinds of fruit to the picture of Buddha.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>23)); ?>
@@ -122,7 +122,7 @@
 
 <h2 id="snakebite_and_miracles">6. <?php echo __('Snakebite and Miracles') ?></h2>
 
-<?php echo __('On November 6, 2005 snake bit Palden Dorje, and Palden Dorje’s body was poisoned. Palden Dorje sweated more than two liters while he continued to meditate, and thus he overcame the poison.  Palden Dorje’s followers believe that on that day he was enlightened, for the Bodhisattva has the ability to survive attached to a tree, soil and stone, to digest snake poison, to be unaffected by the wind and to understand the language of all creatures.') ?> 
+<?php echo __('On November 6, 2005 snake bit Palden Dorje, and Palden Dorje’s body was poisoned. Palden Dorje sweated more than two liters while he continued to meditate, and thus he overcame the poison.  Palden Dorje’s followers believe that on that day he was enlightened, for the Bodhisattva has the ability to survive attached to a tree, soil and stone, to digest snake poison, to be unaffected by the wind and to understand the language of all creatures.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>29)); ?>
 <?php echo __('On November 8, 2005, Palden Dorje told the people that he did not have the energy of a Buddha, and he asked them not to publicize him as an incarnation of Buddha.') ?>
@@ -136,7 +136,7 @@
 
 <h2 id="wandering_to_bara_district">7. <?php echo __('Wandering to Bara district') ?></h2>
 <?php include_component('photo', 'show', array('id'=>25)); ?>
-<?php echo __('After about ten months of meditation, Palden Dorje went missing on 11 March 2006. He gave no explanation, and some believed he had been abducted. His followers theorized that he went deeper into the woods to look for a quieter place to meditate.') ?> 
+<?php echo __('After about ten months of meditation, Palden Dorje went missing on 11 March 2006. He gave no explanation, and some believed he had been abducted. His followers theorized that he went deeper into the woods to look for a quieter place to meditate.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>26)); ?>
 <?php echo __('Police abandoned a search for him after the possibility of foul play was eliminated. Suspecting money laundering, the authorities froze the bank account of the local committee managing the crowds, which had gathered more than Rs. 600,000 ($7950), but they found no evidence.') ?>
@@ -145,7 +145,7 @@
 <p class="center clear">
 <?php include_component('video', 'embed', array('id'=>84)); ?>
 </p>
-<?php echo __('On 25 December 2006, villagers in Bara district spotted Palden Dorje meditating. He was carrying a sword for protection in the jungle, reminding reporters that "Even Gautama Buddha had to protect himself," and claimed to have eaten nothing but herbs in the interim.') ?> 
+<?php echo __('On 25 December 2006, villagers in Bara district spotted Palden Dorje meditating. He was carrying a sword for protection in the jungle, reminding reporters that "Even Gautama Buddha had to protect himself," and claimed to have eaten nothing but herbs in the interim.') ?>
 <?php /* include_component('photo', 'show', array('id'=>24)); */ ?>
 <br/><br/>
 <?php echo __('He reiterated his six year commitment, and said he would allow people to come and observe him, as long as they remained at some distance and didn\'t bother him. When a reporter pointed out that pilgrims to his meditation site would be making donations in his name, he asked for the donations to not be abused or used for commercial purposes. A new wave of visitors came to see him and pray at his new meditation spot. On 8 March 2007 he left Bara district to again find a quieter place to meditate.') ?>
@@ -154,7 +154,7 @@
 
 <h2 id="meditating_in_pit">8. <?php echo __('Meditating in pit') ?></h2>
 <?php include_component('photo', 'show', array('id'=>43)); ?>
-<?php echo __('On 26 March 2007, Inspector Rameshwor Yadav of the Area Police Post Nijgadh, found Palden Dorje inside a bunker-like ditch seven feet square. A police team under Yadav\'s command had gone to the place after word had spread of Palden Dorje meditating underground. “His face was clean and hair was combed well,” – Yadav said.') ?> 
+<?php echo __('On 26 March 2007, Inspector Rameshwor Yadav of the Area Police Post Nijgadh, found Palden Dorje inside a bunker-like ditch seven feet square. A police team under Yadav\'s command had gone to the place after word had spread of Palden Dorje meditating underground. “His face was clean and hair was combed well,” – Yadav said.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>28)); ?>
 <?php echo __('According to him, the bunker had been cemented from all sides and fitted with a tiled roof. Indra Lama, a local deployed as Palden Dorje\'s caretaker since the beginning of his intensive meditation, said the bunker was prepared per Palden Dorje\'s request. “After granting audience a week ago, he expressed his desire to meditate inside the ground; so we built it,” – he said.') ?>
@@ -167,7 +167,7 @@
 <?php echo __('On 2 August 2007, Palden Dorje') ?> <a href="<?php echo url_for('video/show?id=22'); ?>"><?php echo __('addressed a large crowd') ?></a>   <?php echo __('in Halkhoriya jungle in Bara district of southern Nepal. The Namo Buddha Tapoban Committee, which is devoted to looking after Palden Dorje, assembled the meeting.') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>33, 'align'=>'right')); ?>
-<?php echo __('A notice about the boy\'s first-ever preaching was broadcast by a local FM radio station, and the committee also invited people by telephone. Around three thousand people gathered to listen to Palden Dorje\'s address. A video was made of the event. According to Upendra Lamichhane, a blogger who wrote an article and took pictures of the meeting, Palden Dorje\'s message was, "The only way we can save this nation is through spirituality".') ?> 
+<?php echo __('A notice about the boy\'s first-ever preaching was broadcast by a local FM radio station, and the committee also invited people by telephone. Around three thousand people gathered to listen to Palden Dorje\'s address. A video was made of the event. According to Upendra Lamichhane, a blogger who wrote an article and took pictures of the meeting, Palden Dorje\'s message was, "The only way we can save this nation is through spirituality".') ?>
 <br/><br/>
 <?php include_component('photo', 'show', array('id'=>31)); ?>
 <?php echo __('This was his speech:') ?>
@@ -177,7 +177,7 @@
 <br/><br/>
 <?php echo __('Murder, violence, greed, anger and temptation have made the human world a desperate place. A terrible storm has descended upon the human world, and this is carrying the world towards destruction. There is only one way to save the world and that is through dharma. When one doesn\'t walk the righteous path of spiritual practice, this desperate world will surely be destroyed. Therefore, follow the path of spirituality and spread this message to your fellows. Never put obstacles, anger and disbelief in the way of my meditation\'s mission. I am only showing you the way; you must seek it on your own. What I will be, what I will do, the coming days will reveal. Human salvation, the salvation of all living beings, and peace in the world are my goal and my path. "Namo Buddha sangaya, Namo Buddha sangaya, namo sangaya." I am contemplating on the release of this chaotic world from the ocean of emotion, on our detachment from anger and temptation, without straying from the path for even a moment, I am renouncing my own attachment to my life and my home forever. I am working to save all living beings. But in this undisciplined world, my life\'s practice is reduced to mere entertainment.') ?>
 <br/><br/>
-<?php echo __('The practice and devotion of many Buddhas is directed at the world\'s betterment and happiness. It is essential, but very difficult, to understand that practice and devotion. But though it is easy to lead this ignorant existence, human beings don\'t understand that one day we must leave this uncertain world and go with the Lord of Death. Our long attachments with friends and family will dissolve into nothingness. We have to leave behind the wealth and property we have accumulated. What\'s the use of my happiness, when those who have loved me from the beginning, my mother, father, brothers, relatives are all unhappy? Therefore, to rescue all sentient beings, I have to be Buddha-mind, and emerge from my underground cave to do vajra meditation. To do this I have to realize the right path and knowledge, so do not disturb my practice. My practice detaches me from my body, my soul and this existence. In this situation there will be 72 goddess') ?> 
+<?php echo __('The practice and devotion of many Buddhas is directed at the world\'s betterment and happiness. It is essential, but very difficult, to understand that practice and devotion. But though it is easy to lead this ignorant existence, human beings don\'t understand that one day we must leave this uncertain world and go with the Lord of Death. Our long attachments with friends and family will dissolve into nothingness. We have to leave behind the wealth and property we have accumulated. What\'s the use of my happiness, when those who have loved me from the beginning, my mother, father, brothers, relatives are all unhappy? Therefore, to rescue all sentient beings, I have to be Buddha-mind, and emerge from my underground cave to do vajra meditation. To do this I have to realize the right path and knowledge, so do not disturb my practice. My practice detaches me from my body, my soul and this existence. In this situation there will be 72 goddess') ?>
 <a href="<?php  echo url_for('encyclopedia')?>#kali_yuga" ><?php  echo __('Kalis')?></a>.
 <?php echo __('Different gods will be present, along with the sounds of thunder and of "tangur", and all the celestial gods and goddesses will be doing puja (worship). So until I have sent a message, do not come here, and please explain this to others. Spread spiritual knowledge and spiritual messages throughout the world. Spread the message of world peace to all. Seek a righteous path and wisdom will be yours."') ?>
 */
@@ -249,4 +249,4 @@
 <?php endif ?>
 <p class="source">
     <strong><?php echo __('Source') ?>:</strong> <a href="http://paldendorje.com/en/index.php?option=com_content&view=article&id=3&Itemid=2">paldendorje.com</a>, <a href="http://en.wikipedia.org/wiki/Ram_Bahadur_Bomjon">Wikipedia</a><br/>
-<?php include_component('comments', 'show'); ?>	
+<?php include_component('comments', 'show'); ?>

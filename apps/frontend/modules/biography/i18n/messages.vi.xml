@@ -69,8 +69,8 @@
       </trans-unit>
 
       <trans-unit id="1">
-        <source>Maha Sambodhi Dharma Sangha (earlier Palden Dorje, born Ram Bahadur Bomjan) was born on April 10, 1990 between 2:25am and 4am (information on date and time is still controversial and will be checked and clarified) in Ratanpur village, Bara district, Nepal.</source>
-        <target>Maha Sambodhi Dharma Sangha (tên ban đầu là Palden Dorje, tên khai sinh là Ram Bahadur Bomjan) sinh ngày 10 tháng 4 năm 1990 trong khoảng từ 2 giờ 25 phút đến 4 giờ sáng (thông tin về ngày và giờ sinh vẫn còn gây tranh luận, sẽ được kiểm tra và làm sáng tỏ) ở làng Ratanpur, quận Bara, nước Nepal.</target>
+        <source>Maha Sambodhi Dharma Sangha (earlier Palden Dorje, born Ram Bahadur Bomjan) was born on April 9, 1990 between 2:25am and 4am in Ratanpur village, Bara district, Nepal.</source>
+        <target>Maha Sambodhi Dharma Sangha (tên ban đầu là Palden Dorje, tên khai sinh là Ram Bahadur Bomjan) sinh ngày 9 tháng 4 năm 1990 trong khoảng từ 2 giờ 25 phút đến 4 giờ sáng ở làng Ratanpur, quận Bara, nước Nepal.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -512,7 +512,7 @@
         <source>biography_translated_by</source>
         <target>Hạnh, Kim</target>
       </trans-unit>
-      
+
 <!-- утф -->
     </body>
   </file>
