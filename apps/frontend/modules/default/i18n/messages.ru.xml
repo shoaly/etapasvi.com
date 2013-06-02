@@ -8,7 +8,7 @@
         <target>Ошибка</target>
       </trans-unit>    
       <trans-unit id="1">
-        <source>Page Not Transalated</source>
+        <source>Page Not Translated</source>
         <target>Страница не переведена</target>
       </trans-unit> 
 	  <trans-unit id="1">
