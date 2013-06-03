@@ -1,7 +1,7 @@
 <?php slot('body_id') ?>body_documents<?php end_slot() ?>
 <?php slot('page_header') ?><?php echo __('Documents') ?><?php end_slot() ?>
 
-<?php if ($documents->getNewsId()): ?>
+<?php if ($documents->getNewsId() || ($documents->getAllCultures() && $sf_user->getCulture() != sfConfig::get('sf_default_culture') && $documents->getTitle($sf_user->getCulture(), true) == $documents->getTitle(sfConfig::get('sf_default_culture')))): ?>
     <?php slot('noindex') ?>true<?php end_slot() ?>
 <?php endif ?>
 

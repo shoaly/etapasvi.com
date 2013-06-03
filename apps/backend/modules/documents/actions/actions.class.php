@@ -274,6 +274,16 @@ class documentsActions extends autodocumentsActions
     {
       $c->add(DocumentsPeer::NEWS_ID, $this->filters['news_id']);
     }
+    if (isset($this->filters['all_cultures_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(DocumentsPeer::ALL_CULTURES, '');
+      $criterion->addOr($c->getNewCriterion(DocumentsPeer::ALL_CULTURES, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['all_cultures']) && $this->filters['all_cultures'] !== '')
+    {
+      $c->add(DocumentsPeer::ALL_CULTURES, $this->filters['all_cultures']);
+    }
 
     // File
     if (!empty($this->filters['file']))

@@ -10,36 +10,36 @@ generator:
       sort: [order, desc]
       display: [id, show, order, =file, title, news_id, all_cultures, created_at, _itemcategory_list, _item2item_list]
       title:   Documents
-      filters: [show, news_id]
+      filters: [show, news_id, all_cultures]
       object_actions:
         _edit:
         _delete:
-        
+
     edit:
       display:
         "NONE": [created_at, news_id, show, file, size, order, all_cultures, _item2item_list]
-        "EN":       
+        "EN":
           - title_i18n_en
           - body_i18n_en
-        "RU":       
+        "RU":
           - title_i18n_ru
           - body_i18n_ru
-        "CS":       
+        "CS":
           - title_i18n_cs
           - body_i18n_cs
-        "HU":       
+        "HU":
           - title_i18n_hu
           - body_i18n_hu
-        "PL":       
+        "PL":
           - title_i18n_pl
           - body_i18n_pl
-        "FR":       
+        "FR":
           - title_i18n_fr
           - body_i18n_fr
-        "ZH_CN":       
+        "ZH_CN":
           - title_i18n_zh_CN
           - body_i18n_zh_CN
-        "VI":       
+        "VI":
           - title_i18n_vi
           - body_i18n_vi
         "JA":
@@ -66,7 +66,7 @@ generator:
         "ZH_TW":
           - title_i18n_zh_TW
           - body_i18n_zh_TW
-        "DE":       
+        "DE":
           - title_i18n_de
           - body_i18n_de
 
@@ -75,9 +75,9 @@ generator:
           name: File
           type: admin_input_file_tag
           upload_dir: documents
-          params: 
+          params:
             include_link: documents
-            include_remove: true        
+            include_remove: true
 
         title_i18n_en:
           name: Title
@@ -86,7 +86,7 @@ generator:
           name: Body
           type: textarea_tag
           params: disabled=false size=118x6
-          
+
         title_i18n_ru:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -102,7 +102,7 @@ generator:
           name: Body
           type: textarea_tag
           params: disabled=false size=118x6
-          
+
         title_i18n_hu:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -110,7 +110,7 @@ generator:
           name: Body
           type: textarea_tag
           params: disabled=false size=118x6
-          
+
         title_i18n_pl:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -118,7 +118,7 @@ generator:
           name: Body
           type: textarea_tag
           params: disabled=false size=118x6
-          
+
         title_i18n_fr:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -126,7 +126,7 @@ generator:
           name: Body
           type: textarea_tag
           params: disabled=false size=118x6
-          
+
         title_i18n_zh_cn:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -134,15 +134,15 @@ generator:
           name: Body
           type: textarea_tag
           params: disabled=false size=118x6
-          
+
         title_i18n_vi:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
         body_i18n_vi:
           name: Body
           type: textarea_tag
-          params: disabled=false size=118x6       
-          
+          params: disabled=false size=118x6
+
         title_i18n_it:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"

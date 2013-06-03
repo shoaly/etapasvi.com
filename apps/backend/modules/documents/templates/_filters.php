@@ -26,28 +26,38 @@
 )) ?>
     </div>
     </div>
-    
+
+    <div class="form-row">
+    <label for="filters_all_cultures"><?php echo __('All cultures:') ?></label>
+    <div class="content">
+    <?php echo select_tag('filters[all_cultures]', options_for_select(array(1 => __('yes'), 0 => __('no')), isset($filters['all_cultures']) ? $filters['all_cultures'] : null, array (
+  'include_custom' => __("yes or no"),
+)), array (
+)) ?>
+    </div>
+    </div>
+
     <div class="form-row">
     <label for="filters_show"><?php echo __('File:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[file]', $filters['file']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
     <label for="filters_show"><?php echo __('Title:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[title]', $filters['title']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
     <label for="filters_show"><?php echo __('Body:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[body]', $filters['body']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
         <small>
             <strong>%</strong> - zero or more characters<br/>
