@@ -6,6 +6,7 @@
 <?php include_http_metas() ?>
 <?php include_metas() ?>
 <?php include_slot('meta') ?>
+<?php if (get_slot('noindex')): ?><meta name="robots" content="noindex,nofollow" /><?php endif ?>
 <?php include_slot('alternate') ?>
 <?php /*include_title()*/ ?>
 <title><?php echo __(html_entity_decode($sf_response->getTitle())); ?> - <?php echo sfConfig::get('app_site_name'); ?></title>

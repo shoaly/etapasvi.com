@@ -1,3 +1,6 @@
+<?php if ($sf_params->get('itemcategory')): ?>
+    <?php slot('noindex') ?>true<?php end_slot() ?>
+<?php endif ?>
 <div class="category_wrapper">
     <?php echo __("Category") ?>:
     <select onchange="gotoItemcategory(this.value)">
