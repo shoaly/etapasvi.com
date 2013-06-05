@@ -2,7 +2,7 @@
 <link rel="canonical" href="<?php echo url_for('photo/show?id='.$photo->getId() . '&title=' . TextPeer::urlTranslit($photo->getTitle())); ?>" />
 <?php end_slot()*/ ?>
 
-<?php if ($sf_user->getCulture() != sfConfig::get('sf_default_culture') && $photo->getTitle($sf_user->getCulture(), true) == $photo->getTitle(sfConfig::get('sf_default_culture'))): ?>
+<?php if ( !$photo->getTitle(sfConfig::get('sf_default_culture')) || ($sf_user->getCulture() != sfConfig::get('sf_default_culture') && $photo->getTitle($sf_user->getCulture(), true) == $photo->getTitle(sfConfig::get('sf_default_culture')))): ?>
     <?php slot('noindex') ?>true<?php end_slot() ?>
 <?php endif ?>
 
