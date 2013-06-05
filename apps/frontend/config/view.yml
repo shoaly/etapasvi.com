@@ -4,7 +4,7 @@ default:
 
   metas:
     title:        eTapasvi
-    description:  Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.
+#    description:  Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.
 
     #keywords:     symfony, project
     #language:     en, ru
