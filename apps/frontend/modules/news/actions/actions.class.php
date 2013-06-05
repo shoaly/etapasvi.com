@@ -364,8 +364,10 @@ LIMIT 0, 50
 	    	$criteria_sql .= " and {$table_name}_i18n.title != '' ";
 	    }
         // do not show Documents generated from News
+        // do not show Teachings document
         if ($type == ItemtypesPeer::ITEM_TYPE_NAME_DOCUMENTS) {
             $criteria_sql .= " and ({$table_name}.news_id = '' or {$table_name}.news_id is NULL) ";
+            $criteria_sql .= " and {$table_name}.file not like '" . sfConfig::get('app_domain_name') . "\_teachings\_%' ";
         }
 
 	    // получаем значения параметров
