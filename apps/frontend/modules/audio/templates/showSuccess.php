@@ -1,7 +1,7 @@
 <?php slot('body_id') ?>body_audio<?php end_slot() ?>
 <?php slot('page_header') ?><?php echo __('Audio') ?><?php end_slot() ?>
 
-<?php if ($sf_user->getCulture() != sfConfig::get('sf_default_culture') && $audio->getTitle($sf_user->getCulture(), true) == $audio->getTitle(sfConfig::get('sf_default_culture'))): ?>
+<?php if ($sf_user->getCulture() != sfConfig::get('sf_default_culture') && $audio->getTitle($sf_user->getCulture(), true) == $audio->getTitle(sfConfig::get('sf_default_culture')) || $from_revision): ?>
     <?php slot('noindex') ?>true<?php end_slot() ?>
 <?php endif ?>
 

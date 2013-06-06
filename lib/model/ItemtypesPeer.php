@@ -13,7 +13,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   //const ITEM_TYPE_MAIL 	     = 5;
   const ITEM_TYPE_AUDIO	     = 5;
   const ITEM_TYPE_DOCUMENTS	 = 6;
-  
+
   // названия элементов
   const ITEM_TYPE_NAME_NEWS  	  = 'News';
   const ITEM_TYPE_NAME_PHOTOALBUM = 'Photoalbum';
@@ -21,7 +21,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   const ITEM_TYPE_NAME_PHOTO 	  = 'Photo';
   const ITEM_TYPE_NAME_AUDIO 	  = 'Audio';
   const ITEM_TYPE_NAME_DOCUMENTS  = 'Documents';
-  
+
   // Названия элементов
   static $item_type_names 	    = array(
   	self::ITEM_TYPE_NEWS 	   => self::ITEM_TYPE_NAME_NEWS,
@@ -31,7 +31,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	self::ITEM_TYPE_AUDIO      => self::ITEM_TYPE_NAME_AUDIO,
   	self::ITEM_TYPE_DOCUMENTS  => self::ITEM_TYPE_NAME_DOCUMENTS,
   );
-  
+
   // names used in index URLs
   // used for clearing Item Categories cache
   static $item_type_indexes  = array(
@@ -42,7 +42,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	self::ITEM_TYPE_AUDIO      => 'audio',
   	self::ITEM_TYPE_DOCUMENTS  => 'documents',
   );
-  
+
   /**
    * Получение названия типа по ID.
    *
@@ -53,7 +53,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   {
   	return self::$item_type_names[ $item_type_id ];
   }
-  
+
   /**
    * Получение ID по названию типа.
    *
@@ -69,7 +69,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	}
   	return '';
   }
-  
+
   /**
    * Get Item Type index part of URL
    *
@@ -80,12 +80,12 @@ class ItemtypesPeer extends BaseItemtypesPeer
   {
   	return self::$item_type_indexes[ $item_type_id ];
   }
-  
+
   public static function getItemTypeNameLower( $item_type_id )
   {
   	return strtolower(self::$item_type_names[ $item_type_id ]);
   }
-  
+
   /**
    * Get item type names in lower case
    *
@@ -99,7 +99,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	}
   	return $item_type_names;
   }
-  
+
   /**
    * Get Item Type Id for an object provided
    *
@@ -115,10 +115,10 @@ class ItemtypesPeer extends BaseItemtypesPeer
   	}
   	return false;
   }
-  
+
   /**
    * Retrieving current item info
-   * 
+   *
    * @return type
    */
   public static function getCurrentItemInfo()
@@ -128,16 +128,16 @@ class ItemtypesPeer extends BaseItemtypesPeer
       'itemtypes_id'    => '',
       'item_culture'    => '',
     );
-    
+
     $sf_context  = sfContext::getInstance();
-    
+
     $item_info['item_culture'] = $sf_context->getUser()->getCulture();
     $item_info['item_id']      = $sf_context->getRequest()->getParameter('id');
-    
+
     // determine Item Type by module and action
     $module    	 = $sf_context->getModuleName();
 	$action      = $sf_context->getActionName();
-    
+
     if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_NEWS) && $action == 'show') {
       $item_info['itemtypes_id'] = self::ITEM_TYPE_NEWS;
     }
@@ -156,13 +156,13 @@ class ItemtypesPeer extends BaseItemtypesPeer
     if ($module == self::getItemTypeNameLower(self::ITEM_TYPE_DOCUMENTS) && $action == 'show') {
       $item_info['itemtypes_id'] = self::ITEM_TYPE_DOCUMENTS;
     }
-   
+
     return $item_info;
   }
-  
+
   /**
    * Get Item by ID and Type ID
-   * 
+   *
    * @param type $item_id
    * @param type $itemtypes_id
    * @return null
@@ -181,23 +181,23 @@ class ItemtypesPeer extends BaseItemtypesPeer
       return null;
     }
   }
-  
+
   /**
    * Retrieve item title from URL
-   * 
+   *
    * @param type $url
    */
   public static function getItemTitleFromUrl($url)
   {
     $parse_url = parse_url($url);
-      
+
     preg_match("/^\/[^\/]+\/[^\/]+\/\d+\/(.*)/", $parse_url['path'], $matches);
     return $matches[1];
   }
-  
+
   /**
    * Check if check_url is valid
-   * 
+   *
    * @param type $item_utl
    * @param type $check_url
    */
@@ -207,9 +207,9 @@ class ItemtypesPeer extends BaseItemtypesPeer
     if ($_SERVER['PATH_INFO']) {
       $path_info_url = $_SERVER['PATH_INFO'];
     } else {
-      $path_info_url = $_SERVER['REQUEST_URI'];  
+      $path_info_url = $_SERVER['REQUEST_URI'];
     }
-      
+
     $path_info_url = preg_replace("/\?.*/", "", $path_info_url);
 
     // cut out revision id
@@ -224,53 +224,56 @@ class ItemtypesPeer extends BaseItemtypesPeer
       return true;
     }
   }
-  
+
   /**
    * Get current item revision from URL
-   * 
+   *
    */
   public static function getCurrentItemRevision()
   {
     $revision = RevisionhistoryPeer::getRevisionFromUrl();
-    
+
     if (!$revision) {
       return null;
     }
-    
+
     // check if passed revision belongs to current item
     $item_info = self::getCurrentItemInfo();
 
-    if ($revision->getItemId() == $item_info['item_id'] && 
+    if ($revision->getItemId() == $item_info['item_id'] &&
         $revision->getItemtypesId() == $item_info['itemtypes_id'] &&
-        $revision->getItemCulture() == $item_info['item_culture']) 
+        $revision->getItemCulture() == $item_info['item_culture'])
     {
       return $revision;
     }
     return null;
   }
-  
+
   /**
    * Set item attributes from revision passed in URL
-   * 
+   *
    * @param type $item
    */
   public static function setItemFromRevision($item)
   {
     $revision = ItemtypesPeer::getCurrentItemRevision();
     if ($revision && $revision->getBody()) {
-        
+
       $context = sfContext::getInstance();
       $i18n =  $context->getI18N();
 
       // use default culture title if empty
       $title = $item->getTitle(sfContext::getInstance()->getUser()->getCulture(), true);
       $title .= ' ('.$i18n->__('Revision from').' '.$revision->getCreatedAt().')';
-      
+
       $item->setTitle($title);
       $item->setBody($revision->getBody());
+
+      return true;
     }
+    return false;
   }
-  
+
 //  /**
 //   * URL элемента
 //   *
@@ -280,13 +283,13 @@ class ItemtypesPeer extends BaseItemtypesPeer
 //   * @return unknown
 //   */
 //  public static function getItemUrl( $item_lang, $item_id, $item_type )
-//  {         	
-//	$url = UserPeer::SITE_123PROTOCOL . '://' . UserPeer::SITE_XXX_ADDRESS . '/' 
-//			. $item_lang . '/' . self::getItemTypeNameLower( $item_type ) 
-//			. '/show/id/' . $item_id . '/';       
+//  {
+//	$url = UserPeer::SITE_123PROTOCOL . '://' . UserPeer::SITE_XXX_ADDRESS . '/'
+//			. $item_lang . '/' . self::getItemTypeNameLower( $item_type )
+//			. '/show/id/' . $item_id . '/';
 //	return $url;
 //  }
-  
+
 //  public static function getItemTypeId( $item_type_name )
 //  {
 //    foreach (self::$item_type_names as $item_type => $name ) {
@@ -297,7 +300,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
 //    }
 //    return 0;
 //  }
-  
+
 //  /**
 //   * Получение заголовка элемента по типу
 //   *
@@ -308,37 +311,37 @@ class ItemtypesPeer extends BaseItemtypesPeer
 //   */
 //  static public function getItemTitle( $item_id, $item_type, $item_lang )
 //  {
-//	// получение названия элемента		
+//	// получение названия элемента
 //    $c = new Criteria();
-//    
+//
 //	switch ($item_type) {
-//        
-//      case ItemtypesPeer::ITEM_TYPE_NEWS:          	
+//
+//      case ItemtypesPeer::ITEM_TYPE_NEWS:
 //      	$c->add( NewsI18nPeer::ID, $item_id );
 //      	$c->add( NewsI18nPeer::CULTURE, $item_lang );
 //      	$c->addSelectColumn( NewsI18nPeer::TITLE );
-//      	$item = NewsI18nPeer::doSelectOne( $c );          	          
+//      	$item = NewsI18nPeer::doSelectOne( $c );
 //        break;
-//        
+//
 //      case ItemtypesPeer::ITEM_TYPE_PHOTO:
 //      	$c->add( PhotoI18nPeer::ID, $item_id );
 //      	$c->add( PhotoI18nPeer::CULTURE, $item_lang );
 //      	$c->addSelectColumn( PhotoI18nPeer::TITLE );
 //      	$item = PhotoI18nPeer::doSelectOne( $c );
 //        break;
-//        
+//
 //      case ItemtypesPeer::ITEM_TYPE_VIDEO:
 //      	$c->add( VideoI18nPeer::ID, $item_id );
 //      	$c->add( VideoI18nPeer::CULTURE, $item_lang );
 //      	$c->addSelectColumn( VideoI18nPeer::TITLE );
-//      	$item = VideoI18nPeer::doSelectOne( $c );          
+//      	$item = VideoI18nPeer::doSelectOne( $c );
 //        break;
-//        
+//
 //      case ItemtypesPeer::ITEM_TYPE_MAIL:
 //      	$c->add( MailI18nPeer::ID, $item_id );
 //      	$c->add( MailI18nPeer::CULTURE, $item_lang );
 //      	$c->addSelectColumn( MailI18nPeer::TITLE );
-//      	$item = MailI18nPeer::doSelectOne( $c );          
+//      	$item = MailI18nPeer::doSelectOne( $c );
 //        break;
 //	}
 //  	if ($item) {
@@ -347,7 +350,7 @@ class ItemtypesPeer extends BaseItemtypesPeer
 //  		return '';
 //  	}
 //  }
-  
+
 //  /**
 //   * Получение элементов по типам
 //   *
@@ -358,37 +361,37 @@ class ItemtypesPeer extends BaseItemtypesPeer
 //   */
 //  static public function getItem( $item_id, $item_type, $item_lang )
 //  {
-//	// получение названия элемента		
+//	// получение названия элемента
 //    $c = new Criteria();
-//    
+//
 //	switch ($item_type) {
-//        
-//      case ItemtypesPeer::ITEM_TYPE_NEWS:          	
+//
+//      case ItemtypesPeer::ITEM_TYPE_NEWS:
 //      	$c->add( NewsI18nPeer::ID, $item_id );
 //      	$c->add( NewsI18nPeer::CULTURE, $item_lang );
-//      	$item = NewsI18nPeer::doSelectOne( $c );          	          
+//      	$item = NewsI18nPeer::doSelectOne( $c );
 //        break;
-//        
+//
 //      case ItemtypesPeer::ITEM_TYPE_PHOTO:
 //      	$c->add( PhotoI18nPeer::ID, $item_id );
 //      	$c->add( PhotoI18nPeer::CULTURE, $item_lang );
 //      	$item = PhotoI18nPeer::doSelectOne( $c );
 //        break;
-//        
+//
 //      case ItemtypesPeer::ITEM_TYPE_VIDEO:
 //      	$c->add( VideoI18nPeer::ID, $item_id );
 //      	$c->add( VideoI18nPeer::CULTURE, $item_lang );
-//      	$item = VideoI18nPeer::doSelectOne( $c );          
+//      	$item = VideoI18nPeer::doSelectOne( $c );
 //        break;
-//        
+//
 //      case ItemtypesPeer::ITEM_TYPE_MAIL:
 //      	$c->add( MailI18nPeer::ID, $item_id );
 //      	$c->add( MailI18nPeer::CULTURE, $item_lang );
-//      	$item = MailI18nPeer::doSelectOne( $c );          
+//      	$item = MailI18nPeer::doSelectOne( $c );
 //        break;
 //	}
 //
 //    return $item;
 //  }
-    
+
 }

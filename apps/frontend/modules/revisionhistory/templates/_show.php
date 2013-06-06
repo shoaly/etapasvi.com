@@ -1,12 +1,12 @@
 <?php if (count($revisionhistory)): ?>
 <a href="javascript:switchRevhistory()" id="revhistory_trigger" class="page_tools_trigger" title="<?php echo __('revision history') ?>"><?php /*<i class="pt_btn pt_btn_revision_history"></i>*/ ?><?php echo __('Revision history') ?></a>
 
-<div id="revhistory" class="page_tools">        
+<div id="revhistory" class="page_tools">
     <form action="http://services.w3.org/htmldiff" target="_blank" class="box">
         <input type="radio" name="doc1" value="<?php echo sfContext::getInstance()->getRequest()->getUri(); ?>" checked="checked" /> <?php echo __('Current revision') ?><br/>
         <?php foreach($revisionhistory as $i=>$item): ?>
              <?php $item_url = $item->getUrl(); ?>
-             <input type="radio" name="doc2" value="<?php echo $item_url; ?>" <?php if ($i == 0): ?>checked="checked"<?php endif ?> /> <a href="<?php echo $item_url; ?>" target="_blank"><?php echo format_datetime( $item->getCreatedAt(), 'd MMMM yyyy HH:mm:ss'); ?></a><br/>
+             <input type="radio" name="doc2" value="<?php echo $item_url; ?>" <?php if ($i == 0): ?>checked="checked"<?php endif ?> /> <a href="<?php echo $item_url; ?>" target="_blank" rel="nofollow"><?php echo format_datetime( $item->getCreatedAt(), 'd MMMM yyyy HH:mm:ss'); ?></a><br/>
         <?php endforeach ?>
         <br/>
         <input type="submit" value="<?php echo __('Compare selected revisions') ?>" class="input_button"/>

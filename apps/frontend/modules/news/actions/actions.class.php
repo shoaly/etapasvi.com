@@ -40,7 +40,7 @@ class newsActions extends sfActions
     }
 
     // set attributes from revision if needed
-    ItemtypesPeer::setItemFromRevision($this->newsitem);
+    $this->from_revision = ItemtypesPeer::setItemFromRevision($this->newsitem);
 
 	// установка заголовка страницы
 	$news_title = $this->newsitem->getTitle();

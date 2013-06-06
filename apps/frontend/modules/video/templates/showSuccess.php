@@ -1,6 +1,6 @@
 <?php /*include_component('video', 'showwrapper', array('id'=>$id, 'title'=>$title, 'autoplay'=>true));*/ ?>
 
-<?php if ($video->getAllCultures() && $sf_user->getCulture() != sfConfig::get('sf_default_culture') && $video->getTitle($sf_user->getCulture(), true) == $video->getTitle(sfConfig::get('sf_default_culture'))): ?>
+<?php if ($video->getAllCultures() && $sf_user->getCulture() != sfConfig::get('sf_default_culture') && $video->getTitle($sf_user->getCulture(), true) == $video->getTitle(sfConfig::get('sf_default_culture')) || $from_revision): ?>
     <?php slot('noindex') ?>true<?php end_slot() ?>
 <?php endif ?>
 

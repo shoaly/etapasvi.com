@@ -50,7 +50,7 @@ class videoActions extends sfActions
   	}
 
     // set attributes from revision if needed
-    ItemtypesPeer::setItemFromRevision($this->video);
+    $this->from_revision = ItemtypesPeer::setItemFromRevision($this->video);
   }
 
   public function executeIndex(sfWebRequest $request)
