@@ -1,7 +1,7 @@
 <?php slot('body_id') ?>body_feed<?php end_slot() ?>
 <?php slot('page_header') ?><?php echo __('Feed') ?><?php end_slot() ?>
 
-<?php slot('noindex') ?>true<?php end_slot() ?>
+<?php slot('robots') ?>noindex,nofollow<?php end_slot() ?>
 
 <?php
 include_component(

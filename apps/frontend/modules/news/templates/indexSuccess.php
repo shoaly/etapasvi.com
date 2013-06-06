@@ -1,6 +1,8 @@
 <?php slot('body_id') ?>body_news<?php end_slot() ?>
 <?php slot('page_header') ?><?php echo __('News') ?><?php end_slot() ?>
 
+<?php slot('robots') ?>noindex<?php end_slot() ?>
+
 <?php include_component('itemcategory', 'show', array('module_action'=>'news/index', 'item_type_list'=>array(ItemtypesPeer::ITEM_TYPE_NEWS), 'items_count_total'=>$pager->getNbResults())); ?>
 
 <?php

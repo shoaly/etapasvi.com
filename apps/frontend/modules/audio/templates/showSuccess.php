@@ -2,7 +2,7 @@
 <?php slot('page_header') ?><?php echo __('Audio') ?><?php end_slot() ?>
 
 <?php if ($sf_user->getCulture() != sfConfig::get('sf_default_culture') && $audio->getTitle($sf_user->getCulture(), true) == $audio->getTitle(sfConfig::get('sf_default_culture')) || $from_revision): ?>
-    <?php slot('noindex') ?>true<?php end_slot() ?>
+    <?php slot('robots') ?>noindex,nofollow<?php end_slot() ?>
 <?php endif ?>
 
 <p class="bread_crumbs">

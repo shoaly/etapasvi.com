@@ -2,7 +2,7 @@
 <?php slot('page_header') ?><?php echo __('Documents') ?><?php end_slot() ?>
 
 <?php if ($documents->getNewsId() || ($documents->getAllCultures() && $sf_user->getCulture() != sfConfig::get('sf_default_culture') && $documents->getTitle($sf_user->getCulture(), true) == $documents->getTitle(sfConfig::get('sf_default_culture')))): ?>
-    <?php slot('noindex') ?>true<?php end_slot() ?>
+    <?php slot('robots') ?>noindex,nofollow<?php end_slot() ?>
 <?php endif ?>
 
 <p class="bread_crumbs">

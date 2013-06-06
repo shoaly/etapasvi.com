@@ -1,7 +1,7 @@
 <?php /*include_component('news', 'showwrapper', array('id'=>$id, 'title'=>$title))*/; ?>
 
 <?php if ($from_revision): ?>
-    <?php slot('noindex') ?>true<?php end_slot() ?>
+    <?php slot('robots') ?>noindex,nofollow<?php end_slot() ?>
 <?php endif ?>
 
 <?php include_partial('news/showwrapper', array('newsitem'=>$newsitem)); ?>

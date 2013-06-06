@@ -3,7 +3,7 @@
 <?php end_slot()*/ ?>
 
 <?php if ( !$photo->getTitle(sfConfig::get('sf_default_culture')) || ($sf_user->getCulture() != sfConfig::get('sf_default_culture') && $photo->getTitle($sf_user->getCulture(), true) == $photo->getTitle(sfConfig::get('sf_default_culture'))) || $from_revision ): ?>
-    <?php slot('noindex') ?>true<?php end_slot() ?>
+    <?php slot('robots') ?>noindex,nofollow<?php end_slot() ?>
 <?php endif ?>
 
 <p class="bread_crumbs">
