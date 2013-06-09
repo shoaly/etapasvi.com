@@ -16,11 +16,11 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Maha Sambodhi Dharma Sangha</source>
-        <target>Маха Самбодхи Дхарма Сангха</target>
-      </trans-unit>      
+        <target>Маха Самбоди Дарма Санга</target>
+      </trans-unit>
       <trans-unit id="1">
         <source>Bodhi Shrawan Dharma Sangha</source>
-        <target>Бодхи Шраван Дхарма Сангха</target>
+        <target>Боди Шраван Дарма Санга</target>
       </trans-unit>
       <trans-unit id="1">
         <source>Om Namo Guru Buddha Gyani</source>
@@ -52,7 +52,7 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Dharma Sangha</source>
-        <target>Дхарма Сангха</target>
+        <target>Дарма Санга</target>
       </trans-unit>
       <trans-unit id="1">
         <source>News</source>
@@ -172,7 +172,7 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.</source>
-        <target>Маха Самбодхи Дхарма Сангха: учения, новости, фото, видео, аудио, биография.</target>
+        <target>Маха Самбоди Дарма Санга: учения, новости, фото, видео, аудио, биография.</target>
       </trans-unit>
       <trans-unit id="1">
         <source>This page is translation of corresponding English page, switch into English language to see original text.</source>
@@ -204,7 +204,7 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Sangha</source>
-        <target>Сангха</target>
+        <target>Санга</target>
       </trans-unit>
       <trans-unit id="1">
         <source>By location</source>
