@@ -2264,14 +2264,15 @@ website:   	http://www.themepunch.com
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;*/
 }
+/*
 #responsivecarousel_main .dark .kenburn-bg {
 	background:url(../i/kb-plugin-assets/bg/black25.png) repeat;
 	padding:4px;
-	/*border:1px solid #222;*/
+	/*border:1px solid #222;*
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
-}
+}*/
 
 /*************************************************
 	-	THE PRELOADER OF THE BANNER 	-
@@ -2301,7 +2302,7 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .kb-fullsize .cp-right,
 #responsivecarousel_main .kb-fullsize .cp-top,
 #responsivecarousel_main .kb-fullsize .cp-left,
-#responsivecarousel_main .kb-fullsize .cp-bottom,
+#responsivecarousel_main .kb-fullsize .cp-bottom/*,
 #responsivecarousel_main .kb-smallsize .cp-right,
 #responsivecarousel_main .kb-smallsize .cp-top,
 #responsivecarousel_main .kb-smallsize .cp-left,
@@ -2309,7 +2310,7 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .kb-mediumsize .cp-right,
 #responsivecarousel_main .kb-mediumsize .cp-top,
 #responsivecarousel_main .kb-mediumsize .cp-left,
-#responsivecarousel_main .kb-mediumsize .cp-bottom {
+#responsivecarousel_main .kb-mediumsize .cp-bottom*/ {
 	color:#fff;
 	/*background:url(../i/kb-plugin-assets/bg/black65.png);*/
     background: url("../i/kb-plugin-assets/bg/white67.png") repeat scroll 0 0 transparent;
@@ -2319,6 +2320,7 @@ website:   	http://www.themepunch.com
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);*/
 	position:absolute;
 }
+/*
 #responsivecarousel_main .kb-minisize .cp-right,
 #responsivecarousel_main .kb-minisize .cp-top,
 #responsivecarousel_main .kb-minisize .cp-left,
@@ -2326,7 +2328,7 @@ website:   	http://www.themepunch.com
 	visibility:hidden;
 	width:0px;
 	height:0px;
-}
+}*/
 
 /**************************
 	WIDHT >959px SIZING
@@ -2469,6 +2471,7 @@ website:   	http://www.themepunch.com
 /**************************
 	WIDHT <=767px SIZING
 ***************************/
+/*
 #responsivecarousel_main .kb-mediumsize .cp-right	{ padding:15px 15px 15px 15px; top:0px;    right:0px; height:100%; }
 #responsivecarousel_main .kb-mediumsize .cp-left	{ padding:15px 15px 15px 15px; top:0px;    left:0px;  height:100%; }
 #responsivecarousel_main .kb-mediumsize .cp-top	{ padding:0px 15px 0px 15px; top:0px;    left:0px;  width:100%;  }
@@ -2476,7 +2479,7 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .kb-mediumsize .cp-title{
 	color:#ccc;
 	font-size:18px;
-	/*font-family: 'Oswald', sans-serif;*/
+	/*font-family: 'Oswald', sans-serif;*
 	text-shadow: 0px 1px 0px #000000;
 }
 #responsivecarousel_main .kb-mediumsize p{
@@ -2487,7 +2490,7 @@ website:   	http://www.themepunch.com
 	text-shadow: 0px 1px 0px #000000;
 }
 
-/*******	VIDEO SETTINGS	********/
+/*******	VIDEO SETTINGS	********
 #responsivecarousel_main .kb-mediumsize .video_clip{
 	width:60%;
 	height:100%;
@@ -2508,7 +2511,7 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .kb-mediumsize .video_kenburn h2{
 	color:#ccc;
 	font-size:20px;
-	/*font-family: 'Oswald', sans-serif;*/
+	/*font-family: 'Oswald', sans-serif;*
 	text-shadow: 0px 1px 0px #000000;
 	margin: 0;
 	line-height:1;
@@ -2519,11 +2522,12 @@ website:   	http://www.themepunch.com
 }
 #responsivecarousel_main .light.kb-mediumsize .video_kenburn p{
 	text-shadow: 0px 1px 0px #eee;
-}
+}*/
 
 /**************************
 	WIDHT <=570px SIZING
 ***************************/
+/*
 #responsivecarousel_main .kb-smallsize .cp-right		{ padding:15px 15px 15px 15px; top:0px;    right:0px; height:100%; }
 #responsivecarousel_main .kb-smallsize .cp-left		{ padding:15px 15px 15px 15px; top:0px;    left:0px;  height:100%; }
 #responsivecarousel_main .kb-smallsize .cp-top		{ padding:15px 15px 15px 15px; top:0px;    left:0px;  width:100%;  }
@@ -2531,7 +2535,7 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .kb-smallsize .cp-title{
 	color:#ccc;
 	font-size:13px;
-	/*font-family: 'Oswald', sans-serif;*/
+	/*font-family: 'Oswald', sans-serif;*
 	text-shadow: 0px 1px 0px #000000;
 }
 #responsivecarousel_main .kb-smallsize p{
@@ -2542,7 +2546,7 @@ website:   	http://www.themepunch.com
 	text-shadow: 0px 1px 0px #000000;
 }
 
-/*******	VIDEO SETTINGS	********/
+*******	VIDEO SETTINGS	********
 #responsivecarousel_main .kb-smallsize .video_clip{
 	width:60%;
 	height:100%;
@@ -2563,7 +2567,7 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .kb-smallsize .video_kenburn h2{
 	color:#ccc;
 	font-size:15px;
-	/*font-family: 'Oswald', sans-serif;*/
+	/*font-family: 'Oswald', sans-serif;*
 	text-shadow: 0px 1px 0px #000000;
 	margin: 0;
 	line-height:1;
@@ -2576,18 +2580,19 @@ website:   	http://www.themepunch.com
 	text-shadow: 0px 1px 0px #eee;
 }
 
-/**************************
+**************************
 	WIDHT <=300px SIZING
-***************************/
+***************************
 #responsivecarousel_main .kb-minisize .video_clip{
 	width:100%;
 	height:100%;
 	padding-right:0px;
 	top:0px;
 	left:0px;
-}
+}*/
 
 /*******	VIDEO SETTINGS	********/
+/*
 #responsivecarousel_main .kb-minisize .video_clip{
 	width:100%;
 	height:100%;
@@ -2604,7 +2609,7 @@ website:   	http://www.themepunch.com
 	font-size:0px;
 	margin: 0;
 	line-height:0;
-}
+}*/
 
 /****************************
 	-	DECORATIONS	-
@@ -2657,7 +2662,7 @@ website:   	http://www.themepunch.com
 /*****************************************
 	-	VIDEO BACKGROUNDS	-
 ******************************************/
-#responsivecarousel_main .dark .video_kenburn{
+/*#responsivecarousel_main .dark .video_kenburn{
 		position:absolute;
 		top: 0; bottom: 0px;
 		width: 100%;
@@ -2667,7 +2672,7 @@ website:   	http://www.themepunch.com
 		line-height: 20px;
 		color: #777;
 		text-shadow: #fff 1px 1px 1px;
-}
+}*/
 #responsivecarousel_main .light .video_kenburn{
 		position:absolute;
 		top: 0; bottom: 0px;
@@ -2683,8 +2688,8 @@ website:   	http://www.themepunch.com
 /**************************
 	-	BUTTONS	-
 ***************************/
-#responsivecarousel_main .dark .kb-button {
-    /*font-family: 'Oswald', sans-serif;	*/
+/*#responsivecarousel_main .dark .kb-button {
+    /*font-family: 'Oswald', sans-serif;	*
     float: left;
     height: 31px;
     line-height: 30px;
@@ -2706,7 +2711,7 @@ website:   	http://www.themepunch.com
 #responsivecarousel_main .dark .comment-reply-link:hover {
     background-position:bottom;
     text-decoration: none;
-}
+}*/
 #responsivecarousel_main .light .kb-button {
     /*font-family: 'Oswald', sans-serif;	*/
     float: left;
@@ -2736,7 +2741,7 @@ website:   	http://www.themepunch.com
 /*********************************
 	-	VIDEO BUTTONS	-
 *********************************/
-#responsivecarousel_main .dark .video_kenburn .close{
+/*#responsivecarousel_main .dark .video_kenburn .close{
 	width:30px;
 	height:30px;
 	position:absolute;
@@ -2751,7 +2756,7 @@ website:   	http://www.themepunch.com
 	filter: alpha(opacity=50);
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 	cursor:pointer;
-}
+}*/
 #responsivecarousel_main .light .video_kenburn .close{
 	width:30px;
 	height:30px;
@@ -2792,14 +2797,14 @@ website:   	http://www.themepunch.com
     -moz-box-shadow:0px 0px 8px 2px rgba(0, 0, 0, 0.80);
     -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.80);
 }
-#responsivecarousel_main .dark .kenburn-thumbs .overlay{
+/*#responsivecarousel_main .dark .kenburn-thumbs .overlay{
 	width:100%;
 	height:100%;
 	position:absolute;
 	top:0px;
 	left:0px;
 	background:#000;
-}
+}*/
 #responsivecarousel_main .light .kenburn-thumbs .overlay{
 	width:100%;
 	height:100%;
