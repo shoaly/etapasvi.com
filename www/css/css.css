@@ -1402,6 +1402,9 @@ img.newsitem_img {
     background: none repeat scroll 0 0 #f0f0f0;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#f0f0f0');
     }
+.news_list .minimized .t_latest:before {
+    content: "► ";
+    }
 .news_list .minimized .i_latest {
     display: none;
     }
