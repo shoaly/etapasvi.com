@@ -10,109 +10,114 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Keep in mind that this encyclopedia has been compiled mostly from WikiPedia articles, so it may contain mistakes and misinterpretations. To get deeper understanding of the words and phenomenons they are pointing to refer to the Teachings section and your heart.</source>
+        <target>Имейте в виду, что эта энциклопедия составлена, ​​в основном, из статей Википедии, поэтому может содержать ошибки и неточности. Чтобы получить более глубокое понимание слов и явлений, на которые они указывают, обратитесь к разделу Учения и вашему сердцу.</target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Gautama Buddha (Siddhartha, Sakyamuni, Tathagata)</source>
         <target>Гаутама Будда (Сиддхартха, Шакьямуни, Татхагата)</target>
-      </trans-unit> 
-    
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Ten Characteristics of Buddha</source>
         <target>Десять Качеств Будды</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Middle Way</source>
         <target>Срединный путь</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Four Noble Truths</source>
         <target>Четыре Благородные Истины</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Noble Eightfold Path</source>
         <target>Благородный Восьмеричный Путь</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Three marks of existence</source>
         <target>Три признака существования</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Ten negative actions</source>
         <target>Десять неблагих деяний</target>
-      </trans-unit>       
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Samsara</source>
         <target>Сансара</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Nirvana</source>
         <target>Нирвана</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Parinirvana</source>
         <target>Паринирвана</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Moksha</source>
         <target>Мокша</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Klesha</source>
         <target>Клеша</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Mara</source>
         <target>Мара</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Dharma</source>
-        <target>Дхарма</target>
-      </trans-unit> 
+        <target>Дарма</target>
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Sangha</source>
-        <target>Сангха</target>
-      </trans-unit> 
+        <target>Санга</target>
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Refuge</source>
         <target>Прибежище</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Schools and traditions of Buddhism</source>
         <target>Школы и традиции Буддизма</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Mahayana ("Great Vehicle")</source>
         <target>Махаяна («Великая Колесница»)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Tibetan Buddhism</source>
         <target>Тибетский Буддизм</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Vajrayana</source>
         <target>Ваджраяна</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>The Sakya Tradition in Tibetan Buddhism</source>
         <target>Традиция Сакья Тибетского Буддизма</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Tamang</source>
@@ -122,27 +127,27 @@
       <trans-unit id="1">
         <source>Tummo</source>
         <target>Туммо</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bodhisattva</source>
         <target>Бодхисаттва</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Six paramitas (perfections)</source>
         <target>Шесть Парамит (добродетелей)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Dhyana</source>
         <target>Дхьяна</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Arhat</source>
         <target>Архат</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Samyak Sambodhi (Anuttara-samyak-sambodhi)</source>
@@ -152,42 +157,42 @@
       <trans-unit id="1">
         <source>Maitreya</source>
         <target>Майтрея</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Asanga</source>
         <target>Асанга</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>The future coming of Maitreya</source>
         <target>Явление Майтреи</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Anatta (Anatman, "not-self")</source>
         <target>Анатта (Анатман, не-я)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Atman (Buddhism)</source>
         <target>Атман (Буддизм)</target>
-      </trans-unit>       
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>Atman (Hinduism)</source>
         <target>Атман (Индуизм)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Paramatman (Supersoul)</source>
         <target>Параматман (Сверхдуша)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>God in Buddhism</source>
         <target>Бог в Буддизме</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bhagavan</source>
@@ -197,7 +202,7 @@
       <trans-unit id="1">
         <source>Gyani</source>
         <target>Гьяни</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Kali Yuga</source>
@@ -351,7 +356,7 @@
 
       <trans-unit id="1">
         <source>In Buddhist symbolism, the Noble Eightfold Path is often represented by means of the dharma wheel, whose eight spokes represent the eight elements of the path.</source>
-        <target>В буддийской символике Благородный Восьмеричный Путь часто изображается с помощью колеса Дхармы, восемь спиц которого представляют восемь элементов пути.</target>
+        <target>В буддийской символике Благородный Восьмеричный Путь часто изображается с помощью колеса Дармы, восемь спиц которого представляют восемь элементов пути.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -413,17 +418,17 @@
         <source>Anatta (Sanskrit anatman) or "non-Self".</source>
         <target>Анатта (anatman - санскрит) или "не-я".</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>3 of the body: killing, stealing, sexual misconduct</source>
         <target>3 деяния тела: убийство, воровство и прелюбодеяние</target>
-      </trans-unit>      
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>4 of the speech: lie, words that divide, bad words and twaddle</source>
         <target>4 деяния речи: ложь, сквернословие, злословие и пустословие</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>3 of the mind: desire (to have something what belongs to an other), malevolence and mistaken visions</source>
         <target>3 деяния ума: алчность, злонамеренность и приверженность ложным воззрениям</target>
@@ -552,36 +557,41 @@
       <trans-unit id="1">
         <source>Devaputra-mara, or Mara the son of a deva (god), that is, Mara as an objectively existent being rather than as a metaphor.</source>
         <target>девапутра-мара («дитя бога») — Мара, как дитя бога, то есть, собственно Мара, как существо. Последняя ипостась Мары близка с индуистской концепцией Майи.</target>
-      </trans-unit>      
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>Dharma (dhamma) is the term that means one's righteous duty, or any virtuous path. In Indian languages it can be equivalent simply to religion, depending on context. The word dharma translates as that which upholds or supports, and is generally translated into English as law.</source>
-        <target>Дхарма (дхамма) - термин, означающий праведный долг или добродетельный путь. В индийском языке она может быть эквивалентна просто религии, в зависимости от контекста. Слово дхарма переводится как то, что помогает или поддерживает, и обычно переводится как закон.</target>
+        <target>Дарма (дамма) - термин, означающий праведный долг или добродетельный путь. В индийском языке она может быть эквивалентна просто религии, в зависимости от контекста. Слово дарма переводится как то, что помогает или поддерживает, и обычно переводится как закон.</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>The Dharma, as the liberating law discovered and proclaimed by the Buddha, is summed up in the Four Noble Truths. Beings that live in accordance with Dharma proceed more quickly toward nirvana (personal liberation).</source>
-        <target>Дхарма как закон, дарующий свободу и провозглашённый Буддой, сведён в Четырёх Благородных Истинах. Существа, которые живут в соответствии с Дхармой, быстрее продвигаются по направлению к нирване (личное освобождение).</target>
+        <target>Дарма как закон, дарующий свободу и провозглашённый Буддой, сведён в Четырёх Благородных Истинах. Существа, которые живут в соответствии с Дармой, быстрее продвигаются по направлению к нирване (личное освобождение).</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>"Dharma" usually refers not only to the sayings of the Buddha, but also to the later traditions of interpretation and addition that the various schools of Buddhism have developed to help explain and to expand upon the Buddha's teachings. Dharma in the Buddhist scriptures has a variety of meanings, including "phenomenon" and "nature" or "characteristic".</source>
-        <target>"Дхарма", как правило, относится не только к словам Будды, но и к более поздним традициям толкования и дополнения, которые были разработаны различными школами буддизма, чтобы помочь объяснить и расширить учение Будды. Дхарма в буддийских писаниях имеет множество значений, в том числе "явление", "природа" или "характеристика".</target>
+        <target>"Дарма", как правило, относится не только к словам Будды, но и к более поздним традициям толкования и дополнения, которые были разработаны различными школами буддизма, чтобы помочь объяснить и расширить учение Будды. Дарма в буддийских писаниях имеет множество значений, в том числе "явление", "природа" или "характеристика".</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Dharma in the Buddhist scriptures has a variety of meanings, including "phenomenon" and "nature" or "characteristic".</source>
+        <target>Дарма в буддийских писаниях имеет множество значений, в том числе "явление", "природа" или "характеристика".</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>For others still, they see the Dharma as referring to the "truth," or the ultimate reality of "the way that things really are". "dharma" is also used to infer one's duty in a righteous way; thus a Raja's dharma is to protect its people, a barber's dharma is to cut hair, a teacher's dharma is to teach. Dharma with a capital "D" (as opposed to thousands of dharmas or little ways and methods, with a little "d") means universal or absolute truth.</source>
-        <target>Другие же видят Дхарму как относящуюся к "истине" или конечной реальности, тому, чем "всё является на самом деле". Слово "дхарма" также используется, чтобы указать на чей-то долг на его пути, так дхарма Раджи в том, чтобы защищать свой народ, дхарма парикмахера в том, чтобы стричь волосы, дхарма учителя в том, чтобы учить. Дхарма с большой буквы "Д" (в отличие от тысяч дхарм или малых путей и методов, начинающихся с маленькой "д") означает универсальную или абсолютную истину.</target>
+        <target>Другие же видят Дарму как относящуюся к "истине" или конечной реальности, тому, чем "всё является на самом деле". Слово "дарма" также используется, чтобы указать на чей-то долг на его пути, так дарма Раджи в том, чтобы защищать свой народ, дарма парикмахера в том, чтобы стричь волосы, дарма учителя в том, чтобы учить. Дарма с большой буквы "Д" (в отличие от тысяч дарм или малых путей и методов, начинающихся с маленькой "д") означает универсальную или абсолютную истину.</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Sangha is a word in Pali or Sanskrit that can be translated roughly as "association" or "assembly," "company" or "community" with common goal, vision or purpose.</source>
-        <target>Сангха - слово, которое с пали и санскрита может быть приблизительно переведено как "объединение" или "собрание", "группа" или "община" с общей целью, взглядами или устремлениями.</target>
+        <target>Санга - слово, которое с пали и санскрита может быть приблизительно переведено как "объединение" или "собрание", "группа" или "община" с общей целью, взглядами или устремлениями.</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>There are three distinct definitions of Sangha</source>
-        <target>Существует три различных определения Сангхи</target>
+        <target>Существует три различных определения Санги</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -616,22 +626,22 @@
 
       <trans-unit id="1">
         <source>the Dharma;</source>
-        <target>Дхарма;</target>
+        <target>Дарма;</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>the Sangha.</source>
-        <target>Сангха.</target>
+        <target>Санга.</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>The idea behind taking refuge is that when it starts to rain, we like to find a shelter. The Buddhist shelter from the rain of problems and pain of life is threefold: the Buddha, his teachings (the Dharma) and the spiritual community (the Sangha). Taking refuge means that we have some understanding about suffering, and we have confidence that the Buddha, Dharma and Sangha (the "Three Jewels") can help us.</source>
-        <target>Идея о принятии прибежища заключается в том, что когда начинается дождь, мы пытаемся найти укрытие. Буддийское укрытие от дождя проблем и боли жизни это три элемента: Будда, его учения (Дхарма) и духовное сообщество (Сангха). Принятие прибежища означает, что мы имеем некоторое представление о страдании, и у нас есть уверенность в том, что Будда, Дхарма и Сангха ("Три Драгоценности") может помочь нам.</target>
+        <target>Идея о принятии прибежища заключается в том, что когда начинается дождь, мы пытаемся найти укрытие. Буддийское укрытие от дождя проблем и боли жизни это три элемента: Будда, его учения (Дарма) и духовное сообщество (Санга). Принятие прибежища означает, что мы имеем некоторое представление о страдании, и у нас есть уверенность в том, что Будда, Дарма и Санга ("Три Драгоценности") может помочь нам.</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>The analogy of sickness is often used: Buddha is the doctor, Dharma is the medicine, Sangha is the nurse, we are the patient, the cure is taking the medicine, which means practicing the methods. Taking refuge is like unpacking the medicine and deciding to follow the doctor's advice.</source>
-        <target>Часто проводится аналогия с болезнью: Будда - врач, Дхарма - лекарство, Сангха - медсестра, мы - пациент, курс лечения - принятие лекарства, что означает духовную практику. Принять прибежище - это как открыть лекарство и следовать совету врача.</target>
+        <target>Часто проводится аналогия с болезнью: Будда - врач, Дарма - лекарство, Санга - медсестра, мы - пациент, курс лечения - принятие лекарства, что означает духовную практику. Принять прибежище - это как открыть лекарство и следовать совету врача.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -691,7 +701,7 @@
 
       <trans-unit id="1">
         <source>Both accept that members of the laity and of the sangha can pursue the path toward enlightenment (bodhi).</source>
-        <target>Обе признают, что и члены светского общества и Сангхи, могут следовать по пути к просветлению (бодхи).</target>
+        <target>Обе признают, что и члены светского общества и Санги, могут следовать по пути к просветлению (бодхи).</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -771,7 +781,7 @@
 
       <trans-unit id="1">
         <source>the Dharmakaya (Truth body, Diamond body) which embodies the very principle of enlightenment and knows no limits or boundaries.</source>
-        <target>Дхармакая (Тело Истины, Алмазное Тело), которое воплощает в себе сам принцип просветления и не знает пределов и границ.</target>
+        <target>Дармакая (Тело Истины, Алмазное Тело), которое воплощает в себе сам принцип просветления и не знает пределов и границ.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -921,12 +931,12 @@
 
       <trans-unit id="1">
         <source>One hears the Dharma.</source>
-        <target>Он следует пути Дхармы.</target>
+        <target>Он следует пути Дармы.</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Inspired by the Dharma, one performs good deeds and accepts the grace of others (e.g., teachers, bodhisattvas), thus benefiting from their merit and building one's own merit.</source>
-        <target>Вдохновленный Дхармой, он творит благие деяния и принимает благодать других (учителя, Бодхисаттвы), тем самым извлекая пользу из их добродетели и накапливая собственные заслуги.</target>
+        <target>Вдохновленный Дармой, он творит благие деяния и принимает благодать других (учителя, Бодхисаттвы), тем самым извлекая пользу из их добродетели и накапливая собственные заслуги.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -1001,7 +1011,7 @@
 
       <trans-unit id="1">
         <source>Upāya (skillful means, contrivances, devices) - any method used to help others progress along the path. For instance, one might describe the Pure Land as though it is a material place where jewels hang from trees, in order to arouse the listener's interest. The successful bodhisattva is said to practice "skill in means" (upaya-kaushalya), continually leading others toward perfection. Ultimately, of course, all presentations of the Dharma - inwords or symbols - merely constitute upaya, expediencies.</source>
-        <target>Упая (искусные средства, способы, методы) - любые методы, применяемые, чтобы помогать другим продвигаться по их пути. Например, можно рассказывать о Чистых Землях, как будто они являются местом, где драгоценности свисают с деревьев, чтобы пробудить интерес в слушателях. Считается, что успешный Бодхисаттва практикует "искусные средства" (упая каушалья), постоянно ведя других к совершенству. В конечном итоге,  все проявления Дхармы - словесные или образные - являются просто упаей, целесообразностью.</target>
+        <target>Упая (искусные средства, способы, методы) - любые методы, применяемые, чтобы помогать другим продвигаться по их пути. Например, можно рассказывать о Чистых Землях, как будто они являются местом, где драгоценности свисают с деревьев, чтобы пробудить интерес в слушателях. Считается, что успешный Бодхисаттва практикует "искусные средства" (упая каушалья), постоянно ведя других к совершенству. В конечном итоге,  все проявления Дармы - словесные или образные - являются просто упаей, целесообразностью.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -1031,7 +1041,7 @@
 
       <trans-unit id="1">
         <source>dharmamegha - "clouds of Dharma": total perfection, like that of the Tathagata, bathed (as it were) in clouds of wisdom and virtue.</source>
-        <target>дхармамегха ("Облака Дхармы") - абсолютное совершенство, пребывание в облаках мудрости и добродетели подобно Татхагате.</target>
+        <target>дармамегха ("Облака Дармы") - абсолютное совершенство, пребывание в облаках мудрости и добродетели подобно Татхагате.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -1081,7 +1091,7 @@
 
       <trans-unit id="1">
         <source>Maitreya (Sanskrit), Metteyya (Pāli), or Yampa (Tibetan) is a bodhisattva who in the Buddhist tradition is to appear on Earth, achieve complete enlightenment, and teach the pure dharma. According to scriptures, Maitreya will be a successor of the historic Śākyamuni Buddha, the founder of Buddhism.</source>
-        <target>Майтрея (санскрит), Меттея (пали) или Ямпа (тибетский) является Бодхисаттвой, который согласно буддийской традиции, должен появиться на Земле, достичь полного просветления и учить чистой Дхарме. Согласно писаниям, Майтрея будет наследником исторического Будды Шакьямуни, основателя буддизма.</target>
+        <target>Майтрея (санскрит), Меттея (пали) или Ямпа (тибетский) является Бодхисаттвой, который согласно буддийской традиции, должен появиться на Земле, достичь полного просветления и учить чистой Дарме. Согласно писаниям, Майтрея будет наследником исторического Будды Шакьямуни, основателя буддизма.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -1136,7 +1146,7 @@
 
       <trans-unit id="1">
         <source>Maitreya's coming will occur after the teachings of the current Gautama Buddha, the Dharma, are no longer taught and are completely forgotten. Gautama predicts that when man's life span is eighty thousand years he who is named Maitreya shall arise in the world.</source>
-        <target>Явление Майтреи произойдёт после того, как учение Гаутамы Будды, Дхарма, уже не будет изучаться и будет полностью забыто. Гаутама предсказывает, что при людях с жизненным сроком в восемьдесят тысяч лет в мире должен появиться тот, кого зовут Майтрея.</target>
+        <target>Явление Майтреи произойдёт после того, как учение Гаутамы Будды, Дарма, уже не будет изучаться и будет полностью забыто. Гаутама предсказывает, что при людях с жизненным сроком в восемьдесят тысяч лет в мире должен появиться тот, кого зовут Майтрея.</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -1281,7 +1291,7 @@
 
       <trans-unit id="1">
         <source>The contemplation of not-self leads to the emptiness liberation. Herein the faculty of wisdom is outstanding. And one who attains the path of stream-entry in that way is called a Dharma-devotee. At the next two stages of enlightenment, one becomes a vision-attainer. And at the highest stage (arhatship) one is called "liberated by wisdom".</source>
-        <target>Созерцание не-Я ведёт к пустоте освобождения. При этом польза обретённой мудрости неоценима. И тот, кто достигает пути вступления в поток, зовётся приверженным Дхарме. На следующих двух этапах просветления он становится Достигшим видения. И на высшей стадии (архатство) он зовётся "Освобождённым за счёт мудрости"</target>
+        <target>Созерцание не-Я ведёт к пустоте освобождения. При этом польза обретённой мудрости неоценима. И тот, кто достигает пути вступления в поток, зовётся приверженным Дарме. На следующих двух этапах просветления он становится Достигшим видения. И на высшей стадии (архатство) он зовётся "Освобождённым за счёт мудрости"</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -1422,7 +1432,7 @@
       <trans-unit id="1">
         <source>Buddhism greatly influenced the development of the Hindu Advaita Vedanta school of philosophy. There too there the individual self is deconstructed. Advaita however postulates the existence of a monistic metaphysical being in itself, i.e. Brahman or Paramatman as part of its interpretation of the Upanishads, while Buddhism does not.</source>
         <target>Буддизм в значительной степени повлиял на развитие индийской школы философии Адвайта-веданта. В ней также отвергается индивидуальное Я. Адвайта, однако, постулирует существование метафизического существа самого по себе, т. е. Брахмана или Параматмана как части его толкования в Упанишадах, в отличие от буддизма.</target>
-      </trans-unit>      
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>The Ātman is a philosophical term used within Hinduism, especially in the Vedanta school to identify the soul whether in global sense (world's soul) or in individual sense (of a person own soul). It is one's true self (hence generally translated as "Self") beyond identification with the phenomenal reality of worldly existence.</source>
@@ -1468,36 +1478,36 @@
         <source>In some traditions of Hinduism it is used to indicate the Supreme Being or Absolute Truth, but with specific reference to that Supreme Being as possessing a personality (a personal God). This personal feature indicated in Bhagavan differentiates its usage from other similar terms such as Brahman, the "Supreme Spirit" or "spirit", and thus, in this usage, Bhagavan is in many ways analogous to the general Christian conception of God.</source>
         <target>В некоторых традициях индуизма он используется для обозначения Верховного Существа или Абсолютной Истины как Личности Бога, как Бога в Его личностном аспекте. Эта личностная концепция Бхагавана отличает его от других сходных терминов таких, как Брахман, Высший Дух и посему, более или менее тождественна общему понятию Бога в христианстве.</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>In Hindu Religion, the word Bhagwan has symbolic meaning too. The word encompasses Earth, Water, Fire, Air and Space – the five elements:</source>
         <target>В индуизме слово Бхагаван имеет ещё и символический смысл. Слово заключает в себе Землю, Воду, Огонь, Воздух и Пространство - пять элементов:</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘Bh’ stands for Bhoomi or Earth</source>
         <target>"Бх" – Бхуми или Земля</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘G’ stands for Gagan or Space</source>
         <target>"Г" – Гаган или Пространство</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘V’ stands for Vayu or Air</source>
         <target>"В" – Вайу или Воздух</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘A’ stands for Agni or Fire</source>
         <target>"А" – Агни или Огонь</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘N’ stands for Neer or Water</source>
         <target>"Н" – Нир или Вода</target>
-      </trans-unit>      
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bhagavan used as a title of veneration is often translated as "Lord", as in "Bhagavan Krishna", "Bhagavan Shiva", "Bhagavan Swaminarayan", etc. In Buddhism and Jainism, Gautama Buddha, Mahavira and other Tirthankaras, Buddhas and bodhisattvas are also venerated with this title.</source>
@@ -1507,7 +1517,7 @@
       <trans-unit id="1">
         <source>The title is also used as a respectful form of address for a number of contemporary spiritual teachers in India.</source>
         <target>В современном контексте термин часто употребляется как уважительная форма обращения к духовным учителям в Индии.</target>
-      </trans-unit>      	
+      </trans-unit>
 
       <trans-unit id="1">
         <source>In the Hindu religion, Gyani is a person trying to perceive Absolute Truth (Bhagavan or Brahman) relying just on the strength of his mind.</source>
@@ -1526,7 +1536,7 @@
 
       <trans-unit id="1">
         <source>Hindus believe that human civilization degenerates spiritually during the Kali Yuga, which is referred to as the Dark Age because in it people are as far removed as possible from God. Hinduism often symbolically represents morality (dharma) as a bull. In Satya Yuga, the first stage of development, the bull has four legs, but in each age morality is reduced by one quarter. By the age of Kali, morality is reduced to only a quarter of that of the golden age, so that the bull of Dharma has only one leg.</source>
-        <target>Индусы считают, что человеческая цивилизация вырождается духовно в ходе Кали-юги, о чём говорит название Век Тьмы, потому что в это время люди максимально удаляются от Бога. Индуизм часто представляет нравственность (Дхарму), как быка. В Сатья Юге, первом этапе развития, у быка четыре ноги, но в каждый век мораль уменьшается на одну четверть. К веку Кали нравственность уменьшается до её четверти золотого века, так что бык Дхармы имеет лишь одну ногу.</target>
+        <target>Индусы считают, что человеческая цивилизация вырождается духовно в ходе Кали-юги, о чём говорит название Век Тьмы, потому что в это время люди максимально удаляются от Бога. Индуизм часто представляет нравственность (Дарму), как быка. В Сатья Юге, первом этапе развития, у быка четыре ноги, но в каждый век мораль уменьшается на одну четверть. К веку Кали нравственность уменьшается до её четверти золотого века, так что бык Дармы имеет лишь одну ногу.</target>
       </trans-unit>
 
       <trans-unit id="1">

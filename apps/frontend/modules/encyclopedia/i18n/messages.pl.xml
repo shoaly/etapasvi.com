@@ -10,109 +10,114 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Keep in mind that this encyclopedia has been compiled mostly from WikiPedia articles, so it may contain mistakes and misinterpretations. To get deeper understanding of the words and phenomenons they are pointing to refer to the Teachings section and your heart.</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Gautama Buddha (Siddhartha, Sakyamuni, Tathagata)</source>
         <target>Gautama Budda (Siddhartha, Siakjamuni, Tathagata)</target>
-      </trans-unit> 
-    
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Ten Characteristics of Buddha</source>
         <target>Dziesięć Atrybutów Buddy</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Middle Way</source>
         <target>Środkowa Droga</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Four Noble Truths</source>
         <target>Cztery Szlachetne Prawdy</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Noble Eightfold Path</source>
         <target>Ośmiokrotna Ścieżka</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Three marks of existence</source>
         <target>Trzy cechy egzystencji</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Ten negative actions</source>
         <target></target>
-      </trans-unit>  
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Samsara</source>
         <target>Samsara</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Nirvana</source>
         <target>Nirwana</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Parinirvana</source>
         <target>Parinirwana</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Moksha</source>
         <target>Moksza</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Klesha</source>
         <target>Splamienia (Klesha)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Mara</source>
         <target>Mara</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Dharma</source>
         <target>Dharma</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Sangha</source>
         <target>Sangha</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Refuge</source>
         <target>Schronienie</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Schools and traditions of Buddhism</source>
         <target>Szkoły i tradycje Buddyzmu</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Mahayana ("Great Vehicle")</source>
         <target>Mahayana ("Wielki Pojazd")</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Tibetan Buddhism</source>
         <target>Tybetański Buddyzm</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Vajrayana</source>
         <target>Vadżrajana</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>The Sakya Tradition in Tibetan Buddhism</source>
         <target>Tradycja Sakja Buddyzmu Tybetańskiego</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Tamang</source>
@@ -122,27 +127,27 @@
       <trans-unit id="1">
         <source>Tummo</source>
         <target>Tummo</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bodhisattva</source>
         <target>Bodhisattva</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Six paramitas (perfections)</source>
         <target>Sześć paramit (doskonałości)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Dhyana</source>
         <target>Dhyana</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Arhat</source>
         <target>Arhat</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Samyak Sambodhi (Anuttara-samyak-sambodhi)</source>
@@ -152,22 +157,22 @@
       <trans-unit id="1">
         <source>Maitreya</source>
         <target>Maitreya</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Asanga</source>
         <target>Asanga</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>The future coming of Maitreya</source>
         <target>Przyszłe nadejście Maitreyi</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Atman (Buddhism)</source>
         <target>Atman (Buddyzm)</target>
-      </trans-unit>       
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>Atman (Hinduism)</source>
@@ -177,12 +182,12 @@
       <trans-unit id="1">
         <source>Paramatman (Supersoul)</source>
         <target>Paramatman (Naddusza)</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>God in Buddhism</source>
         <target>Bóg w Buddyzmie</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bhagavan</source>
@@ -192,7 +197,7 @@
       <trans-unit id="1">
         <source>Gyani</source>
         <target>Gyani</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Kali Yuga</source>
@@ -412,18 +417,18 @@
       <trans-unit id="1">
         <source>3 of the body: killing, stealing, sexual misconduct</source>
         <target></target>
-      </trans-unit>      
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>4 of the speech: lie, words that divide, bad words and twaddle</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>3 of the mind: desire (to have something what belongs to an other), malevolence and mistaken visions</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Samsara is the cycle of birth, death and rebirth (i.e. reincarnation). The concept of samsara is closely associated with the belief that one continues to be born and reborn in various realms in the form of a human, god, animal, or other being, depending on karma ("action" or "doing"; whatever one does, says, or thinks). Thus Samsara is the cycle of cause and effect.</source>
         <target>Samsara to cykl narodzin, śmierci i odrodzenia (tzn. reinkarnacji). Koncepcja samsary jest blisko spokrewniona z wiarą, że wciąż na nowo rodzimy się i odradzamy w różnych sferach w formie człowieka, boga, zwierzęcia, czy innej istoty, w zależności od karmy ("działanie" lub "robienie"; cokolwiek robimy, mówimy, czy myślimy). Tak, Samsara jest cyklem przyczyny i skutku.</target>
@@ -447,7 +452,7 @@
       <trans-unit id="1">
         <source>When a person who has realized nirvana dies, his death is referred as parinirvāna, his fully passing away, as his life was his last link to the cycle of death and rebirth (samsara), and he will not be reborn again. What happens to a person after his parinirvāna cannot be explained, as it is outside of all conceivable experience.</source>
         <target>Gdy osoba, która urzeczywistniła nirwanę umiera, do jej śmierci odnosi się jako do paranirwany, jej całkowitego odejścia, ponieważ jej życie było jej ostatnim łączem w cyklu śmierci i odrodzenia (samsara) i już nie narodzi się ponownie. Co dzieje się z osobą po jej paranirwanie nie można wytłumaczyć, gdyż wychodzi to poza wszystkie wyobrażalne doznania.</target>
-      </trans-unit>  
+      </trans-unit>
 
       <trans-unit id="1">
         <source>In Indian religions, Moksha or Mukti, literally "release" (both from a root muc "to let loose, let go"), is the liberation from samsara, the cycle of death and rebirth or reincarnation and all of the suffering and limitation of worldly existence after the realization that the Atman is in fact Paramatman in Advaita philosophy.</source>
@@ -547,7 +552,7 @@
       <trans-unit id="1">
         <source>Devaputra-mara, or Mara the son of a deva (god), that is, Mara as an objectively existent being rather than as a metaphor.</source>
         <target>Devaputra-mara, lub mara syn devy (boga), to jest, Mara bardziej jako obiektywnie egzystująca istota, niż jako metafora.</target>
-      </trans-unit>       
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>Dharma (dhamma) is the term that means one's righteous duty, or any virtuous path. In Indian languages it can be equivalent simply to religion, depending on context. The word dharma translates as that which upholds or supports, and is generally translated into English as law.</source>
@@ -557,11 +562,16 @@
       <trans-unit id="1">
         <source>The Dharma, as the liberating law discovered and proclaimed by the Buddha, is summed up in the Four Noble Truths. Beings that live in accordance with Dharma proceed more quickly toward nirvana (personal liberation).</source>
         <target>Dharma jako wyzwalające prawo odkryte i głoszone przez Buddę, jest streszczone w Czterech Szlachetnych Prawdach. Istoty, które żyją zgodnie z Dharmą szybciej zdążają ku nirwanie (własnemu, osobistemu wyzwoleniu).</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>"Dharma" usually refers not only to the sayings of the Buddha, but also to the later traditions of interpretation and addition that the various schools of Buddhism have developed to help explain and to expand upon the Buddha's teachings. Dharma in the Buddhist scriptures has a variety of meanings, including "phenomenon" and "nature" or "characteristic".</source>
         <target>"Dharma" często odnosi się nie tylko do przypowieści Buddy, lecz również do późniejszych tradycji interpretowania i dopowiadania, które zostały rozwinięte przez różne szkoły Buddyzmu, aby pomóc wyjaśnić i rozwinąć nauki Buddy. Dharma w buddyjskich pismach świętych ma wiele znaczeń, w tym "fenomen" i "natura", lub "atrybut".</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Dharma in the Buddhist scriptures has a variety of meanings, including "phenomenon" and "nature" or "characteristic".</source>
+        <target>Dharma w buddyjskich pismach świętych ma wiele znaczeń, w tym "fenomen" i "natura", lub "atrybut".</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -867,7 +877,7 @@
         <source>Tummo-meditation is commonly associated with descriptions of intense sensations of body heat, which are a partial effect, rather than a goal, of the practice. Stories and eyewitness accounts abound of yogi practitioners being able to generate sufficient heat to dry wet sheets draped around their naked bodies while sitting outside in the freezing cold. While the physiological effects of Tummo are well known, they are not the primary purpose of the meditation practice. Tummo is a tantric meditation practice that transforms and evolves the consciousness of the practitioner so that "wisdom" (prajna) and "compassion" (karuna) are manifested in the individual.</source>
         <target>Medytacja Tummo jest zwykle związana z opisami intensywnych odczuć gorąca ciała, które są raczej częściowym skutkiem, aniżeli celem praktyki. Historie i relacje świadków obfitują w przykłady praktykujących joginów będących w stanie wygenerować ciepło wystarczające na wysuszenie mokrych nakryć owiniętych wokół ich nagich ciał, podczas gdy siedzą na zewnątrz w lodowatym chłodzie. Podczas gdy fizjologiczne efekty Tummo są dobrze znane, nie są one pierwszorzędnym celem praktyki medytacji. Tumo jest tantryczną praktyką medytacyjną, która przemienia i angażuje świadomość praktykującego tak, aby "mądrość" (prajna) i "współczucie" (karuna) zamanifestowały się w tej osobie.</target>
 	  </trans-unit>
-      
+
 	  <trans-unit id="1">
         <source>Not unproblematic, Tummo must be practiced in conjunction with appropriate empowerment and under the direction of a traditionally qualified Tantric Guru. Extensive preparation and pure motivation, most specifically bodhichitta, are absolutely essential both to beneficial results and to the avoidance of physical pain and discomfort in rlung (wind or breath) disorder or other imbalances.</source>
         <target>Nie bezproblematyczne, Tummo musi być praktykowane razem z odpowiednim uprawomocnieniem i pod kierunkiem tradycyjnie wykwalifikowanego Guru tantrycznego. Rozległe przygotowanie i czysta motywacja, w szczególności bodhiczitta, są absolutnie konieczne zarówno do uzyskania korzystnych rezultatów, ale też do uniknięcia bólu i dyskomfortu w zaburzeniach rlung (wiatr lub oddech) lub innych braków równowagi.</target>
@@ -1452,7 +1462,7 @@
         <source>Buddhism is neither atheistical nor theistical, and Buddhism is not a mixture of both either. Because the Buddhist teachings do not dwell in either one, thus it is called the Middle Way.</source>
         <target>Buddyzm nie jest ani ateistyczny, ani teistyczny i nie jest też mieszanką tych obydwu. Jakoże nauki buddyjskie nie zajmują się żadnym z nich, jest to wobec tego nazwane Środkową Drogą.</target>
       </trans-unit>
-      
+
 <trans-unit id="1">
         <source>Bhagavan (Bhagwan or Bhagawan) in Hindi and Sanskrit means one who is clad in bhagwa i.e. light orange colour, that represents gyan or knowledge. Thus Bhagwān means one who wears gyan or knowledge.</source>
         <target></target>
@@ -1462,36 +1472,36 @@
         <source>In some traditions of Hinduism it is used to indicate the Supreme Being or Absolute Truth, but with specific reference to that Supreme Being as possessing a personality (a personal God). This personal feature indicated in Bhagavan differentiates its usage from other similar terms such as Brahman, the "Supreme Spirit" or "spirit", and thus, in this usage, Bhagavan is in many ways analogous to the general Christian conception of God.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>In Hindu Religion, the word Bhagwan has symbolic meaning too. The word encompasses Earth, Water, Fire, Air and Space – the five elements:</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘Bh’ stands for Bhoomi or Earth</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘G’ stands for Gagan or Space</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘V’ stands for Vayu or Air</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘A’ stands for Agni or Fire</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘N’ stands for Neer or Water</source>
         <target></target>
-      </trans-unit>      
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bhagavan used as a title of veneration is often translated as "Lord", as in "Bhagavan Krishna", "Bhagavan Shiva", "Bhagavan Swaminarayan", etc. In Buddhism and Jainism, Gautama Buddha, Mahavira and other Tirthankaras, Buddhas and bodhisattvas are also venerated with this title.</source>
@@ -1501,7 +1511,7 @@
       <trans-unit id="1">
         <source>The title is also used as a respectful form of address for a number of contemporary spiritual teachers in India.</source>
         <target></target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>In the Hindu religion, Gyani is a person trying to perceive Absolute Truth (Bhagavan or Brahman) relying just on the strength of his mind.</source>
@@ -1531,7 +1541,7 @@
       <trans-unit id="1">
         <source>Kunchusum Lhakhang is a rural looking temple, in a short distance from Tamshing Lhakhang (the most important Nyingma school temple in Bhutan). The temple dates back to 7th century, it was discovered and restored by the treasurer in 15th century. The temple is famous for its bell, which bears an inscription from the 8th century. It was stolen from Tibet and transported to Bhutan. Perhaps the Tibetan Royal Family had cats which could hear the "sound of Buddhism".</source>
         <target>Kunchusum Lhakhang jest świątynią o wiejskim wyglądzie, znajdującą się nieopodal Tamshing Lhakhang (najważniejszej świątyni szkoły Nyingma w Butanie). Świątynia ta datuje się na 7 wiek i została odkryta i odnowiona przez skarbnika w 15 wieku. Świątynia owa znana jest ze swego dzwona, który nosi napis z 8 wieku. Został on skradziony z Tybetu i przetransportowany do Butanu. Być może tybetańska Rodzina Królewska miała koty, które mogły słyszeć "dźwięk Buddyzmu".</target>
-      </trans-unit>      
+      </trans-unit>
 
     </body>
   </file>

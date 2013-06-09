@@ -10,109 +10,114 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Keep in mind that this encyclopedia has been compiled mostly from WikiPedia articles, so it may contain mistakes and misinterpretations. To get deeper understanding of the words and phenomenons they are pointing to refer to the Teachings section and your heart.</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Gautama Buddha (Siddhartha, Sakyamuni, Tathagata)</source>
         <target>　ゴータマ仏陀（シッダ-ルタ、釈迦牟尼、如来）</target>
-      </trans-unit> 
-    
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Ten Characteristics of Buddha</source>
         <target>仏陀の十号</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Middle Way</source>
         <target>中道</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Four Noble Truths</source>
         <target>四諦</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Noble Eightfold Path</source>
         <target>八正道</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Three marks of existence</source>
         <target>三宝印</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Ten negative actions</source>
         <target>十悪</target>
-      </trans-unit>       
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Samsara</source>
         <target>輪廻</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Nirvana</source>
         <target>涅槃</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Parinirvana</source>
         <target>般涅槃</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Moksha</source>
         <target>解脱</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Klesha</source>
         <target>煩悩</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Mara</source>
         <target>魔羅</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Dharma</source>
         <target>ダルマ（法）</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Sangha</source>
         <target>サンガ（僧団）</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Refuge</source>
         <target>帰依</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Schools and traditions of Buddhism</source>
         <target>仏教の各宗派と教義</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Mahayana ("Great Vehicle")</source>
         <target>大乗仏教</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Tibetan Buddhism</source>
         <target>チベット仏教</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Vajrayana</source>
         <target>金剛乗仏教</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>The Sakya Tradition in Tibetan Buddhism</source>
         <target>チベット仏教におけるサキャ族</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Tamang</source>
@@ -122,27 +127,27 @@
       <trans-unit id="1">
         <source>Tummo</source>
         <target>ツンモ</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bodhisattva</source>
         <target>菩薩</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Six paramitas (perfections)</source>
         <target>六波羅蜜</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Dhyana</source>
         <target>禅定</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Arhat</source>
         <target>阿羅漢</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Samyak Sambodhi (Anuttara-samyak-sambodhi)</source>
@@ -152,42 +157,42 @@
       <trans-unit id="1">
         <source>Maitreya</source>
         <target>弥勒菩薩</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Asanga</source>
         <target>無著</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>The future coming of Maitreya</source>
         <target>弥勒菩薩の到来</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Anatta (Anatman, "not-self")</source>
         <target>無我</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Atman (Buddhism)</source>
         <target>アートマン（仏教）</target>
-      </trans-unit>       
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>Atman (Hinduism)</source>
         <target>アートマン（ヒンズー教）</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Paramatman (Supersoul)</source>
         <target>パラマートマン（至上の魂）</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>God in Buddhism</source>
         <target>仏教における神</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bhagavan</source>
@@ -197,7 +202,7 @@
       <trans-unit id="1">
         <source>Gyani</source>
         <target>ギャーニ</target>
-      </trans-unit> 
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Kali Yuga</source>
@@ -413,17 +418,17 @@
         <source>Anatta (Sanskrit anatman) or "non-Self".</source>
         <target>Anatta（サンスクリット語でanatman）無我</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>3 of the body: killing, stealing, sexual misconduct</source>
         <target>体に関して；: 殺生（生き物を殺すこと）、偸盗（与えられえないものを盗ること）、邪淫（みだらな性行為）</target>
-      </trans-unit>      
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>4 of the speech: lie, words that divide, bad words and twaddle</source>
         <target>言葉に関して；: 　妄語、綺語（無駄なおしゃべり）、悪口（粗暴な言葉）、両舌（中傷の言葉）</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>3 of the mind: desire (to have something what belongs to an other), malevolence and mistaken visions</source>
         <target>心に関して；: 　貪欲（むさぼり求めること）、瞋恚（怒ること）、愚痴（道理を解さないこと）</target>
@@ -552,7 +557,7 @@
       <trans-unit id="1">
         <source>Devaputra-mara, or Mara the son of a deva (god), that is, Mara as an objectively existent being rather than as a metaphor.</source>
         <target>デヴァプトラ魔羅（Devaputra-mara）またはデヴァ（神）の息子である魔羅 ；隠喩であるよりむしろ存在物としての魔羅</target>
-      </trans-unit>      
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>Dharma (dhamma) is the term that means one's righteous duty, or any virtuous path. In Indian languages it can be equivalent simply to religion, depending on context. The word dharma translates as that which upholds or supports, and is generally translated into English as law.</source>
@@ -566,6 +571,11 @@
 
       <trans-unit id="1">
         <source>"Dharma" usually refers not only to the sayings of the Buddha, but also to the later traditions of interpretation and addition that the various schools of Buddhism have developed to help explain and to expand upon the Buddha's teachings. Dharma in the Buddhist scriptures has a variety of meanings, including "phenomenon" and "nature" or "characteristic".</source>
+        <target>ダルマは普通、釈尊の言葉だけではなく、後述の仏教の各宗派によって更に説明が加えられて釈尊の教えが発展しました。仏教の経典の中のダルマは、「現象」「天性」「性格」を含んだ様々な意味を持ちます。</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Dharma in the Buddhist scriptures has a variety of meanings, including "phenomenon" and "nature" or "characteristic".</source>
         <target>ダルマは普通、釈尊の言葉だけではなく、後述の仏教の各宗派によって更に説明が加えられて釈尊の教えが発展しました。仏教の経典の中のダルマは、「現象」「天性」「性格」を含んだ様々な意味を持ちます。</target>
       </trans-unit>
 
@@ -801,7 +811,7 @@
 
       <trans-unit id="1">
         <source>Though based upon Mahayana, Tibetan Buddhism is one of the schools that practice Vajrayana, also known as Tantric Buddhism, Secret Mantra, Esoteric Buddhism and the Diamond Vehicle. The term "vajra" denoted the thunderbolt, a legendary weapon and divine attribute that was made from an adamantine, or indestructible substance and which could therefore pierce and penetrate any obstacle or obfuscation. As a secondary meaning, "vajra" refers to this indestructible substance, and so is sometimes translated as "adamantine" or "diamond". A vajra (dorje) is also a scepter-like ritual object, which has a sphere at its centre, and a variable number of spokes, enfolding either end of the rod. The vajra is often traditionally employed in tantric rituals. Symbolically, the vajra may represent method as well as great bliss.</source>
-        <target>大乗仏教に基礎をおいていますが、チベット仏教は密教を行う宗派の一つで、タントラ仏教、秘密のマントラ、密教、真言乗としても知られています。ヴァジラ（金剛杵：こんごうしょ）ということばは稲光を意味し、神から与えられた 伝説の兵器で、強固な全く壊れない物質で作られており、それゆえいかなる障害も当惑も貫き通すことができます。ヴァジラ の２番目の意味は破壊不可能な物質ということから『強固」とか「ダイアモンド」とも訳されます。このヴァジラ(ドルジェ)はまた儀式に使われ、笏（しゃく）のような形をし、まん中に 球があり、たくさんのスポークが棒の両端を包んでいます。伝統として、ヴァジラはタントラの儀式によく使われ、大いなる祝福を象徴するものでもあります。 
+        <target>大乗仏教に基礎をおいていますが、チベット仏教は密教を行う宗派の一つで、タントラ仏教、秘密のマントラ、密教、真言乗としても知られています。ヴァジラ（金剛杵：こんごうしょ）ということばは稲光を意味し、神から与えられた 伝説の兵器で、強固な全く壊れない物質で作られており、それゆえいかなる障害も当惑も貫き通すことができます。ヴァジラ の２番目の意味は破壊不可能な物質ということから『強固」とか「ダイアモンド」とも訳されます。このヴァジラ(ドルジェ)はまた儀式に使われ、笏（しゃく）のような形をし、まん中に 球があり、たくさんのスポークが棒の両端を包んでいます。伝統として、ヴァジラはタントラの儀式によく使われ、大いなる祝福を象徴するものでもあります。
 　　　　</target>
       </trans-unit>
 
@@ -1423,7 +1433,7 @@
       <trans-unit id="1">
         <source>Buddhism greatly influenced the development of the Hindu Advaita Vedanta school of philosophy. There too there the individual self is deconstructed. Advaita however postulates the existence of a monistic metaphysical being in itself, i.e. Brahman or Paramatman as part of its interpretation of the Upanishads, while Buddhism does not.</source>
         <target>仏教はヒンズー教アドヴァイタ・ヴェーダンタ学派の哲学に大きく影響を与えました。そこにも個人の我が解釈されています。アドヴァイタはブラフマンやパラマートマンのような一元論の比喩的存在を仮定しますが、仏教はしません。</target>
-      </trans-unit>      
+      </trans-unit>
 
 	  <trans-unit id="1">
         <source>The Ātman is a philosophical term used within Hinduism, especially in the Vedanta school to identify the soul whether in global sense (world's soul) or in individual sense (of a person own soul). It is one's true self (hence generally translated as "Self") beyond identification with the phenomenal reality of worldly existence.</source>
@@ -1469,36 +1479,36 @@
         <source>In some traditions of Hinduism it is used to indicate the Supreme Being or Absolute Truth, but with specific reference to that Supreme Being as possessing a personality (a personal God). This personal feature indicated in Bhagavan differentiates its usage from other similar terms such as Brahman, the "Supreme Spirit" or "spirit", and thus, in this usage, Bhagavan is in many ways analogous to the general Christian conception of God.</source>
         <target>ヒンズー教では、バガヴァンという言葉は超越したものまたは絶対的な真実を示す事がありますが、超越したものに特に関連した人格を持ったもの（人格を持った神）として示されます。バガヴァンに表されたこの人格の特徴は、ブラフマン（「至高の魂」や「魂」）のような他の似通った言葉と違い、この点において、バガヴァンはキリスト教徒の神の概念と多くの点において類似しています。</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>In Hindu Religion, the word Bhagwan has symbolic meaning too. The word encompasses Earth, Water, Fire, Air and Space – the five elements:</source>
         <target>ヒンズー教において、バガヴァンという言葉はまた象徴的な意味もあります。その語は、地、水、火、風、空の五元素を含んでいます。</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘Bh’ stands for Bhoomi or Earth</source>
         <target>‘Bh’ はBhoomi （地）</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘G’ stands for Gagan or Space</source>
         <target>`G`はGagan （空）</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘V’ stands for Vayu or Air</source>
         <target>‘V’ はVayu（風） </target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘A’ stands for Agni or Fire</source>
         <target>‘A’ はAgni （火）</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>‘N’ stands for Neer or Water</source>
         <target>‘N’ は Neer （水）</target>
-      </trans-unit>      
+      </trans-unit>
 
       <trans-unit id="1">
         <source>Bhagavan used as a title of veneration is often translated as "Lord", as in "Bhagavan Krishna", "Bhagavan Shiva", "Bhagavan Swaminarayan", etc. In Buddhism and Jainism, Gautama Buddha, Mahavira and other Tirthankaras, Buddhas and bodhisattvas are also venerated with this title.</source>
@@ -1508,7 +1518,7 @@
       <trans-unit id="1">
         <source>The title is also used as a respectful form of address for a number of contemporary spiritual teachers in India.</source>
         <target>インドでは、この称号はまた現代の霊性修行の師を尊敬の念で呼ぶ場合にも使われます。</target>
-      </trans-unit>      	
+      </trans-unit>
 
       <trans-unit id="1">
         <source>In the Hindu religion, Gyani is a person trying to perceive Absolute Truth (Bhagavan or Brahman) relying just on the strength of his mind.</source>
