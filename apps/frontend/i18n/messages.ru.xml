@@ -96,7 +96,7 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Dharma Hall</source>
-        <target>Зал Дхармы</target>
+        <target>Зал Дармы</target>
       </trans-unit>
       <trans-unit id="1">
         <source>Social Tools</source>
@@ -152,7 +152,7 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Dharmic Forest</source>
-        <target>Лес Дхармы</target>
+        <target>Лес Дармы</target>
       </trans-unit>
       <trans-unit id="1">
         <source>Donations</source>
@@ -218,6 +218,18 @@
         <source>Location</source>
         <target>Местоположение</target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Messages</source>
+        <target>Послания</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Prayers</source>
+        <target>Молитвы</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Questions</source>
+        <target>Вопросы</target>
+      </trans-unit>
 
 <!-- News _show -->
       <trans-unit id="1">
@@ -276,7 +288,7 @@
       </trans-unit>
       <trans-unit id="1">
         <source>Terthup Dharma Hall</source>
-        <target>Зал Дхармы Тертхуп</target>
+        <target>Зал Дармы Тертхуп</target>
       </trans-unit>
       <trans-unit id="1">
         <source>Back</source>

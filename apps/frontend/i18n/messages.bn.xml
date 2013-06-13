@@ -226,6 +226,19 @@
         <target></target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>Messages</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Prayers</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Questions</source>
+        <target></target>
+      </trans-unit>
+
 <!-- News _show -->
       <trans-unit id="1">
         <source>Read more</source>
