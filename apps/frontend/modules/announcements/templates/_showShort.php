@@ -15,7 +15,7 @@
     <?php if (!get_slot('track_updated_announcements')): ?>
         <script type="text/javascript">
             $(document).ready(function() {
-                track_updated_announcements();
+                track_updated();
             });
         </script>
     <?php endif ?>

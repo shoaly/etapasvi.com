@@ -1294,7 +1294,7 @@ function locationMapFocus(location_id, zoom, title)
 }
 
 // highlight new announcements
-function track_updated_announcements()
+function track_updated()
 {
     $("#content .track_updated").each(function(index, element) {
         var date = $(element).data("track_updated_date");

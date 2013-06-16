@@ -9,3 +9,8 @@
 <?php include_component('comments', 'show', array('for'=>strtolower(ItemtypesPeer::ITEM_TYPE_NAME_NEWS), 'id'=>$id, 'culture'=>$sf_user->getCulture())) ?>
 
 <?php include_partial('global/go_to_top'); ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        track_updated_mark_read('<?php echo strtotime($newsitem->getUpdatedAtMax()); ?>', '<?php echo ItemtypesPeer::ITEM_TYPE_NEWS; ?>', '<?php echo $newsitem->getId() ?>');
+    });
+</script>

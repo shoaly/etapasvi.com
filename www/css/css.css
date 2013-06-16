@@ -1286,6 +1286,12 @@ html #disqus_thread {
 	border: 1px solid #DDDDDD;
 	padding: 5px 10px 8px;
 	}
+.news_list .track_updated_new {
+    /*color: #4ea875;*/
+    background-color: #59b27e;
+    color: white;
+    padding: 0 2px;
+    }
 .photoalbum_container .itemcategories_list {
     text-align: center;
     }
@@ -1925,11 +1931,11 @@ table.documents_tbl {
 }
 .announcements_container_inner.track_updated_new {
     background-color: #93edb6;
-    background-image:-webkit-gradient(linear,0 0,0 100%,from(#7dd6a0),to(#ffffff));
-    background-image: -moz-linear-gradient(center top , #7dd6a0, #ffffff);
-    background-image:-o-linear-gradient(top,#7dd6a0,#ffffff);
-    background-image:-ms-linear-gradient(top,#7dd6a0,#ffffff);
-    background-image:linear-gradient(top,#7dd6a0,#ffffff);
+    background-image:-webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#7dd6a0));
+    background-image: -moz-linear-gradient(center top , #ffffff, #7dd6a0);
+    background-image:-o-linear-gradient(top,#ffffff,#7dd6a0);
+    background-image:-ms-linear-gradient(top,#ffffff,#7dd6a0);
+    background-image:linear-gradient(top,#ffffff,#7dd6a0);
     font-weight: bold;
 }
 
