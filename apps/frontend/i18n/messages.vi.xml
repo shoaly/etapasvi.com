@@ -27,7 +27,7 @@
         <source> Maha Sambodhi Dharma Sangha</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Bodhi Shrawan Dharma Sangha</source>
         <target></target>
@@ -194,6 +194,11 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Announcements</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Dharmic Forest</source>
         <target>Khu rừng Dharmic</target>
       </trans-unit>
@@ -252,27 +257,27 @@
         <source>Category is empty</source>
         <target>Hạng mục trống</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Precepts</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Sangha</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>By location</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>By language</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Location</source>
         <target></target>
@@ -410,7 +415,7 @@
         <source>Title</source>
         <target>Tiêu đề</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Document</source>
         <target></target>
@@ -449,6 +454,11 @@
       <trans-unit id="1">
         <source>Associated Documents</source>
         <target>Tài liệu liên quan</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Announcements</source>
+        <target></target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -615,7 +625,7 @@
         <source>Page Not Found or Not Translated</source>
         <target>Trang không được tìm thấy hoặc chưa được dịch</target>
       </trans-unit>
-      
+
 <!-- contactus -->
       <trans-unit id="1">
         <source>Contact Details</source>

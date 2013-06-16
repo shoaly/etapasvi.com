@@ -12,6 +12,12 @@
 	<a href="<?php echo url_for('news_index'); ?>" class="no_decor"><?php echo __('News') ?> »</a>
 </p>
 
+<h2><?php echo __('Announcements') ?></h2>
+<?php include_component('announcements', 'latest'); ?>
+<p class="goto_section">
+	<a href="<?php echo url_for('announcements_index'); ?>" class="no_decor"><?php echo __('Announcements') ?> »</a>
+</p>
+
 <h2><?php echo __('Photo') ?></h2>
 <?php include_component('photo', 'latest'); ?>
 <p class="goto_section">

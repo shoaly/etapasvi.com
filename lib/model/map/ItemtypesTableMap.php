@@ -40,7 +40,7 @@ class ItemtypesTableMap extends TableMap {
 		$this->setUseIdGenerator(true);
 		// columns
 		$this->addPrimaryKey('ID', 'Id', 'INTEGER', true, null, null);
-		$this->addColumn('NAME', 'Name', 'VARCHAR', true, 10, null);
+		$this->addColumn('NAME', 'Name', 'VARCHAR', true, 13, null);
 		// validators
 	} // initialize()
 

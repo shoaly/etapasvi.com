@@ -68,6 +68,8 @@ var $buoop = {};
 var location_map;
 // markers and info windows for the location map
 var location_markers = [];
+// period during which unread items are highlighted
+var track_updated_period = 864000; // 10 days
 
 $(document).ready(function() {
     var embedded_or_print = false;
@@ -1289,6 +1291,88 @@ function locationMapFocus(location_id, zoom, title)
         location_map.panTo(new google.maps.LatLng(location_markers[location_id].lat, location_markers[location_id].lng));
         location_map.setZoom(zoom);
     }
+}
+
+// highlight new announcements
+function track_updated_announcements()
+{
+    $("#content .track_updated").each(function(index, element) {
+        var date = $(element).data("track_updated_date");
+        var item = $(element).data("track_updated_item");
+        var id = $(element).data("track_updated_id");
+        if (!date || !item || !id) {
+            return;
+        }
+        if (!track_updated_is_read(date, item, id)) {
+            $(element).addClass('track_updated_new');
+        }
+    });
+}
+
+// check is item is read
+function track_updated_is_read(date, item, id)
+{
+    var is_item_read = get_cookie('tu_'+item+'_'+id);
+
+    if (typeof(is_item_read) != "undefined" && is_item_read == '1') {
+        return true;
+    } else {
+        // check if item should be marked as new
+        return !track_updated_is_new(date);
+    }
+}
+
+// check if an items is considered new
+function track_updated_is_new(date)
+{
+    var now = Math.round(new Date().getTime() / 1000 );
+    if ((now - parseInt(date)) < track_updated_period) {
+        // new
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// mark an item as read usin cookie
+function track_updated_mark_read(date, item, id)
+{
+    if (!track_updated_is_new(date)) {
+        return;
+    }
+    var cookie_expires = new Date();
+    cookie_expires.setSeconds(parseInt(date) + track_updated_period);
+    set_cookie('tu_'+item+'_'+id, '1', {expires:cookie_expires, path:"/"});
+}
+
+// get cookie
+function get_cookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined
+}
+
+// set cookie
+function set_cookie(name, value, props) {
+    props = props || {}
+    var exp = props.expires
+    if (typeof exp == "number" && exp) {
+        var d = new Date()
+        d.setTime(d.getTime() + exp*1000)
+        exp = props.expires = d
+    }
+    if (exp && exp.toUTCString) { props.expires = exp.toUTCString() }
+
+    value = encodeURIComponent(value)
+    var updatedCookie = name + "=" + value
+    for (var propName in props) {
+        updatedCookie += "; " + propName
+        var propValue = props[propName]
+        if(propValue !== true){ updatedCookie += "=" + propValue }
+    }
+
+    document.cookie = updatedCookie;
 }
 
 // replace all occurences of a string

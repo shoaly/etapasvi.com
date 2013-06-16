@@ -53,11 +53,11 @@
       <trans-unit id="1">
         <source>Palden Dorje</source>
         <target></target>
-      </trans-unit>       
+      </trans-unit>
       <trans-unit id="1">
         <source>Dharma Sangha</source>
         <target></target>
-      </trans-unit>          
+      </trans-unit>
       <trans-unit id="1">
         <source>News</source>
         <target></target>
@@ -73,7 +73,7 @@
       <trans-unit id="1">
         <source>Biography</source>
         <target>自传</target>
-      </trans-unit>      
+      </trans-unit>
 		<trans-unit id="1">
         <source>Teachings</source>
         <target></target>
@@ -137,21 +137,25 @@
       <trans-unit id="1">
         <source>Forum</source>
         <target></target>
-      </trans-unit>     
+      </trans-unit>
       <trans-unit id="1">
         <source>Blessing</source>
         <target></target>
-      </trans-unit>  
+      </trans-unit>
       <trans-unit id="1">
         <source>FAQ</source>
         <target></target>
-      </trans-unit> 
+      </trans-unit>
       <trans-unit id="1">
         <source>Audio</source>
         <target></target>
       </trans-unit>
       <trans-unit id="1">
         <source>Documents</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Announcements</source>
         <target></target>
       </trans-unit>
       <trans-unit id="1">
@@ -234,7 +238,7 @@
         <source>Questions</source>
         <target></target>
       </trans-unit>
-      
+
 
 <!-- News _show -->
       <trans-unit id="1">
@@ -303,18 +307,18 @@
         <source>Footnote</source>
         <target></target>
       </trans-unit>
-      
+
 <!-- audio -->
       <trans-unit id="1">
         <source>Size</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Duration</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Lyrics</source>
         <target></target>
@@ -335,7 +339,7 @@
         <source>Watch on YouTube</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Click "CC" in the player to show captions</source>
         <target></target>
@@ -346,12 +350,12 @@
         <source>Title</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Document</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Type</source>
         <target></target>
@@ -388,6 +392,11 @@
         <target></target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>Associated Announcements</source>
+        <target></target>
+      </trans-unit>
+
 <!--  offer translation -->
       <trans-unit id="1">
         <source>Translate</source>
@@ -413,12 +422,12 @@
         <source>Translate website interface from English into any other language.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Tutorials:</source>
         <target></target>
-      </trans-unit>   
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Instructions for eTapasvi.com translators</source>
         <target></target>
@@ -428,27 +437,27 @@
         <source>Video tutorials:</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Translation Guide</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Video subtitles translation</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Tips for translators:</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Carefully read/watch instructions – respect your time and website programmer's time.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>If you would like to correct translation you sent, send both incorrect and correct versions in your language. It would allow programmer to find text, which should be replaced with correct one.</source>
         <target></target>
@@ -458,22 +467,22 @@
         <source>Before performing translation make sure, that text you are going to translate is not translated yet on website.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Distortion and misinterpretation of information during translation is not acceptable.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.</source>
         <target></target>
-      </trans-unit>      
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Received translations are usually processed once a week, you can track how they are added on website in</source>
         <target></target>
@@ -488,12 +497,12 @@
         <source>and in</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>for example, if you translate news item, copy it's title and whole text into this field</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>for example, if you translate news item, paste translation of it's title and text into this field</source>
         <target></target>
@@ -522,20 +531,20 @@
       <trans-unit id="1">
         <source>Comment</source>
         <target></target>
-      </trans-unit> 
-      
+      </trans-unit>
+
 <!-- Revision history -->
 
       <trans-unit id="1">
         <source>Revision history</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Current revision</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Compare selected revisions</source>
         <target></target>

@@ -41,6 +41,7 @@
 #body_social_tools #mi_social_tools a,
 #body_audio #mi_audio a,
 #body_documents #mi_documents a,
+#body_announcements #mi_announcements a,
 #body_teachings #mi_teachings a,
 #body_religious_forest #mi_religious_forest a,
 #body_feed #mi_feed a,
@@ -1895,6 +1896,42 @@ table.documents_tbl {
 .page_tools  {
     margin-bottom: 7px;
     }
+
+/* announcements */
+.announcements_container {
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    border: 1px solid #DDDDDD;
+    display: block;
+    padding: 1px;
+    text-decoration: none;
+}
+.announcements_container_inner {
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    background-color: #f7f7f7;
+    background-image:-webkit-gradient(linear,0 0,0 100%,from(#f0f0f0),to(#ffffff));
+    background-image: -moz-linear-gradient(center top , #f0f0f0, #ffffff);
+    background-image:-o-linear-gradient(top,#f0f0f0,#ffffff);
+    background-image:-ms-linear-gradient(top,#f0f0f0,#ffffff);
+    background-image:linear-gradient(top,#f0f0f0,#ffffff);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#ffffff');
+    padding: 5px;
+}
+.announcements_container a {
+    text-decoration: none;
+}
+.announcements_container_inner.track_updated_new {
+    background-color: #93edb6;
+    background-image:-webkit-gradient(linear,0 0,0 100%,from(#7dd6a0),to(#ffffff));
+    background-image: -moz-linear-gradient(center top , #7dd6a0, #ffffff);
+    background-image:-o-linear-gradient(top,#7dd6a0,#ffffff);
+    background-image:-ms-linear-gradient(top,#7dd6a0,#ffffff);
+    background-image:linear-gradient(top,#7dd6a0,#ffffff);
+    font-weight: bold;
+}
 
 /* page tools */
 #page_toolbar {

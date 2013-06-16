@@ -155,6 +155,10 @@
         <target>Документы</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Announcements</source>
+        <target>Объявления</target>
+      </trans-unit>
+      <trans-unit id="1">
         <source>Dharmic Forest</source>
         <target>Лес Дармы</target>
       </trans-unit>
@@ -384,6 +388,11 @@
       <trans-unit id="1">
         <source>Associated Documents</source>
         <target>Связанные Документы</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Announcements</source>
+        <target>Связанные Объявления</target>
       </trans-unit>
 
 <!--  offer translation -->

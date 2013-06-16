@@ -1,0 +1,1 @@
+<?php include_partial('announcements/list', array('announcements_list'=>$announcements_list)); ?>

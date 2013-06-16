@@ -201,6 +201,15 @@ documents:
   param: { module: documents, action: index }
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
 
+announcements_index:
+  url:   /:sf_culture/announcements/index/*
+  param: { module: announcements, action: index }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+announcements:
+  url:   /:sf_culture/announcements/index
+  param: { module: announcements, action: index }
+  requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }
+
 audio_show:
   url:   /:sf_culture/audio/show
   requirements: { sf_culture: (?:en|ru|cs|hu|sk|uk|es|pl|fr|zh_CN|vi|de|it|ja|es|et|ne|bn|he|zh_TW|de) }

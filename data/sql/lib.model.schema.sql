@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `itemtypes`;
 CREATE TABLE `itemtypes`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(10)  NOT NULL,
+	`name` VARCHAR(13)  NOT NULL,
 	PRIMARY KEY (`id`)
 )Type=MyISAM;
 
@@ -680,6 +680,51 @@ CREATE TABLE `locationlink`
 	CONSTRAINT `locationlink_FK_2`
 		FOREIGN KEY (`upto_location_id`)
 		REFERENCES `location` (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- announcements
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `announcements`;
+
+
+CREATE TABLE `announcements`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	`active_till` DATE  NOT NULL,
+	`show` TINYINT default 1,
+	`order` INTEGER  NOT NULL,
+	`all_cultures` TINYINT default 0,
+	PRIMARY KEY (`id`),
+	KEY `announcements_I_1`(`order`),
+	KEY `updated_at`(`updated_at`),
+	KEY `show`(`show`),
+	KEY `all_cultures`(`all_cultures`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- announcements_i18n
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `announcements_i18n`;
+
+
+CREATE TABLE `announcements_i18n`
+(
+	`updated_at_extra` DATETIME,
+	`title` TEXT,
+	`body` TEXT,
+	`id` INTEGER  NOT NULL,
+	`culture` VARCHAR(7)  NOT NULL,
+	PRIMARY KEY (`id`,`culture`),
+	KEY `updated_at_extra`(`updated_at_extra`),
+	CONSTRAINT `announcements_i18n_FK_1`
+		FOREIGN KEY (`id`)
+		REFERENCES `announcements` (`id`)
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 # This restores the fkey checks, after having unset them earlier

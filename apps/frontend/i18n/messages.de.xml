@@ -27,7 +27,7 @@
         <source> Maha Sambodhi Dharma Sangha</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Bodhi Shrawan Dharma Sangha</source>
         <target></target>
@@ -191,6 +191,11 @@
       <trans-unit id="1">
         <source>Documents</source>
         <target>Dokumente</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Announcements</source>
+        <target></target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -449,6 +454,11 @@
       <trans-unit id="1">
         <source>Associated Documents</source>
         <target>Dazugehörige Dokumente</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Associated Announcements</source>
+        <target></target>
       </trans-unit>
 
       <trans-unit id="1">

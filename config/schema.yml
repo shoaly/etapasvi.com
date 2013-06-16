@@ -19,7 +19,7 @@ propel:
 
   itemtypes:
     id:               ~
-    name:             { type: varchar(10), required: true }
+    name:             { type: varchar(13), required: true }
 
   item2item:
     id:               ~
@@ -307,3 +307,24 @@ propel:
     _indexes:
       show:       [show]
       order:      [order]
+
+  announcements:
+    id:               ~
+    created_at:       ~
+    updated_at:       ~
+    active_till:      { type: date, required: true }
+    show:             { type: boolean, defaultValue: true }
+    order:            { type: integer, required: true, index: true }
+    all_cultures:     { type: boolean, default: 0 }
+    _indexes:
+      updated_at:     [updated_at]
+      show:           [show]
+      all_cultures:   [all_cultures]
+
+  announcements_i18n:
+    updated_at_extra: ~
+    title:            { type: longvarchar }
+# not used
+    body:             { type: longvarchar }
+    _indexes:
+      updated_at_extra:     [updated_at_extra]

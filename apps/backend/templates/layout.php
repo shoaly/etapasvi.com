@@ -80,6 +80,7 @@
 	      <li><?php echo link_to('Video', 'video/index') ?></li>
 	      <li><?php echo link_to('Audio', 'audio/index') ?></li>
 	      <li><?php echo link_to('Documents', 'documents/index') ?></li>
+	      <li><?php echo link_to('Announcements', 'announcements/index') ?></li>
 
           <?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>
               <li class="divider"><?php echo link_to('Item2item', 'item2item/index') ?></li>

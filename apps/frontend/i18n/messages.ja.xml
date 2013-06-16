@@ -7,17 +7,17 @@
         <source>A message of peace, an appeal to the world</source>
         <target>今日の世界への平和のメッセージです</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>A message of peace</source>
         <target>今日の世界へ</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>An appeal to the world</source>
         <target>の平和のメッセージです</target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Maha Sambodhi Dharma Sangha</source>
         <target></target>
@@ -27,7 +27,7 @@
         <source> Maha Sambodhi Dharma Sangha</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Bodhi Shrawan Dharma Sangha</source>
         <target></target>
@@ -102,12 +102,12 @@
         <source>Books</source>
         <target>書籍</target>
       </trans-unit>
-      
+
 	  <trans-unit id="1">
         <source>Stories</source>
         <target>体験談</target>
       </trans-unit>
-      
+
 	  <trans-unit id="1">
         <source>Projects</source>
         <target>プロジェクト</target>
@@ -194,6 +194,11 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Announcements</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Dharmic Forest</source>
         <target></target>
       </trans-unit>
@@ -212,7 +217,7 @@
         <source>Servers</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Visitor Map</source>
         <target></target>
@@ -222,7 +227,7 @@
         <source>Maha Sambodhi Dharma Sangha: Teachings, News, Photo, Video, Audio, Biography.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>This page is translation of corresponding English page, switch into English language to see original text.</source>
         <target></target>
@@ -242,7 +247,7 @@
         <source>Category</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>All</source>
         <target></target>
@@ -252,27 +257,27 @@
         <source>Category is empty</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Precepts</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Sangha</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>By location</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>By language</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Location</source>
         <target></target>
@@ -345,7 +350,7 @@
         <source>Date</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Updated on</source>
         <target></target>
@@ -380,7 +385,7 @@
         <source>Duration</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Lyrics</source>
         <target></target>
@@ -400,7 +405,7 @@
         <source>Watch on YouTube</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Click "CC" in the player to show captions</source>
         <target></target>
@@ -411,12 +416,12 @@
         <source>Title</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Document</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Type</source>
         <target></target>
@@ -454,6 +459,11 @@
       </trans-unit>
 
       <trans-unit id="1">
+        <source>Associated Announcements</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
         <source>Translate</source>
         <target></target>
       </trans-unit>
@@ -477,12 +487,12 @@
         <source>Translate website interface from English into any other language.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Tutorials:</source>
         <target></target>
-      </trans-unit>   
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Instructions for eTapasvi.com translators</source>
         <target></target>
@@ -492,37 +502,37 @@
         <source>Video tutorials:</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Translation Guide</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Video subtitles translation</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Before performing translation, make sure, that text you are going to translate is not translated yet on website.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Distortion and misinterpretation of information during translation is not acceptable.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>In translated text replace Photo, Video and Audio elements with [photo], [video] and [audio] marks correspondingly. Make links underlined.</source>
         <target></target>
-      </trans-unit>      
-      
+      </trans-unit>
+
       <trans-unit id="1">
         <source>Only translations made in accordance with this instruction and sent using "Translate" link are published on website. Translations sent directly to website email will not be published.</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Received translations are usually processed once a week, you can track how they are added on website in</source>
         <target></target>
@@ -572,19 +582,19 @@
         <source>Comment</source>
         <target></target>
       </trans-unit>
-      
+
 <!-- Revision history -->
 
       <trans-unit id="1">
         <source>Revision history</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Current revision</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source>Compare selected revisions</source>
         <target></target>
@@ -604,7 +614,7 @@
         <source>Page Not Found or Not Translated</source>
         <target></target>
       </trans-unit>
-      
+
 <!-- contactus -->
       <trans-unit id="1">
         <source>Contact Details</source>

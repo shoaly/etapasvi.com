@@ -15,6 +15,7 @@
         <li id="mi_projects"><i>»</i> <a href="<?php echo url_for('news/index?itemcategory=projects', true); ?>" title="<?php echo __('Projects') ?>"><?php echo __('Projects') ?></a></li>
 		<li id="mi_project"><i>» »</i> <a href="<?php echo url_for('@project', true); ?>" title="<?php echo __('Dharma Hall') ?>"><?php echo __('Dharma Hall') ?></a></li>
 		<li id="mi_dharmic_forest"><i>» »</i> <a href="http://www.savenepaltapasviforest.info" title="<?php echo __('Dharmic Forest') ?>" target="_blank"><?php echo __('Dharmic Forest') ?></a></li>
+		<li id="mi_announcements"><a href="<?php echo url_for('@announcements_index', true); ?>" title="<?php echo __('Announcements') ?>"><?php echo __('Announcements') ?></a></li>
 		<li id="mi_photo"><a href="<?php echo url_for('@photoalbum_index', true); ?>" title="<?php echo __('Photo') ?>"><?php echo __('Photo') ?></a></li>
 		<li id="mi_video"><a href="<?php echo url_for('@video_index', true); ?>" title="<?php echo __('Video') ?>"><?php echo __('Video') ?></a></li>
 		<li id="mi_audio"><a href="<?php echo url_for('@audio_index', true); ?>" title="<?php echo __('Audio') ?>"><?php echo __('Audio') ?></a></li>
