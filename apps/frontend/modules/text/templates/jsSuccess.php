@@ -1340,8 +1340,7 @@ function track_updated_mark_read(date, item, id)
     if (!track_updated_is_new(date)) {
         return;
     }
-    var cookie_expires = new Date();
-    cookie_expires.setSeconds(parseInt(date) + track_updated_period);
+    var cookie_expires = new Date( (parseInt(date) + track_updated_period*2) * 1000);
     set_cookie('tu_'+item+'_'+id, '1', {expires:cookie_expires, path:"/"});
 }
 
