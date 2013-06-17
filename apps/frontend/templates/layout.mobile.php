@@ -84,9 +84,9 @@
             // Генерация ссылки на Полную версию
             $url_full = UserPeer::switchUrlMobile();
             // В ссылке на гланую страницу Полной версии добавляется /version/full
-            if (UserPeer::isHomePage($url_full)) {
+            /*if (UserPeer::isHomePage($url_full)) {
                 $url_full = $url_full . 'version/full';
-            }
+            }*/
         ?>
 		<br/><?php /*<strong><?php echo __('Mobile') ?></strong> | */ ?><!--UDLS--><a href="<?php echo $url_full; ?>"><?php echo __('Classic') ?></a><!--UDLE-->
 	</div>
