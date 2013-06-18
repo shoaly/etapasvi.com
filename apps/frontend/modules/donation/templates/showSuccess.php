@@ -41,9 +41,13 @@ $purpose_link = url_for('@projects_index');
     <input type="image" src="https://www.paypalobjects.com/<?php echo UserPeer::getCulturePaypalButton() ?>/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="<?php echo __('PayPal - The safer, easier way to pay online!') ?>" style="border:0">
 </form>
 <br/>
-<a href="javascript:toggleRecurringDonation(); void(0);"><?php echo __('Recurring Donation') ?></a>
+<a href="javascript:$('#paypal_fees').toggle(); void(0);" class="trigger_link"><?php echo __('PayPal fees') ?></a>
 
-    <div class="hidden" id="reccuring_donation">
+    <div class="hidden box" id="paypal_fees"><?php echo __('Fees for donations from the United States are from 2.2 to 2.9%. There can be fees up to 4.9% for donations sent from outside the United States depending on the country.') ?></div>
+<br/><br/>
+<a href="javascript:toggleRecurringDonation(); void(0);" class="trigger_link"><?php echo __('Recurring Donation') ?></a>
+
+    <div class="hidden box" id="reccuring_donation">
         <br/>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 

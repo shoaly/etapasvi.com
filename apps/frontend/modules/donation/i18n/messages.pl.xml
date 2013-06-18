@@ -194,6 +194,16 @@
         <target></target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>PayPal fees</source>
+        <target></target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Fees for donations from the United States are from 2.2 to 2.9%. There can be fees up to 4.9% for donations sent from outside the United States depending on the country.</source>
+        <target></target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>

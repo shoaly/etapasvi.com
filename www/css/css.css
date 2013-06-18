@@ -234,6 +234,10 @@ a.external {
 a.no_decor {
 	text-decoration: none;
 	}
+a.trigger_link {
+	text-decoration: none;
+    border-bottom: 1px dashed #00a3a3;
+	}
 /* http://code.google.com/p/jquery-filetype/ */
 .files {
     /*background:url("/i/sprite-file-icons.png") no-repeat scroll 0 0 transparent;*/

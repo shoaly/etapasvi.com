@@ -194,6 +194,16 @@
         <target></target>
       </trans-unit>
 
+      <trans-unit id="1">
+        <source>PayPal fees</source>
+        <target>Размер комиссии PayPal</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Fees for donations from the United States are from 2.2 to 2.9%. There can be fees up to 4.9% for donations sent from outside the United States depending on the country.</source>
+        <target>С пожертвований, отправленных из США, взимается комиссия 2,2-2,9%. Комиссия с пожертвований, перечисленных из других стран, может достигать 4,9% в зависимости от страны отправления.</target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>
