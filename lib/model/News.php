@@ -124,13 +124,17 @@ class News extends BaseNews
     /**
      * Получение ссылки на изображение
      */
-	public function getFullUrl() {
+	public function getFullUrl($embed_title_in_src = true) {
 	  $path = $this->getFullPath();
 	  $file = $this->getImg();
 
 	  if ($path && $file) {
 	    //return PhotoPeer::remoteStorageGetUrl( $this->getThumbPath(), $this->getImg() );
 	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . NewsPeer::PHOTO_DIR . '/' . $path . '/' . $file;
+
+        if ($embed_title_in_src) {
+          $file = $this->embedTitleInSrc($file);
+        }
 
 	    // If file requested without specifying it's size, Picasa would choose size by itself
 	    // for example return 512x512 while real size is 546x546
@@ -143,13 +147,18 @@ class News extends BaseNews
     /**
      * Получение ссылки на изображение
      */
-	public function getThumbUrl() {
+	public function getThumbUrl($embed_title_in_src = true) {
 	  $path = $this->getThumbPath();
 	  $file = $this->getImg();
 
 	  if ($path && $file) {
 	    //return PhotoPeer::remoteStorageGetUrl( $this->getThumbPath(), $this->getImg() );
 	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . NewsPeer::PHOTO_DIR . '/' . $path . '/' . $file;
+
+        if ($embed_title_in_src) {
+          $file = $this->embedTitleInSrc($file);
+        }
+
 	    return PhotoPeer::REMOTE_STORAGE_URL . $path . '/' . $file;
 	  } else {
 	    return '';
@@ -346,5 +355,22 @@ class News extends BaseNews
 	{
 		return ItemtypesPeer::ITEM_TYPE_NAME_NEWS;
 	}
+
+
+    /**
+     * Before first dot embed transliterated title
+     *
+     * @param type $file
+     */
+    public function embedTitleInSrc($file)
+    {
+        $title_translit = TextPeer::urlTranslit($this->getTitle());
+        if (!$title_translit) {
+            return $file;
+        }
+
+        // before first dot we embed transliterated title
+        return str_replace('.', '-' . $title_translit . '.', $file);
+    }
 
 }
