@@ -12,15 +12,15 @@ class Photo extends BasePhoto
 	public function __call($method, $arguments)
 	{
 	  $data = preg_split('/I18n/', $method, 2);
-	
+
 	  if( count($data) != 2 )
 	  {
 	    // original call for support sfPropelBehavior
 	    return parent::__call($method, $arguments);
 	  }
-	
+
 	  list( $method, $culture ) = $data;
-	
+
 	  if (4 == strlen($culture))
 	  {
 	    $culture = strtolower(substr($culture, 0, 2)) . '_' . strtoupper(substr($culture, 2, 2));
@@ -29,20 +29,20 @@ class Photo extends BasePhoto
 	  {
 	    $culture = strtolower($culture);
 	  }
-	
+
 	  $this->setCulture( $culture );
-	
+
 	  return call_user_func_array(array($this, $method), $arguments);
-	}	
+	}
 
 	public function __toString() {
 		return $this->getTitle();
 	}
-    
+
 	/**
 	 * Расширенный метод для получения заголовка.
 	 * Если $use_default_culture_if_empty, то возвращается значение на языке по умолчанию.
-	 */	
+	 */
 	public function getTitle($culture = null, $use_default_culture_if_empty = false)
 	{
 	  $title = parent::getTitle($culture);
@@ -54,11 +54,11 @@ class Photo extends BasePhoto
 	  }
       return trim($title);
 	}
-	
+
 	/**
 	 * Расширенный метод для получения текста.
 	 * Если $use_default_culture_if_empty, то возвращается значение на языке по умолчанию.
-	 */	
+	 */
 	public function getBody($culture = null, $use_default_culture_if_empty = false)
 	{
 	  $body = parent::getBody($culture);
@@ -71,20 +71,20 @@ class Photo extends BasePhoto
 
       return trim($body);
 	}
-	
+
 	/**
 	 * Расширенный метод для получения автора.
 	 * Если $use_default_culture_if_empty, то возвращается значение на языке по умолчанию.
 	 * Если у фото не указан автор, то ищется в Фотоальбоме
-	 */	
+	 */
 	public function getAuthor($culture = null, $use_default_culture_if_empty = false)
 	{
 	  $author     = parent::getAuthor($culture);
-	  	  
+
 	  if ($use_default_culture_if_empty) {
 	    $photoalbum = $this->getPhotoalbum();
 	    $culture    = sfContext::getInstance()->getUser()->getCulture();
-	  
+
 	    if ($this->getAuthor()) {
             $author = $this->getAuthor();
 	    } elseif ($culture != sfConfig::get('sf_default_culture') && !$this->getAuthor() && $this->getAuthor(sfConfig::get('sf_default_culture'))) {
@@ -99,9 +99,9 @@ class Photo extends BasePhoto
 	  }
       return $author;
 	}
-	
+
 	public function getCommentsCount()
-	{		
+	{
 		return (int)CommentsPeer::getCommentsCount( ItemtypesPeer::ITEM_TYPE_NAME_PHOTO, $this->getId() );
 	}
 	public function getBodyPrepared() {
@@ -119,17 +119,17 @@ class Photo extends BasePhoto
     {
         return '/'.sfConfig::get('sf_upload_dir_name').'/photo/thumb/'.$this->getImg();
     }
-    
+
     /**
      * Получение ссылки на фото
      */
 	public function getUrl($culture = '') {
 	  if (empty($culture)){
 		$culture = sfContext::getInstance()->getUser()->getCulture();
-	  }	 
-	  
+	  }
+
       $url_pattern = 'photo/show?id=' . $this->getId();
-	  
+
 	  $title_translit = TextPeer::urlTranslit($this->getTitle( $culture ), $culture );
 	  if (!empty($title_translit)) {
 	    $url_pattern .= '&title=' . $title_translit;
@@ -138,18 +138,18 @@ class Photo extends BasePhoto
 	  $url = sfContext::getInstance()->getController()->genUrl($url_pattern, true, $culture);
 	  return $url;
 	}
-	
+
     /**
      * Получение ссылки на изображение
      */
-	public function getFullUrl($constraints = array()) {
+	public function getFullUrl($constraints = array(), $embed_title_in_src = true) {
 	  $path = $this->getFullPath();
 	  $file = $this->getImg();
 
 	  if ($path && $file) {
 	    //return PhotoPeer::remoteStorageGetUrl( $this->getThumbPath(), $this->getImg() );
 	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . PhotoPeer::PHOTO_DIR . '/' . $path . '/' . $file;
-	    	    
+
 	    $picasa_dimention = '';
 	    $max_dimention = $this->getMaxDimention();
 	    if ($constraints) {
@@ -182,89 +182,102 @@ class Photo extends BasePhoto
 	    if ($max_dimention) {
 	    	$picasa_dimention = '/s' . $max_dimention;
 	    }
-	    
+
+        if ($embed_title_in_src) {
+            $file = $this->embedTitleInSrc($file);
+        }
+
 	    return PhotoPeer::REMOTE_STORAGE_URL . $path . $picasa_dimention . '/' . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
     /**
      * Получение ссылки на изображение
      */
-	public function getPreviewUrl() {
+	public function getPreviewUrl($embed_title_in_src = true) {
 	  $path = $this->getPreviewPath();
 	  $file = $this->getImg();
 
 	  if ($path && $file) {
 	    //return PhotoPeer::remoteStorageGetUrl( $this->getThumbPath(), $this->getImg() );
-	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . PhotoPeer::PHOTO_DIR . '/' . $path . '/' . $file;        
+	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . PhotoPeer::PHOTO_DIR . '/' . $path . '/' . $file;
 	    $picasa_dimention = '/s' . PhotoPeer::IMG_PREVIEW_WIDTH;
-        
+
+        if ($embed_title_in_src) {
+            $file = $this->embedTitleInSrc($file);
+        }
+
 	    return PhotoPeer::REMOTE_STORAGE_URL . $path . $picasa_dimention . '/' . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
     /**
      * Получение ссылки на изображение
      */
-	public function getThumbUrl() {
+	public function getThumbUrl($embed_title_in_src = true) {
 	  $path = $this->getThumbPath();
 	  $file = $this->getImg();
 
 	  if ($path && $file) {
 	    //return PhotoPeer::remoteStorageGetUrl( $this->getThumbPath(), $this->getImg() );
 	    //return UserPeer::SITE_123PROTOCOL . '://' . $_SERVER['HTTP_HOST'] . '/' . UploadPeer::DIR . '/' . PhotoPeer::PHOTO_DIR . '/' . $path . '/' . $file;
+
+        if ($embed_title_in_src) {
+            $file = $this->embedTitleInSrc($file);
+        }
+
 	    return PhotoPeer::REMOTE_STORAGE_URL . $path . '/' . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
     /**
      * Получение локального пути к изображению
-     */    
+     */
 	public function getFullLocal() {
 	  $path = $this->getFullPath();
 	  $file = $this->getImg();
 
-	  if ($path && $file) {	    	    
+	  if ($path && $file) {
 	    return sfConfig::get('sf_upload_dir') . "/photo/" . $path . "/" . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
     /**
      * Получение локального пути к изображению
-     */    
+     */
 	public function getPreviewLocal() {
 	  $path = $this->getPreviewPath();
 	  $file = $this->getImg();
 
-	  if ($path && $file) {	    	    
+	  if ($path && $file) {
 	    return sfConfig::get('sf_upload_dir') . "/photo/" . $path . "/" . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
     /**
      * Получение локального пути к изображению
-     */    
+     */
 	public function getThumbLocal() {
 	  $path = $this->getThumbPath();
 	  $file = $this->getImg();
 
-	  if ($path && $file) {	    	    
+	  if ($path && $file) {
 	    return sfConfig::get('sf_upload_dir') . "/photo/" . $path . "/" . $file;
 	  } else {
-	    return '';	
+	    return '';
 	  }
 	}
-	
+
 	/**
 	 * Заголовок для RSS
 	 *
@@ -273,10 +286,10 @@ class Photo extends BasePhoto
 	public function getRssTitle() {
 	  $context = sfContext::getInstance();
 	  $i18n    =  $context->getI18N();
-	
+
 	  return '[' . $i18n->__('Photo') . '] ' . $this->getTitle(null, true);
 	}
-	
+
 	/**
 	 * Ссылка для RSS
 	 *
@@ -285,7 +298,7 @@ class Photo extends BasePhoto
 	public function getRssLink() {
 	  return $this->getUrl();
 	}
-	
+
 	/**
 	 * Описание для RSS
 	 *
@@ -295,7 +308,7 @@ class Photo extends BasePhoto
 	  //return TextPeer::subStr($this->getBody(), NewsPeer::RSS_DESCRIPTION_LENGTH);
 	  return '<img src="' . $this->getPreviewUrl() . '">';
 	}
-	
+
 	/**
 	 * Дата публикации для RSS
 	 *
@@ -304,12 +317,12 @@ class Photo extends BasePhoto
 	public function getRssPubDate() {
 	  return max($this->getUpdatedAt(), $this->getUpdatedAtExtra());
 	}
-	
+
 	/**
 	 * Расширенный метод получения даты.
 	 * Если передан $derive_from_photoalbum = true, и у фото не установлена дата, дата берётся из фотоальбома.
 	 * Get the [optionally formatted] temporal [created_at] column value.
-	 * 
+	 *
 	 *
 	 * @param      string $format The date/time format string (either date()-style or strftime()-style).
 	 *							If format is NULL, then the raw DateTime object will be returned.
@@ -319,7 +332,7 @@ class Photo extends BasePhoto
 	public function getCreatedAt($format = 'Y-m-d H:i:s', $derive_from_photoalbum = false)
 	{
 	    $created_at = parent::getCreatedAt($format);
-	    
+
 	    // если дата не уставнолена, берём из фотоальбома
 	    if ($derive_from_photoalbum && empty($created_at)) {
 	        $photoalbum = $this->getPhotoalbum();
@@ -327,10 +340,10 @@ class Photo extends BasePhoto
 	            $created_at = $photoalbum->getCreatedAt();
 	        }
 	    }
-	    
+
 	    return $created_at;
 	}
-	
+
 	/**
 	 * Получение максимального из значений Ширины и Высоты
 	 *
@@ -339,7 +352,7 @@ class Photo extends BasePhoto
 	public function getMaxDimention() {
 	  return max($this->getWidth(), $this->getHeight());
 	}
-	
+
 	/**
 	 * Get minimum dimention
 	 *
@@ -348,7 +361,7 @@ class Photo extends BasePhoto
 	public function getMinDimention() {
 	  return min($this->getWidth(), $this->getHeight());
 	}
-	
+
 	/**
 	 * Get item type name
 	 *
@@ -358,4 +371,20 @@ class Photo extends BasePhoto
 	{
 		return ItemtypesPeer::ITEM_TYPE_NAME_PHOTO;
 	}
+
+    /**
+     * Before first dot embed transliterated title
+     *
+     * @param type $file
+     */
+    public function embedTitleInSrc($file)
+    {
+        $title_translit = TextPeer::urlTranslit($this->getTitle());
+        if (!$title_translit) {
+            return $file;
+        }
+
+        // before first dot we embed transliterated title
+        return str_replace('.', '-' . $title_translit . '.', $file);
+    }
 }
