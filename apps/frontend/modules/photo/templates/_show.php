@@ -76,9 +76,9 @@
 
         <div class="photo_info">
             <?php if ($title): ?>
-                <p class="center_text">
-                    <strong><?php echo $title; ?></strong>
-                </p>
+                <div class="center_text p1">
+                    <h1 class="simple_title"><?php echo $title; ?></h1>
+                </div>
             <?php endif ?>
             <p class="center_text small light p1_no_bottom">
                 <span class="date"><?php echo format_datetime( $photo->getCreatedAt('Y-m-d H:i:s', true), 'd MMMM yyyy'); ?></span>

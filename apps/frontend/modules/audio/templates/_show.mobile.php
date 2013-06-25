@@ -1,12 +1,12 @@
 <?php if (!empty($audio)): ?>
-<?php 
-// åñëè Çàãîëîâîê èëè Àâòîð íå óêàçàí íà òåêóùåì ÿçûêå áåð¸ì èç ÿçûêà ïî óìîë÷àíèþ
+<?php
+// ÐµÑÐ»Ð¸ Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¸Ð»Ð¸ ÐÐ²Ñ‚Ð¾Ñ€ Ð½Ðµ ÑƒÐºÐ°Ð·Ð°Ð½ Ð½Ð° Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ·Ñ‹ÐºÐµ Ð±ÐµÑ€Ñ‘Ð¼ Ð¸Ð· ÑÐ·Ñ‹ÐºÐ° Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ
 $title  = $audio->getTitle($sf_user->getCulture(), true);
 $body   = $audio->getBodyPrepared($sf_user->getCulture(), true);
 $author = $audio->getAuthor($sf_user->getCulture(), true);
 
-/* 
-<script type="text/javascript">	
+/*
+<script type="text/javascript">
     $(document).ready(function(){
         $("#audio_<?php echo $audio->getId(); ?>").jmp3({
             width: 22
@@ -15,13 +15,13 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
 </script>
  */ ?>
 <div id="audio_<?php echo $audio->getId(); ?>" class="audio_item">
-    <strong id="<?php echo $audio->getFile(); ?>"><?php echo $author; ?></strong> - <?php echo $title; ?>     
+    <h1 class="simple_title"><strong><?php echo $author; ?></strong> - <?php echo $title; ?></h1>
 
     <div class="light small right audio_descr">
-    <?php if (empty($no_info) || !$no_info): ?>    
-        <?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?> | 
-        <?php /*echo __('Duration') ?>: */ ?><?php echo $audio->getDurationFormatted(); ?> | 
-        <?php /*echo __('Size') ?>: */ ?><?php echo $audio->getSizePrepared(); ?> | 
+    <?php if (empty($no_info) || !$no_info): ?>
+        <?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?> |
+        <?php /*echo __('Duration') ?>: */ ?><?php echo $audio->getDurationFormatted(); ?> |
+        <?php /*echo __('Size') ?>: */ ?><?php echo $audio->getSizePrepared(); ?> |
         <?php /*echo __('Date') ?>: / ?><?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?>         */ ?>
     <?php endif ?>
     <a href="<?php echo $audio->getDirectUrl(); ?>" title="<?php echo __('Download'); ?>"><?php echo __('Download'); ?></a>
@@ -31,11 +31,11 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
     <?php echo html_entity_decode($body); ?>
     <?php endif ?>
     <?php include_component('itemcategory', 'showitemcategories', array(
-                'item_type'     => ItemtypesPeer::ITEM_TYPE_AUDIO, 
+                'item_type'     => ItemtypesPeer::ITEM_TYPE_AUDIO,
                 'item_id'       => $audio->getId(),
-                'module_action' => 'audio/index')); 
+                'module_action' => 'audio/index'));
     ?>
-    </div>    
+    </div>
 </div>
-<?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_AUDIO, 'item_id'=>$audio->getId())) ?> 
+<?php include_component('item2item', 'show', array('item_type'=>ItemtypesPeer::ITEM_TYPE_AUDIO, 'item_id'=>$audio->getId())) ?>
 <?php endif ?>

@@ -642,6 +642,9 @@ img.newsitem_img {
 .photofull .photo_list {
     display: none;
 }
+.photofull h1 {
+    font-weight: bold;
+}
 #photo_content .social {
     display:none;
 }
@@ -692,12 +695,13 @@ img.newsitem_img {
 
 /* other */
 .title {
-    /*color:#555753;*/
+    color: #867D4A;
     font-weight:bold;
     text-align: left;
     background:none;
     padding:0;
     font-family: Georgia,"Times New Roman",serif;
+    font-size: 1.2em;
     font-size-adjust:none;
     font-stretch:normal;
     font-style:normal;
@@ -713,6 +717,15 @@ img.newsitem_img {
 }
 .title a:visited {
     color:#867d4a;
+}
+.simple_title {
+    color: black;
+    display: inline;
+    font-family: Arial;
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin: 0;
 }
 
 

@@ -19,7 +19,7 @@ $author = $photoalbum->getAllAuthors($sf_user->getCulture(), $photo_list);
 	<a href="<?php echo url_for('@main'); ?>"><?php echo __('Home') ?></a> » <a href="<?php echo url_for('photoalbum_index'); ?>"><?php echo __('Photo Albums') ?></a>
 </p>
 <div class="box photoalbum_container">
-<h2 class="title"><?php echo $photoalbum->getTitle($sf_user->getCulture(), true);?></h2>
+<h1 class="title"><?php echo $photoalbum->getTitle($sf_user->getCulture(), true);?></h1>
 <p class="light center_text small">
     <strong><?php echo __('Date') ?>:</strong> <?php echo format_datetime( $photoalbum->getCreatedAt(), 'd MMMM yyyy'); ?> |
     <strong><?php echo __('Photo') ?>:</strong> <?php echo $photoalbum->countPhotos(); ?>

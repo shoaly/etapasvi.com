@@ -15,7 +15,7 @@ $author = $audio->getAuthor($sf_user->getCulture(), true);
 </script>
  */ ?>
 <div id="audio_<?php echo $audio->getId(); ?>" class="audio_item">
-<h2 class="title"><?php echo $author; ?> - <?php echo $title; ?></h2>
+<h1 class="title"><?php echo $author; ?> - <?php echo $title; ?></h1>
 
 <div class="light small audio_descr">
     <strong><?php echo __('Uploaded on') ?>:</strong> <?php echo format_datetime( $audio->getCreatedAt(), 'd MMMM yyyy'); ?> |

@@ -4,12 +4,12 @@
     $body = $announcements->getBody($sf_user->getCulture(), true);
     ?>
     <div class="announcements_container">
-        <div class="announcements_container_inner">
+        <h1 class="announcements_container_inner title">
             <?php if ($announcements->getCreatedAt()): ?>
                 <span class="date">[<?php echo format_datetime($announcements->getCreatedAt(), 'd MMMM yyyy'); ?>]</span>
             <?php endif ?>
             <?php echo $body; ?>
-        </div>
+        </h1>
     </div>
     <?php
     include_component('itemcategory', 'showitemcategories', array(
