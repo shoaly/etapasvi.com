@@ -1954,6 +1954,9 @@ table.documents_tbl {
     background-image:linear-gradient(top,#ffffff,#7dd6a0);
     font-weight: bold;
 }
+.announcements_container .title a {
+    color: #00a3a3;
+}
 
 /* page tools */
 #page_toolbar {

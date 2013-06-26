@@ -8,7 +8,7 @@
             <?php if ($announcements->getCreatedAt()): ?>
                 <span class="date">[<?php echo format_datetime($announcements->getCreatedAt(), 'd MMMM yyyy'); ?>]</span>
             <?php endif ?>
-            <?php echo $body; ?>
+            <?php echo html_entity_decode($body); ?>
         </h1>
     </div>
     <?php

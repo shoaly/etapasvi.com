@@ -812,3 +812,8 @@ img.newsitem_img {
 .doc_short.last {
     border-bottom: 1px dashed #DDDDDD;
 }
+
+/* announcements */
+.announcements_container .title a {
+    color: #00a3a3;
+}
