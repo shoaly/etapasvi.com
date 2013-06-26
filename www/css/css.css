@@ -76,7 +76,7 @@ body.embedded #bubble_quote, body.print_version #bubble_quote,
 body.embedded #bubble_quote, body.print_version #bubble_quote,
 body.embedded #bubble_sound, body.print_version #bubble_sound,
 body.embedded h2#top,
-body.embedded h1,
+body.embedded .h1,
 body.embedded #page_toolbar, body.print_version #page_toolbar,
 body.embedded #disqus_thread, body.print_version #disqus_thread,
 body.embedded #dsq-brlink, body.print_version #dsq-brlink,
@@ -118,7 +118,8 @@ p,
     }
 */
 
-h1 {
+h1,
+.h1 {
     background: none repeat scroll 0 0 transparent;
     color: #a46362;
     font-family: Monotype Corsiva;
@@ -131,7 +132,7 @@ h1 {
     text-align: center;
     width: 500px;
     }
-#body_main h1 {
+#body_main .h1 {
     margin-top: 11px;
     margin-left: auto;
     margin-right: auto;
@@ -153,7 +154,7 @@ h2.underlined {
     text-align: right;
 	}
 .hieroglyphic #content .title,
-.hieroglyphic #content h1,
+.hieroglyphic #content .h1,
 .hieroglyphic #content h2 {
     font-weight: bold;
     }

@@ -52,7 +52,7 @@
 
 <div id="content_wrapper">
 	<div id="content">
-        <h1><?php include_slot('page_header') ?></h1>
+        <div class="h1"><?php include_slot('page_header') ?></div>
 		<?php echo $sf_content ?>
 	</div>
     <?php /* id используется в /lib/symfony/exception/sfError404Exception.class.php */ ?>

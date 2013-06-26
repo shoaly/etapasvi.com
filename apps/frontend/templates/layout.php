@@ -46,7 +46,7 @@ window.onerror = function(msg, url, line) {
 
 <div id="content_wrapper">
 	<div id="content">
-        <h1><?php include_slot('page_header') ?></h1>
+        <div class="h1"><?php include_slot('page_header') ?></div>
         <?php include_partial( 'global/toolbar' ); ?>
 		<?php echo $sf_content ?>
 	</div>
