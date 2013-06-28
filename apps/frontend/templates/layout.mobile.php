@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <?php include_http_metas() ?>
-<meta name="robots" content="noindex,nofollow" />
 <?php /*include_title()*/ ?>
 <?php if (UserPeer::isHomePage()): ?>
     <title><?php echo sfConfig::get('app_site_name'); ?></title>

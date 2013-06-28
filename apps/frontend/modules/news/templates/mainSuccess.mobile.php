@@ -2,7 +2,7 @@
 <?php slot('page_header') ?><?php echo __('A message of peace, an appeal to the world') ?><?php end_slot() ?>
 
 <div id="menu">
-<?php include_partial('global/menu', array('body_id'=>$body_id /*, 'is_logged_in'=>UserPeer::authIsLoggedIn()*/) ); ?>	
+<?php include_partial('global/menu', array('body_id'=>$body_id /*, 'is_logged_in'=>UserPeer::authIsLoggedIn()*/) ); ?>
 </div>
 
 <?php /*include_component('comments', 'show') */ ?>
