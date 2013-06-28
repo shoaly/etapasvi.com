@@ -8,6 +8,7 @@
         <li id="mi_teachings"><i>»</i> <a href="<?php echo url_for('news/index?itemcategory=teachings', true); ?>" title="<?php echo __('Teachings') ?>"><?php echo __('Teachings') ?></a></li>
         <li id="mi_precepts"><i>» »</i> <a href="<?php echo url_for('news/index?itemcategory=messages', true); ?>" title="<?php echo __('Messages') ?>"><?php echo __('Messages') ?></a></li>
         <li id="mi_precepts"><i>» »</i> <a href="<?php echo url_for('news/index?itemcategory=prayers', true); ?>" title="<?php echo __('Prayers') ?>"><?php echo __('Prayers') ?></a></li>
+        <li id="mi_mantras"><i>» »</i> <a href="<?php echo url_for('news/index?itemcategory=mantras', true); ?>" title="<?php echo __('Mantras') ?>"><?php echo __('Mantras') ?></a></li>
         <li id="mi_precepts"><i>» »</i> <a href="<?php echo url_for('news/index?itemcategory=precepts', true); ?>" title="<?php echo __('Precepts') ?>"><?php echo __('Precepts') ?></a></li>
         <li id="mi_precepts"><i>» »</i> <a href="<?php echo url_for('news/index?itemcategory=questions', true); ?>" title="<?php echo __('Questions') ?>"><?php echo __('Questions') ?></a></li>
         <?php /*<li id="mi_stories"><i>»</i> <a href="<?php echo url_for('@news/index?itemcategory=teachings', true); ?>" title="<?php echo __('Stories') ?>"><?php echo __('Stories') ?></a></li>*/ ?>

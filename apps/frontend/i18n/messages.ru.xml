@@ -238,6 +238,10 @@
         <source>Questions</source>
         <target>Вопросы</target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>Mantras</source>
+        <target>Мантры</target>
+      </trans-unit>
 
 <!-- News _show -->
       <trans-unit id="1">
