@@ -16,7 +16,7 @@ class commentsComponents extends sfComponents
 
   	$this->comments_page_url = CommentsPeer::getCommentsPageUrl($this->comments_page_url);
 
-  	$this->comments_identifier = CommentsPeer::getCommentsIdentifier('', '', '', array('id'=>$this->id));
+  	$this->comments_identifier = CommentsPeer::getCommentsIdentifier($this->culture, $this->module, $this->action, array('id'=>$this->id));
   	$this->like_identifier = CommentsPeer::getCommentsIdentifier(sfConfig::get('sf_default_culture'), '', '', array('id'=>$this->id));
   }
 //  public function executePost(sfWebRequest $request)

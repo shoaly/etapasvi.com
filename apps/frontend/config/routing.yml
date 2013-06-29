@@ -179,6 +179,11 @@ religious_forest:
   param: { module: religious_forest, action: show }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
+forum:
+  url:   /:sf_culture/forum
+  param: { module: news, action: forum }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+
 audio_index:
   url:   /:sf_culture/audio/index/*
   param: { module: audio, action: index }

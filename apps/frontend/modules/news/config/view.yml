@@ -14,5 +14,9 @@ feedSuccess:
   metas:
     title:        Feed
 
+forumSuccess:
+  metas:
+    title:        Forum
+
 rssSuccess:
   has_layout:     off

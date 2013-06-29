@@ -501,4 +501,14 @@ LIMIT 0, 50
 	}
   }
 
+  /**
+   * Forum
+   *
+   * @param sfWebRequest $request
+   */
+  public function executeForum(sfWebRequest $request)
+  {
+
+  }
+
 }

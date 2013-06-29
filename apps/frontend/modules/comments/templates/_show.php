@@ -14,7 +14,7 @@
 */ ?>
     var disqus_shortname    = 'etapasvi';
     var disqus_identifier   = '<?php echo $comments_identifier?>';
-    <?php if (!empty($comments_page_url)): ?>var disqus_url   = '<?php echo $comments_page_url?>';<?php endif ?>
+   
     var disqus_category_id  = '<?php echo UserPeer::getCultureCommentsCategoryId() ?>';
     var disqus_language  = '<?php echo UserPeer::getDisqusCulture() ?>';
     <?php /* var disqus_language     = '<?php echo UserPeer::getCultureMain() ?>'; */ ?>

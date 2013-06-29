@@ -26,9 +26,13 @@ class CommentsPeer /*extends BaseCommentsPeer*/
             if (!$culture) {
                 $culture	 = $sf_context->getUser()->getCulture();
             }
-		  	$module    	 = $sf_context->getModuleName();
+            if (!$module) {
+                $module    	 = $sf_context->getModuleName();
+            }
 
-			$action      = $sf_context->getActionName();
+            if (!$action) {
+                $action      = $sf_context->getActionName();
+            }
 
 			// хардкод для подгружаемых фото
 			if ( $module == 'photo' && ($action == 'content' || $action == 'albumcontent') ) {
