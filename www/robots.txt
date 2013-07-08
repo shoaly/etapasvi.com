@@ -1,3 +1,3 @@
 User-Agent: *
-Disallow: /sk/
+Disallow: */sk/
 Host: www.etapasvi.com
