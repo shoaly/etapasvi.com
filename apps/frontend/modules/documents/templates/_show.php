@@ -11,7 +11,9 @@
         <td><?php echo $documents->getSizePrepared(); ?></td>
         <td><?php echo format_datetime( $documents->getCreatedAt(), 'd MMMM yyyy'); ?></td>
         <td><?php echo format_datetime( $documents->getUpdatedAt(), 'd MMMM yyyy'); ?></td>
-        <td><a href="<?php echo $documents->getDirectUrl(); ?>" <?php if ($documents->getNewsId()): ?>rel="nofollow"<?php endif ?> target="_blank" class="save" title="<?php echo __('Download'); ?>"></a></td>
+        <td><a href="<?php echo $documents->getDirectUrl(); ?>" <?php if ($documents->getNewsId()): ?>rel="nofollow"<?php endif ?> target="_blank" class="save" title="<?php echo __('Download'); ?>"></a>
+            <a href="http://docs.google.com/viewer?url=<?php echo urlencode($documents->getDirectUrl()); ?>" rel="nofollow" target="_blank" title="Google Docs"><img src="/i/google_doc.gif" /></a>
+        </td>
     </tr>
    <?php if (!$hide_wrapper): ?>
     </table>
