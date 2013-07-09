@@ -68,18 +68,18 @@
   'include_remove' => true,
 )); echo $value ? $value : '&nbsp;' ?>
 
-	<input type="checkbox" value="1" id="photo_watermark" name="photo[watermark]" checked="checked"> watermark 
+	<input type="checkbox" value="1" id="photo_watermark" name="photo[watermark]" checked="checked"> watermark
     <select name="photo[watermark_position]">
         <option value="bottom-right">bottom-right</option>
         <option value="bottom-left">bottom-left</option>
         <option value="top-left">top-left</option>
         <option value="top-right">top-right</option>
     </select>
-    
-    <input type="checkbox" value="1" id="photo_resize_preview" name="photo[resize_preview]" checked="checked"> resize preview 
+
+    <input type="checkbox" value="1" id="photo_resize_preview" name="photo[resize_preview]" checked="checked"> resize preview
     </div>
 <?php else: ?>
-<a href="<?php echo html_entity_decode($url_to_login_page)?>" target="_blank">Authorize in Picasa</a>
+<a href="<?php echo html_entity_decode($url_to_login_page)?>" target="_blank">Authorize in Picasa</a>zz
 <?php endif ?>
 </div>
 
@@ -253,7 +253,7 @@
 
 <div class="form-row">
   <label for="photo_change_updated_at">Change Updated At:</label>  <div class="content">
-  
+
   <input type="checkbox" checked="checked" value="1" id="photo_change_updated_at" name="photo[change_updated_at]">    </div>
 </div>
 
@@ -308,6 +308,7 @@
   'maxlength' => 255,
   'style' => 'width:80%',
 )); echo $value ? $value : '&nbsp;' ?>
+    <small>"?" - unknown, "-" - empty</small>
     </div>
 </div>
 

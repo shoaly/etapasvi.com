@@ -92,6 +92,9 @@
                     if ($author == '?') {
                         $author = __('If this photo has been made by you, please, let us know');
                     }
+                    if ($author == '-') {
+                        $author = '';
+                    }
                 ?>
 
                 <?php if ($author): ?>
