@@ -285,6 +285,9 @@ function preparePhotoContent()
             resizePhotoColorbox(full_photo_img);
             // align loader in the middle of the photo and show it
             $("#colorbox #photo_content .prev_next a").css('visibility', 'hidden');
+        } else {
+            // modify Mobile link
+            setUrlMobile(document.location.href);
         }
 
         // title
@@ -559,12 +562,12 @@ function enlargePhoto(href, from_photo_page, photoalbum_id, parent_el)
 
             if (disqus_url) {
                 $("#disqus_thread").html(
-                    "<script type=\"text/javascript\">" +
+                    "<scr" + "ipt type=\"text/javascript\">" +
                     $("#disqus_config_script").text() +
                     //"var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; " +
                     //"dsq.src = $(\"#disqus_script\").attr(\"src\"); " +
                     //"(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); " +
-                    "</script>"
+                    "</scr" + "ipt>"
                 );
                 // в IE обработка скрипта работает с небольшой задержкой, поэтому скрипт disqs надо подключать немного погодя
                 // при динамической вставке disqus как script в DOM сыпятся ошибки

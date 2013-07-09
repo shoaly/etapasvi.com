@@ -9,16 +9,16 @@ class UserPeer /* extends BaseUserPeer*/
 {
 	const SERVERS_FRONTENDS = 'frontends';
 	const SERVERS_BACKENDS  = 'backends';
-	
+
 	// почтовый адрес
 	const MAIL_ADDRESS     = 'info@etapasvi.com';
 	const EMAIL_PREFIX     = '[etapasvi mail]';
-	
+
 	const ALL_CULTURES  = 'all';
 
 	// языки
 	static protected $cultures = array(
-	
+
 		'en' => array('name'    			 => 'English',
 					  'en_name'    			 => 'English',
 		              'iso'     			 => 'en',
@@ -34,11 +34,11 @@ class UserPeer /* extends BaseUserPeer*/
 		              'blessing_ln' 		 => '',
                                // https://www.paypalobjects.com/pl_PL/PL/i/btn/btn_subscribeCC_LG.gif
                                // https://www.paypalobjects.com/zh_CN/i/btn/btn_donateCC_LG.gif
-		              'paypal_button' 		 => 'en_US' 
-		),            
+		              'paypal_button' 		 => 'en_US'
+		),
 		'ru' => array('name'    			 => 'Русский',
 					  'en_name'    			 => 'Russian',
-		              'iso'     			 => 'ru',		              
+		              'iso'     			 => 'ru',
 		              //'mail_id' 			 => '25b1a7f858',
 		              'comments_category_id' => 686465,
 		              'feedburner_loc' 		 => 'ru_RU',
@@ -113,7 +113,7 @@ class UserPeer /* extends BaseUserPeer*/
 		              'google_group' 		 => 'etapasvi-vn',
 		              'blessing_ln' 		 => 'vi-VN',
                               'paypal_button' 		 => 'en_US'
-		),       
+		),
 		'ja' => array('name'    			 => '日本語',
 					  'en_name'    			 => 'Japanese',
 		              'iso'     			 => 'jp',
@@ -149,10 +149,10 @@ class UserPeer /* extends BaseUserPeer*/
 		              'blessing_ln' 		 => 'it-IT',
                               'paypal_button' 		 => 'it_IT'
 		),
-/*		              		              
+/*
 
 		'sk' => array('name'    => 'sk - Slovenčina',
-		              'iso'     => 'sk'),	
+		              'iso'     => 'sk'),
 
 		'uk' => array('name'    => 'ua - Українська',
 		              'iso'     => 'ua'),*/
@@ -190,11 +190,11 @@ class UserPeer /* extends BaseUserPeer*/
 					  'google_group' 		 => 'etapasvi-bn',
 					  'blessing_ln' 		 => 'bn-BD',
                                'paypal_button' 		 => 'en_US'
-		),			
+		),
 		'he' => array(
 					  'name'     			 => 'עברית',
 					  'en_name'    			 => 'Hebrew',
-                      'iso'      			 => 'he',				
+                      'iso'      			 => 'he',
 		              'hieroglyphic'  		 => true,
 		              'large_text'	 		 => true,
 		              'comments_category_id' => 1417916,
@@ -209,7 +209,7 @@ class UserPeer /* extends BaseUserPeer*/
 		'zh_TW' => array(
 					  'name'     			 => '傳統漢字',
 					  'en_name'    			 => 'Traditional Chinese',
-                      'iso'      			 => 'zh-tw',				
+                      'iso'      			 => 'zh-tw',
 		              'hieroglyphic'  		 => true,
 		              'comments_category_id' => 1417917,
 		              'feedburner_loc' 		 => '',
@@ -221,7 +221,7 @@ class UserPeer /* extends BaseUserPeer*/
          ),
 		'de' => array('name'     			 => 'Deutsch',
 					  'en_name'    		     => 'German',
-                      'iso'      			 => 'de',						             
+                      'iso'      			 => 'de',
 		              'comments_category_id' => 1456893,
 		              'feedburner_loc' 		 => '',
 		              'disqus_culture' 		 => 'de_formal',
@@ -231,9 +231,9 @@ class UserPeer /* extends BaseUserPeer*/
                               'paypal_button' 		 => 'de_DE'
 		),
 	);
-	
-	 
-	// список языков по 
+
+
+	// список языков по
 	// http://msdn.microsoft.com/en-us/library/ms533052%28v=vs.85%29.aspx
 	// http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 	// и имеющихся в симфони
@@ -339,7 +339,7 @@ class UserPeer /* extends BaseUserPeer*/
       'be' => array('name'     => 'Беларуская',
                     'en'       => 'Belarusian',
                     'iso'      => 'be'
-      ),      
+      ),
 	  'bn' => array('name'     => 'বাংলা',
 					'en'       => 'Bengali',
                     'iso'      => 'bn'
@@ -367,7 +367,7 @@ class UserPeer /* extends BaseUserPeer*/
       'zh_HK' => array('name'     => '简体中文',
                        'en'       => 'Chinese (Hong Kong SAR)',
                        'iso'      => 'zh'
-      ),        
+      ),
       'hr' => array('name'     => 'Hrvatski',
                     'en'       => 'Croatian',
                     'iso'      => 'hr'
@@ -375,7 +375,7 @@ class UserPeer /* extends BaseUserPeer*/
       'cs' => array('name'     => 'Čeština',
                     'en'       => 'Czech',
                     'iso'      => 'cs'
-      ),   
+      ),
       'da' => array('name'     => 'Dansk',
                     'en'       => 'Danish',
                     'iso'      => 'da'
@@ -383,7 +383,7 @@ class UserPeer /* extends BaseUserPeer*/
       'nl' => array('name'     => 'Nederlands',
                     'en'       => 'Dutch',
                     'iso'      => 'nl'
-      ), 
+      ),
 //      'nl_BE' => array('name'     => 'Nederlands',
 //                       'en'       => 'Dutch (Belgium)',
 //                       'iso'      => 'nl'
@@ -471,7 +471,7 @@ class UserPeer /* extends BaseUserPeer*/
       'gd' => array('name'     => 'Gàidhlig',
                     'en'       => 'Gaelic (Scotland)',
                     'iso'      => 'gd'
-      ),            
+      ),
       'de' => array('name'     => 'Deutsch',
                     'en'       => 'German',
                     'iso'      => 'de'
@@ -744,30 +744,30 @@ class UserPeer /* extends BaseUserPeer*/
       'xh' => array('name'     => 'isiXhosa',
                     'en'       => 'Xhosa',
                     'iso'      => 'xh'
-      ),      
+      ),
       'ji' => array('name'     => 'ייִדיש',
                     'en'       => 'Yiddish',
                     'iso'      => 'yi'
-      ),            
+      ),
       'zu' => array('name'     => 'isiZulu',
                     'en'       => 'Zulu',
                     'iso'      => 'zu'
       )
     );
-	
+
 	//const DEFAULT_CULTURE = 'en';
-	
+
 	// доменное имя, которое используется по умолчанию вне приложения
 	const DOMAIN_NAME_MAIN   		 = 'www.etapasvi.com';
-	
+
 	const FORUM_URL   		 		 = 'http://forum.etapasvi.com';
 	// список доменных имён
 	public static $domain_name_list  = array('www.etapasvi.com', 'm.etapasvi.com');
-	
+
 	// Email for sending requests for blessing
 	const BLESSING_EMAIL 	   		 = 'etapasvi+blessing@gmail.com';
 	const BLESSING_URL  			 = 'http://blessing.etapasvi.com/Default.aspx';
-		
+
 	/**
 	 * Вся информация о языках
 	 *
@@ -776,8 +776,8 @@ class UserPeer /* extends BaseUserPeer*/
 	public static function getCulturesData()
 	{
 		return self::$cultures;
-	}	
-	
+	}
+
 	/**
 	 * Список языков
 	 *
@@ -787,7 +787,7 @@ class UserPeer /* extends BaseUserPeer*/
 	{
 		return array_keys( self::$cultures );
 	}
-	
+
 	/**
 	 * Названия языков
 	 *
@@ -797,11 +797,11 @@ class UserPeer /* extends BaseUserPeer*/
 	{
 	    $result = array();
 	    foreach (self::$cultures as $culture => $culture_data) {
-	       $result[$culture] = $culture_data['name'];	        
-	    }	    
+	       $result[$culture] = $culture_data['name'];
+	    }
 		return $result;
 	}
-	
+
 	/**
 	 * ISO-код языка
 	 *
@@ -811,8 +811,8 @@ class UserPeer /* extends BaseUserPeer*/
 	public static function getCultureIso( $culture )
 	{
 		return self::$cultures[ $culture ][ 'iso' ];
-	}	
-	
+	}
+
 	/**
 	 * Основная часть языка.
 	 * Для zh_CN вернёт zh
@@ -824,14 +824,14 @@ class UserPeer /* extends BaseUserPeer*/
 	{
 		return substr( sfContext::getInstance()->getUser()->getCulture(), 0, 2 );
 	}
-	
+
 	/**
 	 * Get Diqus ISO culture code
 	 * http://docs.disqus.com/help/97/
-	 * 
+	 *
 	 * ISO 639-1 two-letter code exceptions
 	 * Most languages can be set using their standard two-letter ISO 639-1 code (full list). Exceptions are:
-	 * 
+	 *
 	 * Chinese (Traditional) = zh_HANT
 	 * German (Formal) = de_formal
 	 * German (Informal) = de_inf
@@ -848,18 +848,18 @@ class UserPeer /* extends BaseUserPeer*/
 	 * @return unknown
 	 */
 	public static function getDisqusCulture( $culture = '' )
-	{	
+	{
 		if (!$culture) {
 			$culture = sfContext::getInstance()->getUser()->getCulture();
 		}
-		
+
 		if (self::$cultures[ $culture ]['disqus_culture']) {
 			return self::$cultures[ $culture ]['disqus_culture'];
 		} else {
-			return self::getCultureMain($culture);	
-		}		
-	}	
-	
+			return self::getCultureMain($culture);
+		}
+	}
+
 	/**
 	 * Название языка
 	 *
@@ -870,7 +870,7 @@ class UserPeer /* extends BaseUserPeer*/
 	{
 		return self::$cultures[ $culture ][ 'name' ];
 	}
-	
+
 	/**
 	 * Название языка
 	 *
@@ -884,7 +884,7 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return self::$cultures[ $culture ][ 'mail_id' ];
 	}*/
-	
+
 	/**
 	 * Полученеи языка в формате MSDS: http://msdn.microsoft.com/en-us/library/ms533052%28v=vs.85%29.aspx
 	 *
@@ -898,7 +898,7 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return strtolower( str_replace("_", "-", $culture) );
 	}
-	
+
 	/**
 	 * Категория для системы комментирования
 	 *
@@ -912,7 +912,7 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return self::$cultures[ $culture ][ 'comments_category_id' ];
 	}
-	
+
 	/**
 	 * Получение языка интерфейса FeedBurner для языка
 	 *
@@ -930,7 +930,7 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return $loc;
 	}
-	
+
 	/**
 	 * Полученеи кода языка в модуле blessing.etapasvi.com
 	 *
@@ -944,7 +944,7 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return self::$cultures[ $culture ][ 'blessing_ln' ];
 	}
-	
+
 	/**
 	 * Используются ли в языке иероглифы
 	 *
@@ -962,7 +962,7 @@ class UserPeer /* extends BaseUserPeer*/
 	    	return false;
 	    }
 	}
-	
+
 	/**
 	 * Используется ли для языка увеличенный размер текста
 	 *
@@ -980,7 +980,7 @@ class UserPeer /* extends BaseUserPeer*/
 	    	return false;
 	    }
 	}
-	
+
 	/**
 	 * Направление текста - справа налево.
 	 *
@@ -998,7 +998,7 @@ class UserPeer /* extends BaseUserPeer*/
 	    	return false;
 	    }
 	}
-	
+
 	/**
 	 * Полное название языка, пример: Afrikaans [af] &nbsp;&nbsp;-&nbsp;&nbsp; Afrikaans
 	 *
@@ -1012,7 +1012,7 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 	    return self::$all_cultures[$culture]['en'] .' [' . $culture . '] &nbsp;&nbsp;-&nbsp;&nbsp; ' . self::$all_cultures[$culture]['name'];
 	}
-	
+
 	/**
 	 * Get the name of FB-group for the culture
 	 *
@@ -1029,8 +1029,8 @@ class UserPeer /* extends BaseUserPeer*/
 			$fb_group = 'etapasvi.' . str_replace('-', '.', self::$cultures[ $culture ][ 'iso' ]);
 		}
 		return $fb_group;
-	}	
-	
+	}
+
 	/**
 	 * Get the name of Twitter for the culture
 	 *
@@ -1048,7 +1048,7 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return $twitter;
 	}
-	
+
 	/**
 	 * Get name of Google Group for the culture
 	 *
@@ -1062,20 +1062,20 @@ class UserPeer /* extends BaseUserPeer*/
 		}
 		return self::$cultures[ $culture ][ 'google_group' ];
 	}
-        
+
 	public static function getCulturePaypalButton( $culture = '' )
-	{	
+	{
 		if (!$culture) {
 			$culture = sfContext::getInstance()->getUser()->getCulture();
 		}
-		
+
 		if (self::$cultures[ $culture ]['paypal_button']) {
 			return self::$cultures[ $culture ]['paypal_button'];
 		} else {
-			return self::$cultures[ 'en' ]['paypal_button'];	
-		}		
-	}	
-	
+			return self::$cultures[ 'en' ]['paypal_button'];
+		}
+	}
+
 	/**
 	 * Проверка, является ли страница главной
 	 *
@@ -1095,7 +1095,7 @@ class UserPeer /* extends BaseUserPeer*/
 	        return false;
 	    }
 	}
-	
+
 	/**
 	 * Переключение адреса на мобильную версию и обратно
 	 *
@@ -1105,29 +1105,37 @@ class UserPeer /* extends BaseUserPeer*/
 	public static function switchUrlMobile( $url = '' )
 	{
 	    if (!$url) {
-	        $url = sfContext::getInstance()->getRequest()->getUri();
+            $url = sfContext::getInstance()->getRequest()->getUri();
+
+            // on photo/view we show link to the main page
+            $sf_context  = sfContext::getInstance();
+
+            if ($sf_context->getModuleName() == 'photo' && $sf_context->getActionName() == 'show') {
+                $parse_url = parse_url($url);
+                $url = $parse_url['scheme'] . '://' . $parse_url['host'] . '/' . sfContext::getInstance()->getUser()->getCulture() . '/';
+            }
 	    }
 
 	    if (strstr($url, sfConfig::get('app_domain_name_full'))) {
 	        // переключаем на мобильную версию
 	        $result_url = str_replace(sfConfig::get('app_domain_name_full'), sfConfig::get('app_domain_name_mobile'), $url);
-	        
+
 	        // удаление "version/full" из адреса
 	        $result_url = str_replace('version/full', '', $result_url);
 	    } else {
 	        // переключение на полную версию
 	        $result_url = str_replace(sfConfig::get('app_domain_name_mobile'), sfConfig::get('app_domain_name_full'), $url);
 	    }
-	    
+
 	    // убираем название скрипта
 	    //if (sfConfig::get('sf_no_script_name') || sfConfig::get('sf_environment') == 'prod') {
 	    $parse_url = parse_url($url);
 	    $result_url = str_replace('/' . UserPeer::getApplicationScript($parse_url['host'], sfConfig::get('sf_environment')), '', $result_url);
 	    //}
-	    
+
 	    return $result_url;
 	}
-	
+
 	/**
 	 * Получение названия скрипта по Доменному имени и окружению
 	 *
@@ -1138,7 +1146,7 @@ class UserPeer /* extends BaseUserPeer*/
 	{
 	  return 'frontend_' . str_replace('.', '_', $domain_name) . '.php';
 	}
-	
+
 	/**
 	 * Получение языка из URL
 	 * url:
@@ -1150,7 +1158,7 @@ class UserPeer /* extends BaseUserPeer*/
 		preg_match("/(?:http:\/\/[^\/]+)?\/([^\/]+)\/.*/", $url, $matches);
 		return $matches[1];
 	}
-		
+
 	/**
 	 * Получение относительного адреса страницы 404
 	 */
@@ -1166,7 +1174,7 @@ class UserPeer /* extends BaseUserPeer*/
 		$url = '/' . $culture . '/default/errors';
 		return $url;
 	}
-	
+
 	/**
 	 * Получение доменного имени веба
 	 *
@@ -1194,11 +1202,11 @@ class UserPeer /* extends BaseUserPeer*/
 	 * @param unknown_type $msg
 	 * @param unknown_type $subject
 	 */
-	public static function adminNotify( $msg, $subject) 
-	{			
-		mail(sfConfig::get('app_admin_email'), self::EMAIL_PREFIX . ' ' . $subject . ' (' . sfConfig::get('app_domain_name') . ')', $msg );	
+	public static function adminNotify( $msg, $subject)
+	{
+		mail(sfConfig::get('app_admin_email'), self::EMAIL_PREFIX . ' ' . $subject . ' (' . sfConfig::get('app_domain_name') . ')', $msg );
 	}
-	
+
 	/**
 	 * Проверка, находимся ли мы на основном бэкенде
 	 *
@@ -1208,7 +1216,7 @@ class UserPeer /* extends BaseUserPeer*/
 	{
 	   return file_exists(sfConfig::get('sf_web_dir') . '/main_back.conf');
 	}
-	
+
   /**
    * Получение объекта для генерации путей.
    * Берётся из файла routing.yml фронтенда.
@@ -1216,16 +1224,16 @@ class UserPeer /* extends BaseUserPeer*/
    */
   public static function getRouting()
   {
-  	// подготовка путей для поиска файлов  
+  	// подготовка путей для поиска файлов
   	// http://www.symfony-project.org/cookbook/1_2/en/cross-application-links
   	$config = new sfRoutingConfigHandler();
 	$routes = $config->evaluate(array(sfConfig::get('sf_apps_dir') . '/frontend/config/routing.yml'));
 	$routing = new sfPatternRouting(new sfEventDispatcher());
 	$routing->setRoutes($routes);
-	
+
 	return $routing;
   }
-  
+
   /**
    * Получение информации о серверах.
    *
@@ -1234,11 +1242,11 @@ class UserPeer /* extends BaseUserPeer*/
   {
   	// получение списка серверов из Google Docs
   	$servers_array = array();
-  	
+
   	if (!$servers) {
   		return array();
   	}
-  	
+
   	switch ($servers) {
   	  case self::SERVERS_BACKENDS:
   		$servers_array = TextPeer::getGoogleDocAsArray(sfConfig::get('app_backends'));
@@ -1272,7 +1280,7 @@ class UserPeer /* extends BaseUserPeer*/
 			'comment'     	=> $row[15]
 	  	  );
 	  	  break;
-	  	  
+
 	  	case self::SERVERS_FRONTENDS:
 	  	  $servers_item = array(
 			'number'      => $row[0],
@@ -1287,8 +1295,8 @@ class UserPeer /* extends BaseUserPeer*/
 			'comment'     => $row[9]
 	  	  );
 	  	  break;
-	  }  	
-  	  
+	  }
+
   	  // названия полей и сервера, у которых не указн путь на сервере пропускаем
   	  if ($servers_item['active'] == 1) {
   	  	// проверяем не добавлен ли ещё сервер с таким IP
@@ -1307,17 +1315,17 @@ class UserPeer /* extends BaseUserPeer*/
 
   	return $servers_list;
   }
-  
+
   /**
    * Get config from tools/config/config.yml
    *
    */
   public static function getToolsConfig()
-  {	
-	$config = sfYaml::load(sfConfig::get('sf_root_dir') . '/tools/config/config.yml');	
-	return $config;	
+  {
+	$config = sfYaml::load(sfConfig::get('sf_root_dir') . '/tools/config/config.yml');
+	return $config;
   }
-  
+
   /**
 	* Convert object to array
 	*
@@ -1327,7 +1335,7 @@ class UserPeer /* extends BaseUserPeer*/
   public static function object2array($object)
   {
   	$array = array();
-  	
+
 	if (is_object($object)) {
 	  foreach ($object as $key => $value) {
 	    $array[$key] = self::object2array($value);
@@ -1342,7 +1350,7 @@ class UserPeer /* extends BaseUserPeer*/
 
 	return $array;
   }
-  
+
   /**
    * Running a task
    *
@@ -1357,14 +1365,14 @@ class UserPeer /* extends BaseUserPeer*/
   		'result' 		=> false,
   		'error_message' => ''
   	);
-  	
+
   	// Trick plugin into thinking you are in a project directory
   	try {
       chdir(sfConfig::get('sf_root_dir'));
-      
+
       $task = new $task_class($dispatcher, new sfFormatter());
       $task->run($arguments, $options);
-      
+
       $result['result'] = true;
   	} catch(Exception $e) {
   	  $result['result'] = false;
