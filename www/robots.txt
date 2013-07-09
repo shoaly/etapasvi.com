@@ -1,4 +1,5 @@
 User-Agent: *
 Disallow: */sk/
 Disallow: */photo/view/
+Disallow: */photo/albumcontent/
 Host: www.etapasvi.com
