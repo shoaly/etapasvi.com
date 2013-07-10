@@ -64,6 +64,11 @@
                             'module_action' => 'news/index'));
         ?>
     <?php endif ?>
+    <?php if ($sf_user->getCulture() == 'en' && strstr($itemcategory_html, 'Teachings')): ?>
+        <p>
+            <a href="https://docs.google.com/forms/d/1E1-dQRZ4U7OSw8zQFmMDG9YaoDAX7u_g96pBIhwl7A4/viewform?pli=1&entry.82158731=<?php echo urlencode($sf_request->getUri()); ?>" rel="nofollow" target="_blank">Suggest a correction of the text of the teaching</a>
+        </p>
+    <?php endif ?>
     <?php if (trim($itemcategory_html)): ?>
         <br/><?php echo $itemcategory_html; ?>
     <?php endif ?>
