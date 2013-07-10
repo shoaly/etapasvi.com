@@ -132,8 +132,13 @@ video_live:
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 biography:
-  url:   /:sf_culture/biography
+  url:   /:sf_culture/maha-sambodhi-dharma-sangha-biography
   param: { module: biography, action: show }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+  
+biography_old:
+  url:   /:sf_culture/biography
+  param: { module: biography, action: biography }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 sangha:

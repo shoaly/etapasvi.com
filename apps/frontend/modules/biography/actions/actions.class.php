@@ -11,6 +11,11 @@
 class biographyActions extends sfActions
 {
 
+  public function executeBiography(sfWebRequest $request)
+  {
+    $this->redirect($this->generateUrl('biography'));
+  }
+
   public function executeShow(sfWebRequest $request)
   {
     $context = sfContext::getInstance();
