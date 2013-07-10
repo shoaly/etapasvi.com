@@ -80,4 +80,20 @@ class videoComponents extends sfComponents
     }
   }
 
+  /**
+   * List of live videos
+   */
+  public function executeLive()
+  {
+  	$c = new Criteria();
+  	$c->addDescendingOrderByColumn( VideoPeer::ID );
+
+    //$c->add( VideoPeer::SHOW, 1);
+    $c->add( VideoPeer::LIVE, 1);
+
+    //VideoPeer::addVisibleCriteria($c);
+
+  	$this->video_list = VideoPeer::doSelectWithI18n( $c );
+  }
+
 }

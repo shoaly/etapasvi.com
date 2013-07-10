@@ -45,6 +45,7 @@ class VideoTableMap extends TableMap {
 		$this->addColumn('SHOW', 'Show', 'BOOLEAN', false, null, true);
 		$this->addColumn('ORDER', 'Order', 'INTEGER', true, null, null);
 		$this->addColumn('LINK', 'Link', 'VARCHAR', false, 255, null);
+		$this->addColumn('LIVE', 'Live', 'BOOLEAN', false, null, false);
 		$this->addColumn('ALL_CULTURES', 'AllCultures', 'BOOLEAN', false, null, false);
 		// validators
 	} // initialize()

@@ -618,6 +618,20 @@
         <target>Рады, что вам это понравилось</target>
       </trans-unit>
 
+<!-- Live Video -->
+      <trans-unit id="1">
+        <source>Live Video</source>
+        <target>Онлайн трансляции</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>There are no currently live streams scheduled.</source>
+        <target>В настоящий момент прямых трансляций не ведётся.</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Stay tuned</source>
+        <target>Следите за обновлениями</target>
+      </trans-unit>
+
 <!-- утф -->
     </body>
   </file>

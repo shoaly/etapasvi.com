@@ -8,8 +8,8 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 50
       sort: [order, desc]
-      filters: [show, all_cultures, link]
-      display: [=id, show, order, created_at, _img, title, all_cultures, _itemcategory_list, _item2item_list]
+      filters: [show, all_cultures, link, live]
+      display: [=id, show, order, created_at, _img, title, live, all_cultures, _itemcategory_list, _item2item_list]
       title:   Video
       object_actions:
         _edit:
@@ -17,7 +17,7 @@ generator:
 
     edit:
       display:
-        "NONE": [show, order, created_at, link, all_cultures, _item2item_list]
+        "NONE": [show, order, created_at, link, live, all_cultures, _item2item_list]
         "EN":
           - title_i18n_en
           - body_i18n_en
@@ -143,7 +143,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_en:
-          name: Image   
+          name: Image
         code_i18n_en:
           name: Code
           type: textarea_tag
@@ -163,7 +163,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_ru:
-          name: Image   
+          name: Image
         code_i18n_ru:
           name: Code
           type: textarea_tag
@@ -183,7 +183,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_cs:
-          name: Image   
+          name: Image
         code_i18n_cs:
           name: Code
           type: textarea_tag
@@ -203,7 +203,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_hu:
-          name: Image   
+          name: Image
         code_i18n_hu:
           name: Code
           type: textarea_tag
@@ -223,7 +223,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_pl:
-          name: Image   
+          name: Image
         code_i18n_pl:
           name: Code
           type: textarea_tag
@@ -243,7 +243,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_fr:
-          name: Image   
+          name: Image
         code_i18n_fr:
           name: Code
           type: textarea_tag
@@ -258,12 +258,12 @@ generator:
         author_i18n_fr:
           name: Author
           params: disabled=false maxlength=255 style="width:80%"
-          
+
         img_i18n_zh_cn:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_zh_cn:
-          name: Image   
+          name: Image
         code_i18n_zh_cn:
           name: Code
           type: textarea_tag
@@ -274,16 +274,16 @@ generator:
         body_i18n_zh_cn:
           name: Body
           type: textarea_tag
-          params: disabled=false size=118x6          
+          params: disabled=false size=118x6
         author_i18n_zh_cn:
           name: Author
           params: disabled=false maxlength=255 style="width:80%"
-          
+
         img_i18n_vi:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_vi:
-          name: Image   
+          name: Image
         code_i18n_vi:
           name: Code
           type: textarea_tag
@@ -297,13 +297,13 @@ generator:
           params: disabled=false size=118x6
         author_i18n_vi:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%"               
+          params: disabled=false maxlength=255 style="width:80%"
 
         img_i18n_ja:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_ja:
-          name: Image   
+          name: Image
         code_i18n_ja:
           name: Code
           type: textarea_tag
@@ -323,7 +323,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_es:
-          name: Image   
+          name: Image
         code_i18n_es:
           name: Code
           type: textarea_tag
@@ -343,7 +343,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_it:
-          name: Image   
+          name: Image
         code_i18n_it:
           name: Code
           type: textarea_tag
@@ -363,7 +363,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_et:
-          name: Image   
+          name: Image
         code_i18n_et:
           name: Code
           type: textarea_tag
@@ -383,7 +383,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_ne:
-          name: Image   
+          name: Image
         code_i18n_ne:
           name: Code
           type: textarea_tag
@@ -403,7 +403,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_bn:
-          name: Image   
+          name: Image
         code_i18n_bn:
           name: Code
           type: textarea_tag
@@ -423,7 +423,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_he:
-          name: Image   
+          name: Image
         code_i18n_he:
           name: Code
           type: textarea_tag
@@ -443,7 +443,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_zh_tw:
-          name: Image   
+          name: Image
         code_i18n_zh_tw:
           name: Code
           type: textarea_tag
@@ -463,7 +463,7 @@ generator:
           name: Image
           params: disabled=false maxlength=255 style="width:80%"
           _img_i18n_de:
-          name: Image   
+          name: Image
         code_i18n_de:
           name: Code
           type: textarea_tag
@@ -477,4 +477,4 @@ generator:
           params: disabled=false size=118x6
         author_i18n_de:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%"  
+          params: disabled=false maxlength=255 style="width:80%"

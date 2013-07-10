@@ -19,6 +19,7 @@
 		<li id="mi_announcements"><a href="<?php echo url_for('@announcements_index', true); ?>" title="<?php echo __('Announcements') ?>"><?php echo __('Announcements') ?></a></li>
 		<li id="mi_photo"><a href="<?php echo url_for('@photoalbum_index', true); ?>" title="<?php echo __('Photo') ?>"><?php echo __('Photo') ?></a></li>
 		<li id="mi_video"><a href="<?php echo url_for('@video_index', true); ?>" title="<?php echo __('Video') ?>"><?php echo __('Video') ?></a></li>
+		<li id="mi_video"><i>» </i><a href="<?php echo url_for('@video_live', true); ?>" title="<?php echo __('Live Video') ?>"><?php echo __('Live Video') ?></a></li>
 		<li id="mi_audio"><a href="<?php echo url_for('@audio_index', true); ?>" title="<?php echo __('Audio') ?>"><?php echo __('Audio') ?></a></li>
 		<li id="mi_documents"><a href="<?php echo url_for('@documents_index', true); ?>" title="<?php echo __('Documents') ?>"><?php echo __('Documents') ?></a></li>
         <li id="mi_feed"><a href="<?php echo url_for('@feed', true); ?>" title="<?php echo __('Feed') ?>"><?php echo __('Feed') ?></a></li>

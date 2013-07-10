@@ -126,6 +126,11 @@ video_show:
   url:   /:sf_culture/video/show
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
+video_live:
+  url:   /:sf_culture/live-video
+  param: { module: video, action: live }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+
 biography:
   url:   /:sf_culture/biography
   param: { module: biography, action: show }

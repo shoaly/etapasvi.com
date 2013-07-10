@@ -71,6 +71,7 @@ class videoActions extends autovideoActions
     {
       $this->video->setLink($video['link']);
     }
+    $this->video->setLive(isset($video['live']) ? $video['live'] : 0);
     $this->video->setAllCultures(isset($video['all_cultures']) ? $video['all_cultures'] : 0);
     if (isset($video['img_i18n_en']))
     {
@@ -530,6 +531,16 @@ protected function addFiltersCriteria($c)
     else if (isset($this->filters['link']) && $this->filters['link'] !== '')
     {
       $c->add(VideoPeer::LINK, strtr($this->filters['link'], '*', '%'), Criteria::LIKE);
+    }
+    if (isset($this->filters['live_is_empty']))
+    {
+      $criterion = $c->getNewCriterion(VideoPeer::LIVE, '');
+      $criterion->addOr($c->getNewCriterion(VideoPeer::LIVE, null, Criteria::ISNULL));
+      $c->add($criterion);
+    }
+    else if (isset($this->filters['live']) && $this->filters['live'] !== '')
+    {
+      $c->add(VideoPeer::LIVE, $this->filters['live']);
     }
 
     // Title

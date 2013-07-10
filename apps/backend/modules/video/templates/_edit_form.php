@@ -66,6 +66,19 @@
 </div>
 
 <div class="form-row">
+  <?php echo label_for('video[live]', __($labels['video{live}']), '') ?>
+  <div class="content<?php if ($sf_request->hasError('video{live}')): ?> form-error<?php endif; ?>">
+  <?php if ($sf_request->hasError('video{live}')): ?>
+    <?php echo form_error('video{live}', array('class' => 'form-error-msg')) ?>
+  <?php endif; ?>
+
+  <?php $value = object_checkbox_tag($video, 'getLive', array (
+  'control_name' => 'video[live]',
+)); echo $value ? $value : '&nbsp;' ?>
+    </div>
+</div>
+
+<div class="form-row">
   <?php echo label_for('video[all_cultures]', __($labels['video{all_cultures}']), '') ?>
   <div class="content<?php if ($sf_request->hasError('video{all_cultures}')): ?> form-error<?php endif; ?>">
   <?php if ($sf_request->hasError('video{all_cultures}')): ?>
@@ -80,13 +93,13 @@
 
 <div class="form-row">
   <label for="video_change_updated_at">Change Updated At:</label>  <div class="content">
-  
+
   <input type="checkbox" checked="checked" value="1" id="video_change_updated_at" name="video[change_updated_at]">    </div>
 </div>
 
 <div class="form-row">
   <label for="video_itemcategory">Item Categories:</label>  <div class="content">
-  <?php      
+  <?php
     echo object_select_tag($video, 'getItemcategoryIdList', array (
       'include_blank' => true,
       'related_class' => 'Itemcategory',

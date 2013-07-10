@@ -201,6 +201,9 @@ strong {
 .free_box_container .box {
 	border:1px solid white;
 	}
+.frame {
+	border:1px solid #DDDDDD;
+	}
 
 .main {
 	margin-bottom:26px;
@@ -1634,6 +1637,9 @@ img.newsitem_img {
 .video_info {
 	margin: 0 22px 0;
 	}
+.video_teaser {
+    padding: 14px 0;
+}
 
 /* search */
 #quick_search_input {

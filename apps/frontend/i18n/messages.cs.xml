@@ -616,6 +616,19 @@
         <source>Glad you liked it</source>
         <target></target>
       </trans-unit>
+<!-- Live Video -->
+      <trans-unit id="1">
+        <source>Live Video</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>There are no currently live streams scheduled.</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Stay tuned</source>
+        <target></target>
+      </trans-unit>
 
     </body>
   </file>

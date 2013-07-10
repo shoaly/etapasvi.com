@@ -86,4 +86,14 @@ class videoActions extends sfActions
     //$_SESSION['back_to_video'] = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
   }
 
+  /**
+   * Live Video
+   *
+   * @param sfWebRequest $request
+   */
+  public function executeLive(sfWebRequest $request)
+  {
+    
+  }
+
 }

@@ -34,41 +34,51 @@
     </div>
     </div>
 
+        <div class="form-row">
+    <label for="filters_live"><?php echo __('Live:') ?></label>
+    <div class="content">
+    <?php echo select_tag('filters[live]', options_for_select(array(1 => __('yes'), 0 => __('no')), isset($filters['live']) ? $filters['live'] : null, array (
+  'include_custom' => __("yes or no"),
+)), array (
+)) ?>
+    </div>
+    </div>
+
 <div class="form-row">
     <label for="filters_show"><?php echo __('Title:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[title]', $filters['title']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
     <label for="filters_show"><?php echo __('Body:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[body]', $filters['body']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
     <label for="filters_show"><?php echo __('Code:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[code]', $filters['code']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
     <label for="filters_show"><?php echo __('Image:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[img]', $filters['img']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
     <label for="filters_show"><?php echo __('Author:') ?></label>
     <div class="content">
         <?php $value = input_tag('filters[author]', $filters['author']); echo $value ? $value : '&nbsp;' ?>
     </div>
     </div>
-    
+
     <div class="form-row">
         <small>
             <strong>%</strong> - zero or more characters<br/>
@@ -76,8 +86,8 @@
             <strong>[charlist]</strong> - any single character in charlist<br/>
             <strong>[^charlist]</strong> - any single character not in charlist
         </small>
-    </div>    
-    
+    </div>
+
       </fieldset>
 
   <ul class="sf_admin_actions">

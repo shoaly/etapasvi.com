@@ -5,3 +5,7 @@ indexSuccess:
 showSuccess:
   metas:
     title:        Video
+
+liveSuccess:
+  metas:
+    title:        Live Video

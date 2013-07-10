@@ -5,7 +5,18 @@
 <?php slot('page_header') ?><?php echo __('A message of peace') ?><br/><?php echo __('An appeal to the world') ?><?php end_slot() ?>
 <?php slot('body_id') ?>body_main<?php end_slot() ?>
 
-<?php include_partial('photo/carousel'); ?>
+<?php $live_html = get_component( 'video', 'live' ); ?>
+
+<?php if (trim($live_html)): ?>
+    <h2><?php echo __('Live Video') ?></h2>
+    <?php echo $live_html; ?>
+    <p class="goto_section">
+        <a href="<?php echo url_for('video_live'); ?>" class="no_decor"><?php echo __('Live Video') ?> »</a>
+    </p>
+    <br/><br/>
+<?php else: ?>
+    <?php include_partial('photo/carousel'); ?>
+<?php endif ?>
 
 <?php include_component('news', 'latest'); ?>
 <p class="goto_section">

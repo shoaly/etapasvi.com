@@ -28,7 +28,7 @@ abstract class BaseVideoPeer {
 	const TM_CLASS = 'VideoTableMap';
 	
 	/** The total number of columns. */
-	const NUM_COLUMNS = 7;
+	const NUM_COLUMNS = 8;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -50,6 +50,9 @@ abstract class BaseVideoPeer {
 
 	/** the column name for the LINK field */
 	const LINK = 'video.LINK';
+
+	/** the column name for the LIVE field */
+	const LIVE = 'video.LIVE';
 
 	/** the column name for the ALL_CULTURES field */
 	const ALL_CULTURES = 'video.ALL_CULTURES';
@@ -77,11 +80,11 @@ abstract class BaseVideoPeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'UpdatedAt', 'Show', 'Order', 'Link', 'AllCultures', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'updatedAt', 'show', 'order', 'link', 'allCultures', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::UPDATED_AT, self::SHOW, self::ORDER, self::LINK, self::ALL_CULTURES, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'updated_at', 'show', 'order', 'link', 'all_cultures', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'CreatedAt', 'UpdatedAt', 'Show', 'Order', 'Link', 'Live', 'AllCultures', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'createdAt', 'updatedAt', 'show', 'order', 'link', 'live', 'allCultures', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::CREATED_AT, self::UPDATED_AT, self::SHOW, self::ORDER, self::LINK, self::LIVE, self::ALL_CULTURES, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'created_at', 'updated_at', 'show', 'order', 'link', 'live', 'all_cultures', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	/**
@@ -91,11 +94,11 @@ abstract class BaseVideoPeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'UpdatedAt' => 2, 'Show' => 3, 'Order' => 4, 'Link' => 5, 'AllCultures' => 6, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'updatedAt' => 2, 'show' => 3, 'order' => 4, 'link' => 5, 'allCultures' => 6, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::UPDATED_AT => 2, self::SHOW => 3, self::ORDER => 4, self::LINK => 5, self::ALL_CULTURES => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'updated_at' => 2, 'show' => 3, 'order' => 4, 'link' => 5, 'all_cultures' => 6, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'CreatedAt' => 1, 'UpdatedAt' => 2, 'Show' => 3, 'Order' => 4, 'Link' => 5, 'Live' => 6, 'AllCultures' => 7, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'createdAt' => 1, 'updatedAt' => 2, 'show' => 3, 'order' => 4, 'link' => 5, 'live' => 6, 'allCultures' => 7, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::CREATED_AT => 1, self::UPDATED_AT => 2, self::SHOW => 3, self::ORDER => 4, self::LINK => 5, self::LIVE => 6, self::ALL_CULTURES => 7, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'created_at' => 1, 'updated_at' => 2, 'show' => 3, 'order' => 4, 'link' => 5, 'live' => 6, 'all_cultures' => 7, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
 	);
 
 	/**
@@ -171,6 +174,7 @@ abstract class BaseVideoPeer {
 		$criteria->addSelectColumn(VideoPeer::SHOW);
 		$criteria->addSelectColumn(VideoPeer::ORDER);
 		$criteria->addSelectColumn(VideoPeer::LINK);
+		$criteria->addSelectColumn(VideoPeer::LIVE);
 		$criteria->addSelectColumn(VideoPeer::ALL_CULTURES);
 	}
 
