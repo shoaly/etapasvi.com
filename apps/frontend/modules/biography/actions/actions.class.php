@@ -10,10 +10,14 @@
  */
 class biographyActions extends sfActions
 {
-	
+
   public function executeShow(sfWebRequest $request)
   {
-  
+    $context = sfContext::getInstance();
+    $i18n =  $context->getI18N();
+
+    $response = $this->getResponse();
+    $response->setTitle($i18n->__('Maha Sambodhi Dharma Sangha') . ' - ' . $i18n->__('Biography'));
   }
-  
+
 }

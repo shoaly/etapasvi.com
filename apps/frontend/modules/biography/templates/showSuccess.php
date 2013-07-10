@@ -1,5 +1,5 @@
 <?php slot('body_id') ?>body_bio<?php end_slot() ?>
-<?php slot('page_header') ?><?php echo __('Biography') ?><?php end_slot() ?>
+<?php slot('page_header_real') ?><?php echo __('Maha Sambodhi Dharma Sangha') ?><br/><?php echo __('Biography') ?><?php end_slot() ?>
 
 <?php /*
 <span class="alert"><?php echo __('This text will be improved and updated. Please, don\'t translate it into other languages.') ?></span>
