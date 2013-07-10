@@ -135,15 +135,20 @@ biography:
   url:   /:sf_culture/maha-sambodhi-dharma-sangha-biography
   param: { module: biography, action: show }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
-  
+
 biography_old:
   url:   /:sf_culture/biography
   param: { module: biography, action: biography }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 sangha:
-  url:   /:sf_culture/sangha
+  url:   /:sf_culture/bodhi-shrawan-dharma-sangha
   param: { module: contactus, action: show }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+
+sangha_old:
+  url:   /:sf_culture/sangha
+  param: { module: contactus, action: redirect }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 contactus:
