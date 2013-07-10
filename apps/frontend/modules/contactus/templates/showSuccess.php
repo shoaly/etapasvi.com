@@ -1,5 +1,5 @@
 <?php slot('body_id') ?>body_sangha<?php end_slot() ?>
-<?php slot('page_header') ?><?php echo __('Sangha') ?><?php end_slot() ?>
+<?php slot('page_header_real') ?><?php echo __('Bodhi Shrawan Dharma Sangha') ?><?php end_slot() ?>
 
 <?php /*include_component('text', 'show', array('id'=>3)); */ ?>
 <?php /*
