@@ -88,10 +88,10 @@ class videoComponents extends sfComponents
   	$c = new Criteria();
   	$c->addDescendingOrderByColumn( VideoPeer::ID );
 
-    //$c->add( VideoPeer::SHOW, 1);
+    $c->add( VideoPeer::SHOW, 1);
     $c->add( VideoPeer::LIVE, 1);
 
-    //VideoPeer::addVisibleCriteria($c);
+    VideoPeer::addVisibleCriteria($c);
 
   	$this->video_list = VideoPeer::doSelectWithI18n( $c );
   }
