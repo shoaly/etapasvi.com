@@ -15,6 +15,7 @@ $news_list = $pager->getResults();
 <?php if (count($news_list)): ?>
 	<?php include_partial('news/list', array('news_list'=>$news_list)); ?>
 <?php else: ?>
+    <?php slot('robots') ?>noindex,nofollow<?php end_slot() ?>
 	<br/><p class="center_text light"><?php echo __('Category is empty') ?></p>
 <?php endif ?>
 

@@ -77,8 +77,8 @@ class audioActions extends sfActions
     $this->pager = $pager;
 
     // если передан номер страницы больше, чем имеется страниц
-    if ($request->getParameter('page') > $this->pager->getLastPage()) {
+    /*if ($request->getParameter('page') > $this->pager->getLastPage()) {
     	$this->forward404();
-    }
+    }*/
   }
 }

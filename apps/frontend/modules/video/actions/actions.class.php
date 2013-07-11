@@ -78,9 +78,9 @@ class videoActions extends sfActions
     $this->pager = $pager;
 
     // если передан номер страницы больше, чем имеется страниц
-    if ($request->getParameter('page') > $this->pager->getLastPage()) {
+    /*if ($request->getParameter('page') > $this->pager->getLastPage()) {
     	$this->forward404();
-    }
+    }*/
 
     // запоминаем адрес
     //$_SESSION['back_to_video'] = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
@@ -93,7 +93,7 @@ class videoActions extends sfActions
    */
   public function executeLive(sfWebRequest $request)
   {
-    
+
   }
 
 }
