@@ -41,12 +41,6 @@
 		<?php else: ?>
 
 			<div class="center_text prev_next" style="<?php if (!$prev_photo):?>padding-left:16px;<?php endif ?> <?php if (!$next_photo):?>padding-right:16px;<?php endif ?>">
-			<?php
-				if ($prev_photo && $photo->getShow()):
-                    $prev_url = $prev_photo->getUrl();
-				?>
-					<a href="<?php echo $prev_url; ?>" title="<?php echo __('Prev') ?>" class="prev_icon" onclick="loadPhotoContent('<?php echo $prev_url; ?>', '<?php echo $photoalbum_id; ?>');return false;" rel="nofollow"></a>
-				<?php endif ?>
 
 				<?php
 				if ($next_photo && $photo->getShow()):
@@ -59,10 +53,16 @@
 				<?php else: ?>
 					<a href="<?php echo $prev_url; ?>" title="<?php echo __('Prev') ?>" onclick="loadPhotoContent('<?php echo $prev_url; ?>', '<?php echo $photoalbum_id; ?>');return false;" rel="nofollow"><img src="<?php echo $photo->getFullUrl(); ?>" class="full_photo_img" alt="<?php echo $title; ?>" /></a>
 				<?php endif ?>
-				<?php
+				<?php/*
 				if ($next_photo && $photo->getShow()):
 				?>
 					<a href="<?php echo $next_url; ?>" title="<?php echo __('Next') ?>" class="next_icon" onclick="loadPhotoContent('<?php echo $next_url; ?>', '<?php echo $photoalbum_id; ?>');return false;" rel="nofollow"></a>
+				<?php endif*/ ?>
+                <?php
+				if ($prev_photo && $photo->getShow()):
+                    $prev_url = $prev_photo->getUrl();
+				?>
+					<a href="<?php echo $prev_url; ?>" title="<?php echo __('Prev') ?>" class="prev_icon" onclick="loadPhotoContent('<?php echo $prev_url; ?>', '<?php echo $photoalbum_id; ?>');return false;" rel="nofollow"></a>
 				<?php endif ?>
                 <input type="hidden" id="photo_full_info" value="{'url':'<?php echo $photo->getFullUrl(); ?>', 'width':'<?php echo $photo->getWidth(); ?>', 'height':'<?php echo $photo->getHeight(); ?>'}"/>
                 <input type="hidden" id="photo_preview_info" value="{'url':'<?php echo $photo->getPreviewUrl(); ?>','prev_url':'<?php echo ($prev_photo && $prev_photo->getShow() ? $prev_photo->getPreviewUrl() : ''); ?>','next_url':'<?php echo ($next_photo && $next_photo->getShow() ? $next_photo->getPreviewUrl() : ''); ?>'}" />
