@@ -10,12 +10,15 @@
  */
 class encyclopediaActions extends sfActions
 {
-	
+
   public function executeShow(sfWebRequest $request)
   {
   	/*if ( !in_array(sfContext::getInstance()->getUser()->getCulture(), array('en','ru', 'pl'))) {
   		$this->forward404();
   	}*/
+    if (strstr($request->getUri(), '/show')) {
+      $this->redirect($this->generateUrl('encyclopedia'));
+    }
   }
-  
+
 }

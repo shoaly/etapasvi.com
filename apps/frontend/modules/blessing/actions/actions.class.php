@@ -10,10 +10,12 @@
  */
 class blessingActions extends sfActions
 {
-	
+
   public function executeShow(sfWebRequest $request)
   {
-  
+    if (strstr($request->getUri(), '/show')) {
+      $this->redirect($this->generateUrl('blessing'));
+    }
   }
-  
+
 }

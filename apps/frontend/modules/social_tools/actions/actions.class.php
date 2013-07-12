@@ -10,10 +10,17 @@
  */
 class social_toolsActions extends sfActions
 {
-	
+
+  public function executeRedirect(sfWebRequest $request)
+  {
+    $this->redirect($this->generateUrl('social_tools'));
+  }
+
   public function executeShow(sfWebRequest $request)
   {
-  
+    if (strstr($request->getUri(), '/show')) {
+      $this->redirect($this->generateUrl('social_tools'));
+    }
   }
-  
+
 }

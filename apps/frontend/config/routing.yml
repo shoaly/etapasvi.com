@@ -195,8 +195,13 @@ faq:
 #  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 social_tools:
-  url:   /:sf_culture/social_tools
+  url:   /:sf_culture/social-tools
   param: { module: social_tools, action: show }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+
+social_tools_old:
+  url:   /:sf_culture/social_tools
+  param: { module: social_tools, action: redirect }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 religious_forest:
