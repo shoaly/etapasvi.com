@@ -1451,9 +1451,12 @@ img.newsitem_img {
 #photo_comments_code {
     display: none;
     }
-.photoalbum_container {
-    border-bottom: 0;
+.photoalbum_wrapper .photo_list td {
+    border-top: 0;
     }
+/*.photoalbum_container {
+    border-bottom: 0;
+    }*/
 .photoalbum_container .title {
     text-align: center;
     }
