@@ -8,7 +8,7 @@ generator:
       peer_method: doSelectWithI18n
       max_per_page: 1000
       sort: [order, desc]
-      display: [=id, show, order, title, created_at, author, _itemcategory_list, _item2item_list]
+      display: [=id, show, order, title, created_at, author, _count_photos, _itemcategory_list, _item2item_list]
       title:   Photoalbums
       filters: [show]
       object_actions:
@@ -87,7 +87,7 @@ generator:
           - body_i18n_de
           - author_i18n_de
       fields:
-        
+
         title_i18n_en:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -97,18 +97,18 @@ generator:
           params: disabled=false size=118x6
         author_i18n_en:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%"           
+          params: disabled=false maxlength=255 style="width:80%"
 
         title_i18n_ru:
           name: Title
-          params: disabled=false maxlength=255 style="width:80%"  
+          params: disabled=false maxlength=255 style="width:80%"
         body_i18n_ru:
           name: Body
           type: textarea_tag
           params: disabled=false size=118x6
         author_i18n_ru:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%"                   
+          params: disabled=false maxlength=255 style="width:80%"
 
         title_i18n_cs:
           name: Title
@@ -130,8 +130,8 @@ generator:
           params: disabled=false size=118x6
         author_i18n_hu:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%" 
-          
+          params: disabled=false maxlength=255 style="width:80%"
+
         title_i18n_pl:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -142,7 +142,7 @@ generator:
         author_i18n_pl:
           name: Author
           params: disabled=false maxlength=255 style="width:80%"
-          
+
         title_i18n_fr:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -164,7 +164,7 @@ generator:
         author_i18n_zh_cn:
           name: Author
           params: disabled=false maxlength=255 style="width:80%"
-          
+
         title_i18n_vi:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"
@@ -174,7 +174,7 @@ generator:
           params: disabled=false size=118x6
         author_i18n_vi:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%"          
+          params: disabled=false maxlength=255 style="width:80%"
 
         title_i18n_ja:
           name: Title
@@ -185,7 +185,7 @@ generator:
           params: disabled=false size=118x6
         author_i18n_ja:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%" 
+          params: disabled=false maxlength=255 style="width:80%"
 
         title_i18n_es:
           name: Title
@@ -196,7 +196,7 @@ generator:
           params: disabled=false size=118x6
         author_i18n_es:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%" 
+          params: disabled=false maxlength=255 style="width:80%"
 
         title_i18n_it:
           name: Title
@@ -207,7 +207,7 @@ generator:
           params: disabled=false size=118x6
         author_i18n_it:
           name: Author
-          params: disabled=false maxlength=255 style="width:80%" 
+          params: disabled=false maxlength=255 style="width:80%"
 
         title_i18n_et:
           name: Title
@@ -263,7 +263,7 @@ generator:
         author_i18n_zh_tw:
           name: Author
           params: disabled=false maxlength=255 style="width:80%"
-          
+
         title_i18n_de:
           name: Title
           params: disabled=false maxlength=255 style="width:80%"

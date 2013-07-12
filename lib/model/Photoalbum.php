@@ -166,4 +166,11 @@ class Photoalbum extends BasePhotoalbum
 	{
 		return ItemtypesPeer::ITEM_TYPE_NAME_PHOTOALBUM;
 	}
+
+	public function countPhotos()
+	{
+        $criteria = new Criteria(PhotoalbumPeer::DATABASE_NAME);
+        $criteria->add(PhotoPeer::SHOW, true);
+        return parent::countPhotos($criteria);
+    }
 }
