@@ -2,8 +2,9 @@
 <?php slot('page_header') ?><?php echo __('Encyclopedia') ?><?php end_slot() ?>
 
 <?php $counter = 0; ?>
-
+<small class="light">
 <?php echo __('Keep in mind that this encyclopedia has been compiled mostly from WikiPedia articles, so it may contain mistakes and misinterpretations. To get deeper understanding of the words and phenomenons they are pointing to refer to the Teachings section and your heart.') ?>
+</small>
 <br/><br/>
 
 <ol class="contents">
