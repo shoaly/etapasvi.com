@@ -284,7 +284,7 @@ function preparePhotoContent()
             //full_photo_img.attr("src", $("#photo_full_url").val());
             resizePhotoColorbox(full_photo_img);
             // align loader in the middle of the photo and show it
-            $("#colorbox #photo_content .prev_next a").css('visibility', 'hidden');
+            //$("#colorbox #photo_content .prev_next a").css('visibility', 'hidden');
         } else {
             // modify Mobile link
             setUrlMobile(document.location.href);
@@ -411,7 +411,7 @@ function resizePhotoColorbox(full_photo_img)
 // т.к. после открытия colorbox больше не считывает размеры содержимого
 function cbResize(scroll_to_pos)
 {
-    $("#colorbox #photo_content .prev_next a").css('visibility', 'visible');
+    //$("#colorbox #photo_content .prev_next a").css('visibility', 'visible');
 
     if (page_mode != "enlarge_photo") {
         return;

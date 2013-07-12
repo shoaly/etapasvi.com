@@ -1580,6 +1580,7 @@ img.newsitem_img {
     opacity: 0.4;
     filter: alpha(opacity=40);
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    margin-top: -23px;
     }
 .direction_rtl #content .prev_next {
     direction: ltr;
