@@ -36,7 +36,7 @@ class Photoalbum extends BasePhotoalbum
 	}
 
 	public function __toString() {
-		return date("Y.m.d", strtotime($this->getCreatedAt())) . ' - ' . $this->getTitle();
+		return $this->getTitle() . ' [' . date("Y.m.d", strtotime($this->getCreatedAt())) . ']';
 	}
 
 	/**
