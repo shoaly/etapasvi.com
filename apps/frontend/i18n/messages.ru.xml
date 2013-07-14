@@ -19,8 +19,12 @@
         <target>Маха Самбоди Дарма Санга</target>
       </trans-unit>
       <trans-unit id="1">
-        <source> Maha Sambodhi Dharma Sangha</source>
-        <target>Махá Самбóди Дáрма Сáнга</target>
+        <source>Maha Sambodhi Dharma Sangha Guru</source>
+        <target>Учитель Маха Самбоди Дарма Санга</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source> Maha Sambodhi Dharma Sangha Guru</source>
+        <target>Учитель Махá Самбóди Дáрма Сáнга</target>
       </trans-unit>
       <trans-unit id="1">
         <source>Bodhi Shrawan Dharma Sangha</source>
