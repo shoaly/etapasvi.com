@@ -166,9 +166,11 @@ class newsActions extends sfActions
 
   public function executeMain(sfWebRequest $request)
   {
-  	/*if (IdeaPeer::isThinkingNow()) {
-      $this->best_idea = IdeaPeer::getBestIdea();
-  	}*/
+    $context = sfContext::getInstance();
+    $i18n =  $context->getI18N();
+
+    $response = $this->getResponse();
+    $response->setTitle($i18n->__('Maha Sambodhi Dharma Sangha Guru') . ' - ' . $i18n->__('A message of peace, an appeal to the world'));
   }
 
   /**

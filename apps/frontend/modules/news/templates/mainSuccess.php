@@ -2,7 +2,7 @@
 <link rel="alternate" type="application/rss+xml" title="<?php echo __('Feed') ?>" href="http://feeds.feedburner.com/<?php echo $sf_user->getCulture(); ?>/etapasvi" />
 <?php end_slot() ?>
 
-<?php slot('page_header') ?><?php echo __('A message of peace') ?><br/><?php echo __('An appeal to the world') ?><?php end_slot() ?>
+<?php slot('page_header') ?><?php echo __('Maha Sambodhi Dharma Sangha Guru') ?><br/><?php echo __('A message of peace, an appeal to the world') ?><?php end_slot() ?>
 <?php slot('body_id') ?>body_main<?php end_slot() ?>
 
 <?php $live_html = get_component( 'video', 'live' ); ?>
