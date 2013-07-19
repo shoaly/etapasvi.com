@@ -18,4 +18,10 @@ class projectActions extends sfActions
     }
   }
 
+  public function executeRedirect(sfWebRequest $request)
+  {
+    sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
+    $this->redirect(url_for('news/index?itemcategory=projects', true));
+  }
+
 }
