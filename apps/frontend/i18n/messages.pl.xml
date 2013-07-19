@@ -99,6 +99,10 @@
         <target>Encyklopedia</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Wiki</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
         <source>Live Stream</source>
         <target>Wideo na żywo</target>
       </trans-unit>

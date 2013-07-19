@@ -27,7 +27,7 @@
         <source>Maha Sambodhi Dharma Sangha Guru</source>
         <target></target>
       </trans-unit>
-      
+
       <trans-unit id="1">
         <source> Maha Sambodhi Dharma Sangha Guru</source>
         <target></target>
@@ -121,6 +121,11 @@
       <trans-unit id="1">
         <source>Encyclopedia</source>
         <target>Bách khoa toàn thư</target>
+      </trans-unit>
+
+      <trans-unit id="1">
+        <source>Wiki</source>
+        <target></target>
       </trans-unit>
 
       <trans-unit id="1">

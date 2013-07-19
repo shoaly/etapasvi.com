@@ -27,6 +27,7 @@
 		<li id="mi_blessing"><a href="<?php echo url_for('@blessing', true); ?>" title="<?php echo __('Blessing') ?>"><?php echo __('Blessing') ?></a></li>
         <?php /*<li id="mi_faq"><a href="<?php echo url_for('@faq', true); ?>" title="<?php echo __('FAQ') ?>"><?php echo __('FAQ') ?></a></li>*/ ?>
         <li id="mi_encyclopedia"><a href="<?php echo url_for('@encyclopedia', true); ?>" title="<?php echo __('Encyclopedia') ?>"><?php echo __('Encyclopedia') ?></a></li>
+        <li id="mi_wiki"><a href="http://wiki.etapasvi.com" title="<?php echo __('Wiki') ?>"><?php echo __('Wiki') ?></a></li>
 <?php /*
 		<li id="mi_religious_forest"><a href="<?php echo url_for('@religious_forest', true); ?>" title="<?php echo __('Religious Forest') ?>"><?php echo __('Religious Forest') ?></a></li>
 */

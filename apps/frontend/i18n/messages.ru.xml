@@ -99,6 +99,14 @@
         <target>Энциклопедия</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Wiki</source>
+        <target>Вики</target>
+      </trans-unit>
+      <trans-unit id="1">
+        <source>Wiki</source>
+        <target>Вики</target>
+      </trans-unit>
+      <trans-unit id="1">
         <source>Live Stream</source>
         <target>Live Видео</target>
       </trans-unit>

@@ -95,6 +95,10 @@
         <target>Enciklopédia</target>
       </trans-unit>
       <trans-unit id="1">
+        <source>Wiki</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="1">
         <source>Live Stream</source>
         <target>Élőadás</target>
       </trans-unit>
