@@ -189,10 +189,10 @@ faq:
   param: { module: faq, action: show }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
-#translation_fundraising:
-#  url:   /:sf_culture/translation_fundraising
-#  param: { module: translation_fundraising, action: show }
-#  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+translation_fundraising:
+  url:   /:sf_culture/translation_fundraising
+  param: { module: donation, action: redirect }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 social_tools:
   url:   /:sf_culture/social-tools

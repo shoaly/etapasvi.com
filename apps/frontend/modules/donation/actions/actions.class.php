@@ -10,10 +10,15 @@
  */
 class donationActions extends sfActions
 {
-	
+
   public function executeShow(sfWebRequest $request)
   {
-  
+
   }
-  
+
+  public function executeRedirect(sfWebRequest $request)
+  {
+    $this->redirect($this->generateUrl('donation'));
+  }
+
 }
