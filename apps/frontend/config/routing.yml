@@ -254,6 +254,11 @@ donation:
   param: { module: donation, action: show }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
+donation_redirect:
+  url:   /:sf_culture/donation
+  param: { module: donation, action: redirect }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+
 #servers:
 #  url:   /:sf_culture/servers
 #  param: { module: servers, action: show }
