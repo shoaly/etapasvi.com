@@ -22,11 +22,13 @@ $news_list = $pager->getResults();
 <?php echo $navigation_html; ?>
 
 <?php include_partial('comments/count'); ?>
-
+<?php /*
 <?php if (in_array($sf_request->getParameter('itemcategory'), array('teachings', 'messages', 'prayers'))): ?>
 <br/>
 <a href="https://docs.google.com/document/d/10igx0jLsoVeemdKxEasxJG5xbrqI2cfRWh3pJnn28iQ/edit"><?php echo __("Dictionary") ?></a> (<?php echo __("by Andy Good/LTJ") ?>)
 <?php endif ?>
+ */ ?>
+
 
 <?php if (in_array($sf_request->getParameter('itemcategory'), array('teachings', 'messages'))): ?>
     <br/><br/>
