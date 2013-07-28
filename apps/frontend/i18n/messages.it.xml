@@ -268,6 +268,10 @@
         <source>Original text</source>
         <target>Testo originale</target>
       </trans-unit>
+      <trans-unit id="1">
+        <source>The translation presented may be changed with time, as devotees progress on the Path and capacity for understanding grows. Previous versions of the translation of the teaching are available under "Revision History" link at the top of the page.</source>
+        <target></target>
+      </trans-unit>
 
 <!-- misc -->
       <trans-unit id="1">
