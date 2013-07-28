@@ -16,6 +16,14 @@ version_full:
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 # дополнительные маршруты новостей идут до default, чтобы они срабатывали раньше
+news_no_slash:
+  url:   /:sf_culture/news
+  param: { module: news, action: redirect, route: "news" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+news_slash:
+  url:   /:sf_culture/news/
+  param: { module: news, action: redirect, route: "news" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 news_index:
   url:   /:sf_culture/news/index/*
   param: { module: news, action: index }
@@ -56,7 +64,14 @@ projects_show:
 #photoalbum_index:
 #  url:   /:sf_culture/photo/albums/*
 #  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
-
+photoalbum_index_no_slash:
+  url:   /:sf_culture/photoalbums
+  param: { module: news, action: redirect, route: "photoalbum_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+photoalbum_index_slash:
+  url:   /:sf_culture/photoalbums/
+  param: { module: news, action: redirect, route: "photoalbum_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 photoalbum_index:
   url:   /:sf_culture/photoalbums/index/*
   param: { module: photo, action: albums }
@@ -116,6 +131,16 @@ photo_view:
 photo_map:
   url:   /:sf_culture/photo/map
   param: { module: photo, action: map }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+
+video_no_slash:
+  url:   /:sf_culture/video
+  param: { module: news, action: redirect, route: "video_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+
+video_slash:
+  url:   /:sf_culture/video/
+  param: { module: news, action: redirect, route: "video_index" }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 video_index:
@@ -219,6 +244,14 @@ forum:
   param: { module: news, action: forum }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
+audio_no_slash:
+  url:   /:sf_culture/audio
+  param: { module: news, action: redirect, route: "audio_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+audio_slash:
+  url:   /:sf_culture/audio/
+  param: { module: news, action: redirect, route: "audio_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 audio_index:
   url:   /:sf_culture/audio/index/*
   param: { module: audio, action: index }
@@ -232,6 +265,14 @@ audio_show:
   url:   /:sf_culture/audio/show
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
+documents_no_slash:
+  url:   /:sf_culture/documents
+  param: { module: news, action: redirect, route: "documents_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+documents_slash:
+  url:   /:sf_culture/documents/
+  param: { module: news, action: redirect, route: "documents_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 documents_index:
   url:   /:sf_culture/documents/index/*
   param: { module: documents, action: index }
@@ -241,6 +282,14 @@ documents:
   param: { module: documents, action: index }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
+announcements_no_slash:
+  url:   /:sf_culture/announcements
+  param: { module: news, action: redirect, route: "announcements_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
+announcements_slash:
+  url:   /:sf_culture/announcements/
+  param: { module: news, action: redirect, route: "announcements_index" }
+  requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 announcements_index:
   url:   /:sf_culture/announcements/index/*
   param: { module: announcements, action: index }
