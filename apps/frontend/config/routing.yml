@@ -85,7 +85,7 @@ default:
 
 chat:
   url:   /:sf_culture/chat
-  param: { module: chat, action: show }
+  param: { module: news, action: redirect, route: 'forum' }
   requirements: { sf_culture: (?:en|ru|cs|hu|pl|fr|zh_CN|vi|ja|es|it|et|ne|bn|he|zh_TW|de) }
 
 news_rss:

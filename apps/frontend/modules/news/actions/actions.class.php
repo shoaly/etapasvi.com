@@ -513,4 +513,14 @@ LIMIT 0, 50
 
   }
 
+  /**
+   * Redirect to the route
+   *
+   * @param sfWebRequest $request
+   */
+  public function executeRedirect(sfWebRequest $request)
+  {
+    $this->redirect($this->generateUrl($request->getParameter('route')));
+  }
+
 }
