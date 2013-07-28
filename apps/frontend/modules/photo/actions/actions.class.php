@@ -130,7 +130,9 @@ class photoActions extends sfActions
   	// альбом
   	if (!$albumcontent) {
   		$this->photoalbum = PhotoalbumPeer::retrieveByPk( $this->getRequestParameter('id') );
-    	$this->forward404Unless( $this->photoalbum );
+    	if (!$this->photoalbum || !$this->photoalbum->getShow()) {
+            $this->forward404();
+        }
   	}
 
   	$album_id = $this->getRequestParameter('id');
