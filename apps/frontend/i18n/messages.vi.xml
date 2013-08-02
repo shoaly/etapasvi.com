@@ -125,7 +125,7 @@
 
       <trans-unit id="1">
         <source>Wiki</source>
-        <target></target>
+        <target>Wiki</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -205,7 +205,7 @@
 
       <trans-unit id="1">
         <source>Announcements</source>
-        <target></target>
+        <target>Thông cáo</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -270,7 +270,7 @@
 
       <trans-unit id="1">
         <source>Precepts</source>
-        <target></target>
+        <target>Giới luật</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -280,34 +280,37 @@
 
       <trans-unit id="1">
         <source>By location</source>
-        <target></target>
+        <target>Theo vị trí</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>By language</source>
-        <target></target>
+        <target>Theo ngôn ngữ</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Location</source>
-        <target></target>
+        <target>Vị trí</target>
       </trans-unit>
 
       <trans-unit id="1">
         <source>Messages</source>
-        <target></target>
+        <target>Thông điệp</target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Prayers</source>
-        <target></target>
+        <target>Bài kinh</target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Questions</source>
-        <target></target>
+        <target>Câu hỏi</target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Mantras</source>
-        <target></target>
+        <target>Thần chú</target>
       </trans-unit>
 
       <trans-unit id="1">
@@ -645,7 +648,6 @@
         <target>Trang không được tìm thấy hoặc chưa được dịch</target>
       </trans-unit>
 
-<!-- contactus -->
       <trans-unit id="1">
         <source>Contact Details</source>
         <target></target>
@@ -655,47 +657,57 @@
         <source>Like</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Dislike</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>I like this</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>I dislike this</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Unlike</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Undislike</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Would you like to share?</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Close</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Glad you liked it</source>
         <target></target>
       </trans-unit>
-<!-- Live Video -->
+
       <trans-unit id="1">
         <source>Live Video</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>There are no currently live streams scheduled.</source>
         <target></target>
       </trans-unit>
+
       <trans-unit id="1">
         <source>Stay tuned</source>
         <target></target>
