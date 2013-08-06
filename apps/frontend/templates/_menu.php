@@ -84,7 +84,7 @@
 		<li>&nbsp;</li>
 		<li>
             <form action="<?php echo url_for('@search', true); ?>">
-            <input type="text" id="quick_search_input" name="text"/> <input type="submit" class="input_button" value="<?php echo __('Search') ?>" />
+            <input type="text" id="quick_search_input" name="q"/> <input type="submit" class="input_button" value="<?php echo __('Search') ?>" />
             </form>
         </li>
 	</ul>
