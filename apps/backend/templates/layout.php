@@ -81,7 +81,7 @@
 	      <li><?php echo link_to('Audio', 'audio/index') ?></li>
 	      <li><?php echo link_to('Documents', 'documents/index') ?></li>
 	      <li><?php echo link_to('Announcements', 'announcements/index') ?></li>
-
+          <li class="divider"><?php echo link_to('Revision History', 'revisionhistory/index') ?></li>
           <?php if ($sf_user->hasGroup('admins') || $sf_user->hasGroup('managers')) : ?>
               <li class="divider"><?php echo link_to('Item2item', 'item2item/index') ?></li>
               <?php /*<li><?php echo link_to('Timezones', 'timezone/index') ?></li>	*/ ?>
@@ -96,7 +96,6 @@
               <li><?php echo link_to('Item Categories', 'itemcategory/index') ?></li>
               <li><?php echo link_to('Item2itemcategory', 'item2itemcategory/index') ?></li>
               <li class="divider"><?php echo link_to('Translate', 'news/translate') ?></li>
-              <li><?php echo link_to('Revision History', 'revisionhistory/index') ?></li>
               <li><?php echo link_to('Contact Us', 'contactus/index') ?></li>
               <li><?php echo link_to('Location', 'location/index') ?></li>
               <li><?php echo link_to('Location Link', 'locationlink/index') ?></li>
