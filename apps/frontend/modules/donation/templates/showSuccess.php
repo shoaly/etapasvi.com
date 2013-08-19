@@ -199,7 +199,7 @@ $(document).ready(function(){
 <p>
     <?php echo __('Email at') ?> <a href="mailto:info@etapasvi.com">info@etapasvi.com</a> <?php echo __('for instructions.') ?>
 </p>
-<?php if ($sf_user->getCulture() != 'ru'): ?>
+<?php /*if ($sf_user->getCulture() != 'ru'): ?>
 <h2 class="center"><?php echo __('Sending a check') ?></h2>
 <p>
     <table class="left_text bordered general_table">
@@ -218,7 +218,7 @@ $(document).ready(function(){
     </tr>
     </table>
 </p>
-<?php endif ?>
+<?php endif*/ ?>
 
 <h2 class="center"><?php echo __('Reports') ?></h2>
 <div>
